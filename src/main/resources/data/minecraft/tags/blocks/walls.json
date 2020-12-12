@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "atbyw:terracotta_bricks_wall",
+    "atbyw:white_terracotta_bricks_wall",
+    "atbyw:orange_terracotta_bricks_wall",
+    "atbyw:magenta_terracotta_bricks_wall",
+    "atbyw:light_blue_terracotta_bricks_wall",
+    "atbyw:yellow_terracotta_bricks_wall",
+    "atbyw:lime_terracotta_bricks_wall",
+    "atbyw:pink_terracotta_bricks_wall",
+    "atbyw:gray_terracotta_bricks_wall",
+    "atbyw:light_gray_terracotta_bricks_wall",
+    "atbyw:cyan_terracotta_bricks_wall",
+    "atbyw:purple_terracotta_bricks_wall",
+    "atbyw:blue_terracotta_bricks_wall",
+    "atbyw:brown_terracotta_bricks_wall",
+    "atbyw:green_terracotta_bricks_wall",
+    "atbyw:red_terracotta_bricks_wall",
+    "atbyw:black_terracotta_bricks_wall"
+  ]
+}

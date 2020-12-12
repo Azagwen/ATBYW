@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/ATBYW.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/ATBYW.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Client.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlockTags.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/BookshelfToggleBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/DevBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/FenceDoorBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/StairsBlockSubClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AbtywBlockUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AbtywBlocks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AtbywClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AtbywMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantingTableBlockMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantmentScreenHandlerMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/ExampleMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/MC_ItemSet_Builder.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/acacia_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/acacia_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/acacia_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/basalt_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/birch_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/birch_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/birch_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/black_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/black_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/black_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/black_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/black_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/black_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/blue_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/blue_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/blue_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/blue_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/blue_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/blue_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/brown_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/brown_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/brown_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/brown_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/brown_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/brown_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/crimson_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/crimson_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/crimson_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cyan_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cyan_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cyan_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cyan_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cyan_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cyan_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dark_oak_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dark_oak_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dark_oak_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dev_block.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dev_missing_states.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/gray_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/gray_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/gray_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/gray_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/gray_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/gray_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/green_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/green_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/green_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/green_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/green_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/green_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/iron_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/jungle_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/jungle_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/jungle_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_blue_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_blue_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_blue_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_blue_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_blue_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_blue_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_gray_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_gray_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_gray_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_gray_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_gray_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_gray_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/lime_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/lime_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/lime_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/lime_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/lime_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/lime_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/magenta_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/magenta_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/magenta_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/magenta_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/magenta_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/magenta_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/oak_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/oak_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/oak_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/orange_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/orange_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/orange_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/orange_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/orange_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/orange_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/pink_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/pink_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/pink_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/pink_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/pink_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/pink_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/purple_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/purple_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/purple_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/purple_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/purple_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/purple_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/red_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/red_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/red_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/red_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/red_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/red_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/spruce_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/spruce_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/spruce_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/warped_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/warped_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/warped_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/white_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/white_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/white_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/white_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/white_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/white_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/yellow_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/yellow_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/yellow_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/yellow_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/yellow_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/yellow_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/acacia_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/acacia_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/acacia_bookshelf_toggle_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/basalt_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/birch_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/birch_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/birch_bookshelf_toggle_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/blue_developper_block_bigger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/blue_developper_block_bigger_h.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/blue_developper_block_flat.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/crimson_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/crimson_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/crimson_bookshelf_toggle_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/dark_oak_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/dark_oak_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/dark_oak_bookshelf_toggle_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/developper_block.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/developper_block_bigger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/developper_block_bigger_h.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/developper_block_flat.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/acacia_fence_door_lower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/acacia_fence_door_lower_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/acacia_fence_door_upper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/acacia_fence_door_upper_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/birch_fence_door_lower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/birch_fence_door_lower_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/birch_fence_door_upper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/birch_fence_door_upper_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/crimson_fence_door_lower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/crimson_fence_door_lower_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/crimson_fence_door_upper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/crimson_fence_door_upper_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/dark_oak_fence_door_lower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/dark_oak_fence_door_lower_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/dark_oak_fence_door_upper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/dark_oak_fence_door_upper_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_lower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_lower_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_upper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_upper_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/jungle_fence_door_lower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/jungle_fence_door_lower_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/jungle_fence_door_upper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/jungle_fence_door_upper_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/oak_fence_door_lower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/oak_fence_door_lower_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/oak_fence_door_upper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/oak_fence_door_upper_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/spruce_fence_door_lower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/spruce_fence_door_lower_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/spruce_fence_door_upper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/spruce_fence_door_upper_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/template_fence_door_lower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/template_fence_door_lower_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/template_fence_door_upper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/template_fence_door_upper_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/warped_fence_door_lower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/warped_fence_door_lower_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/warped_fence_door_upper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/warped_fence_door_upper_open.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/green_developper_block_bigger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/green_developper_block_bigger_h.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/green_developper_block_flat.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/jungle_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/jungle_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/jungle_bookshelf_toggle_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/oak_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/oak_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/oak_bookshelf_toggle_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/spruce_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/spruce_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/spruce_bookshelf_toggle_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/black_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/black_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/blue_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/blue_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/brown_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/brown_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/cyan_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/cyan_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/gray_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/gray_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/green_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/green_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/light_blue_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/light_blue_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/light_gray_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/light_gray_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/lime_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/lime_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/magenta_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/magenta_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/orange_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/orange_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/pink_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/pink_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/purple_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/purple_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/red_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/red_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/white_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/white_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/yellow_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/slab/yellow_terracotta_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/black_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/black_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/black_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/blue_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/blue_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/blue_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/brown_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/brown_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/brown_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/cyan_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/cyan_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/cyan_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/gray_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/gray_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/gray_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/green_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/green_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/green_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/light_blue_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/light_blue_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/light_blue_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/light_gray_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/light_gray_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/light_gray_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/lime_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/lime_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/lime_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/magenta_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/magenta_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/magenta_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/orange_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/orange_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/orange_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/pink_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/pink_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/pink_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/purple_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/purple_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/purple_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/red_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/red_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/red_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/white_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/white_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/white_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/yellow_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/yellow_terracotta_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta/stairs/yellow_terracotta_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/black_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/blue_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/brown_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/cyan_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/gray_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/green_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/light_blue_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/light_gray_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/lime_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/magenta_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/orange_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/pink_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/purple_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/red_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/black_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/black_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/blue_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/blue_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/brown_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/brown_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/cyan_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/cyan_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/gray_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/gray_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/green_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/green_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/light_blue_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/light_blue_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/light_gray_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/light_gray_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/lime_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/lime_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/magenta_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/magenta_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/orange_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/orange_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/pink_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/pink_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/purple_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/purple_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/red_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/red_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/white_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/white_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/yellow_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/slab/yellow_terracotta_bricks_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/black_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/black_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/black_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/blue_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/blue_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/blue_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/brown_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/brown_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/brown_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/cyan_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/cyan_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/cyan_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/gray_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/gray_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/gray_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/green_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/green_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/green_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/light_blue_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/light_blue_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/light_blue_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/light_gray_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/light_gray_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/light_gray_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/lime_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/lime_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/lime_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/magenta_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/magenta_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/magenta_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/orange_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/orange_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/orange_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/pink_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/pink_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/pink_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/purple_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/purple_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/purple_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/red_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/red_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/red_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/white_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/white_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/white_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/yellow_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/yellow_terracotta_bricks_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/stairs/yellow_terracotta_bricks_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/black_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/black_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/black_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/black_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/blue_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/blue_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/blue_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/blue_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/brown_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/brown_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/brown_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/brown_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/cyan_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/cyan_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/cyan_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/cyan_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/gray_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/gray_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/gray_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/gray_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/green_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/green_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/green_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/green_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/light_blue_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/light_blue_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/light_blue_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/light_blue_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/light_gray_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/light_gray_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/light_gray_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/light_gray_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/lime_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/lime_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/lime_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/lime_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/magenta_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/magenta_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/magenta_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/magenta_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/orange_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/orange_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/orange_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/orange_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/pink_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/pink_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/pink_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/pink_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/purple_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/purple_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/purple_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/purple_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/red_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/red_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/red_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/red_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/white_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/white_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/white_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/white_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/yellow_terracotta_bricks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/yellow_terracotta_bricks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/yellow_terracotta_bricks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/wall/yellow_terracotta_bricks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/white_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/terracotta_bricks/yellow_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/warped_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/warped_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/warped_bookshelf_toggle_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/acacia_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/acacia_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/acacia_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/basalt_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/birch_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/birch_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/birch_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/black_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/black_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/black_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/black_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/black_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/black_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/blue_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/blue_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/blue_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/blue_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/blue_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/blue_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/brown_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/brown_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/brown_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/brown_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/brown_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/brown_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/crimson_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/crimson_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/crimson_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cyan_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cyan_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cyan_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cyan_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cyan_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cyan_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/dark_oak_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/dark_oak_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/dark_oak_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/dev_block.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/gray_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/gray_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/gray_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/gray_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/gray_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/gray_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/green_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/green_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/green_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/green_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/green_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/green_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/iron_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/jungle_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/jungle_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/jungle_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_blue_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_blue_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_blue_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_blue_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_blue_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_blue_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_gray_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_gray_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_gray_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_gray_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_gray_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_gray_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/lime_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/lime_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/lime_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/lime_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/lime_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/lime_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/magenta_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/magenta_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/magenta_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/magenta_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/magenta_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/magenta_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/oak_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/oak_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/oak_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/orange_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/orange_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/orange_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/orange_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/orange_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/orange_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/pink_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/pink_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/pink_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/pink_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/pink_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/pink_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/purple_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/purple_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/purple_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/purple_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/purple_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/purple_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/red_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/red_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/red_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/red_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/red_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/red_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/spruce_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/spruce_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/spruce_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/warped_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/warped_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/warped_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/white_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/white_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/white_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/white_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/white_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/white_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/yellow_terracotta_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/yellow_terracotta_bricks_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/yellow_terracotta_bricks_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/yellow_terracotta_bricks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/yellow_terracotta_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/yellow_terracotta_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/acacia_bookshelf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/acacia_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/acacia_bookshelf_toggle_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/acacia_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/basalt_bricks_side.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/basalt_bricks_slab.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/basalt_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/basalt_pillar_side.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/basalt_pillar_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/basalt_smooth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/birch_bookshelf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/birch_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/birch_bookshelf_toggle_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/birch_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/black_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/blue_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/bookshelf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/brown_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/crimson_bookshelf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/crimson_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/crimson_bookshelf_toggle_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/crimson_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/cyan_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/dark_oak_bookshelf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/dark_oak_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/dark_oak_bookshelf_toggle_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/dark_oak_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/dev.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/gray_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/green_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/iron_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/jungle_bookshelf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/jungle_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/jungle_bookshelf_toggle_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/jungle_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/light_blue_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/light_gray_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/lime_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/magenta_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/oak_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/oak_bookshelf_toggle_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/oak_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/black_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/blue_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/brown_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/cyan_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/gray_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/green_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/light_blue_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/light_gray_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/lime_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/magenta_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/orange_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/pink_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/purple_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/red_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/white_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/old/yellow_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/orange_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/palettes/basalt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/palettes/plank_palette.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/palettes/terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/pink_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/purple_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/red_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/patterns.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/spruce_bookshelf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/spruce_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/spruce_bookshelf_toggle_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/spruce_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/stone_bricks_pillar_side.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/stone_bricks_pillar_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/stone_bricks_tiles.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/warped_bookshelf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/warped_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/warped_bookshelf_toggle_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/warped_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/white_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/yellow_terracotta_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/acacia_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/acacia_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/birch_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/birch_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/bookshelf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/crimson_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/crimson_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/dark_oak_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/dark_oak_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/iron_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/jungle_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/jungle_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/oak_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/oak_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/spruce_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/spruce_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/warped_bookshelf_toggle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/item/warped_fence_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/basalt_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_slab_from_stone_bricks_stonecutting.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_slab_from_stone_stonecutting.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_stairs_from_stone_bricks_stonecutting.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_stairs_from_stone_stonecutting.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_wall_from_stone_bricks_stonecutting.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_walls_from_stone_stonecutting.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_bricks_from_stone_stonecutting.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_slab_from_stone_stonecutting.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_stairs_from_stone_stonecutting.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/tags/blocks/bookshelves.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/blocks/fence_gates.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/blocks/slabs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/blocks/stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/blocks/walls.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ATBYW" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ATBYW" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ATBYW" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="fabric" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lFlU76AR1psEggROIupbpf7mtq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\blockstates" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\item" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\textures\block" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\textures\item" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="net.azagwen.atbyw.mixin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\fence_door" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\terracotta_bricks" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Minecraft Client">
+    <configuration name="ATBYW [genSources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="genSources" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MC_ItemSet_Builder.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/src/main/resources/MC_ItemSet_Builder.jar" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.MC_ItemSet_Builder.jar" />
+        <item itemvalue="Gradle.ATBYW [genSources]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="" />
+      <created>1607200732180</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607200732180</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607798711801">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607798711801" />
+    <state x="482" y="1165" key="#com.intellij.ide.util.MemberChooser" timestamp="1607794557096">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="482" y="1165" key="#com.intellij.ide.util.MemberChooser/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607794557096" />
+    <state x="311" y="1058" key="CommitChangelistDialog2" timestamp="1607809352109">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="311" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809352109" />
+    <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="457" y="1211" key="FileChooserDialogImpl/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607781482886" />
+    <state x="559" y="1349" width="258" height="211" key="Github.ShareDialog" timestamp="1607809493127">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="559" y="1349" width="258" height="211" key="Github.ShareDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809493127" />
+    <state x="375" y="1161" key="Github.UntrackedFilesDialog" timestamp="1607809201936">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="375" y="1161" key="Github.UntrackedFilesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809201936" />
+    <state width="1309" height="141" key="GridCell.Tab.0.bottom" timestamp="1607807007466">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state width="1309" height="141" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607807007466" />
+    <state width="1309" height="141" key="GridCell.Tab.0.center" timestamp="1607807007466">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state width="1309" height="141" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607807007466" />
+    <state width="1309" height="141" key="GridCell.Tab.0.left" timestamp="1607807007466">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state width="1309" height="141" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607807007466" />
+    <state width="1309" height="141" key="GridCell.Tab.0.right" timestamp="1607807007466">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state width="1309" height="141" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607807007466" />
+    <state x="158" y="1145" width="981" height="707" key="SettingsEditor" timestamp="1607781005482">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="158" y="1145" width="981" height="707" key="SettingsEditor/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607781005482" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607809428174">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809428174" />
+    <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction" timestamp="1607794153806">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607794153806" />
+    <state x="373" y="1280" key="com.intellij.ide.util.TipDialog" timestamp="1607416985829">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="373" y="1280" key="com.intellij.ide.util.TipDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607416985829" />
+    <state x="742" y="1058" width="609" height="794" key="find.popup" timestamp="1607339428034">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="742" y="1058" width="609" height="794" key="find.popup/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607339428034" />
+    <state x="117" y="1076" key="new project wizard" timestamp="1607220274305">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="117" y="1076" key="new project wizard/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607220274305" />
+    <state x="383" y="1075" key="refactoring.ChangeSignatureDialog" timestamp="1607203306615">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="383" y="1075" key="refactoring.ChangeSignatureDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607203306615" />
+  </component>
+</project>

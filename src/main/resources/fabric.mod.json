@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "atbyw",
+  "version": "${version}",
+
+  "name": "All The Blocks You Want",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "Azagwen"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/atbyw/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.azagwen.atbyw.init.AtbywMain"
+    ],
+    "client": [
+      "net.azagwen.atbyw.init.AtbywClient"
+    ]
+  },
+  "mixins": [
+    "atbyw.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "atbyw:block/birch_bookshelf_toggle"
+    },
+    "powered=true": {
+      "model": "atbyw:block/birch_bookshelf_toggle_on"
+    }
+  }
+}

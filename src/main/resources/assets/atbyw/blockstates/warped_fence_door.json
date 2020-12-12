@@ -1,0 +1,67 @@
+{
+  "variants": {
+    "facing=east,open=false,half=lower": {
+      "model": "atbyw:block/fence_door/warped_fence_door_lower",
+      "y": 90
+    },
+    "facing=north,open=false,half=lower": {
+      "model": "atbyw:block/fence_door/warped_fence_door_lower",
+      "y": 180
+    },
+    "facing=south,open=false,half=lower": {
+      "model": "atbyw:block/fence_door/warped_fence_door_lower"
+    },
+    "facing=west,open=false,half=lower": {
+      "model": "atbyw:block/fence_door/warped_fence_door_lower",
+      "y": 270
+    },
+
+    "facing=east,open=false,half=upper": {
+      "model": "atbyw:block/fence_door/warped_fence_door_upper",
+      "y": 90
+    },
+    "facing=north,open=false,half=upper": {
+      "model": "atbyw:block/fence_door/warped_fence_door_upper",
+      "y": 180
+    },
+    "facing=south,open=false,half=upper": {
+      "model": "atbyw:block/fence_door/warped_fence_door_upper"
+    },
+    "facing=west,open=false,half=upper": {
+      "model": "atbyw:block/fence_door/warped_fence_door_upper",
+      "y": 270
+    },
+
+    "facing=east,open=true,half=lower": {
+      "model": "atbyw:block/fence_door/warped_fence_door_lower_open",
+      "y": 270
+    },
+    "facing=north,open=true,half=lower": {
+      "model": "atbyw:block/fence_door/warped_fence_door_lower_open",
+      "y": 180
+    },
+    "facing=south,open=true,half=lower": {
+      "model": "atbyw:block/fence_door/warped_fence_door_lower_open"
+    },
+    "facing=west,open=true,half=lower": {
+      "model": "atbyw:block/fence_door/warped_fence_door_lower_open",
+      "y": 90
+    },
+
+    "facing=east,open=true,half=upper": {
+      "model": "atbyw:block/fence_door/warped_fence_door_upper_open",
+      "y": 270
+    },
+    "facing=north,open=true,half=upper": {
+      "model": "atbyw:block/fence_door/warped_fence_door_upper_open",
+      "y": 180
+    },
+    "facing=south,open=true,half=upper": {
+      "model": "atbyw:block/fence_door/warped_fence_door_upper_open"
+    },
+    "facing=west,open=true,half=upper": {
+      "model": "atbyw:block/fence_door/warped_fence_door_upper_open",
+      "y": 90
+    }
+  }
+}

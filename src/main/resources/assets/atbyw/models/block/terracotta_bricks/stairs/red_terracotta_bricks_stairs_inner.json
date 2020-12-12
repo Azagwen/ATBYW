@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/inner_stairs",
+    "textures": {
+        "bottom": "atbyw:block/red_terracotta_bricks",
+        "top": "atbyw:block/red_terracotta_bricks",
+        "side": "atbyw:block/red_terracotta_bricks"
+    }
+}

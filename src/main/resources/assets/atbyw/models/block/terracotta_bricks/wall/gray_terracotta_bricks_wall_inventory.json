@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/wall_inventory",
+    "textures": {
+        "wall": "atbyw:block/gray_terracotta_bricks"
+    }
+}

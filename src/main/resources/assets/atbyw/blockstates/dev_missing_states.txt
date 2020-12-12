@@ -1,0 +1,9 @@
+missing model for variants:
+
+'vom:dev_block#horizontal_facing=north,vertical_facing=south' //Impossible
+'vom:dev_block#horizontal_facing=south,vertical_facing=north' //Impossible
+'vom:dev_block#horizontal_facing=east,vertical_facing=west' //Impossible
+'vom:dev_block#horizontal_facing=west,vertical_facing=east' //Impossible
+'vom:dev_block#horizontal_facing=up,vertical_facing=down' //Impossible
+'vom:dev_block#horizontal_facing=down,vertical_facing=up' //Impossible
+
