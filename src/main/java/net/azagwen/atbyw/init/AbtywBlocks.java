@@ -22,7 +22,7 @@ public class AbtywBlocks {
     }
 
     private static FabricBlockSettings MakeWoodenFenceDoor(Block copiedMatColor) {
-        return FabricBlockSettings.of(Material.WOOD, copiedMatColor.getDefaultMaterialColor()).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD);
+        return FabricBlockSettings.of(Material.WOOD, copiedMatColor.getDefaultMaterialColor()).breakByTool(FabricToolTags.AXES).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD);
     }
 
     //Full Blocks

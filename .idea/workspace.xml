@@ -2,7 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/acacia_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/acacia_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/acacia_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/birch_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/birch_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/birch_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/crimson_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/crimson_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/crimson_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/dark_oak_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/dark_oak_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/dark_oak_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/iron_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/jungle_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/jungle_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/jungle_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/oak_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/oak_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/spruce_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/spruce_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/spruce_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/warped_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/warped_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/warped_fence_door.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/BookshelfToggleBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/BookshelfToggleBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AbtywBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AbtywBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_lower.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_lower.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_lower_open.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_lower_open.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_upper.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_upper.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_upper_open.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_upper_open.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,14 +87,16 @@
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1lFlU76AR1psEggROIupbpf7mtq" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -73,11 +105,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\loot_tables\blocks" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\blockstates" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\item" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\textures\block" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\textures\item" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="net.azagwen.atbyw.mixin" />
@@ -148,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607809548926</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial Commit">
+      <created>1607810002458</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1607810002458</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -164,10 +203,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="482" y="1165" key="#com.intellij.ide.util.MemberChooser/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607794557096" />
-    <state x="311" y="1058" key="CommitChangelistDialog2" timestamp="1607809546918">
+    <state x="311" y="1058" key="CommitChangelistDialog2" timestamp="1607810001581">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="311" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809546918" />
+    <state x="311" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607810001581" />
     <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -180,30 +219,30 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="375" y="1161" key="Github.UntrackedFilesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809201936" />
-    <state width="1309" height="141" key="GridCell.Tab.0.bottom" timestamp="1607807007466">
+    <state width="1309" height="141" key="GridCell.Tab.0.bottom" timestamp="1607811386209">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="141" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607807007466" />
-    <state width="1309" height="141" key="GridCell.Tab.0.center" timestamp="1607807007466">
+    <state width="1309" height="141" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607811386209" />
+    <state width="1309" height="141" key="GridCell.Tab.0.center" timestamp="1607811386209">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="141" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607807007466" />
-    <state width="1309" height="141" key="GridCell.Tab.0.left" timestamp="1607807007466">
+    <state width="1309" height="141" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607811386209" />
+    <state width="1309" height="141" key="GridCell.Tab.0.left" timestamp="1607811386209">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="141" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607807007466" />
-    <state width="1309" height="141" key="GridCell.Tab.0.right" timestamp="1607807007466">
+    <state width="1309" height="141" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607811386209" />
+    <state width="1309" height="141" key="GridCell.Tab.0.right" timestamp="1607811386209">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="141" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607807007466" />
+    <state width="1309" height="141" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607811386209" />
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor" timestamp="1607781005482">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607781005482" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607809558051">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607810003924">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809558051" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607810003924" />
     <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction" timestamp="1607794153806">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>

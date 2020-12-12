@@ -1,10 +1,10 @@
 package net.azagwen.atbyw.blocks;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.sound.SoundCategory;
@@ -20,7 +20,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
+
+import java.util.Random;
 
 public class BookshelfToggleBlock extends Block {
     public static final BooleanProperty POWERED;
@@ -36,7 +37,7 @@ public class BookshelfToggleBlock extends Block {
         if (world.isClient) {
             blockState = (BlockState)state.cycle(POWERED);
             if ((Boolean)blockState.get(POWERED)) {
-                spawnParticles(blockState, world, pos, 1.0F);
+                spawnParticles(world, pos);
             }
 
             return ActionResult.SUCCESS;
@@ -48,11 +49,33 @@ public class BookshelfToggleBlock extends Block {
         }
     }
 
-    private static void spawnParticles(BlockState state, WorldAccess world, BlockPos pos, float alpha) {
-        double d = (double)pos.getX() + 0.5D + 0.1D + 0.2D;
-        double e = (double)pos.getY() + 0.5D + 0.1D + 0.2D;
-        double f = (double)pos.getZ() + 0.5D + 0.1D + 0.2D;
-        world.addParticle(new DustParticleEffect(1.0F, 0.0F, 0.0F, alpha), d, e, f, 0.0D, 0.0D, 0.0D);
+    @Override
+    @Environment(EnvType.CLIENT)
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        if ((Boolean)state.get(POWERED)) {
+            spawnParticles(world, pos);
+        }
+
+    }
+
+    private static void spawnParticles(World world, BlockPos pos) {
+        double d = 0.5625D;
+        Random random = world.random;
+        Direction[] directions = Direction.values();
+        int var6 = directions.length;
+
+        for(int i = 0; i < var6; ++i) {
+            Direction direction = directions[i];
+            BlockPos blockPos = pos.offset(direction);
+            if (!world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) {
+                Direction.Axis axis = direction.getAxis();
+                double e = axis == Direction.Axis.X ? 0.5D + 0.5625D * (double)direction.getOffsetX() : (double)random.nextFloat();
+                double f = axis == Direction.Axis.Y ? 0.5D + 0.5625D * (double)direction.getOffsetY() : (double)random.nextFloat();
+                double g = axis == Direction.Axis.Z ? 0.5D + 0.5625D * (double)direction.getOffsetZ() : (double)random.nextFloat();
+                world.addParticle(DustParticleEffect.RED, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0D, 0.0D, 0.0D);
+            }
+        }
+
     }
 
     public BlockState cyclePowered(BlockState blockState, World world, BlockPos blockPos) {
