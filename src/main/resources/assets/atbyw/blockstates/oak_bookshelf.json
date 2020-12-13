@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "atbyw:block/oak_bookshelf"
+      "model": "atbyw:block/bookshelf/oak_bookshelf"
     }
   }
 }

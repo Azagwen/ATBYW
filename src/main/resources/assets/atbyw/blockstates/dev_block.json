@@ -432,6 +432,27 @@
       "model": "atbyw:block/developper_block_flat",
       "x": 90,
       "y": -90
-    }
+    },
+
+    "appearance=3,horizontal_facing=west,vertical_facing=east": {"model": "atbyw:block/debug/oops"},
+    "appearance=3,horizontal_facing=up,vertical_facing=down": {"model": "atbyw:block/debug/oops"},
+    "appearance=3,horizontal_facing=south,vertical_facing=north": {"model": "atbyw:block/debug/oops"},
+    "appearance=3,horizontal_facing=north,vertical_facing=south": {"model": "atbyw:block/debug/oops"},
+    "appearance=3,horizontal_facing=down,vertical_facing=up": {"model": "atbyw:block/debug/oops"},
+    "appearance=3,horizontal_facing=east,vertical_facing=west": {"model": "atbyw:block/debug/oops"},
+
+    "appearance=2,horizontal_facing=west,vertical_facing=east": {"model": "atbyw:block/debug/oops"},
+    "appearance=2,horizontal_facing=north,vertical_facing=south": {"model": "atbyw:block/debug/oops"},
+    "appearance=2,horizontal_facing=south,vertical_facing=north": {"model": "atbyw:block/debug/oops"},
+    "appearance=2,horizontal_facing=down,vertical_facing=up": {"model": "atbyw:block/debug/oops"},
+    "appearance=2,horizontal_facing=up,vertical_facing=down": {"model": "atbyw:block/debug/oops"},
+    "appearance=2,horizontal_facing=east,vertical_facing=west": {"model": "atbyw:block/debug/oops"},
+
+    "appearance=1,horizontal_facing=up,vertical_facing=down": {"model": "atbyw:block/debug/oops"},
+    "appearance=1,horizontal_facing=down,vertical_facing=up": {"model": "atbyw:block/debug/oops"},
+    "appearance=1,horizontal_facing=south,vertical_facing=north": {"model": "atbyw:block/debug/oops"},
+    "appearance=1,horizontal_facing=east,vertical_facing=west": {"model": "atbyw:block/debug/oops"},
+    "appearance=1,horizontal_facing=west,vertical_facing=east": {"model": "atbyw:block/debug/oops"},
+    "appearance=1,horizontal_facing=north,vertical_facing=south": {"model": "atbyw:block/debug/oops"}
   }
 }

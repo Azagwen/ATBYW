@@ -1,9 +1,6 @@
 package net.azagwen.atbyw.init;
 
-import net.azagwen.atbyw.blocks.BookshelfToggleBlock;
-import net.azagwen.atbyw.blocks.DevBlock;
-import net.azagwen.atbyw.blocks.StairsBlockSubClass;
-import net.azagwen.atbyw.blocks.FenceDoorBlock;
+import net.azagwen.atbyw.blocks.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
@@ -53,6 +50,14 @@ public class AbtywBlocks {
     public static final Block CRIMSON_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block WARPED_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
 
+    public static final Block SPRUCE_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block BIRCH_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block JUNGLE_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block ACACIA_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block DARK_OAK_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block CRIMSON_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block WARPED_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+
     public static final Block BASALT_BRICKS = new Block(MakeBasalt());
     public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
     public static final Block TERRACOTTA_BRICKS = new Block(MakeTerracotta());
@@ -97,6 +102,14 @@ public class AbtywBlocks {
         registerBlock(false, ATBYW_BLOCKS, "dark_oak_bookshelf_toggle", DARK_OAK_BOOKSHELF_TOGGLE);
         registerBlock(false, ATBYW_BLOCKS, "crimson_bookshelf_toggle", CRIMSON_BOOKSHELF_TOGGLE);
         registerBlock(false, ATBYW_BLOCKS, "warped_bookshelf_toggle", WARPED_BOOKSHELF_TOGGLE);
+
+        registerBlock(false, ATBYW_BLOCKS, "spruce_ladder", SPRUCE_LADDER);
+        registerBlock(false, ATBYW_BLOCKS, "birch_ladder", BIRCH_LADDER);
+        registerBlock(false, ATBYW_BLOCKS, "jungle_ladder", JUNGLE_LADDER);
+        registerBlock(false, ATBYW_BLOCKS, "acacia_ladder", ACACIA_LADDER);
+        registerBlock(false, ATBYW_BLOCKS, "dark_oak_ladder", DARK_OAK_LADDER);
+        registerBlock(false, ATBYW_BLOCKS, "crimson_ladder", CRIMSON_LADDER);
+        registerBlock(false, ATBYW_BLOCKS, "warped_ladder", WARPED_LADDER);
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks", TERRACOTTA_BRICKS);
         registerMultiBlock(false, ATBYW_BLOCKS, "terracotta_bricks", colorNames, TERRACOTTA_BRICKS_COLORS);

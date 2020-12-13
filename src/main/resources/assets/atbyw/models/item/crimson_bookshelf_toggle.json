@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "atbyw:item/crimson_bookshelf_toggle"
-  }
+  "parent": "atbyw:block/bookshelf/crimson_bookshelf_toggle"
 }

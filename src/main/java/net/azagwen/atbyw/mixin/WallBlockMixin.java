@@ -17,7 +17,7 @@ public class WallBlockMixin {
      *
      * I don't know how I could do this better.
      * Sorry if it interfers with anything...
-     * feel free to judge me ¯\_(ツ)_/¯
+     * feel free to do better, I'm tired ¯\_(ツ)_/¯
      *
      */
     @Overwrite

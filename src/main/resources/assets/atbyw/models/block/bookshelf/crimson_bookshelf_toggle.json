@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle",
+  "textures": {
+    "particle": "atbyw:block/crimson_bookshelf",
+    "top": "minecraft:block/crimson_planks",
+    "sides": "atbyw:block/crimson_bookshelf_toggle"
+  }
+}

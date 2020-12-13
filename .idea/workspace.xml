@@ -2,9 +2,131 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/LadderBlockSubClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/FenceBlockMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/template_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/template_bookshelf_toggle_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/debug/oops.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/comparator.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/comparator_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/furnace_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/observer_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/observer_back_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/observer_front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/observer_side.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/observer_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.TODO.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/black_terracotta.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/acacia_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/acacia_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/birch_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/birch_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/crimson_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/crimson_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/dark_oak_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/dark_oak_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/jungle_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/jungle_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/oak_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/spruce_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/spruce_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/warped_bookshelf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/warped_bookshelf_toggle.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/bookshelf.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/BookshelfToggleBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/BookshelfToggleBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AbtywBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AbtywBlocks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/WallBlockMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/WallBlockMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/acacia_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/acacia_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/acacia_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/acacia_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/birch_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/birch_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/birch_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/birch_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/crimson_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/crimson_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/crimson_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/crimson_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dark_oak_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dark_oak_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dark_oak_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dark_oak_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dev_block.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dev_block.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dev_missing_states.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/dev_missing_states.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/jungle_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/jungle_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/jungle_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/jungle_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/oak_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/oak_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/oak_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/oak_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/spruce_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/spruce_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/spruce_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/spruce_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/warped_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/warped_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/warped_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/warped_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/acacia_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/acacia_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/acacia_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/acacia_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/acacia_bookshelf_toggle_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/acacia_bookshelf_toggle_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/birch_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/birch_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/birch_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/birch_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/birch_bookshelf_toggle_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/birch_bookshelf_toggle_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/crimson_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/crimson_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/crimson_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/crimson_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/crimson_bookshelf_toggle_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/crimson_bookshelf_toggle_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/dark_oak_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/dark_oak_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/dark_oak_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/dark_oak_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/dark_oak_bookshelf_toggle_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/dark_oak_bookshelf_toggle_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/jungle_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/jungle_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/jungle_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/jungle_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/jungle_bookshelf_toggle_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/jungle_bookshelf_toggle_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/oak_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/oak_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/oak_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/oak_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/oak_bookshelf_toggle_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/oak_bookshelf_toggle_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/spruce_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/spruce_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/spruce_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/spruce_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/spruce_bookshelf_toggle_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/spruce_bookshelf_toggle_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/warped_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/warped_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/warped_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/warped_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/warped_bookshelf_toggle_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/bookshelf/warped_bookshelf_toggle_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/acacia_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/acacia_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/acacia_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/acacia_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/birch_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/birch_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/birch_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/birch_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/crimson_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/crimson_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/crimson_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/crimson_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/dark_oak_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/dark_oak_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/dark_oak_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/dark_oak_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/jungle_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/jungle_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/jungle_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/jungle_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/oak_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/oak_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/oak_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/oak_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/spruce_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/spruce_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/spruce_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/spruce_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/warped_bookshelf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/warped_bookshelf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/warped_bookshelf_toggle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/warped_bookshelf_toggle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/acacia_bookshelf_toggle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/acacia_bookshelf_toggle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/acacia_bookshelf_toggle_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/birch_bookshelf_toggle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/birch_bookshelf_toggle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/birch_bookshelf_toggle_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/crimson_bookshelf_toggle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/crimson_bookshelf_toggle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/crimson_bookshelf_toggle_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/dark_oak_bookshelf_toggle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/dark_oak_bookshelf_toggle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/dark_oak_bookshelf_toggle_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/jungle_bookshelf_toggle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/jungle_bookshelf_toggle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/jungle_bookshelf_toggle_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/oak_bookshelf_toggle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/oak_bookshelf_toggle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/oak_bookshelf_toggle_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/spruce_bookshelf_toggle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/spruce_bookshelf_toggle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/spruce_bookshelf_toggle_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/warped_bookshelf_toggle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/warped_bookshelf_toggle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/warped_bookshelf_toggle_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_slab.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_slab.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_slab_from_stone_bricks_stonecutting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_slab_from_stone_bricks_stonecutting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_slab_from_stone_stonecutting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_slab_from_stone_stonecutting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_stairs.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_stairs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_stairs_from_stone_bricks_stonecutting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_stairs_from_stone_bricks_stonecutting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_stairs_from_stone_stonecutting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_stairs_from_stone_stonecutting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_wall.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_wall.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_wall_from_stone_bricks_stonecutting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_wall_from_stone_bricks_stonecutting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_brick_walls_from_stone_stonecutting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_walls_from_stone_stonecutting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_bricks_from_stone_stonecutting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_bricks_from_stone_stonecutting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_slab.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/stone_slab.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_slab_from_stone_stonecutting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/stone_slab_from_stone_stonecutting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_stairs.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/stone_stairs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/stone_stairs_from_stone_stonecutting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/stone_stairs_from_stone_stonecutting.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +190,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.30572474" />
@@ -77,18 +199,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\loot_tables\blocks" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\blockstates" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\item" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\textures\block" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\textures\block\ref" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\recipes\.todo_examples" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\recipes" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="net.azagwen.atbyw.mixin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\fence_door" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\terracotta_bricks" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\debug" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\bookshelf" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\recipes\.todo_examples" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\recipes\.todo_examples\bricks" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Minecraft Client">
@@ -173,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607858493830</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="modifications to FenceDoorBlock + added WallBlockMixin">
+      <created>1607864829205</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1607864829205</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -183,18 +315,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="modifications to FenceDoorBlock + added WallBlockMixin" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607798711801">
+    <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607880776807">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607798711801" />
+    <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607880776807" />
     <state x="482" y="1165" key="#com.intellij.ide.util.MemberChooser" timestamp="1607794557096">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="482" y="1165" key="#com.intellij.ide.util.MemberChooser/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607794557096" />
-    <state x="311" y="1058" key="CommitChangelistDialog2" timestamp="1607858493288">
+    <state x="311" y="1058" key="CommitChangelistDialog2" timestamp="1607864828585">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="311" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858493288" />
+    <state x="311" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607864828585" />
     <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -207,30 +339,30 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="375" y="1161" key="Github.UntrackedFilesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809201936" />
-    <state width="1309" height="403" key="GridCell.Tab.0.bottom" timestamp="1607864761466">
+    <state width="1309" height="403" key="GridCell.Tab.0.bottom" timestamp="1607894099663">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="403" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607864761466" />
-    <state width="1309" height="403" key="GridCell.Tab.0.center" timestamp="1607864761466">
+    <state width="1309" height="403" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607894099663" />
+    <state width="1309" height="403" key="GridCell.Tab.0.center" timestamp="1607894099663">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="403" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607864761466" />
-    <state width="1309" height="403" key="GridCell.Tab.0.left" timestamp="1607864761466">
+    <state width="1309" height="403" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607894099663" />
+    <state width="1309" height="403" key="GridCell.Tab.0.left" timestamp="1607894099663">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="403" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607864761466" />
-    <state width="1309" height="403" key="GridCell.Tab.0.right" timestamp="1607864761466">
+    <state width="1309" height="403" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607894099663" />
+    <state width="1309" height="403" key="GridCell.Tab.0.right" timestamp="1607894099663">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="403" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607864761466" />
+    <state width="1309" height="403" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607894099663" />
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor" timestamp="1607852454543">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607852454543" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607858501219">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607864830413">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858501219" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607864830413" />
     <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction" timestamp="1607856394137">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>

@@ -5,12 +5,15 @@ import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
@@ -25,10 +28,15 @@ import java.util.Random;
 
 public class BookshelfToggleBlock extends Block {
     public static final BooleanProperty POWERED;
+    public static final DirectionProperty FACING;
 
     public BookshelfToggleBlock() {
         super(Settings.copy(Blocks.BOOKSHELF));
-        this.setDefaultState(this.stateManager.getDefaultState().with(POWERED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(POWERED, false).with(FACING, Direction.NORTH));
+    }
+
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
     }
 
     @Override
@@ -85,8 +93,13 @@ public class BookshelfToggleBlock extends Block {
     }
 
     @Override
+    public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        return state.getWeakRedstonePower(world, pos, direction);
+    }
+
+    @Override
     public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        return state.get(POWERED) ? 15 : 0;
+        return state.get(POWERED) && state.get(FACING) == direction ? 15 : 0;
     }
 
     @Override
@@ -94,15 +107,29 @@ public class BookshelfToggleBlock extends Block {
         return state.get(POWERED);
     }
 
-    private void updateNeighbors(BlockState state, World world, BlockPos pos) {
+    protected void updateNeighbors(BlockState state, World world, BlockPos pos) {
+        Direction direction = state.get(FACING);
+
+        BlockPos blockPos1 = pos.offset(direction.getOpposite());
+        BlockPos blockPos2 = pos.offset(direction.rotateYClockwise().getOpposite());
+        BlockPos blockPos3 = pos.offset(direction.rotateYCounterclockwise().getOpposite());
+
         world.updateNeighborsAlways(pos, this);
+
+//        world.updateNeighbor(blockPos1, this, pos);
+//        world.updateNeighbor(blockPos2, this, pos);
+//        world.updateNeighbor(blockPos3, this, pos);
+//        world.updateNeighborsExcept(blockPos1, this, direction);
+//        world.updateNeighborsExcept(blockPos2, this, direction);
+//        world.updateNeighborsExcept(blockPos3, this, direction);
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(POWERED);
+        builder.add(POWERED, FACING);
     }
 
     static {
         POWERED = Properties.POWERED;
+        FACING = HorizontalFacingBlock.FACING;
     }
 }

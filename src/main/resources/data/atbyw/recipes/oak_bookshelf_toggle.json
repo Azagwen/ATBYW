@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bookshelf_toggle",
+  "pattern": [
+    "L",
+    "B",
+    "R"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:bookshelf"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "L": {
+      "item": "minecraft:lever"
+    }
+  },
+  "result": {
+    "item": "atbyw:oak_bookshelf_toggle"
+  }
+}

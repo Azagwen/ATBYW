@@ -6,6 +6,7 @@
   "mixins": [
     "EnchantingTableBlockMixin",
     "EnchantmentScreenHandlerMixin",
+    "FenceBlockMixin",
     "WallBlockMixin"
   ],
   "client": [

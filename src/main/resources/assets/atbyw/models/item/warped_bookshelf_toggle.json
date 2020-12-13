@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "atbyw:item/warped_bookshelf_toggle"
-  }
+  "parent": "atbyw:block/bookshelf/warped_bookshelf_toggle"
 }

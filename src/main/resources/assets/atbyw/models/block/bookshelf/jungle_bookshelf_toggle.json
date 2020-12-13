@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle",
+  "textures": {
+    "particle": "atbyw:block/jungle_bookshelf",
+    "top": "minecraft:block/jungle_planks",
+    "sides": "atbyw:block/jungle_bookshelf_toggle"
+  }
+}

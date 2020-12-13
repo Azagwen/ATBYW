@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle",
+  "textures": {
+    "particle": "atbyw:block/dark_oak_bookshelf",
+    "top": "minecraft:block/dark_oak_planks",
+    "sides": "atbyw:block/dark_oak_bookshelf_toggle"
+  }
+}

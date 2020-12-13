@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "atbyw:item/spruce_bookshelf_toggle"
-  }
+  "parent": "atbyw:block/bookshelf/spruce_bookshelf_toggle"
 }
