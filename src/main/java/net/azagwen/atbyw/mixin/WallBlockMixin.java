@@ -11,9 +11,6 @@ import static net.minecraft.block.Block.cannotConnect;
 
 @Mixin(WallBlock.class)
 public class WallBlockMixin {
-    private BlockState state = WallBlock.getBlockFromItem(null).getDefaultState();
-    private Block block = state.getBlock();
-    private Direction side;
 
     /**
      * @author
@@ -21,6 +18,7 @@ public class WallBlockMixin {
      * I don't know how I could do this better.
      * Sorry if it interfers with anything...
      * feel free to judge me ¯\_(ツ)_/¯
+     *
      */
     @Overwrite
     private boolean shouldConnectTo(BlockState state, boolean faceFullSquare, Direction side) {
@@ -28,10 +26,10 @@ public class WallBlockMixin {
         boolean isGlassPane = block instanceof PaneBlock;
         boolean isFenceGate = block instanceof FenceGateBlock && FenceGateBlock.canWallConnect(state, side);
         boolean isFenceDoor = block instanceof FenceDoorBlock && FenceDoorBlock.canWallConnect(state, side);
-        boolean isHorizontalConnectable = isGlassPane || isFenceGate || isFenceDoor;
+        boolean isBlockAbleToConnect = isGlassPane || isFenceGate || isFenceDoor;
 
-        System.out.println("From [" + this.getClass() + "] Walls should connect to the following blocks: [" + PaneBlock.class + ", " + FenceGateBlock.class + ", " + FenceDoorBlock.class + "]");
+//        System.out.println("From [" + this.getClass() + "] can connect to [" + PaneBlock.class + ", " + FenceGateBlock.class + ", " + FenceDoorBlock.class + "]");
 
-        return state.isIn(BlockTags.WALLS) || !cannotConnect(block) && faceFullSquare || isHorizontalConnectable;
+        return state.isIn(BlockTags.WALLS) || !cannotConnect(block) && faceFullSquare || isBlockAbleToConnect;
     }
 }

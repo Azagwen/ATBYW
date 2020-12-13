@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/WallBlockMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/BookshelfToggleBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/BookshelfToggleBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/DevBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/DevBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/FenceDoorBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/FenceDoorBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/WallBlockMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/WallBlockMixin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,13 +166,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607812821513</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modifications to FenceDoorBlock + added WallBlockMixin">
+      <created>1607858493830</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607858493830</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="started implementing loot tables for redstone wooden blocks" />
-    <option name="LAST_COMMIT_MESSAGE" value="started implementing loot tables for redstone wooden blocks" />
+    <MESSAGE value="modifications to FenceDoorBlock + added WallBlockMixin" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifications to FenceDoorBlock + added WallBlockMixin" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607798711801">
@@ -186,10 +191,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="482" y="1165" key="#com.intellij.ide.util.MemberChooser/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607794557096" />
-    <state x="311" y="1058" key="CommitChangelistDialog2" timestamp="1607812820529">
+    <state x="311" y="1058" key="CommitChangelistDialog2" timestamp="1607858493288">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="311" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607812820529" />
+    <state x="311" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858493288" />
     <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -202,30 +207,30 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="375" y="1161" key="Github.UntrackedFilesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809201936" />
-    <state width="1309" height="403" key="GridCell.Tab.0.bottom" timestamp="1607858037485">
+    <state width="1309" height="403" key="GridCell.Tab.0.bottom" timestamp="1607864761466">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="403" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858037485" />
-    <state width="1309" height="403" key="GridCell.Tab.0.center" timestamp="1607858037485">
+    <state width="1309" height="403" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607864761466" />
+    <state width="1309" height="403" key="GridCell.Tab.0.center" timestamp="1607864761466">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="403" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858037485" />
-    <state width="1309" height="403" key="GridCell.Tab.0.left" timestamp="1607858037485">
+    <state width="1309" height="403" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607864761466" />
+    <state width="1309" height="403" key="GridCell.Tab.0.left" timestamp="1607864761466">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="403" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858037485" />
-    <state width="1309" height="403" key="GridCell.Tab.0.right" timestamp="1607858037485">
+    <state width="1309" height="403" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607864761466" />
+    <state width="1309" height="403" key="GridCell.Tab.0.right" timestamp="1607864761466">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="403" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858037485" />
+    <state width="1309" height="403" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607864761466" />
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor" timestamp="1607852454543">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607852454543" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607812822683">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607858501219">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607812822683" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858501219" />
     <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction" timestamp="1607856394137">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>

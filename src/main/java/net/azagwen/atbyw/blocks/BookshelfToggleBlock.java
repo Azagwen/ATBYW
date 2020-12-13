@@ -91,7 +91,7 @@ public class BookshelfToggleBlock extends Block {
 
     @Override
     public boolean emitsRedstonePower(BlockState state) {
-        return true;
+        return state.get(POWERED);
     }
 
     private void updateNeighbors(BlockState state, World world, BlockPos pos) {
