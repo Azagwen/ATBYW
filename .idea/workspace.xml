@@ -2,37 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/acacia_bookshelf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/acacia_bookshelf_toggle.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/acacia_fence_door.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/birch_bookshelf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/birch_bookshelf_toggle.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/birch_fence_door.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/crimson_bookshelf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/crimson_bookshelf_toggle.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/crimson_fence_door.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/dark_oak_bookshelf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/dark_oak_bookshelf_toggle.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/dark_oak_fence_door.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/iron_fence_door.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/jungle_bookshelf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/jungle_bookshelf_toggle.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/jungle_fence_door.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/oak_bookshelf_toggle.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/oak_fence_door.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/spruce_bookshelf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/spruce_bookshelf_toggle.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/spruce_fence_door.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/warped_bookshelf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/warped_bookshelf_toggle.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/warped_fence_door.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/WallBlockMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/BookshelfToggleBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/BookshelfToggleBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AbtywBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AbtywBlocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_lower.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_lower.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_lower_open.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_lower_open.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_upper.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_upper.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_upper_open.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/fence_door/iron_fence_door_upper_open.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/DevBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/DevBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/FenceDoorBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/FenceDoorBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,10 +72,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="project.structure.side.proportion" value="0.30572474" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
@@ -187,12 +162,20 @@
       <option name="project" value="LOCAL" />
       <updated>1607810002458</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="started implementing loot tables for redstone wooden blocks">
+      <created>1607812821513</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1607812821513</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="started implementing loot tables for redstone wooden blocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="started implementing loot tables for redstone wooden blocks" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607798711801">
@@ -203,10 +186,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="482" y="1165" key="#com.intellij.ide.util.MemberChooser/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607794557096" />
-    <state x="311" y="1058" key="CommitChangelistDialog2" timestamp="1607810001581">
+    <state x="311" y="1058" key="CommitChangelistDialog2" timestamp="1607812820529">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="311" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607810001581" />
+    <state x="311" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607812820529" />
     <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -219,34 +202,34 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="375" y="1161" key="Github.UntrackedFilesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809201936" />
-    <state width="1309" height="141" key="GridCell.Tab.0.bottom" timestamp="1607811386209">
+    <state width="1309" height="403" key="GridCell.Tab.0.bottom" timestamp="1607858037485">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="141" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607811386209" />
-    <state width="1309" height="141" key="GridCell.Tab.0.center" timestamp="1607811386209">
+    <state width="1309" height="403" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858037485" />
+    <state width="1309" height="403" key="GridCell.Tab.0.center" timestamp="1607858037485">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="141" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607811386209" />
-    <state width="1309" height="141" key="GridCell.Tab.0.left" timestamp="1607811386209">
+    <state width="1309" height="403" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858037485" />
+    <state width="1309" height="403" key="GridCell.Tab.0.left" timestamp="1607858037485">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="141" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607811386209" />
-    <state width="1309" height="141" key="GridCell.Tab.0.right" timestamp="1607811386209">
+    <state width="1309" height="403" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858037485" />
+    <state width="1309" height="403" key="GridCell.Tab.0.right" timestamp="1607858037485">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="141" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607811386209" />
-    <state x="158" y="1145" width="981" height="707" key="SettingsEditor" timestamp="1607781005482">
+    <state width="1309" height="403" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607858037485" />
+    <state x="158" y="1145" width="981" height="707" key="SettingsEditor" timestamp="1607852454543">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="158" y="1145" width="981" height="707" key="SettingsEditor/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607781005482" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607810003924">
+    <state x="158" y="1145" width="981" height="707" key="SettingsEditor/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607852454543" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607812822683">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607810003924" />
-    <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction" timestamp="1607794153806">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607812822683" />
+    <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction" timestamp="1607856394137">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607794153806" />
+    <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607856394137" />
     <state x="373" y="1280" key="com.intellij.ide.util.TipDialog" timestamp="1607416985829">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>

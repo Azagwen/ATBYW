@@ -4,8 +4,9 @@
   "package": "net.azagwen.atbyw.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "EnchantingTableBlockMixin",
     "EnchantmentScreenHandlerMixin",
-    "EnchantingTableBlockMixin"
+    "WallBlockMixin"
   ],
   "client": [
     "ExampleMixin"

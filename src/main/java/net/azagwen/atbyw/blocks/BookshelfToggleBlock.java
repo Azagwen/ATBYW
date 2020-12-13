@@ -35,24 +35,30 @@ public class BookshelfToggleBlock extends Block {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockState blockState;
         if (world.isClient) {
-            blockState = (BlockState)state.cycle(POWERED);
-            if ((Boolean)blockState.get(POWERED)) {
+            blockState = state.cycle(POWERED);
+            if (blockState.get(POWERED)) {
                 spawnParticles(world, pos);
             }
 
             return ActionResult.SUCCESS;
         } else {
             blockState = this.cyclePowered(state, world, pos);
-            float f = (Boolean)blockState.get(POWERED) ? 0.6F : 0.5F;
+            float f = blockState.get(POWERED) ? 0.6F : 0.5F;
             world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, f);
             return ActionResult.CONSUME;
         }
     }
 
-    @Override
+    public BlockState cyclePowered(BlockState state, World world, BlockPos blockPos) {
+        BlockState cycle = state.cycle(POWERED);
+        world.setBlockState(blockPos, cycle, 3);
+        this.updateNeighbors(cycle, world, blockPos);
+        return cycle;
+    }
+
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if ((Boolean)state.get(POWERED)) {
+        if (state.get(POWERED)) {
             spawnParticles(world, pos);
         }
 
@@ -78,16 +84,9 @@ public class BookshelfToggleBlock extends Block {
 
     }
 
-    public BlockState cyclePowered(BlockState blockState, World world, BlockPos blockPos) {
-        blockState = (BlockState)blockState.cycle(POWERED);
-        world.setBlockState(blockPos, blockState, 3);
-        this.updateNeighbors(blockState, world, blockPos);
-        return blockState;
-    }
-
     @Override
     public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        return (Boolean)state.get(POWERED) ? 15 : 0;
+        return state.get(POWERED) ? 15 : 0;
     }
 
     @Override
@@ -100,7 +99,7 @@ public class BookshelfToggleBlock extends Block {
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{POWERED});
+        builder.add(POWERED);
     }
 
     static {

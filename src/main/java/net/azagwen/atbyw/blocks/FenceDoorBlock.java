@@ -4,6 +4,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -22,7 +23,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
-public class FenceDoorBlock extends FenceGateBlock {
+public class FenceDoorBlock extends HorizontalFacingBlock {
     public static final BooleanProperty OPEN;
     public static final BooleanProperty POWERED;
     public static final EnumProperty<DoubleBlockHalf> HALF;
@@ -32,7 +33,21 @@ public class FenceDoorBlock extends FenceGateBlock {
 
     public FenceDoorBlock(AbstractBlock.Settings settings) {
         super(settings.nonOpaque());
-        this.setDefaultState(this.stateManager.getDefaultState().with(OPEN, false).with(POWERED, false).with(IN_WALL, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(OPEN, false).with(POWERED, false));
+    }
+
+    @Override
+    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
+        switch(type) {
+            case LAND:
+                return state.get(OPEN);
+            case WATER:
+                return false;
+            case AIR:
+                return state.get(OPEN);
+            default:
+                return false;
+        }
     }
 
     @Override
@@ -91,7 +106,7 @@ public class FenceDoorBlock extends FenceGateBlock {
         if (this.material == Material.METAL) {
             return ActionResult.PASS;
         } else {
-            if ((Boolean) state.get(OPEN)) {
+            if (state.get(OPEN)) {
                 state = (BlockState) state.with(OPEN, false);
                 world.setBlockState(pos, state, 10);
             } else {
@@ -117,19 +132,40 @@ public class FenceDoorBlock extends FenceGateBlock {
         return this.material == Material.METAL ? 1005 : 1006;
     }
 
+    private void playOpenCloseSound(World world, BlockPos pos, boolean open) {
+        world.syncWorldEvent((PlayerEntity)null, open ? this.getCloseSoundEventId() : this.getOpenSoundEventId(), pos, 0);
+    }
+
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
-        DoubleBlockHalf doubleBlockHalf = (DoubleBlockHalf)state.get(HALF);
+        DoubleBlockHalf doubleBlockHalf = state.get(HALF);
         if (direction.getAxis() == Direction.Axis.Y && doubleBlockHalf == DoubleBlockHalf.LOWER == (direction == Direction.UP)) {
-            return newState.isOf(this) && newState.get(HALF) != doubleBlockHalf ? (BlockState)((BlockState)((BlockState)state.with(FACING, newState.get(FACING))).with(OPEN, newState.get(OPEN))).with(POWERED, newState.get(POWERED)) : Blocks.AIR.getDefaultState();
+            return newState.isOf(this) && newState.get(HALF) != doubleBlockHalf ? (state.with(FACING, newState.get(FACING)).with(OPEN, newState.get(OPEN))).with(POWERED, newState.get(POWERED)) : Blocks.AIR.getDefaultState();
         } else {
             return doubleBlockHalf == DoubleBlockHalf.LOWER && direction == Direction.DOWN && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom);
         }
     }
 
     @Override
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
+        boolean bl = world.isReceivingRedstonePower(pos) || world.isReceivingRedstonePower(pos.offset(state.get(HALF) == DoubleBlockHalf.LOWER ? Direction.UP : Direction.DOWN));
+        if (block != this && bl != state.get(POWERED)) {
+            if (bl != state.get(OPEN)) {
+                this.playOpenCloseSound(world, pos, bl);
+            }
+
+            world.setBlockState(pos, (state.with(POWERED, bl).with(OPEN, bl)), 2);
+        }
+
+    }
+
+    public static boolean canWallConnect(BlockState state, Direction side) {
+        return (state.get(FACING)).getAxis() == side.rotateYClockwise().getAxis();
+    }
+
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(HALF);
+        builder.add(HALF, OPEN, POWERED, FACING);
         super.appendProperties(builder);
     }
 

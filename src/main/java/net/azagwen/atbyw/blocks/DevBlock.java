@@ -24,7 +24,6 @@ import net.minecraft.world.World;
 import static net.azagwen.atbyw.blocks.AtbywProperties.*;
 
 public class DevBlock extends FacingBlock {
-    //SHAPE_[horizontal]_[vertical]
     protected static final VoxelShape SHAPE_WEST_UP;
     protected static final VoxelShape SHAPE_X;
     protected static final VoxelShape SHAPE_Y;
@@ -36,8 +35,6 @@ public class DevBlock extends FacingBlock {
     protected static final VoxelShape SHAPE_Z_FLAT_N;
     protected static final VoxelShape SHAPE_Z_FLAT_S;
     protected static VoxelShape selectedShape;
-    private int min;
-    private int max;
 
 
     public DevBlock(Settings settings) {
