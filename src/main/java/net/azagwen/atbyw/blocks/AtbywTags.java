@@ -7,13 +7,15 @@ import net.minecraft.tag.Tag;
 
 import static net.azagwen.atbyw.init.AtbywMain.*;
 
-public class AtbywBlockTags {
+public class AtbywTags {
+    // Block Tags
     public static final Tag<Block> BOOKSHELVES = registerBlockTag("bookshelves");
 
-    //Block item tags
+    // Item Tags
     public static final Tag<Item> BOOKSHELVES_I = registerItemTag("bookshelves");
+    public static final Tag<Item> STICKS = registerItemTag("sticks");
 
-    private AtbywBlockTags() {
+    private AtbywTags() {
     }
 
     private static Tag<Block> registerBlockTag(String id) {

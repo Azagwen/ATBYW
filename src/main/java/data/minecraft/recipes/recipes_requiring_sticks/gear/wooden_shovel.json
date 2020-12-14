@@ -1,17 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "sticks",
   "pattern": [
+    "X",
     "#",
     "#"
   ],
   "key": {
     "#": {
-      "item": "minecraft:bamboo"
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "tag": "minecraft:planks"
     }
   },
   "result": {
-    "item": "atbyw:bamboo_stick",
-    "count": 4
+    "item": "minecraft:wooden_shovel"
   }
 }

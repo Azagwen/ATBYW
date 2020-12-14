@@ -3,6 +3,7 @@ package net.azagwen.atbyw.items;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 
+import static net.azagwen.atbyw.blocks.AtbywTags.STICKS;
 import static net.azagwen.atbyw.init.AtbywMain.*;
 
 public class AtbywItems {
@@ -17,7 +18,7 @@ public class AtbywItems {
     public static final Item BAMBOO_STICK = new Item(new Item.Settings().group(ATBYW_ITEMS));
 
     public static void init() {
-        Registry.register(Registry.ITEM, newID("spruce_stick"), SPRUCE_STICK);
+        Registry.register(Registry.ITEM, newID("spruce_stick"), SPRUCE_STICK).isIn(STICKS);
         Registry.register(Registry.ITEM, newID("birch_stick"), BIRCH_STICK);
         Registry.register(Registry.ITEM, newID("jungle_stick"), JUNGLE_STICK);
         Registry.register(Registry.ITEM, newID("acacia_stick"), ACACIA_STICK);

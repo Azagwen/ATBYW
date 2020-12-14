@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "ladder",
+  "pattern": [
+    "# #",
+    "###",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "atbyw:acacia_stick"
+    }
+  },
+  "result": {
+    "item": "atbyw:acacia_ladder",
+    "count": 3
+  }
+}
