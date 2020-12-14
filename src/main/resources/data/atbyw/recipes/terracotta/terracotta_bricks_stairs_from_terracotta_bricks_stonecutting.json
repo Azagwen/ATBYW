@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:terracotta_bricks"
+    },
+    "result": "atbyw:terracotta_bricks_stairs",
+    "count": 1
+}

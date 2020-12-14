@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "terracotta_bricks_slab",
+    "pattern": [
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "atbyw:red_terracotta_bricks"
+        }
+    },
+    "result": {
+        "item": "atbyw:red_terracotta_bricks_slab",
+        "count": 6
+    }
+}

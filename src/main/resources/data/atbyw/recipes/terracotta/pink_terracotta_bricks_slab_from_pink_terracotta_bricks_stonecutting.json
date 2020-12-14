@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:pink_terracotta_bricks"
+    },
+    "result": "atbyw:pink_terracotta_bricks_slab",
+    "count": 2
+}

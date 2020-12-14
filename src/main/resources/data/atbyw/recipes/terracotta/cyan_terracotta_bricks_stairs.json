@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "terracotta_bricks_stairs",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "atbyw:cyan_terracotta_bricks"
+        }
+    },
+    "result": {
+        "item": "atbyw:cyan_terracotta_bricks_stairs",
+        "count": 4
+    }
+}
