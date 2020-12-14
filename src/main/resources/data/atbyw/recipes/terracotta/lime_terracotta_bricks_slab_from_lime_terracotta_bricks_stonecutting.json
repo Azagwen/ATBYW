@@ -1,7 +1,7 @@
 {
     "type": "minecraft:stonecutting",
     "ingredient": {
-        "item": "minecraft:lime_terracotta_bricks"
+        "item": "atbyw:lime_terracotta_bricks"
     },
     "result": "atbyw:lime_terracotta_bricks_slab",
     "count": 2

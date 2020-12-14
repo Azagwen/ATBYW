@@ -2,280 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks_from_black_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks_slab_from_black_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks_slab_from_black_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks_stairs_from_black_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks_stairs_from_black_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks_wall_from_black_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks_wall_from_black_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_slab_from_black_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_stairs_from_black_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks_from_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks_slab_from_blue_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks_slab_from_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks_stairs_from_blue_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks_stairs_from_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks_wall_from_blue_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks_wall_from_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_slab_from_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_stairs_from_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks_from_brown_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks_slab_from_brown_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks_slab_from_brown_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks_stairs_from_brown_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks_stairs_from_brown_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks_wall_from_brown_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks_wall_from_brown_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_slab_from_brown_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_stairs_from_brown_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks_from_cyan_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks_slab_from_cyan_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks_slab_from_cyan_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks_stairs_from_cyan_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks_stairs_from_cyan_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks_wall_from_cyan_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks_wall_from_cyan_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_slab_from_cyan_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_stairs_from_cyan_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks_from_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks_slab_from_gray_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks_slab_from_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks_stairs_from_gray_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks_stairs_from_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks_wall_from_gray_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks_wall_from_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_slab_from_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_stairs_from_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks_from_green_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks_slab_from_green_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks_slab_from_green_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks_stairs_from_green_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks_stairs_from_green_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks_wall_from_green_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks_wall_from_green_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_slab_from_green_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_stairs_from_green_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks_from_light_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks_slab_from_light_blue_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks_slab_from_light_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks_stairs_from_light_blue_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks_stairs_from_light_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks_wall_from_light_blue_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks_wall_from_light_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_slab_from_light_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_stairs_from_light_blue_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks_from_light_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks_slab_from_light_gray_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks_slab_from_light_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks_stairs_from_light_gray_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks_stairs_from_light_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks_wall_from_light_gray_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks_wall_from_light_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_slab_from_light_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_stairs_from_light_gray_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks_from_lime_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks_slab_from_lime_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks_slab_from_lime_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks_stairs_from_lime_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks_stairs_from_lime_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks_wall_from_lime_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks_wall_from_lime_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_slab_from_lime_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_stairs_from_lime_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks_from_magenta_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks_slab_from_magenta_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks_slab_from_magenta_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks_stairs_from_magenta_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks_stairs_from_magenta_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks_wall_from_magenta_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks_wall_from_magenta_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_slab_from_magenta_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_stairs_from_magenta_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks_from_orange_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks_slab_from_orange_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks_slab_from_orange_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks_stairs_from_orange_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks_stairs_from_orange_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks_wall_from_orange_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks_wall_from_orange_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_slab_from_orange_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_stairs_from_orange_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks_from_pink_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks_slab_from_pink_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks_slab_from_pink_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks_stairs_from_pink_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks_stairs_from_pink_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks_wall_from_pink_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks_wall_from_pink_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_slab_from_pink_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_stairs_from_pink_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks_from_purple_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks_slab_from_purple_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks_slab_from_purple_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks_stairs_from_purple_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks_stairs_from_purple_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks_wall_from_purple_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks_wall_from_purple_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_slab_from_purple_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_stairs_from_purple_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks_from_red_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks_slab_from_red_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks_slab_from_red_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks_stairs_from_red_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks_stairs_from_red_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks_wall_from_red_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks_wall_from_red_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_slab_from_red_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_stairs_from_red_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks_from_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks_slab_from_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks_slab_from_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks_stairs_from_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks_stairs_from_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks_wall_from_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks_wall_from_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_slab_from_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_stairs_from_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks_from_white_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks_slab_from_white_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks_slab_from_white_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks_stairs_from_white_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks_stairs_from_white_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks_wall_from_white_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks_wall_from_white_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_slab_from_white_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_stairs_from_white_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks_from_yellow_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks_slab_from_yellow_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks_slab_from_yellow_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks_stairs_from_yellow_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks_stairs_from_yellow_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks_wall_from_yellow_terracotta_bricks_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks_wall_from_yellow_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_slab_from_yellow_terracotta_stonecutting.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_stairs_from_yellow_terracotta_stonecutting.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/.TODO.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/black_terracotta.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_slab.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_slab_from_stone_bricks_stonecutting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_slab_from_stone_stonecutting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_stairs.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_stairs_from_stone_bricks_stonecutting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_stairs_from_stone_stonecutting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_wall.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_wall_from_stone_bricks_stonecutting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_brick_walls_from_stone_stonecutting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_bricks.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/bricks/stone_bricks_from_stone_stonecutting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/stone_slab.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/stone_slab_from_stone_stonecutting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/stone_stairs.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/.todo_examples/stone_stairs_from_stone_stonecutting.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -479,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607949581609</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Terracotta &amp; Terracotta Bricks recipes added.">
+      <created>1607958021390</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1607958021390</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -489,7 +223,8 @@
     <MESSAGE value="modifications to FenceDoorBlock + added WallBlockMixin" />
     <MESSAGE value="resource modifications" />
     <MESSAGE value="made mixing implementation for fences and walls cleaner and less likely to interfer with other mods." />
-    <option name="LAST_COMMIT_MESSAGE" value="made mixing implementation for fences and walls cleaner and less likely to interfer with other mods." />
+    <MESSAGE value="Terracotta &amp; Terracotta Bricks recipes added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Terracotta &amp; Terracotta Bricks recipes added." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607880776807">
@@ -504,10 +239,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="474" y="1341" width="403" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607941148313" />
-    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1607949580115">
+    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1607958019802">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607949580115" />
+    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607958019802" />
     <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -540,10 +275,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607852454543" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607949583358">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607958033140">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607949583358" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607958033140" />
     <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction" timestamp="1607856394137">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
