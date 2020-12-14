@@ -1,5 +1,7 @@
 package net.azagwen.atbyw.init;
 
+import net.azagwen.atbyw.blocks.AtbywBlocks;
+import net.azagwen.atbyw.items.AtbywItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
@@ -14,11 +16,16 @@ public class AtbywMain implements ModInitializer {
 	}
 
 	public static final ItemGroup ATBYW_BLOCKS = FabricItemGroupBuilder.create(newID("blocks")).icon(() ->
-			new ItemStack(AbtywBlocks.TERRACOTTA_BRICKS)).build();
+			new ItemStack(AtbywBlocks.TERRACOTTA_BRICKS)).build();
+
+	public static final ItemGroup ATBYW_ITEMS = FabricItemGroupBuilder.create(newID("items")).icon(() ->
+			new ItemStack(AtbywItems.ACACIA_STICK)).build();
+
 
 	@Override
 	public void onInitialize() {
-		AbtywBlocks.init();
+		AtbywBlocks.init();
+		AtbywItems.init();
 
 		System.out.println("Hello Fabric world! owo");
 	}

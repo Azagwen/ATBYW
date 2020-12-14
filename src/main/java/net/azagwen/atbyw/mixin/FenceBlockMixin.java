@@ -5,29 +5,21 @@ import net.minecraft.block.*;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static net.minecraft.block.Block.cannotConnect;
 
 @Mixin(FenceBlock.class)
 public class FenceBlockMixin {
 
-    /**
-     * @author
-     *
-     * I don't know how I could do this better.
-     * Sorry if it interfers with anything...
-     * feel free to do better, I'm tired ¯\_(ツ)_/¯
-     *
-     */
-    @Overwrite
-    public boolean canConnect(BlockState state, boolean faceFullSquare, Direction side) {
+    @Inject(method = "canConnect(Lnet/minecraft/block/BlockState;ZLnet/minecraft/util/math/Direction;)Z", at =
+    @At(value = "HEAD", args = {"log=false"}), cancellable = true)
+    private void canConnect(BlockState state, boolean faceFullSquare, Direction side, CallbackInfoReturnable cbir) {
         Block block = state.getBlock();
-        boolean isFence = block.isIn(BlockTags.FENCES) && block.isIn(BlockTags.WOODEN_FENCES);
-        boolean isFenceGate = block instanceof FenceGateBlock && FenceGateBlock.canWallConnect(state, side);
         boolean isFenceDoor = block instanceof FenceDoorBlock && FenceDoorBlock.canWallConnect(state, side);
-        boolean isBlockAbleToConnect = isFenceGate || isFenceDoor;
-
-        return isFence || !cannotConnect(block) && faceFullSquare || isBlockAbleToConnect;
+        if (isFenceDoor)
+            cbir.setReturnValue(true);
     }
 }

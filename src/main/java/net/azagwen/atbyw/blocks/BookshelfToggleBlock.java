@@ -13,9 +13,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -26,12 +24,11 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BookshelfToggleBlock extends Block {
+public class BookshelfToggleBlock extends HorizontalFacingBlock {
     public static final BooleanProperty POWERED;
-    public static final DirectionProperty FACING;
 
     public BookshelfToggleBlock() {
-        super(Settings.copy(Blocks.BOOKSHELF));
+        super(Settings.copy(Blocks.BOOKSHELF).solidBlock(AtbywBlocks::never));
         this.setDefaultState(this.stateManager.getDefaultState().with(POWERED, false).with(FACING, Direction.NORTH));
     }
 
@@ -41,16 +38,14 @@ public class BookshelfToggleBlock extends Block {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        BlockState blockState;
+        BlockState blockState = this.cyclePowered(state, world, pos);
         if (world.isClient) {
-            blockState = state.cycle(POWERED);
             if (blockState.get(POWERED)) {
                 spawnParticles(world, pos);
             }
 
             return ActionResult.SUCCESS;
         } else {
-            blockState = this.cyclePowered(state, world, pos);
             float f = blockState.get(POWERED) ? 0.6F : 0.5F;
             world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, f);
             return ActionResult.CONSUME;
@@ -58,10 +53,25 @@ public class BookshelfToggleBlock extends Block {
     }
 
     public BlockState cyclePowered(BlockState state, World world, BlockPos blockPos) {
-        BlockState cycle = state.cycle(POWERED);
-        world.setBlockState(blockPos, cycle, 3);
-        this.updateNeighbors(cycle, world, blockPos);
-        return cycle;
+        BlockState blockState = state.cycle(POWERED);
+        world.setBlockState(blockPos, blockState, 3);
+        this.updateNeighbors(blockState, world, blockPos);
+        return blockState;
+    }
+
+    protected void updateNeighbors(BlockState state, World world, BlockPos pos) {
+        Direction direction = state.get(FACING);
+
+        BlockPos blockPos1 = pos.offset(direction.getOpposite());
+        BlockPos blockPos2 = pos.offset(direction.rotateYClockwise().getOpposite());
+        BlockPos blockPos3 = pos.offset(direction.rotateYCounterclockwise().getOpposite());
+
+        world.updateNeighbor(blockPos1, this, pos);
+        world.updateNeighbor(blockPos2, this, pos);
+        world.updateNeighbor(blockPos3, this, pos);
+        world.updateNeighborsExcept(blockPos1, this, direction);
+        world.updateNeighborsExcept(blockPos2, this, direction);
+        world.updateNeighborsExcept(blockPos3, this, direction);
     }
 
     @Environment(EnvType.CLIENT)
@@ -99,29 +109,15 @@ public class BookshelfToggleBlock extends Block {
 
     @Override
     public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        return state.get(POWERED) && state.get(FACING) == direction ? 15 : 0;
+        boolean southFace = state.get(FACING) == direction;
+        boolean westFace = state.get(FACING).rotateYClockwise() == direction;
+        boolean eastFace = state.get(FACING).rotateYCounterclockwise() == direction;
+        return state.get(POWERED) && (southFace || westFace || eastFace) ? 15 : 0;
     }
 
     @Override
     public boolean emitsRedstonePower(BlockState state) {
-        return state.get(POWERED);
-    }
-
-    protected void updateNeighbors(BlockState state, World world, BlockPos pos) {
-        Direction direction = state.get(FACING);
-
-        BlockPos blockPos1 = pos.offset(direction.getOpposite());
-        BlockPos blockPos2 = pos.offset(direction.rotateYClockwise().getOpposite());
-        BlockPos blockPos3 = pos.offset(direction.rotateYCounterclockwise().getOpposite());
-
-        world.updateNeighborsAlways(pos, this);
-
-//        world.updateNeighbor(blockPos1, this, pos);
-//        world.updateNeighbor(blockPos2, this, pos);
-//        world.updateNeighbor(blockPos3, this, pos);
-//        world.updateNeighborsExcept(blockPos1, this, direction);
-//        world.updateNeighborsExcept(blockPos2, this, direction);
-//        world.updateNeighborsExcept(blockPos3, this, direction);
+        return true;
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -130,6 +126,5 @@ public class BookshelfToggleBlock extends Block {
 
     static {
         POWERED = Properties.POWERED;
-        FACING = HorizontalFacingBlock.FACING;
     }
 }

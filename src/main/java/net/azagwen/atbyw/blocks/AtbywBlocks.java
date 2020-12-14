@@ -1,15 +1,23 @@
-package net.azagwen.atbyw.init;
+package net.azagwen.atbyw.blocks;
 
-import net.azagwen.atbyw.blocks.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
+import net.minecraft.entity.EntityType;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 
-import static net.azagwen.atbyw.init.AbtywBlockUtils.*;
+import static net.azagwen.atbyw.blocks.AtbywBlockUtils.*;
 import static net.azagwen.atbyw.init.AtbywMain.*;
 
-public class AbtywBlocks {
+public class AtbywBlocks {
+
+    public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
+    public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
+    public static boolean always(BlockState state, BlockView world, BlockPos pos) { return true; }
+    public static boolean never(BlockState state, BlockView world, BlockPos pos) { return false; }
+
     private static FabricBlockSettings MakeBasalt() {
         return FabricBlockSettings.of(Material.STONE, MaterialColor.BLACK).requiresTool().breakByTool(FabricToolTags.PICKAXES).strength(1.25F, 4.2F).sounds(BlockSoundGroup.BASALT);
     }

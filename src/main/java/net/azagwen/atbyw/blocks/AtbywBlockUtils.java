@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.init;
+package net.azagwen.atbyw.blocks;
 
 import net.azagwen.atbyw.blocks.StairsBlockSubClass;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -13,7 +13,7 @@ import net.minecraft.util.registry.Registry;
 
 import static net.azagwen.atbyw.init.AtbywMain.*;
 
-public class AbtywBlockUtils {
+public class AtbywBlockUtils {
     public static String[] woodNames = new String[] {"oak", "spruce", "birch", "jungle", "acacia", "dar_oak", "crimson", "warped"};
     public static String[] stoneNames = new String[] {"granite", "diorite", "andesite"};
     public static String[] colorNames = new String[] {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};

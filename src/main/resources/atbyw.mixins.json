@@ -7,6 +7,7 @@
     "EnchantingTableBlockMixin",
     "EnchantmentScreenHandlerMixin",
     "FenceBlockMixin",
+    "RedstoneWireBlockMixin",
     "WallBlockMixin"
   ],
   "client": [

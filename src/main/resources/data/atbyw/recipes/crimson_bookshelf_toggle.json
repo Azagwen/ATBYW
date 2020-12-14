@@ -2,19 +2,22 @@
   "type": "minecraft:crafting_shaped",
   "group": "bookshelf_toggle",
   "pattern": [
-    "L",
-    "B",
-    "R"
+    "WWW",
+    "RBR",
+    "CRC"
   ],
   "key": {
     "B": {
-      "item": "atbyw:crimson_bookshelf"
+      "item": "minecraft:book"
+    },
+    "W": {
+      "item": "minecraft:crimson_planks"
     },
     "R": {
       "item": "minecraft:redstone"
     },
-    "L": {
-      "item": "minecraft:lever"
+    "C": {
+      "item": "minecraft:cobblestone"
     }
   },
   "result": {

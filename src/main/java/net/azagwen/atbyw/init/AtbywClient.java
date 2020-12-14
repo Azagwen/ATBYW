@@ -1,11 +1,13 @@
 package net.azagwen.atbyw.init;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 
-import static net.azagwen.atbyw.init.AbtywBlocks.*;
+import static net.azagwen.atbyw.blocks.AtbywBlocks.*;
 
 public class AtbywClient implements ClientModInitializer {
 
@@ -21,6 +23,7 @@ public class AtbywClient implements ClientModInitializer {
     }
 
     @Override
+    @Environment(EnvType.CLIENT)
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(OAK_FENCE_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SPRUCE_FENCE_DOOR, RenderLayer.getCutout());
@@ -31,5 +34,13 @@ public class AtbywClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(CRIMSON_FENCE_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(WARPED_FENCE_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IRON_FENCE_DOOR, RenderLayer.getCutout());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(SPRUCE_LADDER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BIRCH_LADDER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(JUNGLE_LADDER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ACACIA_LADDER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(DARK_OAK_LADDER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(CRIMSON_LADDER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(WARPED_LADDER, RenderLayer.getCutout());
     }
 }

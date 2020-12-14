@@ -2,6 +2,7 @@
   "_comment": "Blocks",
   "block.atbyw.basalt_bricks": "Basalt Bricks",
   "block.atbyw.basalt_pillar": "Basalt Pillar",
+
   "block.atbyw.oak_fence_door": "Oak Fence Door",
   "block.atbyw.spruce_fence_door": "Spruce Fence Door",
   "block.atbyw.birch_fence_door": "Birch Fence Door",
@@ -11,8 +12,8 @@
   "block.atbyw.crimson_fence_door": "Crimson Fence Door",
   "block.atbyw.warped_fence_door": "Warped Fence Door",
   "block.atbyw.iron_fence_door": "Iron Fence Door",
-
   "block.minecraft.bookshelf": "Oak Bookshelf",
+
   "block.atbyw.spruce_bookshelf": "Spruce Bookshelf",
   "block.atbyw.birch_bookshelf": "Birch Bookshelf",
   "block.atbyw.jungle_bookshelf": "Jungle Bookshelf",
@@ -30,7 +31,26 @@
   "block.atbyw.crimson_bookshelf_toggle": "Crimson Bookshelf Toggle",
   "block.atbyw.warped_bookshelf_toggle": "Warped Bookshelf Toggle",
 
+  "block.minecraft.ladder": "Oak Ladder",
+  "block.atbyw.spruce_ladder": "Spruce Ladder",
+  "block.atbyw.birch_ladder": "Birch Ladder",
+  "block.atbyw.jungle_ladder": "Jungle Ladder",
+  "block.atbyw.acacia_ladder": "Acacia Ladder",
+  "block.atbyw.dark_oak_ladder": "Dark Oak Ladder",
+  "block.atbyw.crimson_ladder": "Crimson Ladder",
+  "block.atbyw.warped_ladder": "Warped Ladder",
+
   "block.atbyw.dev_block": "Aza Block",
+
+  "_comment": "Items",
+  "item.minecraft.stick": "Oak Stick",
+  "item.atbyw.spruce_stick": "Spruce Stick",
+  "item.atbyw.birch_stick": "Birch Stick",
+  "item.atbyw.jungle_stick": "Jungle Stick",
+  "item.atbyw.acacia_stick": "Acacia Stick",
+  "item.atbyw.dark_oak_stick": "Dark Oak Stick",
+  "item.atbyw.crimson_stick": "Crimson Stick",
+  "item.atbyw.warped_stick": "Warped Stick",
 
   "_comment": "Terracotta stairs",
   "block.atbyw.terracotta_stairs": "Terracotta Stairs",
@@ -147,5 +167,6 @@
   "block.atbyw.black_terracotta_bricks_wall": "Black Terracotta Bricks Wall",
 
   "_comment": "Misc",
-  "itemGroup.atbyw.blocks": "All The Blocks You Want"
+  "itemGroup.atbyw.blocks": "All The Blocks You Want",
+  "itemGroup.atbyw.items": "ATBYW Items"
 }

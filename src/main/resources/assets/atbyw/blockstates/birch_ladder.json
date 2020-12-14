@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "atbyw:block/birch_ladder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "atbyw:block/birch_ladder"
+    },
+    "facing=south": {
+      "model": "atbyw:block/birch_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "atbyw:block/birch_ladder",
+      "y": 270
+    }
+  }
+}
