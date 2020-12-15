@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/basalt_pillar.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/basalt_pillar.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/basalt_pillar_horizontal.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/basalt_pillar.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AtbywMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AtbywMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/items/AtbywItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/items/AtbywItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantingTableBlockMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantingTableBlockMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantmentScreenHandlerMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantmentScreenHandlerMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/ExampleMixin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +105,7 @@
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\tags\items" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ATBYW [remapJar]">
+  <component name="RunManager" selected="Application.Minecraft Server">
     <configuration name="ATBYW [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -320,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607976802436</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="minor mixin fixes">
+      <created>1608019959603</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1608019959603</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -334,7 +311,8 @@
     <MESSAGE value="gradle update" />
     <MESSAGE value="vanilla recipe overrides." />
     <MESSAGE value="updated to 1.16.4&#10;replaced recipes requiring sticks to allow usage of any type of stick (except for wood-typed blocks such a fences and signs)" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated to 1.16.4&#10;replaced recipes requiring sticks to allow usage of any type of stick (except for wood-typed blocks such a fences and signs)" />
+    <MESSAGE value="minor mixin fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor mixin fixes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607880776807">
@@ -357,10 +335,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="205" y="1283" width="941" height="343" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607964276882" />
-    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1607976801125">
+    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608019958457">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607976801125" />
+    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019958457" />
     <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -373,30 +351,30 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="375" y="1161" key="Github.UntrackedFilesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809201936" />
-    <state width="1309" height="295" key="GridCell.Tab.0.bottom" timestamp="1608019930900">
+    <state width="1309" height="295" key="GridCell.Tab.0.bottom" timestamp="1608038428060">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019930900" />
-    <state width="1309" height="295" key="GridCell.Tab.0.center" timestamp="1608019930900">
+    <state width="1309" height="295" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038428060" />
+    <state width="1309" height="295" key="GridCell.Tab.0.center" timestamp="1608038428060">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019930900" />
-    <state width="1309" height="295" key="GridCell.Tab.0.left" timestamp="1608019930900">
+    <state width="1309" height="295" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038428060" />
+    <state width="1309" height="295" key="GridCell.Tab.0.left" timestamp="1608038428060">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019930900" />
-    <state width="1309" height="295" key="GridCell.Tab.0.right" timestamp="1608019930900">
+    <state width="1309" height="295" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038428060" />
+    <state width="1309" height="295" key="GridCell.Tab.0.right" timestamp="1608038428060">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019930900" />
+    <state width="1309" height="295" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038428060" />
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor" timestamp="1607852454543">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607852454543" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607976814619">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608019963305">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607976814619" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019963305" />
     <state x="492" y="1234" key="chooseDestDirectoryDialog" timestamp="1607967141879">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>

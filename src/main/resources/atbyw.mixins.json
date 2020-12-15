@@ -4,13 +4,13 @@
   "package": "net.azagwen.atbyw.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "EnchantingTableBlockMixin",
-    "EnchantmentScreenHandlerMixin",
     "FenceBlockMixin",
     "RedstoneWireBlockMixin",
     "WallBlockMixin"
   ],
   "client": [
+    "EnchantingTableBlockMixin",
+    "EnchantmentScreenHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
