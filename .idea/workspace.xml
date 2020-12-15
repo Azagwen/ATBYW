@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fabric.mod.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +107,7 @@
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\tags\items" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Minecraft Server">
+  <component name="RunManager" selected="Gradle.ATBYW [remapJar]">
     <configuration name="ATBYW [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -297,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608019959603</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="minor mixin fixes">
+      <created>1608038441176</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1608038441176</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -335,10 +344,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="205" y="1283" width="941" height="343" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607964276882" />
-    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608019958457">
+    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608038440610">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019958457" />
+    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038440610" />
     <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -351,22 +360,22 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="375" y="1161" key="Github.UntrackedFilesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809201936" />
-    <state width="1309" height="295" key="GridCell.Tab.0.bottom" timestamp="1608038428060">
+    <state width="1309" height="295" key="GridCell.Tab.0.bottom" timestamp="1608038635299">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038428060" />
-    <state width="1309" height="295" key="GridCell.Tab.0.center" timestamp="1608038428060">
+    <state width="1309" height="295" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038635299" />
+    <state width="1309" height="295" key="GridCell.Tab.0.center" timestamp="1608038635299">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038428060" />
-    <state width="1309" height="295" key="GridCell.Tab.0.left" timestamp="1608038428060">
+    <state width="1309" height="295" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038635299" />
+    <state width="1309" height="295" key="GridCell.Tab.0.left" timestamp="1608038635299">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038428060" />
-    <state width="1309" height="295" key="GridCell.Tab.0.right" timestamp="1608038428060">
+    <state width="1309" height="295" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038635299" />
+    <state width="1309" height="295" key="GridCell.Tab.0.right" timestamp="1608038635299">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038428060" />
+    <state width="1309" height="295" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608038635299" />
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor" timestamp="1607852454543">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>

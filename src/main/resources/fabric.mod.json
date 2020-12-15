@@ -13,7 +13,7 @@
     "sources": ""
   },
 
-  "license": "MIT",
+  "license": "CC0",
   "icon": "assets/atbyw/icon.png",
 
   "environment": "*",
@@ -30,9 +30,9 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.7.4",
+    "fabricloader": ">=0.10.8",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "1.16.4"
   },
   "suggests": {
     "flamingo": "*"
