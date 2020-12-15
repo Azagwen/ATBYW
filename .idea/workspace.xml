@@ -2,110 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/black_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/black_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/black_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/black_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/black_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/black_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/blue_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/blue_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/blue_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/blue_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/blue_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/blue_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/brown_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/brown_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/brown_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/brown_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/brown_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/brown_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/cyan_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/cyan_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/cyan_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/cyan_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/cyan_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/cyan_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/gray_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/gray_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/gray_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/gray_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/gray_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/gray_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/green_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/green_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/green_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/green_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/green_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/green_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_blue_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_blue_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_blue_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_blue_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_blue_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_blue_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_gray_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_gray_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_gray_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_gray_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_gray_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/light_gray_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/lime_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/lime_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/lime_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/lime_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/lime_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/lime_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/magenta_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/magenta_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/magenta_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/magenta_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/magenta_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/magenta_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/orange_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/orange_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/orange_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/orange_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/orange_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/orange_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/pink_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/pink_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/pink_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/pink_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/pink_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/pink_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/purple_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/purple_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/purple_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/purple_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/purple_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/purple_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/red_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/red_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/red_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/red_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/red_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/red_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/white_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/white_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/white_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/white_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/white_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/white_terracotta_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/yellow_terracotta_bricks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/yellow_terracotta_bricks_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/yellow_terracotta_bricks_stairs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/yellow_terracotta_bricks_wall.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/yellow_terracotta_slab.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks/yellow_terracotta_stairs.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/acacia_fence_door.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/acacia_fence_door.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/birch_fence_door.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/birch_fence_door.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/crimson_fence_door.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/crimson_fence_door.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/dark_oak_fence_door.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/dark_oak_fence_door.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/jungle_fence_door.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/jungle_fence_door.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/oak_fence_door.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/oak_fence_door.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/spruce_fence_door.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/spruce_fence_door.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/warped_fence_door.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/warped_fence_door.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -421,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608039844979</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="missing loot-tables added">
+      <created>1608045818779</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1608045818779</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -437,7 +350,8 @@
     <MESSAGE value="updated to 1.16.4&#10;replaced recipes requiring sticks to allow usage of any type of stick (except for wood-typed blocks such a fences and signs)" />
     <MESSAGE value="minor mixin fixes" />
     <MESSAGE value="missing recipes added" />
-    <option name="LAST_COMMIT_MESSAGE" value="missing recipes added" />
+    <MESSAGE value="missing loot-tables added" />
+    <option name="LAST_COMMIT_MESSAGE" value="missing loot-tables added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607880776807">
@@ -460,10 +374,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="205" y="1283" width="941" height="343" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607964276882" />
-    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608039844327">
+    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608045816936">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608039844327" />
+    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608045816936" />
     <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -496,10 +410,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607852454543" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608039846027">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608045821423">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608039846027" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608045821423" />
     <state x="492" y="1234" key="chooseDestDirectoryDialog" timestamp="1607967141879">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
