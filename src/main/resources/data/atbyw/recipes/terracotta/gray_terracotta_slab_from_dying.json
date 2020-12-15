@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "terracotta_slab",
+    "pattern": [
+        "###",
+        "#B#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "gray_dye"
+        },
+        "B": {
+            "item": "atbyw:terracotta_slab"
+        }
+    },
+    "result": {
+        "item": "atbyw:gray_terracotta_slab",
+        "count": 4
+    }
+}

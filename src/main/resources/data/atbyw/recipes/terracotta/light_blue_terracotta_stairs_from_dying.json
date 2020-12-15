@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "terracotta_stairs",
+    "pattern": [
+        "###",
+        "#B#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "light_blue_dye"
+        },
+        "B": {
+            "item": "atbyw:terracotta_stairs"
+        }
+    },
+    "result": {
+        "item": "atbyw:light_blue_terracotta_stairs",
+        "count": 4
+    }
+}

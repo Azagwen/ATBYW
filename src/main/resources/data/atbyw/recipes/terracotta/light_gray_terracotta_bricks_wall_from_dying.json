@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "terracotta_bricks_wall",
+    "pattern": [
+        "###",
+        "#B#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "light_gray_dye"
+        },
+        "B": {
+            "item": "atbyw:terracotta_bricks_wall"
+        }
+    },
+    "result": {
+        "item": "atbyw:light_gray_terracotta_bricks_wall",
+        "count": 4
+    }
+}
