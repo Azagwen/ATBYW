@@ -168,6 +168,7 @@
   "block.atbyw.black_terracotta_bricks_wall": "Black Terracotta Bricks Wall",
 
   "_comment": "Misc",
-  "itemGroup.atbyw.blocks": "All The Blocks You Want",
-  "itemGroup.atbyw.items": "ATBYW Items"
+  "itemGroup.atbyw.blocks": "§nA§rll §nT§rhe §nB§rlocks §nY§rou §nW§rant",
+  "itemGroup.atbyw.items": "ATBYW Misc",
+  "itemGroup.atbyw.redstone": "ATBYW Redstone"
 }

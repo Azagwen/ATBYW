@@ -18,7 +18,10 @@ public class AtbywMain implements ModInitializer {
 	public static final ItemGroup ATBYW_BLOCKS = FabricItemGroupBuilder.create(newID("blocks")).icon(() ->
 			new ItemStack(AtbywBlocks.TERRACOTTA_BRICKS)).build();
 
-	public static final ItemGroup ATBYW_ITEMS = FabricItemGroupBuilder.create(newID("items")).icon(() ->
+	public static final ItemGroup ATBYW_REDSTONE = FabricItemGroupBuilder.create(newID("redstone")).icon(() ->
+			new ItemStack(AtbywBlocks.ACACIA_BOOKSHELF_TOGGLE)).build();
+
+	public static final ItemGroup ATBYW_MISC = FabricItemGroupBuilder.create(newID("items")).icon(() ->
 			new ItemStack(AtbywItems.ACACIA_STICK)).build();
 
 
@@ -27,6 +30,6 @@ public class AtbywMain implements ModInitializer {
 		AtbywBlocks.init();
 		AtbywItems.init();
 
-		System.out.println("Hello Fabric world! owo");
+		System.out.println("ATBYW Inintiliazed 😳");
 	}
 }

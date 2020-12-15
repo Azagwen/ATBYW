@@ -2,113 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/logs/latest.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/blocks/AtbywBlockUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/blocks/AtbywBlocks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/blocks/AtbywProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/blocks/AtbywTags.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/blocks/BookshelfToggleBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/blocks/DevBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/blocks/FenceDoorBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/blocks/LadderBlockSubClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/blocks/StairsBlockSubClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/init/AtbywClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/init/AtbywMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/items/AtbywItems.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/mixin/EnchantingTableBlockMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/mixin/EnchantmentScreenHandlerMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/mixin/ExampleMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/mixin/FenceBlockMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/mixin/RedstoneWireBlockMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/remappedSrc/net/azagwen/atbyw/mixin/WallBlockMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/tags/items/bookshelves.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/fishing_rod.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/basalt_pillar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/basalt_pillar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/basalt_pillar_horizontal.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/basalt_pillar.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/armor_stand.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/armor_stand.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/arrow.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/arrow.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/bow.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/bow.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/crossbow.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/crossbow.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/item_frame.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/item_frame.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/ladder.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/ladder.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/lever.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/lever.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/painting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/painting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/black_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/black_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/blue_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/blue_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/brown_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/brown_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/cyan_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/cyan_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/gray_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/gray_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/green_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/green_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/light_blue_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/light_blue_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/light_gray_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/light_gray_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/lime_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/lime_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/magenta_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/magenta_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/orange_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/orange_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/pink_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/pink_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/purple_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/purple_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/red_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/red_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/white_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/white_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/banners/yellow_banner.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/yellow_banner.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fence_gates/acacia_fence_gate.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/acacia_fence_gate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fence_gates/birch_fence_gate.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/birch_fence_gate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fence_gates/crimson_fence_gate.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/crimson_fence_gate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fence_gates/dark_oak_fence_gate.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/dark_oak_fence_gate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fence_gates/jungle_fence_gate.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/jungle_fence_gate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fence_gates/oak_fence_gate.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fence_gates/spruce_fence_gate.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/spruce_fence_gate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fence_gates/warped_fence_gate.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/warped_fence_gate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fences/acacia_fence.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/acacia_fence.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fences/birch_fence.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/birch_fence.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fences/crimson_fence.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/crimson_fence.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fences/dark_oak_fence.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/dark_oak_fence.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fences/jungle_fence.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/jungle_fence.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fences/oak_fence.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fences/spruce_fence.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/spruce_fence.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/fences/warped_fence.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/warped_fence.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/diamond_axe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/diamond_axe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/diamond_hoe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/diamond_hoe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/diamond_pickaxe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/diamond_pickaxe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/diamond_shovel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/diamond_shovel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/diamond_sword.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/diamond_sword.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/golden_axe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/golden_axe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/golden_hoe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/golden_hoe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/golden_pickaxe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/golden_pickaxe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/golden_shovel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/golden_shovel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/golden_sword.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/golden_sword.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/iron_axe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/iron_axe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/iron_hoe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/iron_hoe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/iron_pickaxe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/iron_pickaxe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/iron_shovel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/iron_shovel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/iron_sword.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/iron_sword.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/stone_axe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/stone_axe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/stone_hoe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/stone_hoe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/stone_pickaxe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/stone_pickaxe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/stone_shovel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/stone_shovel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/stone_sword.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/stone_sword.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/wooden_axe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/wooden_axe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/wooden_hoe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/wooden_hoe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/wooden_pickaxe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/wooden_pickaxe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/wooden_shovel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/wooden_shovel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/gear/wooden_sword.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/wooden_sword.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/rails/activator_rail.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/activator_rail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/rails/detector_rail.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/rails/powered_rail.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/powered_rail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/rails/rail.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/rail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/signs/acacia_sign.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/acacia_sign.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/signs/birch_sign.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/birch_sign.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/signs/crimson_sign.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/crimson_sign.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/signs/dark_oak_sign.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/dark_oak_sign.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/signs/jungle_sign.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/jungle_sign.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/signs/oak_sign.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/signs/spruce_sign.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/spruce_sign.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/recipes_requiring_sticks/signs/warped_sign.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/warped_sign.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/redstone_torch.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/redstone_torch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/soul_torch.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/soul_torch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/torch.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/torch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/minecraft/recipes/tripwire_hook.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes/tripwire_hook.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AtbywMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AtbywMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/items/AtbywItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/items/AtbywItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantingTableBlockMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantingTableBlockMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantmentScreenHandlerMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantmentScreenHandlerMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/ExampleMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/atbyw.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/black_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/blue_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/brown_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/cyan_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/gray_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/green_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_blue_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/light_gray_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/lime_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/magenta_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/orange_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/pink_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/purple_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/red_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/white_terracotta_bricks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/atbyw/recipes/terracotta/yellow_terracotta_bricks.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +102,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/data/minecraft/recipes" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/data/minecraft/recipes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.30572474" />
@@ -204,14 +128,33 @@
       <recent name="net.azagwen.atbyw.mixin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\item" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\blockstates" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\minecraft\recipes" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\tags\items" />
-      <recent name="C:\Users\Utilisateur\.gradle\caches\fabric-loom\1.16.1-mapped-net.fabricmc.yarn-1.16.1+build.1-v2\minecraft-1.16.1-mapped-net.fabricmc.yarn-1.16.1+build.1-v2.jar!\data\minecraft\recipes" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\minecraft\recipes\to_sort" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\minecraft\recipes\rails" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Minecraft Client">
+  <component name="RunManager" selected="Gradle.ATBYW [remapJar]">
+    <configuration name="ATBYW [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ATBYW [genSources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -231,12 +174,33 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="ATBYW [remapJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="remapJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="MC_ItemSet_Builder.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/src/main/resources/MC_ItemSet_Builder.jar" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ATBYW [build]" />
+        <item itemvalue="Gradle.ATBYW [remapJar]" />
         <item itemvalue="Gradle.ATBYW [genSources]" />
         <item itemvalue="JAR Application.MC_ItemSet_Builder.jar" />
       </list>
@@ -349,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607973321352</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="updated to 1.16.4&#10;replaced recipes requiring sticks to allow usage of any type of stick (except for wood-typed blocks such a fences and signs)">
+      <created>1607976802436</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1607976802436</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -362,7 +333,8 @@
     <MESSAGE value="Terracotta &amp; Terracotta Bricks recipes added." />
     <MESSAGE value="gradle update" />
     <MESSAGE value="vanilla recipe overrides." />
-    <option name="LAST_COMMIT_MESSAGE" value="vanilla recipe overrides." />
+    <MESSAGE value="updated to 1.16.4&#10;replaced recipes requiring sticks to allow usage of any type of stick (except for wood-typed blocks such a fences and signs)" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated to 1.16.4&#10;replaced recipes requiring sticks to allow usage of any type of stick (except for wood-typed blocks such a fences and signs)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607880776807">
@@ -385,10 +357,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="205" y="1283" width="941" height="343" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607964276882" />
-    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1607973320178">
+    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1607976801125">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607973320178" />
+    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607976801125" />
     <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -401,30 +373,30 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="375" y="1161" key="Github.UntrackedFilesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809201936" />
-    <state width="1309" height="295" key="GridCell.Tab.0.bottom" timestamp="1607974523974">
+    <state width="1309" height="295" key="GridCell.Tab.0.bottom" timestamp="1608019930900">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607974523974" />
-    <state width="1309" height="295" key="GridCell.Tab.0.center" timestamp="1607974523974">
+    <state width="1309" height="295" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019930900" />
+    <state width="1309" height="295" key="GridCell.Tab.0.center" timestamp="1608019930900">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607974523974" />
-    <state width="1309" height="295" key="GridCell.Tab.0.left" timestamp="1607974523974">
+    <state width="1309" height="295" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019930900" />
+    <state width="1309" height="295" key="GridCell.Tab.0.left" timestamp="1608019930900">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607974523974" />
-    <state width="1309" height="295" key="GridCell.Tab.0.right" timestamp="1607974523974">
+    <state width="1309" height="295" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019930900" />
+    <state width="1309" height="295" key="GridCell.Tab.0.right" timestamp="1608019930900">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="295" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607974523974" />
+    <state width="1309" height="295" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608019930900" />
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor" timestamp="1607852454543">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607852454543" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607973322961">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1607976814619">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607973322961" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607976814619" />
     <state x="492" y="1234" key="chooseDestDirectoryDialog" timestamp="1607967141879">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
