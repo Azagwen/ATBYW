@@ -65,6 +65,7 @@ public class AtbywBlocks {
     public static final Block DARK_OAK_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
     public static final Block CRIMSON_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
     public static final Block WARPED_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block BAMBOO_LADDER = new BambooLadderBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO));
 
     public static final Block BASALT_BRICKS = new Block(MakeBasalt());
     public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
@@ -118,6 +119,7 @@ public class AtbywBlocks {
         registerBlock(false, ATBYW_BLOCKS, "dark_oak_ladder", DARK_OAK_LADDER);
         registerBlock(false, ATBYW_BLOCKS, "crimson_ladder", CRIMSON_LADDER);
         registerBlock(false, ATBYW_BLOCKS, "warped_ladder", WARPED_LADDER);
+        registerBlock(false, ATBYW_BLOCKS, "bamboo_ladder", BAMBOO_LADDER);
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks", TERRACOTTA_BRICKS);
         registerMultiBlock(false, ATBYW_BLOCKS, "terracotta_bricks", colorNames, TERRACOTTA_BRICKS_COLORS);
