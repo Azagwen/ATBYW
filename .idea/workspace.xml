@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/template_grass_inner_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/template_grass_outer_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/template_grass_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/grass_stairs_side.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/grass_stairs_side_overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/dirt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_block_side.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_block_side_overlay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_block_snow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_block_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_path_side.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_path_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AtbywMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AtbywMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlocks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantingTableBlockMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/EnchantingTableBlockMixin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +99,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/data/minecraft/recipes" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/data/c/tags/blocks" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.30572474" />
@@ -111,11 +125,11 @@
       <recent name="net.azagwen.atbyw.mixin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\textures\block\ref" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\c\tags\blocks" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\recipes" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\item" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\blockstates" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.ATBYW [remapJar]">
@@ -381,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608401010299</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="added simple method to check if other mods are loaded.">
+      <created>1608401391221</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1608401391221</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -402,7 +423,8 @@
     <MESSAGE value="added missing recipes" />
     <MESSAGE value="minor fixes" />
     <MESSAGE value="added compatibility with BetterEnds" />
-    <option name="LAST_COMMIT_MESSAGE" value="added compatibility with BetterEnds" />
+    <MESSAGE value="added simple method to check if other mods are loaded." />
+    <option name="LAST_COMMIT_MESSAGE" value="added simple method to check if other mods are loaded." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="1259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607880776807">
@@ -425,10 +447,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="205" y="1283" width="941" height="343" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607964276882" />
-    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608401009709">
+    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608401390359">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608401009709" />
+    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608401390359" />
     <state x="457" y="1211" key="FileChooserDialogImpl" timestamp="1607781482886">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -441,22 +463,22 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="375" y="1161" key="Github.UntrackedFilesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809201936" />
-    <state width="1309" height="294" key="GridCell.Tab.0.bottom" timestamp="1608337769390">
+    <state width="1309" height="294" key="GridCell.Tab.0.bottom" timestamp="1608409559392">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="294" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608337769390" />
-    <state width="1309" height="294" key="GridCell.Tab.0.center" timestamp="1608337769390">
+    <state width="1309" height="294" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608409559392" />
+    <state width="1309" height="294" key="GridCell.Tab.0.center" timestamp="1608409559392">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="294" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608337769390" />
-    <state width="1309" height="294" key="GridCell.Tab.0.left" timestamp="1608337769390">
+    <state width="1309" height="294" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608409559392" />
+    <state width="1309" height="294" key="GridCell.Tab.0.left" timestamp="1608409559392">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="294" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608337769390" />
-    <state width="1309" height="294" key="GridCell.Tab.0.right" timestamp="1608337769390">
+    <state width="1309" height="294" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608409559392" />
+    <state width="1309" height="294" key="GridCell.Tab.0.right" timestamp="1608409559392">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="294" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608337769390" />
+    <state width="1309" height="294" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608409559392" />
     <state x="158" y="1145" width="981" height="707" key="SettingsEditor" timestamp="1607852454543">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -465,10 +487,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="439" y="1172" key="VCS.ChangeListViewerDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608336259315" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608401012027">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608401392507">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608401012027" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608401392507" />
     <state x="492" y="1234" key="chooseDestDirectoryDialog" timestamp="1607967141879">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>

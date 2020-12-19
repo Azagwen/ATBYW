@@ -4,7 +4,9 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
@@ -30,17 +32,15 @@ public class AtbywBlocks {
         return FabricBlockSettings.of(Material.WOOD, copiedMatColor.getDefaultMaterialColor()).breakByTool(FabricToolTags.AXES).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD);
     }
 
-    //Full Blocks
-    public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.OAK_PLANKS));
-    public static final Block SPRUCE_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.SPRUCE_PLANKS));
-    public static final Block BIRCH_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.BIRCH_PLANKS));
-    public static final Block JUNGLE_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.JUNGLE_PLANKS));
-    public static final Block ACACIA_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.ACACIA_PLANKS));
-    public static final Block DARK_OAK_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.DARK_OAK_PLANKS));
-    public static final Block CRIMSON_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.CRIMSON_PLANKS));
-    public static final Block WARPED_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.WARPED_PLANKS));
-    public static final Block IRON_FENCE_DOOR = new FenceDoorBlock(FabricBlockSettings.of(Material.METAL, Blocks.IRON_BLOCK.getDefaultMaterialColor()).requiresTool().breakByTool(FabricToolTags.PICKAXES).strength(5.0F).sounds(BlockSoundGroup.METAL));
+    private static Block MakeStairs(Block copiedBlock, boolean requiresTool, Tag<Item> tag) {
+        Block toolRequired = new StairsBlockSubClass(copiedBlock.getDefaultState(), FabricBlockSettings.copyOf(copiedBlock).requiresTool().breakByTool(tag));
+        Block toolNotRequired = new StairsBlockSubClass(copiedBlock.getDefaultState(), FabricBlockSettings.copyOf(copiedBlock).breakByTool(tag));
 
+        return requiresTool ? toolRequired : toolNotRequired;
+    }
+
+
+    //Full Blocks
     public static final Block SPRUCE_BOOKSHELF = new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
     public static final Block BIRCH_BOOKSHELF = new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
     public static final Block JUNGLE_BOOKSHELF = new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
@@ -58,15 +58,6 @@ public class AtbywBlocks {
     public static final Block CRIMSON_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block WARPED_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
 
-    public static final Block SPRUCE_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
-    public static final Block BIRCH_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
-    public static final Block JUNGLE_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
-    public static final Block ACACIA_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
-    public static final Block DARK_OAK_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
-    public static final Block CRIMSON_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
-    public static final Block WARPED_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
-    public static final Block BAMBOO_LADDER = new BambooLadderBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO));
-
     public static final Block BASALT_BRICKS = new Block(MakeBasalt());
     public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
     public static final Block TERRACOTTA_BRICKS = new Block(MakeTerracotta());
@@ -81,6 +72,44 @@ public class AtbywBlocks {
     public static final Block[] TERRACOTTA_BRICKS_STAIRS_COLORS = MakeMultiStairs(16, TERRACOTTA_BRICKS_COLORS);
     public static final Block[] TERRACOTTA_BRICKS_SLAB_COLORS = MakeMultiSlab(16, TERRACOTTA_BRICKS_COLORS);
     public static final Block[] TERRACOTTA_BRICKS_WALL_COLORS = MakeMultiWall(16, TERRACOTTA_BRICKS_COLORS);
+
+    //Other Blocks
+    public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.OAK_PLANKS));
+    public static final Block SPRUCE_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.SPRUCE_PLANKS));
+    public static final Block BIRCH_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.BIRCH_PLANKS));
+    public static final Block JUNGLE_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.JUNGLE_PLANKS));
+    public static final Block ACACIA_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.ACACIA_PLANKS));
+    public static final Block DARK_OAK_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.DARK_OAK_PLANKS));
+    public static final Block CRIMSON_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.CRIMSON_PLANKS));
+    public static final Block WARPED_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.WARPED_PLANKS));
+    public static final Block IRON_FENCE_DOOR = new FenceDoorBlock(FabricBlockSettings.copyOf(Blocks.IRON_DOOR).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block SPRUCE_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block BIRCH_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block JUNGLE_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block ACACIA_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block DARK_OAK_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block CRIMSON_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block WARPED_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
+    public static final Block BAMBOO_LADDER = new BambooLadderBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO));
+
+    public static final Block DIRT_STAIRS = MakeStairs(Blocks.DIRT, false, FabricToolTags.SHOVELS);
+    public static final Block COARSE_DIRT_STAIRS = MakeStairs(Blocks.COARSE_DIRT, false, FabricToolTags.SHOVELS);
+    public static final Block GRASS_BLOCK_STAIRS = MakeStairs(Blocks.GRASS_BLOCK, false, FabricToolTags.SHOVELS);
+    public static final Block GRASS_PATH_STAIRS = MakeStairs(Blocks.GRASS_PATH, false, FabricToolTags.SHOVELS);
+    public static final Block MYCELIUM_STAIRS = MakeStairs(Blocks.MYCELIUM, false, FabricToolTags.SHOVELS);
+    public static final Block PODZOL_STAIRS = MakeStairs(Blocks.PODZOL, false, FabricToolTags.SHOVELS);
+    public static final Block CRIMSON_NYLIUM_STAIRS = MakeStairs(Blocks.CRIMSON_NYLIUM, true, FabricToolTags.PICKAXES);
+    public static final Block WARPED_NYLIUM_STAIRS = MakeStairs(Blocks.WARPED_NYLIUM, true, FabricToolTags.PICKAXES);
+
+    public static final Block DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block COARSE_DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.COARSE_DIRT).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block GRASS_BLOCK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block GRASS_PATH_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.GRASS_PATH).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block MYCELIUM_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.MYCELIUM).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block PODZOL_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PODZOL).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block CRIMSON_NYLIUM_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block WARPED_NYLIUM_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
