@@ -22,7 +22,7 @@ public class BambooLadderBlock extends HorizontalFacingBlock implements Waterlog
     protected static final VoxelShape NORTH_SHAPE;
 
     public BambooLadderBlock(Settings settings) {
-        super(settings);
+        super(settings.nonOpaque());
     }
 
     public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
