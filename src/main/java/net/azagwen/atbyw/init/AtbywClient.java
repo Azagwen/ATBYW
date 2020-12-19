@@ -42,5 +42,6 @@ public class AtbywClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(DARK_OAK_LADDER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(CRIMSON_LADDER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(WARPED_LADDER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BAMBOO_LADDER, RenderLayer.getCutout());
     }
 }
