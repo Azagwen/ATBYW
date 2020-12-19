@@ -8,11 +8,11 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:spruce_planks"
+      "item": "minecraft:acacia_planks"
     }
   },
   "result": {
-    "item": "atbyw:spruce_fence_door",
+    "item": "atbyw:iron_fence_door",
     "count": 3
   }
 }
