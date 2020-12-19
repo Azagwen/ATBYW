@@ -1,6 +1,5 @@
 package net.azagwen.atbyw.mixin;
 
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.EnchantingTableBlock;
@@ -21,8 +20,7 @@ public class EnchantingTableBlockMixin {
     public boolean redirectIsOf(BlockState state, Block block) {
 //        boolean charmsValue = EnchantmentsHelper.canBlockPowerEnchantingTable(state) || state.isIn(BOOKSHELVES);
         boolean atbywValue = state.isIn(BOOKSHELVES);
-//
-//        return !(FabricLoader.getInstance().isModLoaded("charm")) ? atbywValue : charmsValue;
+
         return atbywValue;
     }
 }
