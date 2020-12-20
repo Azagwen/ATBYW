@@ -46,7 +46,7 @@ public class SpreadableSlabBlock extends SlabBlockSubClass {
     private static boolean canSurvive(BlockState state, WorldView worldView, BlockPos pos) {
         BlockPos blockPos = pos.up();
         BlockState blockState = worldView.getBlockState(blockPos);
-        if ((blockState.getFluidState().getLevel() == 8) || state.isIn(AtbywTags.TRAMPLES_GRASS_BLOCKS)) {
+        if ((blockState.getFluidState().getLevel() == 8) || blockState.isIn(AtbywTags.TRAMPLES_GRASS_BLOCKS) || blockState.getBlock() instanceof SpreadableSlabBlock) {
             return false;
         } else {
             int i = ChunkLightProvider.getRealisticOpacity(worldView, state, pos, blockState, blockPos, Direction.UP, blockState.getOpacity(worldView, blockPos));
@@ -58,6 +58,19 @@ public class SpreadableSlabBlock extends SlabBlockSubClass {
         BlockPos blockPos = pos.up();
         return canSurvive(state, worldView, pos) && !worldView.getFluidState(blockPos).isIn(FluidTags.WATER);
     }
+
+    private static Block[] Grass_Blocks = {
+            Blocks.GRASS_BLOCK,
+            Blocks.MYCELIUM,
+            Blocks.CRIMSON_NYLIUM,
+            Blocks.WARPED_NYLIUM
+    };
+    private static Block[] Dirt_Blocks = {
+            AtbywBlocks.STERILE_DIRT,
+            AtbywBlocks.STERILE_DIRT,
+            AtbywBlocks.STERILE_NETHERRACK,
+            AtbywBlocks.STERILE_NETHERRACK
+    };
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
@@ -87,6 +100,12 @@ public class SpreadableSlabBlock extends SlabBlockSubClass {
                         world.setBlockState(blockPos, this.fullBlockEquivalent.getDefaultState());
                     }
                 }
+            }
+        }
+
+        for (int i = 0; i < Grass_Blocks.length; i++) {
+            if (world.getBlockState(pos.down()).getBlock() == Grass_Blocks[i]) {
+                world.setBlockState(pos.down(), Dirt_Blocks[i].getDefaultState());
             }
         }
     }

@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:grass_block"
+    },
+    "result": "atbyw:grass_block_stairs",
+    "count": 1
+}

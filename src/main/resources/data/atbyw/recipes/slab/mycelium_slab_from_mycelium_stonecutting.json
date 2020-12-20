@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:mycelium"
+    },
+    "result": "atbyw:mycelium_slab",
+    "count": 2
+}

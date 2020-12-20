@@ -22,7 +22,7 @@ public class NetherrackStairsBlock extends StairsBlockSubClass implements Fertil
 
     @Override
     public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient) {
-        if (!world.getBlockState(pos.up()).isTranslucent(world, pos) || state.isIn(AtbywTags.TRAMPLES_GRASS_BLOCKS)) {
+        if (!world.getBlockState(pos.up()).isTranslucent(world, pos) || state.isIn(AtbywTags.TRAMPLES_GRASS_BLOCKS) || state.isIn(AtbywTags.TRAMPLES_NYLIUM_BLOCKS)) {
             return false;
         } else {
             Iterator iterator = BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1)).iterator();

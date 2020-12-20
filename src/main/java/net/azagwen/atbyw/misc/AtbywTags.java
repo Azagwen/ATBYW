@@ -11,6 +11,7 @@ public class AtbywTags {
     // Block Tags
     public static final Tag<Block> BOOKSHELVES = registerBlockTag("bookshelves");
     public static final Tag<Block> TRAMPLES_GRASS_BLOCKS = registerBlockTag("tramples_grass_blocks");
+    public static final Tag<Block> TRAMPLES_NYLIUM_BLOCKS = registerBlockTag("tramples_nylium_blocks");
 
     // Item Tags
     public static final Tag<Item> BOOKSHELVES_I = registerItemTag("bookshelves");

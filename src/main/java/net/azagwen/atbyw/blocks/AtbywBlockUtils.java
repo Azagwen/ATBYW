@@ -1,15 +1,12 @@
 package net.azagwen.atbyw.blocks;
 
-import net.azagwen.atbyw.blocks.StairsBlockSubClass;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.WallBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
+import org.jetbrains.annotations.Nullable;
 
 import static net.azagwen.atbyw.init.AtbywMain.*;
 
@@ -37,38 +34,33 @@ public class AtbywBlockUtils {
             Blocks.BLACK_TERRACOTTA
     };
 
+    public static final Block[] CONCRETE_COLORS = {
+            Blocks.WHITE_CONCRETE,
+            Blocks.ORANGE_CONCRETE,
+            Blocks.MAGENTA_CONCRETE,
+            Blocks.LIGHT_BLUE_CONCRETE,
+            Blocks.YELLOW_CONCRETE,
+            Blocks.LIME_CONCRETE,
+            Blocks.PINK_CONCRETE,
+            Blocks.GRAY_CONCRETE,
+            Blocks.LIGHT_GRAY_CONCRETE,
+            Blocks.CYAN_CONCRETE,
+            Blocks.PURPLE_CONCRETE,
+            Blocks.BLUE_CONCRETE,
+            Blocks.BROWN_CONCRETE,
+            Blocks.GREEN_CONCRETE,
+            Blocks.RED_CONCRETE,
+            Blocks.BLACK_CONCRETE
+    };
+
+
     /////////////////////////////////////////////////
     //              DECLARATION UTILS              //
     /////////////////////////////////////////////////
-    public static Block[] MakeMultiBlock(int amount, FabricBlockSettings settings) {
-        Block[] block = new Block[amount];
-        for (int i = 0; i != amount; i++) {
-            block[i] = new Block(settings);
-        }
-
-        return block;
-    }
-    public static StairsBlockSubClass[] MakeMultiStairs(int amount, Block[] type) {
-        StairsBlockSubClass[] block = new StairsBlockSubClass[amount];
-        for (int i = 0; i != amount; i++) {
-            block[i] = new StairsBlockSubClass(type[i].getDefaultState(), FabricBlockSettings.copy(type[i]));
-        }
-
-        return block;
-    }
-    public static SlabBlock[] MakeMultiSlab(int amount, Block[] type) {
-        SlabBlock[] block = new SlabBlock[amount];
-        for (int i = 0; i != amount; i++) {
-            block[i] = new SlabBlock(FabricBlockSettings.copy(type[i]));
-        }
-
-        return block;
-    }
-    public static WallBlock[] MakeMultiWall(int amount, Block[] type) {
-        WallBlock[] block = new WallBlock[amount];
-        for (int i = 0; i != amount; i++) {
-            block[i] = new WallBlock(FabricBlockSettings.copy(type[i]));
-        }
+    public static <T extends Block> Block[] DeclareMultipleBlocks(int amount, Material material, MaterialColor materialcolor) {
+        T[] block = (T[]) new Block[amount];
+        for (int i = 0; i != amount; i++)
+            block[i] = (T) new Block(FabricBlockSettings.of(material, materialcolor));
 
         return block;
     }
@@ -84,7 +76,7 @@ public class AtbywBlockUtils {
         Registry.register(Registry.ITEM, newID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
     }
 
-    public static void registerMultiBlock(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
+    public static void registerBlocks(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
         Item.Settings normalSettings = new Item.Settings().group(group);
         Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
 

@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 
 import static net.azagwen.atbyw.blocks.AtbywBlockUtils.*;
@@ -24,10 +25,6 @@ public class AtbywBlocks {
         return FabricBlockSettings.of(Material.STONE, MaterialColor.BLACK).requiresTool().breakByTool(FabricToolTags.PICKAXES).strength(1.25F, 4.2F).sounds(BlockSoundGroup.BASALT);
     }
 
-    private static FabricBlockSettings MakeTerracotta() {
-        return FabricBlockSettings.of(Material.STONE, MaterialColor.ORANGE).requiresTool().breakByTool(FabricToolTags.PICKAXES).strength(1.25F, 4.2F);
-    }
-
     private static FabricBlockSettings MakeWoodenFenceDoor(Block copiedMatColor) {
         return FabricBlockSettings.of(Material.WOOD, copiedMatColor.getDefaultMaterialColor()).breakByTool(FabricToolTags.AXES).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD);
     }
@@ -39,6 +36,12 @@ public class AtbywBlocks {
         return requiresTool ? toolRequired : toolNotRequired;
     }
 
+    public static final Block[] TESTBLOCK = AtbywBlockUtils.<SlabBlockSubClass>DeclareMultipleBlocks(3, Material.BAMBOO, MaterialColor.BROWN);
+
+    //Technical Blocks
+    public static final Block STERILE_DIRT = new SterileDirtBlock(FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
+    public static final Block STERILE_NETHERRACK = new SterileNetherrackBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).ticksRandomly());
+    public static final Block TICKING_DIRT = new Block(FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
 
     //Full Blocks
     public static final Block SPRUCE_BOOKSHELF = new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
@@ -58,20 +61,134 @@ public class AtbywBlocks {
     public static final Block CRIMSON_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block WARPED_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
 
+    public static final Block TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.TERRACOTTA.getDefaultState(), FabricBlockSettings.copy(Blocks.TERRACOTTA));
+    public static final Block WHITE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.WHITE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ORANGE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.ORANGE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MAGENTA_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.MAGENTA_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_BLUE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_BLUE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block YELLOW_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.YELLOW_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIME_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.LIME_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PINK_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.PINK_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRAY_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.GRAY_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_GRAY_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_GRAY_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CYAN_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.CYAN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPLE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.PURPLE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLUE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.BLUE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BROWN_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.BROWN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GREEN_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.GREEN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.RED_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACK_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.BLACK_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block WHITE_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ORANGE_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MAGENTA_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_BLUE_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block YELLOW_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIME_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PINK_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRAY_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_GRAY_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CYAN_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPLE_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLUE_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BROWN_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GREEN_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACK_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block WHITE_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ORANGE_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MAGENTA_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_BLUE_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block YELLOW_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIME_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PINK_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRAY_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_GRAY_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CYAN_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPLE_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLUE_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BROWN_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GREEN_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACK_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.TERRACOTTA.getDefaultState(), FabricBlockSettings.copy(Blocks.TERRACOTTA));
+    public static final Block WHITE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.WHITE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ORANGE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.ORANGE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MAGENTA_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.MAGENTA_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_BLUE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_BLUE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block YELLOW_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.YELLOW_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIME_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.LIME_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PINK_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.PINK_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRAY_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.GRAY_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_GRAY_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_GRAY_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CYAN_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.CYAN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPLE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.PURPLE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLUE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BLUE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BROWN_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BROWN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GREEN_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.GREEN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.RED_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACK_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BLACK_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block WHITE_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ORANGE_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MAGENTA_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_BLUE_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block YELLOW_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIME_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PINK_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRAY_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_GRAY_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CYAN_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPLE_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLUE_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BROWN_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GREEN_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACK_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block WHITE_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ORANGE_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MAGENTA_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_BLUE_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block YELLOW_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIME_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PINK_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRAY_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_GRAY_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CYAN_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPLE_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLUE_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BROWN_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GREEN_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACK_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block WHITE_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ORANGE_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.ORANGE_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MAGENTA_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.MAGENTA_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_BLUE_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block YELLOW_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.YELLOW_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIME_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.LIME_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PINK_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PINK_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRAY_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.GRAY_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_GRAY_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CYAN_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.CYAN_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPLE_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPLE_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLUE_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BROWN_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.BROWN_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GREEN_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.GREEN_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.RED_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACK_CINDER_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+
     public static final Block BASALT_BRICKS = new Block(MakeBasalt());
     public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
-    public static final Block TERRACOTTA_BRICKS = new Block(MakeTerracotta());
-    public static final Block TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.TERRACOTTA.getDefaultState(), FabricBlockSettings.copy(Blocks.TERRACOTTA));
-    public static final Block TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.TERRACOTTA));
-    public static final Block TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(TERRACOTTA_BRICKS.getDefaultState(), FabricBlockSettings.copy(TERRACOTTA_BRICKS));
-    public static final Block TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(TERRACOTTA_BRICKS));
-    public static final Block TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(TERRACOTTA_BRICKS));
-    public static final Block[] TERRACOTTA_BRICKS_COLORS = MakeMultiBlock(16, MakeTerracotta());
-    public static final Block[] TERRACOTTA_STAIRS_COLORS = MakeMultiStairs(16, TERRACOTTA_COLORS);
-    public static final Block[] TERRACOTTA_SLAB_COLORS = MakeMultiSlab(16, TERRACOTTA_COLORS);
-    public static final Block[] TERRACOTTA_BRICKS_STAIRS_COLORS = MakeMultiStairs(16, TERRACOTTA_BRICKS_COLORS);
-    public static final Block[] TERRACOTTA_BRICKS_SLAB_COLORS = MakeMultiSlab(16, TERRACOTTA_BRICKS_COLORS);
-    public static final Block[] TERRACOTTA_BRICKS_WALL_COLORS = MakeMultiWall(16, TERRACOTTA_BRICKS_COLORS);
 
     //Other Blocks
     public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.OAK_PLANKS));
@@ -103,7 +220,7 @@ public class AtbywBlocks {
     public static final Block CRIMSON_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.CRIMSON_NYLIUM, FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block WARPED_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.WARPED_NYLIUM, FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block DIRT_SLAB = new DirtSlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT).breakByTool(FabricToolTags.SHOVELS));
     public static final Block COARSE_DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.COARSE_DIRT).breakByTool(FabricToolTags.SHOVELS));
     public static final Block PODZOL_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PODZOL).breakByTool(FabricToolTags.SHOVELS));
     public static final Block GRASS_BLOCK_SLAB = new SpreadableSlabBlock(Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).breakByTool(FabricToolTags.SHOVELS).ticksRandomly());
@@ -115,8 +232,12 @@ public class AtbywBlocks {
 
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
-
     public static void init() {
+        Registry.register(Registry.BLOCK, newID("sterile_dirt"), STERILE_DIRT);
+        Registry.register(Registry.BLOCK, newID("sterile_netherrack"), STERILE_NETHERRACK);
+
+//        registerBlocks(false, ATBYW_BLOCKS, "grass_block_stairs", new String[] {"test111", "test222", "test333"}, TESTBLOCK);
+
         registerBlock(false, ATBYW_BLOCKS, "grass_block_stairs", GRASS_BLOCK_STAIRS);
         registerBlock(false, ATBYW_BLOCKS, "mycelium_stairs", MYCELIUM_STAIRS);
         registerBlock(false, ATBYW_BLOCKS, "podzol_stairs", PODZOL_STAIRS);
@@ -174,22 +295,125 @@ public class AtbywBlocks {
         registerBlock(false, ATBYW_BLOCKS, "bamboo_ladder", BAMBOO_LADDER);
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks", TERRACOTTA_BRICKS);
-        registerMultiBlock(false, ATBYW_BLOCKS, "terracotta_bricks", colorNames, TERRACOTTA_BRICKS_COLORS);
+        registerBlocks(false, ATBYW_BLOCKS, "terracotta_bricks", colorNames, new Block[] {
+                WHITE_TERRACOTTA_BRICKS,
+                ORANGE_TERRACOTTA_BRICKS,
+                MAGENTA_TERRACOTTA_BRICKS,
+                LIGHT_BLUE_TERRACOTTA_BRICKS,
+                YELLOW_TERRACOTTA_BRICKS,
+                LIME_TERRACOTTA_BRICKS,
+                PINK_TERRACOTTA_BRICKS,
+                GRAY_TERRACOTTA_BRICKS,
+                LIGHT_GRAY_TERRACOTTA_BRICKS,
+                CYAN_TERRACOTTA_BRICKS,
+                PURPLE_TERRACOTTA_BRICKS,
+                BLUE_TERRACOTTA_BRICKS,
+                BROWN_TERRACOTTA_BRICKS,
+                GREEN_TERRACOTTA_BRICKS,
+                RED_TERRACOTTA_BRICKS,
+                BLACK_TERRACOTTA_BRICKS
+        });
+
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_stairs", TERRACOTTA_STAIRS);
-        registerMultiBlock(false, ATBYW_BLOCKS, "terracotta_stairs", colorNames, TERRACOTTA_STAIRS_COLORS);
+        registerBlocks(false, ATBYW_BLOCKS, "terracotta_stairs", colorNames, new Block[] {
+                WHITE_TERRACOTTA_STAIRS,
+                ORANGE_TERRACOTTA_STAIRS,
+                MAGENTA_TERRACOTTA_STAIRS,
+                LIGHT_BLUE_TERRACOTTA_STAIRS,
+                YELLOW_TERRACOTTA_STAIRS,
+                LIME_TERRACOTTA_STAIRS,
+                PINK_TERRACOTTA_STAIRS,
+                GRAY_TERRACOTTA_STAIRS,
+                LIGHT_GRAY_TERRACOTTA_STAIRS,
+                CYAN_TERRACOTTA_STAIRS,
+                PURPLE_TERRACOTTA_STAIRS,
+                BLUE_TERRACOTTA_STAIRS,
+                BROWN_TERRACOTTA_STAIRS,
+                GREEN_TERRACOTTA_STAIRS,
+                RED_TERRACOTTA_STAIRS,
+                BLACK_TERRACOTTA_STAIRS
+        });
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_slab", TERRACOTTA_SLAB);
-        registerMultiBlock(false, ATBYW_BLOCKS, "terracotta_slab", colorNames, TERRACOTTA_SLAB_COLORS);
+        registerBlocks(false, ATBYW_BLOCKS, "terracotta_slab", colorNames, new Block[] {
+                WHITE_TERRACOTTA_SLAB,
+                ORANGE_TERRACOTTA_SLAB,
+                MAGENTA_TERRACOTTA_SLAB,
+                LIGHT_BLUE_TERRACOTTA_SLAB,
+                YELLOW_TERRACOTTA_SLAB,
+                LIME_TERRACOTTA_SLAB,
+                PINK_TERRACOTTA_SLAB,
+                GRAY_TERRACOTTA_SLAB,
+                LIGHT_GRAY_TERRACOTTA_SLAB,
+                CYAN_TERRACOTTA_SLAB,
+                PURPLE_TERRACOTTA_SLAB,
+                BLUE_TERRACOTTA_SLAB,
+                BROWN_TERRACOTTA_SLAB,
+                GREEN_TERRACOTTA_SLAB,
+                RED_TERRACOTTA_SLAB,
+                BLACK_TERRACOTTA_SLAB
+        });
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks_stairs", TERRACOTTA_BRICKS_STAIRS);
-        registerMultiBlock(false, ATBYW_BLOCKS, "terracotta_bricks_stairs", colorNames, TERRACOTTA_BRICKS_STAIRS_COLORS);
+        registerBlocks(false, ATBYW_BLOCKS, "terracotta_bricks_stairs", colorNames, new Block[] {
+                WHITE_TERRACOTTA_BRICKS_STAIRS,
+                ORANGE_TERRACOTTA_BRICKS_STAIRS,
+                MAGENTA_TERRACOTTA_BRICKS_STAIRS,
+                LIGHT_BLUE_TERRACOTTA_BRICKS_STAIRS,
+                YELLOW_TERRACOTTA_BRICKS_STAIRS,
+                LIME_TERRACOTTA_BRICKS_STAIRS,
+                PINK_TERRACOTTA_BRICKS_STAIRS,
+                GRAY_TERRACOTTA_BRICKS_STAIRS,
+                LIGHT_GRAY_TERRACOTTA_BRICKS_STAIRS,
+                CYAN_TERRACOTTA_BRICKS_STAIRS,
+                PURPLE_TERRACOTTA_BRICKS_STAIRS,
+                BLUE_TERRACOTTA_BRICKS_STAIRS,
+                BROWN_TERRACOTTA_BRICKS_STAIRS,
+                GREEN_TERRACOTTA_BRICKS_STAIRS,
+                RED_TERRACOTTA_BRICKS_STAIRS,
+                BLACK_TERRACOTTA_BRICKS_STAIRS
+        });
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks_slab", TERRACOTTA_BRICKS_SLAB);
-        registerMultiBlock(false, ATBYW_BLOCKS, "terracotta_bricks_slab", colorNames, TERRACOTTA_BRICKS_SLAB_COLORS);
+        registerBlocks(false, ATBYW_BLOCKS, "terracotta_bricks_slab", colorNames, new Block[] {
+                WHITE_TERRACOTTA_BRICKS_SLAB,
+                ORANGE_TERRACOTTA_BRICKS_SLAB,
+                MAGENTA_TERRACOTTA_BRICKS_SLAB,
+                LIGHT_BLUE_TERRACOTTA_BRICKS_SLAB,
+                YELLOW_TERRACOTTA_BRICKS_SLAB,
+                LIME_TERRACOTTA_BRICKS_SLAB,
+                PINK_TERRACOTTA_BRICKS_SLAB,
+                GRAY_TERRACOTTA_BRICKS_SLAB,
+                LIGHT_GRAY_TERRACOTTA_BRICKS_SLAB,
+                CYAN_TERRACOTTA_BRICKS_SLAB,
+                PURPLE_TERRACOTTA_BRICKS_SLAB,
+                BLUE_TERRACOTTA_BRICKS_SLAB,
+                BROWN_TERRACOTTA_BRICKS_SLAB,
+                GREEN_TERRACOTTA_BRICKS_SLAB,
+                RED_TERRACOTTA_BRICKS_SLAB,
+                BLACK_TERRACOTTA_BRICKS_SLAB
+        });
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks_wall", TERRACOTTA_BRICKS_WALL);
-        registerMultiBlock(false, ATBYW_BLOCKS, "terracotta_bricks_wall", colorNames, TERRACOTTA_BRICKS_WALL_COLORS);
+        registerBlocks(false, ATBYW_BLOCKS, "terracotta_bricks_wall", colorNames, new Block[] {
+                WHITE_TERRACOTTA_BRICKS_WALL,
+                ORANGE_TERRACOTTA_BRICKS_WALL,
+                MAGENTA_TERRACOTTA_BRICKS_WALL,
+                LIGHT_BLUE_TERRACOTTA_BRICKS_WALL,
+                YELLOW_TERRACOTTA_BRICKS_WALL,
+                LIME_TERRACOTTA_BRICKS_WALL,
+                PINK_TERRACOTTA_BRICKS_WALL,
+                GRAY_TERRACOTTA_BRICKS_WALL,
+                LIGHT_GRAY_TERRACOTTA_BRICKS_WALL,
+                CYAN_TERRACOTTA_BRICKS_WALL,
+                PURPLE_TERRACOTTA_BRICKS_WALL,
+                BLUE_TERRACOTTA_BRICKS_WALL,
+                BROWN_TERRACOTTA_BRICKS_WALL,
+                GREEN_TERRACOTTA_BRICKS_WALL,
+                RED_TERRACOTTA_BRICKS_WALL,
+                BLACK_TERRACOTTA_BRICKS_WALL
+        });
 
         registerBlock(false, ATBYW_BLOCKS, "basalt_bricks", BASALT_BRICKS);
         registerBlock(false, ATBYW_BLOCKS, "basalt_pillar", BASALT_PILLAR);

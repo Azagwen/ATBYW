@@ -11,10 +11,10 @@ import net.minecraft.world.chunk.light.ChunkLightProvider;
 
 import java.util.Random;
 
-public class DirtStairsBlock extends StairsBlockSubClass {
+public class DirtSlabBlock extends SlabBlockSubClass {
 
-    public DirtStairsBlock(Settings settings) {
-        super(AtbywBlocks.TICKING_DIRT.getDefaultState(), settings);
+    public DirtSlabBlock(Settings settings) {
+        super(settings);
     }
 
     private static boolean canSurvive(BlockState state, WorldView worldView, BlockPos pos) {
@@ -42,7 +42,7 @@ public class DirtStairsBlock extends StairsBlockSubClass {
                 BlockState newState = world.getBlockState(pos);
 
                 if (world.getBlockState(blockPos).isOf(Blocks.GRASS_BLOCK) && canSpread(state, world, pos)) {
-                    world.setBlockState(pos, copyStates(AtbywBlocks.GRASS_BLOCK_STAIRS.getDefaultState(), newState));
+                    world.setBlockState(pos, copyStates(AtbywBlocks.GRASS_BLOCK_SLAB.getDefaultState(), newState));
                 }
             }
         }
