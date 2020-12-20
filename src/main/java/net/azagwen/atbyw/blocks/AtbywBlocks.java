@@ -258,14 +258,16 @@ public class AtbywBlocks {
         registerBlock(false, ATBYW_BLOCKS, "warped_nylium_slab", WARPED_NYLIUM_SLAB);
         registerBlock(false, ATBYW_BLOCKS, "netherrack_slab", NETHERRACK_SLAB);
 
-        registerBlock(false, ATBYW_REDSTONE, "oak_fence_door", OAK_FENCE_DOOR);
-        registerBlock(false, ATBYW_REDSTONE, "spruce_fence_door", SPRUCE_FENCE_DOOR);
-        registerBlock(false, ATBYW_REDSTONE, "birch_fence_door", BIRCH_FENCE_DOOR);
-        registerBlock(false, ATBYW_REDSTONE, "jungle_fence_door", JUNGLE_FENCE_DOOR);
-        registerBlock(false, ATBYW_REDSTONE, "acacia_fence_door", ACACIA_FENCE_DOOR);
-        registerBlock(false, ATBYW_REDSTONE, "dark_oak_fence_door", DARK_OAK_FENCE_DOOR);
-        registerBlock(false, ATBYW_REDSTONE, "crimson_fence_door", CRIMSON_FENCE_DOOR);
-        registerBlock(false, ATBYW_REDSTONE, "warped_fence_door", WARPED_FENCE_DOOR);
+        registerBlocks(false, ATBYW_REDSTONE, "fence_door", woodNames, new Block[] {
+                OAK_FENCE_DOOR,
+                SPRUCE_FENCE_DOOR,
+                BIRCH_FENCE_DOOR,
+                JUNGLE_FENCE_DOOR,
+                ACACIA_FENCE_DOOR,
+                DARK_OAK_FENCE_DOOR,
+                CRIMSON_FENCE_DOOR,
+                WARPED_FENCE_DOOR
+        });
         registerBlock(false, ATBYW_REDSTONE, "iron_fence_door", IRON_FENCE_DOOR);
 
         registerBlock(false, ATBYW_BLOCKS, "spruce_bookshelf", SPRUCE_BOOKSHELF);
@@ -276,14 +278,16 @@ public class AtbywBlocks {
         registerBlock(false, ATBYW_BLOCKS, "crimson_bookshelf", CRIMSON_BOOKSHELF);
         registerBlock(false, ATBYW_BLOCKS, "warped_bookshelf", WARPED_BOOKSHELF);
 
-        registerBlock(false, ATBYW_REDSTONE, "oak_bookshelf_toggle", OAK_BOOKSHELF_TOGGLE);
-        registerBlock(false, ATBYW_REDSTONE, "spruce_bookshelf_toggle", SPRUCE_BOOKSHELF_TOGGLE);
-        registerBlock(false, ATBYW_REDSTONE, "birch_bookshelf_toggle", BIRCH_BOOKSHELF_TOGGLE);
-        registerBlock(false, ATBYW_REDSTONE, "jungle_bookshelf_toggle", JUNGLE_BOOKSHELF_TOGGLE);
-        registerBlock(false, ATBYW_REDSTONE, "acacia_bookshelf_toggle", ACACIA_BOOKSHELF_TOGGLE);
-        registerBlock(false, ATBYW_REDSTONE, "dark_oak_bookshelf_toggle", DARK_OAK_BOOKSHELF_TOGGLE);
-        registerBlock(false, ATBYW_REDSTONE, "crimson_bookshelf_toggle", CRIMSON_BOOKSHELF_TOGGLE);
-        registerBlock(false, ATBYW_REDSTONE, "warped_bookshelf_toggle", WARPED_BOOKSHELF_TOGGLE);
+        registerBlocks(false, ATBYW_REDSTONE, "bookshelf_toggle", woodNames, new Block[] {
+                OAK_BOOKSHELF_TOGGLE,
+                SPRUCE_BOOKSHELF_TOGGLE,
+                BIRCH_BOOKSHELF_TOGGLE,
+                JUNGLE_BOOKSHELF_TOGGLE,
+                ACACIA_BOOKSHELF_TOGGLE,
+                DARK_OAK_BOOKSHELF_TOGGLE,
+                CRIMSON_BOOKSHELF_TOGGLE,
+                WARPED_BOOKSHELF_TOGGLE
+        });
 
         registerBlock(false, ATBYW_BLOCKS, "spruce_ladder", SPRUCE_LADDER);
         registerBlock(false, ATBYW_BLOCKS, "birch_ladder", BIRCH_LADDER);
