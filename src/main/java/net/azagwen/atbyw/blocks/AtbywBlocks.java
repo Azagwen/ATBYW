@@ -15,8 +15,8 @@ import static net.azagwen.atbyw.init.AtbywMain.*;
 
 public class AtbywBlocks {
 
-    public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
+    public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
     public static boolean always(BlockState state, BlockView world, BlockPos pos) { return true; }
     public static boolean never(BlockState state, BlockView world, BlockPos pos) { return false; }
 
@@ -93,27 +93,50 @@ public class AtbywBlocks {
     public static final Block WARPED_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
     public static final Block BAMBOO_LADDER = new BambooLadderBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO));
 
-    public static final Block DIRT_STAIRS = MakeStairs(Blocks.DIRT, false, FabricToolTags.SHOVELS);
+    public static final Block DIRT_STAIRS = new DirtStairsBlock(FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
     public static final Block COARSE_DIRT_STAIRS = MakeStairs(Blocks.COARSE_DIRT, false, FabricToolTags.SHOVELS);
-    public static final Block GRASS_BLOCK_STAIRS = MakeStairs(Blocks.GRASS_BLOCK, false, FabricToolTags.SHOVELS);
-    public static final Block GRASS_PATH_STAIRS = MakeStairs(Blocks.GRASS_PATH, false, FabricToolTags.SHOVELS);
-    public static final Block MYCELIUM_STAIRS = MakeStairs(Blocks.MYCELIUM, false, FabricToolTags.SHOVELS);
     public static final Block PODZOL_STAIRS = MakeStairs(Blocks.PODZOL, false, FabricToolTags.SHOVELS);
-    public static final Block CRIMSON_NYLIUM_STAIRS = MakeStairs(Blocks.CRIMSON_NYLIUM, true, FabricToolTags.PICKAXES);
-    public static final Block WARPED_NYLIUM_STAIRS = MakeStairs(Blocks.WARPED_NYLIUM, true, FabricToolTags.PICKAXES);
+    public static final Block GRASS_BLOCK_STAIRS = new SpreadableStairsBlock(Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).breakByTool(FabricToolTags.SHOVELS).ticksRandomly());
+    public static final Block GRASS_PATH_STAIRS = new GrassPathStairsBlock(Blocks.GRASS_PATH, FabricBlockSettings.copyOf(Blocks.GRASS_PATH).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block MYCELIUM_STAIRS = new SpreadableStairsBlock(Blocks.MYCELIUM, FabricBlockSettings.copyOf(Blocks.MYCELIUM).breakByTool(FabricToolTags.SHOVELS).ticksRandomly());
+    public static final Block NETHERRACK_STAIRS = new NetherrackStairsBlock(Blocks.NETHERRACK, FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CRIMSON_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.CRIMSON_NYLIUM, FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block WARPED_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.WARPED_NYLIUM, FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static final Block DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT).breakByTool(FabricToolTags.SHOVELS));
     public static final Block COARSE_DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.COARSE_DIRT).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block GRASS_BLOCK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block GRASS_PATH_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.GRASS_PATH).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block MYCELIUM_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.MYCELIUM).breakByTool(FabricToolTags.SHOVELS));
     public static final Block PODZOL_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PODZOL).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block CRIMSON_NYLIUM_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block WARPED_NYLIUM_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRASS_BLOCK_SLAB = new SpreadableSlabBlock(Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).breakByTool(FabricToolTags.SHOVELS).ticksRandomly());
+    public static final Block GRASS_PATH_SLAB = new GrassPathSlabBlock(FabricBlockSettings.copyOf(Blocks.GRASS_PATH).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block MYCELIUM_SLAB = new SpreadableSlabBlock(Blocks.MYCELIUM, FabricBlockSettings.copyOf(Blocks.MYCELIUM).breakByTool(FabricToolTags.SHOVELS).ticksRandomly());
+    public static final Block NETHERRACK_SLAB = new NetherrackSlabBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CRIMSON_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block WARPED_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
+
     public static void init() {
+        registerBlock(false, ATBYW_BLOCKS, "grass_block_stairs", GRASS_BLOCK_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "mycelium_stairs", MYCELIUM_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "podzol_stairs", PODZOL_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "grass_path_stairs", GRASS_PATH_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "dirt_stairs", DIRT_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "coarse_dirt_stairs", COARSE_DIRT_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "crimson_nylium_stairs", CRIMSON_NYLIUM_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "warped_nylium_stairs", WARPED_NYLIUM_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "netherrack_stairs", NETHERRACK_STAIRS);
+
+        registerBlock(false, ATBYW_BLOCKS, "grass_block_slab", GRASS_BLOCK_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "mycelium_slab", MYCELIUM_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "podzol_slab", PODZOL_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "grass_path_slab", GRASS_PATH_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "dirt_slab", DIRT_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "coarse_dirt_slab", COARSE_DIRT_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "crimson_nylium_slab", CRIMSON_NYLIUM_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "warped_nylium_slab", WARPED_NYLIUM_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "netherrack_slab", NETHERRACK_SLAB);
+
         registerBlock(false, ATBYW_REDSTONE, "oak_fence_door", OAK_FENCE_DOOR);
         registerBlock(false, ATBYW_REDSTONE, "spruce_fence_door", SPRUCE_FENCE_DOOR);
         registerBlock(false, ATBYW_REDSTONE, "birch_fence_door", BIRCH_FENCE_DOOR);

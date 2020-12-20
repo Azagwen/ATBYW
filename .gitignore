@@ -27,6 +27,6 @@ bin/
 # fabric
 
 run/
-/src/main/resources/assets/atbyw/textures/block/ref/
+src/main/resources/assets/atbyw/textures/block/ref/
 
 

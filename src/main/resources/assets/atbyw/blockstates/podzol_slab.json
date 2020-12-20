@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "atbyw:block/slab/podzol_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/podzol"
+    },
+    "type=top": {
+      "model": "atbyw:block/slab/podzol_slab_top"
+    }
+  }
+}
