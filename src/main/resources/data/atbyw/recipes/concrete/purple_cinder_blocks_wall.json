@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "cinder_blocks_wall",
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "atbyw:purple_cinder_bricks"
+        }
+    },
+    "result": {
+        "item": "atbyw:purple_cinder_blocks_wall",
+        "count": 6
+    }
+}

@@ -11,12 +11,14 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
 import java.util.Iterator;
 import java.util.Map;
 
 public class CinderBlocksWallBlock extends WallBlock {
     private static final VoxelShape POST_SHAPE;
+    private static final VoxelShape POST_SLAB_SHAPE;
     private static final VoxelShape SLAB_NORTH_SHAPE;
     private static final VoxelShape SLAB_SOUTH_SHAPE;
     private static final VoxelShape SLAB_WEST_SHAPE;
@@ -38,18 +40,26 @@ public class CinderBlocksWallBlock extends WallBlock {
     private static final VoxelShape TALL_SOUTH_COLLISION_SHAPE;
     private static final VoxelShape TALL_WEST_COLLISION_SHAPE;
     private static final VoxelShape TALL_EAST_COLLISION_SHAPE;
-    private final Map<BlockState, VoxelShape> shapeMap;
     private final Map<BlockState, VoxelShape> collisionShapeMap;
+    private final Map<BlockState, VoxelShape> lowPostShapeMap;
+    private final Map<BlockState, VoxelShape> tallPostShapeMap;
 
     public CinderBlocksWallBlock(Settings settings) {
         super(settings);
-        this.shapeMap = this.getShapeMap(
+        this.lowPostShapeMap = this.getShapeMap(
                 POST_SHAPE,
                 new VoxelShape[] {LOW_NORTH_SHAPE, TALL_NORTH_SHAPE},
                 new VoxelShape[] {LOW_EAST_SHAPE,  TALL_EAST_SHAPE },
                 new VoxelShape[] {LOW_SOUTH_SHAPE, TALL_SOUTH_SHAPE},
                 new VoxelShape[] {LOW_WEST_SHAPE,  TALL_WEST_SHAPE }
-                );
+        );
+        this.tallPostShapeMap = this.getShapeMap(
+                VoxelShapes.union(POST_SHAPE, POST_SLAB_SHAPE),
+                new VoxelShape[] {LOW_NORTH_SHAPE, TALL_NORTH_SHAPE},
+                new VoxelShape[] {LOW_EAST_SHAPE,  TALL_EAST_SHAPE },
+                new VoxelShape[] {LOW_SOUTH_SHAPE, TALL_SOUTH_SHAPE},
+                new VoxelShape[] {LOW_WEST_SHAPE,  TALL_WEST_SHAPE }
+        );
         this.collisionShapeMap = this.getShapeMap(
                 POST_COLLISION_SHAPE,
                 new VoxelShape[] {LOW_NORTH_COLLISION_SHAPE, TALL_NORTH_COLLISION_SHAPE},
@@ -69,26 +79,12 @@ public class CinderBlocksWallBlock extends WallBlock {
 
     private Map<BlockState, VoxelShape> getShapeMap(VoxelShape post, VoxelShape[] north, VoxelShape[] east, VoxelShape[] south, VoxelShape[] west) {
         ImmutableMap.Builder<BlockState, VoxelShape> builder = ImmutableMap.builder();
-        Iterator upIterator = UP.getValues().iterator();
 
-        while(upIterator.hasNext()) {
-            Boolean isUp = (Boolean)upIterator.next();
-            Iterator eastShapeIterator = EAST_SHAPE.getValues().iterator();
-
-            while(eastShapeIterator.hasNext()) {
-                WallShape eastShape = (WallShape)eastShapeIterator.next();
-                Iterator northShapeIterator = NORTH_SHAPE.getValues().iterator();
-
-                while(northShapeIterator.hasNext()) {
-                    WallShape northShape = (WallShape)northShapeIterator.next();
-                    Iterator westShapeIterator = WEST_SHAPE.getValues().iterator();
-
-                    while(westShapeIterator.hasNext()) {
-                        WallShape westShape = (WallShape)westShapeIterator.next();
-                        Iterator southShapeIterator = SOUTH_SHAPE.getValues().iterator();
-
-                        while(southShapeIterator.hasNext()) {
-                            WallShape southShape = (WallShape)southShapeIterator.next();
+        for (Boolean isUp : UP.getValues()) {
+            for (WallShape eastShape : EAST_SHAPE.getValues()) {
+                for (WallShape northShape : NORTH_SHAPE.getValues()) {
+                    for (WallShape westShape : WEST_SHAPE.getValues()) {
+                        for (WallShape southShape : SOUTH_SHAPE.getValues()) {
                             VoxelShape SHAPE_NO_POST = VoxelShapes.empty();
                             SHAPE_NO_POST = isWallTall(SHAPE_NO_POST, eastShape, east[0], east[1]);
                             SHAPE_NO_POST = isWallTall(SHAPE_NO_POST, westShape, west[0], west[1]);
@@ -111,7 +107,9 @@ public class CinderBlocksWallBlock extends WallBlock {
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return this.shapeMap.get(state);
+        boolean isCovered = !world.getBlockState(pos.up()).isAir();
+
+        return isCovered ? lowPostShapeMap.get(state) : tallPostShapeMap.get(state);
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -119,29 +117,43 @@ public class CinderBlocksWallBlock extends WallBlock {
     }
 
     static {
-        POST_SHAPE = createCuboidShape( 2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
-        SLAB_NORTH_SHAPE = Block.createCuboidShape(2.5D, 10.0D, 0.0D, 13.5D, 15.0D, 8.0D);
-        SLAB_SOUTH_SHAPE = Block.createCuboidShape(2.5D, 10.0D, 8.0D, 13.5D, 15.0D, 16.0D);
-        SLAB_WEST_SHAPE =  Block.createCuboidShape(0.0D, 10.0D, 2.5D, 8.0D,  15.0D, 13.5D);
-        SLAB_EAST_SHAPE =  Block.createCuboidShape(8.0D, 10.0D, 2.5D, 16.0D, 15.0D, 13.5D);
-        LOW_NORTH_SHAPE = VoxelShapes.union(Block.createCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 13.0D, 8.0D ), SLAB_NORTH_SHAPE);
-        LOW_SOUTH_SHAPE = VoxelShapes.union(Block.createCuboidShape(5.0D, 0.0D, 8.0D, 11.0D, 13.0D, 16.0D), SLAB_SOUTH_SHAPE);
-        LOW_WEST_SHAPE =  VoxelShapes.union(Block.createCuboidShape(0.0D, 0.0D, 5.0D, 8.0D,  13.0D, 11.0D), SLAB_WEST_SHAPE);
-        LOW_EAST_SHAPE =  VoxelShapes.union(Block.createCuboidShape(8.0D, 0.0D, 5.0D, 16.0D, 13.0D, 11.0D), SLAB_EAST_SHAPE);
-        TALL_NORTH_SHAPE = Block.createCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 16.0D, 8.0D);
-        TALL_SOUTH_SHAPE = Block.createCuboidShape(5.0D, 0.0D, 8.0D, 11.0D, 16.0D, 16.0D);
-        TALL_WEST_SHAPE =  Block.createCuboidShape(0.0D, 0.0D, 5.0D, 8.0D,  16.0D, 11.0D);
-        TALL_EAST_SHAPE =  Block.createCuboidShape(8.0D, 0.0D, 5.0D, 16.0D, 16.0D, 11.0D);
+        Direction.Axis x =  Direction.Axis.X;
+        Direction.Axis y =  Direction.Axis.Y;
+        Direction.Axis z =  Direction.Axis.Z;
 
-        POST_COLLISION_SHAPE = createCuboidShape( 2.0D, 0.0D, 2.0D, 14.0D, 24.0D, 14.0D);
-        LOW_NORTH_COLLISION_SHAPE =  Block.createCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 24.0D, 8.0D);
-        LOW_SOUTH_COLLISION_SHAPE =  Block.createCuboidShape(5.0D, 0.0D, 8.0D, 11.0D, 24.0D, 16.0D);
-        LOW_WEST_COLLISION_SHAPE =   Block.createCuboidShape(0.0D, 0.0D, 5.0D, 8.0D,  24.0D, 11.0D);
-        LOW_EAST_COLLISION_SHAPE =   Block.createCuboidShape(8.0D, 0.0D, 5.0D, 16.0D, 24.0D, 11.0D);
-        TALL_NORTH_COLLISION_SHAPE = Block.createCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 24.0D, 8.0D);
-        TALL_SOUTH_COLLISION_SHAPE = Block.createCuboidShape(5.0D, 0.0D, 8.0D, 11.0D, 24.0D, 16.0D);
-        TALL_WEST_COLLISION_SHAPE =  Block.createCuboidShape(0.0D, 0.0D, 5.0D, 8.0D,  24.0D, 11.0D);
-        TALL_EAST_COLLISION_SHAPE =  Block.createCuboidShape(8.0D, 0.0D, 5.0D, 16.0D, 24.0D, 11.0D);
+        double[] postValues =      {4.0D, 0.0D , 12.0D, 16.0D};
+        double[] slabValuesN =     {4.0D, 12.0D, 0.0D , 12.0D, 14.0D, 8.0D };
+        double[] slabValuesP =     {4.0D, 12.0D, 8.0D , 12.0D, 14.0D, 16.0D};
+        double[] lowSideValuesN =  {5.0D, 0.0D , 0.0D , 11.0D, 12.0D, 8.0D };
+        double[] lowSideValuesP =  {5.0D, 0.0D , 8.0D , 11.0D, 12.0D, 16.0D};
+        double[] tallSideValuesN = {5.0D, 0.0D , 0.0D , 11.0D, 16.0D, 8.0D };
+        double[] tallSideValuesP = {5.0D, 0.0D , 8.0D , 11.0D, 16.0D, 16.0D};
+
+        POST_SHAPE =       Block.createCuboidShape(postValues[0], postValues[1], postValues[0], postValues[2], postValues[3], postValues[2]);
+        POST_SLAB_SHAPE =  Block.createCuboidShape(3.0D, 16.0D, 3.0D , 13.0D, 18.0D, 13.0D);
+
+        SLAB_NORTH_SHAPE = Block.createCuboidShape(slabValuesN[0], slabValuesN[1], slabValuesN[2], slabValuesN[3], slabValuesN[4], slabValuesN[5]);
+        SLAB_SOUTH_SHAPE = Block.createCuboidShape(slabValuesP[0], slabValuesP[1], slabValuesP[2], slabValuesP[3], slabValuesP[4], slabValuesP[5]);
+        SLAB_WEST_SHAPE =  Block.createCuboidShape(slabValuesN[2], slabValuesN[1], slabValuesN[0], slabValuesN[5], slabValuesN[4], slabValuesN[3]);
+        SLAB_EAST_SHAPE =  Block.createCuboidShape(slabValuesP[2], slabValuesP[1], slabValuesP[0], slabValuesP[5], slabValuesP[4], slabValuesP[3]);
+        LOW_NORTH_SHAPE = VoxelShapes.union(SLAB_NORTH_SHAPE, Block.createCuboidShape(lowSideValuesN[0], lowSideValuesN[1], lowSideValuesN[2], lowSideValuesN[3], lowSideValuesN[4], lowSideValuesN[5]));
+        LOW_SOUTH_SHAPE = VoxelShapes.union(SLAB_SOUTH_SHAPE, Block.createCuboidShape(lowSideValuesP[0], lowSideValuesP[1], lowSideValuesP[2], lowSideValuesP[3], lowSideValuesP[4], lowSideValuesP[5]));
+        LOW_WEST_SHAPE =  VoxelShapes.union(SLAB_WEST_SHAPE , Block.createCuboidShape(lowSideValuesN[2], lowSideValuesN[1], lowSideValuesN[0], lowSideValuesN[5], lowSideValuesN[4], lowSideValuesN[3]));
+        LOW_EAST_SHAPE =  VoxelShapes.union(SLAB_EAST_SHAPE , Block.createCuboidShape(lowSideValuesP[2], lowSideValuesP[1], lowSideValuesP[0], lowSideValuesP[5], lowSideValuesP[4], lowSideValuesP[3]));
+        TALL_NORTH_SHAPE = Block.createCuboidShape(tallSideValuesN[0], tallSideValuesN[1], tallSideValuesN[2], tallSideValuesN[3], tallSideValuesN[4], tallSideValuesN[5]);
+        TALL_SOUTH_SHAPE = Block.createCuboidShape(tallSideValuesP[0], tallSideValuesP[1], tallSideValuesP[2], tallSideValuesP[3], tallSideValuesP[4], tallSideValuesP[5]);
+        TALL_WEST_SHAPE =  Block.createCuboidShape(tallSideValuesN[2], tallSideValuesN[1], tallSideValuesN[0], tallSideValuesN[5], tallSideValuesN[4], tallSideValuesN[3]);
+        TALL_EAST_SHAPE =  Block.createCuboidShape(tallSideValuesP[2], tallSideValuesP[1], tallSideValuesP[0], tallSideValuesP[5], tallSideValuesP[4], tallSideValuesP[3]);
+
+        POST_COLLISION_SHAPE =       Block.createCuboidShape(postValues[0], postValues[1], postValues[0], postValues[2], 24.0D, postValues[2]);
+        LOW_NORTH_COLLISION_SHAPE =  Block.createCuboidShape(lowSideValuesN[0] , lowSideValuesN[1] , lowSideValuesN[2] , lowSideValuesN[3] , 24.0D, lowSideValuesN[5] );
+        LOW_SOUTH_COLLISION_SHAPE =  Block.createCuboidShape(lowSideValuesP[0] , lowSideValuesP[1] , lowSideValuesP[2] , lowSideValuesP[3] , 24.0D, lowSideValuesP[5] );
+        LOW_WEST_COLLISION_SHAPE =   Block.createCuboidShape(lowSideValuesN[2] , lowSideValuesN[1] , lowSideValuesN[0] , lowSideValuesN[5] , 24.0D, lowSideValuesN[3] );
+        LOW_EAST_COLLISION_SHAPE =   Block.createCuboidShape(lowSideValuesP[2] , lowSideValuesP[1] , lowSideValuesP[0] , lowSideValuesP[5] , 24.0D, lowSideValuesP[3] );
+        TALL_NORTH_COLLISION_SHAPE = Block.createCuboidShape(tallSideValuesN[0], tallSideValuesN[1], tallSideValuesN[2], tallSideValuesN[3], 24.0D, tallSideValuesN[5]);
+        TALL_SOUTH_COLLISION_SHAPE = Block.createCuboidShape(tallSideValuesP[0], tallSideValuesP[1], tallSideValuesP[2], tallSideValuesP[3], 24.0D, tallSideValuesP[5]);
+        TALL_WEST_COLLISION_SHAPE =  Block.createCuboidShape(tallSideValuesN[2], tallSideValuesN[1], tallSideValuesN[0], tallSideValuesN[5], 24.0D, tallSideValuesN[3]);
+        TALL_EAST_COLLISION_SHAPE =  Block.createCuboidShape(tallSideValuesP[2], tallSideValuesP[1], tallSideValuesP[0], tallSideValuesP[5], 24.0D, tallSideValuesP[3]);
 
     }
 }

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "cinder_blocks_wall",
+    "pattern": [
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "atbyw:blue_cinder_bricks"
+        }
+    },
+    "result": {
+        "item": "atbyw:blue_cinder_blocks_wall",
+        "count": 6
+    }
+}

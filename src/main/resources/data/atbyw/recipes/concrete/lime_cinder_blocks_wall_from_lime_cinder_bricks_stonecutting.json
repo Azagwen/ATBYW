@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "atbyw:lime_cinder_bricks"
+    },
+    "result": "atbyw:lime_cinder_blocks_wall",
+    "count": 1
+}
