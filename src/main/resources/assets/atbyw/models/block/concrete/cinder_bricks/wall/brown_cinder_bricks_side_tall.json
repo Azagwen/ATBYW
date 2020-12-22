@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/template_cinder_blocks_wall_side_tall",
+    "textures": {
+        "wall": "atbyw:block/brown_cinder_bricks_side_z"
+    }
+}

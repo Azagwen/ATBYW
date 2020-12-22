@@ -1,0 +1,7 @@
+{
+    "parent": "atbyw:block/concrete/cinder_bricks/wall/template_cinder_blocks_wall_inventory",
+    "textures": {
+        "wall": "atbyw:block/cinder_bricks_side_z",
+        "top_slab": "atbyw:block/cinder_bricks_post"
+    }
+}

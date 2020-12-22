@@ -1,11 +1,16 @@
 package net.azagwen.atbyw.blocks;
 
 import net.azagwen.atbyw.misc.AtbywTags;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.PistonType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
 
@@ -17,6 +22,10 @@ public class SterileDirtBlock extends SpreadableBlock {
         super(settings);
     }
 
+    @Environment(EnvType.CLIENT)
+    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+        return new ItemStack(Blocks.DIRT);
+    }
 
     private static boolean canSurvive(BlockState state, WorldView worldView, BlockPos pos) {
         BlockPos blockPos = pos.up();

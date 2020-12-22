@@ -1,11 +1,15 @@
 package net.azagwen.atbyw.blocks;
 
 import net.azagwen.atbyw.misc.AtbywTags;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.NetherrackBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 
 import java.util.Iterator;
 import java.util.Random;
@@ -14,6 +18,11 @@ public class SterileNetherrackBlock extends NetherrackBlock {
 
     public SterileNetherrackBlock(Settings settings) {
         super(settings);
+    }
+
+    @Environment(EnvType.CLIENT)
+    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+        return new ItemStack(Blocks.NETHERRACK);
     }
 
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {

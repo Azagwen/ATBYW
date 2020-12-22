@@ -1,5 +1,7 @@
 package net.azagwen.atbyw.blocks;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -11,9 +13,10 @@ import org.jetbrains.annotations.Nullable;
 import static net.azagwen.atbyw.init.AtbywMain.*;
 
 public class AtbywBlockUtils {
-    public static String[] woodNames = new String[] {"oak", "spruce", "birch", "jungle", "acacia", "dar_oak", "crimson", "warped"};
-    public static String[] stoneNames = new String[] {"granite", "diorite", "andesite"};
-    public static String[] colorNames = new String[] {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
+    public static String[] WOOD_NAMES = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "crimson", "warped"};
+    public static String[] WOOD_NAMES_FROM_SPRUCE = {WOOD_NAMES[1], WOOD_NAMES[2], WOOD_NAMES[3], WOOD_NAMES[4], WOOD_NAMES[5], WOOD_NAMES[6], WOOD_NAMES[7]};
+    public static String[] STONE_NAMES = {"granite", "diorite", "andesite"};
+    public static String[] COLOR_NAMES = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
 
     public static final Block[] TERRACOTTA_COLORS = {
             Blocks.WHITE_TERRACOTTA,
@@ -86,6 +89,6 @@ public class AtbywBlockUtils {
                 Registry.register(Registry.ITEM, newID(variant_type[i] + "_" + block_name), new BlockItem(block[i], (fireproof ? fireproofSettings : normalSettings)));
             }
         else
-            System.out.println("could not register " + block + " : mismatched lengths !");
+            System.out.println("could not register " + block[0].getTranslationKey() + " : mismatched lengths !");
     }
 }

@@ -12,6 +12,8 @@ import net.minecraft.util.Identifier;
 public class AtbywMain implements ModInitializer {
 	public static final String nameSpace = "atbyw";
 
+	//TODO: Add loot tables and recipes for cinder
+
 	public static Identifier newID(String path) {
 		return new Identifier(nameSpace, path);
 	}

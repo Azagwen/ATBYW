@@ -2,7 +2,465 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/CinderBlocksWallBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/mixin/PaneBlockMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/black_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/black_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/black_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/black_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/blue_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/blue_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/blue_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/blue_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/brown_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/brown_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/brown_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/brown_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cyan_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cyan_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cyan_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/cyan_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/gray_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/gray_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/gray_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/gray_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/green_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/green_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/green_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/green_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_blue_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_blue_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_blue_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_blue_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_gray_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_gray_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_gray_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/light_gray_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/lime_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/lime_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/lime_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/lime_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/magenta_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/magenta_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/magenta_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/magenta_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/orange_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/orange_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/orange_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/orange_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/pink_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/pink_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/pink_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/pink_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/purple_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/purple_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/purple_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/purple_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/red_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/red_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/red_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/red_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/white_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/white_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/white_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/white_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/yellow_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/yellow_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/yellow_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/blockstates/yellow_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/black_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/black_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/blue_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/blue_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/brown_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/brown_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/cyan_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/cyan_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/gray_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/gray_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/green_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/green_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/light_blue_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/light_blue_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/light_gray_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/light_gray_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/lime_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/lime_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/magenta_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/magenta_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/orange_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/orange_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/pink_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/pink_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/purple_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/purple_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/red_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/red_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/template_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/template_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/black_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/black_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/black_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/black_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/black_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/black_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/blue_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/blue_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/blue_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/blue_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/blue_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/blue_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/brown_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/brown_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/brown_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/brown_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/brown_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/brown_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cyan_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cyan_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cyan_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cyan_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cyan_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/cyan_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/gray_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/gray_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/gray_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/gray_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/gray_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/gray_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/green_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/green_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/green_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/green_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/green_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/green_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_blue_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_blue_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_blue_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_blue_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_blue_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_blue_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_gray_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_gray_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_gray_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_gray_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_gray_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/light_gray_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/lime_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/lime_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/lime_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/lime_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/lime_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/lime_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/magenta_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/magenta_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/magenta_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/magenta_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/magenta_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/magenta_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/orange_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/orange_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/orange_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/orange_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/orange_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/orange_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/pink_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/pink_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/pink_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/pink_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/pink_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/pink_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/purple_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/purple_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/purple_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/purple_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/purple_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/purple_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/red_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/red_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/red_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/red_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/red_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/red_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/template_cinder_blocks_wall_inventory.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/template_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/template_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/template_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/white_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/white_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/white_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/white_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/white_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/white_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/yellow_cinder_blocks_wall_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/yellow_cinder_blocks_wall_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/yellow_cinder_blocks_wall_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/yellow_cinder_bricks_post.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/yellow_cinder_bricks_side.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/wall/yellow_cinder_bricks_side_tall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/white_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/white_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/yellow_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/cinder_bricks/yellow_horizontal_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/black_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/black_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/blue_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/blue_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/brown_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/brown_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/cyan_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/cyan_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/gray_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/gray_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/green_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/green_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/light_blue_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/light_blue_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/light_gray_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/light_gray_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/lime_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/lime_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/magenta_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/magenta_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/orange_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/orange_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/pink_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/pink_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/purple_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/purple_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/red_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/red_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/white_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/white_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/yellow_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/slab/yellow_concrete_slab_top.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/black_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/black_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/black_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/blue_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/blue_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/blue_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/brown_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/brown_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/brown_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/cyan_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/cyan_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/cyan_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/gray_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/gray_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/gray_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/green_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/green_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/green_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/light_blue_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/light_blue_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/light_blue_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/light_gray_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/light_gray_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/light_gray_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/lime_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/lime_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/lime_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/magenta_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/magenta_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/magenta_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/orange_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/orange_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/orange_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/pink_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/pink_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/pink_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/purple_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/purple_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/purple_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/red_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/red_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/red_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/white_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/white_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/white_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/yellow_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/yellow_concrete_stairs_inner.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/block/concrete/stairs/yellow_concrete_stairs_outer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/black_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/black_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/black_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/black_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/blue_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/blue_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/blue_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/blue_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/brown_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/brown_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/brown_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/brown_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cyan_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cyan_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cyan_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/cyan_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/gray_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/gray_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/gray_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/gray_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/green_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/green_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/green_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/green_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_blue_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_blue_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_blue_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_blue_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_gray_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_gray_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_gray_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/light_gray_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/lime_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/lime_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/lime_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/lime_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/magenta_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/magenta_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/magenta_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/magenta_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/orange_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/orange_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/orange_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/orange_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/pink_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/pink_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/pink_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/pink_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/purple_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/purple_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/purple_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/purple_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/red_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/red_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/red_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/red_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/white_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/white_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/white_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/white_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/yellow_cinder_blocks_wall.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/yellow_cinder_bricks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/yellow_concrete_slab.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item/yellow_concrete_stairs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/black_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/black_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/black_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/black_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/blue_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/blue_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/blue_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/blue_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/brown_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/brown_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/brown_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/brown_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/cyan_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/cyan_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/cyan_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/cyan_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/gray_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/gray_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/gray_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/gray_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/green_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/green_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/green_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/green_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/light_blue_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/light_blue_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/light_blue_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/light_blue_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/light_gray_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/light_gray_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/light_gray_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/light_gray_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/lime_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/lime_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/lime_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/lime_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/magenta_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/magenta_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/magenta_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/magenta_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/orange_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/orange_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/orange_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/orange_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/palettes/cinder_bricks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/palettes/cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/palettes/cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/palettes/cinder_bricks_tint_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/palettes/cinder_bricks_tint_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/palettes/cinder_bricks_tint_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/palettes/cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/pink_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/pink_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/pink_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/pink_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/purple_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/purple_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/purple_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/purple_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/red_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/red_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/red_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/red_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/white_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/white_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/white_cinder_bricks_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/yellow_cinder_bricks_post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/yellow_cinder_bricks_side_x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/yellow_cinder_bricks_side_z.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/yellow_cinder_bricks_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlockUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlockUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/AtbywBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/DirtSlabBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/slabs/DirtSlabBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/DirtStairsBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/stairs/DirtStairsBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/GrassPathSlabBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/slabs/GrassPathSlabBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/GrassPathStairsBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/stairs/GrassPathStairsBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/NetherrackSlabBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/slabs/NetherrackSlabBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/NetherrackStairsBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/stairs/NetherrackStairsBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/NyliumSlabBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/slabs/NyliumSlabBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/NyliumStairsBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/stairs/NyliumStairsBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/SlabBlockSubClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/slabs/SlabBlockSubClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/SpreadableSlabBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/slabs/SpreadableSlabBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/SpreadableStairsBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/stairs/SpreadableStairsBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/StairsBlockSubClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/stairs/StairsBlockSubClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/SterileDirtBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/SterileDirtBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/SterileNetherrackBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/blocks/SterileNetherrackBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AtbywMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/azagwen/atbyw/init/AtbywMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/atbyw/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/dirt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_block_side.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_block_side_overlay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_block_snow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_block_top.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_path_side.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/atbyw/textures/block/ref/grass_path_top.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/blocks/walls.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/blocks/walls.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +539,8 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/data/minecraft/recipes" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/data/atbyw/loot_tables/blocks" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/assets/atbyw/models/block/cocnrete/cinder_block" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/assets/atbyw/models/item" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.30572474" />
@@ -91,29 +549,29 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="assets.atbyw.models.block.cocnrete.cinder_block" />
       <recent name="net.azagwen.atbyw.misc" />
       <recent name="data.minecraft.recipes" />
       <recent name="data.atbyw.tags.items" />
       <recent name="data.atbyw.recipes" />
-      <recent name="data.minecraft.recipes.recipes_requiring_sticks" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\loot_tables\blocks" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\item" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\blockstates" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\tags\blocks" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\recipes\stairs" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\recipes\slab" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\concrete\cinder_bricks\wall" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\concrete\slab" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\concrete\cinder_bricks" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="net.azagwen.atbyw.blocks" />
       <recent name="net.azagwen.atbyw.mixin" />
+      <recent name="net.azagwen.atbyw.blocks" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\concrete\cinder_bricks" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\recipes\slab" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\minecraft\loot_tables\blocks" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\stairs" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\build\libs\1.2.X" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\build\libs\Pre-1.2" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Minecraft Client">
@@ -441,7 +899,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608486214256</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="changed implementations for &quot;Multiblocks&quot;.">
+      <created>1608486463232</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1608486463232</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -472,6 +937,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="269" y="1114" key="#Plugins/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608459604062" />
+    <state x="407" y="1211" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1608551082846">
+      <screen x="0" y="1058" width="1352" height="794" />
+    </state>
+    <state x="407" y="1211" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608551082846" />
     <state x="131" y="1111" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608452178330">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -488,10 +957,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="474" y="1341" width="403" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608470557210" />
-    <state x="474" y="1362" width="431" height="186" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1608441056723">
+    <state x="474" y="1362" width="444" height="186" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1608588897537">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="474" y="1362" width="431" height="186" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608441056723" />
+    <state x="474" y="1362" width="444" height="186" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608588897537" />
     <state x="205" y="1283" width="941" height="343" key="#com.intellij.structuralsearch.plugin.ui.StructuralSearchDialog" timestamp="1607964276882">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -500,10 +969,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="424" y="1316" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608418135457" />
-    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608486213047">
+    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608486462612">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608486213047" />
+    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608486462612" />
     <state x="91" y="1117" width="1156" height="703" key="DiffContextDialog" timestamp="1608458979069">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -520,22 +989,22 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="375" y="1161" key="Github.UntrackedFilesDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607809201936" />
-    <state width="1309" height="294" key="GridCell.Tab.0.bottom" timestamp="1608485875794">
+    <state width="1309" height="294" key="GridCell.Tab.0.bottom" timestamp="1608607613817">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="294" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608485875794" />
-    <state width="1309" height="294" key="GridCell.Tab.0.center" timestamp="1608485875794">
+    <state width="1309" height="294" key="GridCell.Tab.0.bottom/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608607613817" />
+    <state width="1309" height="294" key="GridCell.Tab.0.center" timestamp="1608607613817">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="294" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608485875794" />
-    <state width="1309" height="294" key="GridCell.Tab.0.left" timestamp="1608485875794">
+    <state width="1309" height="294" key="GridCell.Tab.0.center/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608607613817" />
+    <state width="1309" height="294" key="GridCell.Tab.0.left" timestamp="1608607613816">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="294" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608485875794" />
-    <state width="1309" height="294" key="GridCell.Tab.0.right" timestamp="1608485875794">
+    <state width="1309" height="294" key="GridCell.Tab.0.left/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608607613816" />
+    <state width="1309" height="294" key="GridCell.Tab.0.right" timestamp="1608607613817">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state width="1309" height="294" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608485875794" />
+    <state width="1309" height="294" key="GridCell.Tab.0.right/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608607613817" />
     <state width="1309" height="249" key="GridCell.Tab.1.bottom" timestamp="1608459517138">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -560,14 +1029,14 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="439" y="1172" key="VCS.ChangeListViewerDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608336259315" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608486216363">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608486464227">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608486216363" />
-    <state x="492" y="1234" key="chooseDestDirectoryDialog" timestamp="1607967141879">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608486464227" />
+    <state x="492" y="1234" key="chooseDestDirectoryDialog" timestamp="1608561496378">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="492" y="1234" key="chooseDestDirectoryDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1607967141879" />
+    <state x="492" y="1234" key="chooseDestDirectoryDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608561496378" />
     <state width="1350" height="792" key="com.intellij.byteCodeViewer.ShowByteCodeAction" timestamp="1607856394137">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
