@@ -145,9 +145,9 @@ public class FlowerButtonBlock extends PlantBlock {
     }
 
     static {
+        SHAPE = Block.createCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
         TIMER = AtbywProperties.TIMER;
         POWERED = Properties.POWERED;
         LIT = Properties.LIT;
-        SHAPE = Block.createCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
     }
 }
