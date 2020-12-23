@@ -75,32 +75,32 @@ public class FlowerButtonBlock extends PlantBlock {
         if (state.get(TIMER) == 6) {
             world.setBlockState(pos, state.with(POWERED, true).with(LIT, powered).with(TIMER, 5), 3);
             world.getBlockTickScheduler().schedule(pos, this, delay);
-            this.playClickSound(null, world, pos);
+            this.playClickSound(world, pos);
         }
         else if (state.get(TIMER) == 5) {
             world.setBlockState(pos, state.with(POWERED, true).with(LIT, powered).with(TIMER, 4), 3);
             world.getBlockTickScheduler().schedule(pos, this, delay);
-            this.playClickSound(null, world, pos);
+            this.playClickSound(world, pos);
         }
         else if (state.get(TIMER) == 4) {
             world.setBlockState(pos, state.with(POWERED, true).with(LIT, powered).with(TIMER, 3), 3);
             world.getBlockTickScheduler().schedule(pos, this, delay);
-            this.playClickSound(null, world, pos);
+            this.playClickSound(world, pos);
         }
         else if (state.get(TIMER) == 3) {
             world.setBlockState(pos, state.with(POWERED, true).with(LIT, powered).with(TIMER, 2), 3);
             world.getBlockTickScheduler().schedule(pos, this, delay);
-            this.playClickSound(null, world, pos);
+            this.playClickSound(world, pos);
         }
         else if (state.get(TIMER) == 2) {
             world.setBlockState(pos, state.with(POWERED, true).with(LIT, powered).with(TIMER, 1), 3);
             world.getBlockTickScheduler().schedule(pos, this, delay);
-            this.playClickSound(null, world, pos);
+            this.playClickSound(world, pos);
         }
         else if (state.get(TIMER) == 1) {
             world.setBlockState(pos, state.with(POWERED, true).with(LIT, powered).with(TIMER, 0), 3);
             world.getBlockTickScheduler().schedule(pos, this, delay);
-            this.playClickSound(null, world, pos);
+            this.playClickSound(world, pos);
         }
         else if (state.get(TIMER) == 0) {
             world.setBlockState(pos, state.with(POWERED, false).with(LIT, state.get(POWERED)).with(LIT, false).with(TIMER, 0), 3);
@@ -113,8 +113,8 @@ public class FlowerButtonBlock extends PlantBlock {
         world.playSound(powered ? player : null, pos, this.getClickSound(powered), SoundCategory.BLOCKS, 0.3F, powered ? 1.5F : 1F);
     }
 
-    protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos) {
-        world.playSound(player, pos, SoundEvents.BLOCK_CHAIN_STEP, SoundCategory.BLOCKS, 0.3F, 2F);
+    protected void playClickSound(WorldAccess world, BlockPos pos) {
+        world.playSound(null, pos, SoundEvents.BLOCK_CHAIN_STEP, SoundCategory.BLOCKS, 0.3F, 2F);
     }
 
     protected SoundEvent getClickSound(boolean powered) {
