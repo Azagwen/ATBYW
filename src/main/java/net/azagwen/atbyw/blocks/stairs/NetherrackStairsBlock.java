@@ -18,7 +18,7 @@ import java.util.Random;
 public class NetherrackStairsBlock extends StairsBlockSubClass implements Fertilizable {
 
     public NetherrackStairsBlock(Block copiedBlock, Settings settings) {
-        super(copiedBlock.getDefaultState(), settings);
+        super(copiedBlock, settings);
     }
 
     @Override

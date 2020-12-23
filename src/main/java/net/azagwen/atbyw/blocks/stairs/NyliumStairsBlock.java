@@ -15,14 +15,14 @@ import java.util.Random;
 public class NyliumStairsBlock extends StairsBlockSubClass {
 
     public NyliumStairsBlock(Block copiedBlock, Settings settings) {
-        super(copiedBlock.getDefaultState(), settings);
+        super(copiedBlock, settings);
     }
 
     private static boolean stayAlive(BlockState state, WorldView world, BlockPos pos) {
         BlockPos blockPos = pos.up();
         BlockState blockState = world.getBlockState(blockPos);
-        int i = ChunkLightProvider.getRealisticOpacity(world, state, pos, blockState, blockPos, Direction.UP, blockState.getOpacity(world, blockPos));
-        return i < world.getMaxLightLevel() || state.isIn(AtbywTags.TRAMPLES_GRASS_BLOCKS);
+
+        return !blockState.isSideSolidFullSquare(world, blockPos, Direction.UP);
     }
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {

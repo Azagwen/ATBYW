@@ -1,0 +1,9 @@
+{
+    "parent": "atbyw:block/stairs/template_grass_stairs_inner_upside",
+    "textures": {
+        "side": "minecraft:block/podzol_side",
+        "back": "minecraft:block/podzol_side",
+        "top": "minecraft:block/dirt",
+        "bottom": "minecraft:block/podzol_top"
+    }
+}

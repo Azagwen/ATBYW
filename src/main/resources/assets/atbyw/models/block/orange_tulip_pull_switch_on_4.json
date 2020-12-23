@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "atbyw:block/orange_tulip_pull_switch_on_2"
+  }
+}

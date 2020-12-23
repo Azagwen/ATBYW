@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "flower_switches",
+  "pattern": [
+    " F ",
+    "RSR"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:azure_bluet"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "tag": "atbyw:sticks"
+    }
+  },
+  "result": {
+    "item": "atbyw:azure_bluet_pull_switch"
+  }
+}

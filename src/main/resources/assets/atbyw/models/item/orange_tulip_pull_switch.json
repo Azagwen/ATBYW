@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "atbyw:block/orange_tulip_pull_switch_on_2"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "atbyw:block/cross_offset_05",
+  "textures": {
+    "cross": "atbyw:block/wither_rose_pull_switch_on_3"
+  }
+}

@@ -13,10 +13,63 @@ import org.jetbrains.annotations.Nullable;
 import static net.azagwen.atbyw.init.AtbywMain.*;
 
 public class AtbywBlockUtils {
-    public static String[] WOOD_NAMES = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "crimson", "warped"};
-    public static String[] WOOD_NAMES_FROM_SPRUCE = {WOOD_NAMES[1], WOOD_NAMES[2], WOOD_NAMES[3], WOOD_NAMES[4], WOOD_NAMES[5], WOOD_NAMES[6], WOOD_NAMES[7]};
-    public static String[] STONE_NAMES = {"granite", "diorite", "andesite"};
-    public static String[] COLOR_NAMES = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
+    public static String[] WOOD_NAMES = {
+            "oak",
+            "spruce",
+            "birch",
+            "jungle",
+            "acacia",
+            "dark_oak",
+            "crimson",
+            "warped"
+    };
+    public static String[] WOOD_NAMES_FROM_SPRUCE = {
+            WOOD_NAMES[1],
+            WOOD_NAMES[2],
+            WOOD_NAMES[3],
+            WOOD_NAMES[4],
+            WOOD_NAMES[5],
+            WOOD_NAMES[6],
+            WOOD_NAMES[7]
+    };
+    public static String[] STONE_NAMES = {
+            "granite",
+            "diorite",
+            "andesite"
+    };
+    public static String[] COLOR_NAMES = {
+            "white",
+            "orange",
+            "magenta",
+            "light_blue",
+            "yellow",
+            "lime",
+            "pink",
+            "gray",
+            "light_gray",
+            "cyan",
+            "purple",
+            "blue",
+            "brown",
+            "green",
+            "red",
+            "black"
+    };
+    public static String[] FLOWER_NAMES = {
+            "dandelion",
+            "poppy",
+            "blue_orchid",
+            "allium",
+            "azure_bluet",
+            "red_tulip",
+            "orange_tulip",
+            "white_tulip",
+            "pink_tulip",
+            "oxeye_daisy",
+            "cornflower",
+            "wither_rose",
+            "lily_of_the_valley"
+    };
 
     public static final Block[] TERRACOTTA_COLORS = {
             Blocks.WHITE_TERRACOTTA,
@@ -36,7 +89,6 @@ public class AtbywBlockUtils {
             Blocks.RED_TERRACOTTA,
             Blocks.BLACK_TERRACOTTA
     };
-
     public static final Block[] CONCRETE_COLORS = {
             Blocks.WHITE_CONCRETE,
             Blocks.ORANGE_CONCRETE,
@@ -57,9 +109,9 @@ public class AtbywBlockUtils {
     };
 
 
-    /////////////////////////////////////////////////
-    //              DECLARATION UTILS              //
-    /////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
+    //              DECLARATION UTILS (EXPERIMENTAL)             //
+    ///////////////////////////////////////////////////////////////
     public static <T extends Block> Block[] DeclareMultipleBlocks(int amount, Material material, MaterialColor materialcolor) {
         T[] block = (T[]) new Block[amount];
         for (int i = 0; i != amount; i++)

@@ -26,7 +26,7 @@ public class GrassPathStairsBlock extends StairsBlockSubClass {
     private static final int[] SHAPE_INDICES;
 
     public GrassPathStairsBlock(Block copiedBlock, Settings settings) {
-        super(copiedBlock.getDefaultState(), settings);
+        super(copiedBlock, settings);
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

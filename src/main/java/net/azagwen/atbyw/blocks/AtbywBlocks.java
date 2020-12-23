@@ -6,12 +6,14 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.tag.Tag;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
+
+import java.util.function.ToIntFunction;
 
 import static net.azagwen.atbyw.blocks.AtbywBlockUtils.*;
 import static net.azagwen.atbyw.init.AtbywMain.*;
@@ -23,6 +25,10 @@ public class AtbywBlocks {
     public static boolean always(BlockState state, BlockView world, BlockPos pos) { return true; }
     public static boolean never(BlockState state, BlockView world, BlockPos pos) { return false; }
 
+    private static ToIntFunction<BlockState> createLightLevelFromBlockState(int litLevel, BooleanProperty state) {
+        return (blockState) -> blockState.get(state) ? litLevel : 0;
+    }
+
     private static FabricBlockSettings MakeBasalt() {
         return FabricBlockSettings.of(Material.STONE, MaterialColor.BLACK).requiresTool().breakByTool(FabricToolTags.PICKAXES).strength(1.25F, 4.2F).sounds(BlockSoundGroup.BASALT);
     }
@@ -31,37 +37,30 @@ public class AtbywBlocks {
         return FabricBlockSettings.of(Material.WOOD, copiedMatColor.getDefaultMaterialColor()).breakByTool(FabricToolTags.AXES).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD);
     }
 
-    private static Block MakeStairs(Block copiedBlock, boolean requiresTool, Tag<Item> tag) {
-        Block toolRequired = new StairsBlockSubClass(copiedBlock.getDefaultState(), FabricBlockSettings.copyOf(copiedBlock).requiresTool().breakByTool(tag));
-        Block toolNotRequired = new StairsBlockSubClass(copiedBlock.getDefaultState(), FabricBlockSettings.copyOf(copiedBlock).breakByTool(tag));
-
-        return requiresTool ? toolRequired : toolNotRequired;
-    }
-
     public static final Block[] TESTBLOCK = AtbywBlockUtils.<SlabBlockSubClass>DeclareMultipleBlocks(3, Material.BAMBOO, MaterialColor.BROWN);
 
-    //Technical Blocks
-    public static final Block STERILE_DIRT = new SterileDirtBlock(FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
-    public static final Block STERILE_NETHERRACK = new SterileNetherrackBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).ticksRandomly());
-    public static final Block TICKING_DIRT = new Block(FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
+    //Dummy Blocks
+    public static final Block TICKING_DIRT = new Block(FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
+    public static final Block DUMMY_GRASS_BLOCK = new GrassBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
+    public static final Block DUMMY_MYCELIUM = new MyceliumBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MaterialColor.PURPLE).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
 
     //Full Blocks
-    public static final Block DIRT_STAIRS = new DirtStairsBlock(FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
-    public static final Block COARSE_DIRT_STAIRS = MakeStairs(Blocks.COARSE_DIRT, false, FabricToolTags.SHOVELS);
-    public static final Block PODZOL_STAIRS = MakeStairs(Blocks.PODZOL, false, FabricToolTags.SHOVELS);
-    public static final Block GRASS_BLOCK_STAIRS = new SpreadableStairsBlock(Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).breakByTool(FabricToolTags.SHOVELS).ticksRandomly());
+    public static final Block DIRT_STAIRS = new DirtStairsBlock(FabricBlockSettings.copyOf(TICKING_DIRT));
+    public static final Block GRASS_BLOCK_STAIRS = new SpreadableStairsBlock(DUMMY_GRASS_BLOCK, Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
+    public static final Block MYCELIUM_STAIRS = new SpreadableStairsBlock(DUMMY_MYCELIUM, Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
+    public static final Block COARSE_DIRT_STAIRS = new StairsBlockSubClass(Blocks.COARSE_DIRT, FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
+    public static final Block PODZOL_STAIRS = new StairsBlockSubClass(Blocks.PODZOL, FabricBlockSettings.of(Material.SOIL, MaterialColor.SPRUCE).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
     public static final Block GRASS_PATH_STAIRS = new GrassPathStairsBlock(Blocks.GRASS_PATH, FabricBlockSettings.copyOf(Blocks.GRASS_PATH).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block MYCELIUM_STAIRS = new SpreadableStairsBlock(Blocks.MYCELIUM, FabricBlockSettings.copyOf(Blocks.MYCELIUM).breakByTool(FabricToolTags.SHOVELS).ticksRandomly());
     public static final Block NETHERRACK_STAIRS = new NetherrackStairsBlock(Blocks.NETHERRACK, FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block CRIMSON_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.CRIMSON_NYLIUM, FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block WARPED_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.WARPED_NYLIUM, FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block DIRT_SLAB = new DirtSlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block DIRT_SLAB = new DirtSlabBlock(FabricBlockSettings.copyOf(TICKING_DIRT));
+    public static final Block GRASS_BLOCK_SLAB = new SpreadableSlabBlock(Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
+    public static final Block MYCELIUM_SLAB = new SpreadableSlabBlock(Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
     public static final Block COARSE_DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.COARSE_DIRT).breakByTool(FabricToolTags.SHOVELS));
     public static final Block PODZOL_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PODZOL).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block GRASS_BLOCK_SLAB = new SpreadableSlabBlock(Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK).breakByTool(FabricToolTags.SHOVELS).ticksRandomly());
     public static final Block GRASS_PATH_SLAB = new GrassPathSlabBlock(FabricBlockSettings.copyOf(Blocks.GRASS_PATH).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block MYCELIUM_SLAB = new SpreadableSlabBlock(Blocks.MYCELIUM, FabricBlockSettings.copyOf(Blocks.MYCELIUM).breakByTool(FabricToolTags.SHOVELS).ticksRandomly());
     public static final Block NETHERRACK_SLAB = new NetherrackSlabBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block CRIMSON_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block WARPED_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
@@ -86,23 +85,23 @@ public class AtbywBlocks {
     public static final Block BASALT_BRICKS = new Block(MakeBasalt());
     public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
 
-    public static final Block TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.TERRACOTTA.getDefaultState(), FabricBlockSettings.copy(Blocks.TERRACOTTA));
-    public static final Block WHITE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.WHITE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block ORANGE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.ORANGE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block MAGENTA_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.MAGENTA_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block LIGHT_BLUE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_BLUE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block YELLOW_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.YELLOW_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block LIME_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.LIME_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block PINK_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.PINK_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block GRAY_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.GRAY_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block LIGHT_GRAY_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_GRAY_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block CYAN_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.CYAN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block PURPLE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.PURPLE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block BLUE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.BLUE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block BROWN_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.BROWN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block GREEN_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.GREEN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block RED_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.RED_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block BLACK_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.BLACK_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.TERRACOTTA, FabricBlockSettings.copy(Blocks.TERRACOTTA));
+    public static final Block WHITE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.WHITE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ORANGE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.ORANGE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MAGENTA_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.MAGENTA_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_BLUE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_BLUE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block YELLOW_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.YELLOW_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIME_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.LIME_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PINK_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.PINK_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRAY_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.GRAY_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_GRAY_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_GRAY_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CYAN_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.CYAN_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPLE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.PURPLE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLUE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.BLUE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BROWN_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.BROWN_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GREEN_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.GREEN_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.RED_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACK_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.BLACK_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static final Block TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block WHITE_TERRACOTTA_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
@@ -140,23 +139,23 @@ public class AtbywBlocks {
     public static final Block RED_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block BLACK_TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.TERRACOTTA.getDefaultState(), FabricBlockSettings.copy(Blocks.TERRACOTTA));
-    public static final Block WHITE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.WHITE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block ORANGE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.ORANGE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block MAGENTA_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.MAGENTA_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block LIGHT_BLUE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_BLUE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block YELLOW_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.YELLOW_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block LIME_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.LIME_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block PINK_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.PINK_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block GRAY_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.GRAY_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block LIGHT_GRAY_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_GRAY_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block CYAN_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.CYAN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block PURPLE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.PURPLE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block BLUE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BLUE_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block BROWN_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BROWN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block GREEN_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.GREEN_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block RED_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.RED_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block BLACK_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BLACK_TERRACOTTA.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.TERRACOTTA, FabricBlockSettings.copy(Blocks.TERRACOTTA));
+    public static final Block WHITE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.WHITE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ORANGE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.ORANGE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MAGENTA_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.MAGENTA_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_BLUE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_BLUE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block YELLOW_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.YELLOW_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIME_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.LIME_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PINK_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.PINK_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRAY_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.GRAY_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_GRAY_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_GRAY_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CYAN_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.CYAN_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPLE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.PURPLE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLUE_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BLUE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BROWN_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BROWN_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GREEN_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.GREEN_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.RED_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACK_TERRACOTTA_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BLACK_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static final Block TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block WHITE_TERRACOTTA_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
@@ -194,22 +193,22 @@ public class AtbywBlocks {
     public static final Block RED_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block BLACK_TERRACOTTA_BRICKS_WALL = new WallBlock(FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block WHITE_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.WHITE_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block ORANGE_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.ORANGE_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block MAGENTA_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.MAGENTA_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block LIGHT_BLUE_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_BLUE_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block YELLOW_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.YELLOW_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block LIME_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.LIME_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block PINK_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.PINK_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block GRAY_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.GRAY_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block LIGHT_GRAY_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_GRAY_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block CYAN_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.CYAN_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block PURPLE_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.PURPLE_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block BLUE_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.BLUE_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block BROWN_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.BROWN_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block GREEN_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.GREEN_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block RED_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.RED_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block BLACK_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.BLACK_CONCRETE.getDefaultState(), FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block WHITE_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.WHITE_CONCRETE, FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ORANGE_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.ORANGE_CONCRETE, FabricBlockSettings.copyOf(Blocks.ORANGE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MAGENTA_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.MAGENTA_CONCRETE, FabricBlockSettings.copyOf(Blocks.MAGENTA_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_BLUE_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_BLUE_CONCRETE, FabricBlockSettings.copyOf(Blocks.LIGHT_BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block YELLOW_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.YELLOW_CONCRETE, FabricBlockSettings.copyOf(Blocks.YELLOW_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIME_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.LIME_CONCRETE, FabricBlockSettings.copyOf(Blocks.LIME_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PINK_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.PINK_CONCRETE, FabricBlockSettings.copyOf(Blocks.PINK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GRAY_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.GRAY_CONCRETE, FabricBlockSettings.copyOf(Blocks.GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block LIGHT_GRAY_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.LIGHT_GRAY_CONCRETE, FabricBlockSettings.copyOf(Blocks.LIGHT_GRAY_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CYAN_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.CYAN_CONCRETE, FabricBlockSettings.copyOf(Blocks.CYAN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPLE_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.PURPLE_CONCRETE, FabricBlockSettings.copyOf(Blocks.PURPLE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLUE_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.BLUE_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLUE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BROWN_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.BROWN_CONCRETE, FabricBlockSettings.copyOf(Blocks.BROWN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block GREEN_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.GREEN_CONCRETE, FabricBlockSettings.copyOf(Blocks.GREEN_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.RED_CONCRETE, FabricBlockSettings.copyOf(Blocks.RED_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACK_CONCRETE_STAIRS = new StairsBlockSubClass(Blocks.BLACK_CONCRETE, FabricBlockSettings.copyOf(Blocks.BLACK_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static final Block WHITE_CONCRETE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.WHITE_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block ORANGE_CONCRETE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.ORANGE_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
@@ -282,12 +281,23 @@ public class AtbywBlocks {
     public static final Block WARPED_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
     public static final Block BAMBOO_LADDER = new BambooLadderBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO));
 
+    public static final Block DANDELION_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.DANDELION).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block POPPY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.POPPY).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block BLUE_ORCHID_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ORCHID).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block ALLIUM_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.ALLIUM).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block AZURE_BLUET_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.AZURE_BLUET).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block RED_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.RED_TULIP).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block ORANGE_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.ORANGE_TULIP).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block WHITE_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WHITE_TULIP).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block PINK_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.PINK_TULIP).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block OXEYE_DAISY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.OXEYE_DAISY).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block CORNFLOWER_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block WITHER_ROSE_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WITHER_ROSE).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block LILY_OF_THE_VALLEY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.LILY_OF_THE_VALLEY).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
     public static void init() {
-        Registry.register(Registry.BLOCK, newID("sterile_dirt"), STERILE_DIRT);
-        Registry.register(Registry.BLOCK, newID("sterile_netherrack"), STERILE_NETHERRACK);
-
 //        registerBlocks(false, ATBYW_BLOCKS, "test_block", new String[] {"test111", "test222", "test333"}, TESTBLOCK);
 
         registerBlocks(false, ATBYW_REDSTONE, "fence_door", WOOD_NAMES, new Block[] {
@@ -311,6 +321,22 @@ public class AtbywBlocks {
                 DARK_OAK_BOOKSHELF_TOGGLE,
                 CRIMSON_BOOKSHELF_TOGGLE,
                 WARPED_BOOKSHELF_TOGGLE
+        });
+
+        registerBlocks(false, ATBYW_REDSTONE, "pull_switch", FLOWER_NAMES, new Block[] {
+                DANDELION_PULL_SWITCH,
+                POPPY_PULL_SWITCH,
+                BLUE_ORCHID_PULL_SWITCH,
+                ALLIUM_PULL_SWITCH,
+                AZURE_BLUET_PULL_SWITCH,
+                RED_TULIP_PULL_SWITCH,
+                ORANGE_TULIP_PULL_SWITCH,
+                WHITE_TULIP_PULL_SWITCH,
+                PINK_TULIP_PULL_SWITCH,
+                OXEYE_DAISY_PULL_SWITCH,
+                CORNFLOWER_PULL_SWITCH,
+                WITHER_ROSE_PULL_SWITCH,
+                LILY_OF_THE_VALLEY_PULL_SWITCH
         });
 
         registerBlock(false, ATBYW_BLOCKS, "grass_block_stairs", GRASS_BLOCK_STAIRS);

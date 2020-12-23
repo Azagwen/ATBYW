@@ -27,9 +27,9 @@ import java.util.Random;
 public class SpreadableStairsBlock extends StairsBlockSubClass {
     private Block fullBlockEquivalent;
 
-    public SpreadableStairsBlock(Block copiedBlock, Settings settings) {
-        super(copiedBlock.getDefaultState(), settings);
-        this.fullBlockEquivalent = copiedBlock;
+    public SpreadableStairsBlock(Block copiedBlock, Block fullBlockEquivalent, Settings settings) {
+        super(copiedBlock, settings);
+        this.fullBlockEquivalent = fullBlockEquivalent;
     }
 
     @Override
@@ -49,12 +49,8 @@ public class SpreadableStairsBlock extends StairsBlockSubClass {
     private static boolean canSurvive(BlockState state, WorldView worldView, BlockPos pos) {
         BlockPos blockPos = pos.up();
         BlockState blockState = worldView.getBlockState(blockPos);
-        if ((blockState.getFluidState().getLevel() == 8) || state.isIn(AtbywTags.TRAMPLES_GRASS_BLOCKS)) {
-            return false;
-        } else {
-            int i = ChunkLightProvider.getRealisticOpacity(worldView, state, pos, blockState, blockPos, Direction.UP, blockState.getOpacity(worldView, blockPos));
-            return i < worldView.getMaxLightLevel();
-        }
+
+        return !blockState.isSideSolidFullSquare(worldView, blockPos, Direction.UP);
     }
 
     private static boolean canSpread(BlockState state, WorldView worldView, BlockPos pos) {
@@ -65,28 +61,38 @@ public class SpreadableStairsBlock extends StairsBlockSubClass {
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!canSurvive(state, world, pos) && !(world.getBlockState(pos).get(HALF) == BlockHalf.TOP)) {
+        if (!canSurvive(state, world, pos)) {
             BlockState oldState = world.getBlockState(pos);
 
             world.setBlockState(pos, copyStates(AtbywBlocks.DIRT_STAIRS.getDefaultState(), oldState));
-        } else {
+        }
+        else {
             BlockState blockState = this.getDefaultState();
 
             if (world.getLightLevel(pos.up()) >= 9) {
                 for(int i = 0; i < 4; ++i) {
-                    BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+                    BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                     BlockState newState = world.getBlockState(blockPos);
+                    BlockPos downPos = new BlockPos(pos.getX(), (pos.getY() - 1), pos.getZ());
+                    BlockPos upPos = new BlockPos(pos.getX(), (pos.getY() + 1), pos.getZ());
 
-                    if (world.getBlockState(blockPos).isOf(AtbywBlocks.DIRT_STAIRS) && canSpread(blockState, world, blockPos)) {
-                        world.setBlockState(blockPos, copyStates(blockState, newState));
-                    }
-                    else if (world.getBlockState(blockPos).isOf(AtbywBlocks.DIRT_SLAB) && canSpread(blockState, world, blockPos)) {
-                        world.setBlockState(blockPos, AtbywBlocks.GRASS_BLOCK_SLAB.getDefaultState()
-                                .with(SpreadableSlabBlock.TYPE, newState.get(SpreadableSlabBlock.TYPE))
-                        );
-                    }
-                    else if (world.getBlockState(blockPos).isOf(Blocks.DIRT) && canSpread(blockState, world, blockPos)) {
-                        world.setBlockState(blockPos, this.fullBlockEquivalent.getDefaultState());
+                    if (!blockPos.equals(downPos)) {
+                        if (!blockPos.equals(upPos)) {
+                            if (world.getBlockState(blockPos).isOf(AtbywBlocks.DIRT_STAIRS) && canSpread(blockState, world, blockPos)) {
+                                world.setBlockState(blockPos, copyStates(blockState, newState));
+                            } else if (world.getBlockState(blockPos).isOf(AtbywBlocks.DIRT_SLAB) && canSpread(blockState, world, blockPos)) {
+                                Block self = world.getBlockState(pos).getBlock();
+
+                                if (self == AtbywBlocks.GRASS_BLOCK_STAIRS)
+                                    world.setBlockState(blockPos, AtbywBlocks.GRASS_BLOCK_SLAB.getDefaultState()
+                                            .with(SpreadableSlabBlock.TYPE, newState.get(SpreadableSlabBlock.TYPE)));
+                                else if (self == AtbywBlocks.MYCELIUM_STAIRS)
+                                    world.setBlockState(blockPos, AtbywBlocks.MYCELIUM_SLAB.getDefaultState()
+                                            .with(SpreadableSlabBlock.TYPE, newState.get(SpreadableSlabBlock.TYPE)));
+                            } else if (world.getBlockState(blockPos).isOf(Blocks.DIRT) && canSpread(blockState, world, blockPos)) {
+                                world.setBlockState(blockPos, this.fullBlockEquivalent.getDefaultState());
+                            }
+                        }
                     }
                 }
             }

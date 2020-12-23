@@ -31,6 +31,7 @@ public class DirtSlabBlock extends SlabBlockSubClass {
 
     private static boolean canSpread(BlockState state, WorldView worldView, BlockPos pos) {
         BlockPos blockPos = pos.up();
+
         return canSurvive(state, worldView, pos) && !worldView.getFluidState(blockPos).isIn(FluidTags.WATER);
     }
 
@@ -39,12 +40,16 @@ public class DirtSlabBlock extends SlabBlockSubClass {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.getLightLevel(pos.up()) >= 9) {
             for(int i = 0; i < 4; ++i) {
-                BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+                BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                 BlockState newState = world.getBlockState(pos);
 
                 if (world.getBlockState(blockPos).isOf(Blocks.GRASS_BLOCK) && canSpread(state, world, pos)) {
-                    world.setBlockState(pos, copyStates(AtbywBlocks.GRASS_BLOCK_SLAB.getDefaultState(), newState));
+                        world.setBlockState(pos, copyStates(AtbywBlocks.GRASS_BLOCK_SLAB.getDefaultState(), newState));
                 }
+                else if (world.getBlockState(blockPos).isOf(Blocks.MYCELIUM) && canSpread(state, world, pos)) {
+                        world.setBlockState(pos, copyStates(AtbywBlocks.MYCELIUM_SLAB.getDefaultState(), newState));
+                }
+
             }
         }
     }

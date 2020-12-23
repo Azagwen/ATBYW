@@ -1,11 +1,12 @@
 package net.azagwen.atbyw.blocks.stairs;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.StairsBlock;
 
 public class StairsBlockSubClass extends StairsBlock {
-    public StairsBlockSubClass(BlockState baseBlockState, Settings settings) {
-        super(baseBlockState, settings);
+    public StairsBlockSubClass(Block copiedBlock, Settings settings) {
+        super(copiedBlock.getDefaultState(), settings);
     }
 
     public BlockState copyStates(BlockState newState, BlockState copiedState) {

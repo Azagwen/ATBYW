@@ -26,7 +26,22 @@ public class AtbywClient implements ClientModInitializer {
             return GrassColors.getColor(0.5D, 1.0D);
         }, GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
 
-
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+                RenderLayer.getCutout(),
+                DANDELION_PULL_SWITCH,
+                POPPY_PULL_SWITCH,
+                BLUE_ORCHID_PULL_SWITCH,
+                ALLIUM_PULL_SWITCH,
+                AZURE_BLUET_PULL_SWITCH,
+                RED_TULIP_PULL_SWITCH,
+                ORANGE_TULIP_PULL_SWITCH,
+                WHITE_TULIP_PULL_SWITCH,
+                PINK_TULIP_PULL_SWITCH,
+                OXEYE_DAISY_PULL_SWITCH,
+                CORNFLOWER_PULL_SWITCH,
+                WITHER_ROSE_PULL_SWITCH,
+                LILY_OF_THE_VALLEY_PULL_SWITCH
+        );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(
                 RenderLayer.getCutout(),

@@ -99,7 +99,6 @@ public class BookshelfToggleBlock extends HorizontalFacingBlock {
                 world.addParticle(DustParticleEffect.RED, (double)pos.getX() + e, (double)pos.getY() + f, (double)pos.getZ() + g, 0.0D, 0.0D, 0.0D);
             }
         }
-
     }
 
     @Override
