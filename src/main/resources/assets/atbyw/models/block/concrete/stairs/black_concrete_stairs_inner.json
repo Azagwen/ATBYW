@@ -1,5 +1,5 @@
 {
-    "parent": "minecraft:block/outer_stairs",
+    "parent": "minecraft:block/inner_stairs",
     "textures": {
         "bottom": "minecraft:block/black_concrete",
         "top": "minecraft:block/black_concrete",

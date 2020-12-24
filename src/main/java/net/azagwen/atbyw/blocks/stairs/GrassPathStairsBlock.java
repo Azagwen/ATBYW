@@ -12,15 +12,15 @@ import java.util.stream.IntStream;
 
 public class GrassPathStairsBlock extends StairsBlockSubClass {
     private static final VoxelShape TOP_SHAPE;
+    private static final VoxelShape TOP_NORTH_WEST_CORNER_SHAPE;
+    private static final VoxelShape TOP_SOUTH_WEST_CORNER_SHAPE;
+    private static final VoxelShape TOP_NORTH_EAST_CORNER_SHAPE;
+    private static final VoxelShape TOP_SOUTH_EAST_CORNER_SHAPE;
     private static final VoxelShape BOTTOM_SHAPE;
     private static final VoxelShape BOTTOM_NORTH_WEST_CORNER_SHAPE;
     private static final VoxelShape BOTTOM_SOUTH_WEST_CORNER_SHAPE;
-    private static final VoxelShape TOP_NORTH_WEST_CORNER_SHAPE;
-    private static final VoxelShape TOP_SOUTH_WEST_CORNER_SHAPE;
     private static final VoxelShape BOTTOM_NORTH_EAST_CORNER_SHAPE;
     private static final VoxelShape BOTTOM_SOUTH_EAST_CORNER_SHAPE;
-    private static final VoxelShape TOP_NORTH_EAST_CORNER_SHAPE;
-    private static final VoxelShape TOP_SOUTH_EAST_CORNER_SHAPE;
     private static final VoxelShape[] TOP_SHAPES;
     private static final VoxelShape[] BOTTOM_SHAPES;
     private static final int[] SHAPE_INDICES;
@@ -63,18 +63,32 @@ public class GrassPathStairsBlock extends StairsBlockSubClass {
     }
 
     static {
+        TOP_SHAPE = Block.createCuboidShape(0.0D, 8.0D, 0.0D, 16.0D, 15.0D, 16.0D);
+        BOTTOM_NORTH_WEST_CORNER_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 8.0D,  8.0D, 8.0D );
+        BOTTOM_SOUTH_WEST_CORNER_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 8.0D, 8.0D,  8.0D, 16.0D);
+        BOTTOM_NORTH_EAST_CORNER_SHAPE = Block.createCuboidShape(8.0D, 0.0D, 0.0D, 16.0D, 8.0D, 8.0D );
+        BOTTOM_SOUTH_EAST_CORNER_SHAPE = Block.createCuboidShape(8.0D, 0.0D, 8.0D, 16.0D, 8.0D, 16.0D);
+
         BOTTOM_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D);
-        TOP_SHAPE = Block.createCuboidShape(0.0D, 7.0D, 0.0D, 16.0D, 15.0D, 16.0D);
-        BOTTOM_NORTH_WEST_CORNER_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 8.0D, 7.0D, 8.0D);
-        BOTTOM_SOUTH_WEST_CORNER_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 8.0D, 8.0D, 7.0D, 16.0D);
-        TOP_NORTH_WEST_CORNER_SHAPE = Block.createCuboidShape(0.0D, 7.0D, 0.0D, 8.0D, 15.0D, 8.0D);
-        TOP_SOUTH_WEST_CORNER_SHAPE = Block.createCuboidShape(0.0D, 7.0D, 8.0D, 8.0D, 15.0D, 16.0D);
-        BOTTOM_NORTH_EAST_CORNER_SHAPE = Block.createCuboidShape(8.0D, 0.0D, 0.0D, 16.0D, 7.0D, 8.0D);
-        BOTTOM_SOUTH_EAST_CORNER_SHAPE = Block.createCuboidShape(8.0D, 0.0D, 8.0D, 16.0D, 7.0D, 16.0D);
-        TOP_NORTH_EAST_CORNER_SHAPE = Block.createCuboidShape(8.0D, 7.0D, 0.0D, 16.0D, 15.0D, 8.0D);
+        TOP_NORTH_WEST_CORNER_SHAPE = Block.createCuboidShape(0.0D, 7.0D, 0.0D, 8.0D,  15.0D, 8.0D );
+        TOP_SOUTH_WEST_CORNER_SHAPE = Block.createCuboidShape(0.0D, 7.0D, 8.0D, 8.0D,  15.0D, 16.0D);
+        TOP_NORTH_EAST_CORNER_SHAPE = Block.createCuboidShape(8.0D, 7.0D, 0.0D, 16.0D, 15.0D, 8.0D );
         TOP_SOUTH_EAST_CORNER_SHAPE = Block.createCuboidShape(8.0D, 7.0D, 8.0D, 16.0D, 15.0D, 16.0D);
-        TOP_SHAPES = composeShapes(TOP_SHAPE, BOTTOM_NORTH_WEST_CORNER_SHAPE, BOTTOM_NORTH_EAST_CORNER_SHAPE, BOTTOM_SOUTH_WEST_CORNER_SHAPE, BOTTOM_SOUTH_EAST_CORNER_SHAPE);
-        BOTTOM_SHAPES = composeShapes(BOTTOM_SHAPE, TOP_NORTH_WEST_CORNER_SHAPE, TOP_NORTH_EAST_CORNER_SHAPE, TOP_SOUTH_WEST_CORNER_SHAPE, TOP_SOUTH_EAST_CORNER_SHAPE);
+
+        TOP_SHAPES = composeShapes(
+                TOP_SHAPE,
+                BOTTOM_NORTH_WEST_CORNER_SHAPE,
+                BOTTOM_NORTH_EAST_CORNER_SHAPE,
+                BOTTOM_SOUTH_WEST_CORNER_SHAPE,
+                BOTTOM_SOUTH_EAST_CORNER_SHAPE
+        );
+        BOTTOM_SHAPES = composeShapes(
+                BOTTOM_SHAPE,
+                TOP_NORTH_WEST_CORNER_SHAPE,
+                TOP_NORTH_EAST_CORNER_SHAPE,
+                TOP_SOUTH_WEST_CORNER_SHAPE,
+                TOP_SOUTH_EAST_CORNER_SHAPE
+        );
         SHAPE_INDICES = new int[]{12, 5, 3, 10, 14, 13, 7, 11, 13, 7, 11, 14, 8, 4, 1, 2, 4, 1, 2, 8};
     }
 }
