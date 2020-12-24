@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/2020-12-15_13.07.33.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/2020-12-22_19.01.04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-15_13.35.52.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_02.20.01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_02.20.06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_02.27.12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_02.49.42.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_02.52.39.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_03.07.44.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_03.11.53.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_03.17.58.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_03.18.05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_03.27.15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_03.27.19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_04.00.44.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_04.06.03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/wiki_pages/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/curseforge/2020-12-15_11.25.18.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/2020-12-15_11.25.18.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/curseforge/2020-12-15_11.58.32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/curseforge/2020-12-15_13.35.52.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/curseforge/2020-12-19_01.21.47.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/2020-12-19_01.21.47.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -524,7 +505,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608771498419</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="wiki media">
+      <created>1608780096790</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1608780096790</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -553,7 +541,8 @@
     <MESSAGE value="flowers" />
     <MESSAGE value="flowers and slabs/stairs fixes" />
     <MESSAGE value="finishing touches" />
-    <option name="LAST_COMMIT_MESSAGE" value="finishing touches" />
+    <MESSAGE value="wiki media" />
+    <option name="LAST_COMMIT_MESSAGE" value="wiki media" />
   </component>
   <component name="WindowStateProjectService">
     <state x="269" y="1114" key="#Plugins" timestamp="1608459604062">
@@ -596,10 +585,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="424" y="1316" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608418135457" />
-    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608771497826">
+    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608780095868">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608771497826" />
+    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608780095868" />
     <state x="91" y="1117" width="1156" height="703" key="DiffContextDialog" timestamp="1608458979069">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -660,10 +649,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="439" y="1172" key="VCS.ChangeListViewerDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608336259315" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608771499838">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608780098143">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608771499838" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608780098143" />
     <state x="492" y="1234" key="chooseDestDirectoryDialog" timestamp="1608698807856">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
