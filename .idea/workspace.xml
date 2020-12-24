@@ -519,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608794279625</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="wiki media">
+      <created>1608794727602</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1608794727602</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -592,10 +599,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="424" y="1316" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608418135457" />
-    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608794278869">
+    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608795761711">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608794278869" />
+    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608795761711" />
     <state x="91" y="1117" width="1156" height="703" key="DiffContextDialog" timestamp="1608458979069">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -656,10 +663,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="439" y="1172" key="VCS.ChangeListViewerDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608336259315" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608794281555">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608794740320">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608794281555" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608794740320" />
     <state x="492" y="1234" key="chooseDestDirectoryDialog" timestamp="1608698807856">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
