@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_10.35.30.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/crafting_table_cycling_recipes.psd" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/crafting_table_cycling_recipes.psd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,8 +92,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\curseforge" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\curseforge\wiki" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\curseforge" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\build\libs\1.2.X" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\concrete\cinder_bricks" />
@@ -540,7 +540,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608796471445</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="wiki media">
+      <created>1608802123913</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1608802123914</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -613,10 +620,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="424" y="1316" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608418135457" />
-    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608802091603">
+    <state x="0" y="1058" key="CommitChangelistDialog2" timestamp="1608802121020">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608802091603" />
+    <state x="0" y="1058" key="CommitChangelistDialog2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608802121020" />
     <state x="91" y="1117" width="1156" height="703" key="DiffContextDialog" timestamp="1608458979069">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
@@ -677,10 +684,10 @@
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
     <state x="439" y="1172" key="VCS.ChangeListViewerDialog/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608336259315" />
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608796472720">
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2" timestamp="1608802159326">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
-    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608796472720" />
+    <state x="269" y="1189" key="Vcs.Push.Dialog.v2/0.0.1445.846/0.1058.1352.794@0.1058.1352.794" timestamp="1608802159326" />
     <state x="492" y="1234" key="chooseDestDirectoryDialog" timestamp="1608698807856">
       <screen x="0" y="1058" width="1352" height="794" />
     </state>
