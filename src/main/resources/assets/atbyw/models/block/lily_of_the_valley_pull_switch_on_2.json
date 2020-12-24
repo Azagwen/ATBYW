@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "atbyw:block/lily_of_the_valley_pull_switch_on_1"
+  }
+}

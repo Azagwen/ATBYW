@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "atbyw:block/slab/mycelium_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/mycelium"
+    },
+    "type=top": {
+      "model": "atbyw:block/slab/mycelium_slab_top"
+    }
+  }
+}

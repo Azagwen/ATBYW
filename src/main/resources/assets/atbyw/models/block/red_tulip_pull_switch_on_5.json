@@ -1,0 +1,6 @@
+{
+  "parent": "atbyw:block/cross_offset_05",
+  "textures": {
+    "cross": "atbyw:block/red_tulip_pull_switch_on_3"
+  }
+}

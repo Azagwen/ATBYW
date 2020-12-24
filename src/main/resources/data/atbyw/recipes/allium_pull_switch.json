@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "flower_switches",
+  "pattern": [
+    " F ",
+    "RSR"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:allium"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "tag": "atbyw:sticks"
+    }
+  },
+  "result": {
+    "item": "atbyw:allium_pull_switch"
+  }
+}

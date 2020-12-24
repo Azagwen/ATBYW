@@ -4,44 +4,68 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
 
 import static net.azagwen.atbyw.blocks.AtbywBlocks.*;
 
 public class AtbywClient implements ClientModInitializer {
 
-    private static void renderColored(Block[] block, RenderLayer layer) {
-        for (int i = 0; i < block.length - 1; i++)
-            BlockRenderLayerMap.INSTANCE.putBlock(block[i], layer);
-    }
-
-    private static void renderColored(Block[] block, Block uncoloredBlock, RenderLayer layer) {
-        BlockRenderLayerMap.INSTANCE.putBlock(uncoloredBlock, layer);
-        for (int i = 0; i < block.length - 1; i++)
-            BlockRenderLayerMap.INSTANCE.putBlock(block[i], layer);
-    }
-
     @Override
     @Environment(EnvType.CLIENT)
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(OAK_FENCE_DOOR, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(SPRUCE_FENCE_DOOR, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BIRCH_FENCE_DOOR, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JUNGLE_FENCE_DOOR, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ACACIA_FENCE_DOOR, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(DARK_OAK_FENCE_DOOR, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(CRIMSON_FENCE_DOOR, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(WARPED_FENCE_DOOR, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(IRON_FENCE_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(), GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+            return world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5D, 1.0D);
+        }, GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+            return GrassColors.getColor(0.5D, 1.0D);
+        }, GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
 
-        BlockRenderLayerMap.INSTANCE.putBlock(SPRUCE_LADDER, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BIRCH_LADDER, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(JUNGLE_LADDER, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ACACIA_LADDER, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(DARK_OAK_LADDER, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(CRIMSON_LADDER, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(WARPED_LADDER, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BAMBOO_LADDER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+                RenderLayer.getCutout(),
+                DANDELION_PULL_SWITCH,
+                POPPY_PULL_SWITCH,
+                BLUE_ORCHID_PULL_SWITCH,
+                ALLIUM_PULL_SWITCH,
+                AZURE_BLUET_PULL_SWITCH,
+                RED_TULIP_PULL_SWITCH,
+                ORANGE_TULIP_PULL_SWITCH,
+                WHITE_TULIP_PULL_SWITCH,
+                PINK_TULIP_PULL_SWITCH,
+                OXEYE_DAISY_PULL_SWITCH,
+                CORNFLOWER_PULL_SWITCH,
+                WITHER_ROSE_PULL_SWITCH,
+                LILY_OF_THE_VALLEY_PULL_SWITCH
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+                RenderLayer.getCutout(),
+                OAK_FENCE_DOOR,
+                SPRUCE_FENCE_DOOR,
+                BIRCH_FENCE_DOOR,
+                JUNGLE_FENCE_DOOR,
+                ACACIA_FENCE_DOOR,
+                DARK_OAK_FENCE_DOOR,
+                CRIMSON_FENCE_DOOR,
+                WARPED_FENCE_DOOR,
+                IRON_FENCE_DOOR
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+                RenderLayer.getCutout(),
+                SPRUCE_LADDER,
+                BIRCH_LADDER,
+                JUNGLE_LADDER,
+                ACACIA_LADDER,
+                DARK_OAK_LADDER,
+                CRIMSON_LADDER,
+                WARPED_LADDER,
+                BAMBOO_LADDER
+        );
     }
 }

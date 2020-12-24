@@ -1,22 +1,75 @@
 package net.azagwen.atbyw.blocks;
 
-import net.azagwen.atbyw.blocks.StairsBlockSubClass;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.WallBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
+import org.jetbrains.annotations.Nullable;
 
 import static net.azagwen.atbyw.init.AtbywMain.*;
 
 public class AtbywBlockUtils {
-    public static String[] woodNames = new String[] {"oak", "spruce", "birch", "jungle", "acacia", "dar_oak", "crimson", "warped"};
-    public static String[] stoneNames = new String[] {"granite", "diorite", "andesite"};
-    public static String[] colorNames = new String[] {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
+    public static String[] WOOD_NAMES = {
+            "oak",
+            "spruce",
+            "birch",
+            "jungle",
+            "acacia",
+            "dark_oak",
+            "crimson",
+            "warped"
+    };
+    public static String[] WOOD_NAMES_FROM_SPRUCE = {
+            WOOD_NAMES[1],
+            WOOD_NAMES[2],
+            WOOD_NAMES[3],
+            WOOD_NAMES[4],
+            WOOD_NAMES[5],
+            WOOD_NAMES[6],
+            WOOD_NAMES[7]
+    };
+    public static String[] STONE_NAMES = {
+            "granite",
+            "diorite",
+            "andesite"
+    };
+    public static String[] COLOR_NAMES = {
+            "white",
+            "orange",
+            "magenta",
+            "light_blue",
+            "yellow",
+            "lime",
+            "pink",
+            "gray",
+            "light_gray",
+            "cyan",
+            "purple",
+            "blue",
+            "brown",
+            "green",
+            "red",
+            "black"
+    };
+    public static String[] FLOWER_NAMES = {
+            "dandelion",
+            "poppy",
+            "blue_orchid",
+            "allium",
+            "azure_bluet",
+            "red_tulip",
+            "orange_tulip",
+            "white_tulip",
+            "pink_tulip",
+            "oxeye_daisy",
+            "cornflower",
+            "wither_rose",
+            "lily_of_the_valley"
+    };
 
     public static final Block[] TERRACOTTA_COLORS = {
             Blocks.WHITE_TERRACOTTA,
@@ -36,39 +89,33 @@ public class AtbywBlockUtils {
             Blocks.RED_TERRACOTTA,
             Blocks.BLACK_TERRACOTTA
     };
+    public static final Block[] CONCRETE_COLORS = {
+            Blocks.WHITE_CONCRETE,
+            Blocks.ORANGE_CONCRETE,
+            Blocks.MAGENTA_CONCRETE,
+            Blocks.LIGHT_BLUE_CONCRETE,
+            Blocks.YELLOW_CONCRETE,
+            Blocks.LIME_CONCRETE,
+            Blocks.PINK_CONCRETE,
+            Blocks.GRAY_CONCRETE,
+            Blocks.LIGHT_GRAY_CONCRETE,
+            Blocks.CYAN_CONCRETE,
+            Blocks.PURPLE_CONCRETE,
+            Blocks.BLUE_CONCRETE,
+            Blocks.BROWN_CONCRETE,
+            Blocks.GREEN_CONCRETE,
+            Blocks.RED_CONCRETE,
+            Blocks.BLACK_CONCRETE
+    };
 
-    /////////////////////////////////////////////////
-    //              DECLARATION UTILS              //
-    /////////////////////////////////////////////////
-    public static Block[] MakeMultiBlock(int amount, FabricBlockSettings settings) {
-        Block[] block = new Block[amount];
-        for (int i = 0; i != amount; i++) {
-            block[i] = new Block(settings);
-        }
 
-        return block;
-    }
-    public static StairsBlockSubClass[] MakeMultiStairs(int amount, Block[] type) {
-        StairsBlockSubClass[] block = new StairsBlockSubClass[amount];
-        for (int i = 0; i != amount; i++) {
-            block[i] = new StairsBlockSubClass(type[i].getDefaultState(), FabricBlockSettings.copy(type[i]));
-        }
-
-        return block;
-    }
-    public static SlabBlock[] MakeMultiSlab(int amount, Block[] type) {
-        SlabBlock[] block = new SlabBlock[amount];
-        for (int i = 0; i != amount; i++) {
-            block[i] = new SlabBlock(FabricBlockSettings.copy(type[i]));
-        }
-
-        return block;
-    }
-    public static WallBlock[] MakeMultiWall(int amount, Block[] type) {
-        WallBlock[] block = new WallBlock[amount];
-        for (int i = 0; i != amount; i++) {
-            block[i] = new WallBlock(FabricBlockSettings.copy(type[i]));
-        }
+    ///////////////////////////////////////////////////////////////
+    //              DECLARATION UTILS (EXPERIMENTAL)             //
+    ///////////////////////////////////////////////////////////////
+    public static <T extends Block> Block[] DeclareMultipleBlocks(int amount, Material material, MaterialColor materialcolor) {
+        T[] block = (T[]) new Block[amount];
+        for (int i = 0; i != amount; i++)
+            block[i] = (T) new Block(FabricBlockSettings.of(material, materialcolor));
 
         return block;
     }
@@ -84,7 +131,7 @@ public class AtbywBlockUtils {
         Registry.register(Registry.ITEM, newID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
     }
 
-    public static void registerMultiBlock(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
+    public static void registerBlocks(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
         Item.Settings normalSettings = new Item.Settings().group(group);
         Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
 
@@ -94,6 +141,6 @@ public class AtbywBlockUtils {
                 Registry.register(Registry.ITEM, newID(variant_type[i] + "_" + block_name), new BlockItem(block[i], (fireproof ? fireproofSettings : normalSettings)));
             }
         else
-            System.out.println("could not register " + block + " : mismatched lengths !");
+            System.out.println("could not register " + block[0].getTranslationKey() + " : mismatched lengths !");
     }
 }

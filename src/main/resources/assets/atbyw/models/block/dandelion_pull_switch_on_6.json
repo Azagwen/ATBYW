@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "atbyw:block/dandelion_pull_switch_on_3"
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/template_cinder_blocks_wall_post",
+    "textures": {
+        "wall": "atbyw:block/purple_cinder_bricks_side_z"
+    }
+}

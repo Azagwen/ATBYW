@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:crimson_nylium"
+        }
+    },
+    "result": {
+        "item": "atbyw:crimson_nylium_stairs",
+        "count": 4
+    }
+}

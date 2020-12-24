@@ -1,0 +1,71 @@
+{   "parent": "block/block",
+    "display": {
+        "gui": {
+            "rotation": [ 30, 135, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.625, 0.625, 0.625 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 90, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.5, 0.5, 0.5 ]
+        }
+    },
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "#wall"
+    },
+    "elements": [
+        {
+            "__comment": "Center post",
+            "from": [ 4, 0, 4 ],
+            "to": [ 12, 16, 12 ],
+            "faces": {
+                "down":  { "texture": "#top_slab", "cullface": "down" },
+                "up":    { "texture": "#top_slab", "cullface": "up" },
+                "north": { "texture": "#top_slab" },
+                "south": { "texture": "#top_slab" },
+                "west":  { "texture": "#top_slab" },
+                "east":  { "texture": "#top_slab" }
+            }
+        },
+        {
+            "__comment": "Post top slab",
+            "from": [ 3, 16, 3 ],
+            "to": [ 13, 18, 13 ],
+            "faces": {
+                "down":  { "texture": "#top_slab", "cullface": "up" },
+                "up":    { "texture": "#top_slab", "cullface": "up" },
+                "north": { "uv": [2, 3, 4, 13], "rotation": 90, "texture": "#top_slab", "cullface": "up" },
+                "south": { "uv": [2, 3, 4, 13], "rotation": 90, "texture": "#top_slab", "cullface": "up" },
+                "west":  { "uv": [2, 3, 4, 13], "rotation": 90, "texture": "#top_slab", "cullface": "up" },
+                "east":  { "uv": [2, 3, 4, 13], "rotation": 90, "texture": "#top_slab", "cullface": "up" }
+            }
+        },
+        {
+            "name": "wall",
+            "from": [5, 0, 0],
+            "to": [11, 12, 16],
+            "faces": {
+                "north": { "texture": "#wall" },
+                "south": { "texture": "#wall" },
+                "east":  { "texture": "#wall" },
+                "west":  { "texture": "#wall" },
+                "down":  { "texture": "#wall" }
+            }
+        },
+        {
+            "__comment": "Top slab",
+            "from": [ 4.001, 12, 0 ],
+            "to": [ 11.999, 14, 16 ],
+            "faces": {
+                "down":  { "uv": [4, 0, 12, 16], "texture": "#top_slab" },
+                "up":    { "uv": [4, 0, 12, 16], "texture": "#top_slab" },
+                "north": { "uv": [2, 0, 4,  16], "rotation": 90, "texture": "#top_slab" },
+                "south": { "uv": [2, 0, 4,  16], "rotation": 90, "texture": "#top_slab" },
+                "west":  { "uv": [2, 0, 4,  16], "rotation": 90, "texture": "#top_slab" },
+                "east":  { "uv": [2, 0, 4,  16], "rotation": 90, "texture": "#top_slab" }
+            }
+        }
+    ]
+}

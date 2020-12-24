@@ -1,0 +1,9 @@
+{
+    "parent": "atbyw:block/stairs/template_grass_stairs_inner",
+    "textures": {
+        "side": "atbyw:block/mycelium_stairs_side",
+        "back": "minecraft:block/mycelium_side",
+        "top": "minecraft:block/mycelium_top",
+        "bottom": "minecraft:block/dirt"
+    }
+}

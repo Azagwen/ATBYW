@@ -4,6 +4,7 @@ import net.azagwen.atbyw.blocks.AtbywBlocks;
 import net.azagwen.atbyw.items.AtbywItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -13,6 +14,10 @@ public class AtbywMain implements ModInitializer {
 
 	public static Identifier newID(String path) {
 		return new Identifier(nameSpace, path);
+	}
+
+	public static boolean isModLoaded(String ModID) {
+		return FabricLoader.getInstance().isModLoaded(ModID);
 	}
 
 	public static final ItemGroup ATBYW_BLOCKS = FabricItemGroupBuilder.create(newID("blocks")).icon(() ->

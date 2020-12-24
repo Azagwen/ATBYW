@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "flower_switches",
+  "pattern": [
+    " F ",
+    "RSR"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:oxeye_daisy"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "tag": "atbyw:sticks"
+    }
+  },
+  "result": {
+    "item": "atbyw:oxeye_daisy_pull_switch"
+  }
+}

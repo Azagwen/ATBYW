@@ -1,0 +1,9 @@
+{
+    "parent": "atbyw:block/stairs/template_grass_stairs_inner_upside",
+    "textures": {
+        "side": "minecraft:block/warped_nylium_side",
+        "back": "minecraft:block/warped_nylium_side",
+        "top": "minecraft:block/netherrack",
+        "bottom": "minecraft:block/warped_nylium"
+    }
+}

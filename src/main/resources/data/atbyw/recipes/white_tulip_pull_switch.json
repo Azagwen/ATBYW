@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "flower_switches",
+  "pattern": [
+    " F ",
+    "RSR"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:white_tulip"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "tag": "atbyw:sticks"
+    }
+  },
+  "result": {
+    "item": "atbyw:white_tulip_pull_switch"
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#  ",
+        "## ",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:grass_block"
+        }
+    },
+    "result": {
+        "item": "atbyw:grass_block_stairs",
+        "count": 4
+    }
+}
