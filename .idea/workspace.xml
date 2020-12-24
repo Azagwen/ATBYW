@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/wiki_pages/index.html" afterDir="false" />
+    <list default="true" id="a604832b-09e7-4e68-8a4b-9b59a0b7749e" name="Default Changelist" comment="added missing recipes">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/crafting_table_cycling_recipes.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/ground_stairs.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/ground_stairs_slabs_stonecutting.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/stonecutting_cycling_recipes.psd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/curseforge/wiki/2020-12-24_06.50.gif" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +95,13 @@
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\curseforge" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\curseforge\wiki" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\build\libs\1.2.X" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block" />
+      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\concrete\cinder_bricks" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="assets.atbyw.models.block.cocnrete.cinder_block" />
       <recent name="net.azagwen.atbyw.misc" />
@@ -98,23 +109,16 @@
       <recent name="data.atbyw.tags.items" />
       <recent name="data.atbyw.recipes" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="net.azagwen.atbyw.mixin" />
+      <recent name="net.azagwen.atbyw.blocks" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\curseforge\wiki" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\curseforge" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\concrete\stairs" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\recipes" />
       <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\data\atbyw\loot_tables\blocks" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="net.azagwen.atbyw.mixin" />
-      <recent name="net.azagwen.atbyw.blocks" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\curseforge" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\curseforge\wiki" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\build\libs\1.2.X" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block" />
-      <recent name="G:\Draws\MC\Mod_Creation\Code\My Mods\fabric\ATBYW\src\main\resources\assets\atbyw\models\block\concrete\cinder_bricks" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.ATBYW [remapJar]">
