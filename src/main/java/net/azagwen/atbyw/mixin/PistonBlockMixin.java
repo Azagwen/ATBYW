@@ -2,8 +2,7 @@ package net.azagwen.atbyw.mixin;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import net.azagwen.atbyw.blocks.piston.PistonBlockDuck;
-import net.azagwen.atbyw.blocks.piston.PistonHeadType;
+import net.azagwen.atbyw.blocks.piston.PistonDuck;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.enums.PistonType;
@@ -23,10 +22,20 @@ import java.util.Map;
 
 import static net.minecraft.block.Block.dropStacks;
 import static net.minecraft.state.property.Properties.FACING;
+import static net.azagwen.atbyw.blocks.piston.PistonHelper.*;
 
 @Mixin(PistonBlock.class)
-public class PistonBlockMixin implements PistonBlockDuck {
-    private PistonHeadType pistonHeadType;
+public class PistonBlockMixin implements PistonDuck {
+    private int type;
+
+    private Block getPistonHeadBlock() {
+        return getWoodType(this.type, PISTON_HEAD);
+    }
+
+    private Block getMovingPistonBlock() {
+//        return getWoodType(this.type, MOVING_PISTON);
+        return Blocks.MOVING_PISTON;
+    }
 
     public PistonBlockMixin(boolean sticky) {
         this.sticky = sticky;
@@ -34,11 +43,10 @@ public class PistonBlockMixin implements PistonBlockDuck {
 
     @Inject(method = "move(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/math/Direction;Z)Z", at =
     @At(value = "HEAD"), cancellable = true)
-    private void move(World world, BlockPos pos, Direction dir, boolean retract, CallbackInfoReturnable cbir) {
-        System.out.println(pistonHeadType.getPistonHeadType());
+    private void move(World world, BlockPos pos, Direction dir, boolean retract, CallbackInfoReturnable<Boolean> cbir) {
         BlockPos blockPos = pos.offset(dir);
 
-        if (!retract && world.getBlockState(blockPos).isOf(pistonHeadType.getPistonHeadType())) {
+        if (!retract && world.getBlockState(blockPos).isOf(getPistonHeadBlock())) {
             world.setBlockState(blockPos, Blocks.AIR.getDefaultState(), 20);
         }
 
@@ -79,15 +87,15 @@ public class PistonBlockMixin implements PistonBlockDuck {
                 blockState8 = world.getBlockState(blockPos4);
                 blockPos4 = blockPos4.offset(direction);
                 map.remove(blockPos4);
-                world.setBlockState(blockPos4, (BlockState)Blocks.MOVING_PISTON.getDefaultState().with(FACING, dir), 68);
+                world.setBlockState(blockPos4, getMovingPistonBlock().getDefaultState().with(FACING, dir), 68);
                 world.setBlockEntity(blockPos4, PistonExtensionBlock.createBlockEntityPiston((BlockState)list2.get(l), dir, retract, false));
                 blockStates[j++] = blockState8;
             }
 
             if (retract) {
                 PistonType pistonType = this.sticky ? PistonType.STICKY : PistonType.DEFAULT;
-                BlockState blockState4 = (BlockState)((BlockState)pistonHeadType.getPistonHeadType().getDefaultState().with(PistonHeadBlock.FACING, dir)).with(PistonHeadBlock.TYPE, pistonType);
-                blockState8 = (BlockState)((BlockState)Blocks.MOVING_PISTON.getDefaultState().with(PistonExtensionBlock.FACING, dir)).with(PistonExtensionBlock.TYPE, this.sticky ? PistonType.STICKY : PistonType.DEFAULT);
+                BlockState blockState4 = getPistonHeadBlock().getDefaultState().with(PistonHeadBlock.FACING, dir).with(PistonHeadBlock.TYPE, pistonType);
+                blockState8 = getMovingPistonBlock().getDefaultState().with(PistonExtensionBlock.FACING, dir).with(PistonExtensionBlock.TYPE, this.sticky ? PistonType.STICKY : PistonType.DEFAULT);
                 map.remove(blockPos);
                 world.setBlockState(blockPos, blockState8, 68);
                 world.setBlockEntity(blockPos, PistonExtensionBlock.createBlockEntityPiston(blockState4, dir, true, true));
@@ -128,7 +136,7 @@ public class PistonBlockMixin implements PistonBlockDuck {
             }
 
             if (retract) {
-                world.updateNeighborsAlways(blockPos, pistonHeadType.getPistonHeadType());
+                world.updateNeighborsAlways(blockPos, getPistonHeadBlock());
             }
 
             cbir.setReturnValue(true);
@@ -139,7 +147,7 @@ public class PistonBlockMixin implements PistonBlockDuck {
     private final boolean sticky;
 
     @Override
-    public void setPistonHeadType(PistonHeadType type) {
-        this.pistonHeadType = type;
+    public void setType(int type) {
+        this.type = type;
     }
 }

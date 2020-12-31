@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 public class AtbywMain implements ModInitializer {
 	public static final String nameSpace = "atbyw";
 	public static final String modInteractionNameSpace = "atbyw_mi";
-	private static final Logger LOGGER  = LogManager.getLogger();
+	public static final Logger LOGGER  = LogManager.getLogger();
 
 	public static Identifier newID(String path) {
 		return new Identifier(nameSpace, path);

@@ -120,6 +120,10 @@ public class AtbywBlockUtils {
     //////////////////////////////////////////////////
     //              REGISTRATION UTILS              //
     //////////////////////////////////////////////////
+    public static void registerBlockOnly(String name, Block block) {
+        Registry.register(Registry.BLOCK, newID(name), block);
+    }
+
     public static void registerBlock(boolean fireproof, ItemGroup group, String name, Block block) {
         Item.Settings normalSettings = new Item.Settings().group(group);
         Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
@@ -134,6 +138,15 @@ public class AtbywBlockUtils {
 
         Registry.register(Registry.BLOCK, newID(name), block);
         Registry.register(Registry.ITEM, newID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+    }
+
+    public static void registerBlocksOnly(String block_name, String[] variant_type, Block[] block) {
+        if (block.length == variant_type.length)
+            for (int i = 0; i < block.length; i++) {
+                registerBlockOnly((variant_type[i] + "_" + block_name), block[i]);
+            }
+        else
+            throw new IllegalArgumentException("could not register " + block_name + " : mismatched lengths !");
     }
 
     public static void registerBlocks(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
