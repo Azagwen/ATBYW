@@ -15,7 +15,7 @@ import static net.minecraft.block.Block.cannotConnect;
 public class FenceBlockMixin {
 
     @Inject(method = "canConnect(Lnet/minecraft/block/BlockState;ZLnet/minecraft/util/math/Direction;)Z", at =
-    @At(value = "HEAD", args = {"log=false"}), cancellable = true)
+    @At(value = "HEAD"), cancellable = true)
     private void canConnect(BlockState state, boolean faceFullSquare, Direction side, CallbackInfoReturnable cbir) {
         Block block = state.getBlock();
         boolean isFenceDoor = block instanceof FenceDoorBlock && FenceDoorBlock.canWallConnect(state, side);

@@ -1,16 +1,13 @@
 package net.azagwen.atbyw.blocks;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
-import org.jetbrains.annotations.Nullable;
 
-import static net.azagwen.atbyw.init.AtbywMain.*;
+import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywBlockUtils {
     public static String[] WOOD_NAMES = {
@@ -67,8 +64,8 @@ public class AtbywBlockUtils {
             "pink_tulip",
             "oxeye_daisy",
             "cornflower",
-            "wither_rose",
-            "lily_of_the_valley"
+            "lily_of_the_valley",
+            "wither_rose"
     };
 
     public static final Block[] TERRACOTTA_COLORS = {
@@ -131,16 +128,29 @@ public class AtbywBlockUtils {
         Registry.register(Registry.ITEM, newID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
     }
 
-    public static void registerBlocks(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
-        Item.Settings normalSettings = new Item.Settings().group(group);
-        Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
+    public static void registerBlock(boolean fireproof, String name, Block block) {
+        Item.Settings normalSettings = new Item.Settings();
+        Item.Settings fireproofSettings = new Item.Settings().fireproof();
 
+        Registry.register(Registry.BLOCK, newID(name), block);
+        Registry.register(Registry.ITEM, newID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+    }
+
+    public static void registerBlocks(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
         if (block.length == variant_type.length)
             for (int i = 0; i < block.length; i++) {
-                Registry.register(Registry.BLOCK, newID(variant_type[i] + "_" + block_name), block[i]);
-                Registry.register(Registry.ITEM, newID(variant_type[i] + "_" + block_name), new BlockItem(block[i], (fireproof ? fireproofSettings : normalSettings)));
+                registerBlock(fireproof, group, (variant_type[i] + "_" + block_name), block[i]);
             }
         else
-            System.out.println("could not register " + block[0].getTranslationKey() + " : mismatched lengths !");
+            throw new IllegalArgumentException("could not register " + block_name + " : mismatched lengths !");
+    }
+
+    public static void registerBlocks(boolean fireproof, String block_name, String[] variant_type, Block[] block) {
+        if (block.length == variant_type.length)
+            for (int i = 0; i < block.length; i++) {
+                registerBlock(fireproof, (variant_type[i] + "_" + block_name), block[i]);
+            }
+        else
+            throw new IllegalArgumentException("could not register " + block_name + " : mismatched lengths !");
     }
 }

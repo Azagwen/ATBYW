@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class PaneBlockMixin {
 
     @Inject(method = "connectsTo(Lnet/minecraft/block/BlockState;Z)Z", at =
-    @At(value = "HEAD", args = {"log=false"}), cancellable = true)
+    @At(value = "HEAD"), cancellable = true)
     private void connectsTo(BlockState state, boolean bl, CallbackInfoReturnable cbir) {
         Block block = state.getBlock();
 

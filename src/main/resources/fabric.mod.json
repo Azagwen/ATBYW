@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "atbyw",
   "version": "${version}",
-
   "name": "All The Blocks You Want (ATBYW)",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
@@ -19,10 +18,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.azagwen.atbyw.init.AtbywMain"
+      "net.azagwen.atbyw.main.AtbywMain"
     ],
     "client": [
-      "net.azagwen.atbyw.init.AtbywClient"
+      "net.azagwen.atbyw.main.AtbywClient"
     ]
   },
   "mixins": [

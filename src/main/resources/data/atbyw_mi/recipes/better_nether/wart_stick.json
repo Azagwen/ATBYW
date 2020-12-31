@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sticks",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "betternether:wart_planks"
+    }
+  },
+  "result": {
+    "item": "atbyw_mi:wart_stick",
+    "count": 4
+  }
+}

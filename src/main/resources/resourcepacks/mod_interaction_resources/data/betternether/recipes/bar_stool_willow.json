@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "better_nether_bar_stool",
+  "pattern": [
+    "##",
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "atbyw_mi:willow_stick"
+    },
+    "#": {
+      "item": "betternether:willow_slab"
+    }
+  },
+  "result": {
+    "item": "betternether:bar_stool_willow",
+    "count": 1
+  }
+}

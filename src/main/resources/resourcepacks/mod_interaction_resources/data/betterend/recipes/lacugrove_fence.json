@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "better_end_wooden_fence",
+  "pattern": [
+    "#I#",
+    "#I#"
+  ],
+  "key": {
+    "I": {
+      "item": "atbyw_mi:lacugrove_stick"
+    },
+    "#": {
+      "item": "betterend:lacugrove_planks"
+    }
+  },
+  "result": {
+    "item": "betterend:lacugrove_fence",
+    "count": 3
+  }
+}

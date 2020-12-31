@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.blocks;
 
+import net.azagwen.atbyw.blocks.piston.*;
 import net.azagwen.atbyw.blocks.slabs.*;
 import net.azagwen.atbyw.blocks.stairs.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -8,15 +9,15 @@ import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
 import java.util.function.ToIntFunction;
 
 import static net.azagwen.atbyw.blocks.AtbywBlockUtils.*;
-import static net.azagwen.atbyw.init.AtbywMain.*;
+import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywBlocks {
 
@@ -25,8 +26,29 @@ public class AtbywBlocks {
     public static boolean always(BlockState state, BlockView world, BlockPos pos) { return true; }
     public static boolean never(BlockState state, BlockView world, BlockPos pos) { return false; }
 
-    private static ToIntFunction<BlockState> createLightLevelFromBlockState(int litLevel, BooleanProperty state) {
-        return (blockState) -> blockState.get(state) ? litLevel : 0;
+    private static ToIntFunction<BlockState> createLightLevelFromBlockState(int litLevel, BooleanProperty isLit) {
+        return (blockState) -> blockState.get(isLit) ? litLevel : 0;
+    }
+
+    private static ToIntFunction<BlockState> createLightLevelFromBlockState(int divider, IntProperty litLevel, BooleanProperty isLit) {
+        return (blockState) -> blockState.get(isLit) ? ((int) Math.ceil((double) blockState.get(litLevel) / (double) divider)) : 0;
+    }
+
+    private static PistonBlock createPistonBlock(boolean sticky, PistonHeadType type) {
+        AbstractBlock.ContextPredicate contextPredicate = (blockState, blockView, blockPos) -> {
+            return !blockState.get(PistonBlock.EXTENDED);
+        };
+        PistonBlock block = new PistonBlock(sticky, FabricBlockSettings.of(Material.PISTON).breakByTool(FabricToolTags.PICKAXES).strength(1.5F).solidBlock(AtbywBlocks::never).suffocates(contextPredicate).blockVision(contextPredicate));
+        ((PistonBlockDuck) block).setPistonHeadType(type);
+
+        return block;
+    }
+
+    private static PistonHeadBlock createPistonHeadBlock(PistonBlockType type) {
+        PistonHeadBlock block = new PistonHeadBlock(FabricBlockSettings.of(Material.PISTON).breakByTool(FabricToolTags.PICKAXES).strength(1.5F).dropsNothing());
+        ((PistonHeadBlockDuck) block).setPistonType(type);
+
+        return block;
     }
 
     private static FabricBlockSettings MakeBasalt() {
@@ -44,7 +66,7 @@ public class AtbywBlocks {
     public static final Block DUMMY_GRASS_BLOCK = new GrassBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
     public static final Block DUMMY_MYCELIUM = new MyceliumBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MaterialColor.PURPLE).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
 
-    //Full Blocks
+    //"Full" Blocks
     public static final Block DIRT_STAIRS = new DirtStairsBlock(FabricBlockSettings.copyOf(TICKING_DIRT));
     public static final Block GRASS_BLOCK_STAIRS = new SpreadableStairsBlock(DUMMY_GRASS_BLOCK, Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
     public static final Block MYCELIUM_STAIRS = new SpreadableStairsBlock(DUMMY_MYCELIUM, Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
@@ -81,6 +103,30 @@ public class AtbywBlocks {
     public static final Block DARK_OAK_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block CRIMSON_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block WARPED_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
+
+    public static final Block SPRUCE_PISTON = createPistonBlock(false, PistonHeadType.SPRUCE);
+    public static final Block BIRCH_PISTON = createPistonBlock(false, PistonHeadType.BIRCH);
+    public static final Block JUNGLE_PISTON = createPistonBlock(false, PistonHeadType.JUNGLE);
+    public static final Block ACACIA_PISTON = createPistonBlock(false, PistonHeadType.ACACIA);
+    public static final Block DARK_OAK_PISTON = createPistonBlock(false, PistonHeadType.DARK_OAK);
+    public static final Block CRIMSON_PISTON = createPistonBlock(false, PistonHeadType.CRIMSON);
+    public static final Block WARPED_PISTON = createPistonBlock(false, PistonHeadType.WARPED);
+
+    public static final Block SPRUCE_STICKY_PISTON = createPistonBlock(true, PistonHeadType.SPRUCE);
+    public static final Block BIRCH_STICKY_PISTON = createPistonBlock(true, PistonHeadType.BIRCH);
+    public static final Block JUNGLE_STICKY_PISTON = createPistonBlock(true, PistonHeadType.JUNGLE);
+    public static final Block ACACIA_STICKY_PISTON = createPistonBlock(true, PistonHeadType.ACACIA);
+    public static final Block DARK_OAK_STICKY_PISTON = createPistonBlock(true, PistonHeadType.DARK_OAK);
+    public static final Block CRIMSON_STICKY_PISTON = createPistonBlock(true, PistonHeadType.CRIMSON);
+    public static final Block WARPED_STICKY_PISTON = createPistonBlock(true, PistonHeadType.WARPED);
+
+    public static final Block SPRUCE_PISTON_HEAD = createPistonHeadBlock(PistonBlockType.SPRUCE);
+    public static final Block BIRCH_PISTON_HEAD = createPistonHeadBlock(PistonBlockType.BIRCH);
+    public static final Block JUNGLE_PISTON_HEAD = createPistonHeadBlock(PistonBlockType.JUNGLE);
+    public static final Block ACACIA_PISTON_HEAD = createPistonHeadBlock(PistonBlockType.ACACIA);
+    public static final Block DARK_OAK_PISTON_HEAD = createPistonHeadBlock(PistonBlockType.DARK_OAK);
+    public static final Block CRIMSON_PISTON_HEAD = createPistonHeadBlock(PistonBlockType.CRIMSON);
+    public static final Block WARPED_PISTON_HEAD = createPistonHeadBlock(PistonBlockType.WARPED);
 
     public static final Block BASALT_BRICKS = new Block(MakeBasalt());
     public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
@@ -261,7 +307,7 @@ public class AtbywBlocks {
     public static final Block RED_CINDER_BRICKS_WALL = new CinderBlocksWallBlock(FabricBlockSettings.copyOf(Blocks.RED_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block BLACK_CINDER_BRICKS_WALL = new CinderBlocksWallBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    //Other Blocks
+    //Non-Full Blocks
     public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.OAK_PLANKS));
     public static final Block SPRUCE_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.SPRUCE_PLANKS));
     public static final Block BIRCH_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.BIRCH_PLANKS));
@@ -292,8 +338,10 @@ public class AtbywBlocks {
     public static final Block PINK_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.PINK_TULIP).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
     public static final Block OXEYE_DAISY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.OXEYE_DAISY).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
     public static final Block CORNFLOWER_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block WITHER_ROSE_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WITHER_ROSE).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
     public static final Block LILY_OF_THE_VALLEY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.LILY_OF_THE_VALLEY).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block WITHER_ROSE_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WITHER_ROSE).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+
+    public static final Block REDSTONE_LANTERN = new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).breakByTool(FabricToolTags.PICKAXES).luminance(createLightLevelFromBlockState(2, AtbywProperties.POWER_INTENSITY, Properties.LIT)));
 
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
@@ -312,6 +360,34 @@ public class AtbywBlocks {
         });
         registerBlock(false, ATBYW_REDSTONE, "iron_fence_door", IRON_FENCE_DOOR);
 
+        registerBlocks(false, ATBYW_REDSTONE, "piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
+                SPRUCE_PISTON,
+                BIRCH_PISTON,
+                JUNGLE_PISTON,
+                ACACIA_PISTON,
+                DARK_OAK_PISTON,
+                CRIMSON_PISTON,
+                WARPED_PISTON
+        });
+        registerBlocks(false, ATBYW_REDSTONE, "sticky_piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
+                SPRUCE_STICKY_PISTON,
+                BIRCH_STICKY_PISTON,
+                JUNGLE_STICKY_PISTON,
+                ACACIA_STICKY_PISTON,
+                DARK_OAK_STICKY_PISTON,
+                CRIMSON_STICKY_PISTON,
+                WARPED_STICKY_PISTON
+        });
+        registerBlocks(false, "piston_head", WOOD_NAMES_FROM_SPRUCE, new Block[] {
+                SPRUCE_PISTON_HEAD,
+                BIRCH_PISTON_HEAD,
+                JUNGLE_PISTON_HEAD,
+                ACACIA_PISTON_HEAD,
+                DARK_OAK_PISTON_HEAD,
+                CRIMSON_PISTON_HEAD,
+                WARPED_PISTON_HEAD
+        });
+
         registerBlocks(false, ATBYW_REDSTONE, "bookshelf_toggle", WOOD_NAMES, new Block[] {
                 OAK_BOOKSHELF_TOGGLE,
                 SPRUCE_BOOKSHELF_TOGGLE,
@@ -322,6 +398,9 @@ public class AtbywBlocks {
                 CRIMSON_BOOKSHELF_TOGGLE,
                 WARPED_BOOKSHELF_TOGGLE
         });
+        AtbywModInteractionBlocks.initBookshelfToggles();
+
+        registerBlock(false, ATBYW_REDSTONE, "redstone_lantern", REDSTONE_LANTERN);
 
         registerBlocks(false, ATBYW_REDSTONE, "pull_switch", FLOWER_NAMES, new Block[] {
                 DANDELION_PULL_SWITCH,
@@ -335,8 +414,8 @@ public class AtbywBlocks {
                 PINK_TULIP_PULL_SWITCH,
                 OXEYE_DAISY_PULL_SWITCH,
                 CORNFLOWER_PULL_SWITCH,
-                WITHER_ROSE_PULL_SWITCH,
-                LILY_OF_THE_VALLEY_PULL_SWITCH
+                LILY_OF_THE_VALLEY_PULL_SWITCH,
+                WITHER_ROSE_PULL_SWITCH
         });
 
         registerBlock(false, ATBYW_BLOCKS, "grass_block_stairs", GRASS_BLOCK_STAIRS);

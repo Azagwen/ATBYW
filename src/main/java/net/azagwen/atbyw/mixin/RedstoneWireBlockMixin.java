@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class RedstoneWireBlockMixin {
 
     @Inject(method = "connectsTo(Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/Direction;)Z", at =
-    @At(value = "HEAD", args = {"log=true"}), cancellable = true)
+    @At(value = "HEAD"), cancellable = true)
     private static void connectsTo(BlockState state, Direction dir, CallbackInfoReturnable cbir) {
         if (state.getBlock() instanceof BookshelfToggleBlock)
             cbir.setReturnValue(dir == state.get(BookshelfToggleBlock.FACING) || dir == state.get(BookshelfToggleBlock.FACING).rotateYClockwise() || dir == state.get(BookshelfToggleBlock.FACING).rotateYCounterclockwise());

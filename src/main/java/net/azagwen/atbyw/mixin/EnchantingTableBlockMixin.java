@@ -12,8 +12,6 @@ import static net.azagwen.atbyw.misc.AtbywTags.BOOKSHELVES;
 @Mixin(EnchantingTableBlock.class)
 public class EnchantingTableBlockMixin {
 
-    //TODO: Fix this interfering with Charms
-
     @Redirect(
             method = "randomDisplayTick(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z", args = {"log=false"})

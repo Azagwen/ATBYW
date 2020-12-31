@@ -23,7 +23,7 @@ public class NetherrackSlabBlock extends SlabBlockSubClass implements Fertilizab
 
     @Override
     public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient) {
-        if (!world.getBlockState(pos.up()).isTranslucent(world, pos) || state.isIn(AtbywTags.TRAMPLES_GRASS_BLOCKS)) {
+        if (!world.getBlockState(pos.up()).isTranslucent(world, pos)) {
             return false;
         } else {
             Iterator iterator = BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1)).iterator();

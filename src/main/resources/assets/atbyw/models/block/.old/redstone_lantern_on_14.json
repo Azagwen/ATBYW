@@ -1,0 +1,10 @@
+{
+  "parent": "atbyw:block/template_redstone_lantern",
+  "textures": {
+    "lantern": "minecraft:block/lantern",
+    "north": "atbyw:block/redstone_lantern_on_2",
+    "south": "atbyw:block/redstone_lantern_on_4",
+    "west": "atbyw:block/redstone_lantern_on_4",
+    "east": "atbyw:block/redstone_lantern_on_4"
+  }
+}

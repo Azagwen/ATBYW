@@ -1,0 +1,187 @@
+{
+  "variants": {
+    "hanging=false,lit=true,power_intensity=15": {
+      "model": "atbyw:block/redstone_lantern_on_15"
+    },
+    "hanging=false,lit=true,power_intensity=14": {
+      "model": "atbyw:block/redstone_lantern_on_14"
+    },
+    "hanging=false,lit=true,power_intensity=13": {
+      "model": "atbyw:block/redstone_lantern_on_13"
+    },
+    "hanging=false,lit=true,power_intensity=12": {
+      "model": "atbyw:block/redstone_lantern_on_12"
+    },
+    "hanging=false,lit=true,power_intensity=11": {
+      "model": "atbyw:block/redstone_lantern_on_11"
+    },
+    "hanging=false,lit=true,power_intensity=10": {
+      "model": "atbyw:block/redstone_lantern_on_10"
+    },
+    "hanging=false,lit=true,power_intensity=9": {
+      "model": "atbyw:block/redstone_lantern_on_9"
+    },
+    "hanging=false,lit=true,power_intensity=8": {
+      "model": "atbyw:block/redstone_lantern_on_8"
+    },
+    "hanging=false,lit=true,power_intensity=7": {
+      "model": "atbyw:block/redstone_lantern_on_7"
+    },
+    "hanging=false,lit=true,power_intensity=6": {
+      "model": "atbyw:block/redstone_lantern_on_6"
+    },
+    "hanging=false,lit=true,power_intensity=5": {
+      "model": "atbyw:block/redstone_lantern_on_5"
+    },
+    "hanging=false,lit=true,power_intensity=4": {
+      "model": "atbyw:block/redstone_lantern_on_4"
+    },
+    "hanging=false,lit=true,power_intensity=3": {
+      "model": "atbyw:block/redstone_lantern_on_3"
+    },
+    "hanging=false,lit=true,power_intensity=2": {
+      "model": "atbyw:block/redstone_lantern_on_2"
+    },
+    "hanging=false,lit=true,power_intensity=1": {
+      "model": "atbyw:block/redstone_lantern_on_1"
+    },
+
+    "hanging=true,lit=true,power_intensity=15": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_15"
+    },
+    "hanging=true,lit=true,power_intensity=14": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_14"
+    },
+    "hanging=true,lit=true,power_intensity=13": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_13"
+    },
+    "hanging=true,lit=true,power_intensity=12": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_12"
+    },
+    "hanging=true,lit=true,power_intensity=11": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_11"
+    },
+    "hanging=true,lit=true,power_intensity=10": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_10"
+    },
+    "hanging=true,lit=true,power_intensity=9": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_9"
+    },
+    "hanging=true,lit=true,power_intensity=8": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_8"
+    },
+    "hanging=true,lit=true,power_intensity=7": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_7"
+    },
+    "hanging=true,lit=true,power_intensity=6": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_6"
+    },
+    "hanging=true,lit=true,power_intensity=5": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_5"
+    },
+    "hanging=true,lit=true,power_intensity=4": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_4"
+    },
+    "hanging=true,lit=true,power_intensity=3": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_3"
+    },
+    "hanging=true,lit=true,power_intensity=2": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_2"
+    },
+    "hanging=true,lit=true,power_intensity=1": {
+      "model": "atbyw:block/redstone_lantern_on_hanging_1"
+    },
+
+    "hanging=false,lit=false,power_intensity=15": {
+      "model": "atbyw:block/redstone_lantern_15"
+    },
+    "hanging=false,lit=false,power_intensity=14": {
+      "model": "atbyw:block/redstone_lantern_14"
+    },
+    "hanging=false,lit=false,power_intensity=13": {
+      "model": "atbyw:block/redstone_lantern_13"
+    },
+    "hanging=false,lit=false,power_intensity=12": {
+      "model": "atbyw:block/redstone_lantern_12"
+    },
+    "hanging=false,lit=false,power_intensity=11": {
+      "model": "atbyw:block/redstone_lantern_11"
+    },
+    "hanging=false,lit=false,power_intensity=10": {
+      "model": "atbyw:block/redstone_lantern_10"
+    },
+    "hanging=false,lit=false,power_intensity=9": {
+      "model": "atbyw:block/redstone_lantern_9"
+    },
+    "hanging=false,lit=false,power_intensity=8": {
+      "model": "atbyw:block/redstone_lantern_8"
+    },
+    "hanging=false,lit=false,power_intensity=7": {
+      "model": "atbyw:block/redstone_lantern_7"
+    },
+    "hanging=false,lit=false,power_intensity=6": {
+      "model": "atbyw:block/redstone_lantern_6"
+    },
+    "hanging=false,lit=false,power_intensity=5": {
+      "model": "atbyw:block/redstone_lantern_5"
+    },
+    "hanging=false,lit=false,power_intensity=4": {
+      "model": "atbyw:block/redstone_lantern_4"
+    },
+    "hanging=false,lit=false,power_intensity=3": {
+      "model": "atbyw:block/redstone_lantern_3"
+    },
+    "hanging=false,lit=false,power_intensity=2": {
+      "model": "atbyw:block/redstone_lantern_2"
+    },
+    "hanging=false,lit=false,power_intensity=1": {
+      "model": "atbyw:block/redstone_lantern_1"
+    },
+
+    "hanging=true,lit=false,power_intensity=15": {
+      "model": "atbyw:block/redstone_lantern_hanging_15"
+    },
+    "hanging=true,lit=false,power_intensity=14": {
+      "model": "atbyw:block/redstone_lantern_hanging_14"
+    },
+    "hanging=true,lit=false,power_intensity=13": {
+      "model": "atbyw:block/redstone_lantern_hanging_13"
+    },
+    "hanging=true,lit=false,power_intensity=12": {
+      "model": "atbyw:block/redstone_lantern_hanging_12"
+    },
+    "hanging=true,lit=false,power_intensity=11": {
+      "model": "atbyw:block/redstone_lantern_hanging_11"
+    },
+    "hanging=true,lit=false,power_intensity=10": {
+      "model": "atbyw:block/redstone_lantern_hanging_10"
+    },
+    "hanging=true,lit=false,power_intensity=9": {
+      "model": "atbyw:block/redstone_lantern_hanging_9"
+    },
+    "hanging=true,lit=false,power_intensity=8": {
+      "model": "atbyw:block/redstone_lantern_hanging_8"
+    },
+    "hanging=true,lit=false,power_intensity=7": {
+      "model": "atbyw:block/redstone_lantern_hanging_7"
+    },
+    "hanging=true,lit=false,power_intensity=6": {
+      "model": "atbyw:block/redstone_lantern_hanging_6"
+    },
+    "hanging=true,lit=false,power_intensity=5": {
+      "model": "atbyw:block/redstone_lantern_hanging_5"
+    },
+    "hanging=true,lit=false,power_intensity=4": {
+      "model": "atbyw:block/redstone_lantern_hanging_4"
+    },
+    "hanging=true,lit=false,power_intensity=3": {
+      "model": "atbyw:block/redstone_lantern_hanging_3"
+    },
+    "hanging=true,lit=false,power_intensity=2": {
+      "model": "atbyw:block/redstone_lantern_hanging_2"
+    },
+    "hanging=true,lit=false,power_intensity=1": {
+      "model": "atbyw:block/redstone_lantern_hanging_1"
+    }
+  }
+}

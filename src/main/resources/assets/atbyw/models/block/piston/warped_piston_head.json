@@ -1,0 +1,7 @@
+{
+	"parent": "atbyw:block/piston/template_piston_head",
+	"textures": {
+		"all": "atbyw:block/warped_piston",
+		"particle": "minecraft:block/warped_planks"
+	}
+}

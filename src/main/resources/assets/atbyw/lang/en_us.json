@@ -17,6 +17,8 @@
   "block.atbyw.wither_rose_pull_switch": "Wither Rose Pull Switch",
   "block.atbyw.lily_of_the_valley_pull_switch": "Lily Of The Valley Pull Switch",
 
+  "block.atbyw.redstone_lantern": "Redstone Lantern",
+
   "block.atbyw.dirt_stairs": "Dirt Stairs",
   "block.atbyw.coarse_dirt_stairs": "Coarse Dirt Stairs",
   "block.atbyw.grass_block_stairs": "Grass Block Stairs",
@@ -65,6 +67,22 @@
   "block.atbyw.crimson_bookshelf_toggle": "Crimson Bookshelf Toggle",
   "block.atbyw.warped_bookshelf_toggle": "Warped Bookshelf Toggle",
 
+  "block.atbyw.spruce_piston": "Spruce Piston",
+  "block.atbyw.birch_piston": "Birch Piston",
+  "block.atbyw.jungle_piston": "Jungle Piston",
+  "block.atbyw.acacia_piston": "Acacia Piston",
+  "block.atbyw.dark_oak_piston": "Dark Oak Piston",
+  "block.atbyw.crimson_piston": "Crimson Piston",
+  "block.atbyw.warped_piston": "Warped Piston",
+
+  "block.atbyw.spruce_sticky_piston": "Spruce Sticky Piston",
+  "block.atbyw.birch_sticky_piston": "Birch Sticky Piston",
+  "block.atbyw.jungle_sticky_piston": "Jungle Sticky Piston",
+  "block.atbyw.acacia_sticky_piston": "Acacia Sticky Piston",
+  "block.atbyw.dark_oak_sticky_piston": "Dark Oak Sticky Piston",
+  "block.atbyw.crimson_sticky_piston": "Crimson Sticky Piston",
+  "block.atbyw.warped_sticky_piston": "Warped Sticky Piston",
+
   "block.minecraft.ladder": "Oak Ladder",
   "block.atbyw.spruce_ladder": "Spruce Ladder",
   "block.atbyw.birch_ladder": "Birch Ladder",
@@ -78,7 +96,8 @@
   "block.atbyw.dev_block": "Aza Block",
 
   "_comment": "Items",
-  "item.minecraft.stick": "Oak Stick",
+  "item.minecraft.stick": "Generic Stick",
+  "item.atbyw.oak_stick": "Oak Stick",
   "item.atbyw.spruce_stick": "Spruce Stick",
   "item.atbyw.birch_stick": "Birch Stick",
   "item.atbyw.jungle_stick": "Jungle Stick",
@@ -277,5 +296,6 @@
   "_comment": "Misc",
   "itemGroup.atbyw.blocks": "§nA§rll §nT§rhe §nB§rlocks §nY§rou §nW§rant",
   "itemGroup.atbyw.items": "ATBYW Misc",
-  "itemGroup.atbyw.redstone": "ATBYW Redstone"
+  "itemGroup.atbyw.redstone": "ATBYW Redstone",
+  "block.atbyw.redstone_lantern.power_intensity": "Power Intensity: %d"
 }

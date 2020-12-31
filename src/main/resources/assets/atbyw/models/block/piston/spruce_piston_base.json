@@ -1,0 +1,7 @@
+{
+	"parent": "atbyw:block/piston/template_piston_base",
+	"textures": {
+		"all": "atbyw:block/spruce_piston",
+		"particle": "minecraft:block/spruce_planks"
+	}
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle",
+  "textures": {
+    "particle": "betternether:block/reeds_block_side",
+    "top": "betternether:block/reeds_block_top",
+    "sides": "atbyw_mi:block/better_nether/reeds_bookshelf_toggle"
+  }
+}

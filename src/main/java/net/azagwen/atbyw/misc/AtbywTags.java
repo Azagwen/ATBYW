@@ -5,16 +5,15 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
 
-import static net.azagwen.atbyw.init.AtbywMain.*;
+import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywTags {
+
     // Block Tags
     public static final Tag<Block> BOOKSHELVES = registerBlockTag("bookshelves");
-    public static final Tag<Block> TRAMPLES_GRASS_BLOCKS = registerBlockTag("tramples_grass_blocks");
-    public static final Tag<Block> TRAMPLES_NYLIUM_BLOCKS = registerBlockTag("tramples_nylium_blocks");
 
     // Item Tags
-    public static final Tag<Item> BOOKSHELVES_I = registerItemTag("bookshelves");
+    public static final Tag<Item> ITEM_BOOKSHELVES = registerItemTag("bookshelves");
     public static final Tag<Item> STICKS = registerItemTag("sticks");
 
     private AtbywTags() {
