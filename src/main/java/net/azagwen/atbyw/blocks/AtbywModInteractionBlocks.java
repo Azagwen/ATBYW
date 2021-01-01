@@ -1,6 +1,9 @@
 package net.azagwen.atbyw.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import static net.azagwen.atbyw.blocks.AtbywModInteractionBlockUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
@@ -28,7 +31,7 @@ public class AtbywModInteractionBlocks {
 
     public static void initBookshelfToggles() {
         if (isModLoaded("betternether")) {
-            registerModInteractionBlocks(false, ATBYW_REDSTONE, "bookshelf_toggle", BETTER_NETHER_WOOD_NAMES, new Block[] {
+            Block[] toggles = new Block[] {
                     STALAGNATE_BOOKSHELF_TOGGLE,
                     REEDS_BOOKSHELF_TOGGLE,
                     WILLOW_BOOKSHELF_TOGGLE,
@@ -38,11 +41,13 @@ public class AtbywModInteractionBlocks {
                     MUSHROOM_FIR_BOOKSHELF_TOGGLE,
                     ANCHOR_TREE_BOOKSHELF_TOGGLE,
                     NETHER_SAKURA_BOOKSHELF_TOGGLE
-            });
+            };
+
+//            registerModInteractBlocks(false, ATBYW_REDSTONE, "bookshelf_toggle", BETTER_NETHER_WOOD_NAMES, toggles);
         }
 
         if (isModLoaded("betterend")) {
-            registerModInteractionBlocks(false, ATBYW_REDSTONE, "bookshelf_toggle", BETTER_END_WOOD_NAMES, new Block[] {
+            Block[] toggles = new Block[]{
                     MOSSY_GLOWSROOM_BOOKSHELF_TOGGLE,
                     PYTHADENDRON_BOOKSHELF_TOGGLE,
                     END_LOTUS_BOOKSHELF_TOGGLE,
@@ -51,7 +56,9 @@ public class AtbywModInteractionBlocks {
                     TENANEA_BOOKSHELF_TOGGLE,
                     HELIX_TREE_BOOKSHELF_TOGGLE,
                     UMBRELLA_TREE_BOOKSHELF_TOGGLE
-            });
+            };
+
+            registerModInteractBlocks(false, ATBYW_REDSTONE, "bookshelf_toggle", BETTER_END_WOOD_NAMES, toggles);
         }
     }
 }

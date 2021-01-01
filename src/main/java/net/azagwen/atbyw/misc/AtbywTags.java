@@ -11,9 +11,11 @@ public class AtbywTags {
 
     // Block Tags
     public static final Tag<Block> BOOKSHELVES = registerBlockTag("bookshelves");
+    public static final Tag<Block> PISTONS = registerBlockTag("pistons");
 
     // Item Tags
     public static final Tag<Item> ITEM_BOOKSHELVES = registerItemTag("bookshelves");
+    public static final Tag<Item> ITEM_PISTONS = registerItemTag("pistons");
     public static final Tag<Item> STICKS = registerItemTag("sticks");
 
     private AtbywTags() {

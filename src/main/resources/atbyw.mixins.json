@@ -6,8 +6,6 @@
     "mixins": [
         "FenceBlockMixin",
         "PaneBlockMixin",
-        "PistonBlockMixin",
-        "PistonHeadBlockMixin",
         "RedstoneWireBlockMixin",
         "WallBlockMixin"
     ],

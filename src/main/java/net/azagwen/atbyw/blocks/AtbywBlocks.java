@@ -1,20 +1,16 @@
 package net.azagwen.atbyw.blocks;
 
-import net.azagwen.atbyw.blocks.piston.*;
 import net.azagwen.atbyw.blocks.slabs.*;
 import net.azagwen.atbyw.blocks.stairs.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.PistonBlockEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 
 import java.util.function.ToIntFunction;
@@ -35,31 +31,6 @@ public class AtbywBlocks {
 
     private static ToIntFunction<BlockState> createLightLevelFromBlockState(int divider, IntProperty litLevel, BooleanProperty isLit) {
         return (blockState) -> blockState.get(isLit) ? ((int) Math.ceil((double) blockState.get(litLevel) / (double) divider)) : 0;
-    }
-
-    private static PistonBlock createPistonBlock(boolean sticky, int type) {
-        AbstractBlock.ContextPredicate contextPredicate = (blockState, blockView, blockPos) -> !blockState.get(PistonBlock.EXTENDED);
-        PistonBlock block = new PistonBlock(sticky, FabricBlockSettings.of(Material.PISTON).breakByTool(FabricToolTags.PICKAXES).strength(1.5F).solidBlock(AtbywBlocks::never).suffocates(contextPredicate).blockVision(contextPredicate));
-        ((PistonDuck) block).setType(type);
-        LOGGER.info(sticky ? "sticky_piston_wood_type = " + PistonHelper.getName(type) : "piston_wood_type = " + PistonHelper.getName(type));
-
-        return block;
-    }
-
-    private static PistonHeadBlock createPistonHeadBlock(int type) {
-        PistonHeadBlock block = new PistonHeadBlock(FabricBlockSettings.of(Material.PISTON).breakByTool(FabricToolTags.PICKAXES).strength(1.5F).dropsNothing());
-        ((PistonDuck) block).setType(type);
-        LOGGER.info("piston_head_wood_type = " + PistonHelper.getName(type));
-
-        return block;
-    }
-
-    private static PistonExtensionBlock createPistonExtensionBlock(int type) {
-        PistonExtensionBlock block = new PistonExtensionBlock(AbstractBlock.Settings.of(Material.PISTON).strength(-1.0F).dynamicBounds().dropsNothing().nonOpaque().solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never));
-        ((PistonDuck) block).setType(type);
-        LOGGER.info("moving_piston_wood_type = " + PistonHelper.getName(type));
-
-        return block;
     }
 
     private static FabricBlockSettings MakeBasalt() {
@@ -114,47 +85,6 @@ public class AtbywBlocks {
     public static final Block DARK_OAK_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block CRIMSON_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block WARPED_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
-
-    public static Block SPRUCE_PISTON = createPistonBlock(false, PistonHelper.SPRUCE);
-
-    public static Block BIRCH_PISTON = createPistonBlock(false, PistonHelper.BIRCH);
-    public static Block JUNGLE_PISTON = createPistonBlock(false, PistonHelper.JUNGLE);
-    public static Block ACACIA_PISTON = createPistonBlock(false, PistonHelper.ACACIA);
-    public static Block DARK_OAK_PISTON = createPistonBlock(false, PistonHelper.DARK_OAK);
-    public static Block CRIMSON_PISTON = createPistonBlock(false, PistonHelper.CRIMSON);
-    public static Block WARPED_PISTON = createPistonBlock(false, PistonHelper.WARPED);
-
-    public static Block SPRUCE_STICKY_PISTON = createPistonBlock(true, PistonHelper.SPRUCE);
-    public static Block BIRCH_STICKY_PISTON = createPistonBlock(true, PistonHelper.BIRCH);
-    public static Block JUNGLE_STICKY_PISTON = createPistonBlock(true, PistonHelper.JUNGLE);
-    public static Block ACACIA_STICKY_PISTON = createPistonBlock(true, PistonHelper.ACACIA);
-    public static Block DARK_OAK_STICKY_PISTON = createPistonBlock(true, PistonHelper.DARK_OAK);
-    public static Block CRIMSON_STICKY_PISTON = createPistonBlock(true, PistonHelper.CRIMSON);
-    public static Block WARPED_STICKY_PISTON = createPistonBlock(true, PistonHelper.WARPED);
-
-    public static Block SPRUCE_PISTON_HEAD = createPistonHeadBlock(PistonHelper.SPRUCE);
-    public static Block BIRCH_PISTON_HEAD = createPistonHeadBlock(PistonHelper.BIRCH);
-    public static Block JUNGLE_PISTON_HEAD = createPistonHeadBlock(PistonHelper.JUNGLE);
-    public static Block ACACIA_PISTON_HEAD = createPistonHeadBlock(PistonHelper.ACACIA);
-    public static Block DARK_OAK_PISTON_HEAD = createPistonHeadBlock(PistonHelper.DARK_OAK);
-    public static Block CRIMSON_PISTON_HEAD = createPistonHeadBlock(PistonHelper.CRIMSON);
-    public static Block WARPED_PISTON_HEAD = createPistonHeadBlock(PistonHelper.WARPED);
-
-//    public static Block SPRUCE_MOVING_PISTON = createPistonExtensionBlock(PistonHelper.SPRUCE);
-//    public static Block BIRCH_MOVING_PISTON = createPistonExtensionBlock(PistonHelper.BIRCH);
-//    public static Block JUNGLE_MOVING_PISTON = createPistonExtensionBlock(PistonHelper.JUNGLE);
-//    public static Block ACACIA_MOVING_PISTON = createPistonExtensionBlock(PistonHelper.ACACIA);
-//    public static Block DARK_OAK_MOVING_PISTON = createPistonExtensionBlock(PistonHelper.DARK_OAK);
-//    public static Block CRIMSON_MOVING_PISTON = createPistonExtensionBlock(PistonHelper.CRIMSON);
-//    public static Block WARPED_MOVING_PISTON = createPistonExtensionBlock(PistonHelper.WARPED);
-
-    public static BlockEntityType<PistonBlockEntity> SPRUCE_PISTON_ENTITY;
-    public static BlockEntityType<PistonBlockEntity> BIRCH_PISTON_ENTITY;
-    public static BlockEntityType<PistonBlockEntity> JUNGLE_PISTON_ENTITY;
-    public static BlockEntityType<PistonBlockEntity> ACACIA_PISTON_ENTITY;
-    public static BlockEntityType<PistonBlockEntity> DARK_OAK_PISTON_ENTITY;
-    public static BlockEntityType<PistonBlockEntity> CRIMSON_PISTON_ENTITY;
-    public static BlockEntityType<PistonBlockEntity> WARPED_PISTON_ENTITY;
 
     public static final Block BASALT_BRICKS = new Block(MakeBasalt());
     public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
@@ -373,7 +303,7 @@ public class AtbywBlocks {
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
     public static void init() {
-//        registerBlocks(false, ATBYW_BLOCKS, "test_block", new String[] {"test111", "test222", "test333"}, TESTBLOCK);
+        //        registerBlocks(false, ATBYW_BLOCKS, "test_block", new String[] {"test111", "test222", "test333"}, TESTBLOCK);
 
         registerBlocks(false, ATBYW_REDSTONE, "fence_door", WOOD_NAMES, new Block[] {
                 OAK_FENCE_DOOR,
@@ -386,52 +316,6 @@ public class AtbywBlocks {
                 WARPED_FENCE_DOOR
         });
         registerBlock(false, ATBYW_REDSTONE, "iron_fence_door", IRON_FENCE_DOOR);
-
-//        registerBlocksOnly("moving_piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
-//                SPRUCE_MOVING_PISTON,
-//                BIRCH_MOVING_PISTON,
-//                JUNGLE_MOVING_PISTON,
-//                ACACIA_MOVING_PISTON,
-//                DARK_OAK_MOVING_PISTON,
-//                CRIMSON_MOVING_PISTON,
-//                WARPED_MOVING_PISTON
-//        });
-
-//        SPRUCE_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("spruce_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, SPRUCE_MOVING_PISTON).build(null));
-//        BIRCH_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("birch_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, BIRCH_MOVING_PISTON).build(null));
-//        JUNGLE_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("jungle_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, JUNGLE_MOVING_PISTON).build(null));
-//        ACACIA_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("acacia_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, ACACIA_MOVING_PISTON).build(null));
-//        DARK_OAK_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("dark_oak_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, DARK_OAK_MOVING_PISTON).build(null));
-//        CRIMSON_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("crimson_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, CRIMSON_MOVING_PISTON).build(null));
-//        WARPED_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("warped_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, WARPED_MOVING_PISTON).build(null));
-
-        registerBlocks(false, ATBYW_REDSTONE, "piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
-                SPRUCE_PISTON,
-                BIRCH_PISTON,
-                JUNGLE_PISTON,
-                ACACIA_PISTON,
-                DARK_OAK_PISTON,
-                CRIMSON_PISTON,
-                WARPED_PISTON
-        });
-        registerBlocks(false, ATBYW_REDSTONE, "sticky_piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
-                SPRUCE_STICKY_PISTON,
-                BIRCH_STICKY_PISTON,
-                JUNGLE_STICKY_PISTON,
-                ACACIA_STICKY_PISTON,
-                DARK_OAK_STICKY_PISTON,
-                CRIMSON_STICKY_PISTON,
-                WARPED_STICKY_PISTON
-        });
-        registerBlocks(false, "piston_head", WOOD_NAMES_FROM_SPRUCE, new Block[] {
-                SPRUCE_PISTON_HEAD,
-                BIRCH_PISTON_HEAD,
-                JUNGLE_PISTON_HEAD,
-                ACACIA_PISTON_HEAD,
-                DARK_OAK_PISTON_HEAD,
-                CRIMSON_PISTON_HEAD,
-                WARPED_PISTON_HEAD
-        });
 
         registerBlocks(false, ATBYW_REDSTONE, "bookshelf_toggle", WOOD_NAMES, new Block[] {
                 OAK_BOOKSHELF_TOGGLE,

@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:piston",
+    "atbyw:spruce_piston",
+    "atbyw:birch_piston",
+    "atbyw:jungle_piston",
+    "atbyw:acacia_piston",
+    "atbyw:dark_oak_piston",
+    "atbyw:crimson_piston",
+    "atbyw:warped_piston",
+
+    "minecraft:sticky_piston",
+    "atbyw:spruce_sticky_piston",
+    "atbyw:birch_sticky_piston",
+    "atbyw:jungle_sticky_piston",
+    "atbyw:acacia_sticky_piston",
+    "atbyw:dark_oak_sticky_piston",
+    "atbyw:crimson_sticky_piston",
+    "atbyw:warped_sticky_piston"
+  ]
+}

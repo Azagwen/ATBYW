@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import static net.azagwen.atbyw.main.AtbywMain.newModInteractionID;
@@ -32,7 +33,21 @@ public class AtbywModInteractionBlockUtils {
             "umbrella_tree"
     };
 
-    public static void registerModInteractionBlocks(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
+    public static void registerIfPresent(Identifier blockToLookFor, boolean fireproof, ItemGroup group, String name, Block block) {
+        if (Registry.BLOCK.getOrEmpty(blockToLookFor).isPresent()) {
+            registerModInteractBlock(fireproof, group, name, block);
+        }
+    }
+
+    public static void registerModInteractBlock(boolean fireproof, ItemGroup group, String block_name, Block block) {
+        Item.Settings normalSettings = new Item.Settings().group(group);
+        Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
+
+        Registry.register(Registry.BLOCK, newModInteractionID(block_name), block);
+        Registry.register(Registry.ITEM, newModInteractionID(block_name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+    }
+
+    public static void registerModInteractBlocks(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
         Item.Settings normalSettings = new Item.Settings().group(group);
         Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
 
