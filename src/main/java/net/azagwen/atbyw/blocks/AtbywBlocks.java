@@ -2,6 +2,8 @@ package net.azagwen.atbyw.blocks;
 
 import net.azagwen.atbyw.blocks.slabs.*;
 import net.azagwen.atbyw.blocks.stairs.*;
+import net.azagwen.atbyw.blocks.statues.StatueBlock;
+import net.azagwen.atbyw.blocks.statues.StatueBlockMobTypes;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
@@ -300,10 +302,26 @@ public class AtbywBlocks {
     public static final Block WITHER_ROSE_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WITHER_ROSE).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
 
     public static final Block REDSTONE_LANTERN = new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).breakByTool(FabricToolTags.PICKAXES).luminance(createLightLevelFromBlockState(2, AtbywProperties.POWER_INTENSITY, Properties.LIT)));
+
+    public static final Block CHICKEN_STATUE = new StatueBlock(true, StatueBlockMobTypes.CHICKEN, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block WOLF_STATUE = new StatueBlock(false, StatueBlockMobTypes.WOLF, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block SLIME_STATUE = new StatueBlock(false, StatueBlockMobTypes.SLIME, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block MAGMA_CUBE_STATUE = new StatueBlock(false, StatueBlockMobTypes.MAGMA_CUBE, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block SILVERFISH_STATUE = new StatueBlock(false, StatueBlockMobTypes.SILVERFISH, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block CAT_STATUE = new StatueBlock(true, StatueBlockMobTypes.CAT, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block RABBIT_STATUE = new StatueBlock(true, StatueBlockMobTypes.RABBIT, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block SHULKER_STATUE = new StatueBlock(true, StatueBlockMobTypes.SHULKER, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block ENDERMITE_STATUE = new StatueBlock(false, StatueBlockMobTypes.ENDERMITE, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block COD_STATUE = new StatueBlock(false, StatueBlockMobTypes.COD, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block SALMON_STATUE = new StatueBlock(false, StatueBlockMobTypes.SALMON, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block PUFFER_FISH_STATUE = new StatueBlock(false, StatueBlockMobTypes.PUFFER_FISH, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block FOX_STATUE = new StatueBlock(false, StatueBlockMobTypes.FOX, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+    public static final Block BEE_STATUE = new StatueBlock(false, StatueBlockMobTypes.BEE, FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly());
+
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
     public static void init() {
-        //        registerBlocks(false, ATBYW_BLOCKS, "test_block", new String[] {"test111", "test222", "test333"}, TESTBLOCK);
+        //registerBlocks(false, ATBYW_BLOCKS, "test_block", new String[] {"test111", "test222", "test333"}, TESTBLOCK);
 
         registerBlocks(false, ATBYW_REDSTONE, "fence_door", WOOD_NAMES, new Block[] {
                 OAK_FENCE_DOOR,
@@ -588,5 +606,20 @@ public class AtbywBlocks {
         });
 
         registerBlock(false, ATBYW_MISC, "dev_block", DEVELOPER_BLOCK);
+
+        registerBlock(false, ATBYW_MISC, "chicken_statue", CHICKEN_STATUE);
+        registerBlock(false, ATBYW_MISC, "wolf_statue", WOLF_STATUE);
+        registerBlock(false, ATBYW_MISC, "slime_statue", SLIME_STATUE);
+        registerBlock(false, ATBYW_MISC, "magma_cube_statue", MAGMA_CUBE_STATUE);
+        registerBlock(false, ATBYW_MISC, "silverfish_statue", SILVERFISH_STATUE);
+        registerBlock(false, ATBYW_MISC, "cat_statue", CAT_STATUE);
+        registerBlock(false, ATBYW_MISC, "rabbit_statue", RABBIT_STATUE);
+        registerBlock(false, ATBYW_MISC, "shulker_statue", SHULKER_STATUE);
+        registerBlock(false, ATBYW_MISC, "endermite_statue", ENDERMITE_STATUE);
+        registerBlock(false, ATBYW_MISC, "cod_statue", COD_STATUE);
+        registerBlock(false, ATBYW_MISC, "salmon_statue", SALMON_STATUE);
+        registerBlock(false, ATBYW_MISC, "puffer_fish_statue", PUFFER_FISH_STATUE);
+        registerBlock(false, ATBYW_MISC, "fox_statue", FOX_STATUE);
+        registerBlock(false, ATBYW_MISC, "bee_statue", BEE_STATUE);
     }
 }

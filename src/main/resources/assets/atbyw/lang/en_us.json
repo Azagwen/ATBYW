@@ -19,6 +19,14 @@
 
   "block.atbyw.redstone_lantern": "Redstone Lantern",
 
+  "block.atbyw.chicken_statue": "Chicken Statue",
+  "block.atbyw.wolf_statue": "Wolf Statue",
+  "block.atbyw.silverfish_statue": "Silverfish Statue",
+  "block.atbyw.cat_statue": "Cat Statue",
+  "block.atbyw.rabbit_statue": "Rabbit Statue",
+  "block.atbyw.endermite_statue": "Endermite Statue",
+  "block.atbyw.bee_statue": "Bee Statue",
+
   "block.atbyw.dirt_stairs": "Dirt Stairs",
   "block.atbyw.coarse_dirt_stairs": "Coarse Dirt Stairs",
   "block.atbyw.grass_block_stairs": "Grass Block Stairs",
@@ -297,5 +305,24 @@
   "itemGroup.atbyw.blocks": "§nA§rll §nT§rhe §nB§rlocks §nY§rou §nW§rant",
   "itemGroup.atbyw.items": "ATBYW Misc",
   "itemGroup.atbyw.redstone": "ATBYW Redstone",
-  "block.atbyw.redstone_lantern.power_intensity": "Power Intensity: %d"
+  "block.atbyw.redstone_lantern.power_intensity": "Power Intensity: %d",
+
+  "block.atbyw.chicken_statue.not_ready": "Chicken statue is %d%% mossy.",
+  "block.atbyw.wolf_statue.not_ready": "Wolf statue is %d%% mossy.",
+  "block.atbyw.silverfish_statue.not_ready": "Silverfish statue is %d%% mossy.",
+  "block.atbyw.cat_statue.not_ready": "Cat statue is %d%% mossy.",
+  "block.atbyw.rabbit_statue.not_ready": "Rabbit statue is %d%% mossy.",
+  "block.atbyw.endermite_statue.not_ready": "Endermite statue is %d%% mossy.",
+  "block.atbyw.bee_statue.not_ready": "Bee statue is %d%% mossy.",
+
+  "block.atbyw.chicken_statue.ready": "Chicken statue was %d%% mossy.",
+  "block.atbyw.wolf_statue.ready": "Wolf statue was %d%% mossy.",
+  "block.atbyw.silverfish_statue.ready": "Silverfish statue was %d%% mossy.",
+  "block.atbyw.cat_statue.ready": "Cat statue was %d%% mossy.",
+  "block.atbyw.rabbit_statue.ready": "Rabbit statue was %d%% mossy.",
+  "block.atbyw.endermite_statue.ready": "Endermite statue was %d%% mossy.",
+  "block.atbyw.bee_statue.ready": "Bee statue was %d%% mossy.",
+
+  "_comment": "Unused / Old / Kept as Examples",
+  "block.atbyw. statue.not_ready": "%1$s is not ready yet. (%2$s%% moss coverage)"
 }

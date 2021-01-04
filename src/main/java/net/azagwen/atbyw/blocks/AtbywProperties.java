@@ -12,6 +12,7 @@ public class AtbywProperties {
     public static final IntProperty APPEARANCE;
     public static final IntProperty TIMER;
     public static final IntProperty POWER_INTENSITY;
+    public static final IntProperty MOSS_LEVEL;
 
     static {
         VERTICAL_FACING = DirectionProperty.of("vertical_facing", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN);
@@ -19,5 +20,6 @@ public class AtbywProperties {
         APPEARANCE = IntProperty.of("appearance", 1, 3);
         TIMER = IntProperty.of("timer", 0, 6);
         POWER_INTENSITY = IntProperty.of("power_intensity", 1, 15);
+        MOSS_LEVEL = IntProperty.of("moss_accumulation", 0, 4);
     }
 }

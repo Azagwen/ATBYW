@@ -1,8 +1,0 @@
-{
-  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle_on",
-  "textures": {
-    "particle": "betterend:block/end_lotus_bookshelf",
-    "top": "betterend:block/end_lotus_planks",
-    "sides": "atbyw_mi:block/better_end/end_lotus_bookshelf_toggle"
-  }
-}

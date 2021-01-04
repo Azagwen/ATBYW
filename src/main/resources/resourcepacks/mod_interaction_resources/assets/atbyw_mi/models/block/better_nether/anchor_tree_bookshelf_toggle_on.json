@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle_on",
+  "textures": {
+    "particle": "betternether:block/anchor_tree_planks",
+    "top": "betternether:block/anchor_tree_planks",
+    "sides": "atbyw_mi:block/better_nether/anchor_tree_bookshelf_toggle"
+  }
+}

@@ -1,33 +1,25 @@
 package net.azagwen.atbyw.main;
 
-import net.azagwen.atbyw.items.AtbywItems;
+import net.azagwen.atbyw.blocks.AtbywBlockEntities;
+import net.azagwen.atbyw.blocks.statues.render.*;
+import net.azagwen.atbyw.blocks.statues.render.model.ChickenStatueModel;
+import net.azagwen.atbyw.blocks.statues.render.model.RabbitStatueModel;
+import net.azagwen.atbyw.blocks.statues.render.model.WolfStatueModel;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.model.ModelAppender;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.SimpleResourceReloadListener;
-import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.ModContainer;
-import net.fabricmc.loader.api.metadata.ModMetadata;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.item.ItemModels;
-import net.minecraft.client.util.ModelIdentifier;
-import net.minecraft.resource.ResourceReloadListener;
-import net.minecraft.resource.ResourceType;
+import net.minecraft.client.render.entity.model.SilverfishEntityModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.nio.file.Path;
-
 import static net.azagwen.atbyw.blocks.AtbywBlocks.*;
-import static net.azagwen.atbyw.main.AtbywMain.nameSpace;
 import static net.azagwen.atbyw.main.AtbywMain.newID;
 
 public class AtbywClient implements ClientModInitializer {
@@ -35,6 +27,16 @@ public class AtbywClient implements ClientModInitializer {
 
     @Environment(EnvType.CLIENT)
     public void onInitializeClient() {
+        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntities.RABBIT_STATUE, RabbitStatueBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntities.CHICKEN_STATUE, ChickenStatueBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntities.WOLF_STATUE, WolfStatueBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntities.SILVERFISH_STATUE, SilverfishStatueBlockEntityRenderer::new);
+
+        BuiltinItemRendererRegistry.INSTANCE.register(RABBIT_STATUE.asItem(), new StatueItemRenderer(new RabbitStatueModel(), RabbitStatueBlockEntityRenderer.getItemTexture()));
+        BuiltinItemRendererRegistry.INSTANCE.register(CHICKEN_STATUE.asItem(), new StatueItemRenderer(new ChickenStatueModel(), ChickenStatueBlockEntityRenderer.getItemTexture()));
+        BuiltinItemRendererRegistry.INSTANCE.register(WOLF_STATUE.asItem(), new StatueItemRenderer(new WolfStatueModel(), WolfStatueBlockEntityRenderer.getItemTexture()));
+        BuiltinItemRendererRegistry.INSTANCE.register(SILVERFISH_STATUE.asItem(), new StatueItemRenderer(new SilverfishEntityModel(), SilverfishStatueBlockEntityRenderer.getItemTexture()));
+
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(), GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5D, 1.0D);

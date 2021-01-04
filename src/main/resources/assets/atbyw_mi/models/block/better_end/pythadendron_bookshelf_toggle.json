@@ -1,8 +1,0 @@
-{
-  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle",
-  "textures": {
-    "particle": "betterend:block/pythadendron_bookshelf",
-    "top": "betterend:block/pythadendron_planks",
-    "sides": "atbyw_mi:block/better_end/pythadendron_bookshelf_toggle"
-  }
-}

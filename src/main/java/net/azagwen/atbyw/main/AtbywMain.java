@@ -59,6 +59,7 @@ public class AtbywMain implements ModInitializer {
 		}
 
 		AtbywBlocks.init();
+		AtbywBlockEntities.init();
 		AtbywItems.init();
 
 		LOGGER.info("ATBYW Inintiliazed");

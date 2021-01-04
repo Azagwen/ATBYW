@@ -1,8 +1,0 @@
-{
-  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle_on",
-  "textures": {
-    "particle": "betternether:block/rubeus_planks",
-    "top": "betternether:block/rubeus_planks",
-    "sides": "atbyw_mi:block/better_nether/rubeus_bookshelf_toggle"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle",
-  "textures": {
-    "particle": "betterend:block/mossy_glowshroom_bookshelf",
-    "top": "betterend:block/mossy_glowshroom_planks",
-    "sides": "atbyw_mi:block/better_end/mossy_glowshroom_bookshelf_toggle"
-  }
-}
