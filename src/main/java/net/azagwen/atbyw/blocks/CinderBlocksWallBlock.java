@@ -79,6 +79,9 @@ public class CinderBlocksWallBlock extends WallBlock {
     private Map<BlockState, VoxelShape> getShapeMap(VoxelShape post, VoxelShape[] north, VoxelShape[] east, VoxelShape[] south, VoxelShape[] west) {
         ImmutableMap.Builder<BlockState, VoxelShape> builder = ImmutableMap.builder();
 
+        /* Defines what shapes to use depending on "shape" block states.
+        *  "shape" block states define the direction and height of the wall.
+        */
         for (Boolean isUp : UP.getValues()) {
             for (WallShape eastShape : EAST_SHAPE.getValues()) {
                 for (WallShape northShape : NORTH_SHAPE.getValues()) {
@@ -116,10 +119,10 @@ public class CinderBlocksWallBlock extends WallBlock {
     }
 
     static {
-        Direction.Axis x =  Direction.Axis.X;
-        Direction.Axis y =  Direction.Axis.Y;
-        Direction.Axis z =  Direction.Axis.Z;
-
+        /* Base values for each wall element
+        *  those values are passed to the individual directions shapes below,
+        *  allowing for fast edition fo all 4 sides from a small set of numbers
+        */
         double[] postValues =      {4.0D, 0.0D , 12.0D, 16.0D};
         double[] slabValuesN =     {4.0D, 12.0D, 0.0D , 12.0D, 14.0D, 8.0D };
         double[] slabValuesP =     {4.0D, 12.0D, 8.0D , 12.0D, 14.0D, 16.0D};
@@ -128,6 +131,9 @@ public class CinderBlocksWallBlock extends WallBlock {
         double[] tallSideValuesN = {5.0D, 0.0D , 0.0D , 11.0D, 16.0D, 8.0D };
         double[] tallSideValuesP = {5.0D, 0.0D , 8.0D , 11.0D, 16.0D, 16.0D};
 
+        /* Creating every needed cuboid shapes using the values above,
+        *  for both collision and outlines
+        */
         POST_SHAPE =       Block.createCuboidShape(postValues[0], postValues[1], postValues[0], postValues[2], postValues[3], postValues[2]);
         POST_SLAB_SHAPE =  Block.createCuboidShape(3.0D, 16.0D, 3.0D , 13.0D, 18.0D, 13.0D);
 

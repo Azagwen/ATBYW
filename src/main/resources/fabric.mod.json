@@ -16,6 +16,7 @@
   "icon": "assets/atbyw/icon.png",
 
   "environment": "*",
+  "accessWidener": "atbyw.accesswidener",
   "entrypoints": {
     "main": [
       "net.azagwen.atbyw.main.AtbywMain"

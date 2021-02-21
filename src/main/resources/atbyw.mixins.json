@@ -5,9 +5,11 @@
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "FenceBlockMixin",
+        "ItemModelLoaderMixin",
         "PaneBlockMixin",
         "RedstoneWireBlockMixin",
-        "WallBlockMixin"
+        "WallBlockMixin",
+        "RecipeManagerMixin"
     ],
     "client": [
         "EnchantingTableBlockMixin",

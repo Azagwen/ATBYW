@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_slime_statue",
+    "textures": {
+        "texture": "atbyw:entity/slime_statue/slime_statue_1"
+    }
+}

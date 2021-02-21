@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "atbyw:block/statues/rabbit_statue_0"
+        },
+        "facing=south": {
+            "model": "atbyw:block/statues/rabbit_statue_0",
+            "y": 180
+        },
+        "facing=east": {
+            "model": "atbyw:block/statues/rabbit_statue_0",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "atbyw:block/statues/rabbit_statue_0",
+            "y": 270
+        }
+    }
+}

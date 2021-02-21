@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_bee_statue",
+    "textures": {
+        "texture": "atbyw:entity/bee_statue/bee_statue_4"
+    }
+}

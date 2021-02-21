@@ -1,0 +1,47 @@
+{
+	"texture_size": [64, 64],
+	"textures": {
+		"particle": "minecraft:block/stone"
+	},
+	"elements": [
+		{
+			"name": "shell",
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [4, 4, 8, 8], "texture": "#texture"},
+				"east": {"uv": [0, 4, 4, 8], "texture": "#texture"},
+				"south": {"uv": [12, 4, 16, 8], "texture": "#texture"},
+				"west": {"uv": [8, 4, 12, 8], "texture": "#texture"},
+				"up": {"uv": [8, 4, 4, 0], "texture": "#texture"},
+				"down": {"uv": [12, 0, 8, 4], "texture": "#texture"}
+			}
+		},
+		{
+			"name": "shell_inner",
+			"from": [15, 1, 1],
+			"to": [1, 15, 15],
+			"faces": {
+				"north": {"uv": [4.25, 4.25, 7.75, 7.75], "texture": "#texture"},
+				"east": {"uv": [0.25, 4.25, 3.75, 7.75], "texture": "#texture"},
+				"south": {"uv": [12.25, 4.25, 15.75, 7.75], "texture": "#texture"},
+				"west": {"uv": [8.25, 4.25, 11.75, 7.75], "texture": "#texture"},
+				"up": {"uv": [4.25, 0.25, 7.75, 3.75], "texture": "#texture"},
+				"down": {"uv": [8.25, 0.25, 11.75, 3.75], "texture": "#texture"}
+			}
+		},
+		{
+			"name": "head",
+			"from": [5, 5, 5],
+			"to": [11, 11, 11],
+			"faces": {
+				"north": {"uv": [1.5, 14.5, 3, 16], "texture": "#texture"},
+				"east": {"uv": [0, 14.5, 1.5, 16], "texture": "#texture"},
+				"south": {"uv": [4.5, 14.5, 6, 16], "texture": "#texture"},
+				"west": {"uv": [3, 14.5, 4.5, 16], "texture": "#texture"},
+				"up": {"uv": [3, 14.5, 1.5, 13], "texture": "#texture"},
+				"down": {"uv": [4.5, 13, 3, 14.5], "texture": "#texture"}
+			}
+		}
+	]
+}

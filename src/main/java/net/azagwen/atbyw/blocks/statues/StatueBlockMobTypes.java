@@ -1,62 +1,60 @@
 package net.azagwen.atbyw.blocks.statues;
 
-import net.azagwen.atbyw.blocks.AtbywBlockEntities;
-import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Lazy;
 import net.minecraft.util.shape.VoxelShape;
 
-import java.util.function.Supplier;
+import static net.azagwen.atbyw.main.AtbywMain.newID;
 
 public enum StatueBlockMobTypes implements StatueBlockMobType {
-    CHICKEN("chicken_statue", EntityType.CHICKEN.getLootTableId(), () -> AtbywBlockEntities.CHICKEN_STATUE, StatueVoxelShapes.CHICKEN_OUTLINES, StatueVoxelShapes.CHICKEN_COLLISIONS),
-    WOLF("wolf_statue", EntityType.WOLF.getLootTableId(), () -> AtbywBlockEntities.WOLF_STATUE, StatueVoxelShapes.WOLF_OUTLINES, StatueVoxelShapes.WOLF_COLLISIONS),
-    SLIME("slime_statue", EntityType.SLIME.getLootTableId(), () -> AtbywBlockEntities.SLIME_STATUE),
-    MAGMA_CUBE("magma_cube_statue", EntityType.MAGMA_CUBE.getLootTableId(), () -> AtbywBlockEntities.MAGMA_CUBE_STATUE),
-    SILVERFISH("silverfish_statue", EntityType.SILVERFISH.getLootTableId(), () -> AtbywBlockEntities.SILVERFISH_STATUE, StatueVoxelShapes.SILVERFISH_OUTLINES),
-    CAT("cat_statue", EntityType.CAT.getLootTableId(), () -> AtbywBlockEntities.CAT_STATUE),
-    RABBIT("rabbit_statue", EntityType.RABBIT.getLootTableId(), () -> AtbywBlockEntities.RABBIT_STATUE, StatueVoxelShapes.RABBIT_OUTLINES, StatueVoxelShapes.RABBIT_COLLISIONS),
-    SHULKER("shulker_statue", EntityType.SHULKER.getLootTableId(), () -> AtbywBlockEntities.SHULKER_STATUE),
-    ENDERMITE("endermite_statue", EntityType.ENDERMITE.getLootTableId(), () -> AtbywBlockEntities.ENDERMITE_STATUE),
-    COD("cod_statue", EntityType.COD.getLootTableId(), () -> AtbywBlockEntities.COD_STATUE),
-    SALMON("salmon_statue", EntityType.SALMON.getLootTableId(), () -> AtbywBlockEntities.SALMON_STATUE),
-    PUFFER_FISH("puffer_fish_statue", EntityType.PUFFERFISH.getLootTableId(), () -> AtbywBlockEntities.PUFFER_FISH_STATUE),
-    FOX("fox_statue", EntityType.FOX.getLootTableId(), () -> AtbywBlockEntities.FOX_STATUE),
-    BEE("bee_statue", EntityType.BEE.getLootTableId(), () -> AtbywBlockEntities.BEE_STATUE);
+    //Bugs & Shell creatures
+    BEE("bee", newID("gameplay/bee_statue"), StatueVoxelShapes.BEE_OUTLINES, StatueVoxelShapes.BEE_COLLISIONS),
+    SILVERFISH("silverfish", newID("gameplay/silverfish_statue"), StatueVoxelShapes.SILVERFISH_OUTLINES),
+    ENDERMITE("endermite", newID("gameplay/endermite_statue"), StatueVoxelShapes.ENDERMITE_OUTLINES),
+    SHULKER("shulker", newID("gameplay/shulker_statue"), StatueVoxelShapes.SHULKER_OUTLINES, StatueVoxelShapes.SHULKER_COLLISIONS),
+
+    //Mamals
+    CAT("cat", newID("gameplay/cat_statue"), StatueVoxelShapes.CAT_OUTLINES),
+    WOLF("wolf", newID("gameplay/wolf_statue"), StatueVoxelShapes.WOLF_OUTLINES),
+    CHICKEN("chicken", newID("gameplay/chicken_statue"), StatueVoxelShapes.CHICKEN_OUTLINES),
+    RABBIT("rabbit", newID("gameplay/rabbit_statue"), StatueVoxelShapes.RABBIT_OUTLINES, StatueVoxelShapes.RABBIT_COLLISIONS),
+    FOX("fox", newID("gameplay/fox_statue"), StatueVoxelShapes.FOX_OUTLINES),
+
+    //Fishes
+    COD("cod", newID("gameplay/cod_statue"), StatueVoxelShapes.COD_OUTLINES),
+    SALMON("salmon", newID("gameplay/salmon_statue"), StatueVoxelShapes.SALMON_OUTLINES),
+    PUFFER_FISH("puffer_fish", newID("gameplay/puffer_fish_statue"), StatueVoxelShapes.PUFFER_FISH_OUTLINES),
+
+    //Slimes & others
+    SLIME("slime", newID("gameplay/slime_statue"), StatueVoxelShapes.SLIME_SMALL_OUTLINES),
+    MAGMA_CUBE("magma_cube", newID("gameplay/magma_cube_statue"), StatueVoxelShapes.SLIME_SMALL_OUTLINES);
 
     //Negative Z = NORTH
     //Positive Z = SOUTH
     //Negative X = EAST
     //Positive X = WEST
 
-    private String name;
-    private Lazy<BlockEntityType<?>> blockEntityType;
-    private VoxelShape[] outlineShapes;
+    private final String name;
+    private final Identifier lootTableID;
+    private final VoxelShape[] outlineShapes;
     private VoxelShape[] collisionShapes;
-    private Identifier lootTableID;
 
-    StatueBlockMobTypes(String name, Identifier lootTableID, Supplier<BlockEntityType<?>> blockEntityType, VoxelShape[] outlineShapes, VoxelShape[] collisionShapes) {
-        this.name = name;
+    private String makeName(String name) {
+        return name + "_statue";
+    }
+
+    StatueBlockMobTypes(String name, Identifier lootTableID, VoxelShape[] outlineShapes, VoxelShape[] collisionShapes) {
+        this.name = makeName(name);
         this.lootTableID = lootTableID;
         this.outlineShapes = outlineShapes;
         this.collisionShapes = collisionShapes;
-        this.blockEntityType = new Lazy(blockEntityType);
-
     }
 
-    StatueBlockMobTypes(String name, Identifier lootTableID, Supplier<BlockEntityType<?>> blockEntityType, VoxelShape[] outlineShapes) {
-        this.name = name;
+    StatueBlockMobTypes(String name, Identifier lootTableID, VoxelShape[] outlineShapes) {
+        this.name = makeName(name);
         this.lootTableID = lootTableID;
         this.outlineShapes = outlineShapes;
-        this.blockEntityType = new Lazy(blockEntityType);
-
-    }
-
-    StatueBlockMobTypes(String name, Identifier lootTableID, Supplier<BlockEntityType<?>> blockEntityType) {
-        this.name = name;
-        this.lootTableID = lootTableID;
-        this.blockEntityType = new Lazy(blockEntityType);
 
     }
 
@@ -66,8 +64,8 @@ public enum StatueBlockMobTypes implements StatueBlockMobType {
     }
 
     @Override
-    public BlockEntityType getBlockEntityType() {
-        return this.blockEntityType.get();
+    public Identifier getLootTable() {
+        return lootTableID;
     }
 
     @Override
@@ -90,8 +88,4 @@ public enum StatueBlockMobTypes implements StatueBlockMobType {
         return this.collisionShapes;
     }
 
-    @Override
-    public Identifier getLootTable() {
-        return lootTableID;
-    }
 }

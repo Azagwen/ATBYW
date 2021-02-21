@@ -58,9 +58,10 @@ public class AtbywMain implements ModInitializer {
 			}).filter(success -> !success).ifPresent(success -> LOGGER.error("Unable to Load \"atbyw_mi/mod_interaction_resources\"."));
 		}
 
+		AtbywItems.init();
 		AtbywBlocks.init();
 		AtbywBlockEntities.init();
-		AtbywItems.init();
+		AtbywRecipes.init();
 
 		LOGGER.info("ATBYW Inintiliazed");
 	}

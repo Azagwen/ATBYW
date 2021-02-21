@@ -2,11 +2,13 @@ package net.azagwen.atbyw.blocks.statues;
 
 import net.azagwen.atbyw.blocks.AtbywProperties;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
@@ -17,8 +19,9 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -28,27 +31,34 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Random;
 
-public class StatueBlock extends HorizontalFacingBlock implements BlockEntityProvider {
+public class StatueBlock extends HorizontalFacingBlock implements StatueBlockMethods, Waterloggable {
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final IntProperty MOSS_LEVEL;
     private final StatueBlockMobType mobType;
     private final boolean hasLoots;
+    private final Block[] waxedStates;
 
-    public StatueBlock(boolean hasLoots, StatueBlockMobType mobType, Settings settings) {
+    public StatueBlock(boolean hasLoots, Block[] waxedStates, StatueBlockMobType mobType, Settings settings) {
         super(settings.nonOpaque());
         this.mobType = mobType;
         this.hasLoots = hasLoots;
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(MOSS_LEVEL, 0));
+        this.waxedStates = waxedStates;
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(MOSS_LEVEL, 0).with(WATERLOGGED, false));
     }
 
-    private int getMaxMossLevel() {
+    @Override
+    public BlockState getResetState(BlockState state) {
+        return state.with(MOSS_LEVEL, 0).with(FACING, state.get(FACING));
+    }
+
+    @Override
+    public int getMaxMossLevel() {
         return 4;
     }
 
@@ -66,19 +76,41 @@ public class StatueBlock extends HorizontalFacingBlock implements BlockEntityPro
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        int mossPercentage = (state.get(MOSS_LEVEL) * 25);
+        if (player.getMainHandStack().getItem().equals(Items.HONEYCOMB)) {
+            int waxAmountRequired = 1;
 
-        if (this.isFullyCoveredInMoss(state)) {
-            resetStatue(state, world, pos, player, mobType, hasLoots);
-            player.sendMessage(new TranslatableText("block.atbyw." + mobType.getName() + ".ready", mossPercentage), true);
-            return ActionResult.success(world.isClient);
+            if (player.getMainHandStack().getCount() >= waxAmountRequired) {
+                waxStatue(state, pos, world);
+                world.playSound(null, pos, SoundEvents.BLOCK_HONEY_BLOCK_SLIDE, SoundCategory.BLOCKS, 1.0F, 0.0F);
+                player.getMainHandStack().decrement(4);
+                player.sendMessage(new TranslatableText("block.atbyw." + mobType.getName() + ".waxed"), true);
+                return ActionResult.success(world.isClient);
+            } else {
+                player.sendMessage(new TranslatableText("block.atbyw." + mobType.getName() + ".cannot_be_waxed", waxAmountRequired), true);
+                return ActionResult.CONSUME;
+            }
         } else {
-            player.sendMessage(new TranslatableText("block.atbyw." + mobType.getName() + ".not_ready", mossPercentage), true);
-            return ActionResult.CONSUME;
+            int mossPercentage = (state.get(MOSS_LEVEL) * 25);
+
+            if (this.isFullyCoveredInMoss(state)) {
+                resetStatue(state, world, pos, player, mobType, hasLoots);
+                player.sendMessage(new TranslatableText("block.atbyw." + mobType.getName() + ".ready", mossPercentage), true);
+                return ActionResult.success(world.isClient);
+            } else {
+                player.sendMessage(new TranslatableText("block.atbyw." + mobType.getName() + ".not_ready", mossPercentage), true);
+                return ActionResult.CONSUME;
+            }
         }
     }
 
-    public static void resetStatue(BlockState state, World world, BlockPos pos, PlayerEntity player, StatueBlockMobType type, boolean hasLoots) {
+    public void waxStatue(BlockState state, BlockPos pos, World world) {
+        int moss_level = getCurrentMossLevel(state);
+        BlockState waxed_state = this.waxedStates[moss_level].getDefaultState();
+
+        world.setBlockState(pos, waxed_state.with(FACING, state.get(FACING)).with(WATERLOGGED, state.get(WATERLOGGED)));
+    }
+
+    public void resetStatue(BlockState state, World world, BlockPos pos, PlayerEntity player, StatueBlockMobType type, boolean hasLoots) {
         if (!world.isClient) {
             if (hasLoots) {
                 float f = 0.7F;
@@ -90,7 +122,7 @@ public class StatueBlock extends HorizontalFacingBlock implements BlockEntityPro
                 ItemEntity itemEntity = new ItemEntity(world, x, y, z, pickedStack);
                 itemEntity.setToDefaultPickupDelay();
 
-                if (pickedStack.getCount() > 0) {
+                if (pickedStack.getCount() > 0 || !(pickedStack.equals(ItemStack.EMPTY))) {
                     spawnParticles(world, pos, true);
                     world.playSound(null, pos, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 1.2F);
                     world.playSound(null, pos, SoundEvents.BLOCK_BEEHIVE_SHEAR, SoundCategory.BLOCKS, 0.2F, 0.5F);
@@ -105,22 +137,31 @@ public class StatueBlock extends HorizontalFacingBlock implements BlockEntityPro
             }
         }
 
-        BlockState blockState = state.with(MOSS_LEVEL, 0).with(FACING, state.get(FACING));
-        world.setBlockState(pos, blockState);
+        world.setBlockState(pos, getResetState(state));
     }
 
-    private static ItemStack getItemFromLootTable(BlockState state, World world, BlockPos pos, PlayerEntity player, StatueBlockMobType type) {
+    protected static ItemStack getItemFromLootTable(BlockState state, World world, BlockPos pos, PlayerEntity player, StatueBlockMobType type) {
         Identifier identifier = type.getLootTable();
         LootTable lootTable = world.getServer().getLootManager().getTable(identifier);
-        LootContext.Builder builder = new LootContext.Builder((ServerWorld) world).parameter(LootContextParameters.BLOCK_STATE, state).parameter(LootContextParameters.ORIGIN, new Vec3d(pos.getX(), pos.getY(), pos.getZ())).parameter(LootContextParameters.TOOL, player.getMainHandStack()).random(world.random);
+
+        LootContext.Builder builder = new LootContext.Builder((ServerWorld) world)
+                .parameter(LootContextParameters.BLOCK_STATE, state)
+                .parameter(LootContextParameters.ORIGIN, new Vec3d(pos.getX(), pos.getY(), pos.getZ()))
+                .parameter(LootContextParameters.TOOL, player.getMainHandStack())
+                .random(world.random);
+
+
         List<ItemStack> loots = lootTable.generateLoot(builder.build(LootContextTypes.BLOCK));
-        ItemStack loot = loots.get(world.random.nextInt(loots.size()));
-        loot.setCount(loot.getCount());
+        ItemStack loot = ItemStack.EMPTY;
+        if (loots.size() > 0) {
+            int randomInt = world.random.nextInt(loots.size());
+            loot = loots.get(randomInt);
+        }
 
         return loot;
     }
 
-    private static void spawnParticles(World world, BlockPos pos, boolean isDropSuccessful) {
+    protected static void spawnParticles(World world, BlockPos pos, boolean isDropSuccessful) {
         DustParticleEffect MOSS = new DustParticleEffect(0.3F, 0.4F, 0.0F, 1.5F);
 
         double x = (double)pos.getX() + 0.5F;
@@ -145,15 +186,20 @@ public class StatueBlock extends HorizontalFacingBlock implements BlockEntityPro
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (this.getCurrentMossLevel(state) < this.getMaxMossLevel()) {
-            if ((random.nextInt((int)(100.0F) + 1) == 0)) {
-                world.setBlockState(pos, state.with(MOSS_LEVEL, this.getCurrentMossLevel(state) + 1).with(FACING, state.get(FACING)), 2);
+            if (!world.isRaining()) {
+                if ((random.nextInt((int) (100.0F) + 1) == 0)) {
+                    world.setBlockState(pos, state.with(MOSS_LEVEL, this.getCurrentMossLevel(state) + 1).with(FACING, state.get(FACING)), 2);
+                }
+            } else {
+                if ((random.nextInt((int) (20.0F) + 1) == 0)) {
+                    world.setBlockState(pos, state.with(MOSS_LEVEL, this.getCurrentMossLevel(state) + 1).with(FACING, state.get(FACING)), 2);
+                }
             }
         }
     }
 
     private VoxelShape setOutlineShape(Direction direction) {
         switch (direction) {
-            default:
             case NORTH:
                 return mobType.getOutlineShape(StatueBlockMobType.NORTH);
             case SOUTH:
@@ -162,12 +208,13 @@ public class StatueBlock extends HorizontalFacingBlock implements BlockEntityPro
                 return mobType.getOutlineShape(StatueBlockMobType.EAST);
             case WEST:
                 return mobType.getOutlineShape(StatueBlockMobType.WEST);
+            default:
+                return null;
         }
     }
 
     private VoxelShape setCollisionShape(Direction direction) {
         switch (direction) {
-            default:
             case NORTH:
                 return mobType.getCollisionShape(StatueBlockMobType.NORTH);
             case SOUTH:
@@ -176,6 +223,8 @@ public class StatueBlock extends HorizontalFacingBlock implements BlockEntityPro
                 return mobType.getCollisionShape(StatueBlockMobType.EAST);
             case WEST:
                 return mobType.getCollisionShape(StatueBlockMobType.WEST);
+            default:
+                return null;
         }
     }
 
@@ -201,17 +250,22 @@ public class StatueBlock extends HorizontalFacingBlock implements BlockEntityPro
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+
+        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite()).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        if (state.get(WATERLOGGED)) {
+            return Fluids.WATER.getStill(false);
+        }
+        return super.getFluidState(state);
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, MOSS_LEVEL);
-    }
-
-    @Override
-    public @Nullable BlockEntity createBlockEntity(BlockView world) {
-        return new StatueBlockEntity(mobType.getBlockEntityType());
+        builder.add(FACING, MOSS_LEVEL, WATERLOGGED);
     }
 
     static {

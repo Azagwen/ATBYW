@@ -1,0 +1,79 @@
+{
+    "variants": {
+        "facing=north,moss_accumulation=0": {
+            "model": "atbyw:block/statues/bee_statue_0"
+        },
+        "facing=south,moss_accumulation=0": {
+            "model": "atbyw:block/statues/bee_statue_0",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=0": {
+            "model": "atbyw:block/statues/bee_statue_0",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=0": {
+            "model": "atbyw:block/statues/bee_statue_0",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=1": {
+            "model": "atbyw:block/statues/bee_statue_1"
+        },
+        "facing=south,moss_accumulation=1": {
+            "model": "atbyw:block/statues/bee_statue_1",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=1": {
+            "model": "atbyw:block/statues/bee_statue_1",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=1": {
+            "model": "atbyw:block/statues/bee_statue_1",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=2": {
+            "model": "atbyw:block/statues/bee_statue_2"
+        },
+        "facing=south,moss_accumulation=2": {
+            "model": "atbyw:block/statues/bee_statue_2",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=2": {
+            "model": "atbyw:block/statues/bee_statue_2",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=2": {
+            "model": "atbyw:block/statues/bee_statue_2",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=3": {
+            "model": "atbyw:block/statues/bee_statue_3"
+        },
+        "facing=south,moss_accumulation=3": {
+            "model": "atbyw:block/statues/bee_statue_3",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=3": {
+            "model": "atbyw:block/statues/bee_statue_3",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=3": {
+            "model": "atbyw:block/statues/bee_statue_3",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=4": {
+            "model": "atbyw:block/statues/bee_statue_4"
+        },
+        "facing=south,moss_accumulation=4": {
+            "model": "atbyw:block/statues/bee_statue_4",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=4": {
+            "model": "atbyw:block/statues/bee_statue_4",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=4": {
+            "model": "atbyw:block/statues/bee_statue_4",
+            "y": 270
+        }
+    }
+}

@@ -1,0 +1,5 @@
+accessWidener v1 named
+
+extendable method net/minecraft/util/shape/VoxelShape <init> (Lnet/minecraft/util/shape/VoxelSet;)V
+accessible field net/minecraft/util/shape/VoxelShape voxels Lnet/minecraft/util/shape/VoxelSet;
+accessible method net/minecraft/util/shape/VoxelShape getPointPositions (Lnet/minecraft/util/math/Direction$Axis;)Lit/unimi/dsi/fastutil/doubles/DoubleList;

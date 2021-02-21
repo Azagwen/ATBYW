@@ -1,25 +1,22 @@
 package net.azagwen.atbyw.main;
 
-import net.azagwen.atbyw.blocks.AtbywBlockEntities;
-import net.azagwen.atbyw.blocks.statues.render.*;
-import net.azagwen.atbyw.blocks.statues.render.model.ChickenStatueModel;
-import net.azagwen.atbyw.blocks.statues.render.model.RabbitStatueModel;
-import net.azagwen.atbyw.blocks.statues.render.model.WolfStatueModel;
+import net.azagwen.atbyw.items.EssenceItem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.entity.model.SilverfishEntityModel;
+import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static net.azagwen.atbyw.blocks.AtbywBlocks.*;
+import static net.azagwen.atbyw.blocks.statues.StatueRegistry.*;
+import static net.azagwen.atbyw.items.AtbywItems.*;
 import static net.azagwen.atbyw.main.AtbywMain.newID;
 
 public class AtbywClient implements ClientModInitializer {
@@ -27,25 +24,74 @@ public class AtbywClient implements ClientModInitializer {
 
     @Environment(EnvType.CLIENT)
     public void onInitializeClient() {
-        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntities.RABBIT_STATUE, RabbitStatueBlockEntityRenderer::new);
-        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntities.CHICKEN_STATUE, ChickenStatueBlockEntityRenderer::new);
-        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntities.WOLF_STATUE, WolfStatueBlockEntityRenderer::new);
-        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntities.SILVERFISH_STATUE, SilverfishStatueBlockEntityRenderer::new);
-
-        BuiltinItemRendererRegistry.INSTANCE.register(RABBIT_STATUE.asItem(), new StatueItemRenderer(new RabbitStatueModel(), RabbitStatueBlockEntityRenderer.getItemTexture()));
-        BuiltinItemRendererRegistry.INSTANCE.register(CHICKEN_STATUE.asItem(), new StatueItemRenderer(new ChickenStatueModel(), ChickenStatueBlockEntityRenderer.getItemTexture()));
-        BuiltinItemRendererRegistry.INSTANCE.register(WOLF_STATUE.asItem(), new StatueItemRenderer(new WolfStatueModel(), WolfStatueBlockEntityRenderer.getItemTexture()));
-        BuiltinItemRendererRegistry.INSTANCE.register(SILVERFISH_STATUE.asItem(), new StatueItemRenderer(new SilverfishEntityModel(), SilverfishStatueBlockEntityRenderer.getItemTexture()));
-
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(), GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5D, 1.0D);
         }, GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
-            return GrassColors.getColor(0.5D, 1.0D);
-        }, GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
+
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getColor(0.5D, 1.0D), GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
+
+        for (Item item : ESSENCE_BOTTLES)
+            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((EssenceItem) item).getColor(), item);
 
         BlockRenderLayerMap.INSTANCE.putBlock(REDSTONE_LANTERN, RenderLayer.getCutout());
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+                RenderLayer.getCutout(),
+                BEE_STATUE,
+                SILVERFISH_STATUE,
+                SHULKER_STATUE,
+                CHICKEN_STATUE,
+                COD_STATUE,
+                SALMON_STATUE,
+                PUFFER_FISH_STATUE,
+                SLIME_STATUE,
+                WAXED_CLEAN_BEE_STATUE,
+                WAXED_CLEAN_SILVERFISH_STATUE,
+                WAXED_CLEAN_SHULKER_STATUE,
+                WAXED_CLEAN_CHICKEN_STATUE,
+                WAXED_CLEAN_COD_STATUE,
+                WAXED_CLEAN_SALMON_STATUE,
+                WAXED_CLEAN_PUFFER_FISH_STATUE,
+                WAXED_CLEAN_SLIME_STATUE,
+                WAXED_EXPOSED_BEE_STATUE,
+                WAXED_EXPOSED_SILVERFISH_STATUE,
+                WAXED_EXPOSED_SHULKER_STATUE,
+                WAXED_EXPOSED_CHICKEN_STATUE,
+                WAXED_EXPOSED_COD_STATUE,
+                WAXED_EXPOSED_SALMON_STATUE,
+                WAXED_EXPOSED_PUFFER_FISH_STATUE,
+                WAXED_EXPOSED_SLIME_STATUE,
+                WAXED_DIRTY_BEE_STATUE,
+                WAXED_DIRTY_SILVERFISH_STATUE,
+                WAXED_DIRTY_SHULKER_STATUE,
+                WAXED_DIRTY_CHICKEN_STATUE,
+                WAXED_DIRTY_COD_STATUE,
+                WAXED_DIRTY_SALMON_STATUE,
+                WAXED_DIRTY_PUFFER_FISH_STATUE,
+                WAXED_DIRTY_SLIME_STATUE,
+                WAXED_MOSSY_BEE_STATUE,
+                WAXED_MOSSY_SILVERFISH_STATUE,
+                WAXED_MOSSY_SHULKER_STATUE,
+                WAXED_MOSSY_CHICKEN_STATUE,
+                WAXED_MOSSY_COD_STATUE,
+                WAXED_MOSSY_SALMON_STATUE,
+                WAXED_MOSSY_PUFFER_FISH_STATUE,
+                WAXED_MOSSY_SLIME_STATUE,
+                WAXED_VERY_MOSSY_BEE_STATUE,
+                WAXED_VERY_MOSSY_SILVERFISH_STATUE,
+                WAXED_VERY_MOSSY_SHULKER_STATUE,
+                WAXED_VERY_MOSSY_CHICKEN_STATUE,
+                WAXED_VERY_MOSSY_COD_STATUE,
+                WAXED_VERY_MOSSY_SALMON_STATUE,
+                WAXED_VERY_MOSSY_PUFFER_FISH_STATUE,
+                WAXED_VERY_MOSSY_SLIME_STATUE
+        );
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(
+                RenderLayer.getCutoutMipped(),
+                GRASS_BLOCK_STAIRS,
+                GRASS_BLOCK_SLAB
+        );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(
                 RenderLayer.getCutout(),

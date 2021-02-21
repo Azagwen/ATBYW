@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_silverfish_statue",
+    "textures": {
+        "texture": "atbyw:entity/silverfish_statue/silverfish_statue_4"
+    }
+}

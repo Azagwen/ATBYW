@@ -40,9 +40,6 @@ public class FenceDoorBlock extends HorizontalFacingBlock {
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         switch(type) {
             case LAND:
-                return state.get(OPEN);
-            case WATER:
-                return false;
             case AIR:
                 return state.get(OPEN);
             default:

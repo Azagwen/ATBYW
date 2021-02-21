@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "atbyw:block/statues/fox_statue_4"
+        },
+        "facing=south": {
+            "model": "atbyw:block/statues/fox_statue_4",
+            "y": 180
+        },
+        "facing=east": {
+            "model": "atbyw:block/statues/fox_statue_4",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "atbyw:block/statues/fox_statue_4",
+            "y": 270
+        }
+    }
+}

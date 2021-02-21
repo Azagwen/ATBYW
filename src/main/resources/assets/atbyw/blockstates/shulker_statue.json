@@ -1,0 +1,155 @@
+{
+    "variants": {
+        "facing=north,moss_accumulation=0,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_0"
+        },
+        "facing=south,moss_accumulation=0,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_0",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=0,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_0",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=0,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_0",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=1,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_1"
+        },
+        "facing=south,moss_accumulation=1,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_1",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=1,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_1",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=1,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_1",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=2,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_2"
+        },
+        "facing=south,moss_accumulation=2,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_2",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=2,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_2",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=2,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_2",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=3,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_3"
+        },
+        "facing=south,moss_accumulation=3,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_3",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=3,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_3",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=3,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_3",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=4,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_4"
+        },
+        "facing=south,moss_accumulation=4,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_4",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=4,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_4",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=4,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_4",
+            "y": 270
+        },
+
+        "facing=north,moss_accumulation=0,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_0"
+        },
+        "facing=south,moss_accumulation=0,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_0",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=0,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_0",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=0,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_0",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=1,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_1"
+        },
+        "facing=south,moss_accumulation=1,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_1",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=1,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_1",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=1,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_1",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=2,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_2"
+        },
+        "facing=south,moss_accumulation=2,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_2",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=2,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_2",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=2,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_2",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=3,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_3"
+        },
+        "facing=south,moss_accumulation=3,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_3",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=3,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_3",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=3,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_3",
+            "y": 270
+        },
+        "facing=north,moss_accumulation=4,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_4"
+        },
+        "facing=south,moss_accumulation=4,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_4",
+            "y": 180
+        },
+        "facing=east,moss_accumulation=4,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_4",
+            "y": 90
+        },
+        "facing=west,moss_accumulation=4,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_4",
+            "y": 270
+        }
+    }
+}

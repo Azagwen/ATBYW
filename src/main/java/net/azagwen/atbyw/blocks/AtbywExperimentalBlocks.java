@@ -88,7 +88,7 @@ public class AtbywExperimentalBlocks {
 //                WARPED_MOVING_PISTON
 //        });
 
-        registerBlocks(false, ATBYW_REDSTONE, "piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
+        registerBlocks(false, ATBYW_REDSTONE, "", "piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
                 SPRUCE_PISTON,
                 BIRCH_PISTON,
                 JUNGLE_PISTON,
@@ -97,7 +97,7 @@ public class AtbywExperimentalBlocks {
                 CRIMSON_PISTON,
                 WARPED_PISTON
         });
-        registerBlocks(false, ATBYW_REDSTONE, "sticky_piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
+        registerBlocks(false, ATBYW_REDSTONE, "", "sticky_piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
                 SPRUCE_STICKY_PISTON,
                 BIRCH_STICKY_PISTON,
                 JUNGLE_STICKY_PISTON,

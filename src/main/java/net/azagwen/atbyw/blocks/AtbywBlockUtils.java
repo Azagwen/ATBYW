@@ -67,44 +67,22 @@ public class AtbywBlockUtils {
             "lily_of_the_valley",
             "wither_rose"
     };
-
-    public static final Block[] TERRACOTTA_COLORS = {
-            Blocks.WHITE_TERRACOTTA,
-            Blocks.ORANGE_TERRACOTTA,
-            Blocks.MAGENTA_TERRACOTTA,
-            Blocks.LIGHT_BLUE_TERRACOTTA,
-            Blocks.YELLOW_TERRACOTTA,
-            Blocks.LIME_TERRACOTTA,
-            Blocks.PINK_TERRACOTTA,
-            Blocks.GRAY_TERRACOTTA,
-            Blocks.LIGHT_GRAY_TERRACOTTA,
-            Blocks.CYAN_TERRACOTTA,
-            Blocks.PURPLE_TERRACOTTA,
-            Blocks.BLUE_TERRACOTTA,
-            Blocks.BROWN_TERRACOTTA,
-            Blocks.GREEN_TERRACOTTA,
-            Blocks.RED_TERRACOTTA,
-            Blocks.BLACK_TERRACOTTA
+    public static String[] SMALL_STATUE_NAMES = {
+            "bee",
+            "silverfish",
+            "endermite",
+            "shulker",
+            "wolf",
+            "cat",
+            "chicken",
+            "rabbit",
+            "fox",
+            "cod",
+            "salmon",
+            "puffer_fish",
+            "slime",
+            "magma_cube"
     };
-    public static final Block[] CONCRETE_COLORS = {
-            Blocks.WHITE_CONCRETE,
-            Blocks.ORANGE_CONCRETE,
-            Blocks.MAGENTA_CONCRETE,
-            Blocks.LIGHT_BLUE_CONCRETE,
-            Blocks.YELLOW_CONCRETE,
-            Blocks.LIME_CONCRETE,
-            Blocks.PINK_CONCRETE,
-            Blocks.GRAY_CONCRETE,
-            Blocks.LIGHT_GRAY_CONCRETE,
-            Blocks.CYAN_CONCRETE,
-            Blocks.PURPLE_CONCRETE,
-            Blocks.BLUE_CONCRETE,
-            Blocks.BROWN_CONCRETE,
-            Blocks.GREEN_CONCRETE,
-            Blocks.RED_CONCRETE,
-            Blocks.BLACK_CONCRETE
-    };
-
 
     ///////////////////////////////////////////////////////////////
     //              DECLARATION UTILS (EXPERIMENTAL)             //
@@ -149,10 +127,12 @@ public class AtbywBlockUtils {
             throw new IllegalArgumentException("could not register " + block_name + " : mismatched lengths !");
     }
 
-    public static void registerBlocks(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
+    public static void registerBlocks(boolean fireproof, ItemGroup group, String prefix, String block_name, String[] variant_type, Block[] block) {
         if (block.length == variant_type.length)
             for (int i = 0; i < block.length; i++) {
-                registerBlock(fireproof, group, (variant_type[i] + "_" + block_name), block[i]);
+                String name = prefix.equals("") ? (variant_type[i] + "_" + block_name) : (prefix + "_" + variant_type[i] + "_" + block_name);
+
+                registerBlock(fireproof, group, name, block[i]);
             }
         else
             throw new IllegalArgumentException("could not register " + block_name + " : mismatched lengths !");
