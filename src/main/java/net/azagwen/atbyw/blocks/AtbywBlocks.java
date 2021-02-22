@@ -301,11 +301,10 @@ public class AtbywBlocks {
     public static final Block WITHER_ROSE_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WITHER_ROSE).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
 
     public static final Block REDSTONE_LANTERN = new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).breakByTool(FabricToolTags.PICKAXES).luminance(createLightLevelFromBlockState(2, AtbywProperties.POWER_INTENSITY, Properties.LIT)));
+    public static final Block SHROOM_STICK = new ShroomStickBlock(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).breakByTool(FabricToolTags.HOES).strength(0.5F));
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
     public static void init() {
-        //registerBlocks(false, ATBYW_BLOCKS, "test_block", new String[] {"test111", "test222", "test333"}, TESTBLOCK);
-
         registerBlocks(false, ATBYW_REDSTONE, null, "fence_door", WOOD_NAMES,
                 OAK_FENCE_DOOR,
                 SPRUCE_FENCE_DOOR,
@@ -556,7 +555,9 @@ public class AtbywBlocks {
                 RED_CINDER_BRICKS,
                 BLACK_CINDER_BRICKS);
 
-        registerBlocks(false, ATBYW_BLOCKS, null, "cinder_blocks_wall", COLOR_NAMES,
+        registerBlock(false, ATBYW_DECO, "shroom_stick", SHROOM_STICK);
+
+        registerBlocks(false, ATBYW_DECO, null, "cinder_blocks_wall", COLOR_NAMES,
                 WHITE_CINDER_BRICKS_WALL,
                 ORANGE_CINDER_BRICKS_WALL,
                 MAGENTA_CINDER_BRICKS_WALL,

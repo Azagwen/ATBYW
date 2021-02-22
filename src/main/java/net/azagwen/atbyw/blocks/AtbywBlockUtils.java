@@ -6,34 +6,14 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
+import org.jetbrains.annotations.Nullable;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywBlockUtils {
-    public static String[] WOOD_NAMES = {
-            "oak",
-            "spruce",
-            "birch",
-            "jungle",
-            "acacia",
-            "dark_oak",
-            "crimson",
-            "warped"
-    };
-    public static String[] WOOD_NAMES_FROM_SPRUCE = {
-            WOOD_NAMES[1],
-            WOOD_NAMES[2],
-            WOOD_NAMES[3],
-            WOOD_NAMES[4],
-            WOOD_NAMES[5],
-            WOOD_NAMES[6],
-            WOOD_NAMES[7]
-    };
-    public static String[] STONE_NAMES = {
-            "granite",
-            "diorite",
-            "andesite"
-    };
+    public static String[] WOOD_NAMES = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "crimson", "warped"};
+    public static String[] WOOD_NAMES_FROM_SPRUCE = {"spruce", "birch", "jungle", "acacia", "dark_oak", "crimson", "warped"};
+    public static String[] STONE_NAMES = {"granite", "diorite", "andesite"};
     public static String[] COLOR_NAMES = {
             "white",
             "orange",
@@ -82,10 +62,21 @@ public class AtbywBlockUtils {
     //////////////////////////////////////////////////
     //              REGISTRATION UTILS              //
     //////////////////////////////////////////////////
+
+    /** Registers a block without a block item.
+     *
+     *  @param name     Name of the block (path)
+     *  @param block    The Block field
+     */
     public static void registerBlockOnly(String name, Block block) {
         Registry.register(Registry.BLOCK, newID(name), block);
     }
 
+    /** Registers a block and its block item.
+     *
+     *  @param name     Name of the block (path)
+     *  @param block    The Block field
+     */
     public static void registerBlock(boolean fireproof, ItemGroup group, String name, Block block) {
         Item.Settings normalSettings = new Item.Settings().group(group);
         Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
@@ -94,6 +85,15 @@ public class AtbywBlockUtils {
         Registry.register(Registry.ITEM, newID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
     }
 
+    /** Will only register blocks, without block items associated to them.
+     *  Registers a given amount of blocks determined by "block" and "variant_type"'s length,
+     *  those two arrays MUST match in order to register those blocks, if the lengths mismatch
+     *  the game will crash on its own and notify you of that mistake.
+     *
+     *  @param block_name       The name of the block.
+     *  @param variant_type     An array of Strings of which every index will be put between "prefix" and "block_name".
+     *  @param block            An Array of Blocks that must match the length of "variant_type".
+     */
     public static void registerBlocksOnly(String block_name, String[] variant_type, Block... block) {
         if (block.length == variant_type.length)
             for (int i = 0; i < block.length; i++) {
@@ -103,11 +103,22 @@ public class AtbywBlockUtils {
             throw new IllegalArgumentException("could not register " + block_name + " : mismatched lengths !");
     }
 
-    public static void registerBlocks(boolean fireproof, ItemGroup group, String prefix, String block_name, String[] variant_type, Block... block) {
+    /** Registers a given amount of blocks determined by "block" and "variant_type"'s length,
+     *  those two arrays MUST match in order to register those blocks, if the lengths mismatch
+     *  the game will crash on its own and notify you of that mistake.
+     *
+     *  @param fireproof        Passed to the item registry to determine if the block item should burn in fire and lava or not.
+     *  @param group            The Creative tab the block should appear in.
+     *  @param prefix           Optional, a prefix that will be added in front of the "block_name".
+     *  @param block_name       The name of the block.
+     *  @param variant_type     An array of Strings of which every index will be put between "prefix" and "block_name".
+     *  @param block            An Array of Blocks that must match the length of "variant_type".
+     */
+    public static void registerBlocks(boolean fireproof, ItemGroup group, @Nullable String prefix, String block_name, String[] variant_type, Block... block) {
         if (block.length == variant_type.length)
             for (int i = 0; i < block.length; i++) {
                 String name;
-                if (prefix.isEmpty()) {
+                if (prefix == null || prefix.isEmpty()) {
                     name = String.join("_", variant_type[i], block_name);
                 } else {
                     name = String.join("_", prefix, variant_type[i], block_name);

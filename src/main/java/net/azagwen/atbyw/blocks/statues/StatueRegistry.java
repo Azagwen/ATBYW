@@ -5,9 +5,6 @@ import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static net.azagwen.atbyw.blocks.AtbywBlockUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
@@ -115,7 +112,14 @@ public class StatueRegistry {
     //TODO: Add signing fish function.
     //TODO: Make slime statues combine-able.
 
-    private static final String[] statuePrefixes = new String[] {"", "clean", "exposed", "dirty", "mossy", "very_mossy"};
+    private static final String[] statuePrefixes = new String[] {
+            "",
+            "waxed_clean",
+            "waxed_exposed",
+            "waxed_dirty",
+            "waxed_mossy",
+            "waxed_very_mossy"
+    };
 
     /** Registers a set number of statues
      *  determined by the prefix (statuePrefixes) array length
@@ -128,7 +132,14 @@ public class StatueRegistry {
         for (int i = 0; i < blocks.length; i++) {
             String prefix = statuePrefixes[i];
             Block block = blocks[i];
-            registerBlock(false, ATBYW_DECO, String.join("_", prefix, animal, "statue"), block);
+            String name;
+
+            if (prefix.isEmpty())
+                name = String.join("_", animal, "statue");
+            else
+                name = String.join("_", prefix, animal, "statue");
+
+            registerBlock(false, ATBYW_DECO, name, block);
         }
     }
 
