@@ -44,7 +44,7 @@ public class StatueBlock extends HorizontalFacingBlock implements StatueBlockMet
     private final boolean hasLoots;
     private final Block[] waxedStates;
 
-    public StatueBlock(boolean hasLoots, Block[] waxedStates, StatueBlockMobType mobType, Settings settings) {
+    public StatueBlock(boolean hasLoots, StatueBlockMobType mobType, Settings settings, Block... waxedStates) {
         super(settings.nonOpaque());
         this.mobType = mobType;
         this.hasLoots = hasLoots;

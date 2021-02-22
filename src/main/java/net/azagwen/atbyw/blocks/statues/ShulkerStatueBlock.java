@@ -16,8 +16,8 @@ import net.minecraft.world.World;
 public class ShulkerStatueBlock extends StatueBlock {
     public static final BooleanProperty OPEN;
 
-    public ShulkerStatueBlock(boolean hasLoots, Block[] waxedStates, StatueBlockMobType mobType, Settings settings) {
-        super(hasLoots, waxedStates, mobType, settings);
+    public ShulkerStatueBlock(boolean hasLoots, StatueBlockMobType mobType, Settings settings, Block... waxedStates) {
+        super(hasLoots, mobType, settings, waxedStates);
         this.setDefaultState(this.stateManager.getDefaultState().with(OPEN, true).with(FACING, Direction.NORTH).with(MOSS_LEVEL, 0).with(WATERLOGGED, false));
     }
 
