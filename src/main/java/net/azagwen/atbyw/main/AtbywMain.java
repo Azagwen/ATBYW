@@ -35,6 +35,10 @@ public class AtbywMain implements ModInitializer {
 		return new ItemStack(AtbywBlocks.TERRACOTTA_BRICKS);
 	}).build();
 
+	public static final ItemGroup ATBYW_DECO = FabricItemGroupBuilder.create(newID("decoration")).icon(() -> {
+		return new ItemStack(AtbywBlocks.CYAN_CINDER_BRICKS_WALL);
+	}).build();
+
 	public static final ItemGroup ATBYW_REDSTONE = FabricItemGroupBuilder.create(newID("redstone")).icon(() -> {
 		return new ItemStack(AtbywBlocks.REDSTONE_LANTERN);
 	}).build();

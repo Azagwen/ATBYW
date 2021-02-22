@@ -67,22 +67,6 @@ public class AtbywBlockUtils {
             "lily_of_the_valley",
             "wither_rose"
     };
-    public static String[] SMALL_STATUE_NAMES = {
-            "bee",
-            "silverfish",
-            "endermite",
-            "shulker",
-            "wolf",
-            "cat",
-            "chicken",
-            "rabbit",
-            "fox",
-            "cod",
-            "salmon",
-            "puffer_fish",
-            "slime",
-            "magma_cube"
-    };
 
     ///////////////////////////////////////////////////////////////
     //              DECLARATION UTILS (EXPERIMENTAL)             //
@@ -110,40 +94,28 @@ public class AtbywBlockUtils {
         Registry.register(Registry.ITEM, newID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
     }
 
-    public static void registerBlock(boolean fireproof, String name, Block block) {
-        Item.Settings normalSettings = new Item.Settings();
-        Item.Settings fireproofSettings = new Item.Settings().fireproof();
-
-        Registry.register(Registry.BLOCK, newID(name), block);
-        Registry.register(Registry.ITEM, newID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
-    }
-
-    public static void registerBlocksOnly(String block_name, String[] variant_type, Block[] block) {
+    public static void registerBlocksOnly(String block_name, String[] variant_type, Block... block) {
         if (block.length == variant_type.length)
             for (int i = 0; i < block.length; i++) {
-                registerBlockOnly((variant_type[i] + "_" + block_name), block[i]);
+                registerBlockOnly(String.join("_", variant_type[i], block_name), block[i]);
             }
         else
             throw new IllegalArgumentException("could not register " + block_name + " : mismatched lengths !");
     }
 
-    public static void registerBlocks(boolean fireproof, ItemGroup group, String prefix, String block_name, String[] variant_type, Block[] block) {
+    public static void registerBlocks(boolean fireproof, ItemGroup group, String prefix, String block_name, String[] variant_type, Block... block) {
         if (block.length == variant_type.length)
             for (int i = 0; i < block.length; i++) {
-                String name = prefix.equals("") ? (variant_type[i] + "_" + block_name) : (prefix + "_" + variant_type[i] + "_" + block_name);
+                String name;
+                if (prefix.isEmpty()) {
+                    name = String.join("_", variant_type[i], block_name);
+                } else {
+                    name = String.join("_", prefix, variant_type[i], block_name);
+                }
 
                 registerBlock(fireproof, group, name, block[i]);
             }
         else
-            throw new IllegalArgumentException("could not register " + block_name + " : mismatched lengths !");
-    }
-
-    public static void registerBlocks(boolean fireproof, String block_name, String[] variant_type, Block[] block) {
-        if (block.length == variant_type.length)
-            for (int i = 0; i < block.length; i++) {
-                registerBlock(fireproof, (variant_type[i] + "_" + block_name), block[i]);
-            }
-        else
-            throw new IllegalArgumentException("could not register " + block_name + " : mismatched lengths !");
+            throw new IllegalArgumentException(String.join("could not register " + block_name + " : mismatched lengths !"));
     }
 }

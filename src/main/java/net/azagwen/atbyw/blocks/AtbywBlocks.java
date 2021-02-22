@@ -306,7 +306,7 @@ public class AtbywBlocks {
     public static void init() {
         //registerBlocks(false, ATBYW_BLOCKS, "test_block", new String[] {"test111", "test222", "test333"}, TESTBLOCK);
 
-        registerBlocks(false, ATBYW_REDSTONE, "", "fence_door", WOOD_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_REDSTONE, null, "fence_door", WOOD_NAMES,
                 OAK_FENCE_DOOR,
                 SPRUCE_FENCE_DOOR,
                 BIRCH_FENCE_DOOR,
@@ -314,11 +314,10 @@ public class AtbywBlocks {
                 ACACIA_FENCE_DOOR,
                 DARK_OAK_FENCE_DOOR,
                 CRIMSON_FENCE_DOOR,
-                WARPED_FENCE_DOOR
-        });
+                WARPED_FENCE_DOOR);
         registerBlock(false, ATBYW_REDSTONE, "iron_fence_door", IRON_FENCE_DOOR);
 
-        registerBlocks(false, ATBYW_REDSTONE, "", "bookshelf_toggle", WOOD_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_REDSTONE, null, "bookshelf_toggle", WOOD_NAMES,
                 OAK_BOOKSHELF_TOGGLE,
                 SPRUCE_BOOKSHELF_TOGGLE,
                 BIRCH_BOOKSHELF_TOGGLE,
@@ -326,13 +325,12 @@ public class AtbywBlocks {
                 ACACIA_BOOKSHELF_TOGGLE,
                 DARK_OAK_BOOKSHELF_TOGGLE,
                 CRIMSON_BOOKSHELF_TOGGLE,
-                WARPED_BOOKSHELF_TOGGLE
-        });
+                WARPED_BOOKSHELF_TOGGLE);
         AtbywModInteractionBlocks.initBookshelfToggles();
 
         registerBlock(false, ATBYW_REDSTONE, "redstone_lantern", REDSTONE_LANTERN);
 
-        registerBlocks(false, ATBYW_REDSTONE, "", "pull_switch", FLOWER_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_REDSTONE, null, "pull_switch", FLOWER_NAMES,
                 DANDELION_PULL_SWITCH,
                 POPPY_PULL_SWITCH,
                 BLUE_ORCHID_PULL_SWITCH,
@@ -345,8 +343,7 @@ public class AtbywBlocks {
                 OXEYE_DAISY_PULL_SWITCH,
                 CORNFLOWER_PULL_SWITCH,
                 LILY_OF_THE_VALLEY_PULL_SWITCH,
-                WITHER_ROSE_PULL_SWITCH
-        });
+                WITHER_ROSE_PULL_SWITCH);
 
         registerBlock(false, ATBYW_BLOCKS, "grass_block_stairs", GRASS_BLOCK_STAIRS);
         registerBlock(false, ATBYW_BLOCKS, "mycelium_stairs", MYCELIUM_STAIRS);
@@ -368,32 +365,30 @@ public class AtbywBlocks {
         registerBlock(false, ATBYW_BLOCKS, "warped_nylium_slab", WARPED_NYLIUM_SLAB);
         registerBlock(false, ATBYW_BLOCKS, "netherrack_slab", NETHERRACK_SLAB);
 
-        registerBlocks(false, ATBYW_BLOCKS, "", "bookshelf", WOOD_NAMES_FROM_SPRUCE, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "bookshelf", WOOD_NAMES_FROM_SPRUCE,
                 SPRUCE_BOOKSHELF,
                 BIRCH_BOOKSHELF,
                 JUNGLE_BOOKSHELF,
                 ACACIA_BOOKSHELF,
                 DARK_OAK_BOOKSHELF,
                 CRIMSON_BOOKSHELF,
-                WARPED_BOOKSHELF
-        });
+                WARPED_BOOKSHELF);
 
-        registerBlocks(false, ATBYW_BLOCKS, "", "ladder", WOOD_NAMES_FROM_SPRUCE, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "ladder", WOOD_NAMES_FROM_SPRUCE,
                 SPRUCE_LADDER,
                 BIRCH_LADDER,
                 JUNGLE_LADDER,
                 ACACIA_LADDER,
                 DARK_OAK_LADDER,
                 CRIMSON_LADDER,
-                WARPED_LADDER
-        });
+                WARPED_LADDER);
         registerBlock(false, ATBYW_BLOCKS, "bamboo_ladder", BAMBOO_LADDER);
 
         registerBlock(false, ATBYW_BLOCKS, "basalt_bricks", BASALT_BRICKS);
         registerBlock(false, ATBYW_BLOCKS, "basalt_pillar", BASALT_PILLAR);
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_stairs", TERRACOTTA_STAIRS);
-        registerBlocks(false, ATBYW_BLOCKS, "", "terracotta_stairs", COLOR_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_stairs", COLOR_NAMES,
                 WHITE_TERRACOTTA_STAIRS,
                 ORANGE_TERRACOTTA_STAIRS,
                 MAGENTA_TERRACOTTA_STAIRS,
@@ -409,11 +404,10 @@ public class AtbywBlocks {
                 BROWN_TERRACOTTA_STAIRS,
                 GREEN_TERRACOTTA_STAIRS,
                 RED_TERRACOTTA_STAIRS,
-                BLACK_TERRACOTTA_STAIRS
-        });
+                BLACK_TERRACOTTA_STAIRS);
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_slab", TERRACOTTA_SLAB);
-        registerBlocks(false, ATBYW_BLOCKS, "", "terracotta_slab", COLOR_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_slab", COLOR_NAMES,
                 WHITE_TERRACOTTA_SLAB,
                 ORANGE_TERRACOTTA_SLAB,
                 MAGENTA_TERRACOTTA_SLAB,
@@ -429,11 +423,10 @@ public class AtbywBlocks {
                 BROWN_TERRACOTTA_SLAB,
                 GREEN_TERRACOTTA_SLAB,
                 RED_TERRACOTTA_SLAB,
-                BLACK_TERRACOTTA_SLAB
-        });
+                BLACK_TERRACOTTA_SLAB);
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks", TERRACOTTA_BRICKS);
-        registerBlocks(false, ATBYW_BLOCKS, "", "terracotta_bricks", COLOR_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_bricks", COLOR_NAMES,
                 WHITE_TERRACOTTA_BRICKS,
                 ORANGE_TERRACOTTA_BRICKS,
                 MAGENTA_TERRACOTTA_BRICKS,
@@ -449,11 +442,10 @@ public class AtbywBlocks {
                 BROWN_TERRACOTTA_BRICKS,
                 GREEN_TERRACOTTA_BRICKS,
                 RED_TERRACOTTA_BRICKS,
-                BLACK_TERRACOTTA_BRICKS
-        });
+                BLACK_TERRACOTTA_BRICKS);
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks_stairs", TERRACOTTA_BRICKS_STAIRS);
-        registerBlocks(false, ATBYW_BLOCKS, "", "terracotta_bricks_stairs", COLOR_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_bricks_stairs", COLOR_NAMES,
                 WHITE_TERRACOTTA_BRICKS_STAIRS,
                 ORANGE_TERRACOTTA_BRICKS_STAIRS,
                 MAGENTA_TERRACOTTA_BRICKS_STAIRS,
@@ -469,11 +461,10 @@ public class AtbywBlocks {
                 BROWN_TERRACOTTA_BRICKS_STAIRS,
                 GREEN_TERRACOTTA_BRICKS_STAIRS,
                 RED_TERRACOTTA_BRICKS_STAIRS,
-                BLACK_TERRACOTTA_BRICKS_STAIRS
-        });
+                BLACK_TERRACOTTA_BRICKS_STAIRS);
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks_slab", TERRACOTTA_BRICKS_SLAB);
-        registerBlocks(false, ATBYW_BLOCKS, "", "terracotta_bricks_slab", COLOR_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_bricks_slab", COLOR_NAMES,
                 WHITE_TERRACOTTA_BRICKS_SLAB,
                 ORANGE_TERRACOTTA_BRICKS_SLAB,
                 MAGENTA_TERRACOTTA_BRICKS_SLAB,
@@ -489,11 +480,10 @@ public class AtbywBlocks {
                 BROWN_TERRACOTTA_BRICKS_SLAB,
                 GREEN_TERRACOTTA_BRICKS_SLAB,
                 RED_TERRACOTTA_BRICKS_SLAB,
-                BLACK_TERRACOTTA_BRICKS_SLAB
-        });
+                BLACK_TERRACOTTA_BRICKS_SLAB);
 
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks_wall", TERRACOTTA_BRICKS_WALL);
-        registerBlocks(false, ATBYW_BLOCKS, "", "terracotta_bricks_wall", COLOR_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_bricks_wall", COLOR_NAMES,
                 WHITE_TERRACOTTA_BRICKS_WALL,
                 ORANGE_TERRACOTTA_BRICKS_WALL,
                 MAGENTA_TERRACOTTA_BRICKS_WALL,
@@ -509,10 +499,9 @@ public class AtbywBlocks {
                 BROWN_TERRACOTTA_BRICKS_WALL,
                 GREEN_TERRACOTTA_BRICKS_WALL,
                 RED_TERRACOTTA_BRICKS_WALL,
-                BLACK_TERRACOTTA_BRICKS_WALL
-        });
+                BLACK_TERRACOTTA_BRICKS_WALL);
 
-        registerBlocks(false, ATBYW_BLOCKS, "", "concrete_stairs", COLOR_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "concrete_stairs", COLOR_NAMES,
                 WHITE_CONCRETE_STAIRS,
                 ORANGE_CONCRETE_STAIRS,
                 MAGENTA_CONCRETE_STAIRS,
@@ -528,10 +517,9 @@ public class AtbywBlocks {
                 BROWN_CONCRETE_STAIRS,
                 GREEN_CONCRETE_STAIRS,
                 RED_CONCRETE_STAIRS,
-                BLACK_CONCRETE_STAIRS
-        });
+                BLACK_CONCRETE_STAIRS);
 
-        registerBlocks(false, ATBYW_BLOCKS, "", "concrete_slab", COLOR_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "concrete_slab", COLOR_NAMES,
                 WHITE_CONCRETE_SLAB,
                 ORANGE_CONCRETE_SLAB,
                 MAGENTA_CONCRETE_SLAB,
@@ -548,9 +536,9 @@ public class AtbywBlocks {
                 GREEN_CONCRETE_SLAB,
                 RED_CONCRETE_SLAB,
                 BLACK_CONCRETE_SLAB
-        });
+        );
 
-        registerBlocks(false, ATBYW_BLOCKS, "", "cinder_bricks", COLOR_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "cinder_bricks", COLOR_NAMES,
                 WHITE_CINDER_BRICKS,
                 ORANGE_CINDER_BRICKS,
                 MAGENTA_CINDER_BRICKS,
@@ -566,10 +554,9 @@ public class AtbywBlocks {
                 BROWN_CINDER_BRICKS,
                 GREEN_CINDER_BRICKS,
                 RED_CINDER_BRICKS,
-                BLACK_CINDER_BRICKS
-        });
+                BLACK_CINDER_BRICKS);
 
-        registerBlocks(false, ATBYW_BLOCKS, "", "cinder_blocks_wall", COLOR_NAMES, new Block[] {
+        registerBlocks(false, ATBYW_BLOCKS, null, "cinder_blocks_wall", COLOR_NAMES,
                 WHITE_CINDER_BRICKS_WALL,
                 ORANGE_CINDER_BRICKS_WALL,
                 MAGENTA_CINDER_BRICKS_WALL,
@@ -585,8 +572,7 @@ public class AtbywBlocks {
                 BROWN_CINDER_BRICKS_WALL,
                 GREEN_CINDER_BRICKS_WALL,
                 RED_CINDER_BRICKS_WALL,
-                BLACK_CINDER_BRICKS_WALL
-        });
+                BLACK_CINDER_BRICKS_WALL);
 
         registerBlock(false, ATBYW_MISC, "dev_block", DEVELOPER_BLOCK);
 

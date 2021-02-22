@@ -88,33 +88,30 @@ public class AtbywExperimentalBlocks {
 //                WARPED_MOVING_PISTON
 //        });
 
-        registerBlocks(false, ATBYW_REDSTONE, "", "piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
+        registerBlocks(false, ATBYW_REDSTONE, null, "piston", WOOD_NAMES_FROM_SPRUCE,
                 SPRUCE_PISTON,
                 BIRCH_PISTON,
                 JUNGLE_PISTON,
                 ACACIA_PISTON,
                 DARK_OAK_PISTON,
                 CRIMSON_PISTON,
-                WARPED_PISTON
-        });
-        registerBlocks(false, ATBYW_REDSTONE, "", "sticky_piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
+                WARPED_PISTON);
+        registerBlocks(false, ATBYW_REDSTONE, null, "sticky_piston", WOOD_NAMES_FROM_SPRUCE,
                 SPRUCE_STICKY_PISTON,
                 BIRCH_STICKY_PISTON,
                 JUNGLE_STICKY_PISTON,
                 ACACIA_STICKY_PISTON,
                 DARK_OAK_STICKY_PISTON,
                 CRIMSON_STICKY_PISTON,
-                WARPED_STICKY_PISTON
-        });
-        registerBlocks(false, "piston_head", WOOD_NAMES_FROM_SPRUCE, new Block[] {
+                WARPED_STICKY_PISTON);
+        registerBlocksOnly("piston_head", WOOD_NAMES_FROM_SPRUCE,
                 SPRUCE_PISTON_HEAD,
                 BIRCH_PISTON_HEAD,
                 JUNGLE_PISTON_HEAD,
                 ACACIA_PISTON_HEAD,
                 DARK_OAK_PISTON_HEAD,
                 CRIMSON_PISTON_HEAD,
-                WARPED_PISTON_HEAD
-        });
+                WARPED_PISTON_HEAD);
     }
 
     public static void initPistonEntities() {
