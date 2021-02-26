@@ -2,6 +2,7 @@ package net.azagwen.atbyw.blocks;
 
 import net.azagwen.atbyw.blocks.slabs.*;
 import net.azagwen.atbyw.blocks.stairs.*;
+import net.azagwen.atbyw.blocks.state.AtbywProperties;
 import net.azagwen.atbyw.blocks.statues.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
@@ -20,6 +21,13 @@ import static net.azagwen.atbyw.blocks.AtbywBlockUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywBlocks {
+
+    //TODO: Add granite variants bricks, tiles and pillars
+    //TODO: Add spike traps (redstone)
+    //TODO: Add locks to lock chests & doors
+    //TODO: Experiment with connected models/textures
+    //TODO: Add Bipedal Statues
+    //TODO: Experiment with World Gen
 
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
     public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
@@ -44,7 +52,7 @@ public class AtbywBlocks {
 
     public static final Block[] TESTBLOCK = AtbywBlockUtils.<SlabBlockSubClass>DeclareMultipleBlocks(3, Material.BAMBOO, MaterialColor.BROWN);
 
-    //Dummy Blocks
+    //Dummy Blocks (used only in-code as dummies)
     public static final Block TICKING_DIRT = new Block(FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
     public static final Block DUMMY_GRASS_BLOCK = new GrassBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
     public static final Block DUMMY_MYCELIUM = new MyceliumBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MaterialColor.PURPLE).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
@@ -86,6 +94,10 @@ public class AtbywBlocks {
     public static final Block DARK_OAK_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block CRIMSON_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block WARPED_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
+
+    public static final Block GRANITE_TILES = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE));
+    public static final Block DIORITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE));
+    public static final Block ANDESITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE));
 
     public static final Block BASALT_BRICKS = new Block(MakeBasalt());
     public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
@@ -301,7 +313,22 @@ public class AtbywBlocks {
     public static final Block WITHER_ROSE_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WITHER_ROSE).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
 
     public static final Block REDSTONE_LANTERN = new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).breakByTool(FabricToolTags.PICKAXES).luminance(createLightLevelFromBlockState(2, AtbywProperties.POWER_INTENSITY, Properties.LIT)));
-    public static final Block SHROOM_STICK = new ShroomStickBlock(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).breakByTool(FabricToolTags.HOES).strength(0.5F));
+    public static final Block SHROOMSTICK = new ShroomStickBlock(FabricBlockSettings.copyOf(Blocks.SHROOMLIGHT).breakByTool(FabricToolTags.HOES).breakInstantly().noCollision().nonOpaque());
+
+    public static final Block GRANITE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.GRANITE));
+    public static final Block DIORITE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.DIORITE));
+    public static final Block ANDESITE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.ANDESITE));
+    public static final Block SANDSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.SANDSTONE));
+    public static final Block RED_SANDSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.RED_SANDSTONE));
+    public static final Block PURPUR_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block STONE_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICKS));
+    public static final Block MOSSY_STONE_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICKS));
+    public static final Block CRACKED_STONE_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS));
+    public static final Block NETHER_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS));
+    public static final Block QUARTZ_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK));
+    public static final Block PRISMARINE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE));
+    public static final Block BLACKSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE));
+
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
     public static void init() {
@@ -343,6 +370,10 @@ public class AtbywBlocks {
                 CORNFLOWER_PULL_SWITCH,
                 LILY_OF_THE_VALLEY_PULL_SWITCH,
                 WITHER_ROSE_PULL_SWITCH);
+
+        registerBlock(false, ATBYW_BLOCKS, "granite_tiles", GRANITE_TILES);
+        registerBlock(false, ATBYW_BLOCKS, "diorite_bricks", DIORITE_BRICKS);
+        registerBlock(false, ATBYW_BLOCKS, "andesite_bricks", ANDESITE_BRICKS);
 
         registerBlock(false, ATBYW_BLOCKS, "grass_block_stairs", GRASS_BLOCK_STAIRS);
         registerBlock(false, ATBYW_BLOCKS, "mycelium_stairs", MYCELIUM_STAIRS);
@@ -481,6 +512,20 @@ public class AtbywBlocks {
                 RED_TERRACOTTA_BRICKS_SLAB,
                 BLACK_TERRACOTTA_BRICKS_SLAB);
 
+        registerBlock(false, ATBYW_DECO, "granite_column", GRANITE_COLUMN);
+        registerBlock(false, ATBYW_DECO, "diorite_column", DIORITE_COLUMN);
+        registerBlock(false, ATBYW_DECO, "andesite_column", ANDESITE_COLUMN);
+        registerBlock(false, ATBYW_DECO, "sandstone_column", SANDSTONE_COLUMN);
+        registerBlock(false, ATBYW_DECO, "red_sandstone_column", RED_SANDSTONE_COLUMN);
+        registerBlock(false, ATBYW_DECO, "purpur_column", PURPUR_COLUMN);
+        registerBlock(false, ATBYW_DECO, "stone_bricks_column", STONE_BRICKS_COLUMN);
+        registerBlock(false, ATBYW_DECO, "mossy_stone_bricks_column", MOSSY_STONE_BRICKS_COLUMN);
+        registerBlock(false, ATBYW_DECO, "cracked_stone_bricks_column", CRACKED_STONE_BRICKS_COLUMN);
+        registerBlock(false, ATBYW_DECO, "nether_bricks_column", NETHER_BRICKS_COLUMN);
+        registerBlock(false, ATBYW_DECO, "quartz_column", QUARTZ_COLUMN);
+        registerBlock(false, ATBYW_DECO, "prismarine_column", PRISMARINE_COLUMN);
+        registerBlock(false, ATBYW_DECO, "blackstone_column", BLACKSTONE_COLUMN);
+
         registerBlock(false, ATBYW_BLOCKS, "terracotta_bricks_wall", TERRACOTTA_BRICKS_WALL);
         registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_bricks_wall", COLOR_NAMES,
                 WHITE_TERRACOTTA_BRICKS_WALL,
@@ -555,7 +600,7 @@ public class AtbywBlocks {
                 RED_CINDER_BRICKS,
                 BLACK_CINDER_BRICKS);
 
-        registerBlock(false, ATBYW_DECO, "shroom_stick", SHROOM_STICK);
+        registerBlockOnly("shroomstick", SHROOMSTICK);
 
         registerBlocks(false, ATBYW_DECO, null, "cinder_blocks_wall", COLOR_NAMES,
                 WHITE_CINDER_BRICKS_WALL,

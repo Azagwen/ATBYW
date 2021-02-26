@@ -1,9 +1,12 @@
 package net.azagwen.atbyw.blocks;
 
+import net.azagwen.atbyw.blocks.statues.StatueBlockMethods;
+import net.azagwen.atbyw.items.AtbywItems;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -11,23 +14,37 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
-public class ShroomStickBlock extends Block {
+public class ShroomStickBlock extends Block implements Waterloggable  {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     private static final VoxelShape BASE_SHAPE;
 
     public ShroomStickBlock(Settings settings) {
         super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false));
     }
 
-    //TODO: change Sounds.
-    //TODO: finish model.
-    //TODO: finis behavior (breaks if block under it broken, etc...)
+    //TODO: (Low priority) change Sounds.
+
+    @Override
+    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+        return AtbywItems.SHROOMSTICK.getDefaultStack();
+    }
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        return world.getBlockState(pos.down()).isSideSolid(world, pos, Direction.UP, SideShapeType.CENTER);
+        return Block.sideCoversSmallSquare(world, pos.down(), Direction.UP);
+    }
+
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
+        if (direction == Direction.DOWN && !this.canPlaceAt(state, world, pos))
+            return Blocks.AIR.getDefaultState();
+        else
+            return super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom);
     }
 
     @Override

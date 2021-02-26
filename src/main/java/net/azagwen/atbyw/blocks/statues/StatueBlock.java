@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.blocks.statues;
 
-import net.azagwen.atbyw.blocks.AtbywProperties;
+import net.azagwen.atbyw.blocks.state.AtbywProperties;
 import net.minecraft.block.*;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;

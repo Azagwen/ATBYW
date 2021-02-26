@@ -1,0 +1,9 @@
+{
+  "parent": "atbyw:block/template_column_inventory",
+  "textures": {
+    "top": "atbyw:block/andesite_column_top",
+    "bottom": "atbyw:block/andesite_column_top",
+    "side_ends": "atbyw:block/andesite_column_side_ends",
+    "side": "atbyw:block/andesite_column_side"
+  }
+}

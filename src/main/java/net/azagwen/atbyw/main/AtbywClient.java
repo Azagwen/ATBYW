@@ -5,14 +5,25 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+import net.fabricmc.fabric.impl.networking.ClientSidePacketRegistryImpl;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.UUID;
 
 import static net.azagwen.atbyw.blocks.AtbywBlocks.*;
 import static net.azagwen.atbyw.blocks.statues.StatueRegistry.*;
@@ -22,8 +33,40 @@ import static net.azagwen.atbyw.main.AtbywMain.newID;
 public class AtbywClient implements ClientModInitializer {
     private static final Logger LOGGER = LogManager.getLogger();
 
+    public static final Identifier PacketID = newID("spawn_packet");
+
+    public void receiveEntityPacket() {
+        ClientSidePacketRegistryImpl.INSTANCE.register(PacketID, (ctx, byteBuf) -> {
+            EntityType<?> et = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
+            UUID uuid = byteBuf.readUuid();
+            int entityId = byteBuf.readVarInt();
+            Vec3d pos = EntitySpawnPacket.PacketBufUtil.readVec3d(byteBuf);
+            float pitch = EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf);
+            float yaw = EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf);
+            ctx.getTaskQueue().execute(() -> {
+                if (MinecraftClient.getInstance().world == null)
+                    throw new IllegalStateException("Tried to spawn entity in a null world!");
+                Entity e = et.create(MinecraftClient.getInstance().world);
+                if (e == null)
+                    throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(et) + "\"!");
+                e.updateTrackedPosition(pos);
+                e.setPos(pos.x, pos.y, pos.z);
+                e.pitch = pitch;
+                e.yaw = yaw;
+                e.setEntityId(entityId);
+                e.setUuid(uuid);
+                MinecraftClient.getInstance().world.addEntity(entityId, e);
+            });
+        });
+    }
+
     @Environment(EnvType.CLIENT)
     public void onInitializeClient() {
+        EntityRendererRegistry.INSTANCE.register(AtbywEntityType.SHROOMSTICK, (dispatcher, context) ->
+                new FlyingItemEntityRenderer(dispatcher, context.getItemRenderer())
+        );
+        receiveEntityPacket();
+
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5D, 1.0D);
         }, GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);

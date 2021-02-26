@@ -37,6 +37,8 @@ public class AtbywItems {
     public static final Item MAGMA_CUBE_ESSENCE = new EssenceItem(0x630000);
     public static final Item SLIME_ESSENCE = new EssenceItem(0x8CD782);
 
+    public static final Item SHROOMSTICK = new ShroomStickItem(createSimpleItem(ATBYW_DECO));
+
     public static final Item[] ESSENCE_BOTTLES = {
             BEE_ESSENCE,
             SILVERFISH_ESSENCE,
@@ -79,6 +81,8 @@ public class AtbywItems {
         Registry.register(Registry.ITEM, newID("puffer_fish_essence"), PUFFER_FISH_ESSENCE);
         Registry.register(Registry.ITEM, newID("magma_cube_essence"), MAGMA_CUBE_ESSENCE);
         Registry.register(Registry.ITEM, newID("slime_essence"), SLIME_ESSENCE);
+
+        Registry.register(Registry.ITEM, newID("shroomstick"), SHROOMSTICK);
 
         AtbywModInteractionItems.init();
     }

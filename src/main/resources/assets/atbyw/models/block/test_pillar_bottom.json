@@ -1,0 +1,8 @@
+{
+    "parent": "atbyw:block/template_connected_pillar_bottom",
+    "textures": {
+        "top": "atbyw:block/test_pillar_top_inner",
+        "bottom": "atbyw:block/test_pillar_top",
+        "side": "atbyw:block/test_pillar_ends_side"
+    }
+}

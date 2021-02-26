@@ -21,7 +21,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-import static net.azagwen.atbyw.blocks.AtbywProperties.*;
+import static net.azagwen.atbyw.blocks.state.AtbywProperties.*;
 
 public class DevBlock extends FacingBlock {
     protected static final VoxelShape SHAPE_WEST_UP;

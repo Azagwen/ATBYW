@@ -3,6 +3,13 @@
   "block.atbyw.basalt_bricks": "Basalt Bricks",
   "block.atbyw.basalt_pillar": "Basalt Pillar",
 
+  "block.atbyw.granite_tiles": "Granite Tiles",
+  "block.atbyw.diorite_bricks": "Diorite Bricks",
+  "block.atbyw.andesite_bricks": "Andesite Bircks",
+  "block.atbyw.granite_column": "Granite Column",
+  "block.atbyw.diorite_column": "Diorite Column",
+  "block.atbyw.andesite_column": "Andesite Column",
+
   "block.atbyw.dandelion_pull_switch": "Dandelion Pull Switch",
   "block.atbyw.poppy_pull_switch": "Poppy Pull Switch",
   "block.atbyw.blue_orchid_pull_switch": "Blue Orchid Pull Switch",
@@ -212,6 +219,8 @@
   "item.atbyw.slime_essence": "Slime Essence",
   "item.atbyw.magma_cube_essence": "Magma Cube Essence",
 
+  "item.atbyw.shroomstick": "Shroomstick",
+
   "_comment": "Terracotta stairs",
   "block.atbyw.terracotta_stairs": "Terracotta Stairs",
   "block.atbyw.white_terracotta_stairs": "White Terracotta Stairs",
@@ -400,8 +409,9 @@
 
   "_comment": "Misc",
   "itemGroup.atbyw.blocks": "§nA§rll §nT§rhe §nB§rlocks §nY§rou §nW§rant",
-  "itemGroup.atbyw.items": "ATBYW Misc",
+  "itemGroup.atbyw.decoration": "ATBYW Decoration",
   "itemGroup.atbyw.redstone": "ATBYW Redstone",
+  "itemGroup.atbyw.items": "ATBYW Misc",
   "block.atbyw.redstone_lantern.power_intensity": "Power Intensity: %d",
 
   "block.atbyw.bee_statue.not_ready": "Bee statue is %d%% mossy.",

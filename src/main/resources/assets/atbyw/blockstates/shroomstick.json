@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "": [
+      {"model": "atbyw:block/shroomstick_000", "y":   0 },
+      {"model": "atbyw:block/shroomstick_225", "y":   0 },
+      {"model": "atbyw:block/shroomstick_450", "y":   0 },
+      {"model": "atbyw:block/shroomstick_000", "y":  90 },
+      {"model": "atbyw:block/shroomstick_225", "y":  90 },
+      {"model": "atbyw:block/shroomstick_450", "y":  90 }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"texture": "atbyw:block/shroomstick",
+		"particle": "minecraft:block/shroomlight"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 7],
+			"to": [12, 2, 9],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 1, 8]},
+			"faces": {
+				"north": {"uv": [2, 2, 4, 10], "rotation": 270, "texture": "#texture"},
+				"east":  {"uv": [4, 2, 2,  0], "rotation":  90, "texture": "#texture"},
+				"south": {"uv": [6, 2, 8, 10], "rotation":  90, "texture": "#texture"},
+				"west":  {"uv": [6, 0, 4,  2], "rotation":  90, "texture": "#texture"},
+				"up":    {"uv": [4, 2, 6, 10], "rotation":  90, "texture": "#texture"},
+				"down":  {"uv": [0, 2, 2, 10], "rotation":  90, "texture": "#texture"}
+			}
+		}
+	]
+}
