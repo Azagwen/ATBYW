@@ -1,7 +1,7 @@
 package net.azagwen.atbyw.mixin;
 
 import com.google.gson.JsonElement;
-import net.azagwen.atbyw.main.AtbywRecipes;
+import net.azagwen.atbyw.datagen.AtbywRecipes;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
@@ -12,8 +12,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Map;
-
-import static net.azagwen.atbyw.main.AtbywMain.newID;
 
 @Mixin(RecipeManager.class)
 public class RecipeManagerMixin {

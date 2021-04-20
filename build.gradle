@@ -21,6 +21,17 @@ dependencies {
 
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
+
+	//Libraries and APIs
+	modImplementation "com.github.LambdAurora:LambDynamicLights:${project.Lambdynamiclights_version}"	//API
+	include  "com.github.LambdAurora:LambDynamicLights:${project.Lambdynamiclights_version}"			//API
+}
+repositories {
+	maven {
+		name = "AperLambda"
+		url = 'https://aperlambda.github.io/maven'
+	}
+	maven { url = "https://jitpack.io" }
 }
 
 minecraft {

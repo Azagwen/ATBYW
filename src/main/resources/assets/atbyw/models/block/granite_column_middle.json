@@ -1,6 +1,0 @@
-{
-    "parent": "atbyw:block/template_column_middle",
-    "textures": {
-        "side": "atbyw:block/granite_column_side"
-    }
-}

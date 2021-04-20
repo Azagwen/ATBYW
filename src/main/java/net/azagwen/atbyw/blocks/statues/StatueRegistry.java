@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 
-import static net.azagwen.atbyw.blocks.AtbywBlockUtils.*;
+import static net.azagwen.atbyw.util.AtbywUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class StatueRegistry {

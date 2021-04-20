@@ -1,7 +1,5 @@
 package net.azagwen.atbyw.blocks.statues;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.shape.VoxelShape;
 

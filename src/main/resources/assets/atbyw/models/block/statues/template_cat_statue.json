@@ -6,8 +6,8 @@
 	"elements": [
 		{
 			"name": "snout",
-			"from": [6.5, 7.02, -6],
-			"to": [9.5, 9.02, -4],
+			"from": [6.5, 7, -6],
+			"to": [9.5, 9, -4],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 7]},
 			"faces": {
 				"north": {"uv": [0.5, 13, 1.25, 14], "texture": "#texture"},
@@ -62,8 +62,8 @@
 		},
 		{
 			"name": "body",
-			"from": [6, 4.002, 0],
-			"to": [10, 10.002, 16],
+			"from": [6, 3.99, 0],
+			"to": [10, 9.99, 16],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7, 8]},
 			"faces": {
 				"north": {"uv": [7.5, 3, 6.5, 0], "rotation": 180, "texture": "#texture"},

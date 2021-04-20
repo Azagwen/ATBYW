@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "minecraft:magenta_concrete"
-    },
-    "result": "atbyw:magenta_cinder_bricks",
-    "count": 1
-}

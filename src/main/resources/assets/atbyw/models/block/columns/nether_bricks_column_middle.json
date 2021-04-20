@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/columns/template_column_middle",
+    "textures": {
+        "side": "atbyw:block/nether_bricks_column_side"
+    }
+}

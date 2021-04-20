@@ -1,8 +1,0 @@
-{
-    "parent": "atbyw:block/template_column_top",
-    "textures": {
-        "top": "atbyw:block/andesite_column_top",
-        "bottom": "atbyw:block/andesite_column_top",
-        "side": "atbyw:block/andesite_column_side_ends"
-    }
-}

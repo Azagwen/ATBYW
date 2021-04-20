@@ -2,24 +2,16 @@ package net.azagwen.atbyw.main;
 
 import net.azagwen.atbyw.blocks.AtbywBlockEntities;
 import net.azagwen.atbyw.blocks.AtbywBlocks;
-import net.azagwen.atbyw.blocks.AtbywExperimentalBlocks;
+import net.azagwen.atbyw.datagen.AtbywRecipes;
 import net.azagwen.atbyw.items.AtbywItems;
-import net.azagwen.atbyw.items.ShroomStickEntity;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityDimensions;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,7 +36,7 @@ public class AtbywMain implements ModInitializer {
 	}).build();
 
 	public static final ItemGroup ATBYW_DECO = FabricItemGroupBuilder.create(newID("decoration")).icon(() -> {
-		return new ItemStack(AtbywBlocks.CYAN_CINDER_BRICKS_WALL);
+		return new ItemStack(AtbywBlocks.CYAN_CINDER_BLOCKS_WALL);
 	}).build();
 
 	public static final ItemGroup ATBYW_REDSTONE = FabricItemGroupBuilder.create(newID("redstone")).icon(() -> {

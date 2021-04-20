@@ -1,11 +1,12 @@
 package net.azagwen.atbyw.blocks;
 
-import com.sun.org.apache.bcel.internal.generic.FALOAD;
 import net.azagwen.atbyw.blocks.state.AtbywProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
+import net.minecraft.block.piston.PistonBehavior;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -19,8 +20,6 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-
-import java.util.Objects;
 
 public class ColumnBlock extends Block implements Waterloggable {
     public static final BooleanProperty WATERLOGGED;
@@ -36,27 +35,38 @@ public class ColumnBlock extends Block implements Waterloggable {
         this.setDefaultState(this.stateManager.getDefaultState().with(TOP, true).with(MIDDLE, true).with(BOTTOM, true).with(WATERLOGGED, false));
     }
 
+    private BlockState setEndStates(BlockState state, boolean top, boolean bottom) {
+        return this.getDefaultState()
+                .with(TOP, top)
+                .with(MIDDLE, state.get(MIDDLE))
+                .with(BOTTOM, bottom)
+                .with(WATERLOGGED, state.get(WATERLOGGED));
+    }
+
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         World world = ctx.getWorld();
         BlockPos pos = ctx.getBlockPos();
 
+        BlockPos upPos = pos.up();
+        BlockPos downPos = pos.down();
+        boolean isSneaking = ctx.shouldCancelInteraction();
+
+        if (!isSneaking) {
+            if (world.getBlockState(upPos).getBlock() instanceof ColumnBlock) {
+                world.setBlockState(upPos, world.getBlockState(upPos).with(ColumnBlock.BOTTOM, false));
+            }
+            if (world.getBlockState(downPos).getBlock() instanceof ColumnBlock) {
+                world.setBlockState(downPos, world.getBlockState(downPos).with(ColumnBlock.TOP, false));
+            }
+        }
 
         return this.getDefaultState()
-                .with(TOP, ctx.shouldCancelInteraction() || !(world.getBlockState(pos.up()).getBlock() instanceof ColumnBlock))
+                .with(TOP, isSneaking || !(world.getBlockState(upPos).getBlock() instanceof ColumnBlock))
                 .with(MIDDLE, true)
-                .with(BOTTOM, ctx.shouldCancelInteraction() || !(world.getBlockState(pos.down()).getBlock() instanceof ColumnBlock))
+                .with(BOTTOM, isSneaking || !(world.getBlockState(downPos).getBlock() instanceof ColumnBlock))
                 .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
-    }
-
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.union(
-                state.get(TOP) ? TOP_SHAPE : VoxelShapes.empty(),
-                state.get(MIDDLE) ? MIDDLE_SHAPE : VoxelShapes.empty(),
-                state.get(BOTTOM) ? BOTTOM_SHAPE : VoxelShapes.empty()
-        );
     }
 
     @Override
@@ -72,6 +82,15 @@ public class ColumnBlock extends Block implements Waterloggable {
                 .with(MIDDLE, true)
                 .with(BOTTOM, !isCovering)
                 .with(WATERLOGGED, state.get(WATERLOGGED));
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return VoxelShapes.union(
+                state.get(TOP) ? TOP_SHAPE : VoxelShapes.empty(),
+                state.get(MIDDLE) ? MIDDLE_SHAPE : VoxelShapes.empty(),
+                state.get(BOTTOM) ? BOTTOM_SHAPE : VoxelShapes.empty()
+        );
     }
 
     @Override

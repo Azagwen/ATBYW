@@ -200,8 +200,9 @@ public class StatueVoxelShapes {
         RABBIT_OUTLINES = combineDoubleArrayShapes(RABBIT_OUTLINE_SHAPES);
         RABBIT_COLLISIONS = combineDoubleArrayShapes(RABBIT_COLLISION_SHAPES);
 
+        //Fox outlines
         final VoxelShape[][] FOX_SHAPES = {
-                makeDirectionalShapes(5.0D, 4.5D,  2.0D, 11.0D, 10.5D, 13.5D),  //Body              0
+                makeDirectionalShapes(5.0D, 4.5D,  2.5D, 11.0D, 10.5D, 13.5D),  //Body              0
                 makeDirectionalShapes(5.0D, 0.0D,  3.5D,  7.0D,  4.5D,  5.5D),  //Leg Front Left    1
                 makeDirectionalShapes(9.0D, 0.0D,  3.5D, 11.0D,  4.5D,  5.5D),  //Leg Front Right   2
                 makeDirectionalShapes(5.0D, 0.0D, 10.5D,  7.0D,  4.5D, 12.5D),  //Leg Back Left     3

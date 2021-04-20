@@ -8,7 +8,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.PistonBlockEntity;
 import net.minecraft.util.registry.Registry;
 
-import static net.azagwen.atbyw.blocks.AtbywBlockUtils.*;
+import static net.azagwen.atbyw.util.AtbywUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywExperimentalBlocks {
@@ -88,7 +88,7 @@ public class AtbywExperimentalBlocks {
 //                WARPED_MOVING_PISTON
 //        });
 
-        registerBlocks(false, ATBYW_REDSTONE, null, "piston", WOOD_NAMES_FROM_SPRUCE,
+        registerBlocks(false, ATBYW_REDSTONE, null, "piston", WOOD_NAMES_NO_OAK,
                 SPRUCE_PISTON,
                 BIRCH_PISTON,
                 JUNGLE_PISTON,
@@ -96,7 +96,7 @@ public class AtbywExperimentalBlocks {
                 DARK_OAK_PISTON,
                 CRIMSON_PISTON,
                 WARPED_PISTON);
-        registerBlocks(false, ATBYW_REDSTONE, null, "sticky_piston", WOOD_NAMES_FROM_SPRUCE,
+        registerBlocks(false, ATBYW_REDSTONE, null, "sticky_piston", WOOD_NAMES_NO_OAK,
                 SPRUCE_STICKY_PISTON,
                 BIRCH_STICKY_PISTON,
                 JUNGLE_STICKY_PISTON,
@@ -104,7 +104,7 @@ public class AtbywExperimentalBlocks {
                 DARK_OAK_STICKY_PISTON,
                 CRIMSON_STICKY_PISTON,
                 WARPED_STICKY_PISTON);
-        registerBlocksOnly("piston_head", WOOD_NAMES_FROM_SPRUCE,
+        registerBlocksOnly("piston_head", WOOD_NAMES_NO_OAK,
                 SPRUCE_PISTON_HEAD,
                 BIRCH_PISTON_HEAD,
                 JUNGLE_PISTON_HEAD,

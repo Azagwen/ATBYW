@@ -19,7 +19,7 @@
 		},
 		{
 			"name": "right_leg_out",
-			"from": [5, 0.002, 6],
+			"from": [5, 0, 6],
 			"to": [8, 5, 9],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
 			"faces": {
@@ -33,7 +33,7 @@
 		},
 		{
 			"name": "right_leg_in",
-			"from": [8, 0.002, 6],
+			"from": [8, 0.01, 6],
 			"to": [5, 5, 9],
 			"rotation": {"angle": 0, "axis": "y", "origin": [11, 0, 8]},
 			"faces": {
@@ -47,7 +47,7 @@
 		},
 		{
 			"name": "left_leg_out",
-			"from": [8, 0.002, 6],
+			"from": [8, 0, 6],
 			"to": [11, 5, 9],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
 			"faces": {
@@ -61,7 +61,7 @@
 		},
 		{
 			"name": "left_leg_in",
-			"from": [11, 0.002, 6],
+			"from": [11, 0.01, 6],
 			"to": [8, 5, 9],
 			"rotation": {"angle": 0, "axis": "y", "origin": [11, 0, 8]},
 			"faces": {

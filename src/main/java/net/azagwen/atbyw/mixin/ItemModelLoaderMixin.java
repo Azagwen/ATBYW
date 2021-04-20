@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static net.azagwen.atbyw.main.AtbywDataGen.*;
+import static net.azagwen.atbyw.datagen.AtbywDataGen.*;
 
 @Mixin(ModelLoader.class)
 public class ItemModelLoaderMixin {

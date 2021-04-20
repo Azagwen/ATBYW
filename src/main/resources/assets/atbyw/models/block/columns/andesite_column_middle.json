@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/columns/template_column_middle",
+    "textures": {
+        "side": "atbyw:block/andesite_column_side"
+    }
+}

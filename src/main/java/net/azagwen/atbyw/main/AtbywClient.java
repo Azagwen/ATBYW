@@ -35,6 +35,7 @@ public class AtbywClient implements ClientModInitializer {
 
     public static final Identifier PacketID = newID("spawn_packet");
 
+    @Environment(EnvType.CLIENT)
     public void receiveEntityPacket() {
         ClientSidePacketRegistryImpl.INSTANCE.register(PacketID, (ctx, byteBuf) -> {
             EntityType<?> et = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());

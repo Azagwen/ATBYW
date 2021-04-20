@@ -5,7 +5,7 @@
                 "top": "true"
             },
             "apply": {
-                "model": "atbyw:block/andesite_column_top"
+                "model": "atbyw:block/columns/andesite_column_top"
             }
         },
         {
@@ -13,7 +13,7 @@
                 "middle": "true"
             },
             "apply": {
-                "model": "atbyw:block/andesite_column_middle"
+                "model": "atbyw:block/columns/andesite_column_middle"
             }
         },
         {
@@ -21,7 +21,7 @@
                 "bottom": "true"
             },
             "apply": {
-                "model": "atbyw:block/andesite_column_bottom"
+                "model": "atbyw:block/columns/andesite_column_bottom"
             }
         }
     ]

@@ -1,6 +1,7 @@
 {
-    "parent": "minecraft:block/cube_all",
+    "parent": "minecraft:block/cube_column",
     "textures": {
-        "all": "atbyw:block/granite_tiles"
+        "end": "atbyw:block/granite_tiles_top",
+        "side": "atbyw:block/granite_tiles"
     }
 }

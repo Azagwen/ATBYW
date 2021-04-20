@@ -6,8 +6,8 @@
 	"elements": [
 		{
 			"name": "jelly_inner",
-			"from": [11.998, 0.002, 4.002],
-			"to": [4.002, 7.998, 11.998],
+			"from": [11.99, 0.01, 4.01],
+			"to": [4.01, 7.99, 11.99],
 			"faces": {
 				"north": {"uv": [4, 4, 2, 8], "texture": "#texture"},
 				"east": {"uv": [2, 4, 0, 8], "texture": "#texture"},

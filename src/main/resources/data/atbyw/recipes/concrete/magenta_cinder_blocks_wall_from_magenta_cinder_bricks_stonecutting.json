@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "atbyw:magenta_cinder_bricks"
-    },
-    "result": "atbyw:magenta_cinder_blocks_wall",
-    "count": 1
-}

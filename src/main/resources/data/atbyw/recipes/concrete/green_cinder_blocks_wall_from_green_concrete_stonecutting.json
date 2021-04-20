@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "minecraft:green_concrete"
-    },
-    "result": "atbyw:green_cinder_blocks_wall",
-    "count": 1
-}

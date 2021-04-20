@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "atbyw:gray_terracotta_bricks"
-    },
-    "result": "atbyw:gray_terracotta_bricks_wall",
-    "count": 1
-}

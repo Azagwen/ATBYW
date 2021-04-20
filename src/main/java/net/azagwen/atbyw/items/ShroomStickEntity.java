@@ -102,7 +102,13 @@ public class ShroomStickEntity extends ThrownItemEntity {
         } else {
             spawnItem(world, hitPos);
         }
-        bounceCount++;
+        if (bounceCount >= maxBouncesBeforeLand -1 && blockHitResult.getSide() != Direction.UP) {
+            bounceCount--;
+        } else {
+            bounceCount++;
+        }
+
+
         world.playSound(null, hitPos, SoundEvents.ENTITY_SLIME_SQUISH_SMALL, SoundCategory.AMBIENT, 0.5F, 0.75F);
     }
 
@@ -163,7 +169,8 @@ public class ShroomStickEntity extends ThrownItemEntity {
                     "Z: " + (this.getVelocity().z)
             );
 
-            this.setCustomName(new TranslatableText(simplifiedVelocity));
+
+            this.setCustomName(new TranslatableText(String.valueOf(bounceCount)));
         }
     }
 }
