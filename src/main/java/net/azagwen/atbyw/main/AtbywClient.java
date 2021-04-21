@@ -7,7 +7,6 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.fabricmc.fabric.impl.networking.ClientSidePacketRegistryImpl;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.color.world.BiomeColors;
@@ -28,12 +27,12 @@ import java.util.UUID;
 import static net.azagwen.atbyw.blocks.AtbywBlocks.*;
 import static net.azagwen.atbyw.blocks.statues.StatueRegistry.*;
 import static net.azagwen.atbyw.items.AtbywItems.*;
-import static net.azagwen.atbyw.main.AtbywMain.newID;
+import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
 
 public class AtbywClient implements ClientModInitializer {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public static final Identifier PacketID = newID("spawn_packet");
+    public static final Identifier PacketID = AtbywID("spawn_packet");
 
     @Environment(EnvType.CLIENT)
     public void receiveEntityPacket() {

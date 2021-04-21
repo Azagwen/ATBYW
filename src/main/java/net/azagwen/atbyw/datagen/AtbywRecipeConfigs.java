@@ -1,7 +1,6 @@
 package net.azagwen.atbyw.datagen;
 
 import com.google.common.collect.Lists;
-
 import java.util.ArrayList;
 
 public enum AtbywRecipeConfigs implements AtbywRecipeConfig {
@@ -13,38 +12,32 @@ public enum AtbywRecipeConfigs implements AtbywRecipeConfig {
      *  and only require one ingredient.
      */
     // 1 Ingredients
-    BRICKS_1(Lists.newArrayList("##", "##"), Lists.newArrayList(newKey('#', "item")), 4),
-    STAIRS_1(Lists.newArrayList("#  ", "## ", "###"), Lists.newArrayList(newKey('#', "item")), 4),
-    SLAB_1(Lists.newArrayList("###"), Lists.newArrayList(newKey('#', "item")), 6),
-    WALL_1(Lists.newArrayList("###", "###"), Lists.newArrayList(newKey('#', "item")), 6),
-    STICK_1(Lists.newArrayList("#", "#"), Lists.newArrayList(newKey('#', "item")), 2),
-    COLUMN_1(Lists.newArrayList("#", "#", "#"), Lists.newArrayList(newKey('#', "item")), 3),
+    BRICKS_1(Lists.newArrayList("##", "##"), Lists.newArrayList('#'), 4),
+    STAIRS_1(Lists.newArrayList("#  ", "## ", "###"), Lists.newArrayList('#'), 4),
+    SLAB_1(Lists.newArrayList("###"), Lists.newArrayList('#'), 6),
+    WALL_1(Lists.newArrayList("###", "###"), Lists.newArrayList('#'), 6),
+    STICK_1(Lists.newArrayList("#", "#"), Lists.newArrayList('#'), 2),
+    COLUMN_1(Lists.newArrayList("#", "#", "#"), Lists.newArrayList('#'), 3),
 
     // 2 Ingredients
-    DYING_2(Lists.newArrayList("BBB", "BDB", "BBB"), Lists.newArrayList(newKey('B', "item"), newKey('D', "item")), 8),
-    SWORD_2(Lists.newArrayList("#", "#", "S"), Lists.newArrayList(newKey('#', "item"), newKey('S', "tag")), 1),
-    AXE_2(Lists.newArrayList("##", "#S", " S"), Lists.newArrayList(newKey('#', "item"), newKey('S', "tag")), 1),
-    PICKAXE_2(Lists.newArrayList("###", " S ", " S "), Lists.newArrayList(newKey('#', "item"), newKey('S', "tag")), 1),
-    SHOVEL_2(Lists.newArrayList("#", "S", "S"), Lists.newArrayList(newKey('#', "item"), newKey('S', "tag")), 1),
-    HOE_2(Lists.newArrayList("##", " S", " S"), Lists.newArrayList(newKey('#', "item"), newKey('S', "tag")), 1);
+    DYING_2(Lists.newArrayList("BBB", "BDB", "BBB"), Lists.newArrayList('B', 'D'), 8),
+    SWORD_2(Lists.newArrayList("#", "#", "S"), Lists.newArrayList('#', 'S'), 1),
+    AXE_2(Lists.newArrayList("##", "#S", " S"), Lists.newArrayList('#', 'S'), 1),
+    PICKAXE_2(Lists.newArrayList("###", " S ", " S "), Lists.newArrayList('#', 'S'), 1),
+    SHOVEL_2(Lists.newArrayList("#", "S", "S"), Lists.newArrayList('#', 'S'), 1),
+    HOE_2(Lists.newArrayList("##", " S", " S"), Lists.newArrayList('#', 'S'), 1),
+
+    // 3 Ingredients
+    DYING_DASHED_3(Lists.newArrayList("X#X", "#O#", "X#X"), Lists.newArrayList('#', 'X', 'O'), 8);
 
     ArrayList<String> pattern;
-    ArrayList<Key<Character, String>> keys;
+    ArrayList<Character> keyChars;
     int count;
 
-    AtbywRecipeConfigs(ArrayList<String> pattern, ArrayList<Key<Character, String>> keys, int count) {
+    AtbywRecipeConfigs(ArrayList<String> pattern, ArrayList<Character> keyChars, int count) {
         this.pattern = pattern;
         this.count = count;
-        this.keys = keys;
-    }
-
-    private static Key<Character, String> newKey(Character c, String type) {
-        return new Key<>(c, type);
-    }
-
-    public AtbywRecipeConfigs overrideCount(int count) {
-        this.count = count;
-        return this;
+        this.keyChars = keyChars;
     }
 
     @Override
@@ -53,8 +46,8 @@ public enum AtbywRecipeConfigs implements AtbywRecipeConfig {
     }
 
     @Override
-    public ArrayList<Key<Character, String>> getKeys() {
-        return this.keys;
+    public ArrayList<Character> getKeyChars() {
+        return this.keyChars;
     }
 
     @Override

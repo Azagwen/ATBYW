@@ -7,28 +7,26 @@ import com.google.gson.JsonObject;
 import net.azagwen.atbyw.blocks.AtbywBlocks;
 import net.azagwen.atbyw.blocks.statues.StatueRegistry;
 import net.azagwen.atbyw.items.AtbywItems;
-import net.azagwen.atbyw.util.AtbywUtils;
+import net.azagwen.atbyw.util.Quadruplet;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+import static net.azagwen.atbyw.datagen.AtbywRecipeUtils.*;
+import static net.azagwen.atbyw.util.AtbywUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
-import static net.azagwen.atbyw.main.AtbywMain.newID;
+import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
 
 public class AtbywRecipes {
-    private static final Item[] DYES = AtbywUtils.DYES;
-    private static final String[] COLORS = AtbywUtils.COLOR_NAMES;
 
-    private static Key<Character, String> newKey(Character c, String type) {
-        return new Key<>(c, type);
-    }
+    //TODO: add stonecutting recipes for granite tiles, bricks, etc...
 
-    public static JsonObject createShapedRecipeJson(String group, ArrayList<String> pattern, ArrayList<Key<Character, String>> keys, ArrayList<Identifier> keyItems, Identifier output, int count) {
+    public static JsonObject createShapedRecipeJson(String group, ArrayList<String> pattern, ArrayList<Key> keys, Identifier output, int count) {
         JsonObject json = new JsonObject();
 
         json.addProperty("type", "minecraft:crafting_shaped");
@@ -38,27 +36,20 @@ public class AtbywRecipes {
 
         //Pattern
         JsonArray patternArray = new JsonArray();
-        if (pattern.size() == 3) {
-            patternArray.add(pattern.get(0));
-            patternArray.add(pattern.get(1));
-            patternArray.add(pattern.get(2));
-        } else if (pattern.size() == 2) {
-            patternArray.add(pattern.get(0));
-            patternArray.add(pattern.get(1));
-        } else {
-            patternArray.add(pattern.get(0));
+        for (String s : pattern) {
+            patternArray.add(s);
         }
         json.add("pattern", patternArray);
 
         //Keys
         JsonObject individualKey;
         JsonObject keyList = new JsonObject();
-        for (int i = 0; i < keys.size(); ++i) {
-            //Key type + key item/tag
+        for (Key key : keys) {
+            //Key type + ingredient
             individualKey = new JsonObject();
-            individualKey.addProperty(keys.get(i).getType(), keyItems.get(i).toString());
+            individualKey.addProperty(key.getType(), key.getIngredient().toString());
             //Key character
-            keyList.add(keys.get(i).getCharacter() + "", individualKey);
+            keyList.add(key.getChar() + "", individualKey);
         }
         json.add("key", keyList);
 
@@ -71,87 +62,91 @@ public class AtbywRecipes {
         return json;
     }
 
-    public static JsonObject createStonecutterRecipe(Item ingredient, Item output, int count) {
-        JsonObject json = new JsonObject();
+    //Config recipe methods
+    @SafeVarargs
+    private static JsonObject createRecipeFromConfig(String group, int count, AtbywRecipeConfig config, Identifier result, Pair<String, Identifier>... ingredient) {
+        Key[] keys = new Key[ingredient.length];
 
-        json.addProperty("type", "minecraft:stonecutting");
-
-        //Ingredient
-        JsonObject ingredientObj = new JsonObject();
-        ingredientObj.addProperty("item", getItemId(ingredient).toString());
-        json.add("ingredient", ingredientObj);
-
-        //Result
-        json.addProperty("result", getItemId(output).toString());
-        json.addProperty("count", count);
-
-        return json;
-    }
-
-    private static Identifier getItemId(Item item) {
-        return Registry.ITEM.getId(item);
-    }
-
-    private static Identifier[] getItemsId(Item... items) {
-        Identifier[] identifiers = new Identifier[items.length];
-        for (int i = 0; i < items.length; i++) {
-            identifiers[i] = getItemId(items[i]);
+        for (int i = 0; i < ingredient.length; i++) {
+            keys[i] = new Key(config.getKeyChars().get(i), ingredient[i].getLeft(), ingredient[i].getRight());
+            System.out.println(keys[i > 0 ? i - 1 : i].toString());
         }
 
-        return identifiers;
+        return createShapedRecipeJson(group, config.getPattern(), Lists.newArrayList(keys), result, count);
     }
 
-    private static JsonObject createRecipeFromConfig1(String group, AtbywRecipeConfig config, Item result, Item... ingredient) {
-        return createShapedRecipeJson(
-                group,
-                config.getPattern(),
-                config.getKeys(),
-                Lists.newArrayList(getItemsId(ingredient)),
-                getItemId(result),
-                config.getCount()
-        );
+    @SafeVarargs
+    private static JsonObject createRecipeFromConfig(String group, AtbywRecipeConfig config, Identifier result, Pair<String, Identifier>... ingredient) {
+        return createRecipeFromConfig(group, config.getCount(), config, result, ingredient);
     }
 
-    private static JsonObject createEssenceRecipe(String result, Item item1, Item item2) {
-        return createShapedRecipeJson(
-                "essences",
-                Lists.newArrayList("X#X", "#O#", "X#X"),
-                Lists.newArrayList(
-                        newKey('#', "item"),
-                        newKey('X', "item"),
-                        newKey('O', "item")
-                ),
-                Lists.newArrayList(getItemId(item1), getItemId(item2), getItemId(Items.GLASS_BOTTLE)),
-                newID(result),
-                1
-        );
-    }
+    @SafeVarargs
+    private static JsonObject[] createMultiRecipesFromConfig(String[] nameArray, String group, int count, AtbywRecipeConfig config, Pair<String, String> result, Quadruplet<String, String, String, Boolean>... ingredient) {
+        JsonObject[] objects = new JsonObject[nameArray.length];
+        Pair<String, Identifier>[] ingredients = new Pair[ingredient.length];
 
-    private static Item getColoredItemFromID(String namespace, String path, int colorIndex) {
-        return Registry.ITEM.get(new Identifier(namespace, COLORS[colorIndex] + "_" + path));
-    }
+        for (int i = 0; i < nameArray.length; i++) {
+            String namePrefix = nameArray[i] + "_";
 
-    private static JsonObject[] createColoredRecipesFromConfig(AtbywRecipeConfig config, String group, String[] result, String[]... ingredient) {
-        JsonObject[] obj = new JsonObject[COLORS.length];
+            for (int j = 0; j < ingredient.length; j++) {
+                boolean colorizeIngredient = ingredient[j].getFourth();
+                String ingredientPrefix;
 
-        for (int i = 0; i < COLORS.length; i++) {
-            obj[i] = createRecipeFromConfig1(group, config, getColoredItemFromID(result[0], result[1], i), getColoredItemFromID(ingredient[i][0], ingredient[i][1], i));
+                if (colorizeIngredient)
+                    ingredientPrefix = namePrefix;
+                else
+                    ingredientPrefix = "";
+
+                ingredients[j] = newKeyPair(ingredient[j].getFirst(), new Identifier(ingredient[j].getSecond(), ingredientPrefix + ingredient[j].getThird()));
+            }
+
+            objects[i] = createRecipeFromConfig(group, count, config, new Identifier(result.getLeft(), namePrefix + result.getRight()), ingredients);
         }
 
-        return obj;
+        return objects;
     }
 
-    private static JsonObject[] createStonecutterColoredRecipes(String[] ingredient, String[] result) {
-        JsonObject[] obj = new JsonObject[COLORS.length];
-
-        for (int i = 0; i < COLORS.length; i++) {
-            obj[i] = createStonecutterRecipe(getColoredItemFromID(ingredient[0], ingredient[1], i), getColoredItemFromID(result[0], result[1], i), 1);
-        }
-
-        return obj;
+    @SafeVarargs
+    private static JsonObject[] createMultiRecipesFromConfig(String[] nameArray, String group, AtbywRecipeConfig config, Pair<String, String> result, Quadruplet<String, String, String, Boolean>... ingredient) {
+        return createMultiRecipesFromConfig(nameArray, group, config.getCount(), config, result, ingredient);
     }
 
-    //TODO: add stonecutting recipes for Terracotta and Concrete.
+
+        public static JsonObject WOODEN_SWORD_FROM_STICK_VARIANTS;
+    public static JsonObject WOODEN_AXE_FROM_STICK_VARIANTS;
+    public static JsonObject WOODEN_PICKAXE_FROM_STICK_VARIANTS;
+    public static JsonObject WOODEN_SHOVEL_FROM_STICK_VARIANTS;
+    public static JsonObject WOODEN_HOE_FROM_STICK_VARIANTS;
+
+    public static JsonObject STONE_SWORD_FROM_STICK_VARIANTS;
+    public static JsonObject STONE_AXE_FROM_STICK_VARIANTS;
+    public static JsonObject STONE_PICKAXE_FROM_STICK_VARIANTS;
+    public static JsonObject STONE_SHOVEL_FROM_STICK_VARIANTS;
+    public static JsonObject STONE_HOE_FROM_STICK_VARIANTS;
+
+    public static JsonObject IRON_SWORD_FROM_STICK_VARIANTS;
+    public static JsonObject IRON_AXE_FROM_STICK_VARIANTS;
+    public static JsonObject IRON_PICKAXE_FROM_STICK_VARIANTS;
+    public static JsonObject IRON_SHOVEL_FROM_STICK_VARIANTS;
+    public static JsonObject IRON_HOE_FROM_STICK_VARIANTS;
+
+    public static JsonObject GOLDEN_SWORD_FROM_STICK_VARIANTS;
+    public static JsonObject GOLDEN_AXE_FROM_STICK_VARIANTS;
+    public static JsonObject GOLDEN_PICKAXE_FROM_STICK_VARIANTS;
+    public static JsonObject GOLDEN_SHOVEL_FROM_STICK_VARIANTS;
+    public static JsonObject GOLDEN_HOE_FROM_STICK_VARIANTS;
+
+    public static JsonObject DIAMOND_SWORD_FROM_STICK_VARIANTS;
+    public static JsonObject DIAMOND_AXE_FROM_STICK_VARIANTS;
+    public static JsonObject DIAMOND_PICKAXE_FROM_STICK_VARIANTS;
+    public static JsonObject DIAMOND_SHOVEL_FROM_STICK_VARIANTS;
+    public static JsonObject DIAMOND_HOE_FROM_STICK_VARIANTS;
+
+    public static JsonObject NETHERITE_SWORD_FROM_STICK_VARIANTS;
+    public static JsonObject NETHERITE_AXE_FROM_STICK_VARIANTS;
+    public static JsonObject NETHERITE_PICKAXE_FROM_STICK_VARIANTS;
+    public static JsonObject NETHERITE_SHOVEL_FROM_STICK_VARIANTS;
+    public static JsonObject NETHERITE_HOE_FROM_STICK_VARIANTS;
 
     public static JsonObject TERRACOTTA_STAIRS_SHAPED;
     public static JsonObject TERRACOTTA_SLAB_SHAPED;
@@ -178,12 +173,6 @@ public class AtbywRecipes {
     public static JsonObject[] CONCRETE_SLAB_COLORS_SHAPED;
     public static JsonObject[] CINDER_BLOCKS_COLORS_SHAPED;
     public static JsonObject[] CINDER_BLOCKS_WALL_COLORS_SHAPED;
-
-    public static JsonObject[] CONCRETE_STAIRS_COLORS_STONECUTTING;
-    public static JsonObject[] CONCRETE_SLAB_COLORS_STONECUTTING;
-    public static JsonObject[] CINDER_BLOCKS_COLORS_STONECUTTING;
-    public static JsonObject[] CINDER_BLOCKS_WALL_COLORS_STONECUTTING_CONCRETE;
-    public static JsonObject[] CINDER_BLOCKS_WALL_COLORS_STONECUTTING_CINDER_BLOCKS;
 
     public static JsonObject BEE_ESSENCE;
     public static JsonObject SHULKER_ESSENCE;
@@ -233,27 +222,6 @@ public class AtbywRecipes {
     public static JsonObject PRISMARINE_COLUMN;
     public static JsonObject BLACKSTONE_COLUMN;
 
-    public static JsonObject GRANITE_COLUMN_STONECUTTING;
-    public static JsonObject DIORITE_COLUMN_STONECUTTING;
-    public static JsonObject ANDESITE_COLUMN_STONECUTTING;
-    public static JsonObject GRANITE_COLUMN_FROM_POLISHED_STONECUTTING;
-    public static JsonObject DIORITE_COLUMN_FROM_POLISHED_STONECUTTING;
-    public static JsonObject ANDESITE_COLUMN_FROM_POLISHED_STONECUTTING;
-    public static JsonObject SANDSTONE_COLUMN_STONECUTTING;
-    public static JsonObject SANDSTONE_COLUMN_FROM_CUT_STONECUTTING;
-    public static JsonObject CHISELED_SANDSTONE_COLUMN_STONECUTTING;
-    public static JsonObject RED_SANDSTONE_COLUMN_STONECUTTING;
-    public static JsonObject RED_SANDSTONE_COLUMN_FROM_CUT_STONECUTTING;
-    public static JsonObject CHISELED_RED_SANDSTONE_COLUMN_STONECUTTING;
-    public static JsonObject PURPUR_COLUMN_STONECUTTING;
-    public static JsonObject STONE_BRICKS_COLUMN_STONECUTTING;
-    public static JsonObject MOSSY_STONE_BRICKS_COLUMN_STONECUTTING;
-    public static JsonObject CRACKED_STONE_BRICKS_COLUMN_STONECUTTING;
-    public static JsonObject NETHER_BRICKS_COLUMN_STONECUTTING;
-    public static JsonObject QUARTZ_COLUMN_STONECUTTING;
-    public static JsonObject PRISMARINE_COLUMN_STONECUTTING;
-    public static JsonObject BLACKSTONE_COLUMN_STONECUTTING;
-
     public static JsonObject PURPUR_TILES;
     public static JsonObject SMOOTH_PURPUR_BLOCK;
     public static JsonObject CHISELED_PURPUR_BLOCK;
@@ -262,268 +230,246 @@ public class AtbywRecipes {
     public static JsonObject PURPUR_TILES_SLAB;
     public static JsonObject SMOOTH_PURPUR_SLAB;
 
-    public static JsonObject PURPUR_TILES_STONECUTTING;
-    public static JsonObject SMOOTH_PURPUR_BLOCK_STONECUTTING;
-    public static JsonObject CHISELED_PURPUR_BLOCK_STONECUTTING;
-    public static JsonObject PURPUR_TILES_STAIRS_STONECUTTING;
-    public static JsonObject SMOOTH_PURPUR_STAIRS_STONECUTTING;
-    public static JsonObject PURPUR_TILES_SLAB_STONECUTTING;
-    public static JsonObject SMOOTH_PURPUR_SLAB_STONECUTTING;
-    public static JsonObject PURPUR_TILES_STAIRS_FROM_PURPUR_TILES_STONECUTTING;
-    public static JsonObject SMOOTH_PURPUR_STAIRS_FROM_SMOOTH_PURPUR_STONECUTTING;
-    public static JsonObject PURPUR_TILES_SLAB_FROM_PURPUR_TILES_STONECUTTING;
-    public static JsonObject SMOOTH_PURPUR_SLAB_FROM_SMOOTH_PURPUR_STONECUTTING;
-
     public static void init() {
-        TERRACOTTA_STAIRS_SHAPED = createRecipeFromConfig1("terracotta_stairs", AtbywRecipeConfigs.STAIRS_1, AtbywBlocks.TERRACOTTA_STAIRS.asItem(), Blocks.TERRACOTTA.asItem());
-        TERRACOTTA_SLAB_SHAPED = createRecipeFromConfig1("terracotta_slab", AtbywRecipeConfigs.SLAB_1, AtbywBlocks.TERRACOTTA_STAIRS.asItem(), Blocks.TERRACOTTA.asItem());
-        TERRACOTTA_BRICKS_SHAPED = createRecipeFromConfig1("terracotta_bricks", AtbywRecipeConfigs.BRICKS_1, AtbywBlocks.TERRACOTTA_BRICKS.asItem(), Blocks.TERRACOTTA.asItem());
-        TERRACOTTA_BRICKS_STAIRS_SHAPED = createRecipeFromConfig1("terracotta_bricks_stairs", AtbywRecipeConfigs.STAIRS_1, AtbywBlocks.TERRACOTTA_BRICKS_STAIRS.asItem(), AtbywBlocks.TERRACOTTA_BRICKS.asItem());
-        TERRACOTTA_BRICKS_SLAB_SHAPED = createRecipeFromConfig1("terracotta_bricks_slab", AtbywRecipeConfigs.SLAB_1, AtbywBlocks.TERRACOTTA_BRICKS_SLAB.asItem(), AtbywBlocks.TERRACOTTA_BRICKS.asItem());
-        TERRACOTTA_BRICKS_WALL_SHAPED = createRecipeFromConfig1("terracotta_bricks_wall", AtbywRecipeConfigs.WALL_1, AtbywBlocks.TERRACOTTA_BRICKS_WALL.asItem(), AtbywBlocks.TERRACOTTA_BRICKS.asItem());
+        AtbywRecipesStonecutting.init();
 
-        TERRACOTTA_STAIRS_COLORS_SHAPED = createColoredRecipesFromConfig(AtbywRecipeConfigs.STAIRS_1, "terracotta_stairs", new String[] {"minecraft", "terracotta"}, new String[] {nameSpace, "terracotta_stairs"});
-        TERRACOTTA_SLAB_COLORS_SHAPED = createColoredRecipesFromConfig(AtbywRecipeConfigs.SLAB_1, "terracotta_slab", new String[] {"minecraft", "terracotta"}, new String[] {nameSpace, "terracotta_slab"});
-        TERRACOTTA_BRICKS_COLORS_SHAPED = createColoredRecipesFromConfig(AtbywRecipeConfigs.BRICKS_1, "terracotta_bricks", new String[] {"minecraft", "terracotta"}, new String[] {nameSpace, "terracotta_bricks"});
-        TERRACOTTA_BRICKS_STAIRS_COLORS_SHAPED = createColoredRecipesFromConfig(AtbywRecipeConfigs.STAIRS_1, "terracotta_bricks_stairs", new String[] {nameSpace, "terracotta_bricks"}, new String[] {nameSpace, "terracotta_bricks_stairs"});
-        TERRACOTTA_BRICKS_SLAB_COLORS_SHAPED = createColoredRecipesFromConfig(AtbywRecipeConfigs.SLAB_1, "terracotta_bricks_slab", new String[] {nameSpace, "terracotta_bricks"}, new String[] {nameSpace, "terracotta_bricks_slab"});
-        TERRACOTTA_BRICKS_WALL_COLORS_SHAPED = createColoredRecipesFromConfig(AtbywRecipeConfigs.WALL_1, "terracotta_bricks_wall", new String[] {nameSpace, "terracotta_bricks"}, new String[] {nameSpace, "terracotta_bricks_wall"});
+        WOODEN_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("swords_stick_tags", AtbywRecipeConfigs.SWORD_2, getItemID(Items.WOODEN_SWORD), newKeyPair("tag", BlockTags.PLANKS.getId()), newKeyPair("tag", AtbywID("sticks")));
+        STONE_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("swords_stick_tags", AtbywRecipeConfigs.SWORD_2, getItemID(Items.STONE_SWORD), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("tag", AtbywID("sticks")));
+        IRON_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("swords_stick_tags", AtbywRecipeConfigs.SWORD_2, getItemID(Items.IRON_SWORD), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", AtbywID("sticks")));
+        GOLDEN_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("swords_stick_tags", AtbywRecipeConfigs.SWORD_2, getItemID(Items.GOLDEN_SWORD), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", AtbywID("sticks")));
+        DIAMOND_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("swords_stick_tags", AtbywRecipeConfigs.SWORD_2, getItemID(Items.DIAMOND_SWORD), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", AtbywID("sticks")));
+        NETHERITE_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("swords_stick_tags", AtbywRecipeConfigs.SWORD_2, getItemID(Items.NETHERITE_SWORD), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", AtbywID("sticks")));
 
-        TERRACOTTA_STAIRS_COLORS_DYING = createColoredRecipesFromConfig(AtbywRecipeConfigs.DYING_2, "terracotta_stairs_dying", new String[] {nameSpace, "terracotta_stairs"}, new String[] {"minecraft", "dye"}, new String[] {"minecraft", "dye"});
-        TERRACOTTA_SLAB_COLORS_DYING = createColoredRecipesFromConfig(AtbywRecipeConfigs.DYING_2, "terracotta_slabs_dying", new String[] {nameSpace, "terracotta_slab"}, new String[] {"minecraft", "dye"}, new String[] {"minecraft", "dye"});
-        TERRACOTTA_BRICKS_COLORS_DYING = createColoredRecipesFromConfig(AtbywRecipeConfigs.DYING_2, "terracotta_bricks_dying", new String[] {nameSpace, "terracotta_bricks"}, new String[] {nameSpace, "terracotta_bricks"}, new String[] {"minecraft", "dye"});
-        TERRACOTTA_BRICKS_STAIRS_COLORS_DYING = createColoredRecipesFromConfig(AtbywRecipeConfigs.DYING_2, "terracotta_bricks_stairs_dying", new String[] {nameSpace, "terracotta_bricks_stairs"}, new String[] {nameSpace, "terracotta_bricks_stairs"}, new String[] {"minecraft", "dye"});
-        TERRACOTTA_BRICKS_SLAB_COLORS_DYING = createColoredRecipesFromConfig(AtbywRecipeConfigs.DYING_2, "terracotta_bricks_slabs_dying", new String[] {nameSpace, "terracotta_bricks_slab"}, new String[] {nameSpace, "terracotta_bricks_slab"}, new String[] {"minecraft", "dye"});
-        TERRACOTTA_BRICKS_WALL_COLORS_DYING = createColoredRecipesFromConfig(AtbywRecipeConfigs.DYING_2, "terracotta_bricks_walls_dying", new String[] {nameSpace, "terracotta_bricks_wall"}, new String[] {nameSpace, "terracotta_bricks_wall"}, new String[] {"minecraft", "dye"});
+        WOODEN_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("axe_stick_tags", AtbywRecipeConfigs.AXE_2, getItemID(Items.WOODEN_AXE), newKeyPair("tag", BlockTags.PLANKS.getId()), newKeyPair("tag", AtbywID("sticks")));
+        STONE_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("axe_stick_tags", AtbywRecipeConfigs.AXE_2, getItemID(Items.STONE_AXE), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("tag", AtbywID("sticks")));
+        IRON_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("axe_stick_tags", AtbywRecipeConfigs.AXE_2, getItemID(Items.IRON_AXE), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", AtbywID("sticks")));
+        GOLDEN_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("axe_stick_tags", AtbywRecipeConfigs.AXE_2, getItemID(Items.GOLDEN_AXE), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", AtbywID("sticks")));
+        DIAMOND_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("axe_stick_tags", AtbywRecipeConfigs.AXE_2, getItemID(Items.DIAMOND_AXE), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", AtbywID("sticks")));
+        NETHERITE_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("axe_stick_tags", AtbywRecipeConfigs.AXE_2, getItemID(Items.NETHERITE_AXE), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", AtbywID("sticks")));
 
-        CONCRETE_STAIRS_COLORS_SHAPED = createColoredRecipesFromConfig(AtbywRecipeConfigs.STAIRS_1, "concrete_stairs", new String[] {"minecraft", "concrete"}, new String[] {nameSpace, "concrete_stairs"});
-        CONCRETE_SLAB_COLORS_SHAPED = createColoredRecipesFromConfig(AtbywRecipeConfigs.SLAB_1, "concrete_slab", new String[] {"minecraft", "concrete"}, new String[] {nameSpace, "concrete_slab"});
-        CINDER_BLOCKS_COLORS_SHAPED = createColoredRecipesFromConfig(AtbywRecipeConfigs.BRICKS_1, "cinder_blocks", new String[] {"minecraft", "concrete"}, new String[] {nameSpace, "cinder_blocks"});
-        CINDER_BLOCKS_WALL_COLORS_SHAPED = createColoredRecipesFromConfig(AtbywRecipeConfigs.WALL_1, "cinder_blocks_wall", new String[] {nameSpace, "cinder_blocks"}, new String[] {nameSpace, "cinder_blocks_wall"});
+        WOODEN_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("pickaxe_stick_tags", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.WOODEN_PICKAXE), newKeyPair("tag", BlockTags.PLANKS.getId()), newKeyPair("tag", AtbywID("sticks")));
+        STONE_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("pickaxe_stick_tags", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.STONE_PICKAXE), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("tag", AtbywID("sticks")));
+        IRON_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("pickaxe_stick_tags", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.IRON_PICKAXE), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", AtbywID("sticks")));
+        GOLDEN_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("pickaxe_stick_tags", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.GOLDEN_PICKAXE), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", AtbywID("sticks")));
+        DIAMOND_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("pickaxe_stick_tags", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.DIAMOND_PICKAXE), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", AtbywID("sticks")));
+        NETHERITE_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("pickaxe_stick_tags", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.NETHERITE_PICKAXE), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", AtbywID("sticks")));
 
-        CONCRETE_STAIRS_COLORS_STONECUTTING = createStonecutterColoredRecipes(new String[] {"minecraft", "concrete"}, new String[] {nameSpace, "concrete_stairs"});
-        CONCRETE_SLAB_COLORS_STONECUTTING = createStonecutterColoredRecipes(new String[] {"minecraft", "concrete"}, new String[] {nameSpace, "concrete_slab"});
-        CINDER_BLOCKS_COLORS_STONECUTTING = createStonecutterColoredRecipes(new String[] {"minecraft", "concrete"}, new String[] {nameSpace, "cinder_blocks"});
-        CINDER_BLOCKS_WALL_COLORS_STONECUTTING_CONCRETE = createStonecutterColoredRecipes(new String[] {"minecraft", "concrete"}, new String[] {nameSpace, "cinder_blocks_wall"});
-        CINDER_BLOCKS_WALL_COLORS_STONECUTTING_CINDER_BLOCKS = createStonecutterColoredRecipes(new String[] {nameSpace, "cinder_blocks"}, new String[] {nameSpace, "cinder_blocks_wall"});
+        WOODEN_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("shovel_stick_tags", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.WOODEN_SHOVEL), newKeyPair("tag", BlockTags.PLANKS.getId()), newKeyPair("tag", AtbywID("sticks")));
+        STONE_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("shovel_stick_tags", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.STONE_SHOVEL), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("tag", AtbywID("sticks")));
+        IRON_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("shovel_stick_tags", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.IRON_SHOVEL), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", AtbywID("sticks")));
+        GOLDEN_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("shovel_stick_tags", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.GOLDEN_SHOVEL), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", AtbywID("sticks")));
+        DIAMOND_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("shovel_stick_tags", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.DIAMOND_SHOVEL), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", AtbywID("sticks")));
+        NETHERITE_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("shovel_stick_tags", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.NETHERITE_SHOVEL), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", AtbywID("sticks")));
 
-        BEE_ESSENCE = createEssenceRecipe("bee_essence", Items.HONEYCOMB, Items.HONEY_BOTTLE);
-        SHULKER_ESSENCE = createEssenceRecipe("shulker_essence", Items.SHULKER_SHELL, Items.SHULKER_SHELL);
-        CAT_ESSENCE = createEssenceRecipe("wolf_essence", Items.STRING, Items.STRING);
-        CHICKEN_ESSENCE = createEssenceRecipe("chicken_essence", Items.CHICKEN, Items.FEATHER);
-        RABBIT_ESSENCE = createEssenceRecipe("rabbit_essence", Items.RABBIT, Items.RABBIT_HIDE);
-        FOX_ESSENCE = createEssenceRecipe("fox_essence", Items.SWEET_BERRIES, Items.SWEET_BERRIES);
-        COD_ESSENCE = createEssenceRecipe("cod_essence", Items.COD, Items.BONE_MEAL);
-        SALMON_ESSENCE = createEssenceRecipe("salmon_essence", Items.SALMON, Items.BONE_MEAL);
-        PUFFER_FISH_ESSENCE = createEssenceRecipe("puffer_fish_essence", Items.PUFFERFISH, Items.BONE_MEAL);
-        SLIME_ESSENCE = createEssenceRecipe("slime_essence", Items.SLIME_BALL, Items.SLIME_BALL);
-        MAGMA_CUBE_ESSENCE = createEssenceRecipe("magma_cube_essence", Items.MAGMA_CREAM, Items.MAGMA_CREAM);
+        WOODEN_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("hoe_stick_tags", AtbywRecipeConfigs.HOE_2, getItemID(Items.WOODEN_HOE), newKeyPair("tag", BlockTags.PLANKS.getId()), newKeyPair("tag", AtbywID("sticks")));
+        STONE_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("hoe_stick_tags", AtbywRecipeConfigs.HOE_2, getItemID(Items.STONE_HOE), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("tag", AtbywID("sticks")));
+        IRON_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("hoe_stick_tags", AtbywRecipeConfigs.HOE_2, getItemID(Items.IRON_HOE), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", AtbywID("sticks")));
+        GOLDEN_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("hoe_stick_tags", AtbywRecipeConfigs.HOE_2, getItemID(Items.GOLDEN_HOE), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", AtbywID("sticks")));
+        DIAMOND_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("hoe_stick_tags", AtbywRecipeConfigs.HOE_2, getItemID(Items.DIAMOND_HOE), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", AtbywID("sticks")));
+        NETHERITE_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("hoe_stick_tags", AtbywRecipeConfigs.HOE_2, getItemID(Items.NETHERITE_HOE), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", AtbywID("sticks")));
 
-        BEE_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.BEE_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.BEE_ESSENCE);
-        SILVERFISH_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.SILVERFISH_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.SILVERFISH_ESSENCE);
-        ENDERMITE_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.ENDERMITE_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.ENDERMITE_ESSENCE);
-        SHULKER_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.SHULKER_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.SHULKER_ESSENCE);
-        CAT_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.CAT_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.CAT_ESSENCE);
-        WOLF_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.WOLF_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.WOLF_ESSENCE);
-        CHICKEN_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.CHICKEN_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.CHICKEN_ESSENCE);
-        RABBIT_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.RABBIT_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.RABBIT_ESSENCE);
-        FOX_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.FOX_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.FOX_ESSENCE);
-        COD_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.COD_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.COD_ESSENCE);
-        SALMON_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.SALMON_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.SALMON_ESSENCE);
-        PUFFER_FISH_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.PUFFER_FISH_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.PUFFER_FISH_ESSENCE);
-        SLIME_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.SLIME_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.SLIME_ESSENCE);
-        MAGMA_CUBE_STATUE = createRecipeFromConfig1("statues", AtbywRecipeConfigs.DYING_2.overrideCount(1), StatueRegistry.MAGMA_CUBE_STATUE.asItem(), Blocks.STONE.asItem(), AtbywItems.MAGMA_CUBE_ESSENCE);
+        TERRACOTTA_STAIRS_SHAPED = createRecipeFromConfig("terracotta_stairs", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.TERRACOTTA_STAIRS), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
+        TERRACOTTA_SLAB_SHAPED = createRecipeFromConfig("terracotta_slab", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.TERRACOTTA_STAIRS), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
+        TERRACOTTA_BRICKS_SHAPED = createRecipeFromConfig("terracotta_bricks", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.TERRACOTTA_BRICKS), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
+        TERRACOTTA_BRICKS_STAIRS_SHAPED = createRecipeFromConfig("terracotta_bricks_stairs", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.TERRACOTTA_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.TERRACOTTA_BRICKS)));
+        TERRACOTTA_BRICKS_SLAB_SHAPED = createRecipeFromConfig("terracotta_bricks_slab", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.TERRACOTTA_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.TERRACOTTA_BRICKS)));
+        TERRACOTTA_BRICKS_WALL_SHAPED = createRecipeFromConfig("terracotta_bricks_wall", AtbywRecipeConfigs.WALL_1, getBlockID(AtbywBlocks.TERRACOTTA_BRICKS_WALL), newKeyPair("item", getBlockID(AtbywBlocks.TERRACOTTA_BRICKS)));
 
-        GRANITE_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.GRANITE_COLUMN.asItem(), Blocks.GRANITE.asItem());
-        DIORITE_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.DIORITE_COLUMN.asItem(), Blocks.DIORITE.asItem());
-        ANDESITE_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.ANDESITE_COLUMN.asItem(), Blocks.ANDESITE.asItem());
-        GRANITE_COLUMN_FROM_POLISHED = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.GRANITE_COLUMN.asItem(), Blocks.POLISHED_GRANITE.asItem());
-        DIORITE_COLUMN_FROM_POLISHED = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.DIORITE_COLUMN.asItem(), Blocks.POLISHED_DIORITE.asItem());
-        ANDESITE_COLUMN_FROM_POLISHED = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.ANDESITE_COLUMN.asItem(), Blocks.POLISHED_ANDESITE.asItem());
-        SANDSTONE_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.SANDSTONE_COLUMN.asItem(), Blocks.SANDSTONE.asItem());
-        SANDSTONE_COLUMN_FROM_CUT = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.SANDSTONE_COLUMN.asItem(), Blocks.SMOOTH_SANDSTONE.asItem());
-        CHISELED_SANDSTONE_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.CHISELED_SANDSTONE_COLUMN.asItem(), Blocks.CHISELED_SANDSTONE.asItem());
-        RED_SANDSTONE_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.RED_SANDSTONE_COLUMN.asItem(), Blocks.RED_SANDSTONE.asItem());
-        RED_SANDSTONE_COLUMN_FROM_CUT = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.RED_SANDSTONE_COLUMN.asItem(), Blocks.SMOOTH_RED_SANDSTONE.asItem());
-        CHISELED_RED_SANDSTONE_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.CHISELED_RED_SANDSTONE_COLUMN.asItem(), Blocks.CHISELED_RED_SANDSTONE.asItem());
-        PURPUR_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.PURPUR_COLUMN.asItem(), Blocks.PURPUR_BLOCK.asItem());
-        STONE_BRICKS_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.STONE_BRICKS_COLUMN.asItem(), Blocks.STONE_BRICKS.asItem());
-        MOSSY_STONE_BRICKS_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.MOSSY_STONE_BRICKS_COLUMN.asItem(), Blocks.MOSSY_STONE_BRICKS.asItem());
-        CRACKED_STONE_BRICKS_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.CRACKED_STONE_BRICKS_COLUMN.asItem(), Blocks.CRACKED_STONE_BRICKS.asItem());
-        NETHER_BRICKS_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.NETHER_BRICKS_COLUMN.asItem(), Blocks.NETHER_BRICKS.asItem());
-        QUARTZ_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.QUARTZ_COLUMN.asItem(), Blocks.QUARTZ_BLOCK.asItem());
-        PRISMARINE_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.PRISMARINE_COLUMN.asItem(), Blocks.PRISMARINE_BRICKS.asItem());
-        BLACKSTONE_COLUMN = createRecipeFromConfig1("columns", AtbywRecipeConfigs.COLUMN_1, AtbywBlocks.BLACKSTONE_COLUMN.asItem(), Blocks.BLACKSTONE.asItem());
+        TERRACOTTA_STAIRS_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_stairs", AtbywRecipeConfigs.STAIRS_1, new Pair<>(nameSpace, "terracotta_stairs"), newKeyQuadruplet("item", mcNameSpace, "terracotta", true));
+        TERRACOTTA_SLAB_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_slab", AtbywRecipeConfigs.SLAB_1, new Pair<>(nameSpace, "terracotta_slab"), newKeyQuadruplet("item", mcNameSpace, "terracotta", true));
+        TERRACOTTA_BRICKS_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_bricks", AtbywRecipeConfigs.BRICKS_1, new Pair<>(nameSpace, "terracotta_bricks"), newKeyQuadruplet("item", mcNameSpace, "terracotta", true));
+        TERRACOTTA_BRICKS_STAIRS_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_bricks_stairs", AtbywRecipeConfigs.STAIRS_1, new Pair<>(nameSpace, "terracotta_bricks_stairs"), newKeyQuadruplet("item", nameSpace, "terracotta_bricks", true));
+        TERRACOTTA_BRICKS_SLAB_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_bricks_slab", AtbywRecipeConfigs.SLAB_1, new Pair<>(nameSpace, "terracotta_bricks_slab"), newKeyQuadruplet("item", nameSpace, "terracotta_bricks", true));
+        TERRACOTTA_BRICKS_WALL_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_bricks_wall", AtbywRecipeConfigs.WALL_1, new Pair<>(nameSpace, "terracotta_bricks_wall"), newKeyQuadruplet("item", nameSpace, "terracotta_bricks", true));
 
-        GRANITE_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.GRANITE.asItem(), AtbywBlocks.GRANITE_COLUMN.asItem(), 1);
-        DIORITE_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.DIORITE.asItem(), AtbywBlocks.DIORITE_COLUMN.asItem(), 1);
-        ANDESITE_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.ANDESITE.asItem(), AtbywBlocks.ANDESITE_COLUMN.asItem(), 1);
-        GRANITE_COLUMN_FROM_POLISHED_STONECUTTING = createStonecutterRecipe(Blocks.POLISHED_GRANITE.asItem(), AtbywBlocks.GRANITE_COLUMN.asItem(), 1);
-        DIORITE_COLUMN_FROM_POLISHED_STONECUTTING = createStonecutterRecipe(Blocks.POLISHED_DIORITE.asItem(), AtbywBlocks.DIORITE_COLUMN.asItem(), 1);
-        ANDESITE_COLUMN_FROM_POLISHED_STONECUTTING = createStonecutterRecipe(Blocks.POLISHED_ANDESITE.asItem(), AtbywBlocks.ANDESITE_COLUMN.asItem(), 1);
-        SANDSTONE_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.SANDSTONE.asItem(), AtbywBlocks.SANDSTONE_COLUMN.asItem(), 1);
-        SANDSTONE_COLUMN_FROM_CUT_STONECUTTING = createStonecutterRecipe(Blocks.CUT_SANDSTONE.asItem(), AtbywBlocks.SANDSTONE_COLUMN.asItem(), 1);
-        CHISELED_SANDSTONE_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.CHISELED_SANDSTONE.asItem(), AtbywBlocks.CHISELED_SANDSTONE_COLUMN.asItem(), 1);
-        RED_SANDSTONE_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.RED_SANDSTONE.asItem(), AtbywBlocks.RED_SANDSTONE_COLUMN.asItem(), 1);
-        RED_SANDSTONE_COLUMN_FROM_CUT_STONECUTTING = createStonecutterRecipe(Blocks.CUT_RED_SANDSTONE.asItem(), AtbywBlocks.RED_SANDSTONE_COLUMN.asItem(), 1);
-        CHISELED_RED_SANDSTONE_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.CHISELED_RED_SANDSTONE.asItem(), AtbywBlocks.CHISELED_RED_SANDSTONE_COLUMN.asItem(), 1);
-        PURPUR_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.PURPUR_BLOCK.asItem(), AtbywBlocks.PURPUR_COLUMN.asItem(), 1);
-        STONE_BRICKS_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.STONE_BRICKS.asItem(), AtbywBlocks.STONE_BRICKS_COLUMN.asItem(), 1);
-        MOSSY_STONE_BRICKS_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.MOSSY_STONE_BRICKS.asItem(), AtbywBlocks.MOSSY_STONE_BRICKS_COLUMN.asItem(), 1);
-        CRACKED_STONE_BRICKS_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.CRACKED_STONE_BRICKS.asItem(), AtbywBlocks.CRACKED_STONE_BRICKS_COLUMN.asItem(), 1);
-        NETHER_BRICKS_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.NETHER_BRICKS.asItem(), AtbywBlocks.NETHER_BRICKS_COLUMN.asItem(), 1);
-        QUARTZ_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.QUARTZ_BLOCK.asItem(), AtbywBlocks.QUARTZ_COLUMN.asItem(), 1);
-        PRISMARINE_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.PRISMARINE_BRICKS.asItem(), AtbywBlocks.PRISMARINE_COLUMN.asItem(), 1);
-        BLACKSTONE_COLUMN_STONECUTTING = createStonecutterRecipe(Blocks.BLACKSTONE.asItem(), AtbywBlocks.BLACKSTONE_COLUMN.asItem(), 1);
+        TERRACOTTA_STAIRS_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_stairs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(nameSpace, "terracotta_stairs"), newKeyQuadruplet("item", nameSpace, "terracotta_stairs", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+        TERRACOTTA_SLAB_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_slabs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(nameSpace, "terracotta_slab"), newKeyQuadruplet("item", nameSpace, "terracotta_slab", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+        TERRACOTTA_BRICKS_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_bricks_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(nameSpace, "terracotta_bricks"), newKeyQuadruplet("item", nameSpace, "terracotta_bricks", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+        TERRACOTTA_BRICKS_STAIRS_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_bricks_stairs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(nameSpace, "terracotta_bricks_stairs"), newKeyQuadruplet("item", nameSpace, "terracotta_bricks_stairs", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+        TERRACOTTA_BRICKS_SLAB_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_bricks_slabs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(nameSpace, "terracotta_bricks_slab"), newKeyQuadruplet("item", nameSpace, "terracotta_bricks_slab", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+        TERRACOTTA_BRICKS_WALL_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, "terracotta_bricks_walls_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(nameSpace, "terracotta_bricks_wall"), newKeyQuadruplet("item", nameSpace, "terracotta_bricks_wall", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
 
-        PURPUR_TILES = createRecipeFromConfig1("", AtbywRecipeConfigs.BRICKS_1, AtbywBlocks.SMOOTH_PURPUR_BLOCK.asItem(), Blocks.PURPUR_BLOCK.asItem());
-        SMOOTH_PURPUR_BLOCK = createRecipeFromConfig1("", AtbywRecipeConfigs.BRICKS_1, AtbywBlocks.PURPUR_TILES.asItem(), Blocks.PURPUR_PILLAR.asItem());
-        CHISELED_PURPUR_BLOCK = createRecipeFromConfig1("", AtbywRecipeConfigs.BRICKS_1, AtbywBlocks.CHISELED_PURPUR_BLOCK.asItem(), Blocks.PURPUR_SLAB.asItem());
-        PURPUR_TILES_STAIRS = createRecipeFromConfig1("", AtbywRecipeConfigs.STAIRS_1, AtbywBlocks.PURPUR_TILES_STAIRS.asItem(), AtbywBlocks.PURPUR_TILES.asItem());
-        SMOOTH_PURPUR_STAIRS = createRecipeFromConfig1("", AtbywRecipeConfigs.STAIRS_1, AtbywBlocks.SMOOTH_PURPUR_STAIRS.asItem(), AtbywBlocks.SMOOTH_PURPUR_BLOCK.asItem());
-        PURPUR_TILES_SLAB = createRecipeFromConfig1("", AtbywRecipeConfigs.SLAB_1, AtbywBlocks.PURPUR_TILES_SLAB.asItem(), AtbywBlocks.PURPUR_TILES.asItem());
-        SMOOTH_PURPUR_SLAB = createRecipeFromConfig1("", AtbywRecipeConfigs.SLAB_1, AtbywBlocks.SMOOTH_PURPUR_SLAB.asItem(), AtbywBlocks.SMOOTH_PURPUR_BLOCK.asItem());
+        CONCRETE_STAIRS_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, "concrete_stairs", AtbywRecipeConfigs.STAIRS_1, new Pair<>(nameSpace, "concrete_stairs"), newKeyQuadruplet("item", mcNameSpace, "concrete", true));
+        CONCRETE_SLAB_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, "concrete_slab", AtbywRecipeConfigs.SLAB_1, new Pair<>(nameSpace, "concrete_slab"), newKeyQuadruplet("item", mcNameSpace, "concrete", true));
+        CINDER_BLOCKS_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, "cinder_blocks", AtbywRecipeConfigs.BRICKS_1, new Pair<>(nameSpace, "cinder_blocks"), newKeyQuadruplet("item", mcNameSpace, "concrete", true));
+        CINDER_BLOCKS_WALL_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, "cinder_blocks_wall", AtbywRecipeConfigs.WALL_1, new Pair<>(nameSpace, "cinder_blocks_wall"), newKeyQuadruplet("item", nameSpace, "cinder_blocks", true));
 
-        PURPUR_TILES_STONECUTTING = createStonecutterRecipe(Blocks.PURPUR_BLOCK.asItem(), AtbywBlocks.SMOOTH_PURPUR_BLOCK.asItem(), 1);
-        SMOOTH_PURPUR_BLOCK_STONECUTTING = createStonecutterRecipe(Blocks.PURPUR_BLOCK.asItem(), AtbywBlocks.PURPUR_TILES.asItem(), 1);
-        CHISELED_PURPUR_BLOCK_STONECUTTING = createStonecutterRecipe(Blocks.PURPUR_BLOCK.asItem(), AtbywBlocks.CHISELED_PURPUR_BLOCK.asItem(), 1);
-        PURPUR_TILES_STAIRS_STONECUTTING = createStonecutterRecipe(Blocks.PURPUR_BLOCK.asItem(), AtbywBlocks.PURPUR_TILES_STAIRS.asItem(), 1);
-        SMOOTH_PURPUR_STAIRS_STONECUTTING = createStonecutterRecipe(Blocks.PURPUR_BLOCK.asItem(), AtbywBlocks.SMOOTH_PURPUR_STAIRS.asItem(), 1);
-        PURPUR_TILES_SLAB_STONECUTTING = createStonecutterRecipe(Blocks.PURPUR_BLOCK.asItem(), AtbywBlocks.PURPUR_TILES_SLAB.asItem(), 2);
-        SMOOTH_PURPUR_SLAB_STONECUTTING = createStonecutterRecipe(Blocks.PURPUR_BLOCK.asItem(), AtbywBlocks.SMOOTH_PURPUR_SLAB.asItem(), 2);
-        PURPUR_TILES_STAIRS_FROM_PURPUR_TILES_STONECUTTING = createStonecutterRecipe(AtbywBlocks.PURPUR_TILES.asItem(), AtbywBlocks.PURPUR_TILES_STAIRS.asItem(), 1);
-        SMOOTH_PURPUR_STAIRS_FROM_SMOOTH_PURPUR_STONECUTTING = createStonecutterRecipe(AtbywBlocks.SMOOTH_PURPUR_BLOCK.asItem(), AtbywBlocks.SMOOTH_PURPUR_STAIRS.asItem(), 1);
-        PURPUR_TILES_SLAB_FROM_PURPUR_TILES_STONECUTTING = createStonecutterRecipe(AtbywBlocks.PURPUR_TILES.asItem(), AtbywBlocks.PURPUR_TILES_SLAB.asItem(), 2);
-        SMOOTH_PURPUR_SLAB_FROM_SMOOTH_PURPUR_STONECUTTING = createStonecutterRecipe(AtbywBlocks.SMOOTH_PURPUR_BLOCK.asItem(), AtbywBlocks.SMOOTH_PURPUR_SLAB.asItem(), 2);
-    }
+        BEE_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.BEE_ESSENCE), newKeyPair("item", getItemID(Items.HONEYCOMB)), newKeyPair("item", getItemID(Items.HONEY_BOTTLE)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+        SHULKER_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.SHULKER_ESSENCE), newKeyPair("item", getItemID(Items.SHULKER_SHELL)), newKeyPair("item", getItemID(Items.SHULKER_SHELL)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+        CAT_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.CAT_ESSENCE), newKeyPair("item", getItemID(Items.STRING)), newKeyPair("item", getItemID(Items.STRING)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+        CHICKEN_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.CHICKEN_ESSENCE), newKeyPair("item", getItemID(Items.CHICKEN)), newKeyPair("item", getItemID(Items.FEATHER)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+        RABBIT_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.RABBIT_ESSENCE), newKeyPair("item", getItemID(Items.RABBIT)), newKeyPair("item", getItemID(Items.RABBIT_HIDE)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+        FOX_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.FOX_ESSENCE), newKeyPair("item", getItemID(Items.SWEET_BERRIES)), newKeyPair("item", getItemID(Items.SWEET_BERRIES)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+        COD_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.COD_ESSENCE), newKeyPair("item", getItemID(Items.COD)), newKeyPair("item", getItemID(Items.BONE_MEAL)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+        SALMON_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.SALMON_ESSENCE), newKeyPair("item", getItemID(Items.SALMON)), newKeyPair("item", getItemID(Items.BONE_MEAL)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+        PUFFER_FISH_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.PUFFER_FISH_ESSENCE), newKeyPair("item", getItemID(Items.PUFFERFISH)), newKeyPair("item", getItemID(Items.BONE_MEAL)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+        SLIME_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.SLIME_ESSENCE), newKeyPair("item", getItemID(Items.SLIME_BALL)), newKeyPair("item", getItemID(Items.SLIME_BALL)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+        MAGMA_CUBE_ESSENCE = createRecipeFromConfig("essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.MAGMA_CUBE_ESSENCE), newKeyPair("item", getItemID(Items.MAGMA_CREAM)), newKeyPair("item", getItemID(Items.MAGMA_CREAM)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
 
-    private static void putRecipe(Identifier identifier, JsonElement recipe, Map<Identifier, JsonElement> map) {
-        if (recipe != null) {
-            map.put(identifier, recipe);
-        }
+        BEE_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.BEE_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.BEE_ESSENCE)));
+        SILVERFISH_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.SILVERFISH_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.SILVERFISH_ESSENCE)));
+        ENDERMITE_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.ENDERMITE_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.ENDERMITE_ESSENCE)));
+        SHULKER_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.SHULKER_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.SHULKER_ESSENCE)));
+        CAT_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.CAT_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.CAT_ESSENCE)));
+        WOLF_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.WOLF_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.WOLF_ESSENCE)));
+        CHICKEN_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.CHICKEN_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.CHICKEN_ESSENCE)));
+        RABBIT_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.RABBIT_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.RABBIT_ESSENCE)));
+        FOX_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.FOX_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.FOX_ESSENCE)));
+        COD_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.COD_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.COD_ESSENCE)));
+        SALMON_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.SALMON_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.SALMON_ESSENCE)));
+        PUFFER_FISH_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.PUFFER_FISH_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.PUFFER_FISH_ESSENCE)));
+        SLIME_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.SLIME_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.SLIME_ESSENCE)));
+        MAGMA_CUBE_STATUE = createRecipeFromConfig("statues", 1, AtbywRecipeConfigs.DYING_2, getBlockID(StatueRegistry.MAGMA_CUBE_STATUE), newKeyPair("item", getBlockID(Blocks.STONE)), newKeyPair("item", getItemID(AtbywItems.MAGMA_CUBE_ESSENCE)));
+
+        GRANITE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.GRANITE_COLUMN), newKeyPair("item", getBlockID(Blocks.GRANITE)));
+        DIORITE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.DIORITE_COLUMN), newKeyPair("item", getBlockID(Blocks.DIORITE)));
+        ANDESITE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.ANDESITE_COLUMN), newKeyPair("item", getBlockID(Blocks.ANDESITE)));
+        GRANITE_COLUMN_FROM_POLISHED = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.GRANITE_COLUMN), newKeyPair("item", getBlockID(Blocks.POLISHED_GRANITE)));
+        DIORITE_COLUMN_FROM_POLISHED = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.DIORITE_COLUMN), newKeyPair("item", getBlockID(Blocks.POLISHED_DIORITE)));
+        ANDESITE_COLUMN_FROM_POLISHED = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.ANDESITE_COLUMN), newKeyPair("item", getBlockID(Blocks.POLISHED_ANDESITE)));
+        SANDSTONE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.SANDSTONE_COLUMN), newKeyPair("item", getBlockID(Blocks.SANDSTONE)));
+        SANDSTONE_COLUMN_FROM_CUT = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.SANDSTONE_COLUMN), newKeyPair("item", getBlockID(Blocks.SMOOTH_SANDSTONE)));
+        CHISELED_SANDSTONE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.CHISELED_SANDSTONE_COLUMN), newKeyPair("item", getBlockID(Blocks.CHISELED_SANDSTONE)));
+        RED_SANDSTONE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.RED_SANDSTONE_COLUMN), newKeyPair("item", getBlockID(Blocks.RED_SANDSTONE)));
+        RED_SANDSTONE_COLUMN_FROM_CUT = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.RED_SANDSTONE_COLUMN), newKeyPair("item", getBlockID(Blocks.SMOOTH_RED_SANDSTONE)));
+        CHISELED_RED_SANDSTONE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.CHISELED_RED_SANDSTONE_COLUMN), newKeyPair("item", getBlockID(Blocks.CHISELED_RED_SANDSTONE)));
+        PURPUR_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.PURPUR_COLUMN), newKeyPair("item", getBlockID(Blocks.PURPUR_BLOCK)));
+        STONE_BRICKS_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.STONE_BRICKS_COLUMN), newKeyPair("item", getBlockID(Blocks.STONE_BRICKS)));
+        MOSSY_STONE_BRICKS_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.MOSSY_STONE_BRICKS_COLUMN), newKeyPair("item", getBlockID(Blocks.MOSSY_STONE_BRICKS)));
+        CRACKED_STONE_BRICKS_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.CRACKED_STONE_BRICKS_COLUMN), newKeyPair("item", getBlockID(Blocks.CRACKED_STONE_BRICKS)));
+        NETHER_BRICKS_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.NETHER_BRICKS_COLUMN), newKeyPair("item", getBlockID(Blocks.NETHER_BRICKS)));
+        QUARTZ_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.QUARTZ_COLUMN), newKeyPair("item", getBlockID(Blocks.QUARTZ_BLOCK)));
+        PRISMARINE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.PRISMARINE_COLUMN), newKeyPair("item", getBlockID(Blocks.PRISMARINE_BRICKS)));
+        BLACKSTONE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.BLACKSTONE_COLUMN), newKeyPair("item", getBlockID(Blocks.BLACKSTONE)));
+
+        PURPUR_TILES = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), newKeyPair("item", getBlockID(Blocks.PURPUR_BLOCK)));
+        SMOOTH_PURPUR_BLOCK = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.PURPUR_TILES), newKeyPair("item", getBlockID(Blocks.PURPUR_PILLAR)));
+        CHISELED_PURPUR_BLOCK = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.CHISELED_PURPUR_BLOCK), newKeyPair("item", getBlockID(Blocks.PURPUR_SLAB)));
+        PURPUR_TILES_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.PURPUR_TILES_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.PURPUR_TILES)));
+        SMOOTH_PURPUR_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.SMOOTH_PURPUR_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK)));
+        PURPUR_TILES_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.PURPUR_TILES_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.PURPUR_TILES)));
+        SMOOTH_PURPUR_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.SMOOTH_PURPUR_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK)));
     }
 
     //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
     public static void injectRecipes(Map<Identifier, JsonElement> map) {
-        putRecipe(newID("terracotta_stairs"), TERRACOTTA_STAIRS_SHAPED, map);
-        putRecipe(newID("terracotta_slab"), TERRACOTTA_SLAB_SHAPED, map);
-        putRecipe(newID("terracotta_bricks"), TERRACOTTA_BRICKS_SHAPED, map);
-        putRecipe(newID("terracotta_bricks_stairs"), TERRACOTTA_BRICKS_STAIRS_SHAPED, map);
-        putRecipe(newID("terracotta_bricks_slab"), TERRACOTTA_BRICKS_SLAB_SHAPED, map);
-        putRecipe(newID("terracotta_bricks_wall"), TERRACOTTA_BRICKS_WALL_SHAPED, map);
+        AtbywRecipesStonecutting.injectRecipes(map);
 
-        for (int i = 0; i < COLORS.length; i++){
-            putRecipe(newID(COLORS[i] + "_terracotta_stairs_from_dye"), TERRACOTTA_STAIRS_COLORS_DYING[i], map);
-            putRecipe(newID(COLORS[i] + "_terracotta_slab_from_dye"), TERRACOTTA_SLAB_COLORS_DYING[i], map);
-            putRecipe(newID(COLORS[i] + "_terracotta_bricks_from_dye"), TERRACOTTA_BRICKS_COLORS_DYING[i], map);
-            putRecipe(newID(COLORS[i] + "_terracotta_bricks_stairs_from_dye"), TERRACOTTA_BRICKS_STAIRS_COLORS_DYING[i], map);
-            putRecipe(newID(COLORS[i] + "_terracotta_bricks_slab_from_dye"), TERRACOTTA_BRICKS_SLAB_COLORS_DYING[i], map);
+        putRecipe(new Identifier("wooden_sword_from_stick_tag"), WOODEN_SWORD_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("stone_sword_from_stick_tag"), STONE_SWORD_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("iron_sword_from_stick_tag"), IRON_SWORD_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("golden_sword_from_stick_tag"), GOLDEN_SWORD_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("diamond_sword_from_stick_tag"), DIAMOND_SWORD_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("netherite_sword_from_stick_tag"), NETHERITE_SWORD_FROM_STICK_VARIANTS, map);
 
-            putRecipe(newID(COLORS[i] + "_terracotta_stairs"), TERRACOTTA_STAIRS_COLORS_SHAPED[i], map);
-            putRecipe(newID(COLORS[i] + "_terracotta_slab"), TERRACOTTA_SLAB_COLORS_SHAPED[i], map);
-            putRecipe(newID(COLORS[i] + "_terracotta_bricks"), TERRACOTTA_BRICKS_COLORS_SHAPED[i], map);
-            putRecipe(newID(COLORS[i] + "_terracotta_bricks_stairs"), TERRACOTTA_BRICKS_STAIRS_COLORS_SHAPED[i], map);
-            putRecipe(newID(COLORS[i] + "_terracotta_bricks_slab"), TERRACOTTA_BRICKS_SLAB_COLORS_SHAPED[i], map);
+        putRecipe(new Identifier("wooden_axe_from_stick_tag"), WOODEN_AXE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("stone_axe_from_stick_tag"), STONE_AXE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("iron_axe_from_stick_tag"), IRON_AXE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("golden_axe_from_stick_tag"), GOLDEN_AXE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("diamond_axe_from_stick_tag"), DIAMOND_AXE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("netherite_axe_from_stick_tag"), NETHERITE_AXE_FROM_STICK_VARIANTS, map);
 
-            putRecipe(newID(COLORS[i] + "_concrete_stairs"), CONCRETE_STAIRS_COLORS_SHAPED[i], map);
-            putRecipe(newID(COLORS[i] + "_concrete_slab"), CONCRETE_SLAB_COLORS_SHAPED[i], map);
-            putRecipe(newID(COLORS[i] + "_cinder_blocks"), CINDER_BLOCKS_COLORS_SHAPED[i], map);
-            putRecipe(newID(COLORS[i] + "_cinder_blocks_wall"), CINDER_BLOCKS_WALL_COLORS_SHAPED[i], map);
+        putRecipe(new Identifier("wooden_pickaxe_from_stick_tag"), WOODEN_PICKAXE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("stone_pickaxe_from_stick_tag"), STONE_PICKAXE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("iron_pickaxe_from_stick_tag"), IRON_PICKAXE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("golden_pickaxe_from_stick_tag"), GOLDEN_PICKAXE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("diamond_pickaxe_from_stick_tag"), DIAMOND_PICKAXE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("netherite_pickaxe_from_stick_tag"), NETHERITE_PICKAXE_FROM_STICK_VARIANTS, map);
 
-            putRecipe(newID(COLORS[i] + "_concrete_stairs_from_stonecutting"), CONCRETE_STAIRS_COLORS_STONECUTTING[i], map);
-            putRecipe(newID(COLORS[i] + "_concrete_slab_from_stonecutting"), CONCRETE_SLAB_COLORS_STONECUTTING[i], map);
-            putRecipe(newID(COLORS[i] + "_cinder_blocks_from_stonecutting"), CINDER_BLOCKS_COLORS_STONECUTTING[i], map);
-            putRecipe(newID(COLORS[i] + "_cinder_blocks_wall_from_stonecutting_concrete"), CINDER_BLOCKS_WALL_COLORS_STONECUTTING_CONCRETE[i], map);
-            putRecipe(newID(COLORS[i] + "_cinder_blocks_wall_from_stonecutting_cinder_blocks"), CINDER_BLOCKS_WALL_COLORS_STONECUTTING_CINDER_BLOCKS[i], map);
+        putRecipe(new Identifier("wooden_shovel_from_stick_tag"), WOODEN_SHOVEL_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("stone_shovel_from_stick_tag"), STONE_SHOVEL_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("iron_shovel_from_stick_tag"), IRON_SHOVEL_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("golden_shovel_from_stick_tag"), GOLDEN_SHOVEL_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("diamond_shovel_from_stick_tag"), DIAMOND_SHOVEL_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("netherite_shovel_from_stick_tag"), NETHERITE_SHOVEL_FROM_STICK_VARIANTS, map);
 
+        putRecipe(new Identifier("wooden_hoe_from_stick_tag"), WOODEN_HOE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("stone_hoe_from_stick_tag"), STONE_HOE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("iron_hoe_from_stick_tag"), IRON_HOE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("golden_hoe_from_stick_tag"), GOLDEN_HOE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("diamond_hoe_from_stick_tag"), DIAMOND_HOE_FROM_STICK_VARIANTS, map);
+        putRecipe(new Identifier("netherite_hoe_from_stick_tag"), NETHERITE_HOE_FROM_STICK_VARIANTS, map);
+
+        putRecipe(new Identifier("terracotta_stairs_from_stick_tag"), TERRACOTTA_STAIRS_SHAPED, map);
+        putRecipe(new Identifier("terracotta_slab_from_stick_tag"), TERRACOTTA_SLAB_SHAPED, map);
+        putRecipe(new Identifier("terracotta_bricks_from_stick_tag"), TERRACOTTA_BRICKS_SHAPED, map);
+        putRecipe(new Identifier("terracotta_bricks_stairs_from_stick_tag"), TERRACOTTA_BRICKS_STAIRS_SHAPED, map);
+        putRecipe(new Identifier("terracotta_bricks_slab_from_stick_tag"), TERRACOTTA_BRICKS_SLAB_SHAPED, map);
+        putRecipe(new Identifier("terracotta_bricks_wall_from_stick_tag"), TERRACOTTA_BRICKS_WALL_SHAPED, map);
+
+        //Colored recipes
+        for (int i = 0; i < COLOR_NAMES.length; i++){
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_terracotta_stairs_from_dye"), TERRACOTTA_STAIRS_COLORS_DYING[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_terracotta_slab_from_dye"), TERRACOTTA_SLAB_COLORS_DYING[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_terracotta_bricks_from_dye"), TERRACOTTA_BRICKS_COLORS_DYING[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_terracotta_bricks_stairs_from_dye"), TERRACOTTA_BRICKS_STAIRS_COLORS_DYING[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_terracotta_bricks_slab_from_dye"), TERRACOTTA_BRICKS_SLAB_COLORS_DYING[i], map);
+
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_terracotta_stairs"), TERRACOTTA_STAIRS_COLORS_SHAPED[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_terracotta_slab"), TERRACOTTA_SLAB_COLORS_SHAPED[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_terracotta_bricks"), TERRACOTTA_BRICKS_COLORS_SHAPED[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_terracotta_bricks_stairs"), TERRACOTTA_BRICKS_STAIRS_COLORS_SHAPED[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_terracotta_bricks_slab"), TERRACOTTA_BRICKS_SLAB_COLORS_SHAPED[i], map);
+
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_concrete_stairs"), CONCRETE_STAIRS_COLORS_SHAPED[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_concrete_slab"), CONCRETE_SLAB_COLORS_SHAPED[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_cinder_blocks"), CINDER_BLOCKS_COLORS_SHAPED[i], map);
+            putRecipe(AtbywID(COLOR_NAMES[i] + "_cinder_blocks_wall"), CINDER_BLOCKS_WALL_COLORS_SHAPED[i], map);
         }
 
-        putRecipe(newID("bee_essence"), BEE_ESSENCE, map);
-        putRecipe(newID("shulker_essence"), SHULKER_ESSENCE, map);
-        putRecipe(newID("cat_essence"), CAT_ESSENCE, map);
-        putRecipe(newID("chicken_essence"), CHICKEN_ESSENCE, map);
-        putRecipe(newID("rabbit_essence"), RABBIT_ESSENCE, map);
-        putRecipe(newID("fox_essence"), FOX_ESSENCE, map);
-        putRecipe(newID("cod_essence"), COD_ESSENCE, map);
-        putRecipe(newID("salmon_essence"), SALMON_ESSENCE, map);
-        putRecipe(newID("puffer_fish_essence"), PUFFER_FISH_ESSENCE, map);
-        putRecipe(newID("magma_cube_essence"), MAGMA_CUBE_ESSENCE, map);
-        putRecipe(newID("slime_essence"), SLIME_ESSENCE, map);
+        putRecipe(AtbywID("bee_essence"), BEE_ESSENCE, map);
+        putRecipe(AtbywID("shulker_essence"), SHULKER_ESSENCE, map);
+        putRecipe(AtbywID("cat_essence"), CAT_ESSENCE, map);
+        putRecipe(AtbywID("chicken_essence"), CHICKEN_ESSENCE, map);
+        putRecipe(AtbywID("rabbit_essence"), RABBIT_ESSENCE, map);
+        putRecipe(AtbywID("fox_essence"), FOX_ESSENCE, map);
+        putRecipe(AtbywID("cod_essence"), COD_ESSENCE, map);
+        putRecipe(AtbywID("salmon_essence"), SALMON_ESSENCE, map);
+        putRecipe(AtbywID("puffer_fish_essence"), PUFFER_FISH_ESSENCE, map);
+        putRecipe(AtbywID("magma_cube_essence"), MAGMA_CUBE_ESSENCE, map);
+        putRecipe(AtbywID("slime_essence"), SLIME_ESSENCE, map);
 
-        putRecipe(newID("bee_statue"), BEE_STATUE, map);
-        putRecipe(newID("silverfish_statue"), SILVERFISH_STATUE, map);
-        putRecipe(newID("endermite_statue"), ENDERMITE_STATUE, map);
-        putRecipe(newID("shulker_statue"), SHULKER_STATUE, map);
-        putRecipe(newID("cat_statue"), CAT_STATUE, map);
-        putRecipe(newID("chicken_statue"), CHICKEN_STATUE, map);
-        putRecipe(newID("rabbit_statue"), RABBIT_STATUE, map);
-        putRecipe(newID("fox_statue"), FOX_STATUE, map);
-        putRecipe(newID("cod_statue"), COD_STATUE, map);
-        putRecipe(newID("salmon_statue"), SALMON_STATUE, map);
-        putRecipe(newID("puffer_fish_statue"), PUFFER_FISH_STATUE, map);
-        putRecipe(newID("magma_cube_statue"), MAGMA_CUBE_STATUE, map);
-        putRecipe(newID("slime_statue"), SLIME_STATUE, map);
+        putRecipe(AtbywID("bee_statue"), BEE_STATUE, map);
+        putRecipe(AtbywID("silverfish_statue"), SILVERFISH_STATUE, map);
+        putRecipe(AtbywID("endermite_statue"), ENDERMITE_STATUE, map);
+        putRecipe(AtbywID("shulker_statue"), SHULKER_STATUE, map);
+        putRecipe(AtbywID("cat_statue"), CAT_STATUE, map);
+        putRecipe(AtbywID("chicken_statue"), CHICKEN_STATUE, map);
+        putRecipe(AtbywID("rabbit_statue"), RABBIT_STATUE, map);
+        putRecipe(AtbywID("fox_statue"), FOX_STATUE, map);
+        putRecipe(AtbywID("cod_statue"), COD_STATUE, map);
+        putRecipe(AtbywID("salmon_statue"), SALMON_STATUE, map);
+        putRecipe(AtbywID("puffer_fish_statue"), PUFFER_FISH_STATUE, map);
+        putRecipe(AtbywID("magma_cube_statue"), MAGMA_CUBE_STATUE, map);
+        putRecipe(AtbywID("slime_statue"), SLIME_STATUE, map);
 
-        putRecipe(newID("granite_column"), GRANITE_COLUMN, map);
-        putRecipe(newID("diorite_column"), DIORITE_COLUMN, map);
-        putRecipe(newID("andesite_column"), ANDESITE_COLUMN, map);
-        putRecipe(newID("granite_column_from_polished"), GRANITE_COLUMN_FROM_POLISHED, map);
-        putRecipe(newID("diorite_column_from_polished"), DIORITE_COLUMN_FROM_POLISHED, map);
-        putRecipe(newID("andesite_column_from_polished"), ANDESITE_COLUMN_FROM_POLISHED, map);
-        putRecipe(newID("sandstone_column"), SANDSTONE_COLUMN, map);
-        putRecipe(newID("sandstone_column_from_cut"), SANDSTONE_COLUMN_FROM_CUT, map);
-        putRecipe(newID("chiseled_sandstone_column"), CHISELED_SANDSTONE_COLUMN, map);
-        putRecipe(newID("red_sandstone_column"), RED_SANDSTONE_COLUMN, map);
-        putRecipe(newID("red_sandstone_column_from_cut"), RED_SANDSTONE_COLUMN_FROM_CUT, map);
-        putRecipe(newID("chiseled_red_sandstone_column"), CHISELED_RED_SANDSTONE_COLUMN, map);
-        putRecipe(newID("purpur_column"), PURPUR_COLUMN, map);
-        putRecipe(newID("stone_bricks_column"), STONE_BRICKS_COLUMN, map);
-        putRecipe(newID("mossy_stone_bricks_column"), MOSSY_STONE_BRICKS_COLUMN, map);
-        putRecipe(newID("cracked_stone_bricks_column"), CRACKED_STONE_BRICKS_COLUMN, map);
-        putRecipe(newID("nether_bricks_column"), NETHER_BRICKS_COLUMN, map);
-        putRecipe(newID("quartz_column"), QUARTZ_COLUMN, map);
-        putRecipe(newID("prismarine_column"), PRISMARINE_COLUMN, map);
-        putRecipe(newID("blackstone_column"), BLACKSTONE_COLUMN, map);
+        putRecipe(AtbywID("granite_column"), GRANITE_COLUMN, map);
+        putRecipe(AtbywID("diorite_column"), DIORITE_COLUMN, map);
+        putRecipe(AtbywID("andesite_column"), ANDESITE_COLUMN, map);
+        putRecipe(AtbywID("granite_column_from_polished"), GRANITE_COLUMN_FROM_POLISHED, map);
+        putRecipe(AtbywID("diorite_column_from_polished"), DIORITE_COLUMN_FROM_POLISHED, map);
+        putRecipe(AtbywID("andesite_column_from_polished"), ANDESITE_COLUMN_FROM_POLISHED, map);
+        putRecipe(AtbywID("sandstone_column"), SANDSTONE_COLUMN, map);
+        putRecipe(AtbywID("sandstone_column_from_cut"), SANDSTONE_COLUMN_FROM_CUT, map);
+        putRecipe(AtbywID("chiseled_sandstone_column"), CHISELED_SANDSTONE_COLUMN, map);
+        putRecipe(AtbywID("red_sandstone_column"), RED_SANDSTONE_COLUMN, map);
+        putRecipe(AtbywID("red_sandstone_column_from_cut"), RED_SANDSTONE_COLUMN_FROM_CUT, map);
+        putRecipe(AtbywID("chiseled_red_sandstone_column"), CHISELED_RED_SANDSTONE_COLUMN, map);
+        putRecipe(AtbywID("purpur_column"), PURPUR_COLUMN, map);
+        putRecipe(AtbywID("stone_bricks_column"), STONE_BRICKS_COLUMN, map);
+        putRecipe(AtbywID("mossy_stone_bricks_column"), MOSSY_STONE_BRICKS_COLUMN, map);
+        putRecipe(AtbywID("cracked_stone_bricks_column"), CRACKED_STONE_BRICKS_COLUMN, map);
+        putRecipe(AtbywID("nether_bricks_column"), NETHER_BRICKS_COLUMN, map);
+        putRecipe(AtbywID("quartz_column"), QUARTZ_COLUMN, map);
+        putRecipe(AtbywID("prismarine_column"), PRISMARINE_COLUMN, map);
+        putRecipe(AtbywID("blackstone_column"), BLACKSTONE_COLUMN, map);
 
-        putRecipe(newID("granite_column_stonecutting"), GRANITE_COLUMN_STONECUTTING, map);
-        putRecipe(newID("diorite_column_stonecutting"), DIORITE_COLUMN_STONECUTTING, map);
-        putRecipe(newID("andesite_column_stonecutting"), ANDESITE_COLUMN_STONECUTTING, map);
-        putRecipe(newID("granite_column_from_polished_stonecutting"), GRANITE_COLUMN_FROM_POLISHED_STONECUTTING, map);
-        putRecipe(newID("diorite_column_from_polished_stonecutting"), DIORITE_COLUMN_FROM_POLISHED_STONECUTTING, map);
-        putRecipe(newID("andesite_column_from_polished_stonecutting"), ANDESITE_COLUMN_FROM_POLISHED_STONECUTTING, map);
-        putRecipe(newID("sandstone_column_stonecutting"), SANDSTONE_COLUMN_STONECUTTING, map);
-        putRecipe(newID("sandstone_column_from_cut_stonecutting"), SANDSTONE_COLUMN_FROM_CUT_STONECUTTING, map);
-        putRecipe(newID("chiseled_sandstone_column_stonecutting"), CHISELED_SANDSTONE_COLUMN_STONECUTTING, map);
-        putRecipe(newID("red_sandstone_column_stonecutting"), RED_SANDSTONE_COLUMN_STONECUTTING, map);
-        putRecipe(newID("red_sandstone_column_from_cut_stonecutting"), RED_SANDSTONE_COLUMN_FROM_CUT_STONECUTTING, map);
-        putRecipe(newID("chiseled_red_sandstone_column_stonecutting"), CHISELED_RED_SANDSTONE_COLUMN_STONECUTTING, map);
-        putRecipe(newID("purpur_column_stonecutting"), PURPUR_COLUMN_STONECUTTING, map);
-        putRecipe(newID("stone_bricks_column_stonecutting"), STONE_BRICKS_COLUMN_STONECUTTING, map);
-        putRecipe(newID("mossy_stone_bricks_column_stonecutting"), MOSSY_STONE_BRICKS_COLUMN_STONECUTTING, map);
-        putRecipe(newID("cracked_stone_bricks_column_stonecutting"), CRACKED_STONE_BRICKS_COLUMN_STONECUTTING, map);
-        putRecipe(newID("nether_bricks_column_stonecutting"), NETHER_BRICKS_COLUMN_STONECUTTING, map);
-        putRecipe(newID("quartz_column_stonecutting"), QUARTZ_COLUMN_STONECUTTING, map);
-        putRecipe(newID("prismarine_column_stonecutting"), PRISMARINE_COLUMN_STONECUTTING, map);
-        putRecipe(newID("blackstone_column_stonecutting"), BLACKSTONE_COLUMN_STONECUTTING, map);
-
-        putRecipe(newID("purpur_tiles"), PURPUR_TILES, map);
-        putRecipe(newID("smooth_purpur_block"), SMOOTH_PURPUR_BLOCK, map);
-        putRecipe(newID("chiseled_purpur_block"), CHISELED_PURPUR_BLOCK, map);
-        putRecipe(newID("purpur_tiles_stairs"), PURPUR_TILES_STAIRS, map);
-        putRecipe(newID("smooth_purpur_stairs"), SMOOTH_PURPUR_STAIRS, map);
-        putRecipe(newID("purpur_tiles_slab"), PURPUR_TILES_SLAB, map);
-        putRecipe(newID("smooth_purpur_slab"), SMOOTH_PURPUR_SLAB, map);
-        putRecipe(newID("purpur_tiles_stonecutting"), PURPUR_TILES_STONECUTTING, map);
-        putRecipe(newID("smooth_purpur_block_stonecutting"), SMOOTH_PURPUR_BLOCK_STONECUTTING, map);
-        putRecipe(newID("chiseled_purpur_block_stonecutting"), CHISELED_PURPUR_BLOCK_STONECUTTING, map);
-        putRecipe(newID("purpur_tiles_stairs_stonecutting"), PURPUR_TILES_STAIRS_STONECUTTING, map);
-        putRecipe(newID("smooth_purpur_stairs_stonecutting"), SMOOTH_PURPUR_STAIRS_STONECUTTING, map);
-        putRecipe(newID("purpur_tiles_slab_stonecutting"), PURPUR_TILES_SLAB_STONECUTTING, map);
-        putRecipe(newID("smooth_purpur_slab_stonecutting"), SMOOTH_PURPUR_SLAB_STONECUTTING, map);
-        putRecipe(newID("purpur_tiles_stairs_from_purpur_tiles_stonecutting"), PURPUR_TILES_STAIRS_FROM_PURPUR_TILES_STONECUTTING, map);
-        putRecipe(newID("smooth_purpur_stairs_from_smooth_purpur_stonecutting"), SMOOTH_PURPUR_STAIRS_FROM_SMOOTH_PURPUR_STONECUTTING, map);
-        putRecipe(newID("purpur_tiles_slab_from_purpur_tiles_stonecutting"), PURPUR_TILES_SLAB_FROM_PURPUR_TILES_STONECUTTING, map);
-        putRecipe(newID("smooth_purpur_slab_from_smooth_purpur_stonecutting"), SMOOTH_PURPUR_SLAB_FROM_SMOOTH_PURPUR_STONECUTTING, map);
-
+        putRecipe(AtbywID("purpur_tiles"), PURPUR_TILES, map);
+        putRecipe(AtbywID("smooth_purpur_block"), SMOOTH_PURPUR_BLOCK, map);
+        putRecipe(AtbywID("chiseled_purpur_block"), CHISELED_PURPUR_BLOCK, map);
+        putRecipe(AtbywID("purpur_tiles_stairs"), PURPUR_TILES_STAIRS, map);
+        putRecipe(AtbywID("smooth_purpur_stairs"), SMOOTH_PURPUR_STAIRS, map);
+        putRecipe(AtbywID("purpur_tiles_slab"), PURPUR_TILES_SLAB, map);
+        putRecipe(AtbywID("smooth_purpur_slab"), SMOOTH_PURPUR_SLAB, map);
     }
 }

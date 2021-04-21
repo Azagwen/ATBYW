@@ -115,12 +115,12 @@ public class AtbywExperimentalBlocks {
     }
 
     public static void initPistonEntities() {
-        SPRUCE_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("spruce_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, SPRUCE_MOVING_PISTON).build(null));
-        BIRCH_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("birch_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, BIRCH_MOVING_PISTON).build(null));
-        JUNGLE_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("jungle_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, JUNGLE_MOVING_PISTON).build(null));
-        ACACIA_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("acacia_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, ACACIA_MOVING_PISTON).build(null));
-        DARK_OAK_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("dark_oak_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, DARK_OAK_MOVING_PISTON).build(null));
-        CRIMSON_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("crimson_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, CRIMSON_MOVING_PISTON).build(null));
-        WARPED_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, newID("warped_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, WARPED_MOVING_PISTON).build(null));
+        SPRUCE_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("spruce_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, SPRUCE_MOVING_PISTON).build(null));
+        BIRCH_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("birch_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, BIRCH_MOVING_PISTON).build(null));
+        JUNGLE_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("jungle_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, JUNGLE_MOVING_PISTON).build(null));
+        ACACIA_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("acacia_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, ACACIA_MOVING_PISTON).build(null));
+        DARK_OAK_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("dark_oak_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, DARK_OAK_MOVING_PISTON).build(null));
+        CRIMSON_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("crimson_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, CRIMSON_MOVING_PISTON).build(null));
+        WARPED_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("warped_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, WARPED_MOVING_PISTON).build(null));
     }
 }

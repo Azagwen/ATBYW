@@ -57,32 +57,32 @@ public class AtbywItems {
     };
 
     public static void init() {
-        Registry.register(Registry.ITEM, newID("oak_stick"), OAK_STICK);
-        Registry.register(Registry.ITEM, newID("spruce_stick"), SPRUCE_STICK);
-        Registry.register(Registry.ITEM, newID("birch_stick"), BIRCH_STICK);
-        Registry.register(Registry.ITEM, newID("jungle_stick"), JUNGLE_STICK);
-        Registry.register(Registry.ITEM, newID("acacia_stick"), ACACIA_STICK);
-        Registry.register(Registry.ITEM, newID("dark_oak_stick"), DARK_OAK_STICK);
-        Registry.register(Registry.ITEM, newID("crimson_stick"), CRIMSON_STICK);
-        Registry.register(Registry.ITEM, newID("warped_stick"), WARPED_STICK);
-        Registry.register(Registry.ITEM, newID("bamboo_stick"), BAMBOO_STICK);
+        Registry.register(Registry.ITEM, AtbywID("oak_stick"), OAK_STICK);
+        Registry.register(Registry.ITEM, AtbywID("spruce_stick"), SPRUCE_STICK);
+        Registry.register(Registry.ITEM, AtbywID("birch_stick"), BIRCH_STICK);
+        Registry.register(Registry.ITEM, AtbywID("jungle_stick"), JUNGLE_STICK);
+        Registry.register(Registry.ITEM, AtbywID("acacia_stick"), ACACIA_STICK);
+        Registry.register(Registry.ITEM, AtbywID("dark_oak_stick"), DARK_OAK_STICK);
+        Registry.register(Registry.ITEM, AtbywID("crimson_stick"), CRIMSON_STICK);
+        Registry.register(Registry.ITEM, AtbywID("warped_stick"), WARPED_STICK);
+        Registry.register(Registry.ITEM, AtbywID("bamboo_stick"), BAMBOO_STICK);
 
-        Registry.register(Registry.ITEM, newID("bee_essence"), BEE_ESSENCE);
-        Registry.register(Registry.ITEM, newID("silverfish_essence"), SILVERFISH_ESSENCE);
-        Registry.register(Registry.ITEM, newID("endermite_essence"), ENDERMITE_ESSENCE);
-        Registry.register(Registry.ITEM, newID("shulker_essence"), SHULKER_ESSENCE);
-        Registry.register(Registry.ITEM, newID("wolf_essence"), WOLF_ESSENCE);
-        Registry.register(Registry.ITEM, newID("cat_essence"), CAT_ESSENCE);
-        Registry.register(Registry.ITEM, newID("chicken_essence"), CHICKEN_ESSENCE);
-        Registry.register(Registry.ITEM, newID("rabbit_essence"), RABBIT_ESSENCE);
-        Registry.register(Registry.ITEM, newID("fox_essence"), FOX_ESSENCE);
-        Registry.register(Registry.ITEM, newID("cod_essence"), COD_ESSENCE);
-        Registry.register(Registry.ITEM, newID("salmon_essence"), SALMON_ESSENCE);
-        Registry.register(Registry.ITEM, newID("puffer_fish_essence"), PUFFER_FISH_ESSENCE);
-        Registry.register(Registry.ITEM, newID("magma_cube_essence"), MAGMA_CUBE_ESSENCE);
-        Registry.register(Registry.ITEM, newID("slime_essence"), SLIME_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("bee_essence"), BEE_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("silverfish_essence"), SILVERFISH_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("endermite_essence"), ENDERMITE_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("shulker_essence"), SHULKER_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("wolf_essence"), WOLF_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("cat_essence"), CAT_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("chicken_essence"), CHICKEN_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("rabbit_essence"), RABBIT_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("fox_essence"), FOX_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("cod_essence"), COD_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("salmon_essence"), SALMON_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("puffer_fish_essence"), PUFFER_FISH_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("magma_cube_essence"), MAGMA_CUBE_ESSENCE);
+        Registry.register(Registry.ITEM, AtbywID("slime_essence"), SLIME_ESSENCE);
 
-        Registry.register(Registry.ITEM, newID("shroomstick"), SHROOMSTICK);
+        Registry.register(Registry.ITEM, AtbywID("shroomstick"), SHROOMSTICK);
 
         AtbywModInteractionItems.init();
     }

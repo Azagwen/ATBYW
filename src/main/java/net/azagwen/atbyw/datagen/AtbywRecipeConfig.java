@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface AtbywRecipeConfig {
     ArrayList<String> getPattern();
-    ArrayList<Key<Character, String>> getKeys();
+    ArrayList<Character> getKeyChars();
     int getCount();
 
 }

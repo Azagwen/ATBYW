@@ -16,11 +16,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class AtbywMain implements ModInitializer {
+	public static final String mcNameSpace = "minecraft";
 	public static final String nameSpace = "atbyw";
 	public static final String modInteractionNameSpace = "atbyw_mi";
 	public static final Logger LOGGER  = LogManager.getLogger();
 
-	public static Identifier newID(String path) {
+	public static Identifier AtbywID(String path) {
 		return new Identifier(nameSpace, path);
 	}
 	public static Identifier newModInteractionID(String path) {
@@ -31,19 +32,19 @@ public class AtbywMain implements ModInitializer {
 		return FabricLoader.getInstance().isModLoaded(ModID);
 	}
 
-	public static final ItemGroup ATBYW_BLOCKS = FabricItemGroupBuilder.create(newID("blocks")).icon(() -> {
+	public static final ItemGroup ATBYW_BLOCKS = FabricItemGroupBuilder.create(AtbywID("blocks")).icon(() -> {
 		return new ItemStack(AtbywBlocks.TERRACOTTA_BRICKS);
 	}).build();
 
-	public static final ItemGroup ATBYW_DECO = FabricItemGroupBuilder.create(newID("decoration")).icon(() -> {
+	public static final ItemGroup ATBYW_DECO = FabricItemGroupBuilder.create(AtbywID("decoration")).icon(() -> {
 		return new ItemStack(AtbywBlocks.CYAN_CINDER_BLOCKS_WALL);
 	}).build();
 
-	public static final ItemGroup ATBYW_REDSTONE = FabricItemGroupBuilder.create(newID("redstone")).icon(() -> {
+	public static final ItemGroup ATBYW_REDSTONE = FabricItemGroupBuilder.create(AtbywID("redstone")).icon(() -> {
 		return new ItemStack(AtbywBlocks.REDSTONE_LANTERN);
 	}).build();
 
-	public static final ItemGroup ATBYW_MISC = FabricItemGroupBuilder.create(newID("items")).icon(() -> {
+	public static final ItemGroup ATBYW_MISC = FabricItemGroupBuilder.create(AtbywID("items")).icon(() -> {
 		return new ItemStack(AtbywItems.ACACIA_STICK);
 	}).build();
 

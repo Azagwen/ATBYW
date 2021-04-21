@@ -17,6 +17,7 @@ public class AtbywUtils {
     public static final String[] STONE_NAMES = {"granite", "diorite", "andesite"};
     public static final String[] FLOWER_NAMES = {"dandelion", "poppy", "blue_orchid", "allium", "azure_bluet", "red_tulip", "orange_tulip", "white_tulip", "pink_tulip", "oxeye_daisy", "cornflower", "lily_of_the_valley", "wither_rose"};
     public static final String[] COLOR_NAMES = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
+    public static final String[] TOOL_MATERIALS = {"wooden", "stone", "iron", "golden", "diamond", "netherite"};
     public static final Item[] DYES = {Items.WHITE_DYE, Items.ORANGE_DYE, Items.MAGENTA_DYE, Items.LIGHT_BLUE_DYE, Items.YELLOW_DYE, Items.LIME_DYE, Items.PINK_DYE, Items.GRAY_DYE, Items.LIGHT_GRAY_DYE, Items.CYAN_DYE, Items.PURPLE_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.GREEN_DYE, Items.RED_DYE, Items.BLACK_DYE};
 
     public static int WHITE = 0;
@@ -58,7 +59,7 @@ public class AtbywUtils {
      *  @param block    The Block field
      */
     public static void registerBlockOnly(String name, Block block) {
-        Registry.register(Registry.BLOCK, newID(name), block);
+        Registry.register(Registry.BLOCK, AtbywID(name), block);
     }
 
     /** Registers a block and its block item.
@@ -70,8 +71,8 @@ public class AtbywUtils {
         Item.Settings normalSettings = new Item.Settings().group(group);
         Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
 
-        Registry.register(Registry.BLOCK, newID(name), block);
-        Registry.register(Registry.ITEM, newID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+        Registry.register(Registry.BLOCK, AtbywID(name), block);
+        Registry.register(Registry.ITEM, AtbywID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
     }
 
     /** Will only register blocks, without block items associated to them.

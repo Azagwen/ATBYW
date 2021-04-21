@@ -24,9 +24,9 @@ public class AtbywTags {
     }
 
     private static Tag<Block> registerBlockTag(String id) {
-        return TagRegistry.block(newID(id));
+        return TagRegistry.block(AtbywID(id));
     }
     private static Tag<Item> registerItemTag(String id) {
-        return TagRegistry.item(newID(id));
+        return TagRegistry.item(AtbywID(id));
     }
 }
