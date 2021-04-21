@@ -1,7 +1,0 @@
-{
-    "parent": "minecraft:block/template_cinder_blocks_wall_side",
-    "textures": {
-        "wall": "atbyw:block/magenta_cinder_bricks_side_z",
-        "top_slab": "atbyw:block/magenta_concrete"
-    }
-}

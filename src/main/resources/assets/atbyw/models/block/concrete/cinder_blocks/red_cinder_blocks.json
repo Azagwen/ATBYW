@@ -1,0 +1,8 @@
+{
+    "parent": "atbyw:block/concrete/cinder_blocks/template_cinder_blocks",
+    "textures": {
+        "top": "atbyw:block/red_cinder_blocks_top",
+        "side_z": "atbyw:block/red_cinder_blocks_side_z",
+        "side_x": "atbyw:block/red_cinder_blocks_side_x"
+    }
+}

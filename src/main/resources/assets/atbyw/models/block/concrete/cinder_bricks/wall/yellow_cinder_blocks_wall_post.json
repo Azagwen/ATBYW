@@ -1,6 +1,0 @@
-{
-    "parent": "atbyw:block/concrete/cinder_bricks/wall/template_cinder_blocks_wall_post",
-    "textures": {
-        "wall": "atbyw:block/yellow_cinder_bricks_post"
-    }
-}

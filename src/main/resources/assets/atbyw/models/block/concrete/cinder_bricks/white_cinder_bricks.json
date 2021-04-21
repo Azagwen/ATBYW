@@ -1,8 +1,0 @@
-{
-    "parent": "atbyw:block/concrete/cinder_bricks/template_horizontal_cinder_bricks",
-    "textures": {
-        "top": "atbyw:block/white_cinder_bricks_top",
-        "side_z": "atbyw:block/white_cinder_bricks_side_z",
-        "side_x": "atbyw:block/white_cinder_bricks_side_x"
-    }
-}

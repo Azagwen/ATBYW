@@ -212,7 +212,7 @@ public class AtbywRecipesStonecutting {
 
         CONCRETE_STAIRS_COLORS_STONECUTTING = createStonecutterColoredRecipes(new Pair<>("minecraft", "concrete"), new Pair<>(nameSpace, "concrete_stairs"), 1);
         CONCRETE_SLAB_COLORS_STONECUTTING = createStonecutterColoredRecipes(new Pair<>("minecraft", "concrete"), new Pair<>(nameSpace, "concrete_slab"), 2);
-        CINDER_BLOCKS_COLORS_STONECUTTING = createStonecutterColoredRecipes(new Pair<>("minecraft", "concrete"), new Pair<>(nameSpace, "cinder_blocks"), 1);
+        CINDER_BLOCKS_COLORS_STONECUTTING = createStonecutterColoredRecipes(new Pair<>("minecraft", "concrete"), new Pair<>(nameSpace, "cinder_bricks"), 1);
         CINDER_BLOCKS_WALL_COLORS_STONECUTTING_CONCRETE = createStonecutterColoredRecipes(new Pair<>("minecraft", "concrete"), new Pair<>(nameSpace, "cinder_blocks_wall"), 1);
         CINDER_BLOCKS_WALL_COLORS_STONECUTTING_CINDER_BLOCKS = createStonecutterColoredRecipes(new Pair<>(nameSpace, "cinder_blocks"), new Pair<>(nameSpace, "cinder_blocks_wall"), 1);
 

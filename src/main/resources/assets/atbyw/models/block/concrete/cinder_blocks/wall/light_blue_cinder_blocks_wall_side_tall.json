@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/concrete/cinder_blocks/wall/template_cinder_blocks_wall_side_tall",
+    "textures": {
+        "wall": "atbyw:block/light_blue_cinder_blocks_side_z"
+    }
+}
