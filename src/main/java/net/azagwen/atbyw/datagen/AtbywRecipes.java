@@ -113,7 +113,6 @@ public class AtbywRecipes {
         return createMultiRecipesFromConfig(nameArray, group, config.getCount(), config, result, ingredient);
     }
 
-    //TODO: port recipes for dirt slabs & stairs
     //TODO: port vanilla stick-involving recipes (Armorstand, Bow, Crossbow and Fishing rod left)
 
     public static JsonObject GENERIC_STICK;
@@ -135,6 +134,24 @@ public class AtbywRecipes {
     public static JsonObject[] FENCE_GATE_VARIANTS;
     public static JsonObject[] SIGN_VARIANTS;
     public static JsonObject[] BANNER_COLORS;
+
+    public static JsonObject DIRT_STAIRS;
+    public static JsonObject GRASS_BLOCK_STAIRS;
+    public static JsonObject MYCELIUM_STAIRS;
+    public static JsonObject COARSE_DIRT_STAIRS;
+    public static JsonObject PODZOL_STAIRS;
+    public static JsonObject NETHERRACK_STAIRS;
+    public static JsonObject CRIMSON_NYLIUM_STAIRS;
+    public static JsonObject WARPED_NYLIUM_STAIRS;
+
+    public static JsonObject DIRT_SLAB;
+    public static JsonObject GRASS_BLOCK_SLAB;
+    public static JsonObject MYCELIUM_SLAB;
+    public static JsonObject COARSE_DIRT_SLAB;
+    public static JsonObject PODZOL_SLAB;
+    public static JsonObject NETHERRACK_SLAB;
+    public static JsonObject CRIMSON_NYLIUM_SLAB;
+    public static JsonObject WARPED_NYLIUM_SLAB;
 
     public static JsonObject BASALT_BRICKS_FROM_BASALT;
     public static JsonObject BASALT_PILLAR_FROM_BASALT;
@@ -299,6 +316,24 @@ public class AtbywRecipes {
         FENCE_GATE_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "fence_gates", AtbywRecipeConfigs.FENCE_GATE_2, new Pair<>(mcNameSpace, "fence"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", nameSpace, "stick", true));
         SIGN_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "signs", AtbywRecipeConfigs.SIGN_2, new Pair<>(mcNameSpace, "fence"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", nameSpace, "stick", true));
         BANNER_COLORS = createMultiRecipesFromConfig(COLOR_NAMES, "banners", AtbywRecipeConfigs.SIGN_2, new Pair<>(mcNameSpace, "banner"), newKeyQuadruplet("item", mcNameSpace, "wool", true), newKeyQuadruplet("tag", nameSpace, "sticks", false));
+
+        DIRT_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.DIRT_STAIRS), newKeyPair("item", getBlockID(Blocks.DIRT)));
+        GRASS_BLOCK_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.GRASS_BLOCK_STAIRS), newKeyPair("item", getBlockID(Blocks.GRASS_BLOCK)));
+        MYCELIUM_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.MYCELIUM_STAIRS), newKeyPair("item", getBlockID(Blocks.MYCELIUM)));
+        COARSE_DIRT_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.COARSE_DIRT_STAIRS), newKeyPair("item", getBlockID(Blocks.COARSE_DIRT)));
+        PODZOL_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.PODZOL_STAIRS), newKeyPair("item", getBlockID(Blocks.PODZOL)));
+        NETHERRACK_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.NETHERRACK_STAIRS), newKeyPair("item", getBlockID(Blocks.NETHERRACK)));
+        CRIMSON_NYLIUM_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.CRIMSON_NYLIUM_STAIRS), newKeyPair("item", getBlockID(Blocks.CRIMSON_NYLIUM)));
+        WARPED_NYLIUM_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.WARPED_NYLIUM_STAIRS), newKeyPair("item", getBlockID(Blocks.WARPED_NYLIUM)));
+
+        DIRT_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.DIRT_SLAB), newKeyPair("item", getBlockID(Blocks.DIRT)));
+        GRASS_BLOCK_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.GRASS_BLOCK_SLAB), newKeyPair("item", getBlockID(Blocks.GRASS_BLOCK)));
+        MYCELIUM_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.MYCELIUM_SLAB), newKeyPair("item", getBlockID(Blocks.MYCELIUM)));
+        COARSE_DIRT_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.COARSE_DIRT_SLAB), newKeyPair("item", getBlockID(Blocks.COARSE_DIRT)));
+        PODZOL_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.PODZOL_SLAB), newKeyPair("item", getBlockID(Blocks.PODZOL)));
+        NETHERRACK_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.NETHERRACK_SLAB), newKeyPair("item", getBlockID(Blocks.NETHERRACK)));
+        CRIMSON_NYLIUM_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.CRIMSON_NYLIUM_SLAB), newKeyPair("item", getBlockID(Blocks.CRIMSON_NYLIUM)));
+        WARPED_NYLIUM_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.WARPED_NYLIUM_SLAB), newKeyPair("item", getBlockID(Blocks.WARPED_NYLIUM)));
 
         BASALT_BRICKS_FROM_BASALT = createRecipeFromConfig("basalt_bricks", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.BASALT_BRICKS), newKeyPair("item", getBlockID(Blocks.BASALT)));
         BASALT_PILLAR_FROM_BASALT = createRecipeFromConfig("basalt_bricks", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.BASALT_BRICKS), newKeyPair("item", getBlockID(Blocks.BASALT)));
@@ -540,6 +575,24 @@ public class AtbywRecipes {
         putRecipe(new Identifier("terracotta_bricks_stairs_from_stick_tag"), TERRACOTTA_BRICKS_STAIRS, map);
         putRecipe(new Identifier("terracotta_bricks_slab_from_stick_tag"), TERRACOTTA_BRICKS_SLAB, map);
         putRecipe(new Identifier("terracotta_bricks_wall_from_stick_tag"), TERRACOTTA_BRICKS_WALL, map);
+
+        putRecipe(AtbywID("dirt_stairs"), DIRT_STAIRS, map);
+        putRecipe(AtbywID("grass_block_stairs"), GRASS_BLOCK_STAIRS, map);
+        putRecipe(AtbywID("mycelium_stairs"), MYCELIUM_STAIRS, map);
+        putRecipe(AtbywID("coarse_dirt_stairs"), COARSE_DIRT_STAIRS, map);
+        putRecipe(AtbywID("podzol_stairs"), PODZOL_STAIRS, map);
+        putRecipe(AtbywID("netherrack_stairs"), NETHERRACK_STAIRS, map);
+        putRecipe(AtbywID("crimson_nylium_stairs"), CRIMSON_NYLIUM_STAIRS, map);
+        putRecipe(AtbywID("warped_nylium_stairs"), WARPED_NYLIUM_STAIRS, map);
+
+        putRecipe(AtbywID("dirt_slab"), DIRT_SLAB, map);
+        putRecipe(AtbywID("grass_block_slab"), GRASS_BLOCK_SLAB, map);
+        putRecipe(AtbywID("mycelium_slab"), MYCELIUM_SLAB, map);
+        putRecipe(AtbywID("coarse_dirt_slab"), COARSE_DIRT_SLAB, map);
+        putRecipe(AtbywID("podzol_slab"), PODZOL_SLAB, map);
+        putRecipe(AtbywID("netherrack_slab"), NETHERRACK_SLAB, map);
+        putRecipe(AtbywID("crimson_nylium_slab"), CRIMSON_NYLIUM_SLAB, map);
+        putRecipe(AtbywID("warped_nylium_slab"), WARPED_NYLIUM_SLAB, map);
 
         putRecipe(AtbywID("basalt_bricks_from_basalt"), BASALT_BRICKS_FROM_BASALT, map);
         putRecipe(AtbywID("basalt_pillar_from_basalt"), BASALT_PILLAR_FROM_BASALT, map);

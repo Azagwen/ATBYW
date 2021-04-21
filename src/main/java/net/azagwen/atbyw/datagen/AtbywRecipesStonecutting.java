@@ -46,6 +46,36 @@ public class AtbywRecipesStonecutting {
         return obj;
     }
 
+    public static JsonObject DIRT_STAIRS_STONECUTTING;
+    public static JsonObject DIRT_STAIRS_STONECUTTING_GRASS_BLOCK;
+    public static JsonObject DIRT_STAIRS_STONECUTTING_MYCELIUM;
+    public static JsonObject DIRT_STAIRS_STONECUTTING_COARSE_DIRT;
+    public static JsonObject DIRT_STAIRS_STONECUTTING_PODZOL;
+    public static JsonObject GRASS_BLOCK_STAIRS_STONECUTTING;
+    public static JsonObject MYCELIUM_STAIRS_STONECUTTING;
+    public static JsonObject COARSE_DIRT_STAIRS_STONECUTTING;
+    public static JsonObject PODZOL_STAIRS_STONECUTTING;
+    public static JsonObject NETHERRACK_STAIRS_STONECUTTING;
+    public static JsonObject NETHERRACK_STAIRS_STONECUTTING_CRIMSON_NYLIUM;
+    public static JsonObject NETHERRACK_STAIRS_STONECUTTING_WARPED_NYLIUM;
+    public static JsonObject CRIMSON_NYLIUM_STAIRS_STONECUTTING;
+    public static JsonObject WARPED_NYLIUM_STAIRS_STONECUTTING;
+
+    public static JsonObject DIRT_SLAB_STONECUTTING;
+    public static JsonObject DIRT_SLAB_STONECUTTING_GRASS_BLOCK;
+    public static JsonObject DIRT_SLAB_STONECUTTING_MYCELIUM;
+    public static JsonObject DIRT_SLAB_STONECUTTING_COARSE_DIRT;
+    public static JsonObject DIRT_SLAB_STONECUTTING_PODZOL;
+    public static JsonObject GRASS_BLOCK_SLAB_STONECUTTING;
+    public static JsonObject MYCELIUM_SLAB_STONECUTTING;
+    public static JsonObject COARSE_DIRT_SLAB_STONECUTTING;
+    public static JsonObject PODZOL_SLAB_STONECUTTING;
+    public static JsonObject NETHERRACK_SLAB_STONECUTTING;
+    public static JsonObject NETHERRACK_SLAB_STONECUTTING_CRIMSON_NYLIUM;
+    public static JsonObject NETHERRACK_SLAB_STONECUTTING_WARPED_NYLIUM;
+    public static JsonObject CRIMSON_NYLIUM_SLAB_STONECUTTING;
+    public static JsonObject WARPED_NYLIUM_SLAB_STONECUTTING;
+
     public static JsonObject BASALT_BRICKS_STONECUTTING_BASALT;
     public static JsonObject BASALT_PILLAR_STONECUTTING_BASALT;
     public static JsonObject BASALT_BRICKS_STONECUTTING_POLISHED_BASALT;
@@ -118,6 +148,36 @@ public class AtbywRecipesStonecutting {
     public static JsonObject SMOOTH_PURPUR_SLAB_FROM_SMOOTH_PURPUR_STONECUTTING;
 
     public static void init() {
+        DIRT_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.DIRT), getBlockID(AtbywBlocks.DIRT_STAIRS), 1);
+        DIRT_STAIRS_STONECUTTING_GRASS_BLOCK = createStonecutterRecipe(getBlockID(Blocks.GRASS_BLOCK), getBlockID(AtbywBlocks.DIRT_STAIRS), 1);
+        DIRT_STAIRS_STONECUTTING_MYCELIUM = createStonecutterRecipe(getBlockID(Blocks.MYCELIUM), getBlockID(AtbywBlocks.DIRT_STAIRS), 1);
+        DIRT_STAIRS_STONECUTTING_COARSE_DIRT = createStonecutterRecipe(getBlockID(Blocks.COARSE_DIRT), getBlockID(AtbywBlocks.DIRT_STAIRS), 1);
+        DIRT_STAIRS_STONECUTTING_PODZOL = createStonecutterRecipe(getBlockID(Blocks.PODZOL), getBlockID(AtbywBlocks.DIRT_STAIRS), 1);
+        GRASS_BLOCK_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.GRASS_BLOCK), getBlockID(AtbywBlocks.GRASS_BLOCK_STAIRS), 1);
+        MYCELIUM_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.MYCELIUM), getBlockID(AtbywBlocks.MYCELIUM_STAIRS), 1);
+        COARSE_DIRT_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.COARSE_DIRT), getBlockID(AtbywBlocks.COARSE_DIRT_STAIRS), 1);
+        PODZOL_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PODZOL), getBlockID(AtbywBlocks.PODZOL_STAIRS), 1);
+        NETHERRACK_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.NETHERRACK), getBlockID(AtbywBlocks.NETHERRACK_STAIRS), 1);
+        NETHERRACK_STAIRS_STONECUTTING_CRIMSON_NYLIUM = createStonecutterRecipe(getBlockID(Blocks.CRIMSON_NYLIUM), getBlockID(AtbywBlocks.NETHERRACK_STAIRS), 1);
+        NETHERRACK_STAIRS_STONECUTTING_WARPED_NYLIUM = createStonecutterRecipe(getBlockID(Blocks.WARPED_NYLIUM), getBlockID(AtbywBlocks.NETHERRACK_STAIRS), 1);
+        CRIMSON_NYLIUM_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.CRIMSON_NYLIUM), getBlockID(AtbywBlocks.CRIMSON_NYLIUM_STAIRS), 1);
+        WARPED_NYLIUM_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.WARPED_NYLIUM), getBlockID(AtbywBlocks.WARPED_NYLIUM_STAIRS), 1);
+
+        DIRT_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.DIRT), getBlockID(AtbywBlocks.DIRT_SLAB), 2);
+        DIRT_SLAB_STONECUTTING_GRASS_BLOCK = createStonecutterRecipe(getBlockID(Blocks.GRASS_BLOCK), getBlockID(AtbywBlocks.DIRT_SLAB), 2);
+        DIRT_SLAB_STONECUTTING_MYCELIUM = createStonecutterRecipe(getBlockID(Blocks.MYCELIUM), getBlockID(AtbywBlocks.DIRT_SLAB), 2);
+        DIRT_SLAB_STONECUTTING_COARSE_DIRT = createStonecutterRecipe(getBlockID(Blocks.COARSE_DIRT), getBlockID(AtbywBlocks.DIRT_SLAB), 2);
+        DIRT_SLAB_STONECUTTING_PODZOL = createStonecutterRecipe(getBlockID(Blocks.PODZOL), getBlockID(AtbywBlocks.DIRT_SLAB), 2);
+        GRASS_BLOCK_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.GRASS_BLOCK), getBlockID(AtbywBlocks.GRASS_BLOCK_SLAB), 2);
+        MYCELIUM_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.MYCELIUM), getBlockID(AtbywBlocks.MYCELIUM_SLAB), 2);
+        COARSE_DIRT_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.COARSE_DIRT), getBlockID(AtbywBlocks.COARSE_DIRT_SLAB), 2);
+        PODZOL_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PODZOL), getBlockID(AtbywBlocks.PODZOL_SLAB), 2);
+        NETHERRACK_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.NETHERRACK), getBlockID(AtbywBlocks.NETHERRACK_SLAB), 2);
+        NETHERRACK_SLAB_STONECUTTING_CRIMSON_NYLIUM = createStonecutterRecipe(getBlockID(Blocks.CRIMSON_NYLIUM), getBlockID(AtbywBlocks.NETHERRACK_SLAB), 2);
+        NETHERRACK_SLAB_STONECUTTING_WARPED_NYLIUM = createStonecutterRecipe(getBlockID(Blocks.WARPED_NYLIUM), getBlockID(AtbywBlocks.NETHERRACK_SLAB), 2);
+        CRIMSON_NYLIUM_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.CRIMSON_NYLIUM), getBlockID(AtbywBlocks.CRIMSON_NYLIUM_SLAB), 2);
+        WARPED_NYLIUM_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.WARPED_NYLIUM), getBlockID(AtbywBlocks.WARPED_NYLIUM_SLAB), 2);
+
         BASALT_BRICKS_STONECUTTING_BASALT = createStonecutterRecipe(getBlockID(Blocks.BASALT), getBlockID(AtbywBlocks.BASALT_BRICKS), 1);
         BASALT_PILLAR_STONECUTTING_BASALT = createStonecutterRecipe(getBlockID(Blocks.BASALT), getBlockID(AtbywBlocks.BASALT_PILLAR), 1);
         BASALT_BRICKS_STONECUTTING_POLISHED_BASALT = createStonecutterRecipe(getBlockID(Blocks.POLISHED_BASALT), getBlockID(AtbywBlocks.BASALT_BRICKS), 1);
@@ -208,6 +268,36 @@ public class AtbywRecipesStonecutting {
             putRecipe(AtbywID(COLOR_NAMES[i] + "_cinder_blocks_wall_from_stonecutting_concrete"), CINDER_BLOCKS_WALL_COLORS_STONECUTTING_CONCRETE[i], map);
             putRecipe(AtbywID(COLOR_NAMES[i] + "_cinder_blocks_wall_from_stonecutting_cinder_blocks"), CINDER_BLOCKS_WALL_COLORS_STONECUTTING_CINDER_BLOCKS[i], map);
         }
+
+        putRecipe(AtbywID("dirt_stairs_stonecutting"), DIRT_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("dirt_stairs_stonecutting_grass_block"), DIRT_STAIRS_STONECUTTING_GRASS_BLOCK, map);
+        putRecipe(AtbywID("dirt_stairs_stonecutting_mycelium"), DIRT_STAIRS_STONECUTTING_MYCELIUM, map);
+        putRecipe(AtbywID("dirt_stairs_stonecutting_coarse_dirt"), DIRT_STAIRS_STONECUTTING_COARSE_DIRT, map);
+        putRecipe(AtbywID("dirt_stairs_stonecutting_podzol"), DIRT_STAIRS_STONECUTTING_PODZOL, map);
+        putRecipe(AtbywID("grass_block_stairs_stonecutting"), GRASS_BLOCK_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("mycelium_stairs_stonecutting"), MYCELIUM_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("coarse_dirt_stairs_stonecutting"), COARSE_DIRT_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("podzol_stairs_stonecutting"), PODZOL_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("netherrack_stairs_stonecutting"), NETHERRACK_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("netherrack_stairs_stonecutting_crimson_nylium"), NETHERRACK_STAIRS_STONECUTTING_CRIMSON_NYLIUM, map);
+        putRecipe(AtbywID("netherrack_stairs_stonecutting_warped_nylium"), NETHERRACK_STAIRS_STONECUTTING_WARPED_NYLIUM, map);
+        putRecipe(AtbywID("crimson_nylium_stairs_stonecutting"), CRIMSON_NYLIUM_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("warped_nylium_stairs_stonecutting"), WARPED_NYLIUM_STAIRS_STONECUTTING, map);
+
+         putRecipe(AtbywID("dirt_slab_stonecutting"), DIRT_SLAB_STONECUTTING, map);
+         putRecipe(AtbywID("dirt_slab_stonecutting_grass_block"), DIRT_SLAB_STONECUTTING_GRASS_BLOCK, map);
+         putRecipe(AtbywID("dirt_slab_stonecutting_mycelium"), DIRT_SLAB_STONECUTTING_MYCELIUM, map);
+         putRecipe(AtbywID("dirt_slab_stonecutting_coarse_dirt"), DIRT_SLAB_STONECUTTING_COARSE_DIRT, map);
+         putRecipe(AtbywID("dirt_slab_stonecutting_podzol"), DIRT_SLAB_STONECUTTING_PODZOL, map);
+         putRecipe(AtbywID("grass_block_slab_stonecutting"), GRASS_BLOCK_SLAB_STONECUTTING, map);
+         putRecipe(AtbywID("mycelium_slab_stonecutting"), MYCELIUM_SLAB_STONECUTTING, map);
+         putRecipe(AtbywID("coarse_dirt_slab_stonecutting"), COARSE_DIRT_SLAB_STONECUTTING, map);
+         putRecipe(AtbywID("podzol_slab_stonecutting"), PODZOL_SLAB_STONECUTTING, map);
+         putRecipe(AtbywID("netherrack_slab_stonecutting"), NETHERRACK_SLAB_STONECUTTING, map);
+         putRecipe(AtbywID("netherrack_slab_stonecutting_crimson_nylium"), NETHERRACK_SLAB_STONECUTTING_CRIMSON_NYLIUM, map);
+         putRecipe(AtbywID("netherrack_slab_stonecutting_warped_nylium"), NETHERRACK_SLAB_STONECUTTING_WARPED_NYLIUM, map);
+         putRecipe(AtbywID("crimson_nylium_slab_stonecutting"), CRIMSON_NYLIUM_SLAB_STONECUTTING, map);
+         putRecipe(AtbywID("warped_nylium_slab_stonecutting"), WARPED_NYLIUM_SLAB_STONECUTTING, map);
 
         putRecipe(AtbywID("basalt_bricks_stonecutting_basalt"), BASALT_BRICKS_STONECUTTING_BASALT, map);
         putRecipe(AtbywID("basalt_pillar_stonecutting_basalt"), BASALT_PILLAR_STONECUTTING_BASALT, map);
