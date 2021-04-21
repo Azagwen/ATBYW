@@ -29,8 +29,9 @@ public class AtbywBlocks {
     //Blocks to add
     //TODO: Add Bipedal Statues
     //TODO: Add spike traps (redstone)
-    //TODO: Add Snow and Ice Bricks + Compacted Snow (doesn't melt)
+    //TODO: Add Snow and Ice Bricks + Compacted Snow & Compacted Snow bricks (doesn't melt)
     //TODO: Add Railing Blocks (catwalk handles)
+    //TODO: Add Redstone and soul Jack'O Lanterns (directional redstone power)
 
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
     public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }

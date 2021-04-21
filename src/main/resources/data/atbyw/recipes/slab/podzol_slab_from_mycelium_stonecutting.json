@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "minecraft:podzol"
-    },
-    "result": "atbyw:podzol_slab",
-    "count": 2
-}

@@ -11,24 +11,40 @@ public enum AtbywRecipeConfigs implements AtbywRecipeConfig {
      *  With this naming convention applied, "BRICKS_1" contains the pattern of the vanilla stone bricks,
      *  and only require one ingredient.
      */
+
     // 1 Ingredients
+    STICK_1(Lists.newArrayList("#", "#"), Lists.newArrayList('#'), 4),
+    LADDER_1(Lists.newArrayList("# #", "###", "# #"), Lists.newArrayList('#'), 3),
     BRICKS_1(Lists.newArrayList("##", "##"), Lists.newArrayList('#'), 4),
     STAIRS_1(Lists.newArrayList("#  ", "## ", "###"), Lists.newArrayList('#'), 4),
     SLAB_1(Lists.newArrayList("###"), Lists.newArrayList('#'), 6),
     WALL_1(Lists.newArrayList("###", "###"), Lists.newArrayList('#'), 6),
-    STICK_1(Lists.newArrayList("#", "#"), Lists.newArrayList('#'), 2),
+    FENCE_DOOR_1(Lists.newArrayList("# #", "# #", "# #"), Lists.newArrayList('#'), 3),
     COLUMN_1(Lists.newArrayList("#", "#", "#"), Lists.newArrayList('#'), 3),
 
     // 2 Ingredients
+    TORCH_2(Lists.newArrayList("#", "S"), Lists.newArrayList('#', 'S'), 4),
+    FENCE_2(Lists.newArrayList("#S#", "#S#"), Lists.newArrayList('#', 'S'), 3),
+    FENCE_GATE_2(Lists.newArrayList("S#S", "S#S"), Lists.newArrayList('#', 'S'), 1),
+    SIGN_2(Lists.newArrayList("###", "###", " S "), Lists.newArrayList('#', 'S'), 3),
+    BOOKSHELF_2(Lists.newArrayList("###", "BBB", "###"), Lists.newArrayList('#', 'B'), 1),
     DYING_2(Lists.newArrayList("BBB", "BDB", "BBB"), Lists.newArrayList('B', 'D'), 8),
     SWORD_2(Lists.newArrayList("#", "#", "S"), Lists.newArrayList('#', 'S'), 1),
     AXE_2(Lists.newArrayList("##", "#S", " S"), Lists.newArrayList('#', 'S'), 1),
     PICKAXE_2(Lists.newArrayList("###", " S ", " S "), Lists.newArrayList('#', 'S'), 1),
     SHOVEL_2(Lists.newArrayList("#", "S", "S"), Lists.newArrayList('#', 'S'), 1),
     HOE_2(Lists.newArrayList("##", " S", " S"), Lists.newArrayList('#', 'S'), 1),
+    RAIL_2(Lists.newArrayList("# #", "#S#", "# #"), Lists.newArrayList('#', 'S'), 16),
 
     // 3 Ingredients
-    DYING_DASHED_3(Lists.newArrayList("X#X", "#O#", "X#X"), Lists.newArrayList('#', 'X', 'O'), 8);
+    ARROW_3(Lists.newArrayList("#", "S", "F"), Lists.newArrayList('#', 'S', 'F'), 4),
+    DYING_DASHED_3(Lists.newArrayList("X#X", "#O#", "X#X"), Lists.newArrayList('#', 'X', 'O'), 8),
+    FLOWER_SWITCH_3(Lists.newArrayList(" F ", "RSR"), Lists.newArrayList('F', 'S', 'R'), 1),
+    RAIL_POWERED_3(Lists.newArrayList("# #", "#S#", "#R#"), Lists.newArrayList('#', 'S', 'R'), 6),
+    RAIL_ACTIVATOR_3(Lists.newArrayList("#S#", "#R#", "#S#"), Lists.newArrayList('#', 'S', 'R'), 6),
+
+    // 4 Ingredients
+    BOOKSHELF_TOGGLE_4(Lists.newArrayList("PPP", "RBR", "CRC"), Lists.newArrayList('P', 'B', 'R', 'C'), 1);
 
     ArrayList<String> pattern;
     ArrayList<Character> keyChars;

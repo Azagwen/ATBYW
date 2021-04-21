@@ -18,7 +18,7 @@ public class AtbywTags {
     // Item Tags
     public static final Tag<Item> ITEM_BOOKSHELVES = registerItemTag("bookshelves");
     public static final Tag<Item> ITEM_PISTONS = registerItemTag("pistons");
-    public static final Tag<Item> STICKS = registerItemTag("sticks");
+    public static final Tag<Item> STICKS = registerItemTag("sticks.json");
 
     private AtbywTags() {
     }

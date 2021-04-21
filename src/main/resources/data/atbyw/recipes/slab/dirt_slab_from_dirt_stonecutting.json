@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "minecraft:dirt"
-    },
-    "result": "atbyw:dirt_slab",
-    "count": 2
-}
