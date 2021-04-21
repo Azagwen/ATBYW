@@ -393,7 +393,7 @@ public class AtbywRecipes {
         NETHERITE_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.HOE_2, getItemID(Items.NETHERITE_HOE), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", AtbywID("sticks")));
 
         TERRACOTTA_STAIRS = createRecipeFromConfig("terracotta_stairs", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.TERRACOTTA_STAIRS), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
-        TERRACOTTA_SLAB = createRecipeFromConfig("terracotta_slab", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.TERRACOTTA_STAIRS), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
+        TERRACOTTA_SLAB = createRecipeFromConfig("terracotta_slab", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.TERRACOTTA_SLAB), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
         TERRACOTTA_BRICKS = createRecipeFromConfig("terracotta_bricks", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.TERRACOTTA_BRICKS), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
         TERRACOTTA_BRICKS_STAIRS = createRecipeFromConfig("terracotta_bricks_stairs", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.TERRACOTTA_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.TERRACOTTA_BRICKS)));
         TERRACOTTA_BRICKS_SLAB = createRecipeFromConfig("terracotta_bricks_slab", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.TERRACOTTA_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.TERRACOTTA_BRICKS)));
@@ -569,12 +569,12 @@ public class AtbywRecipes {
         putRecipe(new Identifier("diamond_hoe_from_stick_tag"), DIAMOND_HOE_FROM_STICK_VARIANTS, map);
         putRecipe(new Identifier("netherite_hoe_from_stick_tag"), NETHERITE_HOE_FROM_STICK_VARIANTS, map);
 
-        putRecipe(new Identifier("terracotta_stairs_from_stick_tag"), TERRACOTTA_STAIRS, map);
-        putRecipe(new Identifier("terracotta_slab_from_stick_tag"), TERRACOTTA_SLAB, map);
-        putRecipe(new Identifier("terracotta_bricks_from_stick_tag"), TERRACOTTA_BRICKS, map);
-        putRecipe(new Identifier("terracotta_bricks_stairs_from_stick_tag"), TERRACOTTA_BRICKS_STAIRS, map);
-        putRecipe(new Identifier("terracotta_bricks_slab_from_stick_tag"), TERRACOTTA_BRICKS_SLAB, map);
-        putRecipe(new Identifier("terracotta_bricks_wall_from_stick_tag"), TERRACOTTA_BRICKS_WALL, map);
+        putRecipe(AtbywID("terracotta_stairs_from_stick_tag"), TERRACOTTA_STAIRS, map);
+        putRecipe(AtbywID("terracotta_slab_from_stick_tag"), TERRACOTTA_SLAB, map);
+        putRecipe(AtbywID("terracotta_bricks_from_stick_tag"), TERRACOTTA_BRICKS, map);
+        putRecipe(AtbywID("terracotta_bricks_stairs_from_stick_tag"), TERRACOTTA_BRICKS_STAIRS, map);
+        putRecipe(AtbywID("terracotta_bricks_slab_from_stick_tag"), TERRACOTTA_BRICKS_SLAB, map);
+        putRecipe(AtbywID("terracotta_bricks_wall_from_stick_tag"), TERRACOTTA_BRICKS_WALL, map);
 
         putRecipe(AtbywID("dirt_stairs"), DIRT_STAIRS, map);
         putRecipe(AtbywID("grass_block_stairs"), GRASS_BLOCK_STAIRS, map);
