@@ -352,9 +352,9 @@ public class AtbywRecipes {
         ANDESITE_BRICKS = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.ANDESITE_BRICKS), newKeyPair("item", getBlockID(Blocks.ANDESITE)));
 
         STICK_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "stick", AtbywRecipeConfigs.STICK_1, new Pair<>(nameSpace, "stick"), newKeyQuadruplet("item", mcNameSpace, "planks", true));
-        BOOKSHELF_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "bookshelf", AtbywRecipeConfigs.BOOKSHELF_2, new Pair<>(nameSpace, "bookshelf"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false));
+        BOOKSHELF_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES_NO_OAK, "bookshelf", AtbywRecipeConfigs.BOOKSHELF_2, new Pair<>(nameSpace, "bookshelf"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false));
         BOOKSHELF_TOGGLES_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "bookshelf_toggle", AtbywRecipeConfigs.BOOKSHELF_TOGGLE_4, new Pair<>(nameSpace, "bookshelf_toggle"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false), newKeyQuadruplet("item", mcNameSpace, "redstone", false), newKeyQuadruplet("tag", mcNameSpace, "stone_tool_materials", false));
-        LADDERS_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "ladders", AtbywRecipeConfigs.LADDER_1, new Pair<>(nameSpace, "ladder"), newKeyQuadruplet("item", nameSpace, "stick", true));
+        LADDERS_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES_NO_OAK, "ladders", AtbywRecipeConfigs.LADDER_1, new Pair<>(nameSpace, "ladder"), newKeyQuadruplet("item", nameSpace, "stick", true));
         FENCE_DOOR_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "fence_door", AtbywRecipeConfigs.FENCE_DOOR_1, new Pair<>(nameSpace, "fence_door"), newKeyQuadruplet("item", mcNameSpace, "planks", true));
         FLOWER_SWITCHES = createMultiRecipesFromConfig(FLOWER_NAMES, "flower_switches", AtbywRecipeConfigs.FLOWER_SWITCH_3, new Pair<>(nameSpace, "pull_switch"), newKeyQuadruplet("item", mcNameSpace, "", true), newKeyQuadruplet("tag", nameSpace, "sticks", false), newKeyQuadruplet("item", mcNameSpace, "redstone", false));
 
@@ -529,7 +529,7 @@ public class AtbywRecipes {
         putRecipe(new Identifier("arrow"), ARROW, map);
         putRecipe(new Identifier("bookshelf"), OAK_BOOKSHELF, map);
         putRecipe(new Identifier("ladder"), OAK_LADDER, map);
-        putRecipe(new Identifier("ladder"), PAINTING, map);
+        putRecipe(new Identifier("painting"), PAINTING, map);
         putRecipe(new Identifier("item_frame"), ITEM_FRAME, map);
         putRecipe(new Identifier("rail"), RAIL, map);
         putRecipe(new Identifier("powered_rail"), POWERED_RAIL, map);
