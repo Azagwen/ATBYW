@@ -147,6 +147,25 @@ public class AtbywRecipesStonecutting {
     public static JsonObject PURPUR_TILES_SLAB_FROM_PURPUR_TILES_STONECUTTING;
     public static JsonObject SMOOTH_PURPUR_SLAB_FROM_SMOOTH_PURPUR_STONECUTTING;
 
+    public static JsonObject COMPACTED_SNOW_STONECUTTING;
+    public static JsonObject COMPACTED_SNOW_BRICKS_STONECUTTING;
+    public static JsonObject PACKED_ICE_BRICKS_STONECUTTING;
+    public static JsonObject BLUE_ICE_BRICKS_STONECUTTING;
+
+    public static JsonObject COMPACTED_SNOW_BLOCK_STAIRS_STONECUTTING;
+    public static JsonObject COMPACTED_SNOW_BRICKS_STAIRS_STONECUTTING;
+    public static JsonObject PACKED_ICE_STAIRS_STONECUTTING;
+    public static JsonObject BLUE_ICE_STAIRS_STONECUTTING;
+    public static JsonObject PACKED_ICE_BRICKS_STAIRS_STONECUTTING;
+    public static JsonObject BLUE_ICE_BRICKS_STAIRS_STONECUTTING;
+
+    public static JsonObject COMPACTED_SNOW_BLOCK_SLAB_STONECUTTING;
+    public static JsonObject COMPACTED_SNOW_BRICKS_SLAB_STONECUTTING;
+    public static JsonObject PACKED_ICE_SLAB_STONECUTTING;
+    public static JsonObject BLUE_ICE_SLAB_STONECUTTING;
+    public static JsonObject PACKED_ICE_BRICKS_SLAB_STONECUTTING;
+    public static JsonObject BLUE_ICE_BRICKS_SLAB_STONECUTTING;
+
     public static void init() {
         DIRT_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.DIRT), getBlockID(AtbywBlocks.DIRT_STAIRS), 1);
         DIRT_STAIRS_STONECUTTING_GRASS_BLOCK = createStonecutterRecipe(getBlockID(Blocks.GRASS_BLOCK), getBlockID(AtbywBlocks.DIRT_STAIRS), 1);
@@ -237,17 +256,36 @@ public class AtbywRecipesStonecutting {
         PRISMARINE_COLUMN_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PRISMARINE_BRICKS), getBlockID(AtbywBlocks.PRISMARINE_COLUMN), 1);
         BLACKSTONE_COLUMN_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.BLACKSTONE), getBlockID(AtbywBlocks.BLACKSTONE_COLUMN), 1);
 
-        PURPUR_TILES_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PURPUR_BLOCK), getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), 1);
+        PURPUR_TILES_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PURPUR_BLOCK), getBlockID(AtbywBlocks.CUT_PURPUR_BLOCK), 1);
         SMOOTH_PURPUR_BLOCK_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PURPUR_BLOCK), getBlockID(AtbywBlocks.PURPUR_TILES), 1);
         CHISELED_PURPUR_BLOCK_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PURPUR_BLOCK), getBlockID(AtbywBlocks.CHISELED_PURPUR_BLOCK), 1);
         PURPUR_TILES_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PURPUR_BLOCK), getBlockID(AtbywBlocks.PURPUR_TILES_STAIRS), 1);
-        SMOOTH_PURPUR_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PURPUR_BLOCK), getBlockID(AtbywBlocks.SMOOTH_PURPUR_STAIRS), 1);
+        SMOOTH_PURPUR_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PURPUR_BLOCK), getBlockID(AtbywBlocks.CUT_PURPUR_STAIRS), 1);
         PURPUR_TILES_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PURPUR_BLOCK), getBlockID(AtbywBlocks.PURPUR_TILES_SLAB), 2);
-        SMOOTH_PURPUR_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PURPUR_BLOCK), getBlockID(AtbywBlocks.SMOOTH_PURPUR_SLAB), 2);
+        SMOOTH_PURPUR_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PURPUR_BLOCK), getBlockID(AtbywBlocks.CUT_PURPUR_SLAB), 2);
         PURPUR_TILES_STAIRS_FROM_PURPUR_TILES_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.PURPUR_TILES), getBlockID(AtbywBlocks.PURPUR_TILES_STAIRS), 1);
-        SMOOTH_PURPUR_STAIRS_FROM_SMOOTH_PURPUR_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), getBlockID(AtbywBlocks.SMOOTH_PURPUR_STAIRS), 1);
+        SMOOTH_PURPUR_STAIRS_FROM_SMOOTH_PURPUR_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.CUT_PURPUR_BLOCK), getBlockID(AtbywBlocks.CUT_PURPUR_STAIRS), 1);
         PURPUR_TILES_SLAB_FROM_PURPUR_TILES_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.PURPUR_TILES), getBlockID(AtbywBlocks.PURPUR_TILES_SLAB), 2);
-        SMOOTH_PURPUR_SLAB_FROM_SMOOTH_PURPUR_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), getBlockID(AtbywBlocks.SMOOTH_PURPUR_SLAB), 2);
+        SMOOTH_PURPUR_SLAB_FROM_SMOOTH_PURPUR_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.CUT_PURPUR_BLOCK), getBlockID(AtbywBlocks.CUT_PURPUR_SLAB), 2);
+
+        COMPACTED_SNOW_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK), getBlockID(AtbywBlocks.COMPACTED_SNOW), 8);
+        COMPACTED_SNOW_BRICKS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS), getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK), 1);
+        PACKED_ICE_BRICKS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.PACKED_ICE_BRICKS), getBlockID(Blocks.PACKED_ICE), 1);
+        BLUE_ICE_BRICKS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.BLUE_ICE_BRICKS), getBlockID(Blocks.BLUE_ICE), 1);
+
+        COMPACTED_SNOW_BLOCK_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK), getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK_STAIRS), 1);
+        COMPACTED_SNOW_BRICKS_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS), getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS_STAIRS), 1);
+        PACKED_ICE_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PACKED_ICE), getBlockID(AtbywBlocks.PACKED_ICE_STAIRS), 1);
+        BLUE_ICE_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.BLUE_ICE), getBlockID(AtbywBlocks.BLUE_ICE_STAIRS), 1);
+        PACKED_ICE_BRICKS_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.PACKED_ICE_BRICKS), getBlockID(AtbywBlocks.PACKED_ICE_BRICKS_STAIRS), 1);
+        BLUE_ICE_BRICKS_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.BLUE_ICE_BRICKS), getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_STAIRS), 1);
+
+        COMPACTED_SNOW_BLOCK_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK), getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK_SLAB), 2);
+        COMPACTED_SNOW_BRICKS_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS), getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS_SLAB), 2);
+        PACKED_ICE_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PACKED_ICE), getBlockID(AtbywBlocks.PACKED_ICE_SLAB), 2);
+        BLUE_ICE_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.BLUE_ICE), getBlockID(AtbywBlocks.BLUE_ICE_SLAB), 2);
+        PACKED_ICE_BRICKS_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.PACKED_ICE_BRICKS), getBlockID(AtbywBlocks.PACKED_ICE_BRICKS_SLAB), 2);
+        BLUE_ICE_BRICKS_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.BLUE_ICE_BRICKS), getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_SLAB), 2);
     }
 
     public static void injectRecipes(Map<Identifier, JsonElement> map) {
@@ -353,5 +391,24 @@ public class AtbywRecipesStonecutting {
         putRecipe(AtbywID("smooth_purpur_stairs_from_smooth_purpur_stonecutting"), SMOOTH_PURPUR_STAIRS_FROM_SMOOTH_PURPUR_STONECUTTING, map);
         putRecipe(AtbywID("purpur_tiles_slab_from_purpur_tiles_stonecutting"), PURPUR_TILES_SLAB_FROM_PURPUR_TILES_STONECUTTING, map);
         putRecipe(AtbywID("smooth_purpur_slab_from_smooth_purpur_stonecutting"), SMOOTH_PURPUR_SLAB_FROM_SMOOTH_PURPUR_STONECUTTING, map);
+
+        putRecipe(AtbywID("compacted_snow_stonecutting"), COMPACTED_SNOW_STONECUTTING, map);
+        putRecipe(AtbywID("compacted_snow_bricks_stonecutting"), COMPACTED_SNOW_BRICKS_STONECUTTING, map);
+        putRecipe(AtbywID("packed_ice_bricks_stonecutting"), PACKED_ICE_BRICKS_STONECUTTING, map);
+        putRecipe(AtbywID("blue_ice_bricks_stonecutting"), BLUE_ICE_BRICKS_STONECUTTING, map);
+
+        putRecipe(AtbywID("compacted_snow_block_stairs_stonecutting"), COMPACTED_SNOW_BLOCK_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("compacted_snow_bricks_stairs_stonecutting"), COMPACTED_SNOW_BRICKS_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("packed_ice_stairs_stonecutting"), PACKED_ICE_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("blue_ice_stairs_stonecutting"), BLUE_ICE_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("packed_ice_bricks_stairs_stonecutting"), PACKED_ICE_BRICKS_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("blue_ice_bricks_stairs_stonecutting"), BLUE_ICE_BRICKS_STAIRS_STONECUTTING, map);
+
+        putRecipe(AtbywID("compacted_snow_block_slab_stonecutting"), COMPACTED_SNOW_BLOCK_SLAB_STONECUTTING, map);
+        putRecipe(AtbywID("compacted_snow_bricks_slab_stonecutting"), COMPACTED_SNOW_BRICKS_SLAB_STONECUTTING, map);
+        putRecipe(AtbywID("packed_ice_slab_stonecutting"), PACKED_ICE_SLAB_STONECUTTING, map);
+        putRecipe(AtbywID("blue_ice_slab_stonecutting"), BLUE_ICE_SLAB_STONECUTTING, map);
+        putRecipe(AtbywID("packed_ice_bricks_slab_stonecutting"), PACKED_ICE_BRICKS_SLAB_STONECUTTING, map);
+        putRecipe(AtbywID("blue_ice_bricks_slab_stonecutting"), BLUE_ICE_BRICKS_SLAB_STONECUTTING, map);
     }
 }

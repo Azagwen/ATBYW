@@ -35,6 +35,9 @@ public enum AtbywRecipeConfigs implements AtbywRecipeConfig {
     SHOVEL_2(Lists.newArrayList("#", "S", "S"), Lists.newArrayList('#', 'S'), 1),
     HOE_2(Lists.newArrayList("##", " S", " S"), Lists.newArrayList('#', 'S'), 1),
     RAIL_2(Lists.newArrayList("# #", "#S#", "# #"), Lists.newArrayList('#', 'S'), 16),
+    BOW_2(Lists.newArrayList(" #S", "# S", " #S"), Lists.newArrayList('#', 'S'), 1),
+    FISHING_ROD_2(Lists.newArrayList("  #", " #S", "# S"), Lists.newArrayList('#', 'S'), 1),
+    ARMOR_STAND_2(Lists.newArrayList("###", " # ", "#S#"), Lists.newArrayList('#', 'S'), 1),
 
     // 3 Ingredients
     ARROW_3(Lists.newArrayList("#", "S", "F"), Lists.newArrayList('#', 'S', 'F'), 4),
@@ -44,7 +47,8 @@ public enum AtbywRecipeConfigs implements AtbywRecipeConfig {
     RAIL_ACTIVATOR_3(Lists.newArrayList("#S#", "#R#", "#S#"), Lists.newArrayList('#', 'S', 'R'), 6),
 
     // 4 Ingredients
-    BOOKSHELF_TOGGLE_4(Lists.newArrayList("PPP", "RBR", "CRC"), Lists.newArrayList('P', 'B', 'R', 'C'), 1);
+    BOOKSHELF_TOGGLE_4(Lists.newArrayList("PPP", "RBR", "CRC"), Lists.newArrayList('P', 'B', 'R', 'C'), 1),
+    CROSSBOW_4(Lists.newArrayList("#I#", "SHS", " # "), Lists.newArrayList('#', 'S', 'I', 'H'), 1);
 
     ArrayList<String> pattern;
     ArrayList<Character> keyChars;

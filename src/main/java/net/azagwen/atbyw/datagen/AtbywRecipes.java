@@ -69,7 +69,7 @@ public class AtbywRecipes {
         for (int i = 0; i < ingredient.length; i++) {
             keys[i] = new Key(config.getKeyChars().get(i), ingredient[i].getLeft(), ingredient[i].getRight());
         }
-        LOGGER.info(Arrays.toString(keys));
+//        LOGGER.info(Arrays.toString(keys));
 
         return createShapedRecipeJson(group, config.getPattern(), Lists.newArrayList(keys), result, count);
     }
@@ -117,19 +117,23 @@ public class AtbywRecipes {
     //TODO: fix vanilla bookshelf and ladders not being craftable
 
     public static JsonObject GENERIC_STICK;
-    public static JsonObject TORCH;
-    public static JsonObject REDSTONE_TORCH;
-    public static JsonObject SOUL_TORCH;
-    public static JsonObject LEVER;
-    public static JsonObject TRIPWIRE_HOOK;
-    public static JsonObject ARROW;
     public static JsonObject OAK_BOOKSHELF;
     public static JsonObject OAK_LADDER;
-    public static JsonObject PAINTING;
-    public static JsonObject ITEM_FRAME;
+    public static JsonObject TORCH;
+    public static JsonObject SOUL_TORCH;
+    public static JsonObject REDSTONE_TORCH;
+    public static JsonObject LEVER;
+    public static JsonObject TRIPWIRE_HOOK;
     public static JsonObject RAIL;
     public static JsonObject POWERED_RAIL;
     public static JsonObject ACTIVATOR_RAIL;
+    public static JsonObject ARROW;
+    public static JsonObject BOW;
+    public static JsonObject CROSSBOW;
+    public static JsonObject FISHING_ROD;
+    public static JsonObject PAINTING;
+    public static JsonObject ITEM_FRAME;
+    public static JsonObject ARMOR_STAND;
 
     public static JsonObject[] FENCE_VARIANTS;
     public static JsonObject[] FENCE_GATE_VARIANTS;
@@ -287,35 +291,62 @@ public class AtbywRecipes {
     public static JsonObject BLACKSTONE_COLUMN;
 
     public static JsonObject PURPUR_TILES;
-    public static JsonObject SMOOTH_PURPUR_BLOCK;
+    public static JsonObject CUT_PURPUR_BLOCK;
     public static JsonObject CHISELED_PURPUR_BLOCK;
     public static JsonObject PURPUR_TILES_STAIRS;
+    public static JsonObject CUT_PURPUR_STAIRS;
     public static JsonObject SMOOTH_PURPUR_STAIRS;
     public static JsonObject PURPUR_TILES_SLAB;
+    public static JsonObject CUT_PURPUR_SLAB;
     public static JsonObject SMOOTH_PURPUR_SLAB;
+
+    public static JsonObject COMPACTED_SNOW;
+    public static JsonObject COMPACTED_SNOW_BLOCK;
+    public static JsonObject COMPACTED_SNOW_BRICKS;
+    public static JsonObject PACKED_ICE_BRICKS;
+    public static JsonObject BLUE_ICE_BRICKS;
+
+    public static JsonObject COMPACTED_SNOW_BLOCK_STAIRS;
+    public static JsonObject COMPACTED_SNOW_BRICKS_STAIRS;
+    public static JsonObject PACKED_ICE_STAIRS;
+    public static JsonObject BLUE_ICE_STAIRS;
+    public static JsonObject PACKED_ICE_BRICKS_STAIRS;
+    public static JsonObject BLUE_ICE_BRICKS_STAIRS;
+
+    public static JsonObject COMPACTED_SNOW_BLOCK_SLAB;
+    public static JsonObject COMPACTED_SNOW_BRICKS_SLAB;
+    public static JsonObject PACKED_ICE_SLAB;
+    public static JsonObject BLUE_ICE_SLAB;
+    public static JsonObject PACKED_ICE_BRICKS_SLAB;
+    public static JsonObject BLUE_ICE_BRICKS_SLAB;
 
 
     public static void init() {
+        AtbywRecipesSmelting.init();
         AtbywRecipesStonecutting.init();
 
         GENERIC_STICK = createRecipeFromConfig("", AtbywRecipeConfigs.STICK_1, getItemID(Items.STICK), newKeyPair("tag", BlockTags.PLANKS.getId()));
-        TORCH = createRecipeFromConfig("", AtbywRecipeConfigs.TORCH_2, getItemID(Items.TORCH), newKeyPair("tag", ItemTags.COALS.getId()), newKeyPair("tag", AtbywID("sticks")));
-        REDSTONE_TORCH = createRecipeFromConfig("", AtbywRecipeConfigs.TORCH_2, getItemID(Items.REDSTONE_TORCH), newKeyPair("item", getItemID(Items.REDSTONE)), newKeyPair("tag", AtbywID("sticks")));
-        SOUL_TORCH = createRecipeFromConfig("", AtbywRecipeConfigs.ARROW_3, getItemID(Items.SOUL_TORCH), newKeyPair("tag", ItemTags.COALS.getId()), newKeyPair("tag", AtbywID("sticks")), newKeyPair("tag", BlockTags.SOUL_FIRE_BASE_BLOCKS.getId()));
-        LEVER = createRecipeFromConfig("", AtbywRecipeConfigs.TORCH_2, getItemID(Items.LEVER), newKeyPair("tag", AtbywID("sticks")), newKeyPair("tag", new Identifier("stone_tool_materials")));
-        TRIPWIRE_HOOK = createRecipeFromConfig("", AtbywRecipeConfigs.ARROW_3, getItemID(Items.TRIPWIRE_HOOK), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", AtbywID("sticks")), newKeyPair("tag", BlockTags.PLANKS.getId()));
-        ARROW = createRecipeFromConfig("", AtbywRecipeConfigs.ARROW_3, getItemID(Items.ARROW), newKeyPair("item", getItemID(Items.FLINT)), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getItemID(Items.FEATHER)));
         OAK_BOOKSHELF = createRecipeFromConfig("bookshelf", AtbywRecipeConfigs.BOOKSHELF_2, getBlockID(Blocks.BOOKSHELF), newKeyPair("item", getBlockID(Blocks.OAK_PLANKS)), newKeyPair("item", getItemID(Items.BOOK)));
         OAK_LADDER = createRecipeFromConfig("ladders", AtbywRecipeConfigs.LADDER_1, getBlockID(Blocks.LADDER), newKeyPair("item", getItemID(AtbywItems.OAK_STICK)));
-        PAINTING = createRecipeFromConfig("", AtbywRecipeConfigs.DYING_2, getItemID(Items.PAINTING), newKeyPair("tag", AtbywID("sticks")), newKeyPair("tag", BlockTags.WOOL.getId()));
-        ITEM_FRAME = createRecipeFromConfig("", AtbywRecipeConfigs.DYING_2, getItemID(Items.ITEM_FRAME), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getItemID(Items.LEATHER)));
+        TORCH = createRecipeFromConfig("", AtbywRecipeConfigs.TORCH_2, getItemID(Items.TORCH), newKeyPair("tag", ItemTags.COALS.getId()), newKeyPair("tag", AtbywID("sticks")));
+        SOUL_TORCH = createRecipeFromConfig("", AtbywRecipeConfigs.ARROW_3, getItemID(Items.SOUL_TORCH), newKeyPair("tag", ItemTags.COALS.getId()), newKeyPair("tag", AtbywID("sticks")), newKeyPair("tag", BlockTags.SOUL_FIRE_BASE_BLOCKS.getId()));
+        REDSTONE_TORCH = createRecipeFromConfig("", AtbywRecipeConfigs.TORCH_2, getItemID(Items.REDSTONE_TORCH), newKeyPair("item", getItemID(Items.REDSTONE)), newKeyPair("tag", AtbywID("sticks")));
+        LEVER = createRecipeFromConfig("", AtbywRecipeConfigs.TORCH_2, getItemID(Items.LEVER), newKeyPair("tag", AtbywID("sticks")), newKeyPair("tag", new Identifier("stone_tool_materials")));
+        TRIPWIRE_HOOK = createRecipeFromConfig("", AtbywRecipeConfigs.ARROW_3, getItemID(Items.TRIPWIRE_HOOK), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", AtbywID("sticks")), newKeyPair("tag", BlockTags.PLANKS.getId()));
         RAIL = createRecipeFromConfig("", AtbywRecipeConfigs.RAIL_2, getBlockID(Blocks.RAIL), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", AtbywID("sticks")));
         POWERED_RAIL = createRecipeFromConfig("", AtbywRecipeConfigs.RAIL_POWERED_3, getBlockID(Blocks.POWERED_RAIL), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getItemID(Items.REDSTONE)));
-        ACTIVATOR_RAIL = createRecipeFromConfig("", AtbywRecipeConfigs.RAIL_POWERED_3, getBlockID(Blocks.POWERED_RAIL), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getItemID(Items.REDSTONE_TORCH)));;
+        ACTIVATOR_RAIL = createRecipeFromConfig("", AtbywRecipeConfigs.RAIL_POWERED_3, getBlockID(Blocks.POWERED_RAIL), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getItemID(Items.REDSTONE_TORCH)));
+        ARROW = createRecipeFromConfig("", AtbywRecipeConfigs.ARROW_3, getItemID(Items.ARROW), newKeyPair("item", getItemID(Items.FLINT)), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getItemID(Items.FEATHER)));
+        BOW = createRecipeFromConfig("", AtbywRecipeConfigs.BOW_2, getItemID(Items.BOW), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getItemID(Items.STRING)));
+        CROSSBOW = createRecipeFromConfig("", AtbywRecipeConfigs.CROSSBOW_4, getItemID(Items.CROSSBOW), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getItemID(Items.STRING)), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("item", getItemID(Items.TRIPWIRE_HOOK)));
+        FISHING_ROD = createRecipeFromConfig("", AtbywRecipeConfigs.FISHING_ROD_2, getItemID(Items.FISHING_ROD), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getItemID(Items.STRING)));
+        PAINTING = createRecipeFromConfig("", AtbywRecipeConfigs.DYING_2, getItemID(Items.PAINTING), newKeyPair("tag", AtbywID("sticks")), newKeyPair("tag", BlockTags.WOOL.getId()));
+        ITEM_FRAME = createRecipeFromConfig("", AtbywRecipeConfigs.DYING_2, getItemID(Items.ITEM_FRAME), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getItemID(Items.LEATHER)));
+        ARMOR_STAND = createRecipeFromConfig("", AtbywRecipeConfigs.ARMOR_STAND_2, getItemID(Items.ARMOR_STAND), newKeyPair("tag", AtbywID("sticks")), newKeyPair("item", getBlockID(Blocks.SMOOTH_STONE_SLAB)));
 
         FENCE_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "fences", AtbywRecipeConfigs.FENCE_2, new Pair<>(mcNameSpace, "fence"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", nameSpace, "stick", true));
-        FENCE_GATE_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "fence_gates", AtbywRecipeConfigs.FENCE_GATE_2, new Pair<>(mcNameSpace, "fence"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", nameSpace, "stick", true));
-        SIGN_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "signs", AtbywRecipeConfigs.SIGN_2, new Pair<>(mcNameSpace, "fence"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", nameSpace, "stick", true));
+        FENCE_GATE_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "fence_gates", AtbywRecipeConfigs.FENCE_GATE_2, new Pair<>(mcNameSpace, "fence_gate"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", nameSpace, "stick", true));
+        SIGN_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "signs", AtbywRecipeConfigs.SIGN_2, new Pair<>(mcNameSpace, "sign"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", nameSpace, "stick", true));
         BANNER_COLORS = createMultiRecipesFromConfig(COLOR_NAMES, "banners", AtbywRecipeConfigs.SIGN_2, new Pair<>(mcNameSpace, "banner"), newKeyQuadruplet("item", mcNameSpace, "wool", true), newKeyQuadruplet("tag", nameSpace, "sticks", false));
 
         DIRT_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.DIRT_STAIRS), newKeyPair("item", getBlockID(Blocks.DIRT)));
@@ -467,17 +498,40 @@ public class AtbywRecipes {
         PRISMARINE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.PRISMARINE_COLUMN), newKeyPair("item", getBlockID(Blocks.PRISMARINE_BRICKS)));
         BLACKSTONE_COLUMN = createRecipeFromConfig("columns", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.BLACKSTONE_COLUMN), newKeyPair("item", getBlockID(Blocks.BLACKSTONE)));
 
-        PURPUR_TILES = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), newKeyPair("item", getBlockID(Blocks.PURPUR_BLOCK)));
-        SMOOTH_PURPUR_BLOCK = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.PURPUR_TILES), newKeyPair("item", getBlockID(Blocks.PURPUR_PILLAR)));
-        CHISELED_PURPUR_BLOCK = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.CHISELED_PURPUR_BLOCK), newKeyPair("item", getBlockID(Blocks.PURPUR_SLAB)));
+        PURPUR_TILES = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.PURPUR_TILES), newKeyPair("item", getBlockID(Blocks.PURPUR_PILLAR)));
+        CUT_PURPUR_BLOCK = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.CUT_PURPUR_BLOCK), newKeyPair("item", getBlockID(Blocks.PURPUR_BLOCK)));
+        CHISELED_PURPUR_BLOCK = createRecipeFromConfig("", AtbywRecipeConfigs.STICK_1, getBlockID(AtbywBlocks.CHISELED_PURPUR_BLOCK), newKeyPair("item", getBlockID(Blocks.PURPUR_SLAB)));
         PURPUR_TILES_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.PURPUR_TILES_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.PURPUR_TILES)));
+        CUT_PURPUR_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.CUT_PURPUR_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.CUT_PURPUR_BLOCK)));
         SMOOTH_PURPUR_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.SMOOTH_PURPUR_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK)));
         PURPUR_TILES_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.PURPUR_TILES_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.PURPUR_TILES)));
+        CUT_PURPUR_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.CUT_PURPUR_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.CUT_PURPUR_BLOCK)));
         SMOOTH_PURPUR_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.SMOOTH_PURPUR_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK)));
+
+        COMPACTED_SNOW = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.COMPACTED_SNOW), newKeyPair("item", getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK)));
+        COMPACTED_SNOW_BLOCK = createRecipeFromConfig("", 1, AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK), newKeyPair("item", getBlockID(Blocks.SNOW_BLOCK)));
+        COMPACTED_SNOW_BRICKS = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS), newKeyPair("item", getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK)));
+        PACKED_ICE_BRICKS = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.PACKED_ICE_BRICKS), newKeyPair("item", getBlockID(Blocks.PACKED_ICE)));
+        BLUE_ICE_BRICKS = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS), newKeyPair("item", getBlockID(Blocks.BLUE_ICE)));
+
+        COMPACTED_SNOW_BLOCK_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK)));
+        COMPACTED_SNOW_BRICKS_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS)));
+        PACKED_ICE_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.PACKED_ICE_STAIRS), newKeyPair("item", getBlockID(Blocks.PACKED_ICE)));
+        BLUE_ICE_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.BLUE_ICE_STAIRS), newKeyPair("item", getBlockID(Blocks.BLUE_ICE)));
+        PACKED_ICE_BRICKS_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.PACKED_ICE_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.PACKED_ICE_BRICKS)));
+        BLUE_ICE_BRICKS_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.BLUE_ICE_BRICKS)));
+
+        COMPACTED_SNOW_BLOCK_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK)));
+        COMPACTED_SNOW_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS)));
+        PACKED_ICE_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.PACKED_ICE_STAIRS), newKeyPair("item", getBlockID(Blocks.PACKED_ICE)));
+        BLUE_ICE_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.BLUE_ICE_STAIRS), newKeyPair("item", getBlockID(Blocks.BLUE_ICE)));
+        PACKED_ICE_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.PACKED_ICE_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.PACKED_ICE_BRICKS)));
+        BLUE_ICE_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.BLUE_ICE_BRICKS)));
     }
 
     //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
     public static void injectRecipes(Map<Identifier, JsonElement> map) {
+        AtbywRecipesSmelting.injectRecipes(map);
         AtbywRecipesStonecutting.injectRecipes(map);
 
         // Multi recipes
@@ -521,19 +575,23 @@ public class AtbywRecipes {
 
         // Single recipes
         putRecipe(new Identifier("stick"), GENERIC_STICK, map);
-        putRecipe(new Identifier("torch"), TORCH, map);
-        putRecipe(new Identifier("redstone_torch"), REDSTONE_TORCH, map);
-        putRecipe(new Identifier("soul_torch"), SOUL_TORCH, map);
-        putRecipe(new Identifier("lever"), LEVER, map);
-        putRecipe(new Identifier("tripwire_hook"), TRIPWIRE_HOOK, map);
-        putRecipe(new Identifier("arrow"), ARROW, map);
         putRecipe(new Identifier("bookshelf"), OAK_BOOKSHELF, map);
         putRecipe(new Identifier("ladder"), OAK_LADDER, map);
-        putRecipe(new Identifier("painting"), PAINTING, map);
-        putRecipe(new Identifier("item_frame"), ITEM_FRAME, map);
+        putRecipe(new Identifier("torch"), TORCH, map);
+        putRecipe(new Identifier("soul_torch"), SOUL_TORCH, map);
+        putRecipe(new Identifier("redstone_torch"), REDSTONE_TORCH, map);
+        putRecipe(new Identifier("lever"), LEVER, map);
+        putRecipe(new Identifier("tripwire_hook"), TRIPWIRE_HOOK, map);
         putRecipe(new Identifier("rail"), RAIL, map);
         putRecipe(new Identifier("powered_rail"), POWERED_RAIL, map);
         putRecipe(new Identifier("activator_rail"), ACTIVATOR_RAIL, map);
+        putRecipe(new Identifier("arrow"), ARROW, map);
+        putRecipe(new Identifier("bow"), BOW, map);
+        putRecipe(new Identifier("crossbow"), CROSSBOW, map);
+        putRecipe(new Identifier("fishing_rod"), FISHING_ROD, map);
+        putRecipe(new Identifier("painting"), PAINTING, map);
+        putRecipe(new Identifier("item_frame"), ITEM_FRAME, map);
+        putRecipe(new Identifier("armor_stand"), ARMOR_STAND, map);
 
         putRecipe(new Identifier("wooden_sword_from_stick_tag"), WOODEN_SWORD_FROM_STICK_VARIANTS, map);
         putRecipe(new Identifier("stone_sword_from_stick_tag"), STONE_SWORD_FROM_STICK_VARIANTS, map);
@@ -658,11 +716,33 @@ public class AtbywRecipes {
         putRecipe(AtbywID("blackstone_column"), BLACKSTONE_COLUMN, map);
 
         putRecipe(AtbywID("purpur_tiles"), PURPUR_TILES, map);
-        putRecipe(AtbywID("smooth_purpur_block"), SMOOTH_PURPUR_BLOCK, map);
+        putRecipe(AtbywID("cut_purpur_block"), CUT_PURPUR_BLOCK, map);
         putRecipe(AtbywID("chiseled_purpur_block"), CHISELED_PURPUR_BLOCK, map);
         putRecipe(AtbywID("purpur_tiles_stairs"), PURPUR_TILES_STAIRS, map);
+        putRecipe(AtbywID("cut_purpur_stairs"), CUT_PURPUR_STAIRS, map);
         putRecipe(AtbywID("smooth_purpur_stairs"), SMOOTH_PURPUR_STAIRS, map);
         putRecipe(AtbywID("purpur_tiles_slab"), PURPUR_TILES_SLAB, map);
+        putRecipe(AtbywID("cut_purpur_slab"), CUT_PURPUR_SLAB, map);
         putRecipe(AtbywID("smooth_purpur_slab"), SMOOTH_PURPUR_SLAB, map);
+
+        putRecipe(AtbywID("compacted_snow"), COMPACTED_SNOW, map);
+        putRecipe(AtbywID("compacted_snow_block"), COMPACTED_SNOW_BLOCK, map);
+        putRecipe(AtbywID("compacted_snow_bricks"), COMPACTED_SNOW_BRICKS, map);
+        putRecipe(AtbywID("packed_ice_bricks"), PACKED_ICE_BRICKS, map);
+        putRecipe(AtbywID("blue_ice_bricks"), BLUE_ICE_BRICKS, map);
+
+        putRecipe(AtbywID("compacted_snow_block_stairs"), COMPACTED_SNOW_BLOCK_STAIRS, map);
+        putRecipe(AtbywID("compacted_snow_bricks_stairs"), COMPACTED_SNOW_BRICKS_STAIRS, map);
+        putRecipe(AtbywID("packed_ice_stairs"), PACKED_ICE_STAIRS, map);
+        putRecipe(AtbywID("blue_ice_stairs"), BLUE_ICE_STAIRS, map);
+        putRecipe(AtbywID("packed_ice_bricks_stairs"), PACKED_ICE_BRICKS_STAIRS, map);
+        putRecipe(AtbywID("blue_ice_bricks_stairs"), BLUE_ICE_BRICKS_STAIRS, map);
+
+        putRecipe(AtbywID("compacted_snow_block_slab"), COMPACTED_SNOW_BLOCK_SLAB, map);
+        putRecipe(AtbywID("compacted_snow_bricks_slab"), COMPACTED_SNOW_BRICKS_SLAB, map);
+        putRecipe(AtbywID("packed_ice_slab"), PACKED_ICE_SLAB, map);
+        putRecipe(AtbywID("blue_ice_slab"), BLUE_ICE_SLAB, map);
+        putRecipe(AtbywID("packed_ice_bricks_slab"), PACKED_ICE_BRICKS_SLAB, map);
+        putRecipe(AtbywID("blue_ice_bricks_slab"), BLUE_ICE_BRICKS_SLAB, map);
     }
 }

@@ -29,7 +29,7 @@ public class AtbywBlocks {
     //Blocks to add
     //TODO: Add Bipedal Statues
     //TODO: Add spike traps (redstone)
-    //TODO: Add Snow and Ice Bricks + Compacted Snow & Compacted Snow bricks (doesn't melt)
+    //TODO: Add thin ice (world gen when ready)
     //TODO: Add Railing Blocks (catwalk handles)
     //TODO: Add Redstone and soul Jack'O Lanterns (directional redstone power)
 
@@ -101,13 +101,36 @@ public class AtbywBlocks {
     public static final Block DIORITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE));
     public static final Block ANDESITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE));
 
-    public static final Block PURPUR_TILES = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block SMOOTH_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
     public static final Block CHISELED_PURPUR_BLOCK = new SurfaceFacingBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block PURPUR_TILES_STAIRS = new StairsBlockSubClass(PURPUR_TILES, FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block SMOOTH_PURPUR_STAIRS = new StairsBlockSubClass(SMOOTH_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block PURPUR_TILES_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block SMOOTH_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block PURPUR_TILES = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block PURPUR_TILES_STAIRS = new StairsBlockSubClass(PURPUR_TILES, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
+    public static final Block PURPUR_TILES_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
+    public static final Block CUT_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block CUT_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
+    public static final Block CUT_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
+    public static final Block SMOOTH_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block SMOOTH_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
+    public static final Block SMOOTH_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
+
+    public static final Block COMPACTED_SNOW = new SnowBlockSubClass(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.2F).requiresTool().sounds(BlockSoundGroup.SNOW));
+    public static final Block COMPACTED_SNOW_BLOCK = new Block(FabricBlockSettings.of(Material.SNOW_BLOCK).requiresTool().strength(0.4F).sounds(BlockSoundGroup.SNOW));
+    public static final Block COMPACTED_SNOW_BRICKS = new Block(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block PACKED_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block BLUE_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+
+    public static final Block COMPACTED_SNOW_BLOCK_STAIRS = new StairsBlockSubClass(COMPACTED_SNOW_BLOCK, FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block COMPACTED_SNOW_BRICKS_STAIRS = new StairsBlockSubClass(COMPACTED_SNOW_BRICKS, FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block PACKED_ICE_STAIRS = new StairsBlockSubClass(Blocks.PACKED_ICE, FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block BLUE_ICE_STAIRS = new StairsBlockSubClass(Blocks.BLUE_ICE, FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+    public static final Block PACKED_ICE_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.PACKED_ICE, FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block BLUE_ICE_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BLUE_ICE, FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+
+    public static final Block COMPACTED_SNOW_BLOCK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block COMPACTED_SNOW_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block PACKED_ICE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block BLUE_ICE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+    public static final Block PACKED_ICE_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block BLUE_ICE_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
 
     public static final Block BASALT_BRICKS = new Block(MakeBasalt());
     public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
@@ -382,12 +405,36 @@ public class AtbywBlocks {
         registerBlock(false, ATBYW_BLOCKS, "bamboo_ladder", BAMBOO_LADDER);
 
         registerBlock(false, ATBYW_BLOCKS, "purpur_tiles", PURPUR_TILES);
-        registerBlock(false, ATBYW_BLOCKS, "smooth_purpur_block", SMOOTH_PURPUR_BLOCK);
         registerBlock(false, ATBYW_BLOCKS, "chiseled_purpur_block", CHISELED_PURPUR_BLOCK);
+        registerBlock(false, ATBYW_BLOCKS, "cut_purpur_block", CUT_PURPUR_BLOCK);
+        registerBlock(false, ATBYW_BLOCKS, "smooth_purpur_block", SMOOTH_PURPUR_BLOCK);
+
         registerBlock(false, ATBYW_BLOCKS, "purpur_tiles_stairs", PURPUR_TILES_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "cut_purpur_stairs", CUT_PURPUR_STAIRS);
         registerBlock(false, ATBYW_BLOCKS, "smooth_purpur_stairs", SMOOTH_PURPUR_STAIRS);
+
         registerBlock(false, ATBYW_BLOCKS, "purpur_tiles_slab", PURPUR_TILES_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "cut_purpur_slab", CUT_PURPUR_SLAB);
         registerBlock(false, ATBYW_BLOCKS, "smooth_purpur_slab", SMOOTH_PURPUR_SLAB);
+
+        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_block", COMPACTED_SNOW_BLOCK);
+        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_bricks", COMPACTED_SNOW_BRICKS);
+        registerBlock(false, ATBYW_BLOCKS, "packed_ice_bricks", PACKED_ICE_BRICKS);
+        registerBlock(false, ATBYW_BLOCKS, "blue_ice_bricks", BLUE_ICE_BRICKS);
+
+        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_block_stairs", COMPACTED_SNOW_BLOCK_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_bricks_stairs", COMPACTED_SNOW_BRICKS_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "packed_ice_stairs", PACKED_ICE_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "blue_ice_stairs", BLUE_ICE_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "packed_ice_bricks_stairs", PACKED_ICE_BRICKS_STAIRS);
+        registerBlock(false, ATBYW_BLOCKS, "blue_ice_bricks_stairs", BLUE_ICE_BRICKS_STAIRS);
+
+        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_block_slab", COMPACTED_SNOW_BLOCK_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_bricks_slab", COMPACTED_SNOW_BRICKS_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "packed_ice_slab", PACKED_ICE_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "blue_ice_slab", BLUE_ICE_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "packed_ice_bricks_slab", PACKED_ICE_BRICKS_SLAB);
+        registerBlock(false, ATBYW_BLOCKS, "blue_ice_bricks_slab", BLUE_ICE_BRICKS_SLAB);
 
         registerBlock(false, ATBYW_BLOCKS, "basalt_bricks", BASALT_BRICKS);
         registerBlock(false, ATBYW_BLOCKS, "basalt_pillar", BASALT_PILLAR);
@@ -408,6 +455,8 @@ public class AtbywBlocks {
         registerBlocks(false, ATBYW_BLOCKS, null, "cinder_bricks", COLOR_NAMES, WHITE_CINDER_BLOCKS, ORANGE_CINDER_BLOCKS, MAGENTA_CINDER_BLOCKS, LIGHT_BLUE_CINDER_BLOCKS, YELLOW_CINDER_BLOCKS, LIME_CINDER_BLOCKS, PINK_CINDER_BLOCKS, GRAY_CINDER_BLOCKS, LIGHT_GRAY_CINDER_BLOCKS, CYAN_CINDER_BLOCKS, PURPLE_CINDER_BLOCKS, BLUE_CINDER_BLOCKS, BROWN_CINDER_BLOCKS, GREEN_CINDER_BLOCKS, RED_CINDER_BLOCKS, BLACK_CINDER_BLOCKS);
 
         //ATBYW DECO
+        registerBlock(false, ATBYW_DECO, "compacted_snow", COMPACTED_SNOW);
+
         registerBlock(false, ATBYW_DECO, "granite_column", GRANITE_COLUMN);
         registerBlock(false, ATBYW_DECO, "diorite_column", DIORITE_COLUMN);
         registerBlock(false, ATBYW_DECO, "andesite_column", ANDESITE_COLUMN);
