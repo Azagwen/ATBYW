@@ -25,6 +25,9 @@ public class AtbywBlocks {
     //TODO: Add locks to lock chests & doors
     //TODO: Experiment with connected models/textures further
     //TODO: Experiment with World Gen
+    //TODO: Add loot tables for compacted snow/packed ice/blue ice bricks and cut purpur block/stairs/slab
+    //TODO: Fix glowsticks being placeable on top of non-full blocks when placed by hand.
+    //TODO: Port Atbyw Mod Interaction recipes to datagen
 
     //Blocks to add
     //TODO: Add Bipedal Statues

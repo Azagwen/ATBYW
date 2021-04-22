@@ -521,12 +521,12 @@ public class AtbywRecipes {
         PACKED_ICE_BRICKS_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.PACKED_ICE_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.PACKED_ICE_BRICKS)));
         BLUE_ICE_BRICKS_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.BLUE_ICE_BRICKS)));
 
-        COMPACTED_SNOW_BLOCK_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK)));
-        COMPACTED_SNOW_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS)));
-        PACKED_ICE_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.PACKED_ICE_STAIRS), newKeyPair("item", getBlockID(Blocks.PACKED_ICE)));
-        BLUE_ICE_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.BLUE_ICE_STAIRS), newKeyPair("item", getBlockID(Blocks.BLUE_ICE)));
-        PACKED_ICE_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.PACKED_ICE_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.PACKED_ICE_BRICKS)));
-        BLUE_ICE_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.BLUE_ICE_BRICKS)));
+        COMPACTED_SNOW_BLOCK_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK)));
+        COMPACTED_SNOW_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS)));
+        PACKED_ICE_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.PACKED_ICE_SLAB), newKeyPair("item", getBlockID(Blocks.PACKED_ICE)));
+        BLUE_ICE_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.BLUE_ICE_SLAB), newKeyPair("item", getBlockID(Blocks.BLUE_ICE)));
+        PACKED_ICE_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.PACKED_ICE_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.PACKED_ICE_BRICKS)));
+        BLUE_ICE_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.BLUE_ICE_BRICKS)));
     }
 
     //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
