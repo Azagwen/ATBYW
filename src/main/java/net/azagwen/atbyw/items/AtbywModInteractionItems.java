@@ -29,26 +29,26 @@ public class AtbywModInteractionItems {
 
     public static void init() {
         if (isModLoaded("betternether")) {
-            Registry.register(Registry.ITEM, newModInteractionID("stalagnate_stick"), STALAGNATE_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("reeds_stick"), REEDS_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("willow_stick"), WILLOW_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("wart_stick"), WART_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("rubeus_stick"), RUBEUS_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("mushroom_stick"), MUSHROOM_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("mushroom_fir_stick"), MUSHROOM_FIR_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("anchor_tree_stick"), ANCHOR_TREE_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("nether_sakura_stick"), NETHER_SAKURA_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("stalagnate_stick"), STALAGNATE_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("reeds_stick"), REEDS_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("willow_stick"), WILLOW_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("wart_stick"), WART_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("rubeus_stick"), RUBEUS_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("mushroom_stick"), MUSHROOM_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("mushroom_fir_stick"), MUSHROOM_FIR_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("anchor_tree_stick"), ANCHOR_TREE_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("nether_sakura_stick"), NETHER_SAKURA_STICK);
         }
 
         if (isModLoaded("betterend")) {
-            Registry.register(Registry.ITEM, newModInteractionID("mossy_glowshroom_stick"), MOSSY_GLOWSROOM_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("pythadendron_stick"), PYTHADENDRON_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("end_lotus_stick"), END_LOTUS_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("lacugrove_stick"), LACUGROVE_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("dragon_tree_stick"), DRAGON_TREE_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("tenanea_stick"), TENANEA_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("helix_tree_stick"), HELIX_TREE_STICK);
-            Registry.register(Registry.ITEM, newModInteractionID("umbrella_tree_stick"), UMBRELLA_TREE_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("mossy_glowshroom_stick"), MOSSY_GLOWSROOM_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("pythadendron_stick"), PYTHADENDRON_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("end_lotus_stick"), END_LOTUS_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("lacugrove_stick"), LACUGROVE_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("dragon_tree_stick"), DRAGON_TREE_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("tenanea_stick"), TENANEA_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("helix_tree_stick"), HELIX_TREE_STICK);
+            Registry.register(Registry.ITEM, AtbywModInteractionID("umbrella_tree_stick"), UMBRELLA_TREE_STICK);
         }
     }
 }

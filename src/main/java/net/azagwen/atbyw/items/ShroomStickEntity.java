@@ -5,7 +5,7 @@ import net.azagwen.atbyw.blocks.ShroomStickBlock;
 import net.azagwen.atbyw.main.AtbywClient;
 import net.azagwen.atbyw.main.AtbywEntityType;
 import net.azagwen.atbyw.main.EntitySpawnPacket;
-import net.azagwen.atbyw.misc.AtbywTags;
+import net.azagwen.atbyw.main.AtbywTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.*;

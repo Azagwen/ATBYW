@@ -23,15 +23,27 @@ dependencies {
 	// You may need to force-disable transitiveness on them.
 
 	//Libraries and APIs
+	//ARRP
+	modImplementation group: "net.devtech", name: "arrp", version: "${project.arrp_version}"			//API
+	include group: "net.devtech", name: "arrp", version: "${project.arrp_version}"						//API
+
+	//LamdDynamicLights
 	modImplementation "com.github.LambdAurora:LambDynamicLights:${project.Lambdynamiclights_version}"	//API
 	include  "com.github.LambdAurora:LambDynamicLights:${project.Lambdynamiclights_version}"			//API
 }
 repositories {
 	maven {
+		url = 'https://raw.githubusercontent.com/Devan-Kerman/Devan-Repo/master/'
+	}
+
+	maven {
 		name = "AperLambda"
 		url = 'https://aperlambda.github.io/maven'
 	}
-	maven { url = "https://jitpack.io" }
+
+	maven {
+		url = "https://jitpack.io"
+	}
 }
 
 minecraft {

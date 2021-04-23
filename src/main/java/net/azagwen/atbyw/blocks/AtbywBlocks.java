@@ -22,7 +22,7 @@ import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywBlocks {
 
-    //TODO: Add locks to lock chests & doors
+    //TODO: Idea: locks to lock chests & doors
     //TODO: Experiment with connected models/textures further
     //TODO: Experiment with World Gen
     //TODO: Add loot tables for compacted snow/packed ice/blue ice bricks and cut purpur block/stairs/slab
@@ -115,7 +115,7 @@ public class AtbywBlocks {
     public static final Block SMOOTH_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
     public static final Block SMOOTH_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
 
-    public static final Block COMPACTED_SNOW = new SnowBlockSubClass(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.2F).requiresTool().sounds(BlockSoundGroup.SNOW));
+    public static final Block COMPACTED_SNOW = new SnowBlockSubClass(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.2F).requiresTool().breakByTool(FabricToolTags.SHOVELS).sounds(BlockSoundGroup.SNOW));
     public static final Block COMPACTED_SNOW_BLOCK = new Block(FabricBlockSettings.of(Material.SNOW_BLOCK).requiresTool().strength(0.4F).sounds(BlockSoundGroup.SNOW));
     public static final Block COMPACTED_SNOW_BRICKS = new Block(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
     public static final Block PACKED_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
@@ -487,5 +487,7 @@ public class AtbywBlocks {
 
         //Item-less blocks
         registerBlockOnly("shroomstick", SHROOMSTICK);
+
+        LOGGER.info("ATBYW Blocks Inintiliazed");
     }
 }

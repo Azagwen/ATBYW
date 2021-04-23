@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import static net.azagwen.atbyw.misc.AtbywTags.BOOKSHELVES;
+import static net.azagwen.atbyw.main.AtbywTags.BOOKSHELVES;
 
 @Mixin(EnchantingTableBlock.class)
 public class EnchantingTableBlockMixin {

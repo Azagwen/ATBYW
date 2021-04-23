@@ -3,6 +3,7 @@ package net.azagwen.atbyw.main;
 import net.azagwen.atbyw.blocks.AtbywBlockEntities;
 import net.azagwen.atbyw.blocks.AtbywBlocks;
 import net.azagwen.atbyw.datagen.AtbywRecipes;
+import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.items.AtbywItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
@@ -24,7 +25,7 @@ public class AtbywMain implements ModInitializer {
 	public static Identifier AtbywID(String path) {
 		return new Identifier(nameSpace, path);
 	}
-	public static Identifier newModInteractionID(String path) {
+	public static Identifier AtbywModInteractionID(String path) {
 		return new Identifier(modInteractionNameSpace, path);
 	}
 
@@ -59,14 +60,17 @@ public class AtbywMain implements ModInitializer {
 	public void onInitialize() {
 		if (enable_mod_interactions()) {
 			FabricLoader.getInstance().getModContainer(nameSpace).map(modContainer -> {
-				return ResourceManagerHelper.registerBuiltinResourcePack(newModInteractionID("mod_interaction_resources"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED);
+				return ResourceManagerHelper.registerBuiltinResourcePack(AtbywModInteractionID("mod_interaction_resources"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED);
 			}).filter(success -> !success).ifPresent(success -> LOGGER.error("Unable to Load \"atbyw_mi/mod_interaction_resources\"."));
+
+			AtbywRRP.init_mi();
 		}
 
 		AtbywItems.init();
 		AtbywBlocks.init();
 		AtbywBlockEntities.init();
 		AtbywRecipes.init();
+		AtbywRRP.init();
 
 		LOGGER.info("ATBYW Inintiliazed");
 	}

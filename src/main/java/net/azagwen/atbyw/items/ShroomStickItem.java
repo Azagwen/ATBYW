@@ -2,19 +2,16 @@ package net.azagwen.atbyw.items;
 
 import net.azagwen.atbyw.blocks.AtbywBlocks;
 import net.azagwen.atbyw.blocks.ShroomStickBlock;
-import net.azagwen.atbyw.misc.AtbywTags;
-import net.minecraft.advancement.criterion.Criteria;
+import net.azagwen.atbyw.main.AtbywTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -50,33 +47,42 @@ public class ShroomStickItem extends Item{
     public ActionResult useOnBlock(ItemUsageContext context) {
         PlayerEntity player = context.getPlayer();
         World world = context.getWorld();
-        BlockPos blockPos = context.getBlockPos().up();
+        BlockPos hitpos = context.getBlockPos();
 
-        return land(world, player, blockPos, context);
+        return land(world, player, hitpos, context);
     }
 
     private ActionResult land(World world, PlayerEntity player, BlockPos hitPos, ItemUsageContext context) {
-        boolean waterLogged = world.getBlockState(hitPos).getFluidState().getFluid() == Fluids.WATER;
-        BlockState state = world.getBlockState(hitPos);
+        Hand hand = context.getHand();
+        BlockPos hitPosUp = hitPos.up();
+        BlockState state = world.getBlockState(hitPosUp);
 
-        if (context.getSide() == Direction.UP) {
+        boolean waterLogged = world.getBlockState(hitPosUp).getFluidState().getFluid() == Fluids.WATER;
+
+        if (context.getSide() == Direction.UP && world.getBlockState(hitPos).isSideSolidFullSquare(world, hitPos, Direction.UP)) {
             if (state.isAir() || state.isIn(AtbywTags.SHROOMSTICK_REPLACEABLE_GROUND) || state.isOf(Blocks.WATER) || state.isIn(AtbywTags.SHROOMSTICK_REPLACEABLE_WATER)) {
-                placeBlock(world, player, hitPos, waterLogged);
+                placeBlock(world, player, hitPosUp, waterLogged, hand);
 
                 return ActionResult.success(world.isClient());
             } else {
-                super.use(world, player, context.getHand());
+                super.use(world, player, hand);
                 return ActionResult.PASS;
             }
         } else {
-            super.use(world, player, context.getHand());
+            super.use(world, player, hand);
             return ActionResult.PASS;
         }
     }
 
-    private void placeBlock(World world, PlayerEntity player, BlockPos hitPos, boolean waterLogged) {
+    private void placeBlock(World world, PlayerEntity player, BlockPos hitPos, boolean waterLogged, Hand hand) {
+        ItemStack itemStack = player.getStackInHand(hand);
+
         world.playSound(null, hitPos, SoundEvents.BLOCK_SHROOMLIGHT_PLACE, SoundCategory.BLOCKS, 0.5F, 2.0F);
         world.breakBlock(hitPos, true, player);
         world.setBlockState(hitPos, AtbywBlocks.SHROOMSTICK.getDefaultState().with(ShroomStickBlock.WATERLOGGED, waterLogged));
+
+        if (!player.abilities.creativeMode) {
+            itemStack.decrement(1);
+        }
     }
 }

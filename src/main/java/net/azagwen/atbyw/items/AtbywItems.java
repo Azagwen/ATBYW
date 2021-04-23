@@ -85,5 +85,7 @@ public class AtbywItems {
         Registry.register(Registry.ITEM, AtbywID("shroomstick"), SHROOMSTICK);
 
         AtbywModInteractionItems.init();
+
+        LOGGER.info("ATBYW Items Inintiliazed");
     }
 }

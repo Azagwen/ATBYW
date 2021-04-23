@@ -2,7 +2,6 @@ package net.azagwen.atbyw.blocks.slabs;
 
 import net.azagwen.atbyw.blocks.AtbywBlocks;
 import net.azagwen.atbyw.blocks.stairs.SpreadableStairsBlock;
-import net.azagwen.atbyw.misc.AtbywTags;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -19,7 +18,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
-import net.minecraft.world.chunk.light.ChunkLightProvider;
 
 import java.util.Random;
 

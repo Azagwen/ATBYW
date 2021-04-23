@@ -6,6 +6,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,6 +37,15 @@ public class AtbywUtils {
     public static int GREEN = 13;
     public static int RED = 14;
     public static int BLACK = 15;
+
+
+    public static Identifier getItemID(Item item) {
+        return Registry.ITEM.getId(item);
+    }
+
+    public static Identifier getBlockID(Block block) {
+        return Registry.BLOCK.getId(block);
+    }
 
     ///////////////////////////////////////////////////////////////
     //              DECLARATION UTILS (EXPERIMENTAL)             //
