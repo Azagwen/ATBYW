@@ -151,6 +151,10 @@ public class AtbywRecipesStonecutting {
     public static JsonObject COMPACTED_SNOW_BRICKS_STONECUTTING;
     public static JsonObject PACKED_ICE_BRICKS_STONECUTTING;
     public static JsonObject BLUE_ICE_BRICKS_STONECUTTING;
+    public static JsonObject CHISELED_PACKED_ICE_BRICKS_STONECUTTING;
+    public static JsonObject CHISELED_BLUE_ICE_BRICKS_STONECUTTING;
+    public static JsonObject CHISELED_PACKED_ICE_BRICKS_STONECUTTING_PACKED_ICE;
+    public static JsonObject CHISELED_BLUE_ICE_BRICKS_STONECUTTING_BLUE_ICE;
 
     public static JsonObject COMPACTED_SNOW_BLOCK_STAIRS_STONECUTTING;
     public static JsonObject COMPACTED_SNOW_BRICKS_STAIRS_STONECUTTING;
@@ -278,6 +282,10 @@ public class AtbywRecipesStonecutting {
         COMPACTED_SNOW_BRICKS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK), getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS), 1);
         PACKED_ICE_BRICKS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.PACKED_ICE), getBlockID(AtbywBlocks.PACKED_ICE_BRICKS), 1);
         BLUE_ICE_BRICKS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.BLUE_ICE), getBlockID(AtbywBlocks.BLUE_ICE_BRICKS), 1);
+        CHISELED_PACKED_ICE_BRICKS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.PACKED_ICE_BRICKS), getBlockID(AtbywBlocks.CHISELED_PACKED_ICE_BRICKS), 1);
+        CHISELED_BLUE_ICE_BRICKS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.BLUE_ICE_BRICKS), getBlockID(AtbywBlocks.CHISELED_BLUE_ICE_BRICKS), 1);
+        CHISELED_PACKED_ICE_BRICKS_STONECUTTING_PACKED_ICE = createStonecutterRecipe(getBlockID(Blocks.PACKED_ICE), getBlockID(AtbywBlocks.CHISELED_PACKED_ICE_BRICKS), 1);
+        CHISELED_BLUE_ICE_BRICKS_STONECUTTING_BLUE_ICE = createStonecutterRecipe(getBlockID(Blocks.BLUE_ICE), getBlockID(AtbywBlocks.CHISELED_BLUE_ICE_BRICKS), 1);
 
         COMPACTED_SNOW_BLOCK_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK), getBlockID(AtbywBlocks.COMPACTED_SNOW_BLOCK_STAIRS), 1);
         COMPACTED_SNOW_BRICKS_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS), getBlockID(AtbywBlocks.COMPACTED_SNOW_BRICKS_STAIRS), 1);
@@ -408,6 +416,10 @@ public class AtbywRecipesStonecutting {
         putRecipe(AtbywID("compacted_snow_bricks_stonecutting"), COMPACTED_SNOW_BRICKS_STONECUTTING, map);
         putRecipe(AtbywID("packed_ice_bricks_stonecutting"), PACKED_ICE_BRICKS_STONECUTTING, map);
         putRecipe(AtbywID("blue_ice_bricks_stonecutting"), BLUE_ICE_BRICKS_STONECUTTING, map);
+        putRecipe(AtbywID("chiseled_packed_ice_bricks_stonecutting"), CHISELED_PACKED_ICE_BRICKS_STONECUTTING, map);
+        putRecipe(AtbywID("chiseled_blue_ice_bricks_stonecutting"), CHISELED_BLUE_ICE_BRICKS_STONECUTTING, map);
+        putRecipe(AtbywID("chiseled_packed_ice_bricks_stonecutting_packed_ice"), CHISELED_PACKED_ICE_BRICKS_STONECUTTING_PACKED_ICE, map);
+        putRecipe(AtbywID("chiseled_blue_ice_bricks_stonecutting_blue_ice"), CHISELED_BLUE_ICE_BRICKS_STONECUTTING_BLUE_ICE, map);
 
         putRecipe(AtbywID("compacted_snow_block_stairs_stonecutting"), COMPACTED_SNOW_BLOCK_STAIRS_STONECUTTING, map);
         putRecipe(AtbywID("compacted_snow_bricks_stairs_stonecutting"), COMPACTED_SNOW_BRICKS_STAIRS_STONECUTTING, map);

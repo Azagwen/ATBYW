@@ -48,6 +48,7 @@ public enum AtbywRecipeConfigs implements AtbywRecipeConfig {
 
     // 4 Ingredients
     BOOKSHELF_TOGGLE_4(Lists.newArrayList("PPP", "RBR", "CRC"), Lists.newArrayList('P', 'B', 'R', 'C'), 1),
+    SPIKE_TRAP_4(Lists.newArrayList("S#S", "#I#", "SRS"), Lists.newArrayList('#', 'S', 'I', 'R'), 1),
     CROSSBOW_4(Lists.newArrayList("#I#", "SHS", " # "), Lists.newArrayList('#', 'S', 'I', 'H'), 1);
 
     ArrayList<String> pattern;

@@ -1,5 +1,7 @@
 package net.azagwen.atbyw.main;
 
+import net.azagwen.atbyw.blocks.AtbywBlocks;
+import net.azagwen.atbyw.blocks.statues.StatueRegistry;
 import net.azagwen.atbyw.items.EssenceItem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -19,18 +21,13 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.UUID;
 
-import static net.azagwen.atbyw.blocks.AtbywBlocks.*;
-import static net.azagwen.atbyw.blocks.statues.StatueRegistry.*;
 import static net.azagwen.atbyw.items.AtbywItems.*;
-import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
+import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywClient implements ClientModInitializer {
-    private static final Logger LOGGER = LogManager.getLogger();
 
     public static final Identifier PacketID = AtbywID("spawn_packet");
 
@@ -62,6 +59,7 @@ public class AtbywClient implements ClientModInitializer {
 
     @Environment(EnvType.CLIENT)
     public void onInitializeClient() {
+
         EntityRendererRegistry.INSTANCE.register(AtbywEntityType.SHROOMSTICK, (dispatcher, context) ->
                 new FlyingItemEntityRenderer(dispatcher, context.getItemRenderer())
         );
@@ -69,113 +67,104 @@ public class AtbywClient implements ClientModInitializer {
 
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5D, 1.0D);
-        }, GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
+        }, AtbywBlocks.GRASS_BLOCK_STAIRS, AtbywBlocks.GRASS_BLOCK_SLAB);
 
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getColor(0.5D, 1.0D), GRASS_BLOCK_STAIRS, GRASS_BLOCK_SLAB);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getColor(0.5D, 1.0D), AtbywBlocks.GRASS_BLOCK_STAIRS, AtbywBlocks.GRASS_BLOCK_SLAB);
 
         for (Item item : ESSENCE_BOTTLES)
             ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((EssenceItem) item).getColor(), item);
 
-        BlockRenderLayerMap.INSTANCE.putBlock(REDSTONE_LANTERN, RenderLayer.getCutout());
-
         BlockRenderLayerMap.INSTANCE.putBlocks(
                 RenderLayer.getCutout(),
-                BEE_STATUE,
-                SILVERFISH_STATUE,
-                SHULKER_STATUE,
-                CHICKEN_STATUE,
-                COD_STATUE,
-                SALMON_STATUE,
-                PUFFER_FISH_STATUE,
-                SLIME_STATUE,
-                WAXED_CLEAN_BEE_STATUE,
-                WAXED_CLEAN_SILVERFISH_STATUE,
-                WAXED_CLEAN_SHULKER_STATUE,
-                WAXED_CLEAN_CHICKEN_STATUE,
-                WAXED_CLEAN_COD_STATUE,
-                WAXED_CLEAN_SALMON_STATUE,
-                WAXED_CLEAN_PUFFER_FISH_STATUE,
-                WAXED_CLEAN_SLIME_STATUE,
-                WAXED_EXPOSED_BEE_STATUE,
-                WAXED_EXPOSED_SILVERFISH_STATUE,
-                WAXED_EXPOSED_SHULKER_STATUE,
-                WAXED_EXPOSED_CHICKEN_STATUE,
-                WAXED_EXPOSED_COD_STATUE,
-                WAXED_EXPOSED_SALMON_STATUE,
-                WAXED_EXPOSED_PUFFER_FISH_STATUE,
-                WAXED_EXPOSED_SLIME_STATUE,
-                WAXED_DIRTY_BEE_STATUE,
-                WAXED_DIRTY_SILVERFISH_STATUE,
-                WAXED_DIRTY_SHULKER_STATUE,
-                WAXED_DIRTY_CHICKEN_STATUE,
-                WAXED_DIRTY_COD_STATUE,
-                WAXED_DIRTY_SALMON_STATUE,
-                WAXED_DIRTY_PUFFER_FISH_STATUE,
-                WAXED_DIRTY_SLIME_STATUE,
-                WAXED_MOSSY_BEE_STATUE,
-                WAXED_MOSSY_SILVERFISH_STATUE,
-                WAXED_MOSSY_SHULKER_STATUE,
-                WAXED_MOSSY_CHICKEN_STATUE,
-                WAXED_MOSSY_COD_STATUE,
-                WAXED_MOSSY_SALMON_STATUE,
-                WAXED_MOSSY_PUFFER_FISH_STATUE,
-                WAXED_MOSSY_SLIME_STATUE,
-                WAXED_VERY_MOSSY_BEE_STATUE,
-                WAXED_VERY_MOSSY_SILVERFISH_STATUE,
-                WAXED_VERY_MOSSY_SHULKER_STATUE,
-                WAXED_VERY_MOSSY_CHICKEN_STATUE,
-                WAXED_VERY_MOSSY_COD_STATUE,
-                WAXED_VERY_MOSSY_SALMON_STATUE,
-                WAXED_VERY_MOSSY_PUFFER_FISH_STATUE,
-                WAXED_VERY_MOSSY_SLIME_STATUE
-        );
-
-        BlockRenderLayerMap.INSTANCE.putBlocks(
-                RenderLayer.getCutoutMipped(),
-                GRASS_BLOCK_STAIRS,
-                GRASS_BLOCK_SLAB
+                StatueRegistry.BEE_STATUE,
+                StatueRegistry.SILVERFISH_STATUE,
+                StatueRegistry.SHULKER_STATUE,
+                StatueRegistry.CHICKEN_STATUE,
+                StatueRegistry.COD_STATUE,
+                StatueRegistry.SALMON_STATUE,
+                StatueRegistry.PUFFER_FISH_STATUE,
+                StatueRegistry.SLIME_STATUE,
+                StatueRegistry.WAXED_CLEAN_BEE_STATUE,
+                StatueRegistry.WAXED_CLEAN_SILVERFISH_STATUE,
+                StatueRegistry.WAXED_CLEAN_SHULKER_STATUE,
+                StatueRegistry.WAXED_CLEAN_CHICKEN_STATUE,
+                StatueRegistry.WAXED_CLEAN_COD_STATUE,
+                StatueRegistry.WAXED_CLEAN_SALMON_STATUE,
+                StatueRegistry.WAXED_CLEAN_PUFFER_FISH_STATUE,
+                StatueRegistry.WAXED_CLEAN_SLIME_STATUE,
+                StatueRegistry.WAXED_EXPOSED_BEE_STATUE,
+                StatueRegistry.WAXED_EXPOSED_SILVERFISH_STATUE,
+                StatueRegistry.WAXED_EXPOSED_SHULKER_STATUE,
+                StatueRegistry.WAXED_EXPOSED_CHICKEN_STATUE,
+                StatueRegistry.WAXED_EXPOSED_COD_STATUE,
+                StatueRegistry.WAXED_EXPOSED_SALMON_STATUE,
+                StatueRegistry.WAXED_EXPOSED_PUFFER_FISH_STATUE,
+                StatueRegistry.WAXED_EXPOSED_SLIME_STATUE,
+                StatueRegistry.WAXED_DIRTY_BEE_STATUE,
+                StatueRegistry.WAXED_DIRTY_SILVERFISH_STATUE,
+                StatueRegistry.WAXED_DIRTY_SHULKER_STATUE,
+                StatueRegistry.WAXED_DIRTY_CHICKEN_STATUE,
+                StatueRegistry.WAXED_DIRTY_COD_STATUE,
+                StatueRegistry.WAXED_DIRTY_SALMON_STATUE,
+                StatueRegistry.WAXED_DIRTY_PUFFER_FISH_STATUE,
+                StatueRegistry.WAXED_DIRTY_SLIME_STATUE,
+                StatueRegistry.WAXED_MOSSY_BEE_STATUE,
+                StatueRegistry.WAXED_MOSSY_SILVERFISH_STATUE,
+                StatueRegistry.WAXED_MOSSY_SHULKER_STATUE,
+                StatueRegistry.WAXED_MOSSY_CHICKEN_STATUE,
+                StatueRegistry.WAXED_MOSSY_COD_STATUE,
+                StatueRegistry.WAXED_MOSSY_SALMON_STATUE,
+                StatueRegistry.WAXED_MOSSY_PUFFER_FISH_STATUE,
+                StatueRegistry.WAXED_MOSSY_SLIME_STATUE,
+                StatueRegistry.WAXED_VERY_MOSSY_BEE_STATUE,
+                StatueRegistry.WAXED_VERY_MOSSY_SILVERFISH_STATUE,
+                StatueRegistry.WAXED_VERY_MOSSY_SHULKER_STATUE,
+                StatueRegistry.WAXED_VERY_MOSSY_CHICKEN_STATUE,
+                StatueRegistry.WAXED_VERY_MOSSY_COD_STATUE,
+                StatueRegistry.WAXED_VERY_MOSSY_SALMON_STATUE,
+                StatueRegistry.WAXED_VERY_MOSSY_PUFFER_FISH_STATUE,
+                StatueRegistry.WAXED_VERY_MOSSY_SLIME_STATUE
         );
 
         BlockRenderLayerMap.INSTANCE.putBlocks(
                 RenderLayer.getCutout(),
-                DANDELION_PULL_SWITCH,
-                POPPY_PULL_SWITCH,
-                BLUE_ORCHID_PULL_SWITCH,
-                ALLIUM_PULL_SWITCH,
-                AZURE_BLUET_PULL_SWITCH,
-                RED_TULIP_PULL_SWITCH,
-                ORANGE_TULIP_PULL_SWITCH,
-                WHITE_TULIP_PULL_SWITCH,
-                PINK_TULIP_PULL_SWITCH,
-                OXEYE_DAISY_PULL_SWITCH,
-                CORNFLOWER_PULL_SWITCH,
-                WITHER_ROSE_PULL_SWITCH,
-                LILY_OF_THE_VALLEY_PULL_SWITCH
-        );
-
-        BlockRenderLayerMap.INSTANCE.putBlocks(
-                RenderLayer.getCutout(),
-                OAK_FENCE_DOOR,
-                SPRUCE_FENCE_DOOR,
-                BIRCH_FENCE_DOOR,
-                JUNGLE_FENCE_DOOR,
-                ACACIA_FENCE_DOOR,
-                DARK_OAK_FENCE_DOOR,
-                CRIMSON_FENCE_DOOR,
-                WARPED_FENCE_DOOR,
-                IRON_FENCE_DOOR
-        );
-
-        BlockRenderLayerMap.INSTANCE.putBlocks(
-                RenderLayer.getCutout(),
-                SPRUCE_LADDER,
-                BIRCH_LADDER,
-                JUNGLE_LADDER,
-                ACACIA_LADDER,
-                DARK_OAK_LADDER,
-                CRIMSON_LADDER,
-                WARPED_LADDER,
-                BAMBOO_LADDER
+                AtbywBlocks.GRASS_BLOCK_STAIRS,
+                AtbywBlocks.GRASS_BLOCK_SLAB,
+                AtbywBlocks.IRON_SPIKE_TRAP_SPIKES,
+                AtbywBlocks.GOLD_SPIKE_TRAP_SPIKES,
+                AtbywBlocks.DIAMOND_SPIKE_TRAP_SPIKES,
+                AtbywBlocks.NETHERITE_SPIKE_TRAP_SPIKES,
+                AtbywBlocks.REDSTONE_LANTERN,
+                AtbywBlocks.DANDELION_PULL_SWITCH,
+                AtbywBlocks.POPPY_PULL_SWITCH,
+                AtbywBlocks.BLUE_ORCHID_PULL_SWITCH,
+                AtbywBlocks.ALLIUM_PULL_SWITCH,
+                AtbywBlocks.AZURE_BLUET_PULL_SWITCH,
+                AtbywBlocks.RED_TULIP_PULL_SWITCH,
+                AtbywBlocks.ORANGE_TULIP_PULL_SWITCH,
+                AtbywBlocks.WHITE_TULIP_PULL_SWITCH,
+                AtbywBlocks.PINK_TULIP_PULL_SWITCH,
+                AtbywBlocks.OXEYE_DAISY_PULL_SWITCH,
+                AtbywBlocks.CORNFLOWER_PULL_SWITCH,
+                AtbywBlocks.WITHER_ROSE_PULL_SWITCH,
+                AtbywBlocks.LILY_OF_THE_VALLEY_PULL_SWITCH,
+                AtbywBlocks.OAK_FENCE_DOOR,
+                AtbywBlocks.SPRUCE_FENCE_DOOR,
+                AtbywBlocks.BIRCH_FENCE_DOOR,
+                AtbywBlocks.JUNGLE_FENCE_DOOR,
+                AtbywBlocks.ACACIA_FENCE_DOOR,
+                AtbywBlocks.DARK_OAK_FENCE_DOOR,
+                AtbywBlocks.CRIMSON_FENCE_DOOR,
+                AtbywBlocks.WARPED_FENCE_DOOR,
+                AtbywBlocks.IRON_FENCE_DOOR,
+                AtbywBlocks.SPRUCE_LADDER,
+                AtbywBlocks.BIRCH_LADDER,
+                AtbywBlocks.JUNGLE_LADDER,
+                AtbywBlocks.ACACIA_LADDER,
+                AtbywBlocks.DARK_OAK_LADDER,
+                AtbywBlocks.CRIMSON_LADDER,
+                AtbywBlocks.WARPED_LADDER,
+                AtbywBlocks.BAMBOO_LADDER
         );
     }
 }

@@ -1,0 +1,6 @@
+{
+	"parent": "atbyw:block/template_spikes",
+	"textures": {
+		"spikes": "atbyw:block/gold_spike_trap"
+	}
+}

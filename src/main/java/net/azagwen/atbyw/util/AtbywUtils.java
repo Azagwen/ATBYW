@@ -47,6 +47,14 @@ public class AtbywUtils {
         return Registry.BLOCK.getId(block);
     }
 
+    public static Item getItemFromID(Identifier identifier) {
+        return Registry.ITEM.get(identifier);
+    }
+
+    public static Block getBlockFromID(Identifier identifier) {
+        return Registry.BLOCK.get(identifier);
+    }
+
     ///////////////////////////////////////////////////////////////
     //              DECLARATION UTILS (EXPERIMENTAL)             //
     ///////////////////////////////////////////////////////////////

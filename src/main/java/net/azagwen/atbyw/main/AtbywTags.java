@@ -14,6 +14,7 @@ public class AtbywTags {
     public static final Tag<Block> PISTONS = registerBlockTag("pistons");
     public static final Tag<Block> SHROOMSTICK_REPLACEABLE_GROUND = registerBlockTag("shroomstick_replaceable_ground");
     public static final Tag<Block> SHROOMSTICK_REPLACEABLE_WATER = registerBlockTag("shroomstick_replaceable_water");
+    public static final Tag<Block> SPIKE_TRAP_BREAKABLE = registerBlockTag("spike_trap_breakable");
 
     // Item Tags
     public static final Tag<Item> ITEM_BOOKSHELVES = registerItemTag("bookshelves");

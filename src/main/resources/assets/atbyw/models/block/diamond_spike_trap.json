@@ -1,0 +1,6 @@
+{
+  "parent": "atbyw:block/template_spike_trap",
+  "textures": {
+    "texture": "atbyw:block/diamond_spike_trap"
+  }
+}

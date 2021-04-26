@@ -35,6 +35,8 @@ public class AtbywBlocks {
     //TODO: Add thin ice (world gen when ready)
     //TODO: Add Railing Blocks (catwalk handles)
     //TODO: Add Redstone and soul Jack'O Lanterns (directional redstone power)
+    //TODO: Add regular ice bricks that melt
+    //TODO: Idea > "dried" coral blocks that keep their colors
 
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
     public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
@@ -116,10 +118,13 @@ public class AtbywBlocks {
     public static final Block SMOOTH_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
 
     public static final Block COMPACTED_SNOW = new SnowBlockSubClass(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.2F).requiresTool().breakByTool(FabricToolTags.SHOVELS).sounds(BlockSoundGroup.SNOW));
-    public static final Block COMPACTED_SNOW_BLOCK = new Block(FabricBlockSettings.of(Material.SNOW_BLOCK).requiresTool().strength(0.4F).sounds(BlockSoundGroup.SNOW));
+    public static final Block COMPACTED_SNOW_BLOCK = new Block(FabricBlockSettings.of(Material.SNOW_BLOCK).strength(0.4F).requiresTool().breakByTool(FabricToolTags.SHOVELS).sounds(BlockSoundGroup.SNOW));
     public static final Block COMPACTED_SNOW_BRICKS = new Block(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block CHISELED_COMPACTED_SNOW_BRICKS = new Block(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
     public static final Block PACKED_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block CHISELED_PACKED_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
     public static final Block BLUE_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+    public static final Block CHISELED_BLUE_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
 
     public static final Block COMPACTED_SNOW_BLOCK_STAIRS = new StairsBlockSubClass(COMPACTED_SNOW_BLOCK, FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
     public static final Block COMPACTED_SNOW_BRICKS_STAIRS = new StairsBlockSubClass(COMPACTED_SNOW_BRICKS, FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
@@ -367,12 +372,27 @@ public class AtbywBlocks {
     public static final Block PRISMARINE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE));
     public static final Block BLACKSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE));
 
+    public static final Block IRON_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywID("iron_spike_trap"), 2.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block GOLD_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywID("gold_spike_trap"), 0.5F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block DIAMOND_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywID("diamond_spike_trap"), 3.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block NETHERITE_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywID("netherite_spike_trap"), 4.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+
+    public static final Block IRON_SPIKE_TRAP = new SpikeTrapBlock(IRON_SPIKE_TRAP_SPIKES, 1.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
+    public static final Block GOLD_SPIKE_TRAP = new SpikeTrapBlock(GOLD_SPIKE_TRAP_SPIKES, 0.5F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
+    public static final Block DIAMOND_SPIKE_TRAP = new SpikeTrapBlock(DIAMOND_SPIKE_TRAP_SPIKES, 3.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
+    public static final Block NETHERITE_SPIKE_TRAP = new SpikeTrapBlock(NETHERITE_SPIKE_TRAP_SPIKES, 6.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
+
+
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
     public static void init() {
         //ATBYW REDSTONE
         registerBlocks(false, ATBYW_REDSTONE, null, "fence_door", WOOD_NAMES, OAK_FENCE_DOOR, SPRUCE_FENCE_DOOR, BIRCH_FENCE_DOOR, JUNGLE_FENCE_DOOR, ACACIA_FENCE_DOOR, DARK_OAK_FENCE_DOOR, CRIMSON_FENCE_DOOR, WARPED_FENCE_DOOR);
         registerBlock(false, ATBYW_REDSTONE, "iron_fence_door", IRON_FENCE_DOOR);
+        registerBlock(false, ATBYW_REDSTONE, "iron_spike_trap", IRON_SPIKE_TRAP);
+        registerBlock(false, ATBYW_REDSTONE, "gold_spike_trap", GOLD_SPIKE_TRAP);
+        registerBlock(false, ATBYW_REDSTONE, "diamond_spike_trap", DIAMOND_SPIKE_TRAP);
+        registerBlock(false, ATBYW_REDSTONE, "netherite_spike_trap", NETHERITE_SPIKE_TRAP);
         registerBlocks(false, ATBYW_REDSTONE, null, "bookshelf_toggle", WOOD_NAMES, OAK_BOOKSHELF_TOGGLE, SPRUCE_BOOKSHELF_TOGGLE, BIRCH_BOOKSHELF_TOGGLE, JUNGLE_BOOKSHELF_TOGGLE, ACACIA_BOOKSHELF_TOGGLE, DARK_OAK_BOOKSHELF_TOGGLE, CRIMSON_BOOKSHELF_TOGGLE, WARPED_BOOKSHELF_TOGGLE);
         AtbywModInteractionBlocks.initBookshelfToggles();
         registerBlock(false, ATBYW_REDSTONE, "redstone_lantern", REDSTONE_LANTERN);
@@ -422,8 +442,11 @@ public class AtbywBlocks {
 
         registerBlock(false, ATBYW_BLOCKS, "compacted_snow_block", COMPACTED_SNOW_BLOCK);
         registerBlock(false, ATBYW_BLOCKS, "compacted_snow_bricks", COMPACTED_SNOW_BRICKS);
+        registerBlock(false, ATBYW_BLOCKS, "chiseled_compacted_snow_bricks", CHISELED_COMPACTED_SNOW_BRICKS);
         registerBlock(false, ATBYW_BLOCKS, "packed_ice_bricks", PACKED_ICE_BRICKS);
+        registerBlock(false, ATBYW_BLOCKS, "chiseled_packed_ice_bricks", CHISELED_PACKED_ICE_BRICKS);
         registerBlock(false, ATBYW_BLOCKS, "blue_ice_bricks", BLUE_ICE_BRICKS);
+        registerBlock(false, ATBYW_BLOCKS, "chiseled_blue_ice_bricks", CHISELED_BLUE_ICE_BRICKS);
 
         registerBlock(false, ATBYW_BLOCKS, "compacted_snow_block_stairs", COMPACTED_SNOW_BLOCK_STAIRS);
         registerBlock(false, ATBYW_BLOCKS, "compacted_snow_bricks_stairs", COMPACTED_SNOW_BRICKS_STAIRS);
@@ -487,6 +510,10 @@ public class AtbywBlocks {
 
         //Item-less blocks
         registerBlockOnly("shroomstick", SHROOMSTICK);
+        registerBlockOnly("iron_spike_trap_spikes", IRON_SPIKE_TRAP_SPIKES);
+        registerBlockOnly("gold_spike_trap_spikes", GOLD_SPIKE_TRAP_SPIKES);
+        registerBlockOnly("diamond_spike_trap_spikes", DIAMOND_SPIKE_TRAP_SPIKES);
+        registerBlockOnly("netherite_spike_trap_spikes", NETHERITE_SPIKE_TRAP_SPIKES);
 
         LOGGER.info("ATBYW Blocks Inintiliazed");
     }

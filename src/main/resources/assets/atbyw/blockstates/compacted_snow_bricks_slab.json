@@ -4,7 +4,7 @@
             "model": "atbyw:block/slab/compacted_snow_bricks_slab"
         },
         "type=double": {
-            "model": "minecraft:block/compacted_snow_bricks"
+            "model": "atbyw:block/compacted_snow_bricks"
         },
         "type=top": {
             "model": "atbyw:block/slab/compacted_snow_bricks_slab_top"

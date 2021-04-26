@@ -2,7 +2,8 @@
 	"parent": "minecraft:block/block",
 	"textures": {
 		"top": "atbyw:block/chiseled_purpur_block_top",
-		"side": "atbyw:block/chiseled_purpur_block"
+		"side": "atbyw:block/chiseled_purpur_block",
+		"particle": "atbyw:block/chiseled_purpur_block_top"
 	},
 	"elements": [
 		{

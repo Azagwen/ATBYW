@@ -18,6 +18,8 @@ public class AtbywProperties {
     public static final BooleanProperty TOP;
     public static final BooleanProperty MIDDLE;
     public static final BooleanProperty BOTTOM;
+    public static final BooleanProperty ACTIVE;
+    public static final BooleanProperty CAN_BREAK;
 
     static {
         SHEARED = BooleanProperty.of("sheared");
@@ -31,5 +33,7 @@ public class AtbywProperties {
         TOP = BooleanProperty.of("top");
         MIDDLE = BooleanProperty.of("middle");
         BOTTOM = BooleanProperty.of("bottom");
+        ACTIVE = BooleanProperty.of("active");
+        CAN_BREAK = BooleanProperty.of("can_break");
     }
 }

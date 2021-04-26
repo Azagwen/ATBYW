@@ -18,6 +18,11 @@
   "block.atbyw.smooth_purpur_stairs": "Smooth Purpur Stairs",
   "block.atbyw.smooth_purpur_slab": "Smooth Purpur Slab",
 
+  "block.atbyw.iron_spike_trap": "Iron Spike Trap",
+  "block.atbyw.gold_spike_trap": "Gold Spike Trap",
+  "block.atbyw.diamond_spike_trap": "Diamond Spike Trap",
+  "block.atbyw.netherite_spike_trap": "Netherite Spike Trap",
+
   "block.atbyw.compacted_snow": "Compacted Snow",
   "block.atbyw.compacted_snow_block": "Compacted Snow Block",
   "block.atbyw.compacted_snow_block_stairs": "Compacted Snow Block Stairs",
@@ -25,9 +30,11 @@
   "block.atbyw.compacted_snow_bricks": "Compacted Snow Bricks",
   "block.atbyw.compacted_snow_bricks_stairs": "Compacted Snow Bricks Stairs",
   "block.atbyw.compacted_snow_bricks_slab": "Compacted Snow Bricks Slab",
+  "block.atbyw.chiseled_packed_ice_bricks": "Chiseled Packed Ice Bricks",
   "block.atbyw.packed_ice_bricks": "Packed Ice Bricks",
   "block.atbyw.packed_ice_bricks_stairs": "Packed Ice Bricks Stairs",
   "block.atbyw.packed_ice_bricks_slab": "Packed Ice Bricks Slab",
+  "block.atbyw.chiseled_blue_ice_bricks": "Chiseled Blue Ice Bricks",
   "block.atbyw.blue_ice_bricks": "Blue Ice Bricks",
   "block.atbyw.blue_ice_bricks_stairs": "Blue Ice Bricks Stairs",
   "block.atbyw.blue_ice_bricks_slab": "Blue Ice Bricks Slab",
@@ -514,7 +521,10 @@
   "block.atbyw.salmon_statue.cannot_be_waxed": "Salmon statue requires at least %d Honeycombs to be waxed.",
   "block.atbyw.puffer_fish_statue.cannot_be_waxed": "Pufferfish statue requires at least %d Honeycombs to be waxed.",
   "block.atbyw.slime_statue.cannot_be_waxed": "Slime statue requires at least %d Honeycombs to be waxed.",
-  "block.atbyw.magma_cube_statue.cannot_be_waxed": "Magma Cube statue requires at least%d1 oneycombs to be waxed.",
+  "block.atbyw.magma_cube_statue.cannot_be_waxed": "Magma Cube statue requires at least %d1 Honeycombs to be waxed.",
+
+  "death.attack.spike_trap": "%1$s was impaled to death",
+
 
   "_comment": "Unused / Old / Kept as Examples",
   "block.atbyw. statue.not_ready": "%1$s is not ready yet. (%2$s%% moss coverage)"

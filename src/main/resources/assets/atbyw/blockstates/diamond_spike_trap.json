@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "active=true": {
+            "model": "atbyw:block/diamond_spike_trap_on"
+        },
+        "active=false": {
+            "model": "atbyw:block/diamond_spike_trap"
+        }
+    }
+}

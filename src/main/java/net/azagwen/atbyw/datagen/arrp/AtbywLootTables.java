@@ -15,32 +15,49 @@ import java.util.ArrayList;
 
 import static net.azagwen.atbyw.datagen.arrp.AtbywRRP.*;
 import static net.azagwen.atbyw.util.AtbywUtils.*;
-import static net.azagwen.atbyw.main.AtbywMain.*;
 import static net.devtech.arrp.json.loot.JLootTable.*;
 import static net.devtech.arrp.json.loot.JLootTable.condition;
 
+@SuppressWarnings("deprecation")
 public class AtbywLootTables {
 
-    public static void makeLootTable(RuntimeResourcePack pack, Identifier lootTableID, JLootTable lootTable) {
+    private static JsonObject silkTouchPredicate() {
+        JsonObject level = new JsonObject();
+        level.addProperty("min", 1);
+
+        JsonObject silkTouch = new JsonObject();
+        silkTouch.addProperty("enchantment", "minecraft:silk_touch");
+        silkTouch.add("levels", level);
+
+        JsonArray enchantments = new JsonArray();
+        enchantments.add(silkTouch);
+
+        JsonObject predicate = new JsonObject();
+        predicate.add("enchantments", enchantments);
+
+        return predicate;
+    }
+
+    private static JsonObject blockStringProperty(String name, String value) {
+        JsonObject property = new JsonObject();
+        property.addProperty(name, value);
+
+        return property;
+    }
+
+    private static JsonObject blockIntProperty(String name, int value) {
+        JsonObject property = new JsonObject();
+        property.addProperty(name, value);
+
+        return property;
+    }
+
+    private static void makeLootTable(RuntimeResourcePack pack, Identifier lootTableID, JLootTable lootTable) {
         pack.addLootTable(lootTableID, lootTable);
     }
 
     private static void blockCompactedSnow(RuntimeResourcePack pack, Identifier blockID) {
-        JsonObject property1 = new JsonObject();
-        JsonObject property2 = new JsonObject();
-        JsonObject property3 = new JsonObject();
-        JsonObject property4 = new JsonObject();
-        JsonObject property5 = new JsonObject();
-        JsonObject property6 = new JsonObject();
-        JsonObject property7 = new JsonObject();
-
-        property1.addProperty("layers", 2);
-        property2.addProperty("layers", 3);
-        property3.addProperty("layers", 4);
-        property4.addProperty("layers", 5);
-        property5.addProperty("layers", 6);
-        property6.addProperty("layers", 7);
-        property7.addProperty("layers", 8);
+        String propertyName = "layers";
 
         pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
                 .pool(pool()
@@ -50,37 +67,37 @@ public class AtbywLootTables {
                                 .function(function("minecraft:set_count")
                                         .condition(condition("minecraft:block_state_property")
                                                 .parameter("block", blockID.toString())
-                                                .parameter("properties", property1))
+                                                .parameter("properties", blockIntProperty(propertyName, 2)))
                                         .parameter("count", 2))
                                 .function(function("minecraft:set_count")
                                         .condition(condition("minecraft:block_state_property")
                                                 .parameter("block", blockID.toString())
-                                                .parameter("properties", property2))
+                                                .parameter("properties", blockIntProperty(propertyName, 3)))
                                         .parameter("count", 3))
                                 .function(function("minecraft:set_count")
                                         .condition(condition("minecraft:block_state_property")
                                                 .parameter("block", blockID.toString())
-                                                .parameter("properties", property3))
+                                                .parameter("properties", blockIntProperty(propertyName, 4)))
                                         .parameter("count", 4))
                                 .function(function("minecraft:set_count")
                                         .condition(condition("minecraft:block_state_property")
                                                 .parameter("block", blockID.toString())
-                                                .parameter("properties", property4))
+                                                .parameter("properties", blockIntProperty(propertyName, 5)))
                                         .parameter("count", 5))
                                 .function(function("minecraft:set_count")
                                         .condition(condition("minecraft:block_state_property")
                                                 .parameter("block", blockID.toString())
-                                                .parameter("properties", property5))
+                                                .parameter("properties", blockIntProperty(propertyName, 6)))
                                         .parameter("count", 6))
                                 .function(function("minecraft:set_count")
                                         .condition(condition("minecraft:block_state_property")
                                                 .parameter("block", blockID.toString())
-                                                .parameter("properties", property6))
+                                                .parameter("properties", blockIntProperty(propertyName, 7)))
                                         .parameter("count", 7))
                                 .function(function("minecraft:set_count")
                                         .condition(condition("minecraft:block_state_property")
                                                 .parameter("block", blockID.toString())
-                                                .parameter("properties", property7))
+                                                .parameter("properties", blockIntProperty(propertyName, 8)))
                                         .parameter("count", 8))
                                 .function("minecraft:explosion_decay")
                                 .name(blockID.toString()))
@@ -99,20 +116,19 @@ public class AtbywLootTables {
         );
     }
 
+    private static void blockSilkTouchOnly(RuntimeResourcePack pack, Identifier blockID) {
+        pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
+                .pool(pool()
+                        .rolls(1)
+                        .entry(entry()
+                                .type("minecraft:item")
+                                .name(blockID.toString()))
+                        .condition(condition("minecraft:match_tool")
+                                .parameter("predicate", silkTouchPredicate())))
+        );
+    }
+
     private static void blockSilkTouch(RuntimeResourcePack pack, Identifier silkTouchID, Identifier normalID, int normalCount) {
-        JsonObject level = new JsonObject();
-        level.addProperty("min", 1);
-
-        JsonObject silkTouch = new JsonObject();
-        silkTouch.addProperty("enchantment", "minecraft:silk_touch");
-        silkTouch.add("levels", level);
-
-        JsonArray enchantments = new JsonArray();
-        enchantments.add(silkTouch);
-
-        JsonObject predicate = new JsonObject();
-        predicate.add("enchantments", enchantments);
-
         pack.addLootTable(new Identifier(silkTouchID.getNamespace(), "blocks/" + silkTouchID.getPath()), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
@@ -121,7 +137,7 @@ public class AtbywLootTables {
                                 .child(entry()
                                         .type("minecraft:item")
                                         .condition(condition("minecraft:match_tool")
-                                                .parameter("predicate", predicate))
+                                                .parameter("predicate", silkTouchPredicate()))
                                         .name(silkTouchID.toString()))
                                 .child(entry()
                                         .type("minecraft:item")
@@ -136,9 +152,6 @@ public class AtbywLootTables {
     }
 
     private static void blockSlabDropSelf(RuntimeResourcePack pack, Identifier blockID) {
-        JsonObject properties = new JsonObject();
-        properties.addProperty("type", "double");
-
         pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
@@ -147,7 +160,7 @@ public class AtbywLootTables {
                                 .function(function("minecraft:set_count")
                                         .condition(condition("minecraft:block_state_property")
                                                 .parameter("block", blockID.toString())
-                                                .parameter("properties", properties))
+                                                .parameter("properties", blockStringProperty("type", "double")))
                                         .parameter("count", 2))
                                 .function("minecraft:explosion_decay")
                                 .name(blockID.toString()))
@@ -155,23 +168,25 @@ public class AtbywLootTables {
         );
     }
 
+    private static void blockSlabSilkTouchOnly(RuntimeResourcePack pack, Identifier blockID) {
+        pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
+                .pool(pool()
+                        .rolls(1)
+                        .entry(entry()
+                                .type("minecraft:item")
+                                .function(function("minecraft:set_count")
+                                        .condition(condition("minecraft:block_state_property")
+                                                .parameter("block", blockID.toString())
+                                                .parameter("properties", blockStringProperty("type", "double")))
+                                        .parameter("count", 2))
+                                .function("minecraft:explosion_decay")
+                                .name(blockID.toString()))
+                        .condition(condition("minecraft:match_tool")
+                                .parameter("predicate", silkTouchPredicate())))
+        );
+    }
+
     private static void blockSlabSilkTouch(RuntimeResourcePack pack, Identifier silkTouchID, Identifier normalID) {
-        JsonObject properties = new JsonObject();
-        properties.addProperty("type", "double");
-
-        JsonObject level = new JsonObject();
-        level.addProperty("min", 1);
-
-        JsonObject silkTouch = new JsonObject();
-        silkTouch.addProperty("enchantment", "minecraft:silk_touch");
-        silkTouch.add("levels", level);
-
-        JsonArray enchantments = new JsonArray();
-        enchantments.add(silkTouch);
-
-        JsonObject predicate = new JsonObject();
-        predicate.add("enchantments", enchantments);
-
         pack.addLootTable(new Identifier(silkTouchID.getNamespace(), "blocks/" + silkTouchID.getPath()), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
@@ -180,19 +195,19 @@ public class AtbywLootTables {
                                 .child(entry()
                                         .type("minecraft:item")
                                         .condition(condition("minecraft:match_tool")
-                                                .parameter("predicate", predicate))
+                                                .parameter("predicate", silkTouchPredicate()))
                                         .name(silkTouchID.toString())
                                         .function(function("minecraft:set_count")
                                                 .condition(condition("minecraft:block_state_property")
                                                         .parameter("block", silkTouchID.toString())
-                                                        .parameter("properties", properties))
+                                                        .parameter("properties", blockStringProperty("type", "double")))
                                                 .parameter("count", 2)))
                                 .child(entry()
                                         .type("minecraft:item")
                                         .function(function("minecraft:set_count")
                                                 .condition(condition("minecraft:block_state_property")
                                                         .parameter("block", silkTouchID.toString())
-                                                        .parameter("properties", properties))
+                                                        .parameter("properties", blockStringProperty("type", "double")))
                                                 .parameter("count", 2))
                                         .function("minecraft:explosion_decay")
                                         .name(normalID.toString()))
@@ -228,6 +243,14 @@ public class AtbywLootTables {
         blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.DARK_OAK_BOOKSHELF), getItemID(Items.BOOK), 3);
         blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.CRIMSON_BOOKSHELF), getItemID(Items.BOOK), 3);
         blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.WARPED_BOOKSHELF), getItemID(Items.BOOK), 3);
+        blockSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.CHISELED_PACKED_ICE_BRICKS));
+        blockSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.CHISELED_BLUE_ICE_BRICKS));
+        blockSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.PACKED_ICE_BRICKS));
+        blockSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS));
+        blockSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.PACKED_ICE_STAIRS));
+        blockSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLUE_ICE_STAIRS));
+        blockSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.PACKED_ICE_BRICKS_STAIRS));
+        blockSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_STAIRS));
 
         blockSlabSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.GRASS_BLOCK_SLAB), getBlockID(AtbywBlocks.DIRT_SLAB));
         blockSlabSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.MYCELIUM_SLAB), getBlockID(AtbywBlocks.DIRT_SLAB));
@@ -235,6 +258,10 @@ public class AtbywLootTables {
         blockSlabSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.GRASS_PATH_SLAB), getBlockID(AtbywBlocks.DIRT_SLAB));
         blockSlabSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.CRIMSON_NYLIUM_SLAB), getBlockID(AtbywBlocks.NETHERRACK_SLAB));
         blockSlabSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.WARPED_NYLIUM_SLAB), getBlockID(AtbywBlocks.NETHERRACK_SLAB));
+        blockSlabSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.PACKED_ICE_SLAB));
+        blockSlabSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLUE_ICE_SLAB));
+        blockSlabSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.PACKED_ICE_BRICKS_SLAB));
+        blockSlabSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_SLAB));
 
         blockCompactedSnow(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.COMPACTED_SNOW));
 
@@ -247,10 +274,6 @@ public class AtbywLootTables {
                 AtbywBlocks.SMOOTH_PURPUR_SLAB,
                 AtbywBlocks.COMPACTED_SNOW_BLOCK_SLAB,
                 AtbywBlocks.COMPACTED_SNOW_BRICKS_SLAB,
-                AtbywBlocks.PACKED_ICE_SLAB,
-                AtbywBlocks.BLUE_ICE_SLAB,
-                AtbywBlocks.PACKED_ICE_BRICKS_SLAB,
-                AtbywBlocks.BLUE_ICE_BRICKS_SLAB,
                 AtbywBlocks.TERRACOTTA_SLAB,
                 AtbywBlocks.WHITE_TERRACOTTA_SLAB,
                 AtbywBlocks.ORANGE_TERRACOTTA_SLAB,
@@ -358,14 +381,8 @@ public class AtbywLootTables {
                 AtbywBlocks.SMOOTH_PURPUR_STAIRS,
                 AtbywBlocks.COMPACTED_SNOW_BLOCK,
                 AtbywBlocks.COMPACTED_SNOW_BRICKS,
-                AtbywBlocks.PACKED_ICE_BRICKS,
-                AtbywBlocks.BLUE_ICE_BRICKS,
                 AtbywBlocks.COMPACTED_SNOW_BLOCK_STAIRS,
                 AtbywBlocks.COMPACTED_SNOW_BRICKS_STAIRS,
-                AtbywBlocks.PACKED_ICE_STAIRS,
-                AtbywBlocks.BLUE_ICE_STAIRS,
-                AtbywBlocks.PACKED_ICE_BRICKS_STAIRS,
-                AtbywBlocks.BLUE_ICE_BRICKS_STAIRS,
                 AtbywBlocks.BASALT_BRICKS,
                 AtbywBlocks.BASALT_PILLAR,
                 AtbywBlocks.TERRACOTTA_STAIRS,
@@ -584,7 +601,11 @@ public class AtbywLootTables {
                 StatueRegistry.WAXED_DIRTY_MAGMA_CUBE_STATUE,
                 StatueRegistry.WAXED_MOSSY_MAGMA_CUBE_STATUE,
                 StatueRegistry.WAXED_VERY_MOSSY_MAGMA_CUBE_STATUE,
-                StatueRegistry.MAGMA_CUBE_STATUE
+                StatueRegistry.MAGMA_CUBE_STATUE,
+                AtbywBlocks.IRON_SPIKE_TRAP,
+                AtbywBlocks.GOLD_SPIKE_TRAP,
+                AtbywBlocks.DIAMOND_SPIKE_TRAP,
+                AtbywBlocks.NETHERITE_SPIKE_TRAP
         ));
     }
 }
