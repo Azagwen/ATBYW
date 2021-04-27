@@ -1,5 +1,8 @@
 {
 	"texture_size": [64, 64],
+	"textures": {
+		"particle": "atbyw:block/spike_trap_top"
+	},
 	"elements": [
 		{
 			"from": [0, 0, 0],

@@ -38,26 +38,26 @@ public class SpikeTrapBlock extends Block {
         return aboveOneHardness && !negativeHardness && !isSpikeBlock;
     }
 
-
-
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
         if (!world.isClient) {
-            world.setBlockState(pos, this.getDefaultState()
-                    .with(ACTIVE, world.isReceivingRedstonePower(pos))
-                    .with(CAN_BREAK, isNeighBorBreakable(world, pos)));
+            if (world.isReceivingRedstonePower(pos)) {
+                world.getBlockTickScheduler().schedule(pos, this, 4);
+            } else {
+                retract(world, pos);
+            }
 
-            activate(world, pos, state.get(ACTIVE));
+            world.setBlockState(pos, this.getDefaultState().with(ACTIVE, world.isReceivingRedstonePower(pos)).with(CAN_BREAK, isNeighBorBreakable(world, pos)));
         }
     }
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.isAir(pos.up()) || world.isWater(pos.up())) {
-            extendSpikes(state, world, pos);
+            placeSpikes(state, world, pos);
         } else if (state.get(CAN_BREAK)) {
             world.breakBlock(pos.up(), true);
-            extendSpikes(state, world, pos);
+            placeSpikes(state, world, pos);
         } else {
             if (world.getBlockState(pos.up()).isSolidBlock(world, pos.up())) {
                 if (state.get(ACTIVE)) {
@@ -67,18 +67,14 @@ public class SpikeTrapBlock extends Block {
         }
     }
 
-    private void activate(World world, BlockPos pos, boolean active) {
-        if (active) {
-            world.getBlockTickScheduler().schedule(pos, this, 4);
-        } else {
-            if (world.getBlockState(pos.up()).getBlock() instanceof SpikeBlock) {
-                world.removeBlock(pos.up(), false);
-                world.playSound(null, pos, SoundEvents.BLOCK_CHAIN_HIT, SoundCategory.BLOCKS, 0.5F, 0.5F);
-            }
+    private void retract(World world, BlockPos pos) {
+        if (world.getBlockState(pos.up()).getBlock() instanceof SpikeBlock) {
+            world.removeBlock(pos.up(), false);
+            world.playSound(null, pos, SoundEvents.BLOCK_CHAIN_HIT, SoundCategory.BLOCKS, 0.5F, 0.5F);
         }
     }
 
-    private void extendSpikes(BlockState state, World world, BlockPos pos) {
+    private void placeSpikes(BlockState state, World world, BlockPos pos) {
         if (state.get(ACTIVE)) {
             world.setBlockState(pos.up(), spikeBlock.getDefaultState());
             world.playSound(null, pos, SoundEvents.BLOCK_CHAIN_HIT, SoundCategory.BLOCKS, 0.5F, 1);
@@ -94,16 +90,19 @@ public class SpikeTrapBlock extends Block {
         super.onBreak(world, pos, state, player);
     }
 
+    @Override
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         World world = ctx.getWorld();
         BlockPos pos = ctx.getBlockPos();
 
-        activate(world, pos, world.isReceivingRedstonePower(pos));
+        if (world.isReceivingRedstonePower(pos)) {
+            world.getBlockTickScheduler().schedule(pos, this, 4);
+        } else {
+            retract(world, pos);
+        }
 
-        return this.getDefaultState()
-                .with(ACTIVE, world.isReceivingRedstonePower(pos))
-                .with(CAN_BREAK, isNeighBorBreakable(world, pos));
+        return this.getDefaultState().with(ACTIVE, world.isReceivingRedstonePower(pos)).with(CAN_BREAK, isNeighBorBreakable(world, pos));
     }
 
     protected void appendProperties(StateManager.Builder<net.minecraft.block.Block, BlockState> builder) {

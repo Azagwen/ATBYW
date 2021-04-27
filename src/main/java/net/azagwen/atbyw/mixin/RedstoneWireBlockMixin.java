@@ -1,6 +1,8 @@
 package net.azagwen.atbyw.mixin;
 
 import net.azagwen.atbyw.blocks.BookshelfToggleBlock;
+import net.azagwen.atbyw.blocks.NewSpikeTrapBlock;
+import net.azagwen.atbyw.blocks.RedstoneJackOlantern;
 import net.azagwen.atbyw.blocks.SpikeTrapBlock;
 import net.minecraft.block.*;
 import net.minecraft.util.math.Direction;
@@ -19,8 +21,11 @@ public class RedstoneWireBlockMixin {
         if (state.getBlock() instanceof BookshelfToggleBlock) {
             cbir.setReturnValue(dir == state.get(BookshelfToggleBlock.FACING) || dir == state.get(BookshelfToggleBlock.FACING).rotateYClockwise() || dir == state.get(BookshelfToggleBlock.FACING).rotateYCounterclockwise());
         }
-        if (state.getBlock() instanceof SpikeTrapBlock) {
+        if (state.getBlock() instanceof SpikeTrapBlock || state.getBlock() instanceof NewSpikeTrapBlock) {
             cbir.setReturnValue(true);
+        }
+        if (state.getBlock() instanceof RedstoneJackOlantern) {
+            cbir.setReturnValue(dir == state.get(RedstoneJackOlantern.FACING).getOpposite());
         }
     }
 }

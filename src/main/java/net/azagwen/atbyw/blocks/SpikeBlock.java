@@ -7,6 +7,8 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -31,8 +33,10 @@ public class SpikeBlock extends Block {
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        boolean isPlayerCreative = player.isCreative();
+
         if (world.getBlockState(pos.down()).getBlock() instanceof SpikeTrapBlock) {
-            world.breakBlock(pos.down(), true, player);
+            world.breakBlock(pos.down(), !isPlayerCreative, player);
         }
 
         super.onBreak(world, pos, state, player);
@@ -53,7 +57,10 @@ public class SpikeBlock extends Block {
                 entity.getType() == EntityType.IRON_GOLEM
         );
 
-        if (entity instanceof LivingEntity && !isImmuneEntity) {
+        boolean isEntityPlayerAndCreative = entity instanceof PlayerEntity && ((PlayerEntity) entity).isCreative();
+
+        if (entity instanceof LivingEntity && !isImmuneEntity && !isEntityPlayerAndCreative) {
+            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 40, 25));
             entity.slowMovement(state, new Vec3d(0.75D, 1.0D, 0.75D));
             entity.damage(AtbywDamageSource.SPIKE_TRAP, damageValue);
         }

@@ -537,9 +537,9 @@ public class AtbywRecipes {
         CHISELED_BLUE_ICE_BRICKS_SLAB = createRecipeFromConfig("", 1, AtbywRecipeConfigs.STICK_1, getBlockID(AtbywBlocks.CHISELED_BLUE_ICE_BRICKS), newKeyPair("item", getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_SLAB)));
 
         IRON_SPIKE_TRAP = createRecipeFromConfig("", AtbywRecipeConfigs.SPIKE_TRAP_4, getBlockID(AtbywBlocks.IRON_SPIKE_TRAP), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("item", getItemID(Items.REDSTONE)));
-        GOLD_SPIKE_TRAP = createRecipeFromConfig("", AtbywRecipeConfigs.SPIKE_TRAP_4, getBlockID(AtbywBlocks.IRON_SPIKE_TRAP), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("item", getItemID(Items.REDSTONE)));
-        DIAMOND_SPIKE_TRAP = createRecipeFromConfig("", AtbywRecipeConfigs.SPIKE_TRAP_4, getBlockID(AtbywBlocks.IRON_SPIKE_TRAP), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("item", getItemID(Items.REDSTONE)));
-        NETHERITE_SPIKE_TRAP = createRecipeFromConfig("", AtbywRecipeConfigs.SPIKE_TRAP_4, getBlockID(AtbywBlocks.IRON_SPIKE_TRAP), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("item", getItemID(Items.REDSTONE)));
+        GOLD_SPIKE_TRAP = createRecipeFromConfig("", AtbywRecipeConfigs.SPIKE_TRAP_4, getBlockID(AtbywBlocks.GOLD_SPIKE_TRAP), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("item", getItemID(Items.REDSTONE)));
+        DIAMOND_SPIKE_TRAP = createRecipeFromConfig("", AtbywRecipeConfigs.SPIKE_TRAP_4, getBlockID(AtbywBlocks.DIAMOND_SPIKE_TRAP), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("item", getItemID(Items.REDSTONE)));
+        NETHERITE_SPIKE_TRAP = createRecipeFromConfig("", AtbywRecipeConfigs.SPIKE_TRAP_4, getBlockID(AtbywBlocks.NETHERITE_SPIKE_TRAP), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("item", getItemID(Items.REDSTONE)));
 
         LOGGER.info("ATBYW Recipes Inintiliazed");
     }
@@ -763,6 +763,9 @@ public class AtbywRecipes {
         putRecipe(AtbywID("chiseled_blue_ice_bricks_slab"), CHISELED_BLUE_ICE_BRICKS_SLAB, map);
 
         putRecipe(AtbywID("iron_spike_trap"), IRON_SPIKE_TRAP, map);
+        putRecipe(AtbywID("gold_spike_trap"), GOLD_SPIKE_TRAP, map);
+        putRecipe(AtbywID("diamond_spike_trap"), DIAMOND_SPIKE_TRAP, map);
+        putRecipe(AtbywID("netherite_spike_trap"), NETHERITE_SPIKE_TRAP, map);
 
     }
 }

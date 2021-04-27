@@ -25,17 +25,13 @@ public class AtbywBlocks {
     //TODO: Idea: locks to lock chests & doors
     //TODO: Experiment with connected models/textures further
     //TODO: Experiment with World Gen
-    //TODO: Add loot tables for compacted snow/packed ice/blue ice bricks and cut purpur block/stairs/slab
-    //TODO: Fix glowsticks being placeable on top of non-full blocks when placed by hand.
     //TODO: Port Atbyw Mod Interaction recipes to datagen
 
     //Blocks to add
     //TODO: Add Bipedal Statues
-    //TODO: Add spike traps (redstone)
     //TODO: Add thin ice (world gen when ready)
     //TODO: Add Railing Blocks (catwalk handles)
-    //TODO: Add Redstone and soul Jack'O Lanterns (directional redstone power)
-    //TODO: Add regular ice bricks that melt
+    // TODO: Add regular ice bricks that melt
     //TODO: Idea > "dried" coral blocks that keep their colors
 
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
@@ -65,25 +61,8 @@ public class AtbywBlocks {
     public static final Block DUMMY_MYCELIUM = new MyceliumBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MaterialColor.PURPLE).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
 
     //"Full" Blocks
-    public static final Block DIRT_STAIRS = new DirtStairsBlock(FabricBlockSettings.copyOf(TICKING_DIRT));
-    public static final Block GRASS_BLOCK_STAIRS = new SpreadableStairsBlock(DUMMY_GRASS_BLOCK, Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
-    public static final Block MYCELIUM_STAIRS = new SpreadableStairsBlock(DUMMY_MYCELIUM, Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
-    public static final Block COARSE_DIRT_STAIRS = new StairsBlockSubClass(Blocks.COARSE_DIRT, FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
-    public static final Block PODZOL_STAIRS = new StairsBlockSubClass(Blocks.PODZOL, FabricBlockSettings.of(Material.SOIL, MaterialColor.SPRUCE).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
-    public static final Block GRASS_PATH_STAIRS = new GrassPathStairsBlock(Blocks.GRASS_PATH, FabricBlockSettings.copyOf(Blocks.GRASS_PATH).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block NETHERRACK_STAIRS = new NetherrackStairsBlock(Blocks.NETHERRACK, FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block CRIMSON_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.CRIMSON_NYLIUM, FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block WARPED_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.WARPED_NYLIUM, FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-
-    public static final Block DIRT_SLAB = new DirtSlabBlock(FabricBlockSettings.copyOf(TICKING_DIRT));
-    public static final Block GRASS_BLOCK_SLAB = new SpreadableSlabBlock(Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
-    public static final Block MYCELIUM_SLAB = new SpreadableSlabBlock(Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
-    public static final Block COARSE_DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.COARSE_DIRT).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block PODZOL_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PODZOL).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block GRASS_PATH_SLAB = new GrassPathSlabBlock(FabricBlockSettings.copyOf(Blocks.GRASS_PATH).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block NETHERRACK_SLAB = new NetherrackSlabBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block CRIMSON_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block WARPED_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BASALT_BRICKS = new Block(MakeBasalt());
+    public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
 
     public static final Block SPRUCE_BOOKSHELF = new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
     public static final Block BIRCH_BOOKSHELF = new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
@@ -101,47 +80,6 @@ public class AtbywBlocks {
     public static final Block DARK_OAK_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block CRIMSON_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
     public static final Block WARPED_BOOKSHELF_TOGGLE = new BookshelfToggleBlock();
-
-    public static final Block GRANITE_TILES = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE));
-    public static final Block DIORITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE));
-    public static final Block ANDESITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE));
-
-    public static final Block CHISELED_PURPUR_BLOCK = new SurfaceFacingBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block PURPUR_TILES = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block PURPUR_TILES_STAIRS = new StairsBlockSubClass(PURPUR_TILES, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
-    public static final Block PURPUR_TILES_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
-    public static final Block CUT_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block CUT_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
-    public static final Block CUT_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
-    public static final Block SMOOTH_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block SMOOTH_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
-    public static final Block SMOOTH_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
-
-    public static final Block COMPACTED_SNOW = new SnowBlockSubClass(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.2F).requiresTool().breakByTool(FabricToolTags.SHOVELS).sounds(BlockSoundGroup.SNOW));
-    public static final Block COMPACTED_SNOW_BLOCK = new Block(FabricBlockSettings.of(Material.SNOW_BLOCK).strength(0.4F).requiresTool().breakByTool(FabricToolTags.SHOVELS).sounds(BlockSoundGroup.SNOW));
-    public static final Block COMPACTED_SNOW_BRICKS = new Block(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
-    public static final Block CHISELED_COMPACTED_SNOW_BRICKS = new Block(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
-    public static final Block PACKED_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
-    public static final Block CHISELED_PACKED_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
-    public static final Block BLUE_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
-    public static final Block CHISELED_BLUE_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
-
-    public static final Block COMPACTED_SNOW_BLOCK_STAIRS = new StairsBlockSubClass(COMPACTED_SNOW_BLOCK, FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
-    public static final Block COMPACTED_SNOW_BRICKS_STAIRS = new StairsBlockSubClass(COMPACTED_SNOW_BRICKS, FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
-    public static final Block PACKED_ICE_STAIRS = new StairsBlockSubClass(Blocks.PACKED_ICE, FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
-    public static final Block BLUE_ICE_STAIRS = new StairsBlockSubClass(Blocks.BLUE_ICE, FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
-    public static final Block PACKED_ICE_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.PACKED_ICE, FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
-    public static final Block BLUE_ICE_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BLUE_ICE, FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
-
-    public static final Block COMPACTED_SNOW_BLOCK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
-    public static final Block COMPACTED_SNOW_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
-    public static final Block PACKED_ICE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
-    public static final Block BLUE_ICE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
-    public static final Block PACKED_ICE_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
-    public static final Block BLUE_ICE_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
-
-    public static final Block BASALT_BRICKS = new Block(MakeBasalt());
-    public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
 
     public static final Block TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.TERRACOTTA, FabricBlockSettings.copy(Blocks.TERRACOTTA));
     public static final Block WHITE_TERRACOTTA_STAIRS = new StairsBlockSubClass(Blocks.WHITE_TERRACOTTA, FabricBlockSettings.copyOf(Blocks.WHITE_TERRACOTTA).requiresTool().breakByTool(FabricToolTags.PICKAXES));
@@ -319,6 +257,71 @@ public class AtbywBlocks {
     public static final Block RED_CINDER_BLOCKS_WALL = new CinderBlocksWallBlock(FabricBlockSettings.copyOf(Blocks.RED_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block BLACK_CINDER_BLOCKS_WALL = new CinderBlocksWallBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
+    public static final Block DIRT_STAIRS = new DirtStairsBlock(FabricBlockSettings.copyOf(TICKING_DIRT));
+    public static final Block GRASS_BLOCK_STAIRS = new SpreadableStairsBlock(DUMMY_GRASS_BLOCK, Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
+    public static final Block MYCELIUM_STAIRS = new SpreadableStairsBlock(DUMMY_MYCELIUM, Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
+    public static final Block COARSE_DIRT_STAIRS = new StairsBlockSubClass(Blocks.COARSE_DIRT, FabricBlockSettings.of(Material.SOIL, MaterialColor.DIRT).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
+    public static final Block PODZOL_STAIRS = new StairsBlockSubClass(Blocks.PODZOL, FabricBlockSettings.of(Material.SOIL, MaterialColor.SPRUCE).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
+    public static final Block GRASS_PATH_STAIRS = new GrassPathStairsBlock(Blocks.GRASS_PATH, FabricBlockSettings.copyOf(Blocks.GRASS_PATH).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block NETHERRACK_STAIRS = new NetherrackStairsBlock(Blocks.NETHERRACK, FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CRIMSON_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.CRIMSON_NYLIUM, FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block WARPED_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.WARPED_NYLIUM, FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block DIRT_SLAB = new DirtSlabBlock(FabricBlockSettings.copyOf(TICKING_DIRT));
+    public static final Block GRASS_BLOCK_SLAB = new SpreadableSlabBlock(Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
+    public static final Block MYCELIUM_SLAB = new SpreadableSlabBlock(Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
+    public static final Block COARSE_DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.COARSE_DIRT).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block PODZOL_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PODZOL).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block GRASS_PATH_SLAB = new GrassPathSlabBlock(FabricBlockSettings.copyOf(Blocks.GRASS_PATH).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block NETHERRACK_SLAB = new NetherrackSlabBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CRIMSON_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block WARPED_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block GRANITE_TILES = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE));
+    public static final Block DIORITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE));
+    public static final Block ANDESITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE));
+
+    public static final Block CHISELED_PURPUR_BLOCK = new SurfaceFacingBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block PURPUR_TILES = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block PURPUR_TILES_STAIRS = new StairsBlockSubClass(PURPUR_TILES, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
+    public static final Block PURPUR_TILES_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
+    public static final Block CUT_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block CUT_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
+    public static final Block CUT_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
+    public static final Block SMOOTH_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
+    public static final Block SMOOTH_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
+    public static final Block SMOOTH_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
+
+    public static final Block COMPACTED_SNOW = new SnowBlockSubClass(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.2F).requiresTool().breakByTool(FabricToolTags.SHOVELS).sounds(BlockSoundGroup.SNOW));
+    public static final Block COMPACTED_SNOW_BLOCK = new Block(FabricBlockSettings.of(Material.SNOW_BLOCK).strength(0.4F).requiresTool().breakByTool(FabricToolTags.SHOVELS).sounds(BlockSoundGroup.SNOW));
+    public static final Block COMPACTED_SNOW_BRICKS = new Block(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block CHISELED_COMPACTED_SNOW_BRICKS = new Block(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block PACKED_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block CHISELED_PACKED_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block BLUE_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+    public static final Block CHISELED_BLUE_ICE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+
+    public static final Block COMPACTED_SNOW_BLOCK_STAIRS = new StairsBlockSubClass(COMPACTED_SNOW_BLOCK, FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block COMPACTED_SNOW_BRICKS_STAIRS = new StairsBlockSubClass(COMPACTED_SNOW_BRICKS, FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block PACKED_ICE_STAIRS = new StairsBlockSubClass(Blocks.PACKED_ICE, FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block BLUE_ICE_STAIRS = new StairsBlockSubClass(Blocks.BLUE_ICE, FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+    public static final Block PACKED_ICE_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.PACKED_ICE, FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block BLUE_ICE_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.BLUE_ICE, FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+
+    public static final Block COMPACTED_SNOW_BLOCK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block COMPACTED_SNOW_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(COMPACTED_SNOW_BLOCK));
+    public static final Block PACKED_ICE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block BLUE_ICE_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+    public static final Block PACKED_ICE_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
+    public static final Block BLUE_ICE_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
+
+    public static final Block REDSTONE_JACK_O_LANTERN = new RedstoneJackOlantern(FabricBlockSettings.of(Material.GOURD, MaterialColor.ORANGE).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance((state) -> {
+        return 7;
+    }).allowsSpawning(AtbywBlocks::always));
+    public static final Block SOUL_JACK_O_LANTERN = new CarvedPumpkinBlockSubClass(FabricBlockSettings.of(Material.GOURD, MaterialColor.ORANGE).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance((state) -> {
+        return 10;
+    }).allowsSpawning(AtbywBlocks::always));
+
     //Non-Full Blocks
     public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.OAK_PLANKS));
     public static final Block SPRUCE_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.SPRUCE_PLANKS));
@@ -395,6 +398,7 @@ public class AtbywBlocks {
         registerBlock(false, ATBYW_REDSTONE, "netherite_spike_trap", NETHERITE_SPIKE_TRAP);
         registerBlocks(false, ATBYW_REDSTONE, null, "bookshelf_toggle", WOOD_NAMES, OAK_BOOKSHELF_TOGGLE, SPRUCE_BOOKSHELF_TOGGLE, BIRCH_BOOKSHELF_TOGGLE, JUNGLE_BOOKSHELF_TOGGLE, ACACIA_BOOKSHELF_TOGGLE, DARK_OAK_BOOKSHELF_TOGGLE, CRIMSON_BOOKSHELF_TOGGLE, WARPED_BOOKSHELF_TOGGLE);
         AtbywModInteractionBlocks.initBookshelfToggles();
+        registerBlock(false, ATBYW_REDSTONE, "redstone_jack_o_lantern", REDSTONE_JACK_O_LANTERN);
         registerBlock(false, ATBYW_REDSTONE, "redstone_lantern", REDSTONE_LANTERN);
         registerBlocks(false, ATBYW_REDSTONE, null, "pull_switch", FLOWER_NAMES, DANDELION_PULL_SWITCH, POPPY_PULL_SWITCH, BLUE_ORCHID_PULL_SWITCH, ALLIUM_PULL_SWITCH, AZURE_BLUET_PULL_SWITCH, RED_TULIP_PULL_SWITCH, ORANGE_TULIP_PULL_SWITCH, WHITE_TULIP_PULL_SWITCH, PINK_TULIP_PULL_SWITCH, OXEYE_DAISY_PULL_SWITCH, CORNFLOWER_PULL_SWITCH, LILY_OF_THE_VALLEY_PULL_SWITCH, WITHER_ROSE_PULL_SWITCH);
 
@@ -422,6 +426,8 @@ public class AtbywBlocks {
         registerBlock(false, ATBYW_BLOCKS, "crimson_nylium_slab", CRIMSON_NYLIUM_SLAB);
         registerBlock(false, ATBYW_BLOCKS, "warped_nylium_slab", WARPED_NYLIUM_SLAB);
         registerBlock(false, ATBYW_BLOCKS, "netherrack_slab", NETHERRACK_SLAB);
+
+        registerBlock(false, ATBYW_BLOCKS, "soul_jack_o_lantern", SOUL_JACK_O_LANTERN);
 
         registerBlocks(false, ATBYW_BLOCKS, null, "bookshelf", WOOD_NAMES_NO_OAK, SPRUCE_BOOKSHELF, BIRCH_BOOKSHELF, JUNGLE_BOOKSHELF, ACACIA_BOOKSHELF, DARK_OAK_BOOKSHELF, CRIMSON_BOOKSHELF, WARPED_BOOKSHELF);
         registerBlocks(false, ATBYW_BLOCKS, null, "ladder", WOOD_NAMES_NO_OAK, SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);

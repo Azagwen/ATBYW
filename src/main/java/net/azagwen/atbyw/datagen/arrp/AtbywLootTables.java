@@ -605,7 +605,9 @@ public class AtbywLootTables {
                 AtbywBlocks.IRON_SPIKE_TRAP,
                 AtbywBlocks.GOLD_SPIKE_TRAP,
                 AtbywBlocks.DIAMOND_SPIKE_TRAP,
-                AtbywBlocks.NETHERITE_SPIKE_TRAP
+                AtbywBlocks.NETHERITE_SPIKE_TRAP,
+                AtbywBlocks.REDSTONE_JACK_O_LANTERN,
+                AtbywBlocks.SOUL_JACK_O_LANTERN
         ));
     }
 }
