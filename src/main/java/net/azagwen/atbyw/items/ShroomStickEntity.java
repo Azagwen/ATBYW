@@ -1,7 +1,7 @@
 package net.azagwen.atbyw.items;
 
-import net.azagwen.atbyw.blocks.AtbywBlocks;
-import net.azagwen.atbyw.blocks.ShroomStickBlock;
+import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.ShroomStickBlock;
 import net.azagwen.atbyw.main.AtbywClient;
 import net.azagwen.atbyw.main.AtbywEntityType;
 import net.azagwen.atbyw.main.EntitySpawnPacket;

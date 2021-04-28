@@ -1,7 +1,7 @@
 package net.azagwen.atbyw.main;
 
-import net.azagwen.atbyw.blocks.AtbywBlockEntities;
-import net.azagwen.atbyw.blocks.AtbywBlocks;
+import net.azagwen.atbyw.block.AtbywBlockEntities;
+import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.datagen.AtbywRecipes;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.items.AtbywItems;

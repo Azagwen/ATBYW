@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.mixin;
 
-import net.azagwen.atbyw.blocks.FenceDoorBlock;
+import net.azagwen.atbyw.block.FenceDoorBlock;
 import net.minecraft.block.*;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.Direction;

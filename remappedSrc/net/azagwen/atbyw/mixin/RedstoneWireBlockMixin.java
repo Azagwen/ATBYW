@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.mixin;
 
-import net.azagwen.atbyw.blocks.BookshelfToggleBlock;
+import net.azagwen.atbyw.block.BookshelfToggleBlock;
 import net.minecraft.block.*;
 import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;

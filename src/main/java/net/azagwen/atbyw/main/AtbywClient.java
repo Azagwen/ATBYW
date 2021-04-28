@@ -1,7 +1,7 @@
 package net.azagwen.atbyw.main;
 
-import net.azagwen.atbyw.blocks.AtbywBlocks;
-import net.azagwen.atbyw.blocks.statues.StatueRegistry;
+import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.statues.StatueRegistry;
 import net.azagwen.atbyw.items.EssenceItem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -164,7 +164,8 @@ public class AtbywClient implements ClientModInitializer {
                 AtbywBlocks.DARK_OAK_LADDER,
                 AtbywBlocks.CRIMSON_LADDER,
                 AtbywBlocks.WARPED_LADDER,
-                AtbywBlocks.BAMBOO_LADDER
+                AtbywBlocks.BAMBOO_LADDER,
+                AtbywBlocks.TIMER_REPEATER
         );
     }
 }

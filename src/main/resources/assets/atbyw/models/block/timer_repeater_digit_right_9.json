@@ -1,0 +1,19 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"texture_size": [32, 32],
+	"textures": {
+		"particle": "atbyw:block/timer_repeater_digits",
+		"top": "atbyw:block/timer_repeater_digits"
+	},
+	"elements": [
+		{
+			"from": [8.5, 0, 5.5],
+			"to": [11.5, 3, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"up": {"uv": [8, 3, 9.5, 5.5], "texture": "#top"}
+			}
+		}
+	]
+}

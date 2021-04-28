@@ -7,7 +7,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
@@ -53,6 +56,23 @@ public class AtbywUtils {
 
     public static Block getBlockFromID(Identifier identifier) {
         return Registry.BLOCK.get(identifier);
+    }
+
+    public boolean isReceiveModularRedstonePower(World world, BlockPos pos) {
+
+        if (world.getEmittedRedstonePower(pos.down(), Direction.DOWN) > 0) {
+            return true;
+        } else if (world.getEmittedRedstonePower(pos.up(), Direction.UP) > 0) {
+            return true;
+        } else if (world.getEmittedRedstonePower(pos.north(), Direction.NORTH) > 0) {
+            return true;
+        } else if (world.getEmittedRedstonePower(pos.south(), Direction.SOUTH) > 0) {
+            return true;
+        } else if (world.getEmittedRedstonePower(pos.west(), Direction.WEST) > 0) {
+            return true;
+        } else {
+            return (world.getEmittedRedstonePower(pos.east(), Direction.EAST) > 0);
+        }
     }
 
     ///////////////////////////////////////////////////////////////

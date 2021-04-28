@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.blocks;
+package net.azagwen.atbyw.block;
 
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;

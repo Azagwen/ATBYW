@@ -2,7 +2,7 @@ package net.azagwen.atbyw.datagen;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.azagwen.atbyw.blocks.AtbywBlocks;
+import net.azagwen.atbyw.block.AtbywBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;

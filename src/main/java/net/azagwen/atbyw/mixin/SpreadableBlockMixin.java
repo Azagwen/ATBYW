@@ -1,17 +1,6 @@
 package net.azagwen.atbyw.mixin;
 
-import net.azagwen.atbyw.blocks.AtbywBlocks;
-import net.azagwen.atbyw.blocks.FenceDoorBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.WallBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.WorldView;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SpreadableBlockMixin.class)
 public class SpreadableBlockMixin {

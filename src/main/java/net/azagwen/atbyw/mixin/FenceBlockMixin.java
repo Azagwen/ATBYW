@@ -1,15 +1,12 @@
 package net.azagwen.atbyw.mixin;
 
-import net.azagwen.atbyw.blocks.FenceDoorBlock;
+import net.azagwen.atbyw.block.FenceDoorBlock;
 import net.minecraft.block.*;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import static net.minecraft.block.Block.cannotConnect;
 
 @Mixin(FenceBlock.class)
 public class FenceBlockMixin {

@@ -1,8 +1,8 @@
 package net.azagwen.atbyw.mixin.piston;
 
-import net.azagwen.atbyw.blocks.piston.PistonWoodType;
-import net.azagwen.atbyw.blocks.piston.PistonWoodTypes;
-import net.azagwen.atbyw.blocks.piston.PistonDuck;
+import net.azagwen.atbyw.block.piston.PistonWoodType;
+import net.azagwen.atbyw.block.piston.PistonWoodTypes;
+import net.azagwen.atbyw.block.piston.PistonDuck;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.*;

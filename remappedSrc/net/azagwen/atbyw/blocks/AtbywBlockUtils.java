@@ -1,6 +1,6 @@
-package net.azagwen.atbyw.blocks;
+package net.azagwen.atbyw.block;
 
-import net.azagwen.atbyw.blocks.StairsBlockSubClass;
+import net.azagwen.atbyw.block.StairsBlockSubClass;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;

@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.blocks;
+package net.azagwen.atbyw.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
@@ -8,7 +8,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
-import static net.azagwen.atbyw.blocks.AtbywBlockUtils.*;
+import static net.azagwen.atbyw.block.AtbywBlockUtils.*;
 import static net.azagwen.atbyw.init.AtbywMain.*;
 
 public class AtbywBlocks {

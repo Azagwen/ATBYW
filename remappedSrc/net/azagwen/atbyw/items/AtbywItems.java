@@ -3,7 +3,7 @@ package net.azagwen.atbyw.items;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 
-import static net.azagwen.atbyw.blocks.AtbywTags.STICKS;
+import static net.azagwen.atbyw.block.AtbywTags.STICKS;
 import static net.azagwen.atbyw.init.AtbywMain.*;
 
 public class AtbywItems {

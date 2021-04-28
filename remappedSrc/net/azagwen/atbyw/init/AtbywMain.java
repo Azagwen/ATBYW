@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.init;
 
-import net.azagwen.atbyw.blocks.AtbywBlocks;
+import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.items.AtbywItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;

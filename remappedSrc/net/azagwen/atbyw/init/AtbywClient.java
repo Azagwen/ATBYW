@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
 
-import static net.azagwen.atbyw.blocks.AtbywBlocks.*;
+import static net.azagwen.atbyw.block.AtbywBlocks.*;
 
 public class AtbywClient implements ClientModInitializer {
 

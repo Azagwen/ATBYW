@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.blocks;
+package net.azagwen.atbyw.block;
 
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;

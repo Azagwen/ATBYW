@@ -2,8 +2,8 @@ package net.azagwen.atbyw.mixin.piston;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import net.azagwen.atbyw.blocks.piston.PistonWoodTypes;
-import net.azagwen.atbyw.blocks.piston.PistonDuck;
+import net.azagwen.atbyw.block.piston.PistonWoodTypes;
+import net.azagwen.atbyw.block.piston.PistonDuck;
 import net.azagwen.atbyw.main.AtbywTags;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;

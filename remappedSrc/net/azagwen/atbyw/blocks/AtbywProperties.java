@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.blocks;
+package net.azagwen.atbyw.block;
 
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
