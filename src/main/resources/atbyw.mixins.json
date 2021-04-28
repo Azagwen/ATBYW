@@ -7,9 +7,10 @@
         "FenceBlockMixin",
         "ItemModelLoaderMixin",
         "PaneBlockMixin",
+        "RecipeManagerMixin",
         "RedstoneWireBlockMixin",
-        "WallBlockMixin",
-        "RecipeManagerMixin"
+        "TexturedRenderLayersMixin",
+        "WallBlockMixin"
     ],
     "client": [
         "EnchantingTableBlockMixin",

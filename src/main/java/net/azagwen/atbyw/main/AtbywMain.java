@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.main;
 
-import net.azagwen.atbyw.block.AtbywBlockEntities;
+import net.azagwen.atbyw.block.entity.AtbywBlockEntityType;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.datagen.AtbywRecipes;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
@@ -68,7 +68,7 @@ public class AtbywMain implements ModInitializer {
 
 		AtbywItems.init();
 		AtbywBlocks.init();
-		AtbywBlockEntities.init();
+		AtbywBlockEntityType.init();
 		AtbywRecipes.init();
 		AtbywRRP.init();
 

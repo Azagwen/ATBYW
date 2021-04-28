@@ -1,12 +1,15 @@
 package net.azagwen.atbyw.main;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.entity.AtbywBlockEntityType;
+import net.azagwen.atbyw.block.entity.TimerRepeaterBlockEntityRenderer;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
 import net.azagwen.atbyw.items.EssenceItem;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.impl.networking.ClientSidePacketRegistryImpl;
@@ -59,6 +62,8 @@ public class AtbywClient implements ClientModInitializer {
 
     @Environment(EnvType.CLIENT)
     public void onInitializeClient() {
+
+        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntityType.TIMER_REPEATER_ENTITY, TimerRepeaterBlockEntityRenderer::new);
 
         EntityRendererRegistry.INSTANCE.register(AtbywEntityType.SHROOMSTICK, (dispatcher, context) ->
                 new FlyingItemEntityRenderer(dispatcher, context.getItemRenderer())

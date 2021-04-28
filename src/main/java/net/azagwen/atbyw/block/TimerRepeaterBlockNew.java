@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.block;
 
+import net.azagwen.atbyw.block.entity.TimerRepeaterBlockEntity;
 import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.minecraft.block.AbstractRedstoneGateBlock;
 import net.minecraft.block.Block;
@@ -38,69 +39,27 @@ public class TimerRepeaterBlockNew extends AbstractRedstoneGateBlock implements 
         if (!player.abilities.allowModifyWorld) {
             return ActionResult.PASS;
         } else {
-            world.setBlockState(pos, state.cycle(TIMER_DELAY).with(TIMER_DIGIT_LEFT, getDigits(state)[0]).with(TIMER_DIGIT_RIGHT, getDigits(state)[1]), 3);
+            world.setBlockState(pos, state.cycle(TIMER_DELAY), 3);
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+
+            if (blockEntity instanceof TimerRepeaterBlockEntity) {
+                TimerRepeaterBlockEntity timerRepeaterBlockEntity = (TimerRepeaterBlockEntity) blockEntity;
+                timerRepeaterBlockEntity.setTimerDelay(state.get(TIMER_DELAY));
+            }
             return ActionResult.success(world.isClient);
         }
     }
 
-    /**
-     * Feel free to judge me on how I did the system below,
-     * I could find a way better than this that wouldn't
-     * have forced me to have a 5000+ lines blockstate json.
-     **/
-    private int shiftedDelay(BlockState state) {
-        int delay = state.get(TIMER_DELAY);
+    @Override
+    protected void updatePowered(World world, BlockPos pos, BlockState state) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
 
-        if (delay < 64) {
-            return delay + 1;
-        } else {
-            return 1;
-        }
-    }
-
-    private int adjustRightDigit(BlockState state, int digitRight) {
-        int delay = shiftedDelay(state);
-
-        if (delay != 1) {
-            if (digitRight < 9) {
-                return digitRight + 1;
-            } else {
-                return 0;
-            }
-        } else {
-            return 1;
-        }
-    }
-
-    private int adjustLeftDigit(BlockState state, int digitLeft, int digitRight) {
-        int delay = shiftedDelay(state);
-
-        if (delay != 1) {
-            if (digitRight == 0) {
-                return digitLeft + 1;
-            } else {
-                return digitLeft;
-            }
-        } else {
-            return 0;
-        }
-    }
-
-    private int[] getDigits(BlockState state) {
-        int digitLeft = 0;
-        int digitRight;
-
-        if (state.get(TIMER_DELAY) < 10) {
-            digitRight = state.get(TIMER_DELAY);
-        } else {
-            String delayStr = state.get(TIMER_DELAY).toString();
-            char[] digits = delayStr.toCharArray();
-
-            digitLeft = Integer.parseInt(String.valueOf(digits[0]));
-            digitRight = Integer.parseInt(String.valueOf(digits[1]));
+        if (blockEntity instanceof TimerRepeaterBlockEntity) {
+            TimerRepeaterBlockEntity timerRepeaterBlockEntity = (TimerRepeaterBlockEntity) blockEntity;
+            timerRepeaterBlockEntity.setPowered(state.get(POWERED));
         }
 
-        return new int[] {adjustLeftDigit(state, digitLeft, adjustRightDigit(state, digitRight)), adjustRightDigit(state, digitRight)};
+        super.updatePowered(world, pos, state);
     }
 
     protected int getUpdateDelayInternal(BlockState state) {
@@ -127,7 +86,7 @@ public class TimerRepeaterBlockNew extends AbstractRedstoneGateBlock implements 
 
     @Override
     public @Nullable BlockEntity createBlockEntity(BlockView world) {
-        return null;
+        return new TimerRepeaterBlockEntity();
     }
 
     static {

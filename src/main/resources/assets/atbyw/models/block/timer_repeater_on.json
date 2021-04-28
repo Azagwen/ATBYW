@@ -1,37 +1,6 @@
 {
-	"credit": "Made with Blockbench",
-	"ambientocclusion": false,
+	"parent": "atbyw:block/timer_repeater",
 	"textures": {
-		"bottom": "minecraft:block/smooth_stone",
-		"top": "atbyw:block/timer_repeater_on",
-		"frame": "atbyw:block/timer_repeater_frame",
-		"particle": "atbyw:block/timer_repeater"
-	},
-	"elements": [
-		{
-			"from": [2.5, 2, 2.5],
-			"to": [13.5, 3, 13.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [2.5, 2, 1.5]},
-			"faces": {
-				"north": {"uv": [11,  0,  0,  1], "texture": "#frame"},
-				"east":  {"uv": [10,  0, 11, 11], "rotation": 90, "texture": "#frame"},
-				"south": {"uv": [ 0, 10, 11, 11], "texture": "#frame"},
-				"west":  {"uv": [ 0,  0,  1, 11], "rotation": 270, "texture": "#frame"},
-				"up":    {"uv": [ 0,  0, 11, 11], "texture": "#frame"},
-				"down":  {"uv": [ 0,  0,  0,  0], "texture": "#frame"}
-			}
-		},
-		{
-			"from": [0, 0, 0], 
-			"to": [16, 2, 16],
-			"faces": {
-				"north": {"uv": [16,  0,  0,  2], "texture": "#top", "cullface": "north"},
-				"east":  {"uv": [14, 16, 16,  0], "rotation": 270, "texture": "#top", "cullface": "east"},
-				"south": {"uv": [ 0, 16, 16, 14], "texture": "#top", "cullface": "south"},
-				"west":  {"uv": [ 0, 16,  2,  0], "rotation": 90, "texture": "#top", "cullface": "west"},
-				"up":    {"uv": [ 0,  0, 16, 16], "texture": "#top"},
-				"down":  {"uv": [ 0,  0, 16, 16], "texture": "#bottom", "cullface": "down"}
-			}
-		}
-	]
+		"top": "atbyw:block/timer_repeater_on"
+	}
 }

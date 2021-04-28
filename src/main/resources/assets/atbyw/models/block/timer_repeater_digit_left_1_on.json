@@ -1,7 +1,0 @@
-{
-	"parent": "atbyw:block/timer_repeater_digit_left_1",
-	"textures": {
-		"particle": "atbyw:block/timer_repeater_digits_on",
-		"top": "atbyw:block/timer_repeater_digits_on"
-	}
-}
