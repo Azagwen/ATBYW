@@ -8,24 +8,24 @@ import static net.azagwen.atbyw.items.AtbywItems.*;
 
 public class AtbywModInteractionItems {
 
-    public static final Item STALAGNATE_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item REEDS_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item WILLOW_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item WART_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item RUBEUS_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item MUSHROOM_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item MUSHROOM_FIR_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item ANCHOR_TREE_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item NETHER_SAKURA_STICK = new Item(createSimpleItem(ATBYW_MISC));
+    public static final Item STALAGNATE_STICK = new Item(createSimpleItem(null));
+    public static final Item REEDS_STICK = new Item(createSimpleItem(null));
+    public static final Item WILLOW_STICK = new Item(createSimpleItem(null));
+    public static final Item WART_STICK = new Item(createSimpleItem(null));
+    public static final Item RUBEUS_STICK = new Item(createSimpleItem(null));
+    public static final Item MUSHROOM_STICK = new Item(createSimpleItem(null));
+    public static final Item MUSHROOM_FIR_STICK = new Item(createSimpleItem(null));
+    public static final Item ANCHOR_TREE_STICK = new Item(createSimpleItem(null));
+    public static final Item NETHER_SAKURA_STICK = new Item(createSimpleItem(null));
 
-    public static final Item MOSSY_GLOWSROOM_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item PYTHADENDRON_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item END_LOTUS_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item LACUGROVE_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item DRAGON_TREE_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item TENANEA_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item HELIX_TREE_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item UMBRELLA_TREE_STICK = new Item(createSimpleItem(ATBYW_MISC));
+    public static final Item MOSSY_GLOWSROOM_STICK = new Item(createSimpleItem(null));
+    public static final Item PYTHADENDRON_STICK = new Item(createSimpleItem(null));
+    public static final Item END_LOTUS_STICK = new Item(createSimpleItem(null));
+    public static final Item LACUGROVE_STICK = new Item(createSimpleItem(null));
+    public static final Item DRAGON_TREE_STICK = new Item(createSimpleItem(null));
+    public static final Item TENANEA_STICK = new Item(createSimpleItem(null));
+    public static final Item HELIX_TREE_STICK = new Item(createSimpleItem(null));
+    public static final Item UMBRELLA_TREE_STICK = new Item(createSimpleItem(null));
 
     public static void init() {
         if (isModLoaded("betternether")) {

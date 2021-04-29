@@ -54,11 +54,7 @@ public class AtbywRecipesSmelting {
         return obj;
     }
 
-    public static JsonObject SMOOTH_PURPUR_BLOCK_SMELTING;
-
-    public static void init() {
-        SMOOTH_PURPUR_BLOCK_SMELTING = createSmeltingRecipe(SMELTING, Lists.newArrayList(getBlockID(Blocks.PURPUR_BLOCK)), getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), 0.1D, 200);
-    }
+    public static JsonObject SMOOTH_PURPUR_BLOCK_SMELTING = createSmeltingRecipe(SMELTING, Lists.newArrayList(getBlockID(Blocks.PURPUR_BLOCK)), getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), 0.1D, 200);
 
     //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
     public static void injectRecipes(Map<Identifier, JsonElement> map) {

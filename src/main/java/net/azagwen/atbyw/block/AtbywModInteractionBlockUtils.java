@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import org.jetbrains.annotations.Nullable;
 
 import static net.azagwen.atbyw.main.AtbywMain.AtbywModInteractionID;
 
@@ -39,15 +40,15 @@ public class AtbywModInteractionBlockUtils {
         }
     }
 
-    public static void registerModInteractBlock(boolean fireproof, ItemGroup group, String block_name, Block block) {
-        Item.Settings normalSettings = new Item.Settings().group(group);
-        Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
+    public static void registerModInteractBlock(boolean fireproof, @Nullable ItemGroup group, String name, Block block) {
+        Item.Settings normalSettings = group != null ? new Item.Settings().group(group) : new Item.Settings();
+        Item.Settings fireproofSettings = group != null ? new Item.Settings().group(group).fireproof() : new Item.Settings().fireproof();
 
-        Registry.register(Registry.BLOCK, AtbywModInteractionID(block_name), block);
-        Registry.register(Registry.ITEM, AtbywModInteractionID(block_name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+        Registry.register(Registry.BLOCK, AtbywModInteractionID(name), block);
+        Registry.register(Registry.ITEM, AtbywModInteractionID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
     }
 
-    public static void registerModInteractBlocks(boolean fireproof, ItemGroup group, String block_name, String[] variant_type, Block[] block) {
+    public static void registerModInteractBlocks(boolean fireproof, @Nullable ItemGroup group, String block_name, String[] variant_type, Block[] block) {
         Item.Settings normalSettings = new Item.Settings().group(group);
         Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
 

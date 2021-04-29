@@ -26,6 +26,8 @@
   "block.atbyw.redstone_jack_o_lantern": "Redstone Jack o'Lantern",
   "block.atbyw.soul_jack_o_lantern": "Soul Jack o'Lantern",
 
+  "block.atbyw.timer_repeater": "Redstone Timer Repeater",
+
   "block.atbyw.compacted_snow": "Compacted Snow",
   "block.atbyw.compacted_snow_block": "Compacted Snow Block",
   "block.atbyw.compacted_snow_block_stairs": "Compacted Snow Block Stairs",
@@ -460,10 +462,11 @@
   "block.atbyw.black_cinder_blocks_wall": "Black Cinder Blocks Wall",
 
   "_comment": "Misc",
-  "itemGroup.atbyw.blocks": "§nA§rll §nT§rhe §nB§rlocks §nY§rou §nW§rant",
-  "itemGroup.atbyw.decoration": "ATBYW Decoration",
-  "itemGroup.atbyw.redstone": "ATBYW Redstone",
-  "itemGroup.atbyw.items": "ATBYW Misc",
+  "itemGroup.atbyw.atbyw": "§nA§rll §nT§rhe §nB§rlocks §nY§rou §nW§rant",
+  "itemGroup.subTab.atbyw.blocks": "Blocks",
+  "itemGroup.subTab.atbyw.decoration": "Decoration",
+  "itemGroup.subTab.atbyw.redstone": "Redstone",
+  "itemGroup.subTab.atbyw.misc": "Miscellaneous",
   "block.atbyw.redstone_lantern.power_intensity": "Power Intensity: %d",
 
   "block.atbyw.bee_statue.not_ready": "Bee statue is %d%% mossy.",

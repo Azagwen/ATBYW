@@ -139,7 +139,7 @@ public class StatueRegistry {
             else
                 name = String.join("_", prefix, animal, "statue");
 
-            registerBlock(false, ATBYW_DECO, name, block);
+            registerBlock(false, null, name, block);
         }
     }
 

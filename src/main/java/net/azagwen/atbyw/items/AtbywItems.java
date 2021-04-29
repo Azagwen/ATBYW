@@ -3,24 +3,25 @@ package net.azagwen.atbyw.items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
+import org.jetbrains.annotations.Nullable;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywItems {
 
-    protected static Item.Settings createSimpleItem(ItemGroup group) {
-        return new Item.Settings().group(group);
+    protected static Item.Settings createSimpleItem(@Nullable ItemGroup group) {
+        return group != null ? new Item.Settings().group(group) : new Item.Settings();
     }
 
-    public static final Item OAK_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item SPRUCE_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item BIRCH_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item JUNGLE_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item ACACIA_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item DARK_OAK_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item CRIMSON_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item WARPED_STICK = new Item(createSimpleItem(ATBYW_MISC));
-    public static final Item BAMBOO_STICK = new Item(createSimpleItem(ATBYW_MISC));
+    public static final Item OAK_STICK = new Item(createSimpleItem(null));
+    public static final Item SPRUCE_STICK = new Item(createSimpleItem(null));
+    public static final Item BIRCH_STICK = new Item(createSimpleItem(null));
+    public static final Item JUNGLE_STICK = new Item(createSimpleItem(null));
+    public static final Item ACACIA_STICK = new Item(createSimpleItem(null));
+    public static final Item DARK_OAK_STICK = new Item(createSimpleItem(null));
+    public static final Item CRIMSON_STICK = new Item(createSimpleItem(null));
+    public static final Item WARPED_STICK = new Item(createSimpleItem(null));
+    public static final Item BAMBOO_STICK = new Item(createSimpleItem(null));
 
     public static final Item BEE_ESSENCE = new EssenceItem(0xFFC43B);
     public static final Item SILVERFISH_ESSENCE = new EssenceItem(0x7D7D7D);
@@ -37,7 +38,7 @@ public class AtbywItems {
     public static final Item MAGMA_CUBE_ESSENCE = new EssenceItem(0x630000);
     public static final Item SLIME_ESSENCE = new EssenceItem(0x8CD782);
 
-    public static final Item SHROOMSTICK = new ShroomStickItem(createSimpleItem(ATBYW_DECO));
+    public static final Item SHROOMSTICK = new ShroomStickItem(createSimpleItem(null));
 
     public static final Item[] ESSENCE_BOTTLES = {
             BEE_ESSENCE,

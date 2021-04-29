@@ -607,7 +607,8 @@ public class AtbywLootTables {
                 AtbywBlocks.DIAMOND_SPIKE_TRAP,
                 AtbywBlocks.NETHERITE_SPIKE_TRAP,
                 AtbywBlocks.REDSTONE_JACK_O_LANTERN,
-                AtbywBlocks.SOUL_JACK_O_LANTERN
+                AtbywBlocks.SOUL_JACK_O_LANTERN,
+                AtbywBlocks.TIMER_REPEATER
         ));
     }
 }

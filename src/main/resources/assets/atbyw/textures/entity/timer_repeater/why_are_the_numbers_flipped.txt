@@ -1,0 +1,8 @@
+I had to flip the number sprites upside down, 
+because for SOME FUCKING REASON, Mojang's blockentity rendering system flips them upside down.
+It was the easiest way to get the numbers to render rightside up, sorry about that.
+
+If you have a solution to this problem, that could allow me to put the numbers rightside up in the textures,
+please feel free to open a ticke at : https://github.com/Azagwen/ATBYW/issues
+
+this is clearly a major, game-breaking issue that needs to be fixed for the good of humanity !

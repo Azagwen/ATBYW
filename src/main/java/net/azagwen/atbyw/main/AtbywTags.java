@@ -1,9 +1,12 @@
 package net.azagwen.atbyw.main;
 
+import com.google.common.collect.Lists;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
+
+import java.util.ArrayList;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
@@ -24,10 +27,10 @@ public class AtbywTags {
     private AtbywTags() {
     }
 
-    private static Tag<Block> registerBlockTag(String id) {
+    public static Tag<Block> registerBlockTag(String id) {
         return TagRegistry.block(AtbywID(id));
     }
-    private static Tag<Item> registerItemTag(String id) {
+    public static Tag<Item> registerItemTag(String id) {
         return TagRegistry.item(AtbywID(id));
     }
 }

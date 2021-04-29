@@ -1,0 +1,43 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "north": "true"
+      },
+      "apply": {
+        "model": "atbyw:block/railing/acacia_railing",
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "atbyw:block/railing/acacia_railing",
+        "y": 90,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "south": "true"
+      },
+      "apply": {
+        "model": "atbyw:block/railing/acacia_railing",
+         "y": 180,
+         "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "west": "true"
+      },
+      "apply": {
+        "model": "atbyw:block/railing/acacia_railing",
+        "y": 270,
+        "uvlock": true
+      }
+    }
+  ]
+}

@@ -5,8 +5,11 @@ import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
+import net.azagwen.atbyw.util.AtbywBlockUtils.*;
 
 import java.util.*;
+
+import static net.azagwen.atbyw.util.AtbywBlockUtils.makeDirectionalShapes;
 
 public class StatueVoxelShapes {
     public static final VoxelShape DEFAULT_OUTLINE = VoxelShapes.fullCube();
@@ -28,32 +31,6 @@ public class StatueVoxelShapes {
     public static final VoxelShape[] SALMON_OUTLINES;
     public static final VoxelShape[] PUFFER_FISH_OUTLINES;
     public static final VoxelShape[] SLIME_SMALL_OUTLINES;
-
-    /** Inverts the input value for use in VoxelShapes.
-     *
-     *  @param i Value to invert.
-     *  @return  Inverted Value.
-     */
-    private static double invert(double i) {
-        return -(i - 16);
-    }
-
-    /** Creates an array of 4 shapes, corresponding
-     *  to the 4 directions statues can be in.
-     *
-     *  @return        Array of all 4 directions combined from the input arrays.
-     */
-    private static VoxelShape[] makeDirectionalShapes(double xMin, double yMin, double zMin, double xMax, double yMax, double zMax) {
-        double xMax2 = invert(zMax);
-        double zMin2 = invert(zMin);
-
-        VoxelShape NORTH = Block.createCuboidShape(xMin , yMin, zMin , xMax , yMax, zMax );
-        VoxelShape SOUTH = Block.createCuboidShape(xMin , yMin, xMax2, xMax , yMax, zMin2);
-        VoxelShape EAST  = Block.createCuboidShape(xMax2, yMin, xMin , zMin2, yMax, xMax );
-        VoxelShape WEST  = Block.createCuboidShape(zMin , yMin, xMin , zMax , yMax, xMax );
-
-        return new VoxelShape[] {NORTH, SOUTH, EAST, WEST};
-    }
 
     /** Combines shapes from a double array of shapes into
      *  4 directional shapes for use with Statues.
@@ -98,9 +75,6 @@ public class StatueVoxelShapes {
     }
 
     static {
-        Direction.Axis X = Direction.Axis.X;
-        Direction.Axis Y = Direction.Axis.Y;
-        Direction.Axis Z = Direction.Axis.Z;
 
         //Bee Shapes
         final VoxelShape[][] BEE_SHAPES = {

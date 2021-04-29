@@ -7,7 +7,7 @@ public class EssenceItem extends Item {
     private final int color;
 
     public EssenceItem(int color) {
-        super(new Item.Settings().group(ATBYW_MISC));
+        super(new Item.Settings());
         this.color = color;
     }
 

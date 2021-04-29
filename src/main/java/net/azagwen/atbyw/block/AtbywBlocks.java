@@ -22,6 +22,7 @@ import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywBlocks {
 
+
     //TODO: Idea: locks to lock chests & doors
     //TODO: Experiment with connected models/textures further
     //TODO: Experiment with World Gen
@@ -35,8 +36,6 @@ public class AtbywBlocks {
     //TODO: Idea > "dried" coral blocks that keep their colors
     //TODO: Add beds that accept banners as sheets.
     //TODO: Add chairs ?
-
-    //TODO: IMPLEMENT TIMER REPEATERS
 
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
     public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
@@ -385,136 +384,140 @@ public class AtbywBlocks {
     public static final Block DIAMOND_SPIKE_TRAP = new SpikeTrapBlock(DIAMOND_SPIKE_TRAP_SPIKES, 3.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
     public static final Block NETHERITE_SPIKE_TRAP = new SpikeTrapBlock(NETHERITE_SPIKE_TRAP_SPIKES, 6.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
 
-    public static final Block TIMER_REPEATER = new TimerRepeaterBlockNew(FabricBlockSettings.copyOf(Blocks.REPEATER));
+    public static final Block TIMER_REPEATER = new TimerRepeaterBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
+
+    public static final Block ACACIA_RAILING = new RailingBlock(AtbywID("acacia_railing"), FabricBlockSettings.copyOf(Blocks.ACACIA_FENCE));
 
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
     public static void init() {
         //ATBYW REDSTONE
-        registerBlocks(false, ATBYW_REDSTONE, null, "fence_door", WOOD_NAMES, OAK_FENCE_DOOR, SPRUCE_FENCE_DOOR, BIRCH_FENCE_DOOR, JUNGLE_FENCE_DOOR, ACACIA_FENCE_DOOR, DARK_OAK_FENCE_DOOR, CRIMSON_FENCE_DOOR, WARPED_FENCE_DOOR);
-        registerBlock(false, ATBYW_REDSTONE, "iron_fence_door", IRON_FENCE_DOOR);
-        registerBlock(false, ATBYW_REDSTONE, "iron_spike_trap", IRON_SPIKE_TRAP);
-        registerBlock(false, ATBYW_REDSTONE, "gold_spike_trap", GOLD_SPIKE_TRAP);
-        registerBlock(false, ATBYW_REDSTONE, "diamond_spike_trap", DIAMOND_SPIKE_TRAP);
-        registerBlock(false, ATBYW_REDSTONE, "netherite_spike_trap", NETHERITE_SPIKE_TRAP);
-        registerBlocks(false, ATBYW_REDSTONE, null, "bookshelf_toggle", WOOD_NAMES, OAK_BOOKSHELF_TOGGLE, SPRUCE_BOOKSHELF_TOGGLE, BIRCH_BOOKSHELF_TOGGLE, JUNGLE_BOOKSHELF_TOGGLE, ACACIA_BOOKSHELF_TOGGLE, DARK_OAK_BOOKSHELF_TOGGLE, CRIMSON_BOOKSHELF_TOGGLE, WARPED_BOOKSHELF_TOGGLE);
+        registerBlocks(false, null, "fence_door", WOOD_NAMES, OAK_FENCE_DOOR, SPRUCE_FENCE_DOOR, BIRCH_FENCE_DOOR, JUNGLE_FENCE_DOOR, ACACIA_FENCE_DOOR, DARK_OAK_FENCE_DOOR, CRIMSON_FENCE_DOOR, WARPED_FENCE_DOOR);
+        registerBlock(false, "iron_fence_door", IRON_FENCE_DOOR);
+        registerBlock(false, "iron_spike_trap", IRON_SPIKE_TRAP);
+        registerBlock(false, "gold_spike_trap", GOLD_SPIKE_TRAP);
+        registerBlock(false, "diamond_spike_trap", DIAMOND_SPIKE_TRAP);
+        registerBlock(false, "netherite_spike_trap", NETHERITE_SPIKE_TRAP);
+        registerBlocks(false, null, "bookshelf_toggle", WOOD_NAMES, OAK_BOOKSHELF_TOGGLE, SPRUCE_BOOKSHELF_TOGGLE, BIRCH_BOOKSHELF_TOGGLE, JUNGLE_BOOKSHELF_TOGGLE, ACACIA_BOOKSHELF_TOGGLE, DARK_OAK_BOOKSHELF_TOGGLE, CRIMSON_BOOKSHELF_TOGGLE, WARPED_BOOKSHELF_TOGGLE);
         AtbywModInteractionBlocks.initBookshelfToggles();
-        registerBlock(false, ATBYW_REDSTONE, "redstone_jack_o_lantern", REDSTONE_JACK_O_LANTERN);
-        registerBlock(false, ATBYW_REDSTONE, "redstone_lantern", REDSTONE_LANTERN);
-        registerBlocks(false, ATBYW_REDSTONE, null, "pull_switch", FLOWER_NAMES, DANDELION_PULL_SWITCH, POPPY_PULL_SWITCH, BLUE_ORCHID_PULL_SWITCH, ALLIUM_PULL_SWITCH, AZURE_BLUET_PULL_SWITCH, RED_TULIP_PULL_SWITCH, ORANGE_TULIP_PULL_SWITCH, WHITE_TULIP_PULL_SWITCH, PINK_TULIP_PULL_SWITCH, OXEYE_DAISY_PULL_SWITCH, CORNFLOWER_PULL_SWITCH, LILY_OF_THE_VALLEY_PULL_SWITCH, WITHER_ROSE_PULL_SWITCH);
-        registerBlock(false, ATBYW_REDSTONE, "timer_repeater", TIMER_REPEATER);
+        registerBlock(false, "redstone_jack_o_lantern", REDSTONE_JACK_O_LANTERN);
+        registerBlock(false, "redstone_lantern", REDSTONE_LANTERN);
+        registerBlocks(false, null, "pull_switch", FLOWER_NAMES, DANDELION_PULL_SWITCH, POPPY_PULL_SWITCH, BLUE_ORCHID_PULL_SWITCH, ALLIUM_PULL_SWITCH, AZURE_BLUET_PULL_SWITCH, RED_TULIP_PULL_SWITCH, ORANGE_TULIP_PULL_SWITCH, WHITE_TULIP_PULL_SWITCH, PINK_TULIP_PULL_SWITCH, OXEYE_DAISY_PULL_SWITCH, CORNFLOWER_PULL_SWITCH, LILY_OF_THE_VALLEY_PULL_SWITCH, WITHER_ROSE_PULL_SWITCH);
+        registerBlock(false, "timer_repeater", TIMER_REPEATER);
 
         //ATBYW BLOCKS
-        registerBlock(false, ATBYW_BLOCKS, "granite_tiles", GRANITE_TILES);
-        registerBlock(false, ATBYW_BLOCKS, "diorite_bricks", DIORITE_BRICKS);
-        registerBlock(false, ATBYW_BLOCKS, "andesite_bricks", ANDESITE_BRICKS);
+        registerBlock(false, "granite_tiles", GRANITE_TILES);
+        registerBlock(false, "diorite_bricks", DIORITE_BRICKS);
+        registerBlock(false, "andesite_bricks", ANDESITE_BRICKS);
 
-        registerBlock(false, ATBYW_BLOCKS, "grass_block_stairs", GRASS_BLOCK_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "mycelium_stairs", MYCELIUM_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "podzol_stairs", PODZOL_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "grass_path_stairs", GRASS_PATH_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "dirt_stairs", DIRT_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "coarse_dirt_stairs", COARSE_DIRT_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "crimson_nylium_stairs", CRIMSON_NYLIUM_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "warped_nylium_stairs", WARPED_NYLIUM_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "netherrack_stairs", NETHERRACK_STAIRS);
+        registerBlock(false, "grass_block_stairs", GRASS_BLOCK_STAIRS);
+        registerBlock(false, "mycelium_stairs", MYCELIUM_STAIRS);
+        registerBlock(false, "podzol_stairs", PODZOL_STAIRS);
+        registerBlock(false, "grass_path_stairs", GRASS_PATH_STAIRS);
+        registerBlock(false, "dirt_stairs", DIRT_STAIRS);
+        registerBlock(false, "coarse_dirt_stairs", COARSE_DIRT_STAIRS);
+        registerBlock(false, "crimson_nylium_stairs", CRIMSON_NYLIUM_STAIRS);
+        registerBlock(false, "warped_nylium_stairs", WARPED_NYLIUM_STAIRS);
+        registerBlock(false, "netherrack_stairs", NETHERRACK_STAIRS);
 
-        registerBlock(false, ATBYW_BLOCKS, "grass_block_slab", GRASS_BLOCK_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "mycelium_slab", MYCELIUM_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "podzol_slab", PODZOL_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "grass_path_slab", GRASS_PATH_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "dirt_slab", DIRT_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "coarse_dirt_slab", COARSE_DIRT_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "crimson_nylium_slab", CRIMSON_NYLIUM_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "warped_nylium_slab", WARPED_NYLIUM_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "netherrack_slab", NETHERRACK_SLAB);
+        registerBlock(false, "grass_block_slab", GRASS_BLOCK_SLAB);
+        registerBlock(false, "mycelium_slab", MYCELIUM_SLAB);
+        registerBlock(false, "podzol_slab", PODZOL_SLAB);
+        registerBlock(false, "grass_path_slab", GRASS_PATH_SLAB);
+        registerBlock(false, "dirt_slab", DIRT_SLAB);
+        registerBlock(false, "coarse_dirt_slab", COARSE_DIRT_SLAB);
+        registerBlock(false, "crimson_nylium_slab", CRIMSON_NYLIUM_SLAB);
+        registerBlock(false, "warped_nylium_slab", WARPED_NYLIUM_SLAB);
+        registerBlock(false, "netherrack_slab", NETHERRACK_SLAB);
 
-        registerBlock(false, ATBYW_BLOCKS, "soul_jack_o_lantern", SOUL_JACK_O_LANTERN);
+        registerBlock(false, "soul_jack_o_lantern", SOUL_JACK_O_LANTERN);
 
-        registerBlocks(false, ATBYW_BLOCKS, null, "bookshelf", WOOD_NAMES_NO_OAK, SPRUCE_BOOKSHELF, BIRCH_BOOKSHELF, JUNGLE_BOOKSHELF, ACACIA_BOOKSHELF, DARK_OAK_BOOKSHELF, CRIMSON_BOOKSHELF, WARPED_BOOKSHELF);
-        registerBlocks(false, ATBYW_BLOCKS, null, "ladder", WOOD_NAMES_NO_OAK, SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);
-        registerBlock(false, ATBYW_BLOCKS, "bamboo_ladder", BAMBOO_LADDER);
+        registerBlocks(false, null, "bookshelf", WOOD_NAMES_NO_OAK, SPRUCE_BOOKSHELF, BIRCH_BOOKSHELF, JUNGLE_BOOKSHELF, ACACIA_BOOKSHELF, DARK_OAK_BOOKSHELF, CRIMSON_BOOKSHELF, WARPED_BOOKSHELF);
+        registerBlocks(false, null, "ladder", WOOD_NAMES_NO_OAK, SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);
+        registerBlock(false, "bamboo_ladder", BAMBOO_LADDER);
 
-        registerBlock(false, ATBYW_BLOCKS, "purpur_tiles", PURPUR_TILES);
-        registerBlock(false, ATBYW_BLOCKS, "chiseled_purpur_block", CHISELED_PURPUR_BLOCK);
-        registerBlock(false, ATBYW_BLOCKS, "cut_purpur_block", CUT_PURPUR_BLOCK);
-        registerBlock(false, ATBYW_BLOCKS, "smooth_purpur_block", SMOOTH_PURPUR_BLOCK);
+        registerBlock(false, "purpur_tiles", PURPUR_TILES);
+        registerBlock(false, "chiseled_purpur_block", CHISELED_PURPUR_BLOCK);
+        registerBlock(false, "cut_purpur_block", CUT_PURPUR_BLOCK);
+        registerBlock(false, "smooth_purpur_block", SMOOTH_PURPUR_BLOCK);
 
-        registerBlock(false, ATBYW_BLOCKS, "purpur_tiles_stairs", PURPUR_TILES_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "cut_purpur_stairs", CUT_PURPUR_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "smooth_purpur_stairs", SMOOTH_PURPUR_STAIRS);
+        registerBlock(false, "purpur_tiles_stairs", PURPUR_TILES_STAIRS);
+        registerBlock(false, "cut_purpur_stairs", CUT_PURPUR_STAIRS);
+        registerBlock(false, "smooth_purpur_stairs", SMOOTH_PURPUR_STAIRS);
 
-        registerBlock(false, ATBYW_BLOCKS, "purpur_tiles_slab", PURPUR_TILES_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "cut_purpur_slab", CUT_PURPUR_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "smooth_purpur_slab", SMOOTH_PURPUR_SLAB);
+        registerBlock(false, "purpur_tiles_slab", PURPUR_TILES_SLAB);
+        registerBlock(false, "cut_purpur_slab", CUT_PURPUR_SLAB);
+        registerBlock(false, "smooth_purpur_slab", SMOOTH_PURPUR_SLAB);
 
-        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_block", COMPACTED_SNOW_BLOCK);
-        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_bricks", COMPACTED_SNOW_BRICKS);
-        registerBlock(false, ATBYW_BLOCKS, "chiseled_compacted_snow_bricks", CHISELED_COMPACTED_SNOW_BRICKS);
-        registerBlock(false, ATBYW_BLOCKS, "packed_ice_bricks", PACKED_ICE_BRICKS);
-        registerBlock(false, ATBYW_BLOCKS, "chiseled_packed_ice_bricks", CHISELED_PACKED_ICE_BRICKS);
-        registerBlock(false, ATBYW_BLOCKS, "blue_ice_bricks", BLUE_ICE_BRICKS);
-        registerBlock(false, ATBYW_BLOCKS, "chiseled_blue_ice_bricks", CHISELED_BLUE_ICE_BRICKS);
+        registerBlock(false, "compacted_snow_block", COMPACTED_SNOW_BLOCK);
+        registerBlock(false, "compacted_snow_bricks", COMPACTED_SNOW_BRICKS);
+        registerBlock(false, "chiseled_compacted_snow_bricks", CHISELED_COMPACTED_SNOW_BRICKS);
+        registerBlock(false, "packed_ice_bricks", PACKED_ICE_BRICKS);
+        registerBlock(false, "chiseled_packed_ice_bricks", CHISELED_PACKED_ICE_BRICKS);
+        registerBlock(false, "blue_ice_bricks", BLUE_ICE_BRICKS);
+        registerBlock(false, "chiseled_blue_ice_bricks", CHISELED_BLUE_ICE_BRICKS);
 
-        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_block_stairs", COMPACTED_SNOW_BLOCK_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_bricks_stairs", COMPACTED_SNOW_BRICKS_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "packed_ice_stairs", PACKED_ICE_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "blue_ice_stairs", BLUE_ICE_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "packed_ice_bricks_stairs", PACKED_ICE_BRICKS_STAIRS);
-        registerBlock(false, ATBYW_BLOCKS, "blue_ice_bricks_stairs", BLUE_ICE_BRICKS_STAIRS);
+        registerBlock(false, "compacted_snow_block_stairs", COMPACTED_SNOW_BLOCK_STAIRS);
+        registerBlock(false, "compacted_snow_bricks_stairs", COMPACTED_SNOW_BRICKS_STAIRS);
+        registerBlock(false, "packed_ice_stairs", PACKED_ICE_STAIRS);
+        registerBlock(false, "blue_ice_stairs", BLUE_ICE_STAIRS);
+        registerBlock(false, "packed_ice_bricks_stairs", PACKED_ICE_BRICKS_STAIRS);
+        registerBlock(false, "blue_ice_bricks_stairs", BLUE_ICE_BRICKS_STAIRS);
 
-        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_block_slab", COMPACTED_SNOW_BLOCK_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "compacted_snow_bricks_slab", COMPACTED_SNOW_BRICKS_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "packed_ice_slab", PACKED_ICE_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "blue_ice_slab", BLUE_ICE_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "packed_ice_bricks_slab", PACKED_ICE_BRICKS_SLAB);
-        registerBlock(false, ATBYW_BLOCKS, "blue_ice_bricks_slab", BLUE_ICE_BRICKS_SLAB);
+        registerBlock(false, "compacted_snow_block_slab", COMPACTED_SNOW_BLOCK_SLAB);
+        registerBlock(false, "compacted_snow_bricks_slab", COMPACTED_SNOW_BRICKS_SLAB);
+        registerBlock(false, "packed_ice_slab", PACKED_ICE_SLAB);
+        registerBlock(false, "blue_ice_slab", BLUE_ICE_SLAB);
+        registerBlock(false, "packed_ice_bricks_slab", PACKED_ICE_BRICKS_SLAB);
+        registerBlock(false, "blue_ice_bricks_slab", BLUE_ICE_BRICKS_SLAB);
 
-        registerBlock(false, ATBYW_BLOCKS, "basalt_bricks", BASALT_BRICKS);
-        registerBlock(false, ATBYW_BLOCKS, "basalt_pillar", BASALT_PILLAR);
+        registerBlock(false, "basalt_bricks", BASALT_BRICKS);
+        registerBlock(false, "basalt_pillar", BASALT_PILLAR);
 
-        registerBlock( false, ATBYW_BLOCKS, "terracotta_stairs", TERRACOTTA_STAIRS);
-        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_stairs", COLOR_NAMES, WHITE_TERRACOTTA_STAIRS, ORANGE_TERRACOTTA_STAIRS, MAGENTA_TERRACOTTA_STAIRS, LIGHT_BLUE_TERRACOTTA_STAIRS, YELLOW_TERRACOTTA_STAIRS, LIME_TERRACOTTA_STAIRS, PINK_TERRACOTTA_STAIRS, GRAY_TERRACOTTA_STAIRS, LIGHT_GRAY_TERRACOTTA_STAIRS, CYAN_TERRACOTTA_STAIRS, PURPLE_TERRACOTTA_STAIRS, BLUE_TERRACOTTA_STAIRS, BROWN_TERRACOTTA_STAIRS, GREEN_TERRACOTTA_STAIRS, RED_TERRACOTTA_STAIRS, BLACK_TERRACOTTA_STAIRS);
-        registerBlock( false, ATBYW_BLOCKS, "terracotta_slab", TERRACOTTA_SLAB);
-        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_slab", COLOR_NAMES, WHITE_TERRACOTTA_SLAB, ORANGE_TERRACOTTA_SLAB, MAGENTA_TERRACOTTA_SLAB, LIGHT_BLUE_TERRACOTTA_SLAB, YELLOW_TERRACOTTA_SLAB, LIME_TERRACOTTA_SLAB, PINK_TERRACOTTA_SLAB, GRAY_TERRACOTTA_SLAB, LIGHT_GRAY_TERRACOTTA_SLAB, CYAN_TERRACOTTA_SLAB, PURPLE_TERRACOTTA_SLAB, BLUE_TERRACOTTA_SLAB, BROWN_TERRACOTTA_SLAB, GREEN_TERRACOTTA_SLAB, RED_TERRACOTTA_SLAB, BLACK_TERRACOTTA_SLAB);
-        registerBlock( false, ATBYW_BLOCKS, "terracotta_bricks", TERRACOTTA_BRICKS);
-        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_bricks", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS, ORANGE_TERRACOTTA_BRICKS, MAGENTA_TERRACOTTA_BRICKS, LIGHT_BLUE_TERRACOTTA_BRICKS, YELLOW_TERRACOTTA_BRICKS, LIME_TERRACOTTA_BRICKS, PINK_TERRACOTTA_BRICKS, GRAY_TERRACOTTA_BRICKS, LIGHT_GRAY_TERRACOTTA_BRICKS, CYAN_TERRACOTTA_BRICKS, PURPLE_TERRACOTTA_BRICKS, BLUE_TERRACOTTA_BRICKS, BROWN_TERRACOTTA_BRICKS, GREEN_TERRACOTTA_BRICKS, RED_TERRACOTTA_BRICKS, BLACK_TERRACOTTA_BRICKS);
-        registerBlock( false, ATBYW_BLOCKS, "terracotta_bricks_stairs", TERRACOTTA_BRICKS_STAIRS);
-        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_bricks_stairs", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS_STAIRS, ORANGE_TERRACOTTA_BRICKS_STAIRS, MAGENTA_TERRACOTTA_BRICKS_STAIRS, LIGHT_BLUE_TERRACOTTA_BRICKS_STAIRS, YELLOW_TERRACOTTA_BRICKS_STAIRS, LIME_TERRACOTTA_BRICKS_STAIRS, PINK_TERRACOTTA_BRICKS_STAIRS, GRAY_TERRACOTTA_BRICKS_STAIRS, LIGHT_GRAY_TERRACOTTA_BRICKS_STAIRS, CYAN_TERRACOTTA_BRICKS_STAIRS, PURPLE_TERRACOTTA_BRICKS_STAIRS, BLUE_TERRACOTTA_BRICKS_STAIRS, BROWN_TERRACOTTA_BRICKS_STAIRS, GREEN_TERRACOTTA_BRICKS_STAIRS, RED_TERRACOTTA_BRICKS_STAIRS, BLACK_TERRACOTTA_BRICKS_STAIRS);
-        registerBlock( false, ATBYW_BLOCKS, "terracotta_bricks_slab", TERRACOTTA_BRICKS_SLAB);
-        registerBlocks(false, ATBYW_BLOCKS, null, "terracotta_bricks_slab", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS_SLAB, ORANGE_TERRACOTTA_BRICKS_SLAB, MAGENTA_TERRACOTTA_BRICKS_SLAB, LIGHT_BLUE_TERRACOTTA_BRICKS_SLAB, YELLOW_TERRACOTTA_BRICKS_SLAB, LIME_TERRACOTTA_BRICKS_SLAB, PINK_TERRACOTTA_BRICKS_SLAB, GRAY_TERRACOTTA_BRICKS_SLAB, LIGHT_GRAY_TERRACOTTA_BRICKS_SLAB, CYAN_TERRACOTTA_BRICKS_SLAB, PURPLE_TERRACOTTA_BRICKS_SLAB, BLUE_TERRACOTTA_BRICKS_SLAB, BROWN_TERRACOTTA_BRICKS_SLAB, GREEN_TERRACOTTA_BRICKS_SLAB, RED_TERRACOTTA_BRICKS_SLAB, BLACK_TERRACOTTA_BRICKS_SLAB);
+        registerBlock( false, "terracotta_stairs", TERRACOTTA_STAIRS);
+        registerBlocks(false, null, "terracotta_stairs", COLOR_NAMES, WHITE_TERRACOTTA_STAIRS, ORANGE_TERRACOTTA_STAIRS, MAGENTA_TERRACOTTA_STAIRS, LIGHT_BLUE_TERRACOTTA_STAIRS, YELLOW_TERRACOTTA_STAIRS, LIME_TERRACOTTA_STAIRS, PINK_TERRACOTTA_STAIRS, GRAY_TERRACOTTA_STAIRS, LIGHT_GRAY_TERRACOTTA_STAIRS, CYAN_TERRACOTTA_STAIRS, PURPLE_TERRACOTTA_STAIRS, BLUE_TERRACOTTA_STAIRS, BROWN_TERRACOTTA_STAIRS, GREEN_TERRACOTTA_STAIRS, RED_TERRACOTTA_STAIRS, BLACK_TERRACOTTA_STAIRS);
+        registerBlock( false, "terracotta_slab", TERRACOTTA_SLAB);
+        registerBlocks(false, null, "terracotta_slab", COLOR_NAMES, WHITE_TERRACOTTA_SLAB, ORANGE_TERRACOTTA_SLAB, MAGENTA_TERRACOTTA_SLAB, LIGHT_BLUE_TERRACOTTA_SLAB, YELLOW_TERRACOTTA_SLAB, LIME_TERRACOTTA_SLAB, PINK_TERRACOTTA_SLAB, GRAY_TERRACOTTA_SLAB, LIGHT_GRAY_TERRACOTTA_SLAB, CYAN_TERRACOTTA_SLAB, PURPLE_TERRACOTTA_SLAB, BLUE_TERRACOTTA_SLAB, BROWN_TERRACOTTA_SLAB, GREEN_TERRACOTTA_SLAB, RED_TERRACOTTA_SLAB, BLACK_TERRACOTTA_SLAB);
+        registerBlock( false, "terracotta_bricks", TERRACOTTA_BRICKS);
+        registerBlocks(false, null, "terracotta_bricks", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS, ORANGE_TERRACOTTA_BRICKS, MAGENTA_TERRACOTTA_BRICKS, LIGHT_BLUE_TERRACOTTA_BRICKS, YELLOW_TERRACOTTA_BRICKS, LIME_TERRACOTTA_BRICKS, PINK_TERRACOTTA_BRICKS, GRAY_TERRACOTTA_BRICKS, LIGHT_GRAY_TERRACOTTA_BRICKS, CYAN_TERRACOTTA_BRICKS, PURPLE_TERRACOTTA_BRICKS, BLUE_TERRACOTTA_BRICKS, BROWN_TERRACOTTA_BRICKS, GREEN_TERRACOTTA_BRICKS, RED_TERRACOTTA_BRICKS, BLACK_TERRACOTTA_BRICKS);
+        registerBlock( false, "terracotta_bricks_stairs", TERRACOTTA_BRICKS_STAIRS);
+        registerBlocks(false, null, "terracotta_bricks_stairs", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS_STAIRS, ORANGE_TERRACOTTA_BRICKS_STAIRS, MAGENTA_TERRACOTTA_BRICKS_STAIRS, LIGHT_BLUE_TERRACOTTA_BRICKS_STAIRS, YELLOW_TERRACOTTA_BRICKS_STAIRS, LIME_TERRACOTTA_BRICKS_STAIRS, PINK_TERRACOTTA_BRICKS_STAIRS, GRAY_TERRACOTTA_BRICKS_STAIRS, LIGHT_GRAY_TERRACOTTA_BRICKS_STAIRS, CYAN_TERRACOTTA_BRICKS_STAIRS, PURPLE_TERRACOTTA_BRICKS_STAIRS, BLUE_TERRACOTTA_BRICKS_STAIRS, BROWN_TERRACOTTA_BRICKS_STAIRS, GREEN_TERRACOTTA_BRICKS_STAIRS, RED_TERRACOTTA_BRICKS_STAIRS, BLACK_TERRACOTTA_BRICKS_STAIRS);
+        registerBlock( false, "terracotta_bricks_slab", TERRACOTTA_BRICKS_SLAB);
+        registerBlocks(false, null, "terracotta_bricks_slab", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS_SLAB, ORANGE_TERRACOTTA_BRICKS_SLAB, MAGENTA_TERRACOTTA_BRICKS_SLAB, LIGHT_BLUE_TERRACOTTA_BRICKS_SLAB, YELLOW_TERRACOTTA_BRICKS_SLAB, LIME_TERRACOTTA_BRICKS_SLAB, PINK_TERRACOTTA_BRICKS_SLAB, GRAY_TERRACOTTA_BRICKS_SLAB, LIGHT_GRAY_TERRACOTTA_BRICKS_SLAB, CYAN_TERRACOTTA_BRICKS_SLAB, PURPLE_TERRACOTTA_BRICKS_SLAB, BLUE_TERRACOTTA_BRICKS_SLAB, BROWN_TERRACOTTA_BRICKS_SLAB, GREEN_TERRACOTTA_BRICKS_SLAB, RED_TERRACOTTA_BRICKS_SLAB, BLACK_TERRACOTTA_BRICKS_SLAB);
 
-        registerBlocks(false, ATBYW_BLOCKS, null, "concrete_stairs", COLOR_NAMES, WHITE_CONCRETE_STAIRS, ORANGE_CONCRETE_STAIRS, MAGENTA_CONCRETE_STAIRS, LIGHT_BLUE_CONCRETE_STAIRS, YELLOW_CONCRETE_STAIRS, LIME_CONCRETE_STAIRS, PINK_CONCRETE_STAIRS, GRAY_CONCRETE_STAIRS, LIGHT_GRAY_CONCRETE_STAIRS, CYAN_CONCRETE_STAIRS, PURPLE_CONCRETE_STAIRS, BLUE_CONCRETE_STAIRS, BROWN_CONCRETE_STAIRS, GREEN_CONCRETE_STAIRS, RED_CONCRETE_STAIRS, BLACK_CONCRETE_STAIRS);
-        registerBlocks(false, ATBYW_BLOCKS, null, "concrete_slab", COLOR_NAMES, WHITE_CONCRETE_SLAB, ORANGE_CONCRETE_SLAB, MAGENTA_CONCRETE_SLAB, LIGHT_BLUE_CONCRETE_SLAB, YELLOW_CONCRETE_SLAB, LIME_CONCRETE_SLAB, PINK_CONCRETE_SLAB, GRAY_CONCRETE_SLAB, LIGHT_GRAY_CONCRETE_SLAB, CYAN_CONCRETE_SLAB, PURPLE_CONCRETE_SLAB, BLUE_CONCRETE_SLAB, BROWN_CONCRETE_SLAB, GREEN_CONCRETE_SLAB, RED_CONCRETE_SLAB, BLACK_CONCRETE_SLAB);
-        registerBlocks(false, ATBYW_BLOCKS, null, "cinder_bricks", COLOR_NAMES, WHITE_CINDER_BLOCKS, ORANGE_CINDER_BLOCKS, MAGENTA_CINDER_BLOCKS, LIGHT_BLUE_CINDER_BLOCKS, YELLOW_CINDER_BLOCKS, LIME_CINDER_BLOCKS, PINK_CINDER_BLOCKS, GRAY_CINDER_BLOCKS, LIGHT_GRAY_CINDER_BLOCKS, CYAN_CINDER_BLOCKS, PURPLE_CINDER_BLOCKS, BLUE_CINDER_BLOCKS, BROWN_CINDER_BLOCKS, GREEN_CINDER_BLOCKS, RED_CINDER_BLOCKS, BLACK_CINDER_BLOCKS);
+        registerBlocks(false, null, "concrete_stairs", COLOR_NAMES, WHITE_CONCRETE_STAIRS, ORANGE_CONCRETE_STAIRS, MAGENTA_CONCRETE_STAIRS, LIGHT_BLUE_CONCRETE_STAIRS, YELLOW_CONCRETE_STAIRS, LIME_CONCRETE_STAIRS, PINK_CONCRETE_STAIRS, GRAY_CONCRETE_STAIRS, LIGHT_GRAY_CONCRETE_STAIRS, CYAN_CONCRETE_STAIRS, PURPLE_CONCRETE_STAIRS, BLUE_CONCRETE_STAIRS, BROWN_CONCRETE_STAIRS, GREEN_CONCRETE_STAIRS, RED_CONCRETE_STAIRS, BLACK_CONCRETE_STAIRS);
+        registerBlocks(false, null, "concrete_slab", COLOR_NAMES, WHITE_CONCRETE_SLAB, ORANGE_CONCRETE_SLAB, MAGENTA_CONCRETE_SLAB, LIGHT_BLUE_CONCRETE_SLAB, YELLOW_CONCRETE_SLAB, LIME_CONCRETE_SLAB, PINK_CONCRETE_SLAB, GRAY_CONCRETE_SLAB, LIGHT_GRAY_CONCRETE_SLAB, CYAN_CONCRETE_SLAB, PURPLE_CONCRETE_SLAB, BLUE_CONCRETE_SLAB, BROWN_CONCRETE_SLAB, GREEN_CONCRETE_SLAB, RED_CONCRETE_SLAB, BLACK_CONCRETE_SLAB);
+        registerBlocks(false, null, "cinder_bricks", COLOR_NAMES, WHITE_CINDER_BLOCKS, ORANGE_CINDER_BLOCKS, MAGENTA_CINDER_BLOCKS, LIGHT_BLUE_CINDER_BLOCKS, YELLOW_CINDER_BLOCKS, LIME_CINDER_BLOCKS, PINK_CINDER_BLOCKS, GRAY_CINDER_BLOCKS, LIGHT_GRAY_CINDER_BLOCKS, CYAN_CINDER_BLOCKS, PURPLE_CINDER_BLOCKS, BLUE_CINDER_BLOCKS, BROWN_CINDER_BLOCKS, GREEN_CINDER_BLOCKS, RED_CINDER_BLOCKS, BLACK_CINDER_BLOCKS);
 
         //ATBYW DECO
-        registerBlock(false, ATBYW_DECO, "compacted_snow", COMPACTED_SNOW);
+        registerBlock(false, "compacted_snow", COMPACTED_SNOW);
 
-        registerBlock(false, ATBYW_DECO, "granite_column", GRANITE_COLUMN);
-        registerBlock(false, ATBYW_DECO, "diorite_column", DIORITE_COLUMN);
-        registerBlock(false, ATBYW_DECO, "andesite_column", ANDESITE_COLUMN);
-        registerBlock(false, ATBYW_DECO, "sandstone_column", SANDSTONE_COLUMN);
-        registerBlock(false, ATBYW_DECO, "chiseled_sandstone_column", CHISELED_SANDSTONE_COLUMN);
-        registerBlock(false, ATBYW_DECO, "red_sandstone_column", RED_SANDSTONE_COLUMN);
-        registerBlock(false, ATBYW_DECO, "chiseled_red_sandstone_column", CHISELED_RED_SANDSTONE_COLUMN);
-        registerBlock(false, ATBYW_DECO, "purpur_column", PURPUR_COLUMN);
-        registerBlock(false, ATBYW_DECO, "stone_bricks_column", STONE_BRICKS_COLUMN);
-        registerBlock(false, ATBYW_DECO, "mossy_stone_bricks_column", MOSSY_STONE_BRICKS_COLUMN);
-        registerBlock(false, ATBYW_DECO, "cracked_stone_bricks_column", CRACKED_STONE_BRICKS_COLUMN);
-        registerBlock(false, ATBYW_DECO, "nether_bricks_column", NETHER_BRICKS_COLUMN);
-        registerBlock(false, ATBYW_DECO, "quartz_column", QUARTZ_COLUMN);
-        registerBlock(false, ATBYW_DECO, "prismarine_column", PRISMARINE_COLUMN);
-        registerBlock(false, ATBYW_DECO, "blackstone_column", BLACKSTONE_COLUMN);
+        registerBlock(false, "granite_column", GRANITE_COLUMN);
+        registerBlock(false, "diorite_column", DIORITE_COLUMN);
+        registerBlock(false, "andesite_column", ANDESITE_COLUMN);
+        registerBlock(false, "sandstone_column", SANDSTONE_COLUMN);
+        registerBlock(false, "chiseled_sandstone_column", CHISELED_SANDSTONE_COLUMN);
+        registerBlock(false, "red_sandstone_column", RED_SANDSTONE_COLUMN);
+        registerBlock(false, "chiseled_red_sandstone_column", CHISELED_RED_SANDSTONE_COLUMN);
+        registerBlock(false, "purpur_column", PURPUR_COLUMN);
+        registerBlock(false, "stone_bricks_column", STONE_BRICKS_COLUMN);
+        registerBlock(false, "mossy_stone_bricks_column", MOSSY_STONE_BRICKS_COLUMN);
+        registerBlock(false, "cracked_stone_bricks_column", CRACKED_STONE_BRICKS_COLUMN);
+        registerBlock(false, "nether_bricks_column", NETHER_BRICKS_COLUMN);
+        registerBlock(false, "quartz_column", QUARTZ_COLUMN);
+        registerBlock(false, "prismarine_column", PRISMARINE_COLUMN);
+        registerBlock(false, "blackstone_column", BLACKSTONE_COLUMN);
 
-        registerBlock(false, ATBYW_DECO, "terracotta_bricks_wall", TERRACOTTA_BRICKS_WALL);
-        registerBlocks(false, ATBYW_DECO, null, "terracotta_bricks_wall", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS_WALL, ORANGE_TERRACOTTA_BRICKS_WALL, MAGENTA_TERRACOTTA_BRICKS_WALL, LIGHT_BLUE_TERRACOTTA_BRICKS_WALL, YELLOW_TERRACOTTA_BRICKS_WALL, LIME_TERRACOTTA_BRICKS_WALL, PINK_TERRACOTTA_BRICKS_WALL, GRAY_TERRACOTTA_BRICKS_WALL, LIGHT_GRAY_TERRACOTTA_BRICKS_WALL, CYAN_TERRACOTTA_BRICKS_WALL, PURPLE_TERRACOTTA_BRICKS_WALL, BLUE_TERRACOTTA_BRICKS_WALL, BROWN_TERRACOTTA_BRICKS_WALL, GREEN_TERRACOTTA_BRICKS_WALL, RED_TERRACOTTA_BRICKS_WALL, BLACK_TERRACOTTA_BRICKS_WALL);
-        registerBlocks(false, ATBYW_DECO, null, "cinder_blocks_wall", COLOR_NAMES, WHITE_CINDER_BLOCKS_WALL, ORANGE_CINDER_BLOCKS_WALL, MAGENTA_CINDER_BLOCKS_WALL, LIGHT_BLUE_CINDER_BLOCKS_WALL, YELLOW_CINDER_BLOCKS_WALL, LIME_CINDER_BLOCKS_WALL, PINK_CINDER_BLOCKS_WALL, GRAY_CINDER_BLOCKS_WALL, LIGHT_GRAY_CINDER_BLOCKS_WALL, CYAN_CINDER_BLOCKS_WALL, PURPLE_CINDER_BLOCKS_WALL, BLUE_CINDER_BLOCKS_WALL, BROWN_CINDER_BLOCKS_WALL, GREEN_CINDER_BLOCKS_WALL, RED_CINDER_BLOCKS_WALL, BLACK_CINDER_BLOCKS_WALL);
+        registerBlock(false, "acacia_railing", ACACIA_RAILING);
+
+        registerBlock(false, "terracotta_bricks_wall", TERRACOTTA_BRICKS_WALL);
+        registerBlocks(false, null, "terracotta_bricks_wall", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS_WALL, ORANGE_TERRACOTTA_BRICKS_WALL, MAGENTA_TERRACOTTA_BRICKS_WALL, LIGHT_BLUE_TERRACOTTA_BRICKS_WALL, YELLOW_TERRACOTTA_BRICKS_WALL, LIME_TERRACOTTA_BRICKS_WALL, PINK_TERRACOTTA_BRICKS_WALL, GRAY_TERRACOTTA_BRICKS_WALL, LIGHT_GRAY_TERRACOTTA_BRICKS_WALL, CYAN_TERRACOTTA_BRICKS_WALL, PURPLE_TERRACOTTA_BRICKS_WALL, BLUE_TERRACOTTA_BRICKS_WALL, BROWN_TERRACOTTA_BRICKS_WALL, GREEN_TERRACOTTA_BRICKS_WALL, RED_TERRACOTTA_BRICKS_WALL, BLACK_TERRACOTTA_BRICKS_WALL);
+        registerBlocks(false, null, "cinder_blocks_wall", COLOR_NAMES, WHITE_CINDER_BLOCKS_WALL, ORANGE_CINDER_BLOCKS_WALL, MAGENTA_CINDER_BLOCKS_WALL, LIGHT_BLUE_CINDER_BLOCKS_WALL, YELLOW_CINDER_BLOCKS_WALL, LIME_CINDER_BLOCKS_WALL, PINK_CINDER_BLOCKS_WALL, GRAY_CINDER_BLOCKS_WALL, LIGHT_GRAY_CINDER_BLOCKS_WALL, CYAN_CINDER_BLOCKS_WALL, PURPLE_CINDER_BLOCKS_WALL, BLUE_CINDER_BLOCKS_WALL, BROWN_CINDER_BLOCKS_WALL, GREEN_CINDER_BLOCKS_WALL, RED_CINDER_BLOCKS_WALL, BLACK_CINDER_BLOCKS_WALL);
 
         StatueRegistry.initStatues();
 
         //ATBYW MISC
-        registerBlock(false, ATBYW_MISC, "dev_block", DEVELOPER_BLOCK);
+        registerBlock(false, null, "dev_block", DEVELOPER_BLOCK);
 
         //Item-less blocks
         registerBlockOnly("shroomstick", SHROOMSTICK);

@@ -14,7 +14,8 @@
     ],
     "client": [
         "EnchantingTableBlockMixin",
-        "EnchantmentScreenHandlerMixin"
+        "EnchantmentScreenHandlerMixin",
+        "CreativeInventoryScreenMixin"
     ],
     "injectors": {
         "defaultRequire": 1

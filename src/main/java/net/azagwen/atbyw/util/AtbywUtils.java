@@ -105,12 +105,16 @@ public class AtbywUtils {
      *  @param name     Name of the block (path)
      *  @param block    The Block field
      */
-    public static void registerBlock(boolean fireproof, ItemGroup group, String name, Block block) {
-        Item.Settings normalSettings = new Item.Settings().group(group);
-        Item.Settings fireproofSettings = new Item.Settings().group(group).fireproof();
+    public static void registerBlock(boolean fireproof, @Nullable ItemGroup group, String name, Block block) {
+        Item.Settings normalSettings = group != null ? new Item.Settings().group(group) : new Item.Settings();
+        Item.Settings fireproofSettings = group != null ? new Item.Settings().group(group).fireproof() : new Item.Settings().fireproof();
 
         Registry.register(Registry.BLOCK, AtbywID(name), block);
         Registry.register(Registry.ITEM, AtbywID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+    }
+
+    public static void registerBlock(boolean fireproof, String name, Block block) {
+        registerBlock(fireproof, null, name, block);
     }
 
     /** Will only register blocks, without block items associated to them.
@@ -142,7 +146,7 @@ public class AtbywUtils {
      *  @param variant_type     An array of Strings of which every index will be put between "prefix" and "block_name".
      *  @param block            An Array of Blocks that must match the length of "variant_type".
      */
-    public static void registerBlocks(boolean fireproof, ItemGroup group, @Nullable String prefix, String block_name, String[] variant_type, Block... block) {
+    public static void registerBlocks(boolean fireproof, @Nullable ItemGroup group, @Nullable String prefix, String block_name, String[] variant_type, Block... block) {
         if (block.length == variant_type.length)
             for (int i = 0; i < block.length; i++) {
                 String name;
@@ -156,5 +160,9 @@ public class AtbywUtils {
             }
         else
             throw new IllegalArgumentException(String.join("could not register " + block_name + " : mismatched lengths !"));
+    }
+
+    public static void registerBlocks(boolean fireproof, @Nullable String prefix, String block_name, String[] variant_type, Block... block) {
+        registerBlocks(fireproof, null, prefix, block_name, variant_type, block);
     }
 }

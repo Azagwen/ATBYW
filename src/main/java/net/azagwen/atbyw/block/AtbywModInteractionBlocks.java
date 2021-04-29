@@ -55,7 +55,7 @@ public class AtbywModInteractionBlocks {
                     UMBRELLA_TREE_BOOKSHELF_TOGGLE
             };
 
-            registerModInteractBlocks(false, ATBYW_REDSTONE, "bookshelf_toggle", BETTER_END_WOOD_NAMES, toggles);
+            registerModInteractBlocks(false, null, "bookshelf_toggle", BETTER_END_WOOD_NAMES, toggles);
         }
     }
 }

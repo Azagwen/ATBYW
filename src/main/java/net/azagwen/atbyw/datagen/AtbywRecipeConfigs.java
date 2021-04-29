@@ -45,6 +45,7 @@ public enum AtbywRecipeConfigs implements AtbywRecipeConfig {
     FLOWER_SWITCH_3(Lists.newArrayList(" F ", "RSR"), Lists.newArrayList('F', 'S', 'R'), 1),
     RAIL_POWERED_3(Lists.newArrayList("# #", "#S#", "#R#"), Lists.newArrayList('#', 'S', 'R'), 6),
     RAIL_ACTIVATOR_3(Lists.newArrayList("#S#", "#R#", "#S#"), Lists.newArrayList('#', 'S', 'R'), 6),
+    TIMER_REPEATER_3(Lists.newArrayList(" C ", "R#R", " R "), Lists.newArrayList('C', 'R', '#'), 1),
 
     // 4 Ingredients
     BOOKSHELF_TOGGLE_4(Lists.newArrayList("PPP", "RBR", "CRC"), Lists.newArrayList('P', 'B', 'R', 'C'), 1),
