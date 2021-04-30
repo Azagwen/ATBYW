@@ -1,7 +1,6 @@
 package net.azagwen.atbyw.group;
 
 import com.google.common.collect.Lists;
-import net.azagwen.atbyw.main.AtbywMain;
 import net.fabricmc.fabric.impl.item.group.ItemGroupExtensions;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -18,7 +17,7 @@ import java.util.List;
 public abstract class TabbedItemGroup extends ItemGroup {
 
     private int selectedTab = 0;
-    private List<ItemTab> tabs = Lists.newArrayList();
+    private List<ItemGroupTabTagged> tabs = Lists.newArrayList();
     private boolean hasInitialized = false;
 
     protected TabbedItemGroup(Identifier id) {
@@ -30,7 +29,7 @@ public abstract class TabbedItemGroup extends ItemGroup {
         initTabs(tabs);
     }
 
-    protected abstract void initTabs(List<ItemTab> tabs);
+    protected abstract void initTabs(List<ItemGroupTabTagged> tabs);
 
     @Override
     public void appendStacks(DefaultedList<ItemStack> stacks) {
@@ -41,11 +40,11 @@ public abstract class TabbedItemGroup extends ItemGroup {
         }
     }
 
-    public ItemTab getSelectedTab() {
+    public ItemGroupTabTagged getSelectedTab() {
         return tabs.get(selectedTab);
     }
 
-    public List<ItemTab> getTabs() {
+    public List<ItemGroupTabTagged> getTabs() {
         return tabs;
     }
 

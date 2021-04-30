@@ -5,12 +5,19 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywItems {
 
     protected static Item.Settings createSimpleItem(@Nullable ItemGroup group) {
         return group != null ? new Item.Settings().group(group) : new Item.Settings();
+    }
+
+    protected static void registerItem(ArrayList<Item> itemTab, String name, Item item) {
+        Registry.register(Registry.ITEM, AtbywID(name), item);
+        itemTab.add(item);
     }
 
     public static final Item OAK_STICK = new Item(createSimpleItem(null));
@@ -58,32 +65,32 @@ public class AtbywItems {
     };
 
     public static void init() {
-        Registry.register(Registry.ITEM, AtbywID("oak_stick"), OAK_STICK);
-        Registry.register(Registry.ITEM, AtbywID("spruce_stick"), SPRUCE_STICK);
-        Registry.register(Registry.ITEM, AtbywID("birch_stick"), BIRCH_STICK);
-        Registry.register(Registry.ITEM, AtbywID("jungle_stick"), JUNGLE_STICK);
-        Registry.register(Registry.ITEM, AtbywID("acacia_stick"), ACACIA_STICK);
-        Registry.register(Registry.ITEM, AtbywID("dark_oak_stick"), DARK_OAK_STICK);
-        Registry.register(Registry.ITEM, AtbywID("crimson_stick"), CRIMSON_STICK);
-        Registry.register(Registry.ITEM, AtbywID("warped_stick"), WARPED_STICK);
-        Registry.register(Registry.ITEM, AtbywID("bamboo_stick"), BAMBOO_STICK);
+        registerItem(MISC_TAB,"oak_stick", OAK_STICK);
+        registerItem(MISC_TAB, "spruce_stick", SPRUCE_STICK);
+        registerItem(MISC_TAB, "birch_stick", BIRCH_STICK);
+        registerItem(MISC_TAB, "jungle_stick", JUNGLE_STICK);
+        registerItem(MISC_TAB, "acacia_stick", ACACIA_STICK);
+        registerItem(MISC_TAB, "dark_oak_stick", DARK_OAK_STICK);
+        registerItem(MISC_TAB, "crimson_stick", CRIMSON_STICK);
+        registerItem(MISC_TAB, "warped_stick", WARPED_STICK);
+        registerItem(MISC_TAB, "bamboo_stick", BAMBOO_STICK);
 
-        Registry.register(Registry.ITEM, AtbywID("bee_essence"), BEE_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("silverfish_essence"), SILVERFISH_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("endermite_essence"), ENDERMITE_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("shulker_essence"), SHULKER_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("wolf_essence"), WOLF_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("cat_essence"), CAT_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("chicken_essence"), CHICKEN_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("rabbit_essence"), RABBIT_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("fox_essence"), FOX_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("cod_essence"), COD_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("salmon_essence"), SALMON_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("puffer_fish_essence"), PUFFER_FISH_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("magma_cube_essence"), MAGMA_CUBE_ESSENCE);
-        Registry.register(Registry.ITEM, AtbywID("slime_essence"), SLIME_ESSENCE);
+        registerItem(MISC_TAB, "bee_essence", BEE_ESSENCE);
+        registerItem(MISC_TAB, "silverfish_essence", SILVERFISH_ESSENCE);
+        registerItem(MISC_TAB, "endermite_essence", ENDERMITE_ESSENCE);
+        registerItem(MISC_TAB, "shulker_essence", SHULKER_ESSENCE);
+        registerItem(MISC_TAB, "wolf_essence", WOLF_ESSENCE);
+        registerItem(MISC_TAB, "cat_essence", CAT_ESSENCE);
+        registerItem(MISC_TAB, "chicken_essence", CHICKEN_ESSENCE);
+        registerItem(MISC_TAB, "rabbit_essence", RABBIT_ESSENCE);
+        registerItem(MISC_TAB, "fox_essence", FOX_ESSENCE);
+        registerItem(MISC_TAB, "cod_essence", COD_ESSENCE);
+        registerItem(MISC_TAB, "salmon_essence", SALMON_ESSENCE);
+        registerItem(MISC_TAB, "puffer_fish_essence", PUFFER_FISH_ESSENCE);
+        registerItem(MISC_TAB, "magma_cube_essence", MAGMA_CUBE_ESSENCE);
+        registerItem(MISC_TAB, "slime_essence", SLIME_ESSENCE);
 
-        Registry.register(Registry.ITEM, AtbywID("shroomstick"), SHROOMSTICK);
+        registerItem(DECO_TAB, "shroomstick", SHROOMSTICK);
 
         AtbywModInteractionItems.init();
 

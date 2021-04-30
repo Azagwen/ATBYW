@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.ItemGroup;
 
 import static net.azagwen.atbyw.util.AtbywUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
@@ -139,7 +140,8 @@ public class StatueRegistry {
             else
                 name = String.join("_", prefix, animal, "statue");
 
-            registerBlock(false, null, name, block);
+            registerBlock(false, (ItemGroup) null, name, block);
+            DECO_TAB.add(block.asItem());
         }
     }
 

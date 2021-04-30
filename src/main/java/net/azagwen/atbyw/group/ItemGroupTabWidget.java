@@ -17,10 +17,10 @@ public class ItemGroupTabWidget extends ButtonWidget {
 
     public static final Identifier TEXTURE = AtbywID("textures/gui/side_tabs.png");
 
-    private final ItemTab tab;
+    private final ItemGroupTabTagged tab;
     public boolean isSelected = false;
 
-    public ItemGroupTabWidget(int x, int y, ItemTab tab, PressAction onPress) {
+    public ItemGroupTabWidget(int x, int y, ItemGroupTabTagged tab, PressAction onPress) {
         super(x, y, 33, 28, new TranslatableText(tab.getTranslationKey()), onPress);
 
         this.tab = tab;
@@ -45,6 +45,6 @@ public class ItemGroupTabWidget extends ButtonWidget {
         this.drawTexture(matrixStack, this.x, this.y, 0, i * height, this.width, this.height);
         this.renderBg(matrixStack, minecraftClient, mouseX, mouseY);
 
-        minecraftClient.getItemRenderer().renderGuiItemIcon(tab.getIcon(), this.x + (this.isHovered() || isSelected ? 8 : 10), this.y + 6);
+        minecraftClient.getItemRenderer().renderGuiItemIcon(tab.getIcon(), this.x + (this.isHovered() || isSelected ? 7 : 10), this.y + 6);
     }
 }

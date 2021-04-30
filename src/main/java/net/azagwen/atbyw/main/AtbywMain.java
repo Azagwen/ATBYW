@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.main;
 
+import com.google.common.collect.Lists;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityType;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.datagen.AtbywRecipes;
@@ -10,10 +11,13 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
 
 public class AtbywMain implements ModInitializer {
 	public static final String mcNameSpace = "minecraft";
@@ -35,6 +39,11 @@ public class AtbywMain implements ModInitializer {
 	}
 
 	public static ItemGroup ATBYW_GROUP;
+	public static ArrayList<Item> BLOCKS_TAB = Lists.newArrayList(); 	//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
+	public static ArrayList<Item> DECO_TAB = Lists.newArrayList(); 		//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
+	public static ArrayList<Item> REDSTONE_TAB = Lists.newArrayList(); 	//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
+	public static ArrayList<Item> MISC_TAB = Lists.newArrayList(); 		//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
+
 	public static ItemGroup ATBYW_BLOCKS; 		//Unused, kept for testing.
 	public static ItemGroup ATBYW_DECO; 		//Unused, kept for testing.
 	public static ItemGroup ATBYW_REDSTONE; 	//Unused, kept for testing.

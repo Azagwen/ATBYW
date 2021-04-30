@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.PistonBlockEntity;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
 
 import static net.azagwen.atbyw.util.AtbywUtils.*;
@@ -88,7 +89,7 @@ public class AtbywExperimentalBlocks {
 //                WARPED_MOVING_PISTON
 //        });
 
-        registerBlocks(false, null, null, "piston", WOOD_NAMES_NO_OAK,
+        registerBlocks(false, (ItemGroup) null, null, "piston", WOOD_NAMES_NO_OAK,
                 SPRUCE_PISTON,
                 BIRCH_PISTON,
                 JUNGLE_PISTON,
@@ -96,7 +97,7 @@ public class AtbywExperimentalBlocks {
                 DARK_OAK_PISTON,
                 CRIMSON_PISTON,
                 WARPED_PISTON);
-        registerBlocks(false, null, null, "sticky_piston", WOOD_NAMES_NO_OAK,
+        registerBlocks(false, (ItemGroup) null, null, "sticky_piston", WOOD_NAMES_NO_OAK,
                 SPRUCE_STICKY_PISTON,
                 BIRCH_STICKY_PISTON,
                 JUNGLE_STICKY_PISTON,

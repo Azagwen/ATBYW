@@ -11,6 +11,7 @@ public class AtbywRRP {
 
     public static void init() {
         AtbywLootTables.init();
+        AtbywDatagenTags.init();
         RRPCallback.EVENT.register(a -> a.add(ATBYW_RESOURCE_PACK));
         LOGGER.info("ATBYW RRP Inintiliazed");
     }

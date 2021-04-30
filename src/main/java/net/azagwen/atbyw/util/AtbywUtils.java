@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.util;
 
+import net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -12,6 +13,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
@@ -114,7 +117,17 @@ public class AtbywUtils {
     }
 
     public static void registerBlock(boolean fireproof, String name, Block block) {
-        registerBlock(fireproof, null, name, block);
+        registerBlock(fireproof, (ItemGroup) null, name, block);
+    }
+
+    public static void registerBlock(boolean fireproof, ArrayList<Item> itemTab, String name, Block block) {
+        Item.Settings normalSettings = new Item.Settings();
+        Item.Settings fireproofSettings = new Item.Settings().fireproof();
+
+        Registry.register(Registry.BLOCK, AtbywID(name), block);
+        Registry.register(Registry.ITEM, AtbywID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+
+        itemTab.add(block.asItem());
     }
 
     /** Will only register blocks, without block items associated to them.
@@ -163,6 +176,22 @@ public class AtbywUtils {
     }
 
     public static void registerBlocks(boolean fireproof, @Nullable String prefix, String block_name, String[] variant_type, Block... block) {
-        registerBlocks(fireproof, null, prefix, block_name, variant_type, block);
+        registerBlocks(fireproof, (ItemGroup) null, prefix, block_name, variant_type, block);
+    }
+
+    public static void registerBlocks(boolean fireproof, ArrayList<Item> itemTab, @Nullable String prefix, String block_name, String[] variant_type, Block... block) {
+        if (block.length == variant_type.length)
+            for (int i = 0; i < block.length; i++) {
+                String name;
+                if (prefix == null || prefix.isEmpty()) {
+                    name = String.join("_", variant_type[i], block_name);
+                } else {
+                    name = String.join("_", prefix, variant_type[i], block_name);
+                }
+
+                registerBlock(fireproof, itemTab, name, block[i]);
+            }
+        else
+            throw new IllegalArgumentException(String.join("could not register " + block_name + " : mismatched lengths !"));
     }
 }
