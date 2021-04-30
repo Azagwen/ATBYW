@@ -17,7 +17,7 @@ import java.util.List;
 public abstract class TabbedItemGroup extends ItemGroup {
 
     private int selectedTab = 0;
-    private List<ItemGroupTabTagged> tabs = Lists.newArrayList();
+    private List<ItemGroupTab> tabs = Lists.newArrayList();
     private boolean hasInitialized = false;
 
     protected TabbedItemGroup(Identifier id) {
@@ -29,7 +29,7 @@ public abstract class TabbedItemGroup extends ItemGroup {
         initTabs(tabs);
     }
 
-    protected abstract void initTabs(List<ItemGroupTabTagged> tabs);
+    protected abstract void initTabs(List<ItemGroupTab> tabs);
 
     @Override
     public void appendStacks(DefaultedList<ItemStack> stacks) {
@@ -40,11 +40,11 @@ public abstract class TabbedItemGroup extends ItemGroup {
         }
     }
 
-    public ItemGroupTabTagged getSelectedTab() {
+    public ItemGroupTab getSelectedTab() {
         return tabs.get(selectedTab);
     }
 
-    public List<ItemGroupTabTagged> getTabs() {
+    public List<ItemGroupTab> getTabs() {
         return tabs;
     }
 

@@ -17,10 +17,10 @@ public class ItemGroupTabWidget extends ButtonWidget {
 
     public static final Identifier TEXTURE = AtbywID("textures/gui/side_tabs.png");
 
-    private final ItemGroupTabTagged tab;
+    private final ItemGroupTab tab;
     public boolean isSelected = false;
 
-    public ItemGroupTabWidget(int x, int y, ItemGroupTabTagged tab, PressAction onPress) {
+    public ItemGroupTabWidget(int x, int y, ItemGroupTab tab, PressAction onPress) {
         super(x, y, 33, 28, new TranslatableText(tab.getTranslationKey()), onPress);
 
         this.tab = tab;
