@@ -29,7 +29,9 @@ public class AtbywBlocks {
     //TODO: Port Atbyw Mod Interaction recipes to datagen
 
     //Blocks to add
-    //TODO: Add Bipedal Statues
+    //TODO: STATUES Add Bipedal Statues
+    //TODO: STATUES Add signing fish function.
+    //TODO: STATUES Make slime statues combine-able.
     //TODO: Add thin ice (world gen when ready)
     //TODO: Add Railing Blocks (catwalk handles)
     //TODO: Add regular ice bricks that melt
@@ -392,18 +394,18 @@ public class AtbywBlocks {
 
     public static void init() {
         //ATBYW REDSTONE
-        registerBlocks(false, REDSTONE_TAB, null, "fence_door", WOOD_NAMES, OAK_FENCE_DOOR, SPRUCE_FENCE_DOOR, BIRCH_FENCE_DOOR, JUNGLE_FENCE_DOOR, ACACIA_FENCE_DOOR, DARK_OAK_FENCE_DOOR, CRIMSON_FENCE_DOOR, WARPED_FENCE_DOOR);
-        registerBlock(false, REDSTONE_TAB, "iron_fence_door", IRON_FENCE_DOOR);
+        registerBlock(false, REDSTONE_TAB, "timer_repeater", TIMER_REPEATER);
+        registerBlock(false, REDSTONE_TAB, "redstone_lantern", REDSTONE_LANTERN);
+        registerBlock(false, REDSTONE_TAB, "redstone_jack_o_lantern", REDSTONE_JACK_O_LANTERN);
+        registerBlocks(false, REDSTONE_TAB, null, "bookshelf_toggle", WOOD_NAMES, OAK_BOOKSHELF_TOGGLE, SPRUCE_BOOKSHELF_TOGGLE, BIRCH_BOOKSHELF_TOGGLE, JUNGLE_BOOKSHELF_TOGGLE, ACACIA_BOOKSHELF_TOGGLE, DARK_OAK_BOOKSHELF_TOGGLE, CRIMSON_BOOKSHELF_TOGGLE, WARPED_BOOKSHELF_TOGGLE);
+        AtbywModInteractionBlocks.initBookshelfToggles();
+        registerBlocks(false, REDSTONE_TAB, null, "pull_switch", FLOWER_NAMES, DANDELION_PULL_SWITCH, POPPY_PULL_SWITCH, BLUE_ORCHID_PULL_SWITCH, ALLIUM_PULL_SWITCH, AZURE_BLUET_PULL_SWITCH, RED_TULIP_PULL_SWITCH, ORANGE_TULIP_PULL_SWITCH, WHITE_TULIP_PULL_SWITCH, PINK_TULIP_PULL_SWITCH, OXEYE_DAISY_PULL_SWITCH, CORNFLOWER_PULL_SWITCH, LILY_OF_THE_VALLEY_PULL_SWITCH, WITHER_ROSE_PULL_SWITCH);
         registerBlock(false, REDSTONE_TAB, "iron_spike_trap", IRON_SPIKE_TRAP);
         registerBlock(false, REDSTONE_TAB, "gold_spike_trap", GOLD_SPIKE_TRAP);
         registerBlock(false, REDSTONE_TAB, "diamond_spike_trap", DIAMOND_SPIKE_TRAP);
         registerBlock(false, REDSTONE_TAB, "netherite_spike_trap", NETHERITE_SPIKE_TRAP);
-        registerBlocks(false, REDSTONE_TAB, null, "bookshelf_toggle", WOOD_NAMES, OAK_BOOKSHELF_TOGGLE, SPRUCE_BOOKSHELF_TOGGLE, BIRCH_BOOKSHELF_TOGGLE, JUNGLE_BOOKSHELF_TOGGLE, ACACIA_BOOKSHELF_TOGGLE, DARK_OAK_BOOKSHELF_TOGGLE, CRIMSON_BOOKSHELF_TOGGLE, WARPED_BOOKSHELF_TOGGLE);
-        AtbywModInteractionBlocks.initBookshelfToggles();
-        registerBlock(false, REDSTONE_TAB, "redstone_jack_o_lantern", REDSTONE_JACK_O_LANTERN);
-        registerBlock(false, REDSTONE_TAB, "redstone_lantern", REDSTONE_LANTERN);
-        registerBlocks(false, REDSTONE_TAB, null, "pull_switch", FLOWER_NAMES, DANDELION_PULL_SWITCH, POPPY_PULL_SWITCH, BLUE_ORCHID_PULL_SWITCH, ALLIUM_PULL_SWITCH, AZURE_BLUET_PULL_SWITCH, RED_TULIP_PULL_SWITCH, ORANGE_TULIP_PULL_SWITCH, WHITE_TULIP_PULL_SWITCH, PINK_TULIP_PULL_SWITCH, OXEYE_DAISY_PULL_SWITCH, CORNFLOWER_PULL_SWITCH, LILY_OF_THE_VALLEY_PULL_SWITCH, WITHER_ROSE_PULL_SWITCH);
-        registerBlock(false, REDSTONE_TAB, "timer_repeater", TIMER_REPEATER);
+        registerBlocks(false, REDSTONE_TAB, null, "fence_door", WOOD_NAMES, OAK_FENCE_DOOR, SPRUCE_FENCE_DOOR, BIRCH_FENCE_DOOR, JUNGLE_FENCE_DOOR, ACACIA_FENCE_DOOR, DARK_OAK_FENCE_DOOR, CRIMSON_FENCE_DOOR, WARPED_FENCE_DOOR);
+        registerBlock(false, REDSTONE_TAB, "iron_fence_door", IRON_FENCE_DOOR);
 
         //ATBYW BLOCKS
         registerBlock(false, BLOCKS_TAB, "granite_tiles", GRANITE_TILES);

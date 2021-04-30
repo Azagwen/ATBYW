@@ -110,9 +110,6 @@ public class StatueRegistry {
     public static final Block WAXED_VERY_MOSSY_MAGMA_CUBE_STATUE = new WaxedStatueBlock(StatueBlockMobTypes.MAGMA_CUBE, statueSettings);
     public static final Block MAGMA_CUBE_STATUE = new StatueBlock(true, StatueBlockMobTypes.MAGMA_CUBE, statueSettings, WAXED_CLEAN_MAGMA_CUBE_STATUE, WAXED_EXPOSED_MAGMA_CUBE_STATUE, WAXED_DIRTY_MAGMA_CUBE_STATUE, WAXED_MOSSY_MAGMA_CUBE_STATUE, WAXED_VERY_MOSSY_MAGMA_CUBE_STATUE);
 
-    //TODO: Add signing fish function.
-    //TODO: Make slime statues combine-able.
-
     private static final String[] statuePrefixes = new String[] {
             "",
             "waxed_clean",
