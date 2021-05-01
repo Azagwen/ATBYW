@@ -387,6 +387,7 @@ public class AtbywBlocks {
     public static final Block NETHERITE_SPIKE_TRAP = new SpikeTrapBlock(NETHERITE_SPIKE_TRAP_SPIKES, 6.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
 
     public static final Block TIMER_REPEATER = new TimerRepeaterBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
+    public static final Block REDSTONE_CROSS_PATH = new RedstoneCrossPathBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
 
     public static final Block ACACIA_RAILING = new RailingBlock(AtbywID("acacia_railing"), FabricBlockSettings.copyOf(Blocks.ACACIA_FENCE));
 
@@ -395,6 +396,7 @@ public class AtbywBlocks {
     public static void init() {
         //ATBYW REDSTONE
         registerBlock(false, REDSTONE_TAB, "timer_repeater", TIMER_REPEATER);
+        registerBlock(false, REDSTONE_TAB, "redstone_cross_path", REDSTONE_CROSS_PATH);
         registerBlock(false, REDSTONE_TAB, "redstone_lantern", REDSTONE_LANTERN);
         registerBlock(false, REDSTONE_TAB, "redstone_jack_o_lantern", REDSTONE_JACK_O_LANTERN);
         registerBlocks(false, REDSTONE_TAB, null, "bookshelf_toggle", WOOD_NAMES, OAK_BOOKSHELF_TOGGLE, SPRUCE_BOOKSHELF_TOGGLE, BIRCH_BOOKSHELF_TOGGLE, JUNGLE_BOOKSHELF_TOGGLE, ACACIA_BOOKSHELF_TOGGLE, DARK_OAK_BOOKSHELF_TOGGLE, CRIMSON_BOOKSHELF_TOGGLE, WARPED_BOOKSHELF_TOGGLE);

@@ -20,6 +20,7 @@ import java.util.Random;
 public class SpikeTrapBlock extends Block {
     private final Block spikeBlock;
     private final float strength;
+    private boolean hasBeenBlockedOnce;
     public static final BooleanProperty ACTIVE;
     public static final BooleanProperty CAN_BREAK;
 
@@ -72,13 +73,16 @@ public class SpikeTrapBlock extends Block {
     private void placeSpikes(BlockState state, World world, BlockPos pos) {
         if (state.get(ACTIVE)) {
             world.setBlockState(pos.up(), spikeBlock.getDefaultState());
-            world.playSound(null, pos, SoundEvents.BLOCK_CHAIN_HIT, SoundCategory.BLOCKS, 0.5F, 1);
+            world.playSound(null, pos, SoundEvents.BLOCK_CHAIN_PLACE, SoundCategory.BLOCKS, 0.5F, 1);
         }
     }
 
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
         if (!world.isClient) {
+            if (!state.get(ACTIVE)) {
+                hasBeenBlockedOnce = false;
+            }
             tryExpand(state, world, pos);
         }
     }
@@ -87,15 +91,16 @@ public class SpikeTrapBlock extends Block {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.isAir(pos.up()) || world.isWater(pos.up())) {
             placeSpikes(state, world, pos);
+            hasBeenBlockedOnce = false;
         } else if (state.get(CAN_BREAK)) {
             world.breakBlock(pos.up(), true);
             placeSpikes(state, world, pos);
+            hasBeenBlockedOnce = false;
         } else {
-            if (world.getBlockState(pos.up()).isSolidBlock(world, pos.up())) {
-                if (state.get(ACTIVE)) {
-                    world.playSound(null, pos, SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.BLOCKS, 0.5F, 1.5F);
-                }
+            if (state.get(ACTIVE) && !(world.getBlockState(pos.up()).getBlock() instanceof SpikeBlock) && !hasBeenBlockedOnce) {
+                world.playSound(null, pos, SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.BLOCKS, 0.5F, 1.5F);
             }
+            hasBeenBlockedOnce = true;
         }
     }
 

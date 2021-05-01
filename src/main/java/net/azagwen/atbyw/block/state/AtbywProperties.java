@@ -23,6 +23,8 @@ public class AtbywProperties {
     public static final IntProperty TIMER_DELAY;
     public static final IntProperty TIMER_DIGIT_LEFT;
     public static final IntProperty TIMER_DIGIT_RIGHT;
+    public static final BooleanProperty POWERED_X;
+    public static final BooleanProperty POWERED_Z;
 
     static {
         SHEARED = BooleanProperty.of("sheared");
@@ -41,5 +43,7 @@ public class AtbywProperties {
         TIMER_DELAY = IntProperty.of("timer_delay", 1, 64);
         TIMER_DIGIT_LEFT = IntProperty.of("timer_digit_left", 0, 9);
         TIMER_DIGIT_RIGHT = IntProperty.of("timer_digit_right", 0, 9);
+        POWERED_X = BooleanProperty.of("powered_x");
+        POWERED_Z = BooleanProperty.of("powered_z");
     }
 }

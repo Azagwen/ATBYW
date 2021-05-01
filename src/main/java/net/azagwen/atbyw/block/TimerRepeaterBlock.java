@@ -25,10 +25,7 @@ public class TimerRepeaterBlock extends AbstractRedstoneGateBlock implements Blo
 
     protected TimerRepeaterBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState()
-                .with(FACING, Direction.NORTH)
-                .with(TIMER_DELAY, 1)
-                .with(POWERED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(TIMER_DELAY, 1).with(POWERED, false));
     }
 
     @Override
