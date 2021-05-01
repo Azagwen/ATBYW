@@ -67,52 +67,37 @@ public class RedstoneCrossPathBlock extends Block {
 
         boolean hasWiresOnX = world.getBlockState(pos.east()).isOf(Blocks.REDSTONE_WIRE) && world.getBlockState(pos.west()).isOf(Blocks.REDSTONE_WIRE);
         boolean hasWiresOnZ = world.getBlockState(pos.north()).isOf(Blocks.REDSTONE_WIRE) && world.getBlockState(pos.south()).isOf(Blocks.REDSTONE_WIRE);
+        int returnValue = 0;
 
         if (isNorthInput) {
             if (direction == Direction.NORTH) {
                 if (hasWiresOnZ) {
-                    return world.getBlockState(pos.north()).get(RedstoneWireBlock.POWER) - 2;
-                } else {
-                    return 0;
+                    returnValue = world.getBlockState(pos.north()).get(RedstoneWireBlock.POWER) - 2;
                 }
-            } else {
-                return 0;
             }
         } else if (isSouthInput) {
             if (direction == Direction.SOUTH) {
                 if (hasWiresOnZ) {
-                    return world.getBlockState(pos.south()).get(RedstoneWireBlock.POWER) - 2;
-                } else {
-                    return 0;
+                    returnValue = world.getBlockState(pos.south()).get(RedstoneWireBlock.POWER) - 2;
                 }
-            } else {
-                return 0;
             }
         }
 
         if (isEastInput) {
             if (direction == Direction.EAST) {
                 if (hasWiresOnX) {
-                    return world.getBlockState(pos.east()).get(RedstoneWireBlock.POWER) - 2;
-                } else {
-                    return 0;
+                    returnValue = world.getBlockState(pos.east()).get(RedstoneWireBlock.POWER) - 2;
                 }
-            } else {
-                return 0;
             }
         } else if (isWestInput) {
             if (direction == Direction.WEST) {
                 if (hasWiresOnX) {
-                    return world.getBlockState(pos.west()).get(RedstoneWireBlock.POWER) - 2;
-                } else {
-                    return 0;
+                    returnValue = world.getBlockState(pos.west()).get(RedstoneWireBlock.POWER) - 2;
                 }
-            } else {
-                return 0;
             }
-        } else {
-            return 0;
         }
+
+        return returnValue;
     }
 
     @Override
