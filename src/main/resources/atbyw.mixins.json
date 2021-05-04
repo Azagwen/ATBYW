@@ -13,9 +13,9 @@
         "WallBlockMixin"
     ],
     "client": [
+        "CreativeInventoryScreenMixin",
         "EnchantingTableBlockMixin",
-        "EnchantmentScreenHandlerMixin",
-        "CreativeInventoryScreenMixin"
+        "EnchantmentScreenHandlerMixin"
     ],
     "injectors": {
         "defaultRequire": 1

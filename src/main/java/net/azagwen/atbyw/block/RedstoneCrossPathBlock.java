@@ -2,9 +2,14 @@ package net.azagwen.atbyw.block;
 
 import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.text.LiteralText;
@@ -14,6 +19,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public class RedstoneCrossPathBlock extends Block {
@@ -29,6 +35,11 @@ public class RedstoneCrossPathBlock extends Block {
     public RedstoneCrossPathBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(POWERED_X, false).with(POWERED_Z, false));
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        return hasTopRim(world, pos.down());
     }
 
     public boolean isSideAnInput(World world, BlockPos pos, Direction dir) {
@@ -56,11 +67,61 @@ public class RedstoneCrossPathBlock extends Block {
 
         world.setBlockState(pos, state.with(POWERED_Z, (isNorthInput || isSouthInput)).with(POWERED_X, (isEastInput || isWestInput)));
         world.updateNeighborsAlways(pos, this);
+        world.updateComparators(pos, this);
+    }
+
+    //unused, causes StackOverflowException
+    private void updateNeighbors(World world, BlockPos pos) {
+        Direction[] directions = Direction.values();
+
+        for (Direction direction : directions) {
+            if (world.getBlockState(pos.offset(direction)).isOf(Blocks.REDSTONE_WIRE)) {
+                world.updateNeighbor(pos.offset(direction), this, pos);
+            }
+        }
+    }
+
+    private void playEffects(World world, BlockPos pos) {
+        if (!world.isClient) {
+            ((ServerWorld) world).spawnParticles(ParticleTypes.SMOKE, (double)pos.getX() + 0.5D, (double)pos.getY() + 0.25D, (double)pos.getZ() + 0.5D, 8, 0.5D, 0.25D, 0.5D, 0.0D);
+        }
+        world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F, 2.6F + (world.random.nextFloat() - world.random.nextFloat()) * 0.8F);
+    }
+
+    private void updateInputs(BlockState state, World world, BlockPos pos) {
+        Direction[] directions = Direction.values();
+
+        for (Direction direction : directions) {
+            if (!world.getBlockState(pos.offset(direction)).isOf(AtbywBlocks.REDSTONE_CROSS_PATH)) {
+                this.assignInputs(state, world, pos);
+            } else {
+                if (!world.isClient) {
+                    playEffects(world, pos);
+                }
+            }
+        }
     }
 
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
-        assignInputs(state, world, pos);
+        if (state.canPlaceAt(world, pos)) {
+            if (!world.getBlockState(fromPos).isOf(AtbywBlocks.REDSTONE_CROSS_PATH)) {
+                this.assignInputs(state, world, pos);
+            } else {
+                if (!world.isClient) {
+                    playEffects(world, pos);
+                }
+            }
+        } else {
+            BlockEntity blockEntity = this.hasBlockEntity() ? world.getBlockEntity(pos) : null;
+            dropStacks(state, world, pos, blockEntity);
+            world.removeBlock(pos, false);
+            Direction[] directions = Direction.values();
+
+            for (Direction direction : directions) {
+                world.updateNeighborsAlways(pos.offset(direction), this);
+            }
+        }
 
         if (enableDebug) {
             PlayerEntity player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
@@ -72,12 +133,12 @@ public class RedstoneCrossPathBlock extends Block {
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        assignInputs(state, world, pos);
+        this.updateInputs(state, world, pos);
     }
 
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        assignInputs(state, world, pos);
+        this.updateInputs(state, world, pos);
     }
 
     @Override
@@ -93,7 +154,7 @@ public class RedstoneCrossPathBlock extends Block {
                     if (hasWiresOnZ) {
                         returnValueZ = world.getBlockState(pos.north()).get(RedstoneWireBlock.POWER) - 2;
                         break;
-                    } else if(world.getBlockState(pos.north()).getWeakRedstonePower(world, pos, direction) > 1) {
+                    } else if(!world.getBlockState(pos.north()).isOf(AtbywBlocks.REDSTONE_CROSS_PATH) && world.getBlockState(pos.north()).getWeakRedstonePower(world, pos, direction) > 1) {
                         returnValueZ = world.getBlockState(pos.north()).getWeakRedstonePower(world, pos, direction) - 2;
                         break;
                     }
@@ -103,7 +164,7 @@ public class RedstoneCrossPathBlock extends Block {
                     if (hasWiresOnZ) {
                         returnValueZ = world.getBlockState(pos.south()).get(RedstoneWireBlock.POWER) - 2;
                         break;
-                    } else if(world.getBlockState(pos.south()).getWeakRedstonePower(world, pos, direction) > 1) {
+                    } else if(!world.getBlockState(pos.south()).isOf(AtbywBlocks.REDSTONE_CROSS_PATH) && world.getBlockState(pos.south()).getWeakRedstonePower(world, pos, direction) > 1) {
                         returnValueZ = world.getBlockState(pos.south()).getWeakRedstonePower(world, pos, direction) - 2;
                         break;
                     }
@@ -113,7 +174,7 @@ public class RedstoneCrossPathBlock extends Block {
                     if (hasWiresOnX) {
                         returnValueX = world.getBlockState(pos.east()).get(RedstoneWireBlock.POWER) - 2;
                         break;
-                    } else if(world.getBlockState(pos.east()).getWeakRedstonePower(world, pos, direction) > 1) {
+                    } else if(!world.getBlockState(pos.east()).isOf(AtbywBlocks.REDSTONE_CROSS_PATH) && world.getBlockState(pos.east()).getWeakRedstonePower(world, pos, direction) > 1) {
                         returnValueX = world.getBlockState(pos.east()).getWeakRedstonePower(world, pos, direction) - 2;
                         break;
                     }
@@ -123,7 +184,7 @@ public class RedstoneCrossPathBlock extends Block {
                     if (hasWiresOnX) {
                         returnValueX = world.getBlockState(pos.west()).get(RedstoneWireBlock.POWER) - 2;
                         break;
-                    } else if(world.getBlockState(pos.west()).getWeakRedstonePower(world, pos, direction) > 1) {
+                    } else if(!world.getBlockState(pos.west()).isOf(AtbywBlocks.REDSTONE_CROSS_PATH) && world.getBlockState(pos.west()).getWeakRedstonePower(world, pos, direction) > 1) {
                         returnValueX = world.getBlockState(pos.west()).getWeakRedstonePower(world, pos, direction) - 2;
                         break;
                     }
@@ -144,6 +205,11 @@ public class RedstoneCrossPathBlock extends Block {
     }
 
     @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
+    }
+
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(POWERED_X, POWERED_Z);
     }
@@ -153,7 +219,7 @@ public class RedstoneCrossPathBlock extends Block {
         POWERED_Z = AtbywProperties.POWERED_Z;
 
         SHAPE = VoxelShapes.union(
-                Block.createCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 3.0D, 16.0D),
+                Block.createCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, 2.0D, 16.0D),
                 Block.createCuboidShape(0.0D, 0.0D, 5.0D, 16.0D, 3.0D, 11.0D)
         );
     }

@@ -38,6 +38,7 @@ public enum AtbywRecipeConfigs implements AtbywRecipeConfig {
     BOW_2(Lists.newArrayList(" #S", "# S", " #S"), Lists.newArrayList('#', 'S'), 1),
     FISHING_ROD_2(Lists.newArrayList("  #", " #S", "# S"), Lists.newArrayList('#', 'S'), 1),
     ARMOR_STAND_2(Lists.newArrayList("###", " # ", "#S#"), Lists.newArrayList('#', 'S'), 1),
+    BED_2(Lists.newArrayList("XXX", "###"), Lists.newArrayList('#', 'X'), 1),
 
     // 3 Ingredients
     ARROW_3(Lists.newArrayList("#", "S", "F"), Lists.newArrayList('#', 'S', 'F'), 4),

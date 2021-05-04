@@ -7,6 +7,7 @@ import net.azagwen.atbyw.datagen.AtbywRecipes;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.group.AtbywItemGroup;
 import net.azagwen.atbyw.items.AtbywItems;
+import net.azagwen.atbyw.world.AtbywWorldGen;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
@@ -70,6 +71,7 @@ public class AtbywMain implements ModInitializer {
 		AtbywBlocks.init();
 		AtbywBlockEntityType.init();
 		AtbywRecipes.init();
+		AtbywWorldGen.init();
 		AtbywRRP.init();
 
 		ATBYW_GROUP = new AtbywItemGroup(AtbywID("atbyw"));

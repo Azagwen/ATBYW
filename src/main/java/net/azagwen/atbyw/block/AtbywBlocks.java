@@ -33,7 +33,7 @@ public class AtbywBlocks {
     //TODO: STATUES Add signing fish function.
     //TODO: STATUES Make slime statues combine-able.
     //TODO: Add thin ice (world gen when ready)
-    //TODO: Add Railing Blocks (catwalk handles)
+    //TODO: Add Railing Blocks (catwalk handles) update: WIP
     //TODO: Add regular ice bricks that melt
     //TODO: Idea > "dried" coral blocks that keep their colors
     //TODO: Add beds that accept banners as sheets.

@@ -328,6 +328,8 @@ public class AtbywRecipes {
     public static JsonObject TIMER_REPEATER_MANUAL = createRecipeFromConfig("timer_repeater", 1, AtbywRecipeConfigs.DYING_DASHED_3, getBlockID(AtbywBlocks.TIMER_REPEATER), newKeyPair("item", getItemID(Items.REDSTONE)), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("item", getItemID(Items.REPEATER)));;
     public static JsonObject TIMER_REPEATER_CLOCK = createRecipeFromConfig("timer_repeater", AtbywRecipeConfigs.TIMER_REPEATER_3, getBlockID(AtbywBlocks.TIMER_REPEATER), newKeyPair("item", getItemID(Items.CLOCK)), newKeyPair("item", getItemID(Items.REDSTONE)), newKeyPair("item", getItemID(Items.REPEATER)));;
 
+    public static JsonObject REDSTONE_CROSS_PATH = createRecipeFromConfig("", AtbywRecipeConfigs.BED_2, getBlockID(AtbywBlocks.REDSTONE_CROSS_PATH), newKeyPair("item", getItemID(Items.STONE)), newKeyPair("item", getItemID(Items.REDSTONE)));
+
     public static void init() {
         LOGGER.info("ATBYW Recipes Inintiliazed");
     }
@@ -561,5 +563,6 @@ public class AtbywRecipes {
         putRecipe(AtbywID("timer_repeater_manual"), TIMER_REPEATER_MANUAL, map);
         putRecipe(AtbywID("timer_repeater_clock"), TIMER_REPEATER_CLOCK, map);
 
+        putRecipe(AtbywID("redstone_cross_path"), REDSTONE_CROSS_PATH, map);
     }
 }

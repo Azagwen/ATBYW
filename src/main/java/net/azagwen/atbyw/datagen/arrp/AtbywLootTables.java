@@ -610,7 +610,8 @@ public class AtbywLootTables {
                 AtbywBlocks.NETHERITE_SPIKE_TRAP,
                 AtbywBlocks.REDSTONE_JACK_O_LANTERN,
                 AtbywBlocks.SOUL_JACK_O_LANTERN,
-                AtbywBlocks.TIMER_REPEATER
+                AtbywBlocks.TIMER_REPEATER,
+                AtbywBlocks.REDSTONE_CROSS_PATH
         ));
     }
 }
