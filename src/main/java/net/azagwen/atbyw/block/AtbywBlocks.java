@@ -39,6 +39,7 @@ public class AtbywBlocks {
     //TODO: Add beds that accept banners as sheets.
     //TODO: Add chairs ?
     //TODO: Add step detectors.
+    //TODO: Add Broken glass and glass shards (cook to turn back into regular glass).
 
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
     public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
