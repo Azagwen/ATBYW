@@ -38,6 +38,7 @@ public class AtbywBlocks {
     //TODO: Idea > "dried" coral blocks that keep their colors
     //TODO: Add beds that accept banners as sheets.
     //TODO: Add chairs ?
+    //TODO: Add step detectors.
 
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
     public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
@@ -437,8 +438,6 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "soul_jack_o_lantern", SOUL_JACK_O_LANTERN);
 
         registerBlocks(false, BLOCKS_TAB, null, "bookshelf", WOOD_NAMES_NO_OAK, SPRUCE_BOOKSHELF, BIRCH_BOOKSHELF, JUNGLE_BOOKSHELF, ACACIA_BOOKSHELF, DARK_OAK_BOOKSHELF, CRIMSON_BOOKSHELF, WARPED_BOOKSHELF);
-        registerBlocks(false, BLOCKS_TAB, null, "ladder", WOOD_NAMES_NO_OAK, SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);
-        registerBlock(false, BLOCKS_TAB, "bamboo_ladder", BAMBOO_LADDER);
 
         registerBlock(false, BLOCKS_TAB, "purpur_tiles", PURPUR_TILES);
         registerBlock(false, BLOCKS_TAB, "chiseled_purpur_block", CHISELED_PURPUR_BLOCK);
@@ -494,6 +493,9 @@ public class AtbywBlocks {
         registerBlocks(false, BLOCKS_TAB, null, "cinder_bricks", COLOR_NAMES, WHITE_CINDER_BLOCKS, ORANGE_CINDER_BLOCKS, MAGENTA_CINDER_BLOCKS, LIGHT_BLUE_CINDER_BLOCKS, YELLOW_CINDER_BLOCKS, LIME_CINDER_BLOCKS, PINK_CINDER_BLOCKS, GRAY_CINDER_BLOCKS, LIGHT_GRAY_CINDER_BLOCKS, CYAN_CINDER_BLOCKS, PURPLE_CINDER_BLOCKS, BLUE_CINDER_BLOCKS, BROWN_CINDER_BLOCKS, GREEN_CINDER_BLOCKS, RED_CINDER_BLOCKS, BLACK_CINDER_BLOCKS);
 
         //ATBYW DECO
+        registerBlocks(false, DECO_TAB, null, "ladder", WOOD_NAMES_NO_OAK, SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);
+        registerBlock(false, DECO_TAB, "bamboo_ladder", BAMBOO_LADDER);
+
         registerBlock(false, DECO_TAB, "compacted_snow", COMPACTED_SNOW);
 
         registerBlock(false, DECO_TAB, "granite_column", GRANITE_COLUMN);

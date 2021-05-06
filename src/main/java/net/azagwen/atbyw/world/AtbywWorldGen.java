@@ -3,47 +3,59 @@ package net.azagwen.atbyw.world;
 import net.fabricmc.fabric.api.biome.v1.*;
 import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
 import net.minecraft.structure.StructurePieceType;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
 
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
 
 public class AtbywWorldGen {
-    public static final StructurePieceType BIG_IGLOO_PIECE = BigIglooGenerator.Piece::new;
-    private static final StructureFeature<DefaultFeatureConfig> BIG_IGLOO_FEATURE = new BigIgloodFeature(DefaultFeatureConfig.CODEC);
-    private static final ConfiguredStructureFeature<?, ?> BIG_IGLOO_CONFIG = BIG_IGLOO_FEATURE.configure(DefaultFeatureConfig.DEFAULT);
+    public static final StructurePieceType BIG_IGLOO_PIECE = BigIglooPiece::new;
+    public static final StructurePieceType DESERT_CRYPT_PIECE = DesertCryptPiece::new;
+    public static final StructurePieceType ICE_SPIKE_BASE_PIECE = IceSpikeBasePiece::new;
 
-    //TODO: add trapped big igloos and other variants.
+    private static final StructureFeature<DefaultFeatureConfig> BIG_IGLOO_FEATURE = new BigIglooFeature(DefaultFeatureConfig.CODEC);
+    private static final StructureFeature<DefaultFeatureConfig> DESERT_CRYPT_FEATURE = new DesertCryptFeature(DefaultFeatureConfig.CODEC);
+    private static final StructureFeature<DefaultFeatureConfig> ICE_SPIKE_BASE_FEATURE = new IceSpikeBaseFeature(DefaultFeatureConfig.CODEC);
+
+    private static final ConfiguredStructureFeature<?, ?> BIG_IGLOO_CONFIG = BIG_IGLOO_FEATURE.configure(DefaultFeatureConfig.DEFAULT);
+    private static final ConfiguredStructureFeature<?, ?> DESERT_CRYPT_CONFIG = DESERT_CRYPT_FEATURE.configure(DefaultFeatureConfig.DEFAULT);
+    private static final ConfiguredStructureFeature<?, ?> ICE_SPIKE_BASE_CONFIG = ICE_SPIKE_BASE_FEATURE.configure(DefaultFeatureConfig.DEFAULT);
+
     //TODO: add more structures.
 
-    @SuppressWarnings("deprecation")
-    public static void addToBiome(String modificationName, Predicate<BiomeSelectionContext> selectorPredicate, Consumer<BiomeModificationContext> biomeAdditionConsumer) {
-        BiomeModifications.create(AtbywID(modificationName)).add(ModificationPhase.ADDITIONS, selectorPredicate, biomeAdditionConsumer);
-    }
-    public static void init() {
-        Registry.register(Registry.STRUCTURE_PIECE, AtbywID("big_igloo"), BIG_IGLOO_PIECE);
-        FabricStructureBuilder.create(AtbywID("big_igloo"), BIG_IGLOO_FEATURE)
+    private static FabricStructureBuilder<?, ?> createSurfaceStructure(Identifier identifier, int spacing, int separation, int salt, StructurePieceType pieceType, StructureFeature<?> feature) {
+        Registry.register(Registry.STRUCTURE_PIECE, identifier, pieceType);
+
+        return FabricStructureBuilder.create(identifier, feature)
                 .step(GenerationStep.Feature.SURFACE_STRUCTURES)
-                .defaultConfig(32, 8, 12345)
-                .adjustsSurface()
-                .register();
+                .defaultConfig(spacing, separation, salt);
+    }
 
-        RegistryKey<ConfiguredStructureFeature<?, ?>> bigIgloo = RegistryKey.of(Registry.CONFIGURED_STRUCTURE_FEATURE_WORLDGEN, AtbywID("big_igloo"));
-        BuiltinRegistries.add(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE, bigIgloo.getValue(), BIG_IGLOO_CONFIG);
+    private static void addStructure(Identifier identifier, ConfiguredStructureFeature<?, ?> config, Predicate<BiomeSelectionContext> biomeSelector) {
+        RegistryKey<ConfiguredStructureFeature<?, ?>> STRUCT = RegistryKey.of(Registry.CONFIGURED_STRUCTURE_FEATURE_WORLDGEN, identifier);
 
-        addToBiome("big_igloo",
-                context -> BiomeSelector.haveCategories(context, Biome.Category.ICY) && (BiomeSelector.hasNamespace(context, "minecraft")),
-                modificationContext -> modificationContext.getGenerationSettings().addBuiltInStructure(BIG_IGLOO_CONFIG));
+        BuiltinRegistries.add(BuiltinRegistries.CONFIGURED_STRUCTURE_FEATURE, STRUCT.getValue(), config);
 
-//        BiomeModifications.addStructure(BiomeSelectors.all(), bigIgloo);
+        BiomeModifications.addStructure(biomeSelector, STRUCT);
+    }
+
+    public static void init() {
+        createSurfaceStructure(AtbywID("big_igloo"), 32, 8, 56987, BIG_IGLOO_PIECE, BIG_IGLOO_FEATURE).register();
+        createSurfaceStructure(AtbywID("desert_crypt"), 32, 8, 12345, DESERT_CRYPT_PIECE, DESERT_CRYPT_FEATURE).register();
+        createSurfaceStructure(AtbywID("ice_spike_base"), 24, 8, 69696, ICE_SPIKE_BASE_PIECE, ICE_SPIKE_BASE_FEATURE).register();
+
+        addStructure(AtbywID("big_igloo"), BIG_IGLOO_CONFIG, BiomeSelectors.categories(Biome.Category.ICY).and(BiomeSelectors.excludeByKey(BiomeKeys.ICE_SPIKES)));
+        addStructure(AtbywID("desert_crypt"), DESERT_CRYPT_CONFIG, BiomeSelectors.categories(Biome.Category.DESERT));
+        addStructure(AtbywID("ice_spike_base"), ICE_SPIKE_BASE_CONFIG, BiomeSelectors.includeByKey(BiomeKeys.ICE_SPIKES));
     }
 }

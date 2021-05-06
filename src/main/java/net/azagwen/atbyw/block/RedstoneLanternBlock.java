@@ -31,13 +31,13 @@ public class RedstoneLanternBlock extends LanternBlock {
     protected static final VoxelShape STANDING_SHAPE;
     protected static final VoxelShape HANGING_SHAPE;
     public static final BooleanProperty LIT;
+    public static final IntProperty POWER_INTENSITY;
     private static final BooleanProperty WATERLOGGED = field_26441;
-    private static final IntProperty POWER_INTENSITY;
     private static final Map<BlockView, List<RedstoneLanternBlock.BurnoutEntry>> BURNOUT_MAP;
 
     public RedstoneLanternBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.getStateManager().getDefaultState().with(HANGING, false).with(LIT, true).with(POWER_INTENSITY, 15));
+        this.setDefaultState(this.getStateManager().getDefaultState().with(HANGING, false).with(LIT, true).with(POWER_INTENSITY, 15).with(WATERLOGGED, false));
     }
 
     @Override
