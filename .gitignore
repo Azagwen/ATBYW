@@ -28,4 +28,7 @@ bin/
 
 run/
 src/main/resources/assets/atbyw/textures/block/ref/
+src/main/resources/assets/atbyw/models/block/statues/bbmodels/
+src/main/resources/assets/atbyw/models/block/.old/
+src/main/resources/assets/atbyw/models/block/.temp/
 curseforge_resources/
