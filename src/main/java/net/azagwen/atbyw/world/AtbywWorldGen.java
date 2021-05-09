@@ -82,6 +82,6 @@ public class AtbywWorldGen {
         addStructureToBiome(AtbywID("big_igloo"), BIG_IGLOO_CONFIG, BiomeSelectors.categories(Biome.Category.ICY).and(BiomeSelectors.excludeByKey(BiomeKeys.ICE_SPIKES)));
         addStructureToBiome(AtbywID("desert_crypt"), DESERT_CRYPT_CONFIG, BiomeSelectors.categories(Biome.Category.DESERT));
         addStructureToBiome(AtbywID("ice_spike_base"), ICE_SPIKE_BASE_CONFIG, BiomeSelectors.includeByKey(BiomeKeys.ICE_SPIKES));
-        addStructureToBiome(AtbywID("savana_mineshaft"), SAVANA_MINESHAFT_CONFIG, BiomeSelectors.includeByKey(BiomeKeys.SAVANNA));
+        addStructureToBiome(AtbywID("savana_mineshaft"), SAVANA_MINESHAFT_CONFIG, BiomeSelectors.categories(Biome.Category.SAVANNA).and(BiomeSelectors.excludeByKey(BiomeKeys.SHATTERED_SAVANNA, BiomeKeys.SHATTERED_SAVANNA_PLATEAU)));
     }
 }
