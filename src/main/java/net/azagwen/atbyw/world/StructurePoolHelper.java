@@ -20,6 +20,12 @@ public class StructurePoolHelper {
         }
     }
 
+    public static class LegacySinglePoolElementSubClass extends LegacySinglePoolElement {
+        public LegacySinglePoolElementSubClass(Either<Identifier, Structure> either, Supplier<StructureProcessorList> supplier, StructurePool.Projection projection) {
+            super(either, supplier, projection);
+        }
+    }
+
     public static Function<StructurePool.Projection, LegacySinglePoolElement> addLegacySinglePoolElement(Identifier identifier, StructureProcessorList structureProcessorList) {
         return (projection) -> {
             return new LegacySinglePoolElementSubClass(Either.left(identifier), () -> structureProcessorList, projection);

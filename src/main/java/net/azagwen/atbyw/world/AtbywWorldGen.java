@@ -27,6 +27,7 @@ import java.util.function.Predicate;
 
 import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
 
+@SuppressWarnings("deprecation")
 public class AtbywWorldGen {
     public static final StructurePieceType BIG_IGLOO_PIECE = BigIglooPiece::new;
     public static final StructurePieceType DESERT_CRYPT_PIECE = DesertCryptPiece::new;
