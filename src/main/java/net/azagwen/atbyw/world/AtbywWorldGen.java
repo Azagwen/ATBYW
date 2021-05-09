@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.world;
 
+import com.google.common.collect.ImmutableList;
 import net.azagwen.atbyw.world.feature.*;
 import net.azagwen.atbyw.world.structure.BigIglooPiece;
 import net.azagwen.atbyw.world.structure.DesertCryptPiece;
@@ -8,6 +9,8 @@ import net.azagwen.atbyw.world.structure.SavanaMineshaftData;
 import net.fabricmc.fabric.api.biome.v1.*;
 import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
 import net.minecraft.structure.StructurePieceType;
+import net.minecraft.structure.processor.StructureProcessor;
+import net.minecraft.structure.processor.StructureProcessorList;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -42,6 +45,11 @@ public class AtbywWorldGen {
     }, 7));
 
     //TODO: add more structures.
+
+    public static StructureProcessorList registerStructProcessor(Identifier identifier, ImmutableList<StructureProcessor> processorList) {
+        StructureProcessorList structureProcessorList = new StructureProcessorList(processorList);
+        return BuiltinRegistries.add(BuiltinRegistries.STRUCTURE_PROCESSOR_LIST, identifier, structureProcessorList);
+    }
 
     private static FabricStructureBuilder<?, ?> registerSurfaceStructure(Identifier identifier, int spacing, int separation, int salt, StructurePieceType pieceType, StructureFeature<?> feature) {
         Registry.register(Registry.STRUCTURE_PIECE, identifier, pieceType);

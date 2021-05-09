@@ -1,0 +1,15 @@
+{
+    "name": "atbyw:savana_mineshaft/shaft_entrance",
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 1,
+            "element": {
+                "location": "atbyw:savana_mineshaft/entrance/top",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        }
+    ]
+}
