@@ -284,20 +284,28 @@ public class AtbywBlocks {
     public static final Block CRIMSON_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block WARPED_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block GRANITE_TILES = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE));
-    public static final Block DIORITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE));
-    public static final Block ANDESITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE));
+    public static final Block GRANITE_TILES = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block DIORITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ANDESITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block CHISELED_PURPUR_BLOCK = new SurfaceFacingBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block PURPUR_TILES = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block PURPUR_TILES_STAIRS = new StairsBlockSubClass(PURPUR_TILES, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
-    public static final Block PURPUR_TILES_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
-    public static final Block CUT_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block CUT_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
-    public static final Block CUT_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
-    public static final Block SMOOTH_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block SMOOTH_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS));
-    public static final Block SMOOTH_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB));
+    public static final Block GRANITE_TILES_STAIRS = new StairsBlockSubClass(Blocks.POLISHED_GRANITE, FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block DIORITE_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.POLISHED_DIORITE, FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ANDESITE_BRICKS_STAIRS = new StairsBlockSubClass(Blocks.POLISHED_ANDESITE, FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block GRANITE_TILES_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block DIORITE_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ANDESITE_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.POLISHED_ANDESITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+
+    public static final Block CHISELED_PURPUR_BLOCK = new SurfaceFacingBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPUR_TILES = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPUR_TILES_STAIRS = new StairsBlockSubClass(PURPUR_TILES, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPUR_TILES_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CUT_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CUT_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CUT_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block SMOOTH_PURPUR_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block SMOOTH_PURPUR_STAIRS = new StairsBlockSubClass(CUT_PURPUR_BLOCK, FabricBlockSettings.copyOf(Blocks.PURPUR_STAIRS).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block SMOOTH_PURPUR_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_SLAB).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static final Block COMPACTED_SNOW = new SnowBlockSubClass(FabricBlockSettings.of(Material.SNOW_LAYER).strength(0.2F).requiresTool().breakByTool(FabricToolTags.SHOVELS).sounds(BlockSoundGroup.SNOW));
     public static final Block COMPACTED_SNOW_BLOCK = new Block(FabricBlockSettings.of(Material.SNOW_BLOCK).strength(0.4F).requiresTool().breakByTool(FabricToolTags.SHOVELS).sounds(BlockSoundGroup.SNOW));
@@ -362,21 +370,21 @@ public class AtbywBlocks {
     public static final Block REDSTONE_LANTERN = new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).breakByTool(FabricToolTags.PICKAXES).luminance(createLightLevelFromBlockState(2, AtbywProperties.POWER_INTENSITY, Properties.LIT)));
     public static final Block SHROOMSTICK = new ShroomStickBlock(FabricBlockSettings.of(AtbywMaterials.SHROOMSTICK).breakByHand(true).breakInstantly().noCollision().nonOpaque().luminance((state) -> 15));
 
-    public static final Block GRANITE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.GRANITE));
-    public static final Block DIORITE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.DIORITE));
-    public static final Block ANDESITE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.ANDESITE));
-    public static final Block SANDSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.SANDSTONE));
-    public static final Block CHISELED_SANDSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.SANDSTONE));
-    public static final Block RED_SANDSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.RED_SANDSTONE));
-    public static final Block CHISELED_RED_SANDSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.RED_SANDSTONE));
-    public static final Block PURPUR_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK));
-    public static final Block STONE_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICKS));
-    public static final Block MOSSY_STONE_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICKS));
-    public static final Block CRACKED_STONE_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS));
-    public static final Block NETHER_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS));
-    public static final Block QUARTZ_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK));
-    public static final Block PRISMARINE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE));
-    public static final Block BLACKSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE));
+    public static final Block GRANITE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.GRANITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block DIORITE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.DIORITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ANDESITE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.ANDESITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block SANDSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.SANDSTONE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CHISELED_SANDSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.SANDSTONE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block RED_SANDSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.RED_SANDSTONE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CHISELED_RED_SANDSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.RED_SANDSTONE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PURPUR_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.PURPUR_BLOCK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block STONE_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.STONE_BRICKS).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block MOSSY_STONE_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.MOSSY_STONE_BRICKS).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block CRACKED_STONE_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block NETHER_BRICKS_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.NETHER_BRICKS).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block QUARTZ_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block PRISMARINE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block BLACKSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static final Block IRON_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywID("iron_spike_trap"), 2.0F, 1, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
     public static final Block GOLD_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywID("gold_spike_trap"), 0.5F, 0, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
@@ -415,6 +423,14 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "granite_tiles", GRANITE_TILES);
         registerBlock(false, BLOCKS_TAB, "diorite_bricks", DIORITE_BRICKS);
         registerBlock(false, BLOCKS_TAB, "andesite_bricks", ANDESITE_BRICKS);
+
+        registerBlock(false, BLOCKS_TAB, "granite_tiles_stairs", GRANITE_TILES_STAIRS);
+        registerBlock(false, BLOCKS_TAB, "diorite_bricks_stairs", DIORITE_BRICKS_STAIRS);
+        registerBlock(false, BLOCKS_TAB, "andesite_bricks_stairs", ANDESITE_BRICKS_STAIRS);
+
+        registerBlock(false, BLOCKS_TAB, "granite_tiles_slab", GRANITE_TILES_SLAB);
+        registerBlock(false, BLOCKS_TAB, "diorite_bricks_slab", DIORITE_BRICKS_SLAB);
+        registerBlock(false, BLOCKS_TAB, "andesite_bricks_slab", ANDESITE_BRICKS_SLAB);
 
         registerBlock(false, BLOCKS_TAB, "grass_block_stairs", GRASS_BLOCK_STAIRS);
         registerBlock(false, BLOCKS_TAB, "mycelium_stairs", MYCELIUM_STAIRS);

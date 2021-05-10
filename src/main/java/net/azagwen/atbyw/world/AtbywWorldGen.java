@@ -78,7 +78,7 @@ public class AtbywWorldGen {
         registerSurfaceStructure(AtbywID("big_igloo"), 32, 8, 56987, BIG_IGLOO_PIECE, BIG_IGLOO_FEATURE).register();
         registerSurfaceStructure(AtbywID("desert_crypt"), 32, 8, 12345, DESERT_CRYPT_PIECE, DESERT_CRYPT_FEATURE).register();
         registerSurfaceStructure(AtbywID("ice_spike_base"), 24, 8, 696969, ICE_SPIKE_BASE_PIECE, ICE_SPIKE_BASE_FEATURE).register();
-        registerJigsawStructure(AtbywID("savana_mineshaft"), 24, 8, 464643, SAVANA_MINESHAFT_FEATURE).register();
+        registerJigsawStructure(AtbywID("savana_mineshaft"), 16, 8, 464643, SAVANA_MINESHAFT_FEATURE).register();
 
         addStructureToBiome(AtbywID("big_igloo"), BIG_IGLOO_CONFIG, BiomeSelectors.categories(Biome.Category.ICY).and(BiomeSelectors.excludeByKey(BiomeKeys.ICE_SPIKES)));
         addStructureToBiome(AtbywID("desert_crypt"), DESERT_CRYPT_CONFIG, BiomeSelectors.categories(Biome.Category.DESERT));

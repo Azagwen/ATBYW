@@ -169,6 +169,14 @@ public class AtbywRecipes {
     public static JsonObject DIORITE_BRICKS = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.DIORITE_BRICKS), newKeyPair("item", getBlockID(Blocks.DIORITE)));
     public static JsonObject ANDESITE_BRICKS = createRecipeFromConfig("", AtbywRecipeConfigs.BRICKS_1, getBlockID(AtbywBlocks.ANDESITE_BRICKS), newKeyPair("item", getBlockID(Blocks.ANDESITE)));
 
+    public static JsonObject GRANITE_TILES_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.GRANITE_TILES_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.GRANITE_TILES)));
+    public static JsonObject DIORITE_BRICKS_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.DIORITE_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.DIORITE_BRICKS)));
+    public static JsonObject ANDESITE_BRICKS_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.ANDESITE_BRICKS_STAIRS), newKeyPair("item", getBlockID(AtbywBlocks.ANDESITE_BRICKS)));
+
+    public static JsonObject GRANITE_TILES_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.GRANITE_TILES_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.GRANITE_TILES)));
+    public static JsonObject DIORITE_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.DIORITE_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.DIORITE_BRICKS)));
+    public static JsonObject ANDESITE_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.ANDESITE_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.ANDESITE_BRICKS)));
+
     public static JsonObject[] STICK_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "stick", AtbywRecipeConfigs.STICK_1, new Pair<>(nameSpace, "stick"), newKeyQuadruplet("item", mcNameSpace, "planks", true));
     public static JsonObject[] BOOKSHELF_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES_NO_OAK, "bookshelf", AtbywRecipeConfigs.BOOKSHELF_2, new Pair<>(nameSpace, "bookshelf"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false));
     public static JsonObject[] BOOKSHELF_TOGGLES_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "bookshelf_toggle", AtbywRecipeConfigs.BOOKSHELF_TOGGLE_4, new Pair<>(nameSpace, "bookshelf_toggle"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false), newKeyQuadruplet("item", mcNameSpace, "redstone", false), newKeyQuadruplet("tag", mcNameSpace, "stone_tool_materials", false));
@@ -340,6 +348,10 @@ public class AtbywRecipes {
         AtbywRecipesStonecutting.injectRecipes(map);
 
         // Multi recipes
+        for (int i = 0; i < FLOWER_NAMES.length; i++) {
+            putRecipe(AtbywID(FLOWER_NAMES[i] + "_flower_pull_switch"), FLOWER_SWITCHES[i], map);
+        }
+
         for (int i = 0; i < WOOD_NAMES_NO_OAK.length; i++) {
             putRecipe(AtbywID(WOOD_NAMES_NO_OAK[i] + "_bookshelf"), BOOKSHELF_VARIANTS[i], map);
             putRecipe(AtbywID(WOOD_NAMES_NO_OAK[i] + "_ladder"), LADDERS_VARIANTS[i], map);
@@ -473,6 +485,14 @@ public class AtbywRecipes {
         putRecipe(AtbywID("diorite_bricks"), DIORITE_BRICKS, map);
         putRecipe(AtbywID("andesite_bricks"), ANDESITE_BRICKS, map);
 
+        putRecipe(AtbywID("granite_tiles_stairs"), GRANITE_TILES_STAIRS, map);
+        putRecipe(AtbywID("diorite_bricks_stairs"), DIORITE_BRICKS_STAIRS, map);
+        putRecipe(AtbywID("andesite_bricks_stairs"), ANDESITE_BRICKS_STAIRS, map);
+
+        putRecipe(AtbywID("granite_tiles_slab"), GRANITE_TILES_SLAB, map);
+        putRecipe(AtbywID("diorite_bricks_slab"), DIORITE_BRICKS_SLAB, map);
+        putRecipe(AtbywID("andesite_bricks_slab"), ANDESITE_BRICKS_SLAB, map);
+
         putRecipe(AtbywID("bee_essence"), BEE_ESSENCE, map);
         putRecipe(AtbywID("shulker_essence"), SHULKER_ESSENCE, map);
         putRecipe(AtbywID("cat_essence"), CAT_ESSENCE, map);
@@ -490,6 +510,7 @@ public class AtbywRecipes {
         putRecipe(AtbywID("endermite_statue"), ENDERMITE_STATUE, map);
         putRecipe(AtbywID("shulker_statue"), SHULKER_STATUE, map);
         putRecipe(AtbywID("cat_statue"), CAT_STATUE, map);
+        putRecipe(AtbywID("wolf_statue"), WOLF_STATUE, map);
         putRecipe(AtbywID("chicken_statue"), CHICKEN_STATUE, map);
         putRecipe(AtbywID("rabbit_statue"), RABBIT_STATUE, map);
         putRecipe(AtbywID("fox_statue"), FOX_STATUE, map);

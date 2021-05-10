@@ -13,6 +13,7 @@ import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegi
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.impl.networking.ClientSidePacketRegistryImpl;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.GrassColors;
@@ -30,6 +31,7 @@ import java.util.UUID;
 import static net.azagwen.atbyw.items.AtbywItems.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
+@SuppressWarnings("deprecation")
 public class AtbywClient implements ClientModInitializer {
 
     public static final Identifier PacketID = AtbywID("spawn_packet");
@@ -78,6 +80,8 @@ public class AtbywClient implements ClientModInitializer {
 
         for (Item item : ESSENCE_BOTTLES)
             ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((EssenceItem) item).getColor(), item);
+
+        BlockRenderLayerMap.INSTANCE.putBlock(Blocks.STRUCTURE_VOID, RenderLayer.getTranslucent());
 
         BlockRenderLayerMap.INSTANCE.putBlocks(
                 RenderLayer.getCutout(),

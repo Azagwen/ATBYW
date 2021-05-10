@@ -88,6 +88,26 @@ public class AtbywRecipesStonecutting {
     public static JsonObject DIORITE_BRICKS_STONECUTTING_POLISHED = createStonecutterRecipe(getBlockID(Blocks.POLISHED_DIORITE), getBlockID(AtbywBlocks.DIORITE_BRICKS), 1);
     public static JsonObject ANDESITE_BRICKS_STONECUTTING_POLISHED = createStonecutterRecipe(getBlockID(Blocks.POLISHED_ANDESITE), getBlockID(AtbywBlocks.ANDESITE_BRICKS), 1);
 
+    public static JsonObject GRANITE_TILES_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.GRANITE), getBlockID(AtbywBlocks.GRANITE_TILES_STAIRS), 1);
+    public static JsonObject DIORITE_BRICKS_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.DIORITE), getBlockID(AtbywBlocks.DIORITE_BRICKS_STAIRS), 1);
+    public static JsonObject ANDESITE_BRICKS_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.ANDESITE), getBlockID(AtbywBlocks.ANDESITE_BRICKS_STAIRS), 1);
+    public static JsonObject GRANITE_TILES_STAIRS_STONECUTTING_POLISHED = createStonecutterRecipe(getBlockID(Blocks.POLISHED_GRANITE), getBlockID(AtbywBlocks.GRANITE_TILES_STAIRS), 1);
+    public static JsonObject DIORITE_BRICKS_STAIRS_STONECUTTING_POLISHED = createStonecutterRecipe(getBlockID(Blocks.POLISHED_DIORITE), getBlockID(AtbywBlocks.DIORITE_BRICKS_STAIRS), 1);
+    public static JsonObject ANDESITE_BRICKS_STAIRS_STONECUTTING_POLISHED = createStonecutterRecipe(getBlockID(Blocks.POLISHED_ANDESITE), getBlockID(AtbywBlocks.ANDESITE_BRICKS_STAIRS), 1);
+    public static JsonObject GRANITE_TILES_STAIRS_STONECUTTING_SELF = createStonecutterRecipe(getBlockID(AtbywBlocks.GRANITE_TILES), getBlockID(AtbywBlocks.GRANITE_TILES_STAIRS), 1);
+    public static JsonObject DIORITE_BRICKS_STAIRS_STONECUTTING_SELF = createStonecutterRecipe(getBlockID(AtbywBlocks.DIORITE_BRICKS), getBlockID(AtbywBlocks.DIORITE_BRICKS_STAIRS), 1);
+    public static JsonObject ANDESITE_BRICKS_STAIRS_STONECUTTING_SELF = createStonecutterRecipe(getBlockID(AtbywBlocks.ANDESITE_BRICKS), getBlockID(AtbywBlocks.ANDESITE_BRICKS_STAIRS), 1);
+
+    public static JsonObject GRANITE_TILES_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.GRANITE), getBlockID(AtbywBlocks.GRANITE_TILES_SLAB), 1);
+    public static JsonObject DIORITE_BRICKS_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.DIORITE), getBlockID(AtbywBlocks.DIORITE_BRICKS_SLAB), 1);
+    public static JsonObject ANDESITE_BRICKS_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.ANDESITE), getBlockID(AtbywBlocks.ANDESITE_BRICKS_SLAB), 1);
+    public static JsonObject GRANITE_TILES_SLAB_STONECUTTING_POLISHED = createStonecutterRecipe(getBlockID(Blocks.POLISHED_GRANITE), getBlockID(AtbywBlocks.GRANITE_TILES_SLAB), 1);
+    public static JsonObject DIORITE_BRICKS_SLAB_STONECUTTING_POLISHED = createStonecutterRecipe(getBlockID(Blocks.POLISHED_DIORITE), getBlockID(AtbywBlocks.DIORITE_BRICKS_SLAB), 1);
+    public static JsonObject ANDESITE_BRICKS_SLAB_STONECUTTING_POLISHED = createStonecutterRecipe(getBlockID(Blocks.POLISHED_ANDESITE), getBlockID(AtbywBlocks.ANDESITE_BRICKS_SLAB), 1);
+    public static JsonObject GRANITE_TILES_SLAB_STONECUTTING_SELF = createStonecutterRecipe(getBlockID(AtbywBlocks.GRANITE_TILES), getBlockID(AtbywBlocks.GRANITE_TILES_SLAB), 1);
+    public static JsonObject DIORITE_BRICKS_SLAB_STONECUTTING_SELF = createStonecutterRecipe(getBlockID(AtbywBlocks.DIORITE_BRICKS), getBlockID(AtbywBlocks.DIORITE_BRICKS_SLAB), 1);
+    public static JsonObject ANDESITE_BRICKS_SLAB_STONECUTTING_SELF = createStonecutterRecipe(getBlockID(AtbywBlocks.ANDESITE_BRICKS), getBlockID(AtbywBlocks.ANDESITE_BRICKS_SLAB), 1);
+
     public static JsonObject TERRACOTTA_STAIRS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.TERRACOTTA), getBlockID(AtbywBlocks.TERRACOTTA_STAIRS), 1);
     public static JsonObject TERRACOTTA_SLAB_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.TERRACOTTA), getBlockID(AtbywBlocks.TERRACOTTA_SLAB), 2);
     public static JsonObject TERRACOTTA_BRICKS_STONECUTTING = createStonecutterRecipe(getBlockID(Blocks.TERRACOTTA), getBlockID(AtbywBlocks.TERRACOTTA_BRICKS), 1);
@@ -237,6 +257,26 @@ public class AtbywRecipesStonecutting {
         putRecipe(AtbywID("granite_tiles_stonecutting_from_polished"), GRANITE_TILES_STONECUTTING_POLISHED, map);
         putRecipe(AtbywID("diorite_bricks_stonecutting_from_polished"), DIORITE_BRICKS_STONECUTTING_POLISHED, map);
         putRecipe(AtbywID("andesite_bricks_stonecutting_from_polished"), ANDESITE_BRICKS_STONECUTTING_POLISHED, map);
+
+        putRecipe(AtbywID("granite_tiles_stairs_stonecutting"), GRANITE_TILES_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("diorite_bricks_stairs_stonecutting"), DIORITE_BRICKS_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("andesite_bricks_stairs_stonecutting"), ANDESITE_BRICKS_STAIRS_STONECUTTING, map);
+        putRecipe(AtbywID("granite_tiles_stairs_stonecutting_from_polished"), GRANITE_TILES_STAIRS_STONECUTTING_POLISHED, map);
+        putRecipe(AtbywID("diorite_bricks_stairs_stonecutting_from_polished"), DIORITE_BRICKS_STAIRS_STONECUTTING_POLISHED, map);
+        putRecipe(AtbywID("andesite_bricks_stairs_stonecutting_from_polished"), ANDESITE_BRICKS_STAIRS_STONECUTTING_POLISHED, map);
+        putRecipe(AtbywID("granite_tiles_stairs_stonecutting_from_self"), GRANITE_TILES_STAIRS_STONECUTTING_SELF, map);
+        putRecipe(AtbywID("diorite_bricks_stairs_stonecutting_from_self"), DIORITE_BRICKS_STAIRS_STONECUTTING_SELF, map);
+        putRecipe(AtbywID("andesite_bricks_stairs_stonecutting_from_self"), ANDESITE_BRICKS_STAIRS_STONECUTTING_SELF, map);
+
+        putRecipe(AtbywID("granite_tiles_slab_stonecutting"), GRANITE_TILES_SLAB_STONECUTTING, map);
+        putRecipe(AtbywID("diorite_bricks_slab_stonecutting"), DIORITE_BRICKS_SLAB_STONECUTTING, map);
+        putRecipe(AtbywID("andesite_bricks_slab_stonecutting"), ANDESITE_BRICKS_SLAB_STONECUTTING, map);
+        putRecipe(AtbywID("granite_tiles_slab_stonecutting_from_polished"), GRANITE_TILES_SLAB_STONECUTTING_POLISHED, map);
+        putRecipe(AtbywID("diorite_bricks_slab_stonecutting_from_polished"), DIORITE_BRICKS_SLAB_STONECUTTING_POLISHED, map);
+        putRecipe(AtbywID("andesite_bricks_slab_stonecutting_from_polished"), ANDESITE_BRICKS_SLAB_STONECUTTING_POLISHED, map);
+        putRecipe(AtbywID("granite_tiles_slab_stonecutting_from_self"), GRANITE_TILES_SLAB_STONECUTTING_SELF, map);
+        putRecipe(AtbywID("diorite_bricks_slab_stonecutting_from_self"), DIORITE_BRICKS_SLAB_STONECUTTING_SELF, map);
+        putRecipe(AtbywID("andesite_bricks_slab_stonecutting_from_self"), ANDESITE_BRICKS_SLAB_STONECUTTING_SELF, map);
 
         putRecipe(AtbywID("terracotta_stairs_from_stonecutting"), TERRACOTTA_STAIRS_STONECUTTING, map);
         putRecipe(AtbywID("terracotta_slabs_from_stonecutting"), TERRACOTTA_SLAB_STONECUTTING, map);
