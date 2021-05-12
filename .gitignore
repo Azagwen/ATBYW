@@ -26,6 +26,7 @@ bin/
 
 # fabric
 
+minecraft
 run/
 src/main/resources/assets/atbyw/textures/block/ref/
 src/main/resources/assets/atbyw/models/block/statues/bbmodels/
