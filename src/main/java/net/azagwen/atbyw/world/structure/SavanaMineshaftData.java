@@ -214,7 +214,8 @@ public class SavanaMineshaftData {
                 new Identifier("empty"),
                 ImmutableList.of(
                         Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/terminators/terminator_1"), DEGRADE_DIRT_NO_SLABS), 1),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/terminators/terminator_2"), DEGRADE_DIRT_NO_SLABS), 1)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/terminators/terminator_2"), DEGRADE_DIRT_NO_SLABS), 1),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/terminators/terminator_3"), DEGRADE_DIRT_NO_SLABS), 1)
                 ),
                 StructurePool.Projection.RIGID
         ));

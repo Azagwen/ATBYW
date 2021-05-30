@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "minecraft:block/red_stained_glass"
+      "model": "atbyw:block/structure_void"
     }
   }
 }

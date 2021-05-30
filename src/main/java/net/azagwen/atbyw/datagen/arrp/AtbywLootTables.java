@@ -325,7 +325,10 @@ public class AtbywLootTables {
                 AtbywBlocks.BROWN_CONCRETE_SLAB,
                 AtbywBlocks.GREEN_CONCRETE_SLAB,
                 AtbywBlocks.RED_CONCRETE_SLAB,
-                AtbywBlocks.BLACK_CONCRETE_SLAB
+                AtbywBlocks.BLACK_CONCRETE_SLAB,
+                AtbywBlocks.GRANITE_TILES_SLAB,
+                AtbywBlocks.DIORITE_BRICKS_SLAB,
+                AtbywBlocks.ANDESITE_BRICKS_SLAB
         ));
 
         blocksDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
@@ -360,15 +363,6 @@ public class AtbywLootTables {
                 AtbywBlocks.CORNFLOWER_PULL_SWITCH,
                 AtbywBlocks.LILY_OF_THE_VALLEY_PULL_SWITCH,
                 AtbywBlocks.WITHER_ROSE_PULL_SWITCH,
-                AtbywBlocks.GRANITE_TILES,
-                AtbywBlocks.DIORITE_BRICKS,
-                AtbywBlocks.ANDESITE_BRICKS,
-                AtbywBlocks.GRANITE_TILES_STAIRS,
-                AtbywBlocks.DIORITE_BRICKS_STAIRS,
-                AtbywBlocks.ANDESITE_BRICKS_STAIRS,
-                AtbywBlocks.GRANITE_TILES_SLAB,
-                AtbywBlocks.DIORITE_BRICKS_SLAB,
-                AtbywBlocks.ANDESITE_BRICKS_SLAB,
                 AtbywBlocks.DIRT_STAIRS,
                 AtbywBlocks.COARSE_DIRT_STAIRS,
                 AtbywBlocks.NETHERRACK_STAIRS,
@@ -617,7 +611,13 @@ public class AtbywLootTables {
                 AtbywBlocks.REDSTONE_JACK_O_LANTERN,
                 AtbywBlocks.SOUL_JACK_O_LANTERN,
                 AtbywBlocks.TIMER_REPEATER,
-                AtbywBlocks.REDSTONE_CROSS_PATH
+                AtbywBlocks.REDSTONE_CROSS_PATH,
+                AtbywBlocks.GRANITE_TILES,
+                AtbywBlocks.DIORITE_BRICKS,
+                AtbywBlocks.ANDESITE_BRICKS,
+                AtbywBlocks.GRANITE_TILES_STAIRS,
+                AtbywBlocks.DIORITE_BRICKS_STAIRS,
+                AtbywBlocks.ANDESITE_BRICKS_STAIRS
         ));
     }
 }

@@ -7,6 +7,14 @@
   "block.atbyw.diorite_bricks": "Diorite Bricks",
   "block.atbyw.andesite_bricks": "Andesite Bircks",
 
+  "block.atbyw.granite_tiles_stairs": "Granite Tiles Stairs",
+  "block.atbyw.diorite_bricks_stairs": "Diorite Bricks Stairs",
+  "block.atbyw.andesite_bricks_stairs": "Andesite Bircks Stairs",
+
+  "block.atbyw.granite_tiles_slab": "Granite Tiles Slab",
+  "block.atbyw.diorite_bricks_slab": "Diorite Bricks Slab",
+  "block.atbyw.andesite_bricks_slab": "Andesite Bircks Slab",
+
   "block.atbyw.chiseled_purpur_block": "Chiseled Purpur Block",
   "block.atbyw.purpur_tiles": "Purpur Tiles",
   "block.atbyw.purpur_tiles_stairs": "Purpur Tiles Stairs",
