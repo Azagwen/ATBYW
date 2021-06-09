@@ -1,6 +1,8 @@
 package net.azagwen.atbyw.mixin;
 
 import net.azagwen.atbyw.main.AtbywMain;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.model.ModelLoader;
 import net.minecraft.client.render.model.json.JsonUnbakedModel;
 import net.minecraft.util.Identifier;
@@ -11,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static net.azagwen.atbyw.datagen.AtbywDataGen.*;
 
+@Environment(EnvType.CLIENT)
 @Mixin(ModelLoader.class)
 public class ItemModelLoaderMixin {
 

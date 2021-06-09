@@ -2,10 +2,7 @@ package net.azagwen.atbyw.world;
 
 import com.google.common.collect.ImmutableList;
 import net.azagwen.atbyw.world.feature.*;
-import net.azagwen.atbyw.world.structure.BigIglooPiece;
-import net.azagwen.atbyw.world.structure.DesertCryptPiece;
-import net.azagwen.atbyw.world.structure.IceSpikeBasePiece;
-import net.azagwen.atbyw.world.structure.SavanaMineshaftData;
+import net.azagwen.atbyw.world.structure.*;
 import net.fabricmc.fabric.api.biome.v1.*;
 import net.fabricmc.fabric.api.structure.v1.FabricStructureBuilder;
 import net.minecraft.structure.StructurePieceType;
@@ -37,12 +34,16 @@ public class AtbywWorldGen {
     private static final StructureFeature<DefaultFeatureConfig> DESERT_CRYPT_FEATURE = new DesertCryptFeature(DefaultFeatureConfig.CODEC);
     private static final StructureFeature<DefaultFeatureConfig> ICE_SPIKE_BASE_FEATURE = new IceSpikeBaseFeature(DefaultFeatureConfig.CODEC);
     private static final StructureFeature<StructurePoolFeatureConfig> SAVANA_MINESHAFT_FEATURE = new SavanaMineshaftFeature(StructurePoolFeatureConfig.CODEC);
+    private static final StructureFeature<StructurePoolFeatureConfig> MESA_TOMB_FEATURE = new MesaTombFeature(StructurePoolFeatureConfig.CODEC);
 
     private static final ConfiguredStructureFeature<?, ?> BIG_IGLOO_CONFIG = BIG_IGLOO_FEATURE.configure(DefaultFeatureConfig.DEFAULT);
     private static final ConfiguredStructureFeature<?, ?> DESERT_CRYPT_CONFIG = DESERT_CRYPT_FEATURE.configure(DefaultFeatureConfig.DEFAULT);
     private static final ConfiguredStructureFeature<?, ?> ICE_SPIKE_BASE_CONFIG = ICE_SPIKE_BASE_FEATURE.configure(DefaultFeatureConfig.DEFAULT);
     private static final ConfiguredStructureFeature<?, ?> SAVANA_MINESHAFT_CONFIG = SAVANA_MINESHAFT_FEATURE.configure(new StructurePoolFeatureConfig(() -> {
         return SavanaMineshaftData.BASE_POOL;
+    }, 7));
+    private static final ConfiguredStructureFeature<?, ?> MESA_TOMB_CONFIG = MESA_TOMB_FEATURE.configure(new StructurePoolFeatureConfig(() -> {
+        return MesaTombData.BASE_POOL;
     }, 7));
 
     //TODO: add more structures.
@@ -79,10 +80,12 @@ public class AtbywWorldGen {
         registerSurfaceStructure(AtbywID("desert_crypt"), 32, 8, 12345, DESERT_CRYPT_PIECE, DESERT_CRYPT_FEATURE).register();
         registerSurfaceStructure(AtbywID("ice_spike_base"), 24, 8, 696969, ICE_SPIKE_BASE_PIECE, ICE_SPIKE_BASE_FEATURE).register();
         registerJigsawStructure(AtbywID("savana_mineshaft"), 16, 8, 464643, SAVANA_MINESHAFT_FEATURE).register();
+        registerJigsawStructure(AtbywID("mesa_tomb"), 16, 8, 727272, MESA_TOMB_FEATURE).register();
 
         addStructureToBiome(AtbywID("big_igloo"), BIG_IGLOO_CONFIG, BiomeSelectors.categories(Biome.Category.ICY).and(BiomeSelectors.excludeByKey(BiomeKeys.ICE_SPIKES)));
         addStructureToBiome(AtbywID("desert_crypt"), DESERT_CRYPT_CONFIG, BiomeSelectors.categories(Biome.Category.DESERT));
         addStructureToBiome(AtbywID("ice_spike_base"), ICE_SPIKE_BASE_CONFIG, BiomeSelectors.includeByKey(BiomeKeys.ICE_SPIKES));
         addStructureToBiome(AtbywID("savana_mineshaft"), SAVANA_MINESHAFT_CONFIG, BiomeSelectors.categories(Biome.Category.SAVANNA).and(BiomeSelectors.excludeByKey(BiomeKeys.SHATTERED_SAVANNA, BiomeKeys.SHATTERED_SAVANNA_PLATEAU)));
+        addStructureToBiome(AtbywID("mesa_tomb"), MESA_TOMB_CONFIG, BiomeSelectors.includeByKey(BiomeKeys.BADLANDS));
     }
 }

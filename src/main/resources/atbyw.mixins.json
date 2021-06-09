@@ -10,8 +10,6 @@
         "RecipeManagerMixin",
         "RedstoneWireBlockMixin",
         "SnowBlockMixin",
-        "StructureBlockBlockEntityRendererMixin",
-        "StructureVoidBlockMixin",
         "TexturedRenderLayersMixin",
         "WallBlockMixin"
     ],

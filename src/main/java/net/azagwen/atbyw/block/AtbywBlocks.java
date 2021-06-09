@@ -22,7 +22,6 @@ import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywBlocks {
 
-
     //TODO: Idea: locks to lock chests & doors
     //TODO: Experiment with connected models/textures further
     //TODO: Experiment with World Gen
@@ -36,7 +35,6 @@ public class AtbywBlocks {
     //TODO: Add Railing Blocks (catwalk handles) update: WIP
     //TODO: Add regular ice bricks that melt
     //TODO: Idea > "dried" coral blocks that keep their colors
-    //TODO: Add beds that accept banners as sheets.
     //TODO: Add chairs ?
     //TODO: Add step detectors.
     //TODO: Add Broken glass and glass shards (cook to turn back into regular glass).
@@ -531,7 +529,7 @@ public class AtbywBlocks {
         registerBlock(false, DECO_TAB, "prismarine_column", PRISMARINE_COLUMN);
         registerBlock(false, DECO_TAB, "blackstone_column", BLACKSTONE_COLUMN);
 
-        registerBlock(false, DECO_TAB, "acacia_railing", ACACIA_RAILING);
+        registerBlock(false, "acacia_railing", ACACIA_RAILING);
 
         registerBlock(false, DECO_TAB, "terracotta_bricks_wall", TERRACOTTA_BRICKS_WALL);
         registerBlocks(false, DECO_TAB, null, "terracotta_bricks_wall", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS_WALL, ORANGE_TERRACOTTA_BRICKS_WALL, MAGENTA_TERRACOTTA_BRICKS_WALL, LIGHT_BLUE_TERRACOTTA_BRICKS_WALL, YELLOW_TERRACOTTA_BRICKS_WALL, LIME_TERRACOTTA_BRICKS_WALL, PINK_TERRACOTTA_BRICKS_WALL, GRAY_TERRACOTTA_BRICKS_WALL, LIGHT_GRAY_TERRACOTTA_BRICKS_WALL, CYAN_TERRACOTTA_BRICKS_WALL, PURPLE_TERRACOTTA_BRICKS_WALL, BLUE_TERRACOTTA_BRICKS_WALL, BROWN_TERRACOTTA_BRICKS_WALL, GREEN_TERRACOTTA_BRICKS_WALL, RED_TERRACOTTA_BRICKS_WALL, BLACK_TERRACOTTA_BRICKS_WALL);

@@ -1,6 +1,0 @@
-{
-    "parent": "atbyw:block/template_ladder",
-    "textures": {
-        "texture": "minecraft:block/ladder"
-    }
-}
