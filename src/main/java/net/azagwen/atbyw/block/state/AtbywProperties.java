@@ -25,6 +25,8 @@ public class AtbywProperties {
     public static final IntProperty TIMER_DIGIT_RIGHT;
     public static final BooleanProperty POWERED_X;
     public static final BooleanProperty POWERED_Z;
+    public static final EnumProperty<LargeChainEnd> CONNECT_BOTTOM;
+    public static final EnumProperty<LargeChainEnd> CONNECT_TOP;
 
     static {
         SHEARED = BooleanProperty.of("sheared");
@@ -45,5 +47,7 @@ public class AtbywProperties {
         TIMER_DIGIT_RIGHT = IntProperty.of("timer_digit_right", 0, 9);
         POWERED_X = BooleanProperty.of("powered_x");
         POWERED_Z = BooleanProperty.of("powered_z");
+        CONNECT_BOTTOM = EnumProperty.of("connect_bottom", LargeChainEnd.class);
+        CONNECT_TOP = EnumProperty.of("connect_top", LargeChainEnd.class);
     }
 }

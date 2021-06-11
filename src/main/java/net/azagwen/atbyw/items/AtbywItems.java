@@ -47,6 +47,8 @@ public class AtbywItems {
 
     public static final Item SHROOMSTICK = new ShroomStickItem(createSimpleItem(null));
 
+    public static final Item LARGE_CHAIN_LINK = new Item(createSimpleItem(null));
+
     public static final Item[] ESSENCE_BOTTLES = {
             BEE_ESSENCE,
             SILVERFISH_ESSENCE,
@@ -89,6 +91,8 @@ public class AtbywItems {
         registerItem(MISC_TAB, "puffer_fish_essence", PUFFER_FISH_ESSENCE);
         registerItem(MISC_TAB, "magma_cube_essence", MAGMA_CUBE_ESSENCE);
         registerItem(MISC_TAB, "slime_essence", SLIME_ESSENCE);
+
+        registerItem(MISC_TAB, "large_chain_link", LARGE_CHAIN_LINK);
 
         registerItem(DECO_TAB, "shroomstick", SHROOMSTICK);
 

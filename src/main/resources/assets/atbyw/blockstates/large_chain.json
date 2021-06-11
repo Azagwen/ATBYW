@@ -1,0 +1,155 @@
+{
+    "multipart": [
+        {
+            "when": {
+                "axis": "x"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_middle",
+                "x": 90,
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "axis": "y"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_middle"
+            }
+        },
+        {
+            "when": {
+                "axis": "z"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_middle",
+                "x": 90
+            }
+        },
+
+        {
+            "when": {
+                "axis": "x",
+                "connect_top": "connect"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_connect_top",
+                "x": 90,
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "axis": "y",
+                "connect_top": "connect"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_connect_top"
+            }
+        },
+        {
+            "when": {
+                "axis": "z",
+                "connect_top": "connect"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_connect_top",
+                "x": 90
+            }
+        },
+
+        {
+            "when": {
+                "axis": "x",
+                "connect_bottom": "connect"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_connect_bottom",
+                "x": 90,
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "axis": "y",
+                "connect_bottom": "connect"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_connect_bottom"
+            }
+        },
+        {
+            "when": {
+                "axis": "z",
+                "connect_bottom": "connect"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_connect_bottom",
+                "x": 90
+            }
+        },
+
+        {
+            "when": {
+                "axis": "x",
+                "connect_top": "transition"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_transition_top",
+                "x": 90,
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "axis": "y",
+                "connect_top": "transition"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_transition_top"
+            }
+        },
+        {
+            "when": {
+                "axis": "z",
+                "connect_top": "transition"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_transition_top",
+                "x": 90
+            }
+        },
+
+        {
+            "when": {
+                "axis": "x",
+                "connect_bottom": "transition"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_transition_bottom",
+                "x": 90,
+                "y": 90
+            }
+        },
+        {
+            "when": {
+                "axis": "y",
+                "connect_bottom": "transition"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_transition_bottom"
+            }
+        },
+        {
+            "when": {
+                "axis": "z",
+                "connect_bottom": "transition"
+            },
+            "apply": {
+                "model": "atbyw:block/large_chain_transition_bottom",
+                "x": 90
+            }
+        }
+    ]
+}

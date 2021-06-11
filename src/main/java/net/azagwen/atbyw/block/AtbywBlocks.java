@@ -38,6 +38,7 @@ public class AtbywBlocks {
     //TODO: Add chairs ?
     //TODO: Add step detectors.
     //TODO: Add Broken glass and glass shards (cook to turn back into regular glass).
+    //TODO: Add a chain hook that you can hook items and blocks to.
 
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
     public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
@@ -332,6 +333,8 @@ public class AtbywBlocks {
     public static final Block SOUL_JACK_O_LANTERN = new CarvedPumpkinBlockSubClass(FabricBlockSettings.of(Material.GOURD, MaterialColor.ORANGE).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance((state) -> 10).allowsSpawning(AtbywBlocks::always));
 
     //Non-Full Blocks
+    public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
+
     public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.OAK_PLANKS));
     public static final Block SPRUCE_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.SPRUCE_PLANKS));
     public static final Block BIRCH_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.BIRCH_PLANKS));
@@ -399,7 +402,7 @@ public class AtbywBlocks {
 
     public static final Block ACACIA_RAILING = new RailingBlock(AtbywID("acacia_railing"), FabricBlockSettings.copyOf(Blocks.ACACIA_FENCE));
 
-    public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MaterialColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
+    public static final Block LARGE_CHAIN = new LargeChainBlock(FabricBlockSettings.copyOf(Blocks.CHAIN).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static void init() {
         //ATBYW REDSTONE
@@ -512,6 +515,8 @@ public class AtbywBlocks {
         registerBlock(false, DECO_TAB, "bamboo_ladder", BAMBOO_LADDER);
 
         registerBlock(false, DECO_TAB, "compacted_snow", COMPACTED_SNOW);
+
+        registerBlock(false, DECO_TAB, "large_chain", LARGE_CHAIN);
 
         registerBlock(false, DECO_TAB, "granite_column", GRANITE_COLUMN);
         registerBlock(false, DECO_TAB, "diorite_column", DIORITE_COLUMN);

@@ -1,5 +1,7 @@
 {
   "_comment": "Blocks",
+  "block.atbyw.dev_block": "Aza Block",
+
   "block.atbyw.basalt_bricks": "Basalt Bricks",
   "block.atbyw.basalt_pillar": "Basalt Pillar",
 
@@ -253,7 +255,7 @@
   "block.atbyw.warped_ladder": "Warped Ladder",
   "block.atbyw.bamboo_ladder": "Bamboo Ladder",
 
-  "block.atbyw.dev_block": "Aza Block",
+  "block.atbyw.large_chain": "Large Chain",
 
   "_comment": "Items",
   "item.minecraft.stick": "Generic Stick",
@@ -283,6 +285,8 @@
   "item.atbyw.magma_cube_essence": "Magma Cube Essence",
 
   "item.atbyw.shroomstick": "Shroomstick",
+
+  "item.atbyw.large_chain_link": "Large Chain Link",
 
   "_comment": "Terracotta stairs",
   "block.atbyw.terracotta_stairs": "Terracotta Stairs",

@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 
-// This code was taken from https://github.com/Lemonszz/gubbins/blob/master/src/main/java/party/lemons/gubbins/mixin/client/CreativeInventoryScreenMixin.java,
+// This code was originally taken from https://github.com/Lemonszz/gubbins/blob/master/src/main/java/party/lemons/gubbins/mixin/client/CreativeInventoryScreenMixin.java,
 // which is licensed under MIT.
 // and edited to match my needs.
 public class AtbywItemGroup extends TabbedItemGroup {

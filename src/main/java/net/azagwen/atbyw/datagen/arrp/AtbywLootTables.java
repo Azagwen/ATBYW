@@ -617,7 +617,8 @@ public class AtbywLootTables {
                 AtbywBlocks.ANDESITE_BRICKS,
                 AtbywBlocks.GRANITE_TILES_STAIRS,
                 AtbywBlocks.DIORITE_BRICKS_STAIRS,
-                AtbywBlocks.ANDESITE_BRICKS_STAIRS
+                AtbywBlocks.ANDESITE_BRICKS_STAIRS,
+                AtbywBlocks.LARGE_CHAIN
         ));
     }
 }

@@ -1,6 +1,5 @@
 package net.azagwen.atbyw.group;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -11,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
 
-// This code was taken from https://github.com/Lemonszz/gubbins/blob/master/src/main/java/party/lemons/gubbins/gui/ItemGroupTabWidget.java,
+// This code was originally taken from https://github.com/Lemonszz/gubbins/blob/master/src/main/java/party/lemons/gubbins/gui/ItemGroupTabWidget.java,
 // which is licensed under MIT.
 // and edited to match my needs.
 public class ItemGroupTabWidget extends ButtonWidget {
@@ -40,14 +39,11 @@ public class ItemGroupTabWidget extends ButtonWidget {
         minecraftClient.getTextureManager().bindTexture(TEXTURE);
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, this.alpha);
         int yOffset = this.getYImage(this.isHovered());
-
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        RenderSystem.blendFunc(GlStateManager.SrcFactor.SRC_ALPHA, GlStateManager.DstFactor.ONE_MINUS_SRC_ALPHA);
-
+        RenderSystem.defaultBlendFunc();
         this.drawTexture(matrixStack, this.x, this.y, 0, yOffset * height, this.width, this.height);
         this.renderBg(matrixStack, minecraftClient, mouseX, mouseY);
-
         minecraftClient.getItemRenderer().renderGuiItemIcon(tab.getIcon(), this.x + (this.isHovered() || isSelected ? 7 : 10), this.y + 6);
     }
 }

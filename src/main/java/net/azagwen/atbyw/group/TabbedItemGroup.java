@@ -11,7 +11,7 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.List;
 
-// This code was taken from https://github.com/Lemonszz/gubbins/blob/master/src/main/java/party/lemons/gubbins/itemgroup/TabbedItemGroup.java,
+// This code was originally taken from https://github.com/Lemonszz/gubbins/blob/master/src/main/java/party/lemons/gubbins/itemgroup/TabbedItemGroup.java,
 // which is licensed under MIT.
 // and edited to match my needs.
 public abstract class TabbedItemGroup extends ItemGroup {

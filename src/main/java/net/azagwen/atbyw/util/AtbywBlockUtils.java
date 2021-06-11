@@ -1,6 +1,8 @@
 package net.azagwen.atbyw.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 
 public class AtbywBlockUtils {

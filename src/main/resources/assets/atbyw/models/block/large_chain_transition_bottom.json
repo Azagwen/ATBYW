@@ -1,0 +1,20 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "particle": "atbyw:block/large_chain_transition",
+        "chain": "atbyw:block/large_chain_transition"
+    },
+    "elements": [
+        {
+            "name": "bottom",
+            "from": [8, 0, 4],
+            "to": [8, 7, 12],
+            "shade": false,
+            "rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+            "faces": {
+                "east": {"uv": [0, 0, 8, 7], "texture": "#chain"},
+                "west": {"uv": [0, 0, 8, 7], "texture": "#chain"}
+            }
+        }
+    ]
+}

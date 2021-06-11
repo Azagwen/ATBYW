@@ -338,6 +338,9 @@ public class AtbywRecipes {
 
     public static JsonObject REDSTONE_CROSS_PATH = createRecipeFromConfig("", AtbywRecipeConfigs.BED_2, getBlockID(AtbywBlocks.REDSTONE_CROSS_PATH), newKeyPair("item", getItemID(Items.STONE)), newKeyPair("item", getItemID(Items.REDSTONE)));
 
+    public static JsonObject LARGE_CHAIN_LINK = createRecipeFromConfig("", AtbywRecipeConfigs.STAR_1, getItemID(AtbywItems.LARGE_CHAIN_LINK), newKeyPair("item", getItemID(Items.IRON_INGOT)));
+    public static JsonObject LARGE_CHAIN = createRecipeFromConfig("", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.LARGE_CHAIN), newKeyPair("item", getItemID(AtbywItems.LARGE_CHAIN_LINK)));
+
     public static void init() {
         LOGGER.info("ATBYW Recipes Inintiliazed");
     }
@@ -585,5 +588,8 @@ public class AtbywRecipes {
         putRecipe(AtbywID("timer_repeater_clock"), TIMER_REPEATER_CLOCK, map);
 
         putRecipe(AtbywID("redstone_cross_path"), REDSTONE_CROSS_PATH, map);
+
+        putRecipe(AtbywID("large_chain_link"), LARGE_CHAIN_LINK, map);
+        putRecipe(AtbywID("large_chain"), LARGE_CHAIN, map);
     }
 }

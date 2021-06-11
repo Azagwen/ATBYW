@@ -174,7 +174,8 @@ public class AtbywClient implements ClientModInitializer {
                 AtbywBlocks.CRIMSON_LADDER,
                 AtbywBlocks.WARPED_LADDER,
                 AtbywBlocks.BAMBOO_LADDER,
-                AtbywBlocks.TIMER_REPEATER
+                AtbywBlocks.TIMER_REPEATER,
+                AtbywBlocks.LARGE_CHAIN
         );
     }
 }

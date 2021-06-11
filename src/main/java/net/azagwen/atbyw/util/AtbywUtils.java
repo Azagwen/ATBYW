@@ -111,18 +111,6 @@ public class AtbywUtils {
         WorldRenderer.drawBox(matrices, vertexConsumer, box.minX, box.minY, box.minZ, box.maxX, box.maxY, box.maxZ, color.redNormalized, color.greenNormalized, color.blueNormalized, alpha, color.redNormalized, color.greenNormalized, color.blueNormalized);
     }
 
-    ///////////////////////////////////////////////////////////////
-    //              DECLARATION UTILS (EXPERIMENTAL)             //
-    ///////////////////////////////////////////////////////////////
-    public static <T extends Block> Block[] DeclareMultipleBlocks(int amount, Material material, MaterialColor materialcolor) {
-        T[] block = (T[]) new Block[amount];
-
-        for (int i = 0; i != amount; i++)
-            block[i] = (T) new Block(FabricBlockSettings.of(material, materialcolor));
-
-        return block;
-    }
-
     //////////////////////////////////////////////////
     //              REGISTRATION UTILS              //
     //////////////////////////////////////////////////
@@ -138,8 +126,10 @@ public class AtbywUtils {
 
     /** Registers a block and its block item.
      *
-     *  @param name     Name of the block (path)
-     *  @param block    The Block field
+     *  @param fireproof    if the Block item should resist to fire & Lava.
+     *  @param group        the ItemGroup this block should be in.
+     *  @param name         Name of the block (Identifier path).
+     *  @param block        The declared Block that will be registered.
      */
     public static void registerBlock(boolean fireproof, @Nullable ItemGroup group, String name, Block block) {
         Item.Settings normalSettings = group != null ? new Item.Settings().group(group) : new Item.Settings();
@@ -153,6 +143,13 @@ public class AtbywUtils {
         registerBlock(fireproof, (ItemGroup) null, name, block);
     }
 
+    /** Registers a block and its block item.
+     *
+     *  @param fireproof    if the Block item should resist to fire & Lava.
+     *  @param itemTab      the ItemTab list this block should be in.
+     *  @param name         Name of the block (Identifier path).
+     *  @param block        The declared Block that will be registered.
+     */
     public static void registerBlock(boolean fireproof, ArrayList<Item> itemTab, String name, Block block) {
         Item.Settings normalSettings = new Item.Settings();
         Item.Settings fireproofSettings = new Item.Settings().fireproof();
@@ -212,6 +209,17 @@ public class AtbywUtils {
         registerBlocks(fireproof, (ItemGroup) null, prefix, block_name, variant_type, block);
     }
 
+    /** Registers a given amount of blocks determined by "block" and "variant_type"'s length,
+     *  those two arrays MUST match in order to register those blocks, if the lengths mismatch
+     *  the game will crash on its own and notify you of that mistake.
+     *
+     *  @param fireproof    if the Block item should resist to fire & Lava.
+     *  @param itemTab      the ItemTab list this block should be in.
+     *  @param prefix           Optional, a prefix that will be added in front of the "block_name".
+     *  @param block_name       The name of the block.
+     *  @param variant_type     An array of Strings of which every index will be put between "prefix" and "block_name".
+     *  @param block            An Array of Blocks that must match the length of "variant_type".
+     */
     public static void registerBlocks(boolean fireproof, ArrayList<Item> itemTab, @Nullable String prefix, String block_name, String[] variant_type, Block... block) {
         if (block.length == variant_type.length)
             for (int i = 0; i < block.length; i++) {

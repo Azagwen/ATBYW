@@ -21,6 +21,7 @@ public enum AtbywRecipeConfigs implements AtbywRecipeConfig {
     WALL_1(Lists.newArrayList("###", "###"), Lists.newArrayList('#'), 6),
     FENCE_DOOR_1(Lists.newArrayList("# #", "# #", "# #"), Lists.newArrayList('#'), 3),
     COLUMN_1(Lists.newArrayList("#", "#", "#"), Lists.newArrayList('#'), 3),
+    STAR_1(Lists.newArrayList(" # ", "# #", " # "), Lists.newArrayList('#'), 1),
 
     // 2 Ingredients
     TORCH_2(Lists.newArrayList("#", "S"), Lists.newArrayList('#', 'S'), 4),
