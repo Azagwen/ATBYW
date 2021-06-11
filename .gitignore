@@ -27,6 +27,7 @@ bin/
 # fabric
 
 minecraft
+!src/main/resources/data/minecraft
 /run/
 **/bbmodels/
 **/ref/
