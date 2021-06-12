@@ -1,0 +1,7 @@
+{
+	"parent": "atbyw:block/piston/template_piston_head",
+	"textures": {
+		"all": "atbyw:block/acacia_sticky_piston",
+		"particle": "minecraft:block/acacia_planks"
+	}
+}

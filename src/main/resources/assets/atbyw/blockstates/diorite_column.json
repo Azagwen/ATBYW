@@ -1,0 +1,28 @@
+{
+    "multipart": [
+        {
+            "when": {
+                "top": "true"
+            },
+            "apply": {
+                "model": "atbyw:block/columns/diorite_column_top"
+            }
+        },
+        {
+            "when": {
+                "middle": "true"
+            },
+            "apply": {
+                "model": "atbyw:block/columns/diorite_column_middle"
+            }
+        },
+        {
+            "when": {
+                "bottom": "true"
+            },
+            "apply": {
+                "model": "atbyw:block/columns/diorite_column_bottom"
+            }
+        }
+    ]
+}

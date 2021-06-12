@@ -1,0 +1,6 @@
+{
+	"parent": "atbyw:block/timer_repeater",
+	"textures": {
+		"top": "atbyw:block/timer_repeater_on"
+	}
+}

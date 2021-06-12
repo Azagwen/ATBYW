@@ -1,0 +1,101 @@
+{
+	"ambientocclusion": false,
+	"textures": {
+		"all": "atbyw:block/dev",
+		"particle": "atbyw:block/dev"
+	},
+	"elements": [
+		{
+			"name": "Head",
+			"from": [8, 4, 4],
+			"to": [16, 12, 12],
+			"rotation": {"angle": 0, "axis": "z", "origin": [0, 8, 8]},
+			"faces": {
+				"north": {"uv": [0, 4, 4, 8], "rotation": 270, "texture": "#all"},
+				"east": {"uv": [13, 14, 14, 15], "rotation": 90, "texture": "#all"},
+				"south": {"uv": [14, 14, 15, 15], "rotation": 90, "texture": "#all"},
+				"west": {"uv": [12, 15, 13, 16], "rotation": 90, "texture": "#all"},
+				"up": {"uv": [4, 4, 8, 8], "rotation": 90, "texture": "#all"},
+				"down": {"uv": [15, 14, 16, 15], "rotation": 90, "texture": "#all"}
+			}
+		},
+		{
+			"name": "Slope_1",
+			"from": [13, 11.001, 8.5],
+			"to": [15, 12.001, 10.5],
+			"rotation": {"angle": -45, "axis": "y", "origin": [13.5, 12.5, 9.5], "rescale": true},
+			"faces": {
+				"up": {"uv": [15, 14, 16, 15], "rotation": 90, "texture": "#all"}
+			}
+		},
+		{
+			"name": "Slope_2",
+			"from": [12, 7.5, 3.999],
+			"to": [14, 11.5, 4.999],
+			"rotation": {"angle": -45, "axis": "z", "origin": [12.5, 9.5, 3], "rescale": true},
+			"faces": {
+				"north": {"uv": [14, 14, 15, 15], "rotation": 270, "texture": "#all"}
+			}
+		},
+		{
+			"name": "Slope_3",
+			"from": [8.5, 9, 3.999],
+			"to": [10.5, 11, 4.999],
+			"rotation": {"angle": -45, "axis": "z", "origin": [9.5, 9.5, 3], "rescale": true},
+			"faces": {
+				"north": {"uv": [11, 15, 12, 16], "texture": "#all"}
+			}
+		},
+		{
+			"name": "Hair_1",
+			"from": [0, 4, 4],
+			"to": [8, 6, 12],
+			"rotation": {"angle": 0, "axis": "z", "origin": [0, 8, 8]},
+			"faces": {
+				"north": {"uv": [14, 14, 15, 15], "rotation": 270, "texture": "#all"},
+				"east": {"uv": [0, 4, 4, 8], "rotation": 90, "texture": "#all"},
+				"west": {"uv": [12, 15, 13, 16], "rotation": 90, "texture": "#all"},
+				"up": {"uv": [15, 14, 16, 15], "rotation": 90, "texture": "#all"},
+				"down": {"uv": [15, 14, 16, 15], "rotation": 90, "texture": "#all"}
+			}
+		},
+		{
+			"name": "Hair_2",
+			"from": [0, 4, 10],
+			"to": [8, 12, 12],
+			"rotation": {"angle": 0, "axis": "z", "origin": [0, 8, 8]},
+			"faces": {
+				"north": {"uv": [14, 14, 15, 15], "rotation": 270, "texture": "#all"},
+				"east": {"uv": [0, 4, 4, 8], "rotation": 90, "texture": "#all"},
+				"south": {"uv": [14, 14, 15, 15], "rotation": 90, "texture": "#all"},
+				"west": {"uv": [12, 15, 13, 16], "rotation": 90, "texture": "#all"},
+				"up": {"uv": [15, 14, 16, 15], "rotation": 90, "texture": "#all"}
+			}
+		},
+		{
+			"name": "Neck",
+			"from": [2, 8, 6],
+			"to": [8, 10, 8],
+			"rotation": {"angle": 0, "axis": "z", "origin": [0, 8, 8]},
+			"faces": {
+				"north": {"uv": [11, 15, 12, 16], "rotation": 270, "texture": "#all"},
+				"east": {"uv": [0, 4, 4, 8], "rotation": 90, "texture": "#all"},
+				"south": {"uv": [11, 15, 12, 16], "rotation": 90, "texture": "#all"},
+				"up": {"uv": [12, 15, 13, 16], "rotation": 90, "texture": "#all"},
+				"down": {"uv": [12, 15, 13, 16], "rotation": 90, "texture": "#all"}
+			}
+		},
+		{
+			"name": "Body",
+			"from": [0, 6, 4],
+			"to": [2, 12, 10],
+			"rotation": {"angle": 0, "axis": "z", "origin": [0, 8, 8]},
+			"faces": {
+				"north": {"uv": [11, 15, 12, 16], "rotation": 270, "texture": "#all"},
+				"east": {"uv": [11, 15, 12, 16], "rotation": 90, "texture": "#all"},
+				"west": {"uv": [12, 15, 13, 16], "rotation": 90, "texture": "#all"},
+				"up": {"uv": [12, 15, 13, 16], "rotation": 90, "texture": "#all"}
+			}
+		}
+	]
+}

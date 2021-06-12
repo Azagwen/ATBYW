@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+        "all": "atbyw:block/chiseled_compacted_snow_bricks"
+    }
+}

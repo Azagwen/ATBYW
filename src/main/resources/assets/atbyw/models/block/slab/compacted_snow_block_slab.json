@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/slab",
+    "textures": {
+        "bottom": "atbyw:block/compacted_snow_block",
+        "top": "atbyw:block/compacted_snow_block",
+        "side": "atbyw:block/compacted_snow_block"
+    }
+}

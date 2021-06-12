@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/railing/template_railing",
+    "textures": {
+        "texture": "minecraft:block/acacia_planks"
+    }
+}

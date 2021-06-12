@@ -1,0 +1,163 @@
+-- Changelog --
+
+Changes
+- Changed Basalt Bricks texture
+- Collapsed creative tabs into a single one using tabs inside of tabs (side tabs)
+- Re-Organized some of the creative tabs
+
+Blocks added
+- Added Redstone Lantern
+- Added Redstone Jack'o Lantern
+- Added Soul Jack'o Lantern
+- Added Shroomstick
+- Added Bee statue
+- Added Silverfish statue
+- Added Endermite statue
+- Added Shulker statue
+- Added Wolf statue
+- Added Cat statue
+- Added Chicken statue
+- Added Rabbit statue
+- Added Fox statue
+- Added Cod statue
+- Added Salmon statue
+- Added Silverfish statue
+- Added Slime statue
+- Added Magma Cube statue
+- Added Granite Column
+- Added Diorite Column
+- Added Andesite Column
+- Added Sandstone Column
+- Added Chiseled Sandstone Column
+- Added Red Sandstone Column
+- Added Chiseled Red Sandstone Column
+- Added Purpur Column
+- Added Stone Bricks Column
+- Added Mossy Stone Bricks Column
+- Added Cracked Stone Bricks Column
+- Added Nether Bricks Column
+- Added Quartz Column
+- Added Prismarine Column
+- Added Blackstone Column
+- Added Purpur tiles
+- Added Chiseled Purpur Block
+- Added Cut Purpur Block
+- Added Smooth Purpur Block
+- Added Purpur tiles Stairs
+- Added Chiseled Purpur Block Stairs
+- Added Cut Purpur Block Stairs
+- Added Smooth Purpur Block Stairs
+- Added Purpur tiles Slab
+- Added Chiseled Purpur Block Slab
+- Added Cut Purpur Block Slab
+- Added Smooth Purpur Block Slab
+- Added Compacted Snow
+- Added Compacted Snow Block
+- Added Compacted Snow Bricks
+- Added Chiseled Compacted Snow Bricks
+- Added Packed Ice Bricks
+- Added Chiseled Packed Ice Bricks
+- Added Blue Ice Bricks
+- Added Chiseled Blue Ice Bricks
+- Added Compacted Snow Block Stairs
+- Added Compacted Snow Bricks Stairs
+- Added Packed Ice Stairs
+- Added Packed Ice Bricks Stairs
+- Added Blue Ice Stairs
+- Added Blue Ice Bricks Stairs
+- Added Compacted Snow Block Slab
+- Added Compacted Snow Bricks Slab
+- Added Packed Ice Slab
+- Added Packed Ice Bricks Slab
+- Added Blue Ice Slab
+- Added Blue Ice Bricks Slab
+- Added Granite Tiles
+- Added Diorite Bricks
+- Added Andesite Bricks
+- Added Granite Tiles Stairs
+- Added Diorite Bricks Stairs
+- Added Andesite Bricks Stairs
+- Added Granite Tiles Slab
+- Added Diorite Bricks Slab
+- Added Andesite Bricks Slab
+- Added Iron Spike Trap
+- Added Gold Spike Trap
+- Added Diamond Spike Trap
+- Added Netherite Spike Trap
+- Added Timer Repeater
+- Added Redstone Cross
+- Added Large Chains
+
+Items added
+- Added Bee Essence
+- Added Silverfish Essence
+- Added Endermite Essence
+- Added Shulker Essence
+- Added Wolf Essence
+- Added Cat Essence
+- Added Chicken Essence
+- Added Rabbit Essence
+- Added Fox Essence
+- Added Cod Essence
+- Added Salmon Essence
+- Added Silverfish Essence
+- Added Slime Essence
+- Added Magma Cube Essence
+- Added Large Chain Link
+
+Details on the new Blocks
+
+Statues
+13 Statues representing almost every "small" mob in MC have been added.
+Statues will gain moss over time and can be scraped once they reach their maximum moss level
+Scraping a Statue's moss on maximum level has a chance of dropping an item, the item in question
+corresponding to the mob the statue represents.
+This can be used to farm mob loots without building complex farms.
+Each Statue can also be waxed, freezing its current moss state in place.
+Bigger statues are planned for later, but for now, I hope you will enjoy these !
+
+Shroomstick
+The Shroomstick is a block that emits lights, very much like torches.
+The Shroomstick item can be thrown around in the world, it will bounce off of the ground and walls a few times before
+placing itselfas a block in your world, if the block it lands on is not full it will simply drop down allowing you to
+collect it back and throw it again !
+It also emits dynamic lighting when thrown thanks to the LambDynamicLights API.
+If you don't feel like throwing it, it can also simply be placed down by aiming at a block.
+
+Compacted Snow
+Compacted snow is a new snow layer variant, it doesn't melt and therefore can be used around light sources or even lava.
+It also drops itself, unlike normal snow layers.
+
+Redstone Lantern
+Redstone lanterns are special lanterns that emit redstone power. They can be right clicked to change
+the intensity of the power they will output, making them useful for comparator based systems.
+They can also be powered off, and burn out like redstone torches.
+
+Redstone Jack'o Lantern
+Redstone Jack'o Lantern are just like regular Jack'o Lantern, except they will output a redstone signal of 15 from their face.
+They can be used to output a signal from only one direction, they can also be powered off.
+
+Spike Traps
+Spike traps are a new trap redstone component, they deal damage when activated and will also slow you down and give you a
+slight minining fatigue effect, making it a rather deadly trap to fall in. Spike traps can also break the block above them when
+activated, higher levels of spike traps can break more tough blocks, but blocks like obsidian and netherite blocks cannot be
+broken by them, even by a diamond or netherite spike trap as spike traps are not as powerful as pickaxes.
+
+Timer Repeater
+The Timer Repeater is almost like a regular a repeater, except it can count up to 64 before activating/deactivating.
+It can be used ot avoid using large numbers of repeaters in some situations.
+
+Redstone Cross
+The Redstone Cross is a rather simple redstone component, it allows two redstone paths to cross eachother with no interference.
+Making it useful in tight spaces where you need two paths to cross but don't have the space.
+Note however that it doesn't work with itself as of now due to a bug, its a, it works perfectly fine with almost all redstone components still.
+
+World Generation
+Structures have been added to ATBYW !
+They use blocks the mod adds in all their glory.
+
+- Added Big Igloo
+- Added Ice Spike Base
+- Added Desert Crypt
+- Added Savana Mineshaft
+- Added Mesa Tomb

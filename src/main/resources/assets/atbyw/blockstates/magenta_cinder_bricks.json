@@ -1,0 +1,16 @@
+{
+    "variants": {
+        "axis=x": {
+            "model": "atbyw:block/concrete/cinder_blocks/magenta_horizontal_cinder_blocks",
+            "x": 90,
+            "y": 90
+        },
+        "axis=y": {
+            "model": "atbyw:block/concrete/cinder_blocks/magenta_cinder_blocks"
+        },
+        "axis=z": {
+            "model": "atbyw:block/concrete/cinder_blocks/magenta_horizontal_cinder_blocks",
+            "x": 90
+        }
+    }
+}

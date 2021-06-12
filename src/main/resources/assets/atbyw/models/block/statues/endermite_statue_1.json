@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_endermite_statue",
+    "textures": {
+        "texture": "atbyw:entity/endermite_statue/endermite_statue_1"
+    }
+}

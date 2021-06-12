@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_fox_statue",
+    "textures": {
+        "texture": "atbyw:entity/fox_statue/fox_statue_0"
+    }
+}

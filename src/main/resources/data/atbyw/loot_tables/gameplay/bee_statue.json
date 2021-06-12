@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:random_chance",
+                            "chance": 0.09375
+                        }
+                    ],
+                    "name": "minecraft:honeycomb"
+                },
+                {
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {
+                            "condition": "minecraft:random_chance",
+                            "chance": 0.09375
+                        }
+                    ],
+                    "name": "minecraft:honey_bottle"
+                }
+            ]
+        }
+    ]
+}

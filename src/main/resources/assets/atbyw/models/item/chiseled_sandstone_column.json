@@ -1,0 +1,8 @@
+{
+    "parent": "atbyw:block/columns/template_column_inventory",
+    "textures": {
+        "top": "atbyw:block/sandstone_column_top",
+        "bottom": "atbyw:block/sandstone_column_top",
+        "side": "atbyw:block/chiseled_sandstone_column_side"
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "type": "minecraft:chest",
+    "pools": [
+        {
+            "rolls": {
+                "min": 2.0,
+                "max": 8.0,
+                "type": "minecraft:uniform"
+            },
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "weight": 20,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 1.0,
+                                "max": 8.0,
+                                "type": "minecraft:uniform"
+                            }
+                        }
+                    ],
+                    "name": "minecraft:red_sand"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 15,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 1.0,
+                                "max": 5.0,
+                                "type": "minecraft:uniform"
+                            }
+                        }
+                    ],
+                    "name": "minecraft:rotten_flesh"
+                },
+                {
+                    "type": "minecraft:item",
+                    "weight": 10,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 1.0,
+                                "max": 5.0,
+                                "type": "minecraft:uniform"
+                            }
+                        }
+                    ],
+                    "name": "minecraft:gold_nugget"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:emerald"
+                }
+            ]
+        },
+        {
+            "rolls": {
+                "min": 1.0,
+                "max": 4.0,
+                "type": "minecraft:uniform"
+            },
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:golden_pickaxe"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:golden_axe"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:light_blue_bed"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "atbyw:dark_oak_ladder"
+                },
+                {
+                    "type": "minecraft:item",
+                    "name": "atbyw:redstone_lantern"
+                }
+            ]
+        }
+    ]
+}

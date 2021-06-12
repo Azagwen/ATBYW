@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_chicken_statue",
+    "textures": {
+        "texture": "atbyw:entity/chicken_statue/chicken_statue_4"
+    }
+}

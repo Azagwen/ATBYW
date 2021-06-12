@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "better_nether_taburet",
+  "pattern": [
+    "##",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "atbyw_mi:willow_stick"
+    },
+    "#": {
+      "item": "betternether:willow_slab"
+    }
+  },
+  "result": {
+    "item": "betternether:taburet_willow",
+    "count": 1
+  }
+}

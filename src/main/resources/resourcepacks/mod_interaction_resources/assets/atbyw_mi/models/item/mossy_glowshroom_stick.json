@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "atbyw_mi:item/better_end/mossy_glowshroom_stick"
+  }
+}

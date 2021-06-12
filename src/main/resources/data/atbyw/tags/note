@@ -1,0 +1,7 @@
+Some tags in the mod are defined only in code,
+but can still be accessed outside of it, these are :
+
+- bookshelf (block & item tag)
+- sticks (item tag)
+- large_chain_transition_bottom (block & item tag)
+- large_chain_transition_top (block & item tag)

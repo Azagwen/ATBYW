@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "better_nether_sign",
+  "pattern": [
+    "###",
+    "###",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "atbyw_mi:mushroom_fir_stick"
+    },
+    "#": {
+      "item": "betternether:mushroom_fir_planks"
+    }
+  },
+  "result": {
+    "item": "betternether:sign_mushroom_fir",
+    "count": 3
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "better_end_sign",
+  "pattern": [
+    "###",
+    "###",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "atbyw_mi:mossy_glowshroom_stick"
+    },
+    "#": {
+      "item": "betterend:mossy_glowshroom_planks"
+    }
+  },
+  "result": {
+    "item": "betterend:mossy_glowshroom_sign",
+    "count": 3
+  }
+}

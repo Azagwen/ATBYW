@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_salmon_statue",
+    "textures": {
+        "texture": "atbyw:entity/salmon_statue/salmon_statue_2"
+    }
+}

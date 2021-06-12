@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_puffer_fish_statue",
+    "textures": {
+        "texture": "atbyw:entity/puffer_fish_statue/puffer_fish_statue_1"
+    }
+}

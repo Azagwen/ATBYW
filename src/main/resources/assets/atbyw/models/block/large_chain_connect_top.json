@@ -1,0 +1,49 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "particle": "atbyw:block/large_chain",
+        "chain": "atbyw:block/large_chain"
+    },
+    "elements": [
+        {
+            "from": [7, 9, 4],
+            "to": [9, 12, 12],
+            "rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+            "shade": false,
+            "faces": {
+                "north": {"uv": [4, 12, 6, 15], "texture": "#chain"},
+                "east": {"uv": [7, 12, 15, 15], "texture": "#chain"},
+                "south": {"uv": [4, 12, 6, 15], "texture": "#chain"},
+                "west": {"uv": [7, 12, 15, 15], "texture": "#chain"},
+                "up": {"uv": [0, 4, 2, 12], "texture": "#chain"},
+                "down": {"uv": [4, 4, 6, 12], "rotation": 180, "texture": "#chain"}
+            }
+        },
+        {
+            "from": [7, 10, 3],
+            "to": [9, 16, 6],
+            "rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+            "shade": false,
+            "faces": {
+                "north": {"uv": [4, 8, 2, 14], "texture": "#chain"},
+                "east": {"uv": [13, 8, 16, 14], "texture": "#chain"},
+                "south": {"uv": [4, 8, 2, 14], "texture": "#chain"},
+                "west": {"uv": [6, 8, 9, 14], "texture": "#chain"},
+                "down": {"uv": [4, 10, 6, 13], "rotation": 180, "texture": "#chain"}
+            }
+        },
+        {
+            "from": [7, 10, 10],
+            "to": [9, 16, 13],
+            "rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+            "shade": false,
+            "faces": {
+                "north": {"uv": [4, 8, 2, 14], "texture": "#chain"},
+                "east": {"uv": [6, 8, 9, 14], "texture": "#chain"},
+                "south": {"uv": [4, 8, 2, 14], "texture": "#chain"},
+                "west": {"uv": [13, 8, 16, 14], "texture": "#chain"},
+                "down": {"uv": [4, 3, 6, 6], "rotation": 180, "texture": "#chain"}
+            }
+        }
+    ]
+}

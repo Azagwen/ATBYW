@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_wolf_statue",
+    "textures": {
+        "texture": "atbyw:entity/wolf_statue/wolf_statue_3"
+    }
+}

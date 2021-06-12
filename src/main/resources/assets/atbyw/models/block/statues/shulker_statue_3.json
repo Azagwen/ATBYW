@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_shulker_statue",
+    "textures": {
+        "texture": "atbyw:entity/shulker_statue/shulker_statue_3"
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "atbyw:block/chiseled_purpur_block_east"
+    },
+    "facing=west": {
+      "model": "atbyw:block/chiseled_purpur_block_west"
+    },
+    "facing=up": {
+      "model": "atbyw:block/chiseled_purpur_block_up"
+    },
+    "facing=down": {
+      "model": "atbyw:block/chiseled_purpur_block_down"
+    },
+    "facing=north": {
+      "model": "atbyw:block/chiseled_purpur_block_north"
+    },
+    "facing=south": {
+      "model": "atbyw:block/chiseled_purpur_block_south"
+    }
+  }
+}

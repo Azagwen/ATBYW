@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+        "all": "atbyw:block/light_gray_terracotta_bricks"
+    }
+}

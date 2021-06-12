@@ -1,0 +1,21 @@
+missing model for variants:
+
+'atbyw:dev_block#appearance=3,horizontal_facing=west,vertical_facing=east' //Impossible
+'atbyw:dev_block#appearance=1,horizontal_facing=up,vertical_facing=down' //Impossible
+'atbyw:dev_block#appearance=3,horizontal_facing=up,vertical_facing=down' //Impossible
+'atbyw:dev_block#appearance=3,horizontal_facing=south,vertical_facing=north' //Impossible
+'atbyw:dev_block#appearance=2,horizontal_facing=west,vertical_facing=east' //Impossible
+'atbyw:dev_block#appearance=2,horizontal_facing=north,vertical_facing=south' //Impossible
+'atbyw:dev_block#appearance=2,horizontal_facing=south,vertical_facing=north' //Impossible
+'atbyw:dev_block#appearance=3,horizontal_facing=north,vertical_facing=south' //Impossible
+'atbyw:dev_block#appearance=3,horizontal_facing=down,vertical_facing=up' //Impossible
+'atbyw:dev_block#appearance=2,horizontal_facing=down,vertical_facing=up' //Impossible
+'atbyw:dev_block#appearance=1,horizontal_facing=down,vertical_facing=up' //Impossible
+'atbyw:dev_block#appearance=3,horizontal_facing=east,vertical_facing=west' //Impossible
+'atbyw:dev_block#appearance=1,horizontal_facing=south,vertical_facing=north' //Impossible
+'atbyw:dev_block#appearance=2,horizontal_facing=up,vertical_facing=down' //Impossible
+'atbyw:dev_block#appearance=1,horizontal_facing=east,vertical_facing=west' //Impossible
+'atbyw:dev_block#appearance=1,horizontal_facing=west,vertical_facing=east' //Impossible
+'atbyw:dev_block#appearance=1,horizontal_facing=north,vertical_facing=south' //Impossible
+'atbyw:dev_block#appearance=2,horizontal_facing=east,vertical_facing=west' //Impossible
+

@@ -1,0 +1,56 @@
+{
+    "textures": {
+        "pole": "minecraft:block/bamboo_stalk",
+        "bars": "atbyw:block/bamboo_ladder",
+        "particle": "minecraft:block/bamboo_stalk"
+    },
+    "elements": [
+        {   "from": [ 6.5, 0, 6.5 ],
+            "to": [ 9.5, 16, 9.5 ],
+            "faces": {
+                "down":  { "uv": [ 13, 4, 16, 7 ], "texture": "#pole", "cullface": "down" },
+                "up":    { "uv": [ 13, 0, 16, 3 ], "texture": "#pole", "cullface": "up" },
+                "north": { "uv": [ 9, 0, 12, 16 ], "texture": "#pole" },
+                "south": { "uv": [ 9, 0, 12, 16 ], "texture": "#pole" },
+                "west":  { "uv": [  9, 0, 12, 16 ], "texture": "#pole" },
+                "east":  { "uv": [  9, 0, 12, 16 ], "texture": "#pole" }
+            }
+        },
+        {   "from": [ 0, 0, 8 ],
+            "to": [ 16, 16, 8 ],
+            "shade": false,
+            "faces": {
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#bars" },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#bars" }
+            }
+        }
+    ],
+    "gui_light": "front",
+    "display": {
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0],
+            "scale":[ 0.5, 0.5, 0.5 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 1, 1, 1 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 2.5, 0],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        },
+        "firstperson_lefthand": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.40, 0.40, 0.40 ]
+        }
+    }
+}

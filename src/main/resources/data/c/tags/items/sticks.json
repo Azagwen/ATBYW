@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:stick",
+    "atbyw:oak_stick",
+    "atbyw:spruce_stick",
+    "atbyw:birch_stick",
+    "atbyw:jungle_stick",
+    "atbyw:acacia_stick",
+    "atbyw:dark_oak_stick",
+    "atbyw:crimson_stick",
+    "atbyw:warped_stick",
+    "atbyw:bamboo_stick"
+  ]
+}

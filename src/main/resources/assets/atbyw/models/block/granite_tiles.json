@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "atbyw:block/granite_tiles_top",
+        "side": "atbyw:block/granite_tiles"
+    }
+}

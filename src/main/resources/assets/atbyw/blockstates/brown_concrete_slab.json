@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "type=bottom": {
+            "model": "atbyw:block/concrete/slab/brown_concrete_slab"
+        },
+        "type=double": {
+            "model": "minecraft:block/brown_concrete"
+        },
+        "type=top": {
+            "model": "atbyw:block/concrete/slab/brown_concrete_slab_top"
+        }
+    }
+}

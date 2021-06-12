@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "atbyw",
+  "version": "${version}",
+  "name": "All The Blocks You Want (ATBYW)",
+  "description": "Adds decorative and utility blocks, alongside a few items.",
+  "authors": [
+    "Azagwen"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/atbyw",
+    "sources": "https://github.com/Azagwen/ATBYW"
+  },
+
+  "license": "MIT",
+  "icon": "assets/atbyw/icon.png",
+
+  "environment": "*",
+  "accessWidener": "atbyw.accesswidener",
+  "entrypoints": {
+    "main": [
+      "net.azagwen.atbyw.main.AtbywMain"
+    ],
+    "client": [
+      "net.azagwen.atbyw.main.AtbywClient"
+    ],
+    "dynamiclights": [
+      "net.azagwen.atbyw.main.AtbywDynamicLights"
+    ]
+  },
+  "mixins": [
+    "atbyw.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.10.8",
+    "fabric": "*",
+    "minecraft": "1.17"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}

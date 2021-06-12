@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "better_nether_bar_stool",
+  "pattern": [
+    "##",
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "atbyw_mi:mushroom_stick"
+    },
+    "#": {
+      "item": "betternether:mushroom_slab"
+    }
+  },
+  "result": {
+    "item": "betternether:bar_stool_mushroom",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "better_end_gate",
+  "pattern": [
+    "I#I",
+    "I#I"
+  ],
+  "key": {
+    "I": {
+      "item": "atbyw_mi:end_lotus_stick"
+    },
+    "#": {
+      "item": "betterend:end_lotus_planks"
+    }
+  },
+  "result": {
+    "item": "betterend:end_lotus_gate",
+    "count": 1
+  }
+}

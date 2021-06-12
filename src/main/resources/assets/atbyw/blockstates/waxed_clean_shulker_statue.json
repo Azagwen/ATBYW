@@ -1,0 +1,35 @@
+{
+    "variants": {
+        "facing=north,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_0"
+        },
+        "facing=south,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_0",
+            "y": 180
+        },
+        "facing=east,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_0",
+            "y": 90
+        },
+        "facing=west,open=true": {
+            "model": "atbyw:block/statues/shulker_statue_0",
+            "y": 270
+        },
+
+        "facing=north,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_0"
+        },
+        "facing=south,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_0",
+            "y": 180
+        },
+        "facing=east,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_0",
+            "y": 90
+        },
+        "facing=west,open=false": {
+            "model": "atbyw:block/statues/shulker_statue_closed_0",
+            "y": 270
+        }
+    }
+}

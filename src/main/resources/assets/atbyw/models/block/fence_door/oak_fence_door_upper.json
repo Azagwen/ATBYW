@@ -1,0 +1,7 @@
+{
+    "parent": "atbyw:block/fence_door/template_fence_door_upper",
+    "textures": {
+        "all": "atbyw:block/oak_fence_door",
+        "particle": "minecraft:block/oak_planks"
+    }
+}

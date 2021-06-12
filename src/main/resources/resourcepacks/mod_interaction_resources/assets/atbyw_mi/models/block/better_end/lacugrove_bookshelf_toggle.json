@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle",
+  "textures": {
+    "particle": "betterend:block/lacugrove_bookshelf",
+    "top": "betterend:block/lacugrove_planks",
+    "sides": "atbyw_mi:block/better_end/lacugrove_bookshelf_toggle"
+  }
+}

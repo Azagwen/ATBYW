@@ -1,0 +1,7 @@
+{
+    "parent": "atbyw:block/fence_door/template_fence_door_upper_open",
+    "textures": {
+        "all": "atbyw:block/warped_fence_door",
+        "particle": "minecraft:block/warped_planks"
+    }
+}

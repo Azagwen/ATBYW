@@ -1,0 +1,7 @@
+{
+    "parent": "atbyw:block/fence_door/template_fence_door_lower_open",
+    "textures": {
+        "all": "atbyw:block/iron_fence_door",
+        "particle": "minecraft:block/iron_block"
+    }
+}

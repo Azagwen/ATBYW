@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/template_connected_pillar_middle",
+    "textures": {
+        "side": "atbyw:block/test_pillar_side"
+    }
+}

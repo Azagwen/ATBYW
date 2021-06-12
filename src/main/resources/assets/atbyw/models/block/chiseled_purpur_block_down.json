@@ -1,0 +1,22 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"top": "atbyw:block/chiseled_purpur_block_top",
+		"side": "atbyw:block/chiseled_purpur_block",
+		"particle": "atbyw:block/chiseled_purpur_block_top"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [8, 8, 16, 16], "texture": "#side"},
+				"east":  {"uv": [8, 8, 16, 16], "texture": "#side"},
+				"south": {"uv": [8, 8, 16, 16], "texture": "#side"},
+				"west":  {"uv": [8, 8, 16, 16], "texture": "#side"},
+				"up":    {"uv": [0, 0, 16, 16], "texture": "#top" },
+				"down":  {"uv": [0, 0, 16, 16], "texture": "#top" }
+			}
+		}
+	]
+}

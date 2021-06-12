@@ -1,0 +1,9 @@
+{
+    "parent": "atbyw:block/redstone_cross_path",
+    "textures": {
+        "top_x": "atbyw:block/redstone_cross_path_top",
+        "top_z": "atbyw:block/redstone_cross_path_top_on",
+        "side_x": "atbyw:block/redstone_cross_path_side",
+        "side_z": "atbyw:block/redstone_cross_path_side_on"
+    }
+}

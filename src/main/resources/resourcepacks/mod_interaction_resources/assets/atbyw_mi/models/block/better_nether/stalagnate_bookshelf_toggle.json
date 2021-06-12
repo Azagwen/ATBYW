@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle",
+  "textures": {
+    "particle": "betternether:block/stalagnate_bookshelf",
+    "top": "betternether:block/stalagnate_planks",
+    "sides": "atbyw_mi:block/better_nether/stalagnate_bookshelf_toggle"
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_rabbit_statue",
+    "textures": {
+        "texture": "atbyw:entity/rabbit_statue/rabbit_statue_0"
+    }
+}

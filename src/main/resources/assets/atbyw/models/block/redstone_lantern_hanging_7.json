@@ -1,0 +1,6 @@
+{
+  "parent": "atbyw:block/template_hanging_redstone_lantern_7",
+  "textures": {
+    "lantern": "atbyw:block/redstone_lantern"
+  }
+}

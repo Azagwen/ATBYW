@@ -1,0 +1,24 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "net.azagwen.atbyw.mixin",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "FenceBlockMixin",
+        "ItemModelLoaderMixin",
+        "PaneBlockMixin",
+        "RecipeManagerMixin",
+        "RedstoneWireBlockMixin",
+        "SnowBlockMixin",
+        "TexturedRenderLayersMixin",
+        "WallBlockMixin"
+    ],
+    "client": [
+        "CreativeInventoryScreenMixin",
+        "EnchantingTableBlockMixin",
+        "EnchantmentScreenHandlerMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+  }
+}

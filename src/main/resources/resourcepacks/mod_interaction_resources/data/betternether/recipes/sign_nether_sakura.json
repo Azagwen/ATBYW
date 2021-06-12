@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "better_nether_sign",
+  "pattern": [
+    "###",
+    "###",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "atbyw_mi:nether_sakura_stick"
+    },
+    "#": {
+      "item": "betternether:nether_sakura_planks"
+    }
+  },
+  "result": {
+    "item": "betternether:sign_nether_sakura",
+    "count": 3
+  }
+}

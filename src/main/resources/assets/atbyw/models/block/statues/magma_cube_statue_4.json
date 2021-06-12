@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_magma_cube_statue",
+    "textures": {
+        "texture": "atbyw:entity/magma_cube_statue/magma_cube_statue_4"
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "atbyw:block/piston/template_piston",
+  "textures": {
+    "all": "atbyw:block/dark_oak_piston",
+	"particle": "minecraft:block/dark_oak_planks"
+  }
+}

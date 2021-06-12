@@ -1,0 +1,11 @@
+{
+    "parent": "minecraft:block/cube",
+    "textures": {
+        "down": "atbyw:block/debug_down",
+        "up": "atbyw:block/debug_up",
+        "north": "atbyw:block/debug_north",
+        "south": "atbyw:block/debug_south",
+        "west": "atbyw:block/debug_west",
+        "east": "atbyw:block/debug_east"
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "textures": {
+        "particle": "atbyw:block/redstone_cross_path_top",
+        "top_x": "atbyw:block/redstone_cross_path_top",
+        "top_z": "atbyw:block/redstone_cross_path_top",
+        "side_x": "atbyw:block/redstone_cross_path_side",
+        "side_z": "atbyw:block/redstone_cross_path_side"
+    },
+    "elements": [
+        {
+            "name": "cube_x",
+            "from": [0, 0, 5],
+            "to": [16, 3, 11],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+            "faces": {
+                "north": {"uv": [0, 5, 16, 8], "texture": "#side_x"},
+                "east": {"uv": [5, 2, 11, 5], "texture": "#side_x"},
+                "south": {"uv": [0, 5, 16, 8], "texture": "#side_x"},
+                "west": {"uv": [5, 2, 11, 5], "texture": "#side_x"},
+                "up": {"uv": [0, 5, 16, 11], "texture": "#top_x"},
+                "down": {"uv": [5, 0, 11, 16], "rotation": 90, "texture": "#top_x"}
+            }
+        },
+        {
+            "name": "cube_z",
+            "from": [5, 0, 0],
+            "to": [11, 2, 16],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+            "faces": {
+                "north": {"uv": [5, 0, 11, 2], "texture": "#side_z"},
+                "east": {"uv": [0, 0, 16, 2], "texture": "#side_z"},
+                "south": {"uv": [5, 0, 11, 2], "texture": "#side_z"},
+                "west": {"uv": [0, 0, 16, 2], "texture": "#side_z"},
+                "up": {"uv": [5, 0, 11, 16], "texture": "#top_z"},
+                "down": {"uv": [0, 5, 16, 11], "rotation": 90, "texture": "#top_z"}
+            }
+        }
+    ]
+}

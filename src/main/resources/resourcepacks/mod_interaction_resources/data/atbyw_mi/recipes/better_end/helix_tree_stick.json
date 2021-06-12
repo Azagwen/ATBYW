@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sticks",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "betterend:helix_tree_planks"
+    }
+  },
+  "result": {
+    "item": "atbyw_mi:helix_tree_stick",
+    "count": 4
+  }
+}

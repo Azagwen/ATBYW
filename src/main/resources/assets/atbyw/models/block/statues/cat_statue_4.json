@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_cat_statue",
+    "textures": {
+        "texture": "atbyw:entity/cat_statue/cat_statue_4"
+    }
+}

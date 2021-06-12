@@ -1,0 +1,28 @@
+{
+    "multipart": [
+        {
+            "when": {
+                "top": "true"
+            },
+            "apply": {
+                "model": "atbyw:block/columns/sandstone_column_top"
+            }
+        },
+        {
+            "when": {
+                "middle": "true"
+            },
+            "apply": {
+                "model": "atbyw:block/columns/sandstone_column_middle"
+            }
+        },
+        {
+            "when": {
+                "bottom": "true"
+            },
+            "apply": {
+                "model": "atbyw:block/columns/sandstone_column_bottom"
+            }
+        }
+    ]
+}

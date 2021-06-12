@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "atbyw:block/azure_bluet_pull_switch_on_1"
+  }
+}

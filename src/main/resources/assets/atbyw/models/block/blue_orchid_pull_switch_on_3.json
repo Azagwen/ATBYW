@@ -1,0 +1,6 @@
+{
+  "parent": "atbyw:block/cross_offset_05",
+  "textures": {
+    "cross": "atbyw:block/blue_orchid_pull_switch_on_2"
+  }
+}

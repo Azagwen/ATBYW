@@ -1,0 +1,35 @@
+{
+  "variants": {
+    "facing=north,lit=true": {
+      "model": "atbyw:block/redstone_jack_o_lantern_on"
+    },
+    "facing=east,lit=true": {
+      "model": "atbyw:block/redstone_jack_o_lantern_on",
+      "y": 90
+    },
+    "facing=south,lit=true": {
+      "model": "atbyw:block/redstone_jack_o_lantern_on",
+      "y": 180
+    },
+    "facing=west,lit=true": {
+      "model": "atbyw:block/redstone_jack_o_lantern_on",
+      "y": 270
+    },
+
+    "facing=north,lit=false": {
+      "model": "atbyw:block/redstone_jack_o_lantern"
+    },
+    "facing=east,lit=false": {
+      "model": "atbyw:block/redstone_jack_o_lantern",
+      "y": 90
+    },
+    "facing=south,lit=false": {
+      "model": "atbyw:block/redstone_jack_o_lantern",
+      "y": 180
+    },
+    "facing=west,lit=false": {
+      "model": "atbyw:block/redstone_jack_o_lantern",
+      "y": 270
+    }
+  }
+}

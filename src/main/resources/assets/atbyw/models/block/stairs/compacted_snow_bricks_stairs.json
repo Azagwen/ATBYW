@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/stairs",
+    "textures": {
+        "bottom": "atbyw:block/compacted_snow_bricks",
+        "top": "atbyw:block/compacted_snow_bricks",
+        "side": "atbyw:block/compacted_snow_bricks"
+    }
+}

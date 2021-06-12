@@ -1,0 +1,7 @@
+{
+    "parent": "atbyw:block/fence_door/template_fence_door_lower_open",
+    "textures": {
+        "all": "atbyw:block/dark_oak_fence_door",
+        "particle": "minecraft:block/dark_oak_planks"
+    }
+}

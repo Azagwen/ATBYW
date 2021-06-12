@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "atbyw:block/wither_rose_pull_switch_on_0"
+  }
+}

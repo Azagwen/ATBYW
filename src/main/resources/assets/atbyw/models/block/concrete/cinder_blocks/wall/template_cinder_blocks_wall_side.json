@@ -1,0 +1,30 @@
+{
+    "textures": {
+        "particle": "#wall"
+    },
+    "elements": [
+        {
+            "name": "wall",
+            "from": [5, 0, 0],
+            "to": [11, 12, 8],
+            "faces": {
+                "north": { "texture": "#wall", "cullface": "north" },
+                "east":  { "texture": "#wall" },
+                "west":  { "texture": "#wall" },
+                "down":  { "texture": "#wall", "cullface": "down" }
+            }
+        },
+        {
+            "__comment": "Top slab",
+            "from": [ 4.05, 12, 0 ],
+            "to": [ 11.95, 14, 8 ],
+            "faces": {
+                "down":  { "uv": [4, 0, 12, 8], "texture": "#top_slab" },
+                "up":    { "uv": [4, 0, 12, 8], "texture": "#top_slab" },
+                "north": { "uv": [2, 0, 4,  8], "rotation": 90, "texture": "#top_slab", "cullface": "north"  },
+                "west":  { "uv": [2, 0, 4,  8], "rotation": 90, "texture": "#top_slab" },
+                "east":  { "uv": [2, 0, 4,  8], "rotation": 90, "texture": "#top_slab" }
+            }
+        }
+    ]
+}

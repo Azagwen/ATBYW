@@ -1,0 +1,7 @@
+{
+	"parent": "atbyw:block/piston/template_piston_head",
+	"textures": {
+		"all": "atbyw:block/jungle_piston",
+		"particle": "minecraft:block/jungle_planks"
+	}
+}
