@@ -1,9 +1,14 @@
-# Fabric Example Mod
+# All The Blocks You Want
 
-## Setup
+Adds a lot of blocks you might want, at least I wanted them, so I added them. Enjoy !
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+# Using the mod
 
-## License
+To use this mode you need to download it from curseforge at this adress :
+https://www.curseforge.com/minecraft/mc-mods/atbyw
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+or you can build it yourself on your end unsing the source code.
+
+# Issue reporting
+
+If you find an issue with the mod, feel free to report it in the issues section of this page, please read the pinned issue before posting anything.
