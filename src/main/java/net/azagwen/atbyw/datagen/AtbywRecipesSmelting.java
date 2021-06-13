@@ -58,6 +58,6 @@ public class AtbywRecipesSmelting {
 
     //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
     public static void injectRecipes(Map<Identifier, JsonElement> map) {
-        putRecipe(AtbywID("smooth_purpur_block_smelting"), SMOOTH_PURPUR_BLOCK_SMELTING, map);
+        putRecipe(NewAtbywID("smooth_purpur_block_smelting"), SMOOTH_PURPUR_BLOCK_SMELTING, map);
     }
 }

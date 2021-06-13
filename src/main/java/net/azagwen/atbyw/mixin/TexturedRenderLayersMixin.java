@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.mixin;
 
-import net.azagwen.atbyw.block.entity.AtbywTextureRenderLayers;
+import net.azagwen.atbyw.client.render.AtbywTextureRenderLayers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.TexturedRenderLayers;

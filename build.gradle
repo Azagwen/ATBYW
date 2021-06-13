@@ -18,17 +18,23 @@ repositories {
 	// for more information about repositories.
 
 	maven {
-		url = 'https://raw.githubusercontent.com/Devan-Kerman/Devan-Repo/master/'
+		url 'https://raw.githubusercontent.com/Devan-Kerman/Devan-Repo/master/'
 	}
 
-//	maven {
-//		name = "AperLambda"
-//		url = 'https://aperlambda.github.io/maven'
-//	}
-//
-//	maven {
-//		url = "https://jitpack.io"
-//	}
+	maven {
+		name 'Terraformers'
+		url 'https://maven.terraformersmc.com/releases/'
+	}
+
+	maven {
+		name "AperLambda"
+		url 'https://aperlambda.github.io/maven'
+	}
+
+	maven {
+		name "Gegy"
+		url 'https://maven.gegy.dev'
+	}
 }
 
 dependencies {
@@ -45,12 +51,12 @@ dependencies {
 
 	//Libraries and APIs
 	//ARRP
-	modImplementation group: "net.devtech", name: "arrp", version: "${project.arrp_version}"			//API
-	include group: "net.devtech", name: "arrp", version: "${project.arrp_version}"						//API
+	modImplementation group: "net.devtech", name: "arrp", version: "${project.arrp_version}"	//API
+	include group: "net.devtech", name: "arrp", version: "${project.arrp_version}"				//API
 
 	//LamdDynamicLights
-//	modImplementation "com.github.LambdAurora:LambDynamicLights:${project.Lambdynamiclights_version}"	//API
-//	include  "com.github.LambdAurora:LambDynamicLights:${project.Lambdynamiclights_version}"			//API
+	modImplementation "dev.lambdaurora:lambdynamiclights:${project.Lambdynamiclights_version}"	//API
+	include "dev.lambdaurora:lambdynamiclights:${project.Lambdynamiclights_version}"			//API
 }
 
 processResources {

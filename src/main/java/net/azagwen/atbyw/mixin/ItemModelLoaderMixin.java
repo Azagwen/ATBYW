@@ -29,7 +29,7 @@ public class ItemModelLoaderMixin {
 
     @Inject(method = "loadModelFromJson", at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/ResourceManager;getResource(Lnet/minecraft/util/Identifier;)Lnet/minecraft/resource/Resource;"), cancellable = true)
     public void loadModelFromJson(Identifier id, CallbackInfoReturnable<JsonUnbakedModel> cir) {
-        if (AtbywMain.nameSpace.equals(id.getNamespace())) {
+        if (AtbywMain.AtbywNamespace.equals(id.getNamespace())) {
             makeModel(id, "_essence", createEssenceItemModelJson("generated"), cir);
         }
     }

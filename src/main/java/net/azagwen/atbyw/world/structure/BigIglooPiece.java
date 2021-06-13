@@ -21,7 +21,7 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
 
 import java.util.Random;
 
-import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
+import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 
 public class BigIglooPiece extends SimpleStructurePiece {
     static final BlockPos DEFAULT_POSITION = new BlockPos(0, 0, 0);
@@ -51,7 +51,7 @@ public class BigIglooPiece extends SimpleStructurePiece {
             serverWorldAccess.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
             BlockEntity blockEntity = serverWorldAccess.getBlockEntity(pos.down());
             if (blockEntity instanceof ChestBlockEntity) {
-                ((ChestBlockEntity)blockEntity).setLootTable(AtbywID("chests/big_igloo_chest"), random.nextLong());
+                ((ChestBlockEntity)blockEntity).setLootTable(NewAtbywID("chests/big_igloo_chest"), random.nextLong());
             }
         }
     }

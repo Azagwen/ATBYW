@@ -11,7 +11,7 @@ import net.minecraft.structure.processor.StructureProcessorRule;
 import net.minecraft.structure.rule.AlwaysTrueRuleTest;
 import net.minecraft.structure.rule.RandomBlockMatchRuleTest;
 
-import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
+import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 
 public class StructureProcessors {
 
@@ -19,7 +19,7 @@ public class StructureProcessors {
     }
 
     public static final StructureProcessorList DEGRADE_DIRT = AtbywWorldGen.registerStructProcessor(
-            AtbywID("degrade_dirt"),
+            NewAtbywID("degrade_dirt"),
             ImmutableList.of(
                     new RuleStructureProcessor(
                             ImmutableList.of(
@@ -43,7 +43,7 @@ public class StructureProcessors {
             )
     );
     public static final StructureProcessorList DEGRADE_DIRT_NO_SLABS = AtbywWorldGen.registerStructProcessor(
-            AtbywID("degrade_dirt_no_slabs"),
+            NewAtbywID("degrade_dirt_no_slabs"),
             ImmutableList.of(
                     new RuleStructureProcessor(
                             ImmutableList.of(
@@ -62,7 +62,7 @@ public class StructureProcessors {
             )
     );
     public static final StructureProcessorList DEGRADE_DIRT_AND_STONE = AtbywWorldGen.registerStructProcessor(
-            AtbywID("degrade_dirt_and_stone"),
+            NewAtbywID("degrade_dirt_and_stone"),
             ImmutableList.of(
                     new RuleStructureProcessor(
                             ImmutableList.of(
@@ -105,7 +105,7 @@ public class StructureProcessors {
             )
     );
     public static final StructureProcessorList SHUFFLE_CEILING_LANTERNS = AtbywWorldGen.registerStructProcessor(
-            AtbywID("shuffle_ceiling_lanterns"),
+            NewAtbywID("shuffle_ceiling_lanterns"),
             ImmutableList.of(
                     new RuleStructureProcessor(
                             ImmutableList.of(
@@ -129,7 +129,7 @@ public class StructureProcessors {
             )
     );
     public static final StructureProcessorList SHUFFLE_FLOOR_LANTERNS = AtbywWorldGen.registerStructProcessor(
-            AtbywID("shuffle_floor_lanterns"),
+            NewAtbywID("shuffle_floor_lanterns"),
             ImmutableList.of(
                     new RuleStructureProcessor(
                             ImmutableList.of(

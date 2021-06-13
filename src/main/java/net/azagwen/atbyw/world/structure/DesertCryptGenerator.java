@@ -9,13 +9,13 @@ import net.minecraft.util.math.BlockPos;
 import java.util.List;
 import java.util.Random;
 
-import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
+import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 
 public class DesertCryptGenerator {
-    private static final Identifier CRYPT_BUILDING = AtbywID("desert_crypt/building");
-    private static final Identifier CRYPT_TRAP_SPIKES = AtbywID("desert_crypt/trap_spikes");
-    private static final Identifier CRYPT_TRAP_BOMB = AtbywID("desert_crypt/trap_bomb");
-    private static final Identifier CRYPT_TRAP_LAVA = AtbywID("desert_crypt/trap_lava");
+    private static final Identifier CRYPT_BUILDING = NewAtbywID("desert_crypt/building");
+    private static final Identifier CRYPT_TRAP_SPIKES = NewAtbywID("desert_crypt/trap_spikes");
+    private static final Identifier CRYPT_TRAP_BOMB = NewAtbywID("desert_crypt/trap_bomb");
+    private static final Identifier CRYPT_TRAP_LAVA = NewAtbywID("desert_crypt/trap_lava");
 
     public static void addPieces(StructureManager manager, BlockPos pos, List<StructurePiece> pieces, Random random) {
         pieces.add(new DesertCryptPiece(manager, CRYPT_BUILDING, pos, BlockRotation.NONE));

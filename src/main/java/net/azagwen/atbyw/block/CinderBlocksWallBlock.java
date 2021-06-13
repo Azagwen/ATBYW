@@ -1,15 +1,22 @@
 package net.azagwen.atbyw.block;
 
 import com.google.common.collect.ImmutableMap;
+import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.WallBlock;
 import net.minecraft.block.enums.WallShape;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.WorldAccess;
 
 import java.util.Map;
 

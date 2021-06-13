@@ -7,7 +7,7 @@ import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.structure.pool.StructurePools;
 import net.minecraft.util.Identifier;
 
-import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
+import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 import static net.azagwen.atbyw.world.structure.StructureProcessors.*;
 
 public class MesaTombData {
@@ -19,81 +19,81 @@ public class MesaTombData {
 
     static {
         BASE_POOL = StructurePools.register(new StructurePool(
-                AtbywID(rootFile + "/entrance/top"),
+                NewAtbywID(rootFile + "/entrance/top"),
                 new Identifier("empty"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/entrance/top")), 1)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/entrance/top")), 1)
                 ),
                 StructurePool.Projection.RIGID
         ));
         StructurePools.register(new StructurePool(
-                AtbywID(rootFile + "/entrance/middle"),
+                NewAtbywID(rootFile + "/entrance/middle"),
                 new Identifier("empty"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/entrance/middle")), 1)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/entrance/middle")), 1)
                 ),
                 StructurePool.Projection.RIGID
         ));
         StructurePools.register(new StructurePool(
-                AtbywID(rootFile + "/entrance/bottom"),
+                NewAtbywID(rootFile + "/entrance/bottom"),
                 new Identifier("empty"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/entrance/bottom"), SHUFFLE_FLOOR_LANTERNS), 1)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/entrance/bottom"), SHUFFLE_FLOOR_LANTERNS), 1)
                 ),
                 StructurePool.Projection.RIGID
         ));
         StructurePools.register(new StructurePool(
-                AtbywID(rootFile + "/hallways"),
-                AtbywID(rootFile + "/hallways_terminators"),
+                NewAtbywID(rootFile + "/hallways"),
+                NewAtbywID(rootFile + "/hallways_terminators"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/hallway"), SHUFFLE_CEILING_LANTERNS), 2),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/tomb_room"), SHUFFLE_CEILING_LANTERNS), 1),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/fire_room"), SHUFFLE_CEILING_LANTERNS), 1)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/hallway"), SHUFFLE_CEILING_LANTERNS), 2),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/tomb_room"), SHUFFLE_CEILING_LANTERNS), 1),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/fire_room"), SHUFFLE_CEILING_LANTERNS), 1)
                         ),
                 StructurePool.Projection.RIGID
         ));
         StructurePools.register(new StructurePool(
-                AtbywID(rootFile + "/hallways_terminators"),
+                NewAtbywID(rootFile + "/hallways_terminators"),
                 new Identifier("empty"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/terminator")), 1)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/terminator")), 1)
                 ),
                 StructurePool.Projection.RIGID
         ));
         StructurePools.register(new StructurePool(
-                AtbywID(rootFile + "/hallways/rooms"),
-                AtbywID(rootFile + "/hallways/rooms_terminators"),
+                NewAtbywID(rootFile + "/hallways/rooms"),
+                NewAtbywID(rootFile + "/hallways/rooms_terminators"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/rooms/room_bedroom"), SHUFFLE_CEILING_LANTERNS), 3),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/rooms/room_treasure_1"), SHUFFLE_CEILING_LANTERNS), 1),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/rooms/room_small_tomb"), SHUFFLE_CEILING_LANTERNS), 2)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/rooms/room_bedroom"), SHUFFLE_CEILING_LANTERNS), 3),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/rooms/room_treasure_1"), SHUFFLE_CEILING_LANTERNS), 1),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/rooms/room_small_tomb"), SHUFFLE_CEILING_LANTERNS), 2)
                 ),
                 StructurePool.Projection.RIGID
         ));
         StructurePools.register(new StructurePool(
-                AtbywID(rootFile + "/hallways/rooms_terminators"),
+                NewAtbywID(rootFile + "/hallways/rooms_terminators"),
                 new Identifier("empty"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/rooms/room_terminator"), SHUFFLE_FLOOR_LANTERNS), 1)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/rooms/room_terminator"), SHUFFLE_FLOOR_LANTERNS), 1)
                 ),
                 StructurePool.Projection.RIGID
         ));
         StructurePools.register(new StructurePool(
-                AtbywID(rootFile + "/ceiling_chains"),
+                NewAtbywID(rootFile + "/ceiling_chains"),
                 new Identifier("empty"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_9a"), SHUFFLE_CEILING_LANTERNS), 1),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_8a"), SHUFFLE_CEILING_LANTERNS), 1),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_7a"), SHUFFLE_CEILING_LANTERNS), 1),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_6a"), SHUFFLE_CEILING_LANTERNS), 1),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_5a"), SHUFFLE_CEILING_LANTERNS), 1),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_4a"), SHUFFLE_CEILING_LANTERNS), 1),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_9b")), 3),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_8b")), 3),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_7b")), 3),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_6b")), 3),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_5b")), 3),
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywID(rootFile + "/hallways/ends/chains/chain_4b")), 3)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_9a"), SHUFFLE_CEILING_LANTERNS), 1),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_8a"), SHUFFLE_CEILING_LANTERNS), 1),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_7a"), SHUFFLE_CEILING_LANTERNS), 1),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_6a"), SHUFFLE_CEILING_LANTERNS), 1),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_5a"), SHUFFLE_CEILING_LANTERNS), 1),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_4a"), SHUFFLE_CEILING_LANTERNS), 1),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_9b")), 3),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_8b")), 3),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_7b")), 3),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_6b")), 3),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_5b")), 3),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(NewAtbywID(rootFile + "/hallways/ends/chains/chain_4b")), 3)
                 ),
                 StructurePool.Projection.RIGID
         ));

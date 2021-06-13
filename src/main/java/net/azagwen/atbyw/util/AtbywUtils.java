@@ -1,9 +1,7 @@
 package net.azagwen.atbyw.util;
 
-import net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.WorldRenderer;
@@ -121,7 +119,7 @@ public record AtbywUtils() {
      *  @param block    The Block field
      */
     public static void registerBlockOnly(String name, Block block) {
-        Registry.register(Registry.BLOCK, AtbywID(name), block);
+        Registry.register(Registry.BLOCK, NewAtbywID(name), block);
     }
 
     /** Registers a block and its block item.
@@ -135,8 +133,8 @@ public record AtbywUtils() {
         Item.Settings normalSettings = group != null ? new Item.Settings().group(group) : new Item.Settings();
         Item.Settings fireproofSettings = group != null ? new Item.Settings().group(group).fireproof() : new Item.Settings().fireproof();
 
-        Registry.register(Registry.BLOCK, AtbywID(name), block);
-        Registry.register(Registry.ITEM, AtbywID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+        Registry.register(Registry.BLOCK, NewAtbywID(name), block);
+        Registry.register(Registry.ITEM, NewAtbywID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
     }
 
     public static void registerBlock(boolean fireproof, String name, Block block) {
@@ -154,8 +152,8 @@ public record AtbywUtils() {
         Item.Settings normalSettings = new Item.Settings();
         Item.Settings fireproofSettings = new Item.Settings().fireproof();
 
-        Registry.register(Registry.BLOCK, AtbywID(name), block);
-        Registry.register(Registry.ITEM, AtbywID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+        Registry.register(Registry.BLOCK, NewAtbywID(name), block);
+        Registry.register(Registry.ITEM, NewAtbywID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
 
         itemTab.add(block.asItem());
     }

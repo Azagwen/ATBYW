@@ -387,10 +387,10 @@ public class AtbywBlocks {
     public static final Block PRISMARINE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block BLACKSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block IRON_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywID("iron_spike_trap"), 2.0F, 1, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
-    public static final Block GOLD_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywID("gold_spike_trap"), 0.5F, 0, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
-    public static final Block DIAMOND_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywID("diamond_spike_trap"), 3.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
-    public static final Block NETHERITE_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywID("netherite_spike_trap"), 4.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block IRON_SPIKE_TRAP_SPIKES = new SpikeBlock(NewAtbywID("iron_spike_trap"), 2.0F, 1, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block GOLD_SPIKE_TRAP_SPIKES = new SpikeBlock(NewAtbywID("gold_spike_trap"), 0.5F, 0, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block DIAMOND_SPIKE_TRAP_SPIKES = new SpikeBlock(NewAtbywID("diamond_spike_trap"), 3.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block NETHERITE_SPIKE_TRAP_SPIKES = new SpikeBlock(NewAtbywID("netherite_spike_trap"), 4.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
 
     public static final Block IRON_SPIKE_TRAP = new SpikeTrapBlock(IRON_SPIKE_TRAP_SPIKES, 1.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
     public static final Block GOLD_SPIKE_TRAP = new SpikeTrapBlock(GOLD_SPIKE_TRAP_SPIKES, 0.5F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
@@ -400,7 +400,7 @@ public class AtbywBlocks {
     public static final Block TIMER_REPEATER = new TimerRepeaterBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
     public static final Block REDSTONE_CROSS_PATH = new RedstoneCrossPathBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
 
-    public static final Block ACACIA_RAILING = new RailingBlock(AtbywID("acacia_railing"), FabricBlockSettings.copyOf(Blocks.ACACIA_FENCE));
+    public static final Block ACACIA_RAILING = new RailingBlock(NewAtbywID("acacia_railing"), FabricBlockSettings.copyOf(Blocks.ACACIA_FENCE));
 
     public static final Block LARGE_CHAIN = new LargeChainBlock(FabricBlockSettings.copyOf(Blocks.CHAIN).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 

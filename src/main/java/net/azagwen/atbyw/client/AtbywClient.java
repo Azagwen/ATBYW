@@ -1,15 +1,19 @@
-package net.azagwen.atbyw.main;
+package net.azagwen.atbyw.client;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityType;
-import net.azagwen.atbyw.block.entity.TimerRepeaterBlockEntityRenderer;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
+import net.azagwen.atbyw.client.render.AtbywEntityModelLayers;
+import net.azagwen.atbyw.client.render.TimerRepeaterBlockEntityRenderer;
 import net.azagwen.atbyw.items.EssenceItem;
+import net.azagwen.atbyw.main.AtbywEntityType;
+import net.azagwen.atbyw.main.EntitySpawnPacket;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.impl.networking.ClientSidePacketRegistryImpl;
@@ -34,7 +38,7 @@ import static net.azagwen.atbyw.main.AtbywMain.*;
 @SuppressWarnings("deprecation")
 public class AtbywClient implements ClientModInitializer {
 
-    public static final Identifier PacketID = AtbywID("spawn_packet");
+    public static final Identifier PacketID = NewAtbywID("spawn_packet");
 
     @Environment(EnvType.CLIENT)
     public void receiveEntityPacket() {
@@ -65,7 +69,10 @@ public class AtbywClient implements ClientModInitializer {
     @Environment(EnvType.CLIENT)
     public void onInitializeClient() {
 
-//        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntityType.TIMER_REPEATER_ENTITY, TimerRepeaterBlockEntityRenderer::new);
+        //noinspection UnstableApiUsage
+        EntityModelLayerRegistry.registerModelLayer(AtbywEntityModelLayers.TIMER_REPEATER, TimerRepeaterBlockEntityRenderer::getTexturedModelData);
+
+        BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntityType.TIMER_REPEATER_ENTITY, TimerRepeaterBlockEntityRenderer::new);
 
         EntityRendererRegistry.INSTANCE.register(AtbywEntityType.SHROOMSTICK, FlyingItemEntityRenderer::new);
         receiveEntityPacket();

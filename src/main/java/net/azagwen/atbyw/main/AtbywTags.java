@@ -6,7 +6,6 @@ import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
 
 import java.util.HashSet;
-import java.util.Set;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
@@ -29,10 +28,10 @@ public class AtbywTags {
     }
 
     public static Tag<Block> registerBlockTag(String id) {
-        return TagRegistry.block(AtbywID(id));
+        return TagRegistry.block(NewAtbywID(id));
     }
 
     public static Tag<Item> registerItemTag(String id) {
-        return TagRegistry.item(AtbywID(id));
+        return TagRegistry.item(NewAtbywID(id));
     }
 }

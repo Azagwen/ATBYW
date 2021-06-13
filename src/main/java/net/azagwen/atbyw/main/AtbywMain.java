@@ -22,16 +22,17 @@ import java.util.ArrayList;
 
 public class AtbywMain implements ModInitializer {
 	public static final String mcNameSpace = "minecraft";
-	public static final String nameSpace = "atbyw";
+	public static final String AtbywNamespace = "atbyw";
 	public static final String modInteractionNameSpace = "atbyw_mi";
 	public static final Logger LOGGER  = LogManager.getLogger();
 
 	//TODO: find a way to make ItemTabs not exclusively tied to item tags.
 
-	public static Identifier AtbywID(String path) {
-		return new Identifier(nameSpace, path);
+	public static Identifier NewAtbywID(String path) {
+		return new Identifier(AtbywNamespace, path);
 	}
-	public static Identifier AtbywModInteractionID(String path) {
+
+	public static Identifier NewAtbywModInteractionID(String path) {
 		return new Identifier(modInteractionNameSpace, path);
 	}
 
@@ -60,8 +61,8 @@ public class AtbywMain implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		if (enable_mod_interactions()) {
-			FabricLoader.getInstance().getModContainer(nameSpace).map(modContainer -> {
-				return ResourceManagerHelper.registerBuiltinResourcePack(AtbywModInteractionID("mod_interaction_resources"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED);
+			FabricLoader.getInstance().getModContainer(AtbywNamespace).map(modContainer -> {
+				return ResourceManagerHelper.registerBuiltinResourcePack(NewAtbywModInteractionID("mod_interaction_resources"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED);
 			}).filter(success -> !success).ifPresent(success -> LOGGER.error("Unable to Load \"atbyw_mi/mod_interaction_resources\"."));
 
 			AtbywRRP.init_mi();
@@ -74,7 +75,7 @@ public class AtbywMain implements ModInitializer {
 		AtbywWorldGen.init();
 		AtbywRRP.init();
 
-		ATBYW_GROUP = new AtbywItemGroup(AtbywID("atbyw"));
+		ATBYW_GROUP = new AtbywItemGroup(NewAtbywID("atbyw"));
 
 		LOGGER.info("ATBYW Inintiliazed");
 	}

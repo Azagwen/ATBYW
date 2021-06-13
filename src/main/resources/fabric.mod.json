@@ -22,7 +22,7 @@
       "net.azagwen.atbyw.main.AtbywMain"
     ],
     "client": [
-      "net.azagwen.atbyw.main.AtbywClient"
+        "net.azagwen.atbyw.client.AtbywClient"
     ],
     "dynamiclights": [
       "net.azagwen.atbyw.main.AtbywDynamicLights"

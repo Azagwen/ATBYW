@@ -2,22 +2,20 @@ package net.azagwen.atbyw.group;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.sound.SoundManager;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
 
-import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
+import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 
 // This code was originally taken from https://github.com/Lemonszz/gubbins/blob/master/src/main/java/party/lemons/gubbins/gui/ItemGroupTabWidget.java,
 // which is licensed under MIT.
 // and edited to match my needs & updated to 1.17.
 public class ItemGroupTabWidget extends ButtonWidget {
-    public static final Identifier TEXTURE = AtbywID("textures/gui/side_tabs.png");
+    public static final Identifier TEXTURE = NewAtbywID("textures/gui/side_tabs.png");
     public boolean isSelected = false;
     private final ItemGroupTab tab;
 

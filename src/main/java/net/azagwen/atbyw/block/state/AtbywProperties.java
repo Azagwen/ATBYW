@@ -27,6 +27,7 @@ public class AtbywProperties {
     public static final BooleanProperty POWERED_Z;
     public static final EnumProperty<LargeChainEnd> CONNECT_BOTTOM;
     public static final EnumProperty<LargeChainEnd> CONNECT_TOP;
+    public static final BooleanProperty POST;
 
     static {
         SHEARED = BooleanProperty.of("sheared");
@@ -49,5 +50,6 @@ public class AtbywProperties {
         POWERED_Z = BooleanProperty.of("powered_z");
         CONNECT_BOTTOM = EnumProperty.of("connect_bottom", LargeChainEnd.class);
         CONNECT_TOP = EnumProperty.of("connect_top", LargeChainEnd.class);
+        POST = BooleanProperty.of("post_slab");
     }
 }

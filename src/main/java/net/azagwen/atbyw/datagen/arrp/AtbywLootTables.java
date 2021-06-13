@@ -7,7 +7,6 @@ import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.json.loot.JLootTable;
-import net.devtech.arrp.json.tags.JTag;
 import net.minecraft.block.Block;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
@@ -15,7 +14,6 @@ import net.minecraft.util.Identifier;
 import java.util.ArrayList;
 
 import static net.azagwen.atbyw.datagen.arrp.AtbywRRP.*;
-import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
 import static net.azagwen.atbyw.util.AtbywUtils.*;
 import static net.devtech.arrp.json.loot.JLootTable.*;
 import static net.devtech.arrp.json.loot.JLootTable.condition;

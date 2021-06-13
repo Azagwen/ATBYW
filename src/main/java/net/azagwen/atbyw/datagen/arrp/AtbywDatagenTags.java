@@ -7,10 +7,8 @@ import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.json.tags.JTag;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
@@ -94,19 +92,19 @@ public class AtbywDatagenTags {
 
 
     public static void init() {
-        createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "tab_blocks", BLOCKS_TAB);
-        createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "tab_deco", DECO_TAB);
-        createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "tab_redstone", REDSTONE_TAB);
-        createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "tab_misc", MISC_TAB);
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_blocks", BLOCKS_TAB);
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_deco", DECO_TAB);
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_redstone", REDSTONE_TAB);
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_misc", MISC_TAB);
 
-        createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "sticks", STICKS);
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "sticks", STICKS);
 
-        createBlockTag(ATBYW_RESOURCE_PACK, nameSpace, "bookshelf", BOOKSHELVES);
-        createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "bookshelf", getBlockItems(BOOKSHELVES));
+        createBlockTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "bookshelves", BOOKSHELVES);
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "bookshelves", getBlockItems(BOOKSHELVES));
 
-        createBlockTag(ATBYW_RESOURCE_PACK, nameSpace, "large_chain_transition_bottom", LARGE_CHAIN_TRANSITION_BOTTOM);
-        createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "large_chain_transition_bottom", getBlockItems(LARGE_CHAIN_TRANSITION_BOTTOM));
-        createBlockTag(ATBYW_RESOURCE_PACK, nameSpace, "large_chain_transition_top", LARGE_CHAIN_TRANSITION_TOP);
-        createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "large_chain_transition_top", getBlockItems(LARGE_CHAIN_TRANSITION_TOP));
+        createBlockTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "large_chain_transition_bottom", LARGE_CHAIN_TRANSITION_BOTTOM);
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "large_chain_transition_bottom", getBlockItems(LARGE_CHAIN_TRANSITION_BOTTOM));
+        createBlockTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "large_chain_transition_top", LARGE_CHAIN_TRANSITION_TOP);
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "large_chain_transition_top", getBlockItems(LARGE_CHAIN_TRANSITION_TOP));
     }
 }

@@ -9,12 +9,12 @@ import net.minecraft.util.math.BlockPos;
 import java.util.List;
 import java.util.Random;
 
-import static net.azagwen.atbyw.main.AtbywMain.AtbywID;
+import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 
 public class IceSpikeBaseGenerator {
-    private static final Identifier BASE_TOP = AtbywID("ice_spike_base/top");
-    private static final Identifier BASE_MIDDLE = AtbywID("ice_spike_base/middle");
-    private static final Identifier BASE_BOTTOM = AtbywID("ice_spike_base/bottom");
+    private static final Identifier BASE_TOP = NewAtbywID("ice_spike_base/top");
+    private static final Identifier BASE_MIDDLE = NewAtbywID("ice_spike_base/middle");
+    private static final Identifier BASE_BOTTOM = NewAtbywID("ice_spike_base/bottom");
 
     public static void addPieces(StructureManager manager, BlockPos pos, List<StructurePiece> pieces, Random random, BlockRotation rotation) {
         if (random.nextDouble() < 0.5D) {
