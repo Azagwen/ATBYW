@@ -341,6 +341,9 @@ public class AtbywRecipes {
     public static JsonObject LARGE_CHAIN_LINK = createRecipeFromConfig("", AtbywRecipeConfigs.STAR_1, getItemID(AtbywItems.LARGE_CHAIN_LINK), newKeyPair("item", getItemID(Items.IRON_INGOT)));
     public static JsonObject LARGE_CHAIN = createRecipeFromConfig("", AtbywRecipeConfigs.COLUMN_1, getBlockID(AtbywBlocks.LARGE_CHAIN), newKeyPair("item", getItemID(AtbywItems.LARGE_CHAIN_LINK)));
 
+    public static JsonObject ROOTED_DIRT_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.ROOTED_DIRT_STAIRS), newKeyPair("item", getBlockID(Blocks.ROOTED_DIRT)));
+    public static JsonObject ROOTED_DIRT_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.ROOTED_DIRT_SLAB), newKeyPair("item", getBlockID(Blocks.ROOTED_DIRT)));
+
     public static void init() {
         LOGGER.info("ATBYW Recipes Inintiliazed");
     }
@@ -591,5 +594,8 @@ public class AtbywRecipes {
 
         putRecipe(NewAtbywID("large_chain_link"), LARGE_CHAIN_LINK, map);
         putRecipe(NewAtbywID("large_chain"), LARGE_CHAIN, map);
+
+        putRecipe(NewAtbywID("rooted_dirt_stairs"), ROOTED_DIRT_STAIRS, map);
+        putRecipe(NewAtbywID("rooted_dirt_slab"), ROOTED_DIRT_SLAB, map);
     }
 }

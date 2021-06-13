@@ -1,5 +1,7 @@
 package net.azagwen.atbyw.mixin;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -30,7 +32,8 @@ public class ItemModelLoaderMixin {
     @Inject(method = "loadModelFromJson", at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/ResourceManager;getResource(Lnet/minecraft/util/Identifier;)Lnet/minecraft/resource/Resource;"), cancellable = true)
     public void loadModelFromJson(Identifier id, CallbackInfoReturnable<JsonUnbakedModel> cir) {
         if (AtbywMain.AtbywNamespace.equals(id.getNamespace())) {
-            makeModel(id, "_essence", createEssenceItemModelJson("generated"), cir);
+            Gson gson = new GsonBuilder().create();
+            makeModel(id, "_essence", gson.toJson(createEssenceItemModelJson("generated")), cir);
         }
     }
 }

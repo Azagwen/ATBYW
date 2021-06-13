@@ -326,7 +326,8 @@ public class AtbywLootTables {
                 AtbywBlocks.BLACK_CONCRETE_SLAB,
                 AtbywBlocks.GRANITE_TILES_SLAB,
                 AtbywBlocks.DIORITE_BRICKS_SLAB,
-                AtbywBlocks.ANDESITE_BRICKS_SLAB
+                AtbywBlocks.ANDESITE_BRICKS_SLAB,
+                AtbywBlocks.ROOTED_DIRT_SLAB
         ));
 
         blocksDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
@@ -616,7 +617,8 @@ public class AtbywLootTables {
                 AtbywBlocks.GRANITE_TILES_STAIRS,
                 AtbywBlocks.DIORITE_BRICKS_STAIRS,
                 AtbywBlocks.ANDESITE_BRICKS_STAIRS,
-                AtbywBlocks.LARGE_CHAIN
+                AtbywBlocks.LARGE_CHAIN,
+                AtbywBlocks.ROOTED_DIRT_STAIRS
         ));
     }
 }

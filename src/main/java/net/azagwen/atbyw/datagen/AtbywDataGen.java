@@ -1,14 +1,19 @@
 package net.azagwen.atbyw.datagen;
 
+import com.google.gson.JsonObject;
+import org.lwjgl.system.CallbackI;
+
 public class AtbywDataGen {
 
-    public static String createEssenceItemModelJson(String type) {
+    public static JsonObject createEssenceItemModelJson(String type) {
         if ("generated".equals(type)) {
-            return "{\n" +
-                    "   \"parent\": \"atbyw:item/essence\"\n" +
-                    "}";
+            JsonObject jsonObject = new JsonObject();
+
+            jsonObject.addProperty("parent", "atbyw:item/essence");
+
+            return jsonObject;
         } else {
-            return "";
+            return new JsonObject();
         }
     }
 }

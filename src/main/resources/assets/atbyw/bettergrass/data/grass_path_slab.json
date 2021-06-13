@@ -1,0 +1,10 @@
+{
+    "layers": [
+        {
+            "textures": {
+                "top": "minecraft:block/dirt_path_top",
+                "side": "minecraft:block/dirt_path_side"
+            }
+        }
+    ]
+}
