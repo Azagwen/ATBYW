@@ -22,16 +22,18 @@ import net.minecraft.world.WorldView;
 import java.util.Random;
 
 public class SpreadableSlabBlock extends SlabBlockSubClass {
-    private Block fullBlockEquivalent;
+    private final Block fullBlockEquivalent;
+    private final boolean pathConvertible;
 
-    public SpreadableSlabBlock(Block copiedBlock, Settings settings) {
+    public SpreadableSlabBlock(boolean pathConvertible, Block copiedBlock, Settings settings) {
         super(settings);
         this.fullBlockEquivalent = copiedBlock;
+        this.pathConvertible = pathConvertible;
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (state.isOf(AtbywBlocks.GRASS_BLOCK_SLAB)) {
+        if (pathConvertible) {
             if (player.getMainHandStack().isIn(FabricToolTags.SHOVELS)) {
                 BlockState oldState = world.getBlockState(pos);
 

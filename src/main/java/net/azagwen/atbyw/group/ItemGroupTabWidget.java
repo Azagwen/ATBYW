@@ -17,16 +17,16 @@ import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 public class ItemGroupTabWidget extends ButtonWidget {
     public static final Identifier TEXTURE = NewAtbywID("textures/gui/side_tabs.png");
     public boolean isSelected = false;
+    public final boolean flipped;
     private final ItemGroupTab tab;
 
-    public ItemGroupTabWidget(int x, int y, ItemGroupTab tab, PressAction onPress) {
+    public ItemGroupTabWidget(int x, int y, boolean flipped, ItemGroupTab tab, PressAction onPress) {
         super(x, y, 33, 28, new TranslatableText(tab.getTranslationKey()), onPress);
-
+        this.flipped = flipped;
         this.tab = tab;
     }
 
-    @Override
-    protected int getYImage(boolean isHovered) {
+    protected int getXImage(boolean isHovered) {
         return isSelected ? 2 : (isHovered ? 1 : 0);
     }
 
@@ -40,12 +40,13 @@ public class ItemGroupTabWidget extends ButtonWidget {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, TEXTURE);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, this.alpha);
-        int yOffset = this.getYImage(this.isHovered());
+        int xOffset = this.getXImage(this.isHovered());
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.enableDepthTest();
-        this.drawTexture(matrixStack, this.x, this.y, 0, yOffset * height, this.width, this.height);
+        this.drawTexture(matrixStack, this.x, this.y, xOffset * width + (flipped ? width * 3 : 0), 28, this.width, this.height);
         this.renderBackground(matrixStack, minecraftClient, mouseX, mouseY);
-        minecraftClient.getItemRenderer().renderGuiItemIcon(tab.getIcon(), this.x + (this.isHovered() || isSelected ? 7 : 10), this.y + 6);
+        int xIconOffset = flipped ? (this.isHovered() || isSelected ? 10 : 7) : (this.isHovered() || isSelected ? 7 : 10);
+        minecraftClient.getItemRenderer().renderGuiItemIcon(tab.getIcon(), this.x + xIconOffset, this.y + 6);
     }
 }

@@ -22,16 +22,18 @@ import net.minecraft.world.WorldView;
 import java.util.Random;
 
 public class SpreadableStairsBlock extends StairsBlockSubClass {
-    private Block fullBlockEquivalent;
+    private final Block fullBlockEquivalent;
+    private final boolean pathConvertible;
 
-    public SpreadableStairsBlock(Block copiedBlock, Block fullBlockEquivalent, Settings settings) {
+    public SpreadableStairsBlock(boolean pathConvertible, Block copiedBlock, Block fullBlockEquivalent, Settings settings) {
         super(copiedBlock, settings);
         this.fullBlockEquivalent = fullBlockEquivalent;
+        this.pathConvertible = pathConvertible;
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (state.isOf(AtbywBlocks.GRASS_BLOCK_STAIRS)) {
+        if (pathConvertible) {
             if (player.getMainHandStack().isIn(FabricToolTags.SHOVELS)) {
                 BlockState oldState = world.getBlockState(pos);
 

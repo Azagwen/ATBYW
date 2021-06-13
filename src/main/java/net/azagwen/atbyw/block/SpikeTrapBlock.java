@@ -3,6 +3,8 @@ package net.azagwen.atbyw.block;
 import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -18,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 public class SpikeTrapBlock extends Block {
-    private final Block spikeBlock;
+    private final SpikeBlock spikeBlock;
     private final float strength;
     private boolean hasBeenBlockedOnce;
     public static final BooleanProperty ACTIVE;
@@ -26,7 +28,7 @@ public class SpikeTrapBlock extends Block {
 
     public SpikeTrapBlock(Block spikeBlock, float strength, Settings settings) {
         super(settings);
-        this.spikeBlock = spikeBlock;
+        this.spikeBlock = (SpikeBlock) spikeBlock;
         this.strength = strength;
         this.setDefaultState(this.getDefaultState().with(ACTIVE, false).with(CAN_BREAK, false));
     }
@@ -72,7 +74,8 @@ public class SpikeTrapBlock extends Block {
 
     private void placeSpikes(BlockState state, World world, BlockPos pos) {
         if (state.get(ACTIVE)) {
-            world.setBlockState(pos.up(), spikeBlock.getDefaultState());
+            var canWaterLog = world.getFluidState(pos.up()).getFluid() == Fluids.WATER;
+            world.setBlockState(pos.up(), spikeBlock.getDefaultState().with(SpikeBlock.WATERLOGGED, canWaterLog));
             world.playSound(null, pos, SoundEvents.BLOCK_CHAIN_PLACE, SoundCategory.BLOCKS, 0.5F, 1);
         }
     }

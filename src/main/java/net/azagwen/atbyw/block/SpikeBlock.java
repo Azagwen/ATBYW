@@ -5,13 +5,20 @@ import net.azagwen.atbyw.main.AtbywDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -23,17 +30,19 @@ import java.util.ArrayList;
 
 import static net.azagwen.atbyw.util.AtbywUtils.getBlockFromID;
 
-public class SpikeBlock extends Block {
+public class SpikeBlock extends Block implements Waterloggable {
     private static final VoxelShape SHAPE;
     private final Identifier spikeTrapBlock;
     private final float damageValue;
     private final int effectAmplifier;
+    public static final BooleanProperty WATERLOGGED;
 
     public SpikeBlock(Identifier spikeTrapBlock, float damageValue, int effectAmplifier, Settings settings) {
         super(settings);
         this.damageValue = damageValue;
         this.effectAmplifier = effectAmplifier;
         this.spikeTrapBlock = spikeTrapBlock;
+        this.setDefaultState(this.getStateManager().getDefaultState().with(WATERLOGGED, false));
     }
 
     @Override
@@ -87,6 +96,11 @@ public class SpikeBlock extends Block {
     }
 
     @Override
+    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
+        return false;
+    }
+
+    @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
         return getBlockFromID(spikeTrapBlock).asItem().getDefaultStack();
     }
@@ -98,7 +112,18 @@ public class SpikeBlock extends Block {
         }
     }
 
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(WATERLOGGED);
+    }
+
     static {
+        WATERLOGGED = Properties.WATERLOGGED;
         SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
     }
 }

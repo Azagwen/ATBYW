@@ -1,12 +1,9 @@
 package net.azagwen.atbyw.block.state;
 
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.*;
 import net.minecraft.util.math.Direction;
 
-public class AtbywProperties {
+public class AtbywProperties extends Properties {
     public static final BooleanProperty SHEARED;
     public static final DirectionProperty VERTICAL_FACING;
     public static final DirectionProperty HORIZONTAL_FACING;
@@ -27,7 +24,7 @@ public class AtbywProperties {
     public static final BooleanProperty POWERED_Z;
     public static final EnumProperty<LargeChainEnd> CONNECT_BOTTOM;
     public static final EnumProperty<LargeChainEnd> CONNECT_TOP;
-    public static final BooleanProperty POST;
+    public static final BooleanProperty POST_SLAB;
 
     static {
         SHEARED = BooleanProperty.of("sheared");
@@ -50,6 +47,6 @@ public class AtbywProperties {
         POWERED_Z = BooleanProperty.of("powered_z");
         CONNECT_BOTTOM = EnumProperty.of("connect_bottom", LargeChainEnd.class);
         CONNECT_TOP = EnumProperty.of("connect_top", LargeChainEnd.class);
-        POST = BooleanProperty.of("post_slab");
+        POST_SLAB = BooleanProperty.of("post_slab");
     }
 }

@@ -1,0 +1,20 @@
+{
+    "textures": {
+        "particle": "#wall"
+    },
+    "elements": [
+        {
+            "__comment": "Post top slab",
+            "from": [ 3, 16, 3 ],
+            "to": [ 13, 18, 13 ],
+            "faces": {
+                "down":  { "texture": "#wall", "cullface": "up" },
+                "up":    { "texture": "#wall", "cullface": "up" },
+                "north": { "uv": [2, 3, 4, 13], "rotation": 90, "texture": "#wall", "cullface": "up" },
+                "south": { "uv": [2, 3, 4, 13], "rotation": 90, "texture": "#wall", "cullface": "up" },
+                "west":  { "uv": [2, 3, 4, 13], "rotation": 90, "texture": "#wall", "cullface": "up" },
+                "east":  { "uv": [2, 3, 4, 13], "rotation": 90, "texture": "#wall", "cullface": "up" }
+            }
+        }
+    ]
+}

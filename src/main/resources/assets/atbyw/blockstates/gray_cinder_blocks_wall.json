@@ -10,6 +10,15 @@
         },
         {
             "when": {
+                "up": "true",
+                "post_slab": "true"
+            },
+            "apply": {
+                "model": "atbyw:block/concrete/cinder_blocks/wall/gray_cinder_blocks_wall_slab"
+            }
+        },
+        {
+            "when": {
                 "north": "low"
             },
             "apply": {

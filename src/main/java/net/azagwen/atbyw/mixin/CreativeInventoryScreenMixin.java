@@ -7,6 +7,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen;
 import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen;
+import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemGroup;
@@ -26,16 +27,21 @@ public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScre
 
     @Inject(at = @At("HEAD"), method = "setSelectedTab(Lnet/minecraft/item/ItemGroup;)V")
     private void setSelectedTab(ItemGroup group, CallbackInfo cbi) {
-        this.children().removeAll(tabButtons);
+        for (var button : tabButtons) {
+            this.remove(button);
+        }
         tabButtons.clear();
 
-        if(group instanceof TabbedItemGroup) {
-            TabbedItemGroup tabbedGroup = (TabbedItemGroup) group;
-            if(!tabbedGroup.hasInitialized()) tabbedGroup.initialize();
+        if(group instanceof TabbedItemGroup tabbedGroup) {
+            if(!tabbedGroup.hasInitialized())
+                tabbedGroup.initialize();
 
             for(int i = 0; i < tabbedGroup.getTabs().size(); i++) {
                 int selectTab = i;
-                ItemGroupTabWidget tabWidget = new ItemGroupTabWidget(x - 29, (y + 12) + (i * 30), tabbedGroup.getTabs().get(i), (button)-> {
+                boolean flipTab = i > 3;
+                int xOffset = flipTab ? (x + 191) : (x - 29);
+                int yOffset = flipTab ? (y + 12) + ((i - 4) * 30) : (y + 12) + (i * 30);
+                ItemGroupTabWidget tabWidget = new ItemGroupTabWidget(xOffset, yOffset, flipTab, tabbedGroup.getTabs().get(i), (button)-> {
                     tabbedGroup.setSelectedTab(selectTab);
                     MinecraftClient.getInstance().openScreen(this);
                     ((ItemGroupTabWidget) button).isSelected = true;

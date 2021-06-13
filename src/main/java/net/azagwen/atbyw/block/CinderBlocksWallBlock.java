@@ -2,15 +2,10 @@ package net.azagwen.atbyw.block;
 
 import com.google.common.collect.ImmutableMap;
 import net.azagwen.atbyw.block.state.AtbywProperties;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.WallBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.enums.WallShape;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -21,6 +16,7 @@ import net.minecraft.world.WorldAccess;
 import java.util.Map;
 
 public class CinderBlocksWallBlock extends WallBlock {
+    public static final BooleanProperty POST_SLAB;
     private static final VoxelShape POST_SHAPE;
     private static final VoxelShape POST_SLAB_SHAPE;
     private static final VoxelShape SLAB_NORTH_SHAPE;
@@ -45,27 +41,21 @@ public class CinderBlocksWallBlock extends WallBlock {
     private static final VoxelShape TALL_WEST_COLLISION_SHAPE;
     private static final VoxelShape TALL_EAST_COLLISION_SHAPE;
     private final Map<BlockState, VoxelShape> collisionShapeMap;
-    private final Map<BlockState, VoxelShape> lowPostShapeMap;
-    private final Map<BlockState, VoxelShape> tallPostShapeMap;
+    private final Map<BlockState, VoxelShape> outlineShapeMap;
+
 
     public CinderBlocksWallBlock(Settings settings) {
         super(settings);
-        this.lowPostShapeMap = this.getShapeMap(
-                POST_SHAPE,
-                new VoxelShape[] {LOW_NORTH_SHAPE, TALL_NORTH_SHAPE},
-                new VoxelShape[] {LOW_EAST_SHAPE,  TALL_EAST_SHAPE },
-                new VoxelShape[] {LOW_SOUTH_SHAPE, TALL_SOUTH_SHAPE},
-                new VoxelShape[] {LOW_WEST_SHAPE,  TALL_WEST_SHAPE }
-        );
-        this.tallPostShapeMap = this.getShapeMap(
-                VoxelShapes.union(POST_SHAPE, POST_SLAB_SHAPE),
+        this.setDefaultState(super.getDefaultState().with(POST_SLAB, true));
+        this.outlineShapeMap = this.getShapeMap(
+                new VoxelShape[] {POST_SHAPE, POST_SLAB_SHAPE},
                 new VoxelShape[] {LOW_NORTH_SHAPE, TALL_NORTH_SHAPE},
                 new VoxelShape[] {LOW_EAST_SHAPE,  TALL_EAST_SHAPE },
                 new VoxelShape[] {LOW_SOUTH_SHAPE, TALL_SOUTH_SHAPE},
                 new VoxelShape[] {LOW_WEST_SHAPE,  TALL_WEST_SHAPE }
         );
         this.collisionShapeMap = this.getShapeMap(
-                POST_COLLISION_SHAPE,
+                new VoxelShape[] {POST_COLLISION_SHAPE, POST_COLLISION_SHAPE},
                 new VoxelShape[] {LOW_NORTH_COLLISION_SHAPE, TALL_NORTH_COLLISION_SHAPE},
                 new VoxelShape[] {LOW_EAST_COLLISION_SHAPE,  TALL_EAST_COLLISION_SHAPE },
                 new VoxelShape[] {LOW_SOUTH_COLLISION_SHAPE, TALL_SOUTH_COLLISION_SHAPE},
@@ -81,29 +71,37 @@ public class CinderBlocksWallBlock extends WallBlock {
         }
     }
 
-    private Map<BlockState, VoxelShape> getShapeMap(VoxelShape post, VoxelShape[] north, VoxelShape[] east, VoxelShape[] south, VoxelShape[] west) {
+    private Map<BlockState, VoxelShape> getShapeMap(VoxelShape[] post, VoxelShape[] north, VoxelShape[] east, VoxelShape[] south, VoxelShape[] west) {
         ImmutableMap.Builder<BlockState, VoxelShape> builder = ImmutableMap.builder();
 
         /* Defines what shapes to use depending on "shape" block states.
         *  "shape" block states define the direction and height of the wall.
         */
         for (Boolean isUp : UP.getValues()) {
-            for (WallShape eastShape : EAST_SHAPE.getValues()) {
-                for (WallShape northShape : NORTH_SHAPE.getValues()) {
-                    for (WallShape westShape : WEST_SHAPE.getValues()) {
-                        for (WallShape southShape : SOUTH_SHAPE.getValues()) {
-                            VoxelShape SHAPE_NO_POST = VoxelShapes.empty();
-                            SHAPE_NO_POST = isWallTall(SHAPE_NO_POST, eastShape, east[0], east[1]);
-                            SHAPE_NO_POST = isWallTall(SHAPE_NO_POST, westShape, west[0], west[1]);
-                            SHAPE_NO_POST = isWallTall(SHAPE_NO_POST, northShape, north[0], north[1]);
-                            SHAPE_NO_POST = isWallTall(SHAPE_NO_POST, southShape, south[0], south[1]);
-                            if (isUp) {
-                                SHAPE_NO_POST = VoxelShapes.union(SHAPE_NO_POST, post);
-                            }
+            for (Boolean hasSlab : POST_SLAB.getValues()) {
+                for (WallShape eastShape : EAST_SHAPE.getValues()) {
+                    for (WallShape northShape : NORTH_SHAPE.getValues()) {
+                        for (WallShape westShape : WEST_SHAPE.getValues()) {
+                            for (WallShape southShape : SOUTH_SHAPE.getValues()) {
+                                VoxelShape SHAPE_NO_POST = VoxelShapes.empty();
+                                VoxelShape SHAPE_SLAB_POST = VoxelShapes.union(post[0], post[1]);
 
-                            BlockState blockState = this.getDefaultState().with(UP, isUp).with(EAST_SHAPE, eastShape).with(WEST_SHAPE, westShape).with(NORTH_SHAPE, northShape).with(SOUTH_SHAPE, southShape);
-                            builder.put(blockState.with(WATERLOGGED, false), SHAPE_NO_POST);
-                            builder.put(blockState.with(WATERLOGGED, true), SHAPE_NO_POST);
+                                SHAPE_NO_POST = isWallTall(SHAPE_NO_POST, eastShape, east[0], east[1]);
+                                SHAPE_NO_POST = isWallTall(SHAPE_NO_POST, westShape, west[0], west[1]);
+                                SHAPE_NO_POST = isWallTall(SHAPE_NO_POST, northShape, north[0], north[1]);
+                                SHAPE_NO_POST = isWallTall(SHAPE_NO_POST, southShape, south[0], south[1]);
+                                if (isUp) {
+                                    if (hasSlab) {
+                                        SHAPE_NO_POST = VoxelShapes.union(SHAPE_NO_POST, SHAPE_SLAB_POST);
+                                    } else {
+                                        SHAPE_NO_POST = VoxelShapes.union(SHAPE_NO_POST, post[0]);
+                                    }
+                                }
+
+                                BlockState blockState = this.getDefaultState().with(UP, isUp).with(POST_SLAB, hasSlab).with(EAST_SHAPE, eastShape).with(WEST_SHAPE, westShape).with(NORTH_SHAPE, northShape).with(SOUTH_SHAPE, southShape);
+                                builder.put(blockState.with(WATERLOGGED, false), SHAPE_NO_POST);
+                                builder.put(blockState.with(WATERLOGGED, true), SHAPE_NO_POST);
+                            }
                         }
                     }
                 }
@@ -114,16 +112,33 @@ public class CinderBlocksWallBlock extends WallBlock {
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        boolean isCovered = !world.getBlockState(pos.up()).isAir();
-
-        return isCovered ? lowPostShapeMap.get(state) : tallPostShapeMap.get(state);
+        return outlineShapeMap.get(state);
     }
 
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return this.collisionShapeMap.get(state);
     }
 
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        var superState = super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+
+        if (world.isAir(pos.up()) || world.isWater(pos.up())) {
+            return superState.with(POST_SLAB, true);
+        } else {
+            return superState.with(POST_SLAB, false);
+        }
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
+        builder.add(POST_SLAB);
+    }
+
     static {
+        POST_SLAB = AtbywProperties.POST_SLAB;
+
         /* Base values for each wall element
         *  those values are passed to the individual directions shapes below,
         *  allowing for fast edition fo all 4 sides from a small set of numbers

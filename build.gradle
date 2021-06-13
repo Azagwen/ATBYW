@@ -59,6 +59,10 @@ dependencies {
 	include "dev.lambdaurora:lambdynamiclights:${project.Lambdynamiclights_version}"			//API
 }
 
+minecraft {
+	accessWidener =  file("src/main/resources/atbyw.accesswidener")
+}
+
 processResources {
 	inputs.property "version", project.version
 

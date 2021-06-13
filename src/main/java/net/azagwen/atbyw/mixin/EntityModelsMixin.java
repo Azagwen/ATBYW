@@ -19,6 +19,7 @@ import java.util.Map;
 @Environment(EnvType.CLIENT)
 @Mixin(EntityModels.class)
 public class EntityModelsMixin {
+    //Kept as an example, unused however
     @Inject(method = "getModels()Ljava/util/Map;", at =
     @At(
             value = "INVOKE",
