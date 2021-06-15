@@ -9,6 +9,7 @@ import net.azagwen.atbyw.group.AtbywItemGroup;
 import net.azagwen.atbyw.items.AtbywItems;
 import net.azagwen.atbyw.world.AtbywWorldGen;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.server.ServerStartCallback;
@@ -88,8 +89,6 @@ public class AtbywMain implements ModInitializer {
 		AtbywRRP.init();
 
 		ATBYW_GROUP = new AtbywItemGroup(NewAtbywID("atbyw"));
-
-		ServerLifecycleEvents.SERVER_STARTED.register((server) -> {});
 
 		LOGGER.info("ATBYW Inintiliazed");
 	}

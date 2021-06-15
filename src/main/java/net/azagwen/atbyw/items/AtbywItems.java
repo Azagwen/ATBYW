@@ -79,8 +79,6 @@ public class AtbywItems {
 
         registerItem(DECO_TAB, "shroomstick", SHROOMSTICK);
 
-        AtbywModInteractionItems.init();
-
         LOGGER.info("ATBYW Items Inintiliazed");
     }
 }

@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/statues/template_axolotl_statue",
+    "textures": {
+        "texture": "atbyw:entity/axolotl_statue/axolotl_statue_4"
+    }
+}

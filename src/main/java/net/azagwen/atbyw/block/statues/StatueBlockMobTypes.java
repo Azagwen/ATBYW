@@ -13,6 +13,7 @@ public enum StatueBlockMobTypes implements StatueBlockMobType {
     SHULKER("shulker", NewAtbywID("gameplay/shulker_statue"), StatueVoxelShapes.SHULKER_OUTLINES, StatueVoxelShapes.SHULKER_COLLISIONS),
 
     //Mamals
+    AXOLOTL("axolotl", NewAtbywID("gameplay/axolotl_statue"), StatueVoxelShapes.CAT_OUTLINES),
     CAT("cat", NewAtbywID("gameplay/cat_statue"), StatueVoxelShapes.CAT_OUTLINES),
     WOLF("wolf", NewAtbywID("gameplay/wolf_statue"), StatueVoxelShapes.WOLF_OUTLINES),
     CHICKEN("chicken", NewAtbywID("gameplay/chicken_statue"), StatueVoxelShapes.CHICKEN_OUTLINES),
