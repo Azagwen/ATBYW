@@ -130,23 +130,28 @@ public class StatueRegistry {
      *  determined by the prefix (statuePrefixes) array length
      *  and a name corresponding with the input animal String.
      *
-     *  @param animal   Name of the animal the statues represent
-     *  @param blocks   The Blocks to register, must match with "statuePrefixes"
+     *  @param animal   Name of the animal the statues represent.
+     *  @param normalStatue     The Regular, non-waxed statue.
+     *  @param cleanWaxed       The clean Waxed variant of the statue.
+     *  @param exposedWaxed     The exposed Waxed variant of the statue.
+     *  @param dirtyWaxed       The dirty Waxed variant of the statue.
+     *  @param mossyWaxed       The mossy Waxed variant of the statue.
+     *  @param veryMossyWaxed   The very mossy Waxed variant of the statue.
      */
-    private static void registerStatues(String animal, Block... blocks) {
-        for (int i = 0; i < blocks.length; i++) {
-            String prefix = statuePrefixes[i];
-            Block block = blocks[i];
-            String name;
+    private static void registerStatues(String animal, Block normalStatue, Block cleanWaxed, Block exposedWaxed, Block dirtyWaxed, Block mossyWaxed, Block veryMossyWaxed) {
+        registerBlock(false, String.join("_", animal, "statue"), normalStatue);
+        registerBlock(false, String.join("_", "waxed_clean", animal, "statue"), cleanWaxed);
+        registerBlock(false, String.join("_", "waxed_exposed", animal, "statue"), exposedWaxed);
+        registerBlock(false, String.join("_", "waxed_dirty", animal, "statue"), dirtyWaxed);
+        registerBlock(false, String.join("_", "waxed_mossy", animal, "statue"), mossyWaxed);
+        registerBlock(false, String.join("_", "waxed_very_mossy", animal, "statue"), veryMossyWaxed);
 
-            if (prefix.isEmpty())
-                name = String.join("_", animal, "statue");
-            else
-                name = String.join("_", prefix, animal, "statue");
-
-            registerBlock(false, (ItemGroup) null, name, block);
-            DECO_TAB.add(block.asItem());
-        }
+        DECO_TAB.add(normalStatue.asItem());
+        DECO_TAB.add(cleanWaxed.asItem());
+        DECO_TAB.add(exposedWaxed.asItem());
+        DECO_TAB.add(dirtyWaxed.asItem());
+        DECO_TAB.add(mossyWaxed.asItem());
+        DECO_TAB.add(veryMossyWaxed.asItem());
     }
 
     public static void initStatues() {

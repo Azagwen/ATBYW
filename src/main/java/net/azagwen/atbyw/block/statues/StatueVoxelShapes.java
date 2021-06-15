@@ -21,6 +21,7 @@ public class StatueVoxelShapes {
     public static final VoxelShape[] SHULKER_OUTLINES;
     public static final VoxelShape[] SHULKER_COLLISIONS;
     public static final VoxelShape[] SHULKER_CLOSED_COLLISIONS;
+    public static final VoxelShape[] AXOLOTL_OUTLINES;
     public static final VoxelShape[] WOLF_OUTLINES;
     public static final VoxelShape[] CAT_OUTLINES;
     public static final VoxelShape[] CHICKEN_OUTLINES;
@@ -119,6 +120,13 @@ public class StatueVoxelShapes {
         SHULKER_OUTLINES = new VoxelShape[] {DEFAULT_OUTLINE, DEFAULT_OUTLINE, DEFAULT_OUTLINE, DEFAULT_OUTLINE};
         SHULKER_COLLISIONS = makeDirectionalShapes(0.0D, 0.0D, 0.0D, 16.0D, (16 + 5), 16.0D );
         SHULKER_CLOSED_COLLISIONS = SHULKER_OUTLINES;
+
+        //Axolotl Outlines
+        final VoxelShape[][] AXOLOTL_SHAPES = {
+                makeDirectionalShapes(4.0D, 2.5D,  0.0D, 12.0D, 7.5D, 11.0D),   //Head              0
+                makeDirectionalShapes(4.0D, 2.5D,  5.0D, 12.0D, 6.5D,  15.0D),  //Body              1
+        };
+        AXOLOTL_OUTLINES = combineDoubleArrayShapes(AXOLOTL_SHAPES);
 
         //Wolf Outlines
         final VoxelShape[][] WOLF_SHAPES = {

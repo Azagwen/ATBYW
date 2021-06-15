@@ -38,7 +38,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Random;
 
-public class StatueBlock extends HorizontalFacingBlock implements StatueBlockMethods, Waterloggable {
+public class StatueBlock extends WaxedStatueBlock implements StatueBlockMethods, Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final IntProperty MOSS_LEVEL;
     private final StatueBlockMobType mobType;
@@ -46,7 +46,7 @@ public class StatueBlock extends HorizontalFacingBlock implements StatueBlockMet
     private final Block[] waxedStates;
 
     public StatueBlock(boolean hasLoots, StatueBlockMobType mobType, Settings settings, Block... waxedStates) {
-        super(settings.nonOpaque());
+        super(mobType, settings.nonOpaque());
         this.mobType = mobType;
         this.hasLoots = hasLoots;
         this.waxedStates = waxedStates;
@@ -69,10 +69,6 @@ public class StatueBlock extends HorizontalFacingBlock implements StatueBlockMet
 
     private boolean isFullyCoveredInMoss(BlockState state) {
         return state.get(MOSS_LEVEL) >= this.getMaxMossLevel();
-    }
-
-    private Direction getDirection(BlockState state) {
-        return state.get(FACING);
     }
 
     @Override
@@ -199,78 +195,13 @@ public class StatueBlock extends HorizontalFacingBlock implements StatueBlockMet
         }
     }
 
-    private VoxelShape setOutlineShape(Direction direction) {
-        switch (direction) {
-            case NORTH:
-                return mobType.getOutlineShape(StatueBlockMobType.NORTH);
-            case SOUTH:
-                return mobType.getOutlineShape(StatueBlockMobType.SOUTH);
-            case EAST:
-                return mobType.getOutlineShape(StatueBlockMobType.EAST);
-            case WEST:
-                return mobType.getOutlineShape(StatueBlockMobType.WEST);
-            default:
-                return null;
-        }
-    }
-
-    private VoxelShape setCollisionShape(Direction direction) {
-        switch (direction) {
-            case NORTH:
-                return mobType.getCollisionShape(StatueBlockMobType.NORTH);
-            case SOUTH:
-                return mobType.getCollisionShape(StatueBlockMobType.SOUTH);
-            case EAST:
-                return mobType.getCollisionShape(StatueBlockMobType.EAST);
-            case WEST:
-                return mobType.getCollisionShape(StatueBlockMobType.WEST);
-            default:
-                return null;
-        }
-    }
-
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if (mobType.getOutlineShapes() != null) {
-            return setOutlineShape(getDirection(state));
-        }
-        return StatueVoxelShapes.DEFAULT_OUTLINE;
-    }
-
-    @Override
-    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-
-        if (mobType.getCollisionShapes() != null) {
-            return setCollisionShape(getDirection(state));
-        }
-        else if (mobType.getOutlineShapes() != null) {
-            return setOutlineShape(getDirection(state));
-        }
-        return StatueVoxelShapes.DEFAULT_COLLISIONS;
-    }
-
-    @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-
-        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite()).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
-    }
-
-    @Override
-    public FluidState getFluidState(BlockState state) {
-        if (state.get(WATERLOGGED)) {
-            return Fluids.WATER.getStill(false);
-        }
-        return super.getFluidState(state);
-    }
-
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, MOSS_LEVEL, WATERLOGGED);
+        super.appendProperties(builder);
+        builder.add(MOSS_LEVEL);
     }
 
     static {
         MOSS_LEVEL = AtbywProperties.MOSS_LEVEL;
-
     }
 }

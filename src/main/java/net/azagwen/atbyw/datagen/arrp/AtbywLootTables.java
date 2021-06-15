@@ -618,7 +618,13 @@ public class AtbywLootTables {
                 AtbywBlocks.DIORITE_BRICKS_STAIRS,
                 AtbywBlocks.ANDESITE_BRICKS_STAIRS,
                 AtbywBlocks.LARGE_CHAIN,
-                AtbywBlocks.ROOTED_DIRT_STAIRS
+                AtbywBlocks.ROOTED_DIRT_STAIRS,
+                StatueRegistry.AXOLOTL_STATUE,
+                StatueRegistry.WAXED_CLEAN_AXOLOTL_STATUE,
+                StatueRegistry.WAXED_EXPOSED_AXOLOTL_STATUE,
+                StatueRegistry.WAXED_DIRTY_AXOLOTL_STATUE,
+                StatueRegistry.WAXED_MOSSY_AXOLOTL_STATUE,
+                StatueRegistry.WAXED_VERY_MOSSY_AXOLOTL_STATUE
         ));
     }
 }

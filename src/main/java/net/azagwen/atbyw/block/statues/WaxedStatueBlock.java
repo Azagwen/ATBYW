@@ -47,33 +47,23 @@ public class WaxedStatueBlock extends HorizontalFacingBlock implements Waterlogg
     }
 
     private VoxelShape setOutlineShape(Direction direction) {
-        switch (direction) {
-            case NORTH:
-                return mobType.getOutlineShape(StatueBlockMobType.NORTH);
-            case SOUTH:
-                return mobType.getOutlineShape(StatueBlockMobType.SOUTH);
-            case EAST:
-                return mobType.getOutlineShape(StatueBlockMobType.EAST);
-            case WEST:
-                return mobType.getOutlineShape(StatueBlockMobType.WEST);
-            default:
-                return null;
-        }
+        return switch (direction) {
+            case NORTH -> mobType.getOutlineShape(StatueBlockMobType.NORTH);
+            case SOUTH -> mobType.getOutlineShape(StatueBlockMobType.SOUTH);
+            case EAST -> mobType.getOutlineShape(StatueBlockMobType.EAST);
+            case WEST -> mobType.getOutlineShape(StatueBlockMobType.WEST);
+            default -> null;
+        };
     }
 
     private VoxelShape setCollisionShape(Direction direction) {
-        switch (direction) {
-            case NORTH:
-                return mobType.getCollisionShape(StatueBlockMobType.NORTH);
-            case SOUTH:
-                return mobType.getCollisionShape(StatueBlockMobType.SOUTH);
-            case EAST:
-                return mobType.getCollisionShape(StatueBlockMobType.EAST);
-            case WEST:
-                return mobType.getCollisionShape(StatueBlockMobType.WEST);
-            default:
-                return null;
-        }
+        return switch (direction) {
+            case NORTH -> mobType.getCollisionShape(StatueBlockMobType.NORTH);
+            case SOUTH -> mobType.getCollisionShape(StatueBlockMobType.SOUTH);
+            case EAST -> mobType.getCollisionShape(StatueBlockMobType.EAST);
+            case WEST -> mobType.getCollisionShape(StatueBlockMobType.WEST);
+            default -> null;
+        };
     }
 
     @Override
