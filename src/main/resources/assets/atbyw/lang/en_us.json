@@ -248,7 +248,6 @@
   "block.atbyw.crimson_sticky_piston": "Crimson Sticky Piston",
   "block.atbyw.warped_sticky_piston": "Warped Sticky Piston",
 
-  "block.minecraft.ladder": "Oak Ladder",
   "block.atbyw.spruce_ladder": "Spruce Ladder",
   "block.atbyw.birch_ladder": "Birch Ladder",
   "block.atbyw.jungle_ladder": "Jungle Ladder",
@@ -261,15 +260,6 @@
   "block.atbyw.large_chain": "Large Chain",
 
   "_comment": "Items",
-  "item.minecraft.stick": "Generic Stick",
-  "item.atbyw.oak_stick": "Oak Stick",
-  "item.atbyw.spruce_stick": "Spruce Stick",
-  "item.atbyw.birch_stick": "Birch Stick",
-  "item.atbyw.jungle_stick": "Jungle Stick",
-  "item.atbyw.acacia_stick": "Acacia Stick",
-  "item.atbyw.dark_oak_stick": "Dark Oak Stick",
-  "item.atbyw.crimson_stick": "Crimson Stick",
-  "item.atbyw.warped_stick": "Warped Stick",
   "item.atbyw.bamboo_stick": "Bamboo Stick",
 
   "item.atbyw.bee_essence": "Bee Essence",

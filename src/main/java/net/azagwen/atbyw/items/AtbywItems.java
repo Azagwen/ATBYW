@@ -19,15 +19,6 @@ public class AtbywItems {
         Registry.register(Registry.ITEM, NewAtbywID(name), item);
         itemTab.add(item);
     }
-
-    public static final Item OAK_STICK = new Item(createSimpleItem(null));
-    public static final Item SPRUCE_STICK = new Item(createSimpleItem(null));
-    public static final Item BIRCH_STICK = new Item(createSimpleItem(null));
-    public static final Item JUNGLE_STICK = new Item(createSimpleItem(null));
-    public static final Item ACACIA_STICK = new Item(createSimpleItem(null));
-    public static final Item DARK_OAK_STICK = new Item(createSimpleItem(null));
-    public static final Item CRIMSON_STICK = new Item(createSimpleItem(null));
-    public static final Item WARPED_STICK = new Item(createSimpleItem(null));
     public static final Item BAMBOO_STICK = new Item(createSimpleItem(null));
 
     public static final Item BEE_ESSENCE = new EssenceItem(0xFFC43B);
@@ -67,14 +58,6 @@ public class AtbywItems {
     };
 
     public static void init() {
-        registerItem(MISC_TAB,"oak_stick", OAK_STICK);
-        registerItem(MISC_TAB, "spruce_stick", SPRUCE_STICK);
-        registerItem(MISC_TAB, "birch_stick", BIRCH_STICK);
-        registerItem(MISC_TAB, "jungle_stick", JUNGLE_STICK);
-        registerItem(MISC_TAB, "acacia_stick", ACACIA_STICK);
-        registerItem(MISC_TAB, "dark_oak_stick", DARK_OAK_STICK);
-        registerItem(MISC_TAB, "crimson_stick", CRIMSON_STICK);
-        registerItem(MISC_TAB, "warped_stick", WARPED_STICK);
         registerItem(MISC_TAB, "bamboo_stick", BAMBOO_STICK);
 
         registerItem(MISC_TAB, "bee_essence", BEE_ESSENCE);

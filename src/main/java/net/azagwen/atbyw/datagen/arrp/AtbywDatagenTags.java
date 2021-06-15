@@ -9,6 +9,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.tag.BlockTags;
+import net.minecraft.tag.ItemTags;
+import net.minecraft.tag.RequiredTagList;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
@@ -57,18 +61,6 @@ public class AtbywDatagenTags {
             AtbywBlocks.WARPED_BOOKSHELF_TOGGLE
     );
 
-    public static final ArrayList<Item> STICKS = Lists.newArrayList(
-            Items.STICK,
-            AtbywItems.OAK_STICK,
-            AtbywItems.SPRUCE_STICK,
-            AtbywItems.BIRCH_STICK,
-            AtbywItems.JUNGLE_STICK,
-            AtbywItems.ACACIA_STICK,
-            AtbywItems.DARK_OAK_STICK,
-            AtbywItems.CRIMSON_STICK,
-            AtbywItems.WARPED_STICK
-    );
-
     public static final ArrayList<Block> LARGE_CHAIN_TRANSITION_BOTTOM = Lists.newArrayList(
             Blocks.CHAIN,
             Blocks.LANTERN,
@@ -97,14 +89,14 @@ public class AtbywDatagenTags {
         createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_redstone", REDSTONE_TAB);
         createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_misc", MISC_TAB);
 
-        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "sticks", STICKS);
-
         createBlockTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "bookshelves", BOOKSHELVES);
-        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "bookshelves", getBlockItems(BOOKSHELVES));
-
+        createBlockTag(ATBYW_RESOURCE_PACK, "c", "bookshelves", BOOKSHELVES);
         createBlockTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "large_chain_transition_bottom", LARGE_CHAIN_TRANSITION_BOTTOM);
-        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "large_chain_transition_bottom", getBlockItems(LARGE_CHAIN_TRANSITION_BOTTOM));
         createBlockTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "large_chain_transition_top", LARGE_CHAIN_TRANSITION_TOP);
+
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "bookshelves", getBlockItems(BOOKSHELVES));
+        createItemTag(ATBYW_RESOURCE_PACK, "c", "bookshelves", getBlockItems(BOOKSHELVES));
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "large_chain_transition_bottom", getBlockItems(LARGE_CHAIN_TRANSITION_BOTTOM));
         createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "large_chain_transition_top", getBlockItems(LARGE_CHAIN_TRANSITION_TOP));
     }
 }

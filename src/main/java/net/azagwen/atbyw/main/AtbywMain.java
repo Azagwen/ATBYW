@@ -9,16 +9,28 @@ import net.azagwen.atbyw.group.AtbywItemGroup;
 import net.azagwen.atbyw.items.AtbywItems;
 import net.azagwen.atbyw.world.AtbywWorldGen;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.fabricmc.fabric.api.event.server.ServerStartCallback;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.resource.ServerResourceManager;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.tag.ItemTags;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AtbywMain implements ModInitializer {
 	public static final String mcNameSpace = "minecraft";
@@ -76,6 +88,8 @@ public class AtbywMain implements ModInitializer {
 		AtbywRRP.init();
 
 		ATBYW_GROUP = new AtbywItemGroup(NewAtbywID("atbyw"));
+
+		ServerLifecycleEvents.SERVER_STARTED.register((server) -> {});
 
 		LOGGER.info("ATBYW Inintiliazed");
 	}

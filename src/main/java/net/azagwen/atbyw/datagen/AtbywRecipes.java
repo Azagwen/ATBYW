@@ -111,31 +111,6 @@ public class AtbywRecipes {
     private static JsonObject[] createMultiRecipesFromConfig(String[] nameArray, String group, AtbywRecipeConfig config, Pair<String, String> result, Quadruplet<String, String, String, Boolean>... ingredient) {
         return createMultiRecipesFromConfig(nameArray, group, config.getCount(), config, result, ingredient);
     }
-
-    public static JsonObject GENERIC_STICK = createRecipeFromConfig("", AtbywRecipeConfigs.STICK_1, getItemID(Items.STICK), newKeyPair("tag", BlockTags.PLANKS.getId()));
-    public static JsonObject OAK_BOOKSHELF = createRecipeFromConfig("bookshelf", AtbywRecipeConfigs.BOOKSHELF_2, getBlockID(Blocks.BOOKSHELF), newKeyPair("item", getBlockID(Blocks.OAK_PLANKS)), newKeyPair("item", getItemID(Items.BOOK)));
-    public static JsonObject OAK_LADDER = createRecipeFromConfig("ladders", AtbywRecipeConfigs.LADDER_1, getBlockID(Blocks.LADDER), newKeyPair("item", getItemID(AtbywItems.OAK_STICK)));
-    public static JsonObject TORCH = createRecipeFromConfig("", AtbywRecipeConfigs.TORCH_2, getItemID(Items.TORCH), newKeyPair("tag", ItemTags.COALS.getId()), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject SOUL_TORCH = createRecipeFromConfig("", AtbywRecipeConfigs.ARROW_3, getItemID(Items.SOUL_TORCH), newKeyPair("tag", ItemTags.COALS.getId()), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("tag", BlockTags.SOUL_FIRE_BASE_BLOCKS.getId()));
-    public static JsonObject REDSTONE_TORCH = createRecipeFromConfig("", AtbywRecipeConfigs.TORCH_2, getItemID(Items.REDSTONE_TORCH), newKeyPair("item", getItemID(Items.REDSTONE)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject LEVER = createRecipeFromConfig("", AtbywRecipeConfigs.TORCH_2, getItemID(Items.LEVER), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("tag", new Identifier("stone_tool_materials")));
-    public static JsonObject TRIPWIRE_HOOK = createRecipeFromConfig("", AtbywRecipeConfigs.ARROW_3, getItemID(Items.TRIPWIRE_HOOK), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("tag", BlockTags.PLANKS.getId()));
-    public static JsonObject RAIL = createRecipeFromConfig("", AtbywRecipeConfigs.RAIL_2, getBlockID(Blocks.RAIL), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject POWERED_RAIL = createRecipeFromConfig("", AtbywRecipeConfigs.RAIL_POWERED_3, getBlockID(Blocks.POWERED_RAIL), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("item", getItemID(Items.REDSTONE)));
-    public static JsonObject ACTIVATOR_RAIL = createRecipeFromConfig("", AtbywRecipeConfigs.RAIL_POWERED_3, getBlockID(Blocks.POWERED_RAIL), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("item", getItemID(Items.REDSTONE_TORCH)));
-    public static JsonObject ARROW = createRecipeFromConfig("", AtbywRecipeConfigs.ARROW_3, getItemID(Items.ARROW), newKeyPair("item", getItemID(Items.FLINT)), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("item", getItemID(Items.FEATHER)));
-    public static JsonObject BOW = createRecipeFromConfig("", AtbywRecipeConfigs.BOW_2, getItemID(Items.BOW), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("item", getItemID(Items.STRING)));
-    public static JsonObject CROSSBOW = createRecipeFromConfig("", AtbywRecipeConfigs.CROSSBOW_4, getItemID(Items.CROSSBOW), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("item", getItemID(Items.STRING)), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("item", getItemID(Items.TRIPWIRE_HOOK)));
-    public static JsonObject FISHING_ROD = createRecipeFromConfig("", AtbywRecipeConfigs.FISHING_ROD_2, getItemID(Items.FISHING_ROD), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("item", getItemID(Items.STRING)));
-    public static JsonObject PAINTING = createRecipeFromConfig("", AtbywRecipeConfigs.DYING_2, getItemID(Items.PAINTING), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("tag", BlockTags.WOOL.getId()));
-    public static JsonObject ITEM_FRAME = createRecipeFromConfig("", AtbywRecipeConfigs.DYING_2, getItemID(Items.ITEM_FRAME), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("item", getItemID(Items.LEATHER)));
-    public static JsonObject ARMOR_STAND = createRecipeFromConfig("", AtbywRecipeConfigs.ARMOR_STAND_2, getItemID(Items.ARMOR_STAND), newKeyPair("tag", NewAtbywID("sticks")), newKeyPair("item", getBlockID(Blocks.SMOOTH_STONE_SLAB)));
-
-    public static JsonObject[] FENCE_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "fences", AtbywRecipeConfigs.FENCE_2, new Pair<>(mcNameSpace, "fence"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", AtbywNamespace, "stick", true));
-    public static JsonObject[] FENCE_GATE_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "fence_gates", AtbywRecipeConfigs.FENCE_GATE_2, new Pair<>(mcNameSpace, "fence_gate"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", AtbywNamespace, "stick", true));
-    public static JsonObject[] SIGN_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "signs", AtbywRecipeConfigs.SIGN_2, new Pair<>(mcNameSpace, "sign"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", AtbywNamespace, "stick", true));
-    public static JsonObject[] BANNER_COLORS = createMultiRecipesFromConfig(COLOR_NAMES, "banners", AtbywRecipeConfigs.SIGN_2, new Pair<>(mcNameSpace, "banner"), newKeyQuadruplet("item", mcNameSpace, "wool", true), newKeyQuadruplet("tag", AtbywNamespace, "sticks", false));
-
     public static JsonObject DIRT_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.DIRT_STAIRS), newKeyPair("item", getBlockID(Blocks.DIRT)));
     public static JsonObject GRASS_BLOCK_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.GRASS_BLOCK_STAIRS), newKeyPair("item", getBlockID(Blocks.GRASS_BLOCK)));
     public static JsonObject MYCELIUM_STAIRS = createRecipeFromConfig("", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.MYCELIUM_STAIRS), newKeyPair("item", getBlockID(Blocks.MYCELIUM)));
@@ -177,47 +152,11 @@ public class AtbywRecipes {
     public static JsonObject DIORITE_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.DIORITE_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.DIORITE_BRICKS)));
     public static JsonObject ANDESITE_BRICKS_SLAB = createRecipeFromConfig("", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.ANDESITE_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.ANDESITE_BRICKS)));
 
-    public static JsonObject[] STICK_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "stick", AtbywRecipeConfigs.STICK_1, new Pair<>(AtbywNamespace, "stick"), newKeyQuadruplet("item", mcNameSpace, "planks", true));
     public static JsonObject[] BOOKSHELF_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES_NO_OAK, "bookshelf", AtbywRecipeConfigs.BOOKSHELF_2, new Pair<>(AtbywNamespace, "bookshelf"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false));
     public static JsonObject[] BOOKSHELF_TOGGLES_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "bookshelf_toggle", AtbywRecipeConfigs.BOOKSHELF_TOGGLE_4, new Pair<>(AtbywNamespace, "bookshelf_toggle"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false), newKeyQuadruplet("item", mcNameSpace, "redstone", false), newKeyQuadruplet("tag", mcNameSpace, "stone_tool_materials", false));
-    public static JsonObject[] LADDERS_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES_NO_OAK, "ladders", AtbywRecipeConfigs.LADDER_1, new Pair<>(AtbywNamespace, "ladder"), newKeyQuadruplet("item", AtbywNamespace, "stick", true));
+    public static JsonObject[] LADDERS_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES_NO_OAK, "ladders", (AtbywRecipeConfigs.LADDER_1.getCount() * 2), AtbywRecipeConfigs.LADDER_1, new Pair<>(AtbywNamespace, "ladder"), newKeyQuadruplet("item", mcNameSpace, "planks", true));
     public static JsonObject[] FENCE_DOOR_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, "fence_door", AtbywRecipeConfigs.FENCE_DOOR_1, new Pair<>(AtbywNamespace, "fence_door"), newKeyQuadruplet("item", mcNameSpace, "planks", true));
-    public static JsonObject[] FLOWER_SWITCHES = createMultiRecipesFromConfig(FLOWER_NAMES, "flower_switches", AtbywRecipeConfigs.FLOWER_SWITCH_3, new Pair<>(AtbywNamespace, "pull_switch"), newKeyQuadruplet("item", mcNameSpace, "", true), newKeyQuadruplet("tag", AtbywNamespace, "sticks", false), newKeyQuadruplet("item", mcNameSpace, "redstone", false));
-
-    public static JsonObject WOODEN_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SWORD_2, getItemID(Items.WOODEN_SWORD), newKeyPair("tag", BlockTags.PLANKS.getId()), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject STONE_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SWORD_2, getItemID(Items.STONE_SWORD), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject IRON_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SWORD_2, getItemID(Items.IRON_SWORD), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject GOLDEN_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SWORD_2, getItemID(Items.GOLDEN_SWORD), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject DIAMOND_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SWORD_2, getItemID(Items.DIAMOND_SWORD), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject NETHERITE_SWORD_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SWORD_2, getItemID(Items.NETHERITE_SWORD), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-
-    public static JsonObject WOODEN_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.AXE_2, getItemID(Items.WOODEN_AXE), newKeyPair("tag", BlockTags.PLANKS.getId()), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject STONE_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.AXE_2, getItemID(Items.STONE_AXE), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject IRON_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.AXE_2, getItemID(Items.IRON_AXE), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject GOLDEN_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.AXE_2, getItemID(Items.GOLDEN_AXE), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject DIAMOND_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.AXE_2, getItemID(Items.DIAMOND_AXE), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject NETHERITE_AXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.AXE_2, getItemID(Items.NETHERITE_AXE), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-
-    public static JsonObject WOODEN_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.WOODEN_PICKAXE), newKeyPair("tag", BlockTags.PLANKS.getId()), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject STONE_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.STONE_PICKAXE), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject IRON_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.IRON_PICKAXE), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject GOLDEN_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.GOLDEN_PICKAXE), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject DIAMOND_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.DIAMOND_PICKAXE), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject NETHERITE_PICKAXE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.PICKAXE_2, getItemID(Items.NETHERITE_PICKAXE), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-
-    public static JsonObject WOODEN_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.WOODEN_SHOVEL), newKeyPair("tag", BlockTags.PLANKS.getId()), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject STONE_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.STONE_SHOVEL), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject IRON_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.IRON_SHOVEL), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject GOLDEN_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.GOLDEN_SHOVEL), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject DIAMOND_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.DIAMOND_SHOVEL), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject NETHERITE_SHOVEL_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.SHOVEL_2, getItemID(Items.NETHERITE_SHOVEL), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-
-    public static JsonObject WOODEN_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.HOE_2, getItemID(Items.WOODEN_HOE), newKeyPair("tag", BlockTags.PLANKS.getId()), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject STONE_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.HOE_2, getItemID(Items.STONE_HOE), newKeyPair("tag", new Identifier("stone_tool_materials")), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject IRON_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.HOE_2, getItemID(Items.IRON_HOE), newKeyPair("item", getItemID(Items.IRON_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject GOLDEN_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.HOE_2, getItemID(Items.GOLDEN_HOE), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject DIAMOND_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.HOE_2, getItemID(Items.DIAMOND_HOE), newKeyPair("item", getItemID(Items.DIAMOND)), newKeyPair("tag", NewAtbywID("sticks")));
-    public static JsonObject NETHERITE_HOE_FROM_STICK_VARIANTS = createRecipeFromConfig("", AtbywRecipeConfigs.HOE_2, getItemID(Items.NETHERITE_HOE), newKeyPair("item", getItemID(Items.NETHERITE_INGOT)), newKeyPair("tag", NewAtbywID("sticks")));
+    public static JsonObject[] FLOWER_SWITCHES = createMultiRecipesFromConfig(FLOWER_NAMES, "flower_switches", AtbywRecipeConfigs.FLOWER_SWITCH_3, new Pair<>(AtbywNamespace, "pull_switch"), newKeyQuadruplet("item", mcNameSpace, "", true), newKeyQuadruplet("item", mcNameSpace, "stick", false), newKeyQuadruplet("item", mcNameSpace, "redstone", false));
 
     public static JsonObject TERRACOTTA_STAIRS = createRecipeFromConfig("terracotta_stairs", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.TERRACOTTA_STAIRS), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
     public static JsonObject TERRACOTTA_SLAB = createRecipeFromConfig("terracotta_slab", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.TERRACOTTA_SLAB), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
@@ -333,8 +272,8 @@ public class AtbywRecipes {
     public static JsonObject SOUL_JACK_O_LANTERN = createRecipeFromConfig("", 1, AtbywRecipeConfigs.TORCH_2, getBlockID(AtbywBlocks.SOUL_JACK_O_LANTERN), newKeyPair("item", getBlockID(Blocks.JACK_O_LANTERN)), newKeyPair("item", getItemID(Items.SOUL_TORCH)));
     public static JsonObject REDSTONE_JACK_O_LANTERN = createRecipeFromConfig("", 1, AtbywRecipeConfigs.TORCH_2, getBlockID(AtbywBlocks.REDSTONE_JACK_O_LANTERN), newKeyPair("item", getBlockID(Blocks.JACK_O_LANTERN)), newKeyPair("item", getItemID(Items.REDSTONE_TORCH)));
 
-    public static JsonObject TIMER_REPEATER_MANUAL = createRecipeFromConfig("timer_repeater", 1, AtbywRecipeConfigs.DYING_DASHED_3, getBlockID(AtbywBlocks.TIMER_REPEATER), newKeyPair("item", getItemID(Items.REDSTONE)), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("item", getItemID(Items.REPEATER)));;
-    public static JsonObject TIMER_REPEATER_CLOCK = createRecipeFromConfig("timer_repeater", AtbywRecipeConfigs.TIMER_REPEATER_3, getBlockID(AtbywBlocks.TIMER_REPEATER), newKeyPair("item", getItemID(Items.CLOCK)), newKeyPair("item", getItemID(Items.REDSTONE)), newKeyPair("item", getItemID(Items.REPEATER)));;
+    public static JsonObject TIMER_REPEATER_MANUAL = createRecipeFromConfig("timer_repeater", 1, AtbywRecipeConfigs.DYING_DASHED_3, getBlockID(AtbywBlocks.TIMER_REPEATER), newKeyPair("item", getItemID(Items.REDSTONE)), newKeyPair("item", getItemID(Items.GOLD_INGOT)), newKeyPair("item", getItemID(Items.REPEATER)));
+    public static JsonObject TIMER_REPEATER_CLOCK = createRecipeFromConfig("timer_repeater", AtbywRecipeConfigs.TIMER_REPEATER_3, getBlockID(AtbywBlocks.TIMER_REPEATER), newKeyPair("item", getItemID(Items.CLOCK)), newKeyPair("item", getItemID(Items.REDSTONE)), newKeyPair("item", getItemID(Items.REPEATER)));
 
     public static JsonObject REDSTONE_CROSS_PATH = createRecipeFromConfig("", AtbywRecipeConfigs.BED_2, getBlockID(AtbywBlocks.REDSTONE_CROSS_PATH), newKeyPair("item", getItemID(Items.STONE)), newKeyPair("item", getItemID(Items.REDSTONE)));
 
@@ -366,11 +305,6 @@ public class AtbywRecipes {
         for (int i = 0; i < WOOD_NAMES.length; i++) {
             putRecipe(NewAtbywID(WOOD_NAMES[i] + "_fence_door"), FENCE_DOOR_VARIANTS[i], map);
             putRecipe(NewAtbywID(WOOD_NAMES[i] + "_bookshelf_toggle"), BOOKSHELF_TOGGLES_VARIANTS[i], map);
-            putRecipe(NewAtbywID(WOOD_NAMES[i] + "_stick"), STICK_VARIANTS[i], map);
-
-            putRecipe(new Identifier(WOOD_NAMES[i] + "_fence"), FENCE_VARIANTS[i], map);
-            putRecipe(new Identifier(WOOD_NAMES[i] + "_fence_gate"), FENCE_GATE_VARIANTS[i], map);
-            putRecipe(new Identifier(WOOD_NAMES[i] + "_sign"), SIGN_VARIANTS[i], map);
         }
 
         for (int i = 0; i < COLOR_NAMES.length; i++) {
@@ -392,65 +326,9 @@ public class AtbywRecipes {
             putRecipe(NewAtbywID(COLOR_NAMES[i] + "_concrete_slab"), CONCRETE_SLAB_COLORS[i], map);
             putRecipe(NewAtbywID(COLOR_NAMES[i] + "_cinder_blocks"), CINDER_BLOCKS_COLORS[i], map);
             putRecipe(NewAtbywID(COLOR_NAMES[i] + "_cinder_blocks_wall"), CINDER_BLOCKS_WALL_COLORS[i], map);
-
-            putRecipe(new Identifier(COLOR_NAMES[i] + "_banner"), BANNER_COLORS[i], map);
         }
 
         // Single recipes
-        putRecipe(new Identifier("stick"), GENERIC_STICK, map);
-        putRecipe(new Identifier("bookshelf"), OAK_BOOKSHELF, map);
-        putRecipe(new Identifier("ladder"), OAK_LADDER, map);
-        putRecipe(new Identifier("torch"), TORCH, map);
-        putRecipe(new Identifier("soul_torch"), SOUL_TORCH, map);
-        putRecipe(new Identifier("redstone_torch"), REDSTONE_TORCH, map);
-        putRecipe(new Identifier("lever"), LEVER, map);
-        putRecipe(new Identifier("tripwire_hook"), TRIPWIRE_HOOK, map);
-        putRecipe(new Identifier("rail"), RAIL, map);
-        putRecipe(new Identifier("powered_rail"), POWERED_RAIL, map);
-        putRecipe(new Identifier("activator_rail"), ACTIVATOR_RAIL, map);
-        putRecipe(new Identifier("arrow"), ARROW, map);
-        putRecipe(new Identifier("bow"), BOW, map);
-        putRecipe(new Identifier("crossbow"), CROSSBOW, map);
-        putRecipe(new Identifier("fishing_rod"), FISHING_ROD, map);
-        putRecipe(new Identifier("painting"), PAINTING, map);
-        putRecipe(new Identifier("item_frame"), ITEM_FRAME, map);
-        putRecipe(new Identifier("armor_stand"), ARMOR_STAND, map);
-
-        putRecipe(new Identifier("wooden_sword_from_stick_tag"), WOODEN_SWORD_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("stone_sword_from_stick_tag"), STONE_SWORD_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("iron_sword_from_stick_tag"), IRON_SWORD_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("golden_sword_from_stick_tag"), GOLDEN_SWORD_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("diamond_sword_from_stick_tag"), DIAMOND_SWORD_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("netherite_sword_from_stick_tag"), NETHERITE_SWORD_FROM_STICK_VARIANTS, map);
-
-        putRecipe(new Identifier("wooden_axe_from_stick_tag"), WOODEN_AXE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("stone_axe_from_stick_tag"), STONE_AXE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("iron_axe_from_stick_tag"), IRON_AXE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("golden_axe_from_stick_tag"), GOLDEN_AXE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("diamond_axe_from_stick_tag"), DIAMOND_AXE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("netherite_axe_from_stick_tag"), NETHERITE_AXE_FROM_STICK_VARIANTS, map);
-
-        putRecipe(new Identifier("wooden_pickaxe_from_stick_tag"), WOODEN_PICKAXE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("stone_pickaxe_from_stick_tag"), STONE_PICKAXE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("iron_pickaxe_from_stick_tag"), IRON_PICKAXE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("golden_pickaxe_from_stick_tag"), GOLDEN_PICKAXE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("diamond_pickaxe_from_stick_tag"), DIAMOND_PICKAXE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("netherite_pickaxe_from_stick_tag"), NETHERITE_PICKAXE_FROM_STICK_VARIANTS, map);
-
-        putRecipe(new Identifier("wooden_shovel_from_stick_tag"), WOODEN_SHOVEL_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("stone_shovel_from_stick_tag"), STONE_SHOVEL_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("iron_shovel_from_stick_tag"), IRON_SHOVEL_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("golden_shovel_from_stick_tag"), GOLDEN_SHOVEL_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("diamond_shovel_from_stick_tag"), DIAMOND_SHOVEL_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("netherite_shovel_from_stick_tag"), NETHERITE_SHOVEL_FROM_STICK_VARIANTS, map);
-
-        putRecipe(new Identifier("wooden_hoe_from_stick_tag"), WOODEN_HOE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("stone_hoe_from_stick_tag"), STONE_HOE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("iron_hoe_from_stick_tag"), IRON_HOE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("golden_hoe_from_stick_tag"), GOLDEN_HOE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("diamond_hoe_from_stick_tag"), DIAMOND_HOE_FROM_STICK_VARIANTS, map);
-        putRecipe(new Identifier("netherite_hoe_from_stick_tag"), NETHERITE_HOE_FROM_STICK_VARIANTS, map);
-
         putRecipe(NewAtbywID("terracotta_stairs_from_stick_tag"), TERRACOTTA_STAIRS, map);
         putRecipe(NewAtbywID("terracotta_slab_from_stick_tag"), TERRACOTTA_SLAB, map);
         putRecipe(NewAtbywID("terracotta_bricks_from_stick_tag"), TERRACOTTA_BRICKS, map);
