@@ -149,14 +149,7 @@ public class RedstoneLanternBlock extends LanternBlock {
 
     }
 
-    public static class BurnoutEntry {
-        private final BlockPos pos;
-        private final long time;
-
-        public BurnoutEntry(BlockPos pos, long time) {
-            this.pos = pos;
-            this.time = time;
-        }
+    public record BurnoutEntry(BlockPos pos, long time) {
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
