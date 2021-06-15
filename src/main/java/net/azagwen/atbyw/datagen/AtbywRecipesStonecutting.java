@@ -197,7 +197,7 @@ public class AtbywRecipesStonecutting {
     public static JsonObject BLUE_ICE_BRICKS_SLAB_STONECUTTING_BLUE_ICE = createStonecutterRecipe(getBlockID(Blocks.BLUE_ICE), getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_SLAB), 2);
 
 
-    public static void injectRecipes(Map<Identifier, JsonElement> map) {
+    public static void inject(Map<Identifier, JsonElement> map) {
         for (int i = 0; i < COLOR_NAMES.length; i++) {
             putRecipe(NewAtbywID(COLOR_NAMES[i] + "_terracotta_stairs_from_stonecutting"), TERRACOTTA_STAIRS_COLORS_STONECUTTING[i], map);
             putRecipe(NewAtbywID(COLOR_NAMES[i] + "_terracotta_slabs_from_stonecutting"), TERRACOTTA_SLAB_COLORS_STONECUTTING[i], map);

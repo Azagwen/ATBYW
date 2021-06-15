@@ -123,7 +123,7 @@ public class StatueVoxelShapes {
 
         //Axolotl Outlines
         final VoxelShape[][] AXOLOTL_SHAPES = {
-                makeDirectionalShapes(4.0D, 2.5D,  0.0D, 12.0D, 7.5D, 11.0D),   //Head              0
+                makeDirectionalShapes(4.0D, 2.5D,  0.0D, 12.0D, 7.5D, 5.0D),   //Head              0
                 makeDirectionalShapes(4.0D, 2.5D,  5.0D, 12.0D, 6.5D,  15.0D),  //Body              1
         };
         AXOLOTL_OUTLINES = combineDoubleArrayShapes(AXOLOTL_SHAPES);

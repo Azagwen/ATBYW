@@ -10,8 +10,6 @@ import net.azagwen.atbyw.items.AtbywItems;
 import net.azagwen.atbyw.util.Quadruplet;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
-import net.minecraft.tag.BlockTags;
-import net.minecraft.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 
@@ -288,9 +286,9 @@ public class AtbywRecipes {
     }
 
     //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
-    public static void injectRecipes(Map<Identifier, JsonElement> map) {
-        AtbywRecipesSmelting.injectRecipes(map);
-        AtbywRecipesStonecutting.injectRecipes(map);
+    public static void inject(Map<Identifier, JsonElement> map) {
+        AtbywRecipesSmelting.inject(map);
+        AtbywRecipesStonecutting.inject(map);
 
         // Multi recipes
         for (int i = 0; i < FLOWER_NAMES.length; i++) {
