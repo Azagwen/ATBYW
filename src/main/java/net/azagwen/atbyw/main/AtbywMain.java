@@ -9,11 +9,14 @@ import net.azagwen.atbyw.group.AtbywItemGroup;
 import net.azagwen.atbyw.items.AtbywItems;
 import net.azagwen.atbyw.world.AtbywWorldGen;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,6 +47,11 @@ public class AtbywMain implements ModInitializer {
 	public static ArrayList<Item> REDSTONE_TAB = Lists.newArrayList(); 	//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
 	public static ArrayList<Item> MISC_TAB = Lists.newArrayList(); 		//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
 
+	public static ItemGroup ATBYW_BLOCKS; 		//Unused, kept for testing.
+	public static ItemGroup ATBYW_DECO; 		//Unused, kept for testing.
+	public static ItemGroup ATBYW_REDSTONE; 	//Unused, kept for testing.
+	public static ItemGroup ATBYW_MISC; 		//Unused, kept for testing.
+
 	public static boolean enable_mod_interactions() {
 		boolean a = isModLoaded("betternether");
 		boolean b = isModLoaded("betterend");
@@ -67,6 +75,11 @@ public class AtbywMain implements ModInitializer {
 		AtbywRecipes.init();
 		AtbywWorldGen.init();
 		AtbywRRP.init();
+
+		ATBYW_BLOCKS = FabricItemGroupBuilder.create(new Identifier("a")).icon(() -> new ItemStack(Items.ACACIA_FENCE)).build();
+		ATBYW_DECO = FabricItemGroupBuilder.create(new Identifier("a")).icon(() -> new ItemStack(Items.ACACIA_FENCE)).build();
+		ATBYW_REDSTONE = FabricItemGroupBuilder.create(new Identifier("a")).icon(() -> new ItemStack(Items.ACACIA_FENCE)).build();
+		ATBYW_MISC = FabricItemGroupBuilder.create(new Identifier("a")).icon(() -> new ItemStack(Items.ACACIA_FENCE)).build();
 
 		ATBYW_GROUP = new AtbywItemGroup(NewAtbywID("atbyw"));
 

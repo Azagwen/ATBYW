@@ -144,6 +144,14 @@ public class AtbywAdvancements {
         return advancement;
     }
 
+    /**
+     * Unused as of now, can be used to register recipe advancements separately
+     *
+     * @param map the map the advancement will be added to.
+     * @param id identifier of the recipe the advancement is tied to.
+     * @param element Json of the recipe the advancement is tied to.
+     *
+     **/
     public static void translateRecipes(Map<Identifier, JsonElement> map, Identifier id, JsonElement element) {
         var object = element.getAsJsonObject();
         if (object.has("type")) {
@@ -166,11 +174,14 @@ public class AtbywAdvancements {
         }
     }
 
+    public static void unlockAllRecipes(Map<Identifier, JsonElement> map) {
+        var recipeMap = Maps.<Identifier, JsonElement>newConcurrentMap();
+        AtbywRecipes.inject(recipeMap);
+        recipeMap.forEach((id, element) -> translateRecipes(map, id, element));
+    }
+
     //Used in net.azagwen.atbyw.mixin.ServerAdvancementLoaderMixin
     public static void inject(Map<Identifier, JsonElement> map) {
-//        var recipeMap = Maps.<Identifier, JsonElement>newConcurrentMap();
-//        AtbywRecipes.inject(recipeMap);
-//        recipeMap.forEach((id, element) -> translateRecipes(map, id, element));
         recipeMap.forEach(map::put);
         LOGGER.info("Atbyw Recipe Advancements built");
     }
