@@ -1,4 +1,24 @@
--- Changelog --
+-- 1.5.2 Changelog --
+
+Changes
+- Changed ladder variants recipes to use planks instead of sticks
+- Changed statue recipes to be less expensive
+
+Removed items
+- Removed all stick variants except for Bamboo
+- Removed Bee essence
+- Removed Silverfish essence
+- Removed Endermite essence
+- Removed Wolf essence
+- Removed Cat essence
+- Removed Fox essence
+- Removed crafting table recipes for statues that don't loot
+
+Additions
+- Added Axolotl Statue
+- Added Stonecutting recipes for statues that don't loot
+
+-- 1.4.1 Changelog --
 
 Changes
 - Changed Basalt Bricks texture

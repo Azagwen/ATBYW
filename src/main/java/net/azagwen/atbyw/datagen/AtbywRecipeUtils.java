@@ -21,9 +21,9 @@ public class AtbywRecipeUtils {
         return new Identifier(namespace, nameArray[nameIndex] + "_" + path);
     }
 
-    protected static void putRecipe(Identifier identifier, JsonElement recipe, Map<Identifier, JsonElement> map) {
+    protected static void putRecipe(AtbywRecipe recipe, Map<Identifier, JsonElement> map) {
         if (recipe != null) {
-            map.put(identifier, recipe);
+            map.put(recipe.getIdentifier(), recipe.getJson());
         }
     }
 }

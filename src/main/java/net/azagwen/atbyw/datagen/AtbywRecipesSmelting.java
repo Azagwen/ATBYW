@@ -20,7 +20,7 @@ public class AtbywRecipesSmelting {
     private static final String BLASTING = "minecraft:blasting";
     private static final String SMOKING = "minecraft:smoking";
 
-    public static JsonObject createSmeltingRecipe(String type, ArrayList<Identifier> ingredient, Identifier output, double xp, int time) {
+    public static AtbywRecipe createSmeltingRecipe(Identifier recipeId, String type, ArrayList<Identifier> ingredient, Identifier output, double xp, int time) {
         JsonObject json = new JsonObject();
 
         json.addProperty("type", type);
@@ -37,27 +37,33 @@ public class AtbywRecipesSmelting {
         json.addProperty("experience", xp);
         json.addProperty("cookingtime", time);
 
-        return json;
+        AtbywAdvancements.recipeMap.put(recipeId, AtbywAdvancements.unlockSingleIngredientRecipe(json, recipeId));
+        return new AtbywRecipe(json, recipeId);
     }
 
-    private static JsonObject[] createMultiSmeltingRecipes(String type, ArrayList<Pair<String, String>> ingredient, Pair<String, String> result, double xp, int time) {
-        JsonObject[] obj = new JsonObject[COLOR_NAMES.length];
-        Identifier[] ing = new Identifier[ingredient.size()];
+    private static AtbywRecipe[] createMultiSmeltingRecipes(Identifier recipeId, String type, ArrayList<Pair<String, String>> ingredients, Pair<String, String> result, double xp, int time) {
+        AtbywRecipe[] obj = new AtbywRecipe[COLOR_NAMES.length];
+        Identifier[] ing = new Identifier[ingredients.size()];
 
-        for (int i = 0; i < COLOR_NAMES.length; i++) {
-            for (int j = 0; j < ingredient.size(); j++) {
-                ing[j] = getItemPseudoID(COLOR_NAMES, i, ingredient.get(j).getLeft(), ingredient.get(j).getRight());
+        int i = 0;
+        for (var COLOR : COLOR_NAMES) {
+            var newRecipeId = new Identifier(recipeId.getNamespace(), COLOR + recipeId.getPath());
+            int j = 0;
+            for (var ingredient : ingredients) {
+                ing[j] = getItemPseudoID(COLOR_NAMES, i, ingredient.getLeft(), ingredient.getRight());
+                j++;
             }
-            obj[i] = createSmeltingRecipe(type, Lists.newArrayList(ing), getItemPseudoID(COLOR_NAMES, i, result.getLeft(), result.getRight()), xp, time);
+            obj[i] = createSmeltingRecipe(newRecipeId, type, Lists.newArrayList(ing), getItemPseudoID(COLOR_NAMES, i, result.getLeft(), result.getRight()), xp, time);
+            i++;
         }
 
         return obj;
     }
 
-    public static JsonObject SMOOTH_PURPUR_BLOCK_SMELTING = createSmeltingRecipe(SMELTING, Lists.newArrayList(getBlockID(Blocks.PURPUR_BLOCK)), getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), 0.1D, 200);
+    public static AtbywRecipe SMOOTH_PURPUR_BLOCK_SMELTING = createSmeltingRecipe(NewAtbywID("smooth_purpur_block_smelting"), SMELTING, Lists.newArrayList(getBlockID(Blocks.PURPUR_BLOCK)), getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), 0.1D, 200);
 
     //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
     public static void inject(Map<Identifier, JsonElement> map) {
-        putRecipe(NewAtbywID("smooth_purpur_block_smelting"), SMOOTH_PURPUR_BLOCK_SMELTING, map);
+        putRecipe(SMOOTH_PURPUR_BLOCK_SMELTING, map);
     }
 }

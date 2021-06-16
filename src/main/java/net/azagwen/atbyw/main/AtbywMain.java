@@ -24,9 +24,7 @@ public class AtbywMain implements ModInitializer {
 	public static final String mcNameSpace = "minecraft";
 	public static final String AtbywNamespace = "atbyw";
 	public static final String modInteractionNameSpace = "atbyw_mi";
-	public static final Logger LOGGER  = LogManager.getLogger();
-
-	//TODO: find a way to make ItemTabs not exclusively tied to item tags.
+	public static final Logger LOGGER  = LogManager.getLogger("Atbyw Main");
 
 	public static Identifier NewAtbywID(String path) {
 		return new Identifier(AtbywNamespace, path);
@@ -45,11 +43,6 @@ public class AtbywMain implements ModInitializer {
 	public static ArrayList<Item> DECO_TAB = Lists.newArrayList(); 		//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
 	public static ArrayList<Item> REDSTONE_TAB = Lists.newArrayList(); 	//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
 	public static ArrayList<Item> MISC_TAB = Lists.newArrayList(); 		//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
-
-	public static ItemGroup ATBYW_BLOCKS; 		//Unused, kept for testing.
-	public static ItemGroup ATBYW_DECO; 		//Unused, kept for testing.
-	public static ItemGroup ATBYW_REDSTONE; 	//Unused, kept for testing.
-	public static ItemGroup ATBYW_MISC; 		//Unused, kept for testing.
 
 	public static boolean enable_mod_interactions() {
 		boolean a = isModLoaded("betternether");

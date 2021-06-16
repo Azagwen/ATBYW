@@ -55,8 +55,7 @@ dependencies {
 	include group: "net.devtech", name: "arrp", version: "${project.arrp_version}"				//API
 
 	//LamdDynamicLights
-	modImplementation "dev.lambdaurora:lambdynamiclights:${project.Lambdynamiclights_version}"	//API
-	include "dev.lambdaurora:lambdynamiclights:${project.Lambdynamiclights_version}"			//API
+	modApi "dev.lambdaurora:lambdynamiclights:${project.Lambdynamiclights_version}"				//API
 }
 
 minecraft {

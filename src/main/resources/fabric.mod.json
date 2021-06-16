@@ -3,7 +3,7 @@
   "id": "atbyw",
   "version": "${version}",
   "name": "All The Blocks You Want (ATBYW)",
-  "description": "Adds decorative and utility blocks, alongside a few items.",
+  "description": "All The Blocks You Want is a Minecraft Fabric mod that aims to make Minecraft's block lineup more rich and varied, it adds building blocks, utility blocks and redstone components of all sorts.",
   "authors": [
     "Azagwen"
   ],
@@ -35,7 +35,7 @@
   "depends": {
     "fabricloader": ">=0.10.8",
     "fabric": "*",
-    "minecraft": "1.17"
+    "minecraft": "~1.17"
   },
   "suggests": {
     "flamingo": "*"

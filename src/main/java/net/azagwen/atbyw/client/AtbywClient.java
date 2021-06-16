@@ -45,25 +45,25 @@ public class AtbywClient implements ClientModInitializer {
     @Environment(EnvType.CLIENT)
     public void receiveEntityPacket() {
         ClientSidePacketRegistryImpl.INSTANCE.register(PacketID, (ctx, byteBuf) -> {
-            EntityType<?> et = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
-            UUID uuid = byteBuf.readUuid();
-            int entityId = byteBuf.readVarInt();
-            Vec3d pos = EntitySpawnPacket.PacketBufUtil.readVec3d(byteBuf);
-            float pitch = EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf);
-            float yaw = EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf);
+            var entityType = Registry.ENTITY_TYPE.get(byteBuf.readVarInt());
+            var uuid = byteBuf.readUuid();
+            var entityId = byteBuf.readVarInt();
+            var pos = EntitySpawnPacket.PacketBufUtil.readVec3d(byteBuf);
+            var pitch = EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf);
+            var yaw = EntitySpawnPacket.PacketBufUtil.readAngle(byteBuf);
             ctx.getTaskQueue().execute(() -> {
                 if (MinecraftClient.getInstance().world == null)
                     throw new IllegalStateException("Tried to spawn entity in a null world!");
-                Entity e = et.create(MinecraftClient.getInstance().world);
-                if (e == null)
-                    throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(et) + "\"!");
-                e.updateTrackedPosition(pos);
-                e.setPos(pos.x, pos.y, pos.z);
-                e.setPitch(pitch);
-                e.setYaw(yaw);
-                e.setId(entityId);
-                e.setUuid(uuid);
-                MinecraftClient.getInstance().world.addEntity(entityId, e);
+                var entity = entityType.create(MinecraftClient.getInstance().world);
+                if (entity == null)
+                    throw new IllegalStateException("Failed to create instance of entity \"" + Registry.ENTITY_TYPE.getId(entityType) + "\"!");
+                entity.updateTrackedPosition(pos);
+                entity.setPos(pos.x, pos.y, pos.z);
+                entity.setPitch(pitch);
+                entity.setYaw(yaw);
+                entity.setId(entityId);
+                entity.setUuid(uuid);
+                MinecraftClient.getInstance().world.addEntity(entityId, entity);
             });
         });
     }
@@ -86,9 +86,9 @@ public class AtbywClient implements ClientModInitializer {
             return GrassColors.getColor(0.5D, 1.0D);
         }, AtbywBlocks.GRASS_BLOCK_STAIRS, AtbywBlocks.GRASS_BLOCK_SLAB);
 
-        for (Item item : ESSENCE_BOTTLES) {
+        for (var item : ESSENCE_BOTTLES) {
             ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
-                return tintIndex > 0 ? -1 : ((EssenceItem) item).getColor();
+                return tintIndex > 0 ? -1 : item.getColor();
             }, item);
         }
 
