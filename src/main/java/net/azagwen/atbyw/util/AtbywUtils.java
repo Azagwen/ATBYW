@@ -68,7 +68,6 @@ public record AtbywUtils() {
         return array;
     }
 
-
     public static Identifier getItemID(Item item) {
         return Registry.ITEM.getId(item);
     }

@@ -1,21 +1,17 @@
 package net.azagwen.atbyw.datagen;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.*;
 import net.azagwen.atbyw.main.AtbywMain;
-import net.azagwen.atbyw.util.AtbywUtils;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
 
-import java.util.List;
 import java.util.Map;
 
 public class AtbywAdvancements {
 
     public static JsonObject inventoryChangedCriteria(String identifier) {
         var obj = new JsonObject();
-        obj.addProperty("trigger", "minecraft:recipe_unlocked");
+        obj.addProperty("trigger", "minecraft:inventory_changed");
 
         var itemChildArray = new JsonArray();
         itemChildArray.add(identifier);
@@ -55,21 +51,18 @@ public class AtbywAdvancements {
         var criteria = new JsonObject();
         criteria.add("has_the_recipe", hasTheRecipe);
 
+        var requirements = new JsonArray();
         if (recipe.has("key")) {
-            var keys = recipe.get("key").getAsJsonObject();
-            var elements = keys.entrySet();
-            for (var element : elements) {
-                var currentKey = element.getValue().getAsJsonObject();
-                var keyContent = currentKey.entrySet();
+            var keys = recipe.get("key").getAsJsonObject().entrySet();
+            for (var key : keys) {
+                var keyContent = key.getValue().getAsJsonObject().entrySet();
                 for (var content : keyContent) {
                     var id = content.getValue().getAsString();
-                    criteria.add("has_" + id, inventoryChangedCriteria(id));
+                    criteria.add("has_" + id.split(":")[1], inventoryChangedCriteria(id));
+                    requirements.add("has_" + id.split(":")[1]);
                 }
             }
         }
-
-        var requirements = new JsonArray();
-        requirements.add("has_item");
         requirements.add("has_the_recipe");
 
         var requirementArray = new JsonArray();
@@ -91,12 +84,12 @@ public class AtbywAdvancements {
         Map<Identifier, JsonElement> recipeMap = Maps.newConcurrentMap();
         AtbywRecipes.inject(recipeMap);
         recipeMap.forEach((id, element) -> {
-            var object = element.getAsJsonObject();
-            if (object.has("type")) {
-                if (object.get("type").getAsString().contains("minecraft:crafting_shaped")) {
-                    map.put(id, createRecipeAdvancementFromShapedRecipe(element.getAsJsonObject(), id));
-                }
-            }
+            map.put(id, createRecipeAdvancementFromShapedRecipe(element.getAsJsonObject(), id));
+//            var object = element.getAsJsonObject();
+//            if (object.has("type")) {
+//                if (object.get("type").getAsString().contains("minecraft:crafting_shaped")) {
+//                }
+//            }
         });
     }
 }
