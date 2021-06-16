@@ -3,6 +3,7 @@ package net.azagwen.atbyw.datagen;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.gson.*;
+import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.AtbywUtils;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
@@ -61,7 +62,7 @@ public class AtbywAdvancements {
                 var currentKey = element.getValue().getAsJsonObject();
                 var keyContent = currentKey.entrySet();
                 for (var content : keyContent) {
-                    var id = content.getValue().getAsString().split(":")[1];
+                    var id = content.getValue().getAsString();
                     criteria.add("has_" + id, inventoryChangedCriteria(id));
                 }
             }
@@ -80,7 +81,7 @@ public class AtbywAdvancements {
         advancement.add("criteria", criteria);
         advancement.add("requirements", requirementArray);
 
-//        AtbywMain.LOGGER.info(builder.toJson(advancement));
+        AtbywMain.LOGGER.info(builder.toJson(advancement));
 
         return advancement;
     }
