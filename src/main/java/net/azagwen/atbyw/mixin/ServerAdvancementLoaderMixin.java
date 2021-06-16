@@ -1,10 +1,7 @@
 package net.azagwen.atbyw.mixin;
 
 import com.google.gson.JsonElement;
-import net.azagwen.atbyw.datagen.AdvancementTesting;
 import net.azagwen.atbyw.datagen.AtbywAdvancements;
-import net.azagwen.atbyw.datagen.AtbywRecipes;
-import net.minecraft.recipe.RecipeManager;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.server.ServerAdvancementLoader;
 import net.minecraft.util.Identifier;

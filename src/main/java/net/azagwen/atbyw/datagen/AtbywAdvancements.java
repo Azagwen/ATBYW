@@ -3,70 +3,67 @@ package net.azagwen.atbyw.datagen;
 import com.google.common.collect.Maps;
 import com.google.gson.*;
 import net.azagwen.atbyw.main.AtbywMain;
+import net.azagwen.atbyw.util.AtbywUtils;
 import net.minecraft.util.Identifier;
 
 import java.util.Map;
 
 public class AtbywAdvancements {
 
-    public static JsonObject inventoryChangedCriteria(String identifier) {
+    public static JsonObject hasTheRecipeCriteria(Identifier reward) {
+        var recipeCondition = new JsonObject();
+        var hasTheRecipe = new JsonObject();
+
+        recipeCondition.addProperty("recipe", reward.toString());
+        hasTheRecipe.addProperty("trigger", "minecraft:recipe_unlocked");
+        hasTheRecipe.add("conditions", recipeCondition);
+
+        return hasTheRecipe;
+    }
+
+    public static JsonObject inventoryChangedCriteria(String identifier, String keyType) {
         var obj = new JsonObject();
-        obj.addProperty("trigger", "minecraft:inventory_changed");
-
-        var itemChildArray = new JsonArray();
-        itemChildArray.add(identifier);
-
         var itemChild = new JsonObject();
-        itemChild.add("items", itemChildArray);
-
-        var items = new JsonArray();
-        items.add(itemChild);
-
         var conditions = new JsonObject();
-        conditions.add("items", items);
 
+        obj.addProperty("trigger", "minecraft:inventory_changed");
+        if (keyType.equals("item")) {
+            itemChild.add("items", AtbywUtils.jsonArray(identifier));
+        } else if (keyType.equals("tag")) {
+            itemChild.addProperty("tag", identifier);
+        }
+        conditions.add("items", AtbywUtils.jsonArray(itemChild));
         obj.add("conditions", conditions);
 
         return obj;
     }
 
-    public static JsonObject createRecipeAdvancementFromShapedRecipe(JsonObject recipe, Identifier reward) {
+    public static JsonObject unlockShapedRecipe(JsonObject recipe, Identifier reward) {
         var builder = new GsonBuilder().setPrettyPrinting().create();
+        var criteria = new JsonObject();
+        criteria.add("has_the_recipe", hasTheRecipeCriteria(reward));
 
         //Rewards
-        var rewardsArray = new JsonArray();
-        rewardsArray.add(reward.toString());
-
         var rewardsObject = new JsonObject();
-        rewardsObject.add("recipes", rewardsArray);
+        rewardsObject.add("recipes", AtbywUtils.jsonArray(reward.toString()));
 
-        //Has the recipe
-        var recipeCondition = new JsonObject();
-        recipeCondition.addProperty("recipe", reward.toString());
-
-        var hasTheRecipe = new JsonObject();
-        hasTheRecipe.addProperty("trigger", "minecraft:recipe_unlocked");
-        hasTheRecipe.add("conditions", recipeCondition);
-
-        var criteria = new JsonObject();
-        criteria.add("has_the_recipe", hasTheRecipe);
-
+        //Deserialize and add ingredients to inventoryChangedCriteria and requirements
         var requirements = new JsonArray();
         if (recipe.has("key")) {
             var keys = recipe.get("key").getAsJsonObject().entrySet();
             for (var key : keys) {
                 var keyContent = key.getValue().getAsJsonObject().entrySet();
                 for (var content : keyContent) {
-                    var id = content.getValue().getAsString();
-                    criteria.add("has_" + id.split(":")[1], inventoryChangedCriteria(id));
-                    requirements.add("has_" + id.split(":")[1]);
+                    var item = content.getValue().getAsString();
+                    var type = content.getKey();
+                    criteria.add("has_" + item.split(":")[1], inventoryChangedCriteria(item, type));
+                    requirements.add("has_" + item.split(":")[1]);
                 }
             }
         }
         requirements.add("has_the_recipe");
 
-        var requirementArray = new JsonArray();
-        requirementArray.add(requirements);
+        var requirementArray = AtbywUtils.jsonArray(requirements);
 
         var advancement = new JsonObject();
         advancement.addProperty("parent", "recipes/root");
@@ -74,7 +71,38 @@ public class AtbywAdvancements {
         advancement.add("criteria", criteria);
         advancement.add("requirements", requirementArray);
 
-        AtbywMain.LOGGER.info(builder.toJson(advancement));
+        return advancement;
+    }
+
+    public static JsonObject unlockSingleIngredientRecipe(JsonObject recipe, Identifier reward) {
+        var builder = new GsonBuilder().setPrettyPrinting().create();
+        var criteria = new JsonObject();
+        criteria.add("has_the_recipe", hasTheRecipeCriteria(reward));
+
+        //Rewards
+        var rewardsObject = new JsonObject();
+        rewardsObject.add("recipes", AtbywUtils.jsonArray(reward.toString()));
+
+        //Deserialize and add ingredients to inventoryChangedCriteria and requirements
+        var requirements = new JsonArray();
+        if (recipe.has("ingredient")) {
+            var ingredients = recipe.get("ingredient").getAsJsonObject().entrySet();
+            for (var ingredient : ingredients) {
+                var item = ingredient.getValue().getAsString();
+                var type = ingredient.getKey();
+                criteria.add("has_" + item.split(":")[1], inventoryChangedCriteria(item, type));
+                requirements.add("has_" + item.split(":")[1]);
+            }
+        }
+        requirements.add("has_the_recipe");
+
+        var requirementArray = AtbywUtils.jsonArray(requirements);
+
+        var advancement = new JsonObject();
+        advancement.addProperty("parent", "recipes/root");
+        advancement.add("rewards", rewardsObject);
+        advancement.add("criteria", criteria);
+        advancement.add("requirements", requirementArray);
 
         return advancement;
     }
@@ -84,12 +112,16 @@ public class AtbywAdvancements {
         Map<Identifier, JsonElement> recipeMap = Maps.newConcurrentMap();
         AtbywRecipes.inject(recipeMap);
         recipeMap.forEach((id, element) -> {
-            map.put(id, createRecipeAdvancementFromShapedRecipe(element.getAsJsonObject(), id));
-//            var object = element.getAsJsonObject();
-//            if (object.has("type")) {
-//                if (object.get("type").getAsString().contains("minecraft:crafting_shaped")) {
-//                }
-//            }
+            var object = element.getAsJsonObject();
+            if (object.has("type")) {
+                String type = object.get("type").getAsString();
+                if (type.contains("minecraft:crafting_shaped")) {
+                    map.put(id, unlockShapedRecipe(element.getAsJsonObject(), id));
+                }
+                if (type.contains("minecraft:stonecutting") || type.contains("minecraft:smelting") || type.contains("minecraft:smoking") || type.contains("campfire_cooking")) {
+                    map.put(id, unlockSingleIngredientRecipe(element.getAsJsonObject(), id));
+                }
+            }
         });
     }
 }
