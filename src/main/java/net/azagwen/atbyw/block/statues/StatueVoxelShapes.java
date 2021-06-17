@@ -16,6 +16,8 @@ public class StatueVoxelShapes {
     public static final VoxelShape DEFAULT_COLLISIONS = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);
     public static final VoxelShape[] BEE_OUTLINES;
     public static final VoxelShape[] BEE_COLLISIONS;
+    public static final VoxelShape[] BAT_OUTLINES;
+    public static final VoxelShape[] BAT_COLLISIONS;
     public static final VoxelShape[] SILVERFISH_OUTLINES;
     public static final VoxelShape[] ENDERMITE_OUTLINES;
     public static final VoxelShape[] SHULKER_OUTLINES;
@@ -76,6 +78,27 @@ public class StatueVoxelShapes {
     }
 
     static {
+
+        //Pedestal shapes
+        final VoxelShape[][] PEDESTAL_SHAPES = {
+                makeDirectionalShapes(2.0D, 0.0D, 2.0D, 14.0D, 1.0D, 14.0D),    //Slab          0
+                makeDirectionalShapes(6.5D, 1.0D, 6.5D,  9.5D, 2.0D,  9.5D),    //Rod Socket    1
+                makeDirectionalShapes(7.5D, 2.0D, 7.5D,  8.5D, 8.0D,  8.5D)     //Rod           2
+        };
+        final VoxelShape[] PEDESTAL_SHAPE = combineDoubleArrayShapes(PEDESTAL_SHAPES);
+
+        //Bat Shapes
+        final VoxelShape[][] BAT_SHAPES = {
+                makeDirectionalShapes(6.5D, 11.00D, 5.00D,  9.5D, 14.00D,   8.00D),   //Head        0
+                makeDirectionalShapes(8.5D, 13.50D, 5.50D, 10.0D, 15.50D,   6.00D),   //Ear_Left    1
+                makeDirectionalShapes(6.0D, 13.50D, 5.50D,  7.5D, 15.50D,   6.00D),   //Ear_Right   2
+                makeDirectionalShapes(6.5D,  9.50D, 5.50D,  9.5D, 11.00D,   9.00D),   //Body_0      3
+                makeDirectionalShapes(6.5D,  8.25D, 6.75D,  9.5D,  9.75D,  10.25D),   //Body_1      4
+                makeDirectionalShapes(6.5D,  7.00D, 8.00D,  9.5D,  8.50D,  11.50D),   //Body_2      5
+                PEDESTAL_SHAPE
+        };
+        BAT_OUTLINES = combineDoubleArrayShapes(BAT_SHAPES);
+        BAT_COLLISIONS = combineDoubleArrayShapes(new VoxelShape[][] {BAT_SHAPES[0], BAT_SHAPES[3], BAT_SHAPES[4], BAT_SHAPES[5]});
 
         //Bee Shapes
         final VoxelShape[][] BEE_SHAPES = {
@@ -192,33 +215,25 @@ public class StatueVoxelShapes {
         };
         FOX_OUTLINES = combineDoubleArrayShapes(FOX_SHAPES);
 
-        //Fish pedestal shapes
-        final VoxelShape[][] FISH_PEDESTAL_SHAPES = {
-                makeDirectionalShapes(2.0D, 0.0D, 2.0D, 14.0D, 1.0D, 14.0D),    //Slab          0
-                makeDirectionalShapes(6.5D, 1.0D, 6.5D,  9.5D, 2.0D,  9.5D),    //Rod Socket    1
-                makeDirectionalShapes(7.5D, 2.0D, 7.5D,  8.5D, 8.0D,  8.5D)     //Rod           2
-        };
-        final VoxelShape[] FISH_PEDESTAL_SHAPE = combineDoubleArrayShapes(FISH_PEDESTAL_SHAPES);
-
         //Cod Outlines
         final VoxelShape[][] COD_SHAPES = {
                 makeDirectionalShapes(7.0D, 9.0D, 2.0D, 9.0D, 12.0D,  3.0D),
                 makeDirectionalShapes(7.0D, 8.0D, 3.0D, 9.0D, 12.0D, 13.0D),
-                FISH_PEDESTAL_SHAPE
+                PEDESTAL_SHAPE
         };
         COD_OUTLINES = combineDoubleArrayShapes(COD_SHAPES);
 
         //Salmon Outlines
         final VoxelShape[][] SALMON_SHAPES = {
                 makeDirectionalShapes(6.5D, 8.0D, 0.0D,  9.5D, 13.0D, 16.0D),
-                FISH_PEDESTAL_SHAPE
+                PEDESTAL_SHAPE
         };
         SALMON_OUTLINES = combineDoubleArrayShapes(SALMON_SHAPES);
 
         //Pufferfish Outlines
         final VoxelShape[][] PUFFER_FISH_SHAPES = {
                 makeDirectionalShapes(3.5D, 6.5D, 3.5D,  12.5D, 15.5D, 12.5D),
-                FISH_PEDESTAL_SHAPE
+                PEDESTAL_SHAPE
         };
         PUFFER_FISH_OUTLINES = combineDoubleArrayShapes(PUFFER_FISH_SHAPES);
 

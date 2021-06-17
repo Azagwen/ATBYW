@@ -18,8 +18,8 @@ import java.util.List;
 public class WaxedShulkerStatueBlock extends WaxedStatueBlock{
     public static final BooleanProperty OPEN;
 
-    public WaxedShulkerStatueBlock(List<Block> waxedStates, StatueBlockMobType mobType, Settings settings) {
-        super(waxedStates, mobType, settings);
+    public WaxedShulkerStatueBlock(int mossLevel, List<Block> waxedStates, StatueBlockMobType mobType, Settings settings) {
+        super(mossLevel, waxedStates, mobType, settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(OPEN, true).with(FACING, Direction.NORTH).with(WATERLOGGED, false));
     }
 

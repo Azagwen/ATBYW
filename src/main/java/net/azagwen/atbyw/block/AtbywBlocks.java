@@ -269,10 +269,10 @@ public class AtbywBlocks {
     public static final Block COARSE_DIRT_STAIRS = new DirtStairsBlock(true, Blocks.COARSE_DIRT, FabricBlockSettings.of(Material.SOIL, MapColor.DIRT_BROWN).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
     public static final Block PODZOL_STAIRS = new DirtStairsBlock(true, Blocks.PODZOL, FabricBlockSettings.of(Material.SOIL, MapColor.SPRUCE_BROWN).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
     public static final Block GRASS_PATH_STAIRS = new GrassPathStairsBlock(Blocks.DIRT_PATH, FabricBlockSettings.copyOf(Blocks.DIRT_PATH).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block ROOTED_DIRT_STAIRS = new RootedDirtStairsBlock(Blocks.ROOTED_DIRT, FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT).breakByTool(FabricToolTags.SHOVELS));
     public static final Block NETHERRACK_STAIRS = new NetherrackStairsBlock(Blocks.NETHERRACK, FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block CRIMSON_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.CRIMSON_NYLIUM, FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block WARPED_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.WARPED_NYLIUM, FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ROOTED_DIRT_STAIRS = new RootedDirtStairsBlock(Blocks.ROOTED_DIRT, FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT).breakByTool(FabricToolTags.SHOVELS));
 
     public static final Block DIRT_SLAB = new TickingDirtSlabBlock(true, FabricBlockSettings.copyOf(TICKING_DIRT));
     public static final Block GRASS_BLOCK_SLAB = new SpreadableSlabBlock(true, Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
@@ -280,10 +280,10 @@ public class AtbywBlocks {
     public static final Block COARSE_DIRT_SLAB = new DirtSlabBlock(true, FabricBlockSettings.copyOf(Blocks.COARSE_DIRT).breakByTool(FabricToolTags.SHOVELS));
     public static final Block PODZOL_SLAB = new DirtSlabBlock(true, FabricBlockSettings.copyOf(Blocks.PODZOL).breakByTool(FabricToolTags.SHOVELS));
     public static final Block GRASS_PATH_SLAB = new GrassPathSlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT_PATH).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block ROOTED_DIRT_SLAB = new RootedDirtSlabBlock(FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT).breakByTool(FabricToolTags.SHOVELS));
     public static final Block NETHERRACK_SLAB = new NetherrackSlabBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block CRIMSON_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block WARPED_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block ROOTED_DIRT_SLAB = new RootedDirtSlabBlock(FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT).breakByTool(FabricToolTags.SHOVELS));
 
     public static final Block GRANITE_TILES = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block DIORITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
@@ -333,6 +333,14 @@ public class AtbywBlocks {
 
     public static final Block REDSTONE_JACK_O_LANTERN = new RedstoneJackOlantern(FabricBlockSettings.of(Material.GOURD, MapColor.ORANGE).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance(createLightLevelFromBlockState(7, RedstoneJackOlantern.LIT)).solidBlock(AtbywBlocks::never).allowsSpawning(AtbywBlocks::always));
     public static final Block SOUL_JACK_O_LANTERN = new CarvedPumpkinBlockSubClass(FabricBlockSettings.of(Material.GOURD, MapColor.ORANGE).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance((state) -> 10).allowsSpawning(AtbywBlocks::always));
+
+    public static final Block SAND_SLAB = new FallingSlabBlock(14406560, FabricBlockSettings.copyOf(Blocks.SAND).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block RED_SAND_SLAB = new FallingSlabBlock(11098145, FabricBlockSettings.copyOf(Blocks.RED_SAND).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block GRAVEL_SLAB = new FallingSlabBlock(-8356741, FabricBlockSettings.copyOf(Blocks.GRAVEL).breakByTool(FabricToolTags.SHOVELS));
+
+    public static final Block SAND_STAIRS = new FallingStairsBlock(14406560, Blocks.SAND, SAND_SLAB, FabricBlockSettings.copyOf(Blocks.SAND).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block RED_SAND_STAIRS = new FallingStairsBlock(11098145, Blocks.RED_SAND, RED_SAND_SLAB, FabricBlockSettings.copyOf(Blocks.RED_SAND).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block GRAVEL_STAIRS = new FallingStairsBlock(-8356741, Blocks.GRAVEL, GRAVEL_SLAB, FabricBlockSettings.copyOf(Blocks.GRAVEL).breakByTool(FabricToolTags.SHOVELS));
 
     //Non-Full Blocks
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MapColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
@@ -445,6 +453,9 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "crimson_nylium_stairs", CRIMSON_NYLIUM_STAIRS);
         registerBlock(false, BLOCKS_TAB, "warped_nylium_stairs", WARPED_NYLIUM_STAIRS);
         registerBlock(false, BLOCKS_TAB, "netherrack_stairs", NETHERRACK_STAIRS);
+        registerBlock(false, BLOCKS_TAB, "sand_stairs", SAND_STAIRS);
+        registerBlock(false, BLOCKS_TAB, "red_sand_stairs", RED_SAND_STAIRS);
+        registerBlock(false, BLOCKS_TAB, "gravel_stairs", GRAVEL_STAIRS);
 
         registerBlock(false, BLOCKS_TAB, "grass_block_slab", GRASS_BLOCK_SLAB);
         registerBlock(false, BLOCKS_TAB, "dirt_slab", DIRT_SLAB);
@@ -456,6 +467,9 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "crimson_nylium_slab", CRIMSON_NYLIUM_SLAB);
         registerBlock(false, BLOCKS_TAB, "warped_nylium_slab", WARPED_NYLIUM_SLAB);
         registerBlock(false, BLOCKS_TAB, "netherrack_slab", NETHERRACK_SLAB);
+        registerBlock(false, BLOCKS_TAB, "sand_slab", SAND_SLAB);
+        registerBlock(false, BLOCKS_TAB, "red_sand_slab", RED_SAND_SLAB);
+        registerBlock(false, BLOCKS_TAB, "gravel_slab", GRAVEL_SLAB);
 
         registerBlock(false, BLOCKS_TAB, "soul_jack_o_lantern", SOUL_JACK_O_LANTERN);
 

@@ -4,3 +4,4 @@ extendable method net/minecraft/util/shape/VoxelShape <init> (Lnet/minecraft/uti
 accessible field net/minecraft/util/shape/VoxelShape voxels Lnet/minecraft/util/shape/VoxelSet;
 accessible method net/minecraft/util/shape/VoxelShape getPointPositions (Lnet/minecraft/util/math/Direction$Axis;)Lit/unimi/dsi/fastutil/doubles/DoubleList;
 accessible field net/minecraft/client/gui/screen/Screen children Ljava/util/List;
+accessible method net/minecraft/block/StairsBlock getStairShape (Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/enums/StairShape;

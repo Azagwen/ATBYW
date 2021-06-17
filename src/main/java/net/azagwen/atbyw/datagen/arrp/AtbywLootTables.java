@@ -327,7 +327,10 @@ public class AtbywLootTables {
                 AtbywBlocks.GRANITE_TILES_SLAB,
                 AtbywBlocks.DIORITE_BRICKS_SLAB,
                 AtbywBlocks.ANDESITE_BRICKS_SLAB,
-                AtbywBlocks.ROOTED_DIRT_SLAB
+                AtbywBlocks.ROOTED_DIRT_SLAB,
+                AtbywBlocks.SAND_SLAB,
+                AtbywBlocks.RED_SAND_SLAB,
+                AtbywBlocks.GRAVEL_SLAB
         ));
 
         blocksDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
@@ -630,7 +633,10 @@ public class AtbywLootTables {
                 StatueRegistry.WAXED_EXPOSED_BAT_STATUE,
                 StatueRegistry.WAXED_DIRTY_BAT_STATUE,
                 StatueRegistry.WAXED_MOSSY_BAT_STATUE,
-                StatueRegistry.WAXED_VERY_MOSSY_BAT_STATUE
+                StatueRegistry.WAXED_VERY_MOSSY_BAT_STATUE,
+                AtbywBlocks.SAND_STAIRS,
+                AtbywBlocks.RED_SAND_STAIRS,
+                AtbywBlocks.GRAVEL_STAIRS
         ));
     }
 }

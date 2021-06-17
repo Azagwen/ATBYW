@@ -20,7 +20,21 @@
 - Added Bat Statue
 - Added Stonecutting recipes for statues that don't loot
 - Added unlock advancements for every recipe in the mod
+- Added Sand Stairs
+- Added Red Sand Stairs
+- Added Gravel Stairs
+- Added Sand Slab
+- Added Red Sand Slab
+- Added Gravel Slab
 
+
+###Falling Stairs and Slabs
+Faling Stairs and Slab are variants of the vanilla stairs and slab that are affected by gravity.
+When placed, they will fall if not supported, but they can also merge together in the following ways:
+- Stair falling/placed on top of a stair of the same type facing opposite ways will merge producing a full block and a slab.
+- Slabs falling/placed on top of a slab of the same type placed in a bottom state will merge and produce a double slab block.
+
+------
 #1.4.1 Changelog
 
 ###Changes

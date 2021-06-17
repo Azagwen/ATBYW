@@ -5,6 +5,14 @@
   "block.atbyw.basalt_bricks": "Basalt Bricks",
   "block.atbyw.basalt_pillar": "Basalt Pillar",
 
+  "block.atbyw.sand_stairs": "Sand Stairs",
+  "block.atbyw.red_sand_stairs": "Red Sand Stairs",
+  "block.atbyw.gravel_stairs": "Gravel Stairs",
+
+  "block.atbyw.sand_slab": "Sand Slab",
+  "block.atbyw.red_sand_slab": "Red Sand Slab",
+  "block.atbyw.gravel_slab": "Gravel Slab",
+
   "block.atbyw.granite_tiles": "Granite Tiles",
   "block.atbyw.diorite_bricks": "Diorite Bricks",
   "block.atbyw.andesite_bricks": "Andesite Bircks",
@@ -554,6 +562,15 @@
 
   "death.attack.spike_trap": "%1$s was impaled to death",
 
+  "block.atbyw.axolotl_statue.not_ready": "Axolotl statue is %d%% mossy.",
+  "block.atbyw.axolotl_statue.ready": "Axolotl statue was %d%% mossy.",
+  "block.atbyw.axolotl_statue.waxed": "Axolotl statue is now frozen in time!",
+  "block.atbyw.axolotl_statue.cannot_be_waxed": "Axolotl statue requires at least %d Honeycombs to be waxed.",
+
+  "block.atbyw.bat_statue.not_ready": "Bat statue is %d%% mossy.",
+  "block.atbyw.bat_statue.ready": "Bat statue was %d%% mossy.",
+  "block.atbyw.bat_statue.waxed": "Bat statue is now frozen in time!",
+  "block.atbyw.bat_statue.cannot_be_waxed": "Bat statue requires at least %d Honeycombs to be waxed.",
 
   "_comment": "Unused / Old / Kept as Examples",
   "block.atbyw. statue.not_ready": "%1$s is not ready yet. (%2$s%% moss coverage)"

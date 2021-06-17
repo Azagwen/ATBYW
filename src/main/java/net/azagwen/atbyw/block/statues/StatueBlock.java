@@ -1,7 +1,9 @@
 package net.azagwen.atbyw.block.statues;
 
 import net.azagwen.atbyw.block.state.AtbywProperties;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
+import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
@@ -31,6 +33,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -43,15 +46,28 @@ public class StatueBlock extends AbstractStatueBlock implements StatueBlockMetho
     public static final IntProperty MOSS_LEVEL;
     private final StatueBlockMobType mobType;
     private final boolean hasLoots;
-    private final Block[] waxedStates;
+    private final List<Block> waxedStates;
 
     public StatueBlock(List<Block> waxedStates, StatueBlockMobType mobType, Settings settings) {
         super(mobType, settings.nonOpaque());
         this.mobType = mobType;
         this.hasLoots = mobType.getLootTable() != null;
-        this.waxedStates = waxedStates.toArray(Block[]::new);
+        this.waxedStates = waxedStates;
         waxedStates.add(this);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(MOSS_LEVEL, 0).with(WATERLOGGED, false));
+    }
+
+    private BlockState getWaxedState(BlockState state) {
+        for (var currentBlock : this.waxedStates) {
+            if (currentBlock instanceof WaxedStatueBlock) {
+                if (((WaxedStatueBlock) currentBlock).getMossLevel() == this.getCurrentMossLevel(state)) {
+                    return currentBlock.getDefaultState()
+                            .with(WaxedStatueBlock.WATERLOGGED, state.get(WATERLOGGED))
+                            .with(WaxedStatueBlock.FACING, state.get(FACING));
+                }
+            }
+        }
+        return this.waxedStates.get(0).getDefaultState();
     }
 
     @Override
@@ -78,10 +94,13 @@ public class StatueBlock extends AbstractStatueBlock implements StatueBlockMetho
             int waxAmountRequired = 1;
 
             if (player.getMainHandStack().getCount() >= waxAmountRequired) {
-                waxStatue(state, pos, world);
-                world.playSound(null, pos, SoundEvents.BLOCK_HONEY_BLOCK_SLIDE, SoundCategory.BLOCKS, 1.0F, 0.0F);
-                player.getMainHandStack().decrement(4);
+                if (!player.isCreative()) {
+                    player.getMainHandStack().decrement(waxAmountRequired);
+                }
+                world.setBlockState(pos, this.getWaxedState(state));
+                world.playSound(null, pos, SoundEvents.ITEM_HONEYCOMB_WAX_ON, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.sendMessage(new TranslatableText("block.atbyw." + mobType.getName() + ".waxed"), true);
+                ParticleUtil.spawnParticle(world, pos, ParticleTypes.WAX_ON, UniformIntProvider.create(3, 5));
                 return ActionResult.success(world.isClient);
             } else {
                 player.sendMessage(new TranslatableText("block.atbyw." + mobType.getName() + ".cannot_be_waxed", waxAmountRequired), true);
@@ -91,7 +110,7 @@ public class StatueBlock extends AbstractStatueBlock implements StatueBlockMetho
             int mossPercentage = (state.get(MOSS_LEVEL) * 25);
 
             if (this.isFullyCoveredInMoss(state)) {
-                resetStatue(state, world, pos, player, mobType, hasLoots);
+                this.resetStatue(state, world, pos, player, mobType, hasLoots);
                 player.sendMessage(new TranslatableText("block.atbyw." + mobType.getName() + ".ready", mossPercentage), true);
                 return ActionResult.success(world.isClient);
             } else {
@@ -101,36 +120,29 @@ public class StatueBlock extends AbstractStatueBlock implements StatueBlockMetho
         }
     }
 
-    public void waxStatue(BlockState state, BlockPos pos, World world) {
-        int moss_level = getCurrentMossLevel(state);
-        BlockState waxed_state = this.waxedStates[moss_level].getDefaultState();
-
-        world.setBlockState(pos, waxed_state.with(FACING, state.get(FACING)).with(WATERLOGGED, state.get(WATERLOGGED)));
-    }
-
     public void resetStatue(BlockState state, World world, BlockPos pos, PlayerEntity player, StatueBlockMobType type, boolean hasLoots) {
         if (!world.isClient) {
             if (hasLoots) {
-                float f = 0.7F;
-                double x = (double) pos.getX() + (double) (world.random.nextFloat() * f) + 0.15000000596046448D;
-                double y = (double) pos.getY() + (double) (world.random.nextFloat() * f) + 0.06000000238418579D + 0.6D;
-                double z = (double) pos.getZ() + (double) (world.random.nextFloat() * f) + 0.15000000596046448D;
+                var f = 0.7F;
+                var x = (double) pos.getX() + (double) (world.random.nextFloat() * f) + 0.15000000596046448D;
+                var y = (double) pos.getY() + (double) (world.random.nextFloat() * f) + 0.06000000238418579D + 0.6D;
+                var z = (double) pos.getZ() + (double) (world.random.nextFloat() * f) + 0.15000000596046448D;
 
-                ItemStack pickedStack = getItemFromLootTable(state, world, pos, player, type);
-                ItemEntity itemEntity = new ItemEntity(world, x, y, z, pickedStack);
+                var pickedStack = this.getItemFromLootTable(state, world, pos, player, type);
+                var itemEntity = new ItemEntity(world, x, y, z, pickedStack);
                 itemEntity.setToDefaultPickupDelay();
 
                 if (pickedStack.getCount() > 0 || !(pickedStack.equals(ItemStack.EMPTY))) {
-                    spawnParticles(world, pos, true);
+                    this.spawnParticles(world, pos, true);
                     world.playSound(null, pos, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.BLOCKS, 0.5F, 1.2F);
                     world.playSound(null, pos, SoundEvents.BLOCK_BEEHIVE_SHEAR, SoundCategory.BLOCKS, 0.2F, 0.5F);
                     world.spawnEntity(itemEntity);
                 } else {
-                    spawnParticles(world, pos, false);
+                    this.spawnParticles(world, pos, false);
                     world.playSound(null, pos, SoundEvents.BLOCK_BEEHIVE_SHEAR, SoundCategory.BLOCKS, 0.5F, 0.5F);
                 }
             } else {
-                spawnParticles(world, pos, false);
+                this.spawnParticles(world, pos, false);
                 world.playSound(null, pos, SoundEvents.BLOCK_BEEHIVE_SHEAR, SoundCategory.BLOCKS, 0.5F, 0.5F);
             }
         }
@@ -138,9 +150,9 @@ public class StatueBlock extends AbstractStatueBlock implements StatueBlockMetho
         world.setBlockState(pos, getResetState(state));
     }
 
-    protected static ItemStack getItemFromLootTable(BlockState state, World world, BlockPos pos, PlayerEntity player, StatueBlockMobType type) {
-        Identifier identifier = type.getLootTable();
-        LootTable lootTable = world.getServer().getLootManager().getTable(identifier);
+    protected ItemStack getItemFromLootTable(BlockState state, World world, BlockPos pos, PlayerEntity player, StatueBlockMobType type) {
+        var identifier = type.getLootTable();
+        var lootTable = world.getServer().getLootManager().getTable(identifier);
 
         LootContext.Builder builder = new LootContext.Builder((ServerWorld) world)
                 .parameter(LootContextParameters.BLOCK_STATE, state)
@@ -149,8 +161,8 @@ public class StatueBlock extends AbstractStatueBlock implements StatueBlockMetho
                 .random(world.random);
 
 
-        List<ItemStack> loots = lootTable.generateLoot(builder.build(LootContextTypes.BLOCK));
-        ItemStack loot = ItemStack.EMPTY;
+        var loots = lootTable.generateLoot(builder.build(LootContextTypes.BLOCK));
+        var loot = ItemStack.EMPTY;
         if (loots.size() > 0) {
             int randomInt = world.random.nextInt(loots.size());
             loot = loots.get(randomInt);
@@ -159,21 +171,13 @@ public class StatueBlock extends AbstractStatueBlock implements StatueBlockMetho
         return loot;
     }
 
-    protected static void spawnParticles(World world, BlockPos pos, boolean isDropSuccessful) {
-        DustParticleEffect MOSS = new DustParticleEffect(new Vec3f(0.3F, 0.4F, 0.0F), 1.5F);
-
-        double x = (double)pos.getX() + 0.5F;
-        double y = (double)pos.getY() + 0.5F;
-        double z = (double)pos.getZ() + 0.5F;
-
-        double deltaX = 0.25D;
-        double deltaY = 0.25D;
-        double deltaZ = 0.25D;
+    protected void spawnParticles(World world, BlockPos pos, boolean isDropSuccessful) {
+        var MOSS = new DustParticleEffect(new Vec3f(0.3F, 0.4F, 0.0F), 1.5F);
 
         if (isDropSuccessful) {
-            ((ServerWorld) world).spawnParticles(ParticleTypes.HAPPY_VILLAGER, x, y, z, 8, deltaX, deltaY, deltaZ, 0.0D);
+            ParticleUtil.spawnParticle(world, pos, ParticleTypes.HAPPY_VILLAGER, UniformIntProvider.create(5, 8));
         } else {
-            ((ServerWorld) world).spawnParticles(MOSS, x, y, z, 8, deltaX, deltaY, deltaZ, 0.0D);
+            ParticleUtil.spawnParticle(world, pos, MOSS, UniformIntProvider.create(5, 8));
         }
     }
 

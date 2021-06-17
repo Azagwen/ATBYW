@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "type=bottom": {
+            "model": "atbyw:block/slab/gravel_slab"
+        },
+        "type=double": {
+            "model": "minecraft:block/gravel"
+        },
+        "type=top": {
+            "model": "atbyw:block/slab/gravel_slab_top"
+        }
+    }
+}

@@ -14,7 +14,7 @@ public enum StatueBlockMobTypes implements StatueBlockMobType {
 
     //Mamals
     AXOLOTL("axolotl", StatueVoxelShapes.AXOLOTL_OUTLINES),
-    BAT("axolotl", StatueVoxelShapes.BEE_OUTLINES),
+    BAT("axolotl", StatueVoxelShapes.BAT_OUTLINES, StatueVoxelShapes.BAT_COLLISIONS),
     CAT("cat", StatueVoxelShapes.CAT_OUTLINES),
     CHICKEN("chicken", NewAtbywID("gameplay/chicken_statue"), StatueVoxelShapes.CHICKEN_OUTLINES),
     FOX("fox", StatueVoxelShapes.FOX_OUTLINES),
