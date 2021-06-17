@@ -37,14 +37,6 @@ public class ColumnBlock extends Block implements Waterloggable {
         this.setDefaultState(this.stateManager.getDefaultState().with(TOP, true).with(MIDDLE, true).with(BOTTOM, true).with(WATERLOGGED, false));
     }
 
-    private BlockState setEndStates(BlockState state, boolean top, boolean bottom) {
-        return this.getDefaultState()
-                .with(TOP, top)
-                .with(MIDDLE, state.get(MIDDLE))
-                .with(BOTTOM, bottom)
-                .with(WATERLOGGED, state.get(WATERLOGGED));
-    }
-
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         var upPos = pos.up();
