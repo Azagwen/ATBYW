@@ -1,3 +1,8 @@
+-- 1.5.3 Changelog --
+
+Bug Fixes
+- Fixed Column blocks not having a top or bottom of the player was in the way when trying to place them.
+
 -- 1.5.2 Changelog --
 
 Changes

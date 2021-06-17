@@ -1,5 +1,10 @@
 #1.5.2 Changelog
 
+###Bug Fixes
+- Fixed Column blocks not having a top or bottom of the player was in the way when trying to place them.
+------
+#1.5.2 Changelog
+
 ###Changes
 - Changed ladder variants recipes to use planks instead of sticks
 - Changed statue and essence recipes to be less expensive

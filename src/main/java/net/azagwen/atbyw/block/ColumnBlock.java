@@ -5,9 +5,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -18,6 +21,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import org.jetbrains.annotations.Nullable;
 
 public class ColumnBlock extends Block implements Waterloggable {
     public static final BooleanProperty WATERLOGGED;
@@ -42,15 +46,10 @@ public class ColumnBlock extends Block implements Waterloggable {
     }
 
     @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        World world = ctx.getWorld();
-        BlockPos pos = ctx.getBlockPos();
-
-        BlockPos upPos = pos.up();
-        BlockPos downPos = pos.down();
-        boolean isSneaking = ctx.shouldCancelInteraction();
-
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        var upPos = pos.up();
+        var downPos = pos.down();
+        var isSneaking = placer instanceof PlayerEntity && placer.isSneaking();
         if (!isSneaking) {
             if (world.getBlockState(upPos).getBlock() instanceof ColumnBlock) {
                 world.setBlockState(upPos, world.getBlockState(upPos).with(ColumnBlock.BOTTOM, false));
@@ -59,6 +58,16 @@ public class ColumnBlock extends Block implements Waterloggable {
                 world.setBlockState(downPos, world.getBlockState(downPos).with(ColumnBlock.TOP, false));
             }
         }
+    }
+
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        var fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        var world = ctx.getWorld();
+        var pos = ctx.getBlockPos();
+        var upPos = pos.up();
+        var downPos = pos.down();
+        var isSneaking = ctx.shouldCancelInteraction();
 
         return this.getDefaultState()
                 .with(TOP, isSneaking || !(world.getBlockState(upPos).getBlock() instanceof ColumnBlock))
