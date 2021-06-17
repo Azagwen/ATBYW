@@ -1,3 +1,26 @@
+#1.5.2 Changelog
+
+###Changes
+- Changed ladder variants recipes to use planks instead of sticks
+- Changed statue and essence recipes to be less expensive
+- Statues have been rearranged in the creative inventory to be in alphabetical order
+
+###Removed items
+- Removed all stick variants except for Bamboo
+- Removed Bee essence
+- Removed Silverfish essence
+- Removed Endermite essence
+- Removed Wolf essence
+- Removed Cat essence
+- Removed Fox essence
+- Removed crafting table recipes for statues that don't loot
+
+###Additions
+- Added Axolotl Statue
+- Added Bat Statue
+- Added Stonecutting recipes for statues that don't loot
+- Added unlock advancements for every recipe in the mod
+
 #1.4.1 Changelog
 
 ###Changes

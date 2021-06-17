@@ -76,11 +76,6 @@ public class AtbywMain implements ModInitializer {
 		AtbywWorldGen.init();
 		AtbywRRP.init();
 
-		ATBYW_BLOCKS = FabricItemGroupBuilder.create(new Identifier("a")).icon(() -> new ItemStack(Items.ACACIA_FENCE)).build();
-		ATBYW_DECO = FabricItemGroupBuilder.create(new Identifier("a")).icon(() -> new ItemStack(Items.ACACIA_FENCE)).build();
-		ATBYW_REDSTONE = FabricItemGroupBuilder.create(new Identifier("a")).icon(() -> new ItemStack(Items.ACACIA_FENCE)).build();
-		ATBYW_MISC = FabricItemGroupBuilder.create(new Identifier("a")).icon(() -> new ItemStack(Items.ACACIA_FENCE)).build();
-
 		ATBYW_GROUP = new AtbywItemGroup(NewAtbywID("atbyw"));
 
 		LOGGER.info("ATBYW Inintiliazed");

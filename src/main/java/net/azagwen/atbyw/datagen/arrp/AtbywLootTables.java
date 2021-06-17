@@ -624,7 +624,13 @@ public class AtbywLootTables {
                 StatueRegistry.WAXED_EXPOSED_AXOLOTL_STATUE,
                 StatueRegistry.WAXED_DIRTY_AXOLOTL_STATUE,
                 StatueRegistry.WAXED_MOSSY_AXOLOTL_STATUE,
-                StatueRegistry.WAXED_VERY_MOSSY_AXOLOTL_STATUE
+                StatueRegistry.WAXED_VERY_MOSSY_AXOLOTL_STATUE,
+                StatueRegistry.BAT_STATUE,
+                StatueRegistry.WAXED_CLEAN_BAT_STATUE,
+                StatueRegistry.WAXED_EXPOSED_BAT_STATUE,
+                StatueRegistry.WAXED_DIRTY_BAT_STATUE,
+                StatueRegistry.WAXED_MOSSY_BAT_STATUE,
+                StatueRegistry.WAXED_VERY_MOSSY_BAT_STATUE
         ));
     }
 }

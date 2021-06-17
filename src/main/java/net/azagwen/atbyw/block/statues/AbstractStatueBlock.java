@@ -14,14 +14,13 @@ import net.minecraft.world.BlockView;
 
 import java.util.List;
 
-public class WaxedStatueBlock extends AbstractStatueBlock implements Waterloggable {
+public abstract class AbstractStatueBlock extends HorizontalFacingBlock implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     private final StatueBlockMobType mobType;
 
-    public WaxedStatueBlock(List<Block> list, StatueBlockMobType mobType, Settings settings) {
-        super(mobType, settings);
+    public AbstractStatueBlock(StatueBlockMobType mobType, Settings settings) {
+        super(settings);
         this.mobType = mobType;
-        list.add(this);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
     }
 

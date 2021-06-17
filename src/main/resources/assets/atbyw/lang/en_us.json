@@ -182,12 +182,19 @@
   "block.atbyw.waxed_very_mossy_slime_statue": "Very Mossy Waxed Slime Statue",
   "block.atbyw.waxed_very_mossy_magma_cube_statue": "Very Mossy Waxed Magma Cube Statue",
 
-  "block.atbyw_axolotl_statue": "Axolotl Statue",
+  "block.atbyw.axolotl_statue": "Axolotl Statue",
   "block.atbyw.waxed_clean_axolotl_statue": "Clean Waxed Axolotl Statue",
   "block.atbyw.waxed_exposed_axolotl_statue": "Exposed Waxed Axolotl Statue",
   "block.atbyw.waxed_dirty_axolotl_statue": "Dirty Waxed Axolotl Statue",
   "block.atbyw.waxed_mossy_axolotl_statue": "Mossy Waxed Axolotl Statue",
   "block.atbyw.waxed_very_mossy_axolotl_statue": "Very Mossy Waxed Axolotl Statue",
+
+  "block.atbyw.bat_statue": "Bat Statue",
+  "block.atbyw.waxed_clean_bat_statue": "Clean Waxed Bat Statue",
+  "block.atbyw.waxed_exposed_bat_statue": "Exposed Waxed Bat Statue",
+  "block.atbyw.waxed_dirty_bat_statue": "Dirty Waxed Bat Statue",
+  "block.atbyw.waxed_mossy_bat_statue": "Mossy Waxed Bat Statue",
+  "block.atbyw.waxed_very_mossy_bat_statue": "Very Mossy Waxed Bat Statue",
 
   "block.atbyw.dirt_stairs": "Dirt Stairs",
   "block.atbyw.coarse_dirt_stairs": "Coarse Dirt Stairs",
@@ -480,8 +487,8 @@
   "itemGroup.subTab.atbyw.decoration": "Decoration",
   "itemGroup.subTab.atbyw.redstone": "Redstone",
   "itemGroup.subTab.atbyw.misc": "Miscellaneous",
-  "screen.atbyw.info.curseforgeTxt": "Curseforge Page",
-  "screen.atbyw.info.githubTxt": "Github Repository",
+  "itemGroup.atbyw.curseforgeLink": "Curseforge Page",
+  "itemGroup.atbyw.githubLink": "Github Repository",
 
   "block.atbyw.redstone_lantern.power_intensity": "Power Intensity: %d",
 

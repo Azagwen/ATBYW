@@ -5,6 +5,7 @@ import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 
 import java.util.List;
@@ -110,6 +111,12 @@ public class AtbywBlockRenderLayers {
         blocks.add(StatueRegistry.WAXED_DIRTY_AXOLOTL_STATUE);
         blocks.add(StatueRegistry.WAXED_MOSSY_AXOLOTL_STATUE);
         blocks.add(StatueRegistry.WAXED_VERY_MOSSY_AXOLOTL_STATUE);
+        blocks.add(StatueRegistry.BAT_STATUE);
+        blocks.add(StatueRegistry.WAXED_CLEAN_BAT_STATUE);
+        blocks.add(StatueRegistry.WAXED_EXPOSED_BAT_STATUE);
+        blocks.add(StatueRegistry.WAXED_DIRTY_BAT_STATUE);
+        blocks.add(StatueRegistry.WAXED_MOSSY_BAT_STATUE);
+        blocks.add(StatueRegistry.WAXED_VERY_MOSSY_BAT_STATUE);
         blocks.add(AtbywBlocks.TIMER_REPEATER);
         blocks.add(AtbywBlocks.LARGE_CHAIN);
         return blocks;

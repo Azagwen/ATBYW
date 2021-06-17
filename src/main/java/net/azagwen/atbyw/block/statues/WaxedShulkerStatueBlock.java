@@ -13,11 +13,13 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
+import java.util.List;
+
 public class WaxedShulkerStatueBlock extends WaxedStatueBlock{
     public static final BooleanProperty OPEN;
 
-    public WaxedShulkerStatueBlock(StatueBlockMobType mobType, Settings settings) {
-        super(mobType, settings);
+    public WaxedShulkerStatueBlock(List<Block> waxedStates, StatueBlockMobType mobType, Settings settings) {
+        super(waxedStates, mobType, settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(OPEN, true).with(FACING, Direction.NORTH).with(WATERLOGGED, false));
     }
 

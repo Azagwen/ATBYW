@@ -38,18 +38,19 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Random;
 
-public class StatueBlock extends WaxedStatueBlock implements StatueBlockMethods, Waterloggable {
+public class StatueBlock extends AbstractStatueBlock implements StatueBlockMethods, Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final IntProperty MOSS_LEVEL;
     private final StatueBlockMobType mobType;
     private final boolean hasLoots;
     private final Block[] waxedStates;
 
-    public StatueBlock(boolean hasLoots, StatueBlockMobType mobType, Settings settings, Block... waxedStates) {
+    public StatueBlock(List<Block> waxedStates, StatueBlockMobType mobType, Settings settings) {
         super(mobType, settings.nonOpaque());
         this.mobType = mobType;
-        this.hasLoots = hasLoots;
-        this.waxedStates = waxedStates;
+        this.hasLoots = mobType.getLootTable() != null;
+        this.waxedStates = waxedStates.toArray(Block[]::new);
+        waxedStates.add(this);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(MOSS_LEVEL, 0).with(WATERLOGGED, false));
     }
 

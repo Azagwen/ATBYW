@@ -7,27 +7,28 @@ import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 
 public enum StatueBlockMobTypes implements StatueBlockMobType {
     //Bugs & Shell creatures
-    BEE("bee", NewAtbywID("gameplay/bee_statue"), StatueVoxelShapes.BEE_OUTLINES, StatueVoxelShapes.BEE_COLLISIONS),
-    SILVERFISH("silverfish", NewAtbywID("gameplay/silverfish_statue"), StatueVoxelShapes.SILVERFISH_OUTLINES),
-    ENDERMITE("endermite", NewAtbywID("gameplay/endermite_statue"), StatueVoxelShapes.ENDERMITE_OUTLINES),
+    BEE("bee", StatueVoxelShapes.BEE_OUTLINES, StatueVoxelShapes.BEE_COLLISIONS),
+    ENDERMITE("endermite", StatueVoxelShapes.ENDERMITE_OUTLINES),
     SHULKER("shulker", NewAtbywID("gameplay/shulker_statue"), StatueVoxelShapes.SHULKER_OUTLINES, StatueVoxelShapes.SHULKER_COLLISIONS),
+    SILVERFISH("silverfish", StatueVoxelShapes.SILVERFISH_OUTLINES),
 
     //Mamals
-    AXOLOTL("axolotl", NewAtbywID("gameplay/axolotl_statue"), StatueVoxelShapes.AXOLOTL_OUTLINES),
-    CAT("cat", NewAtbywID("gameplay/cat_statue"), StatueVoxelShapes.CAT_OUTLINES),
-    WOLF("wolf", NewAtbywID("gameplay/wolf_statue"), StatueVoxelShapes.WOLF_OUTLINES),
+    AXOLOTL("axolotl", StatueVoxelShapes.AXOLOTL_OUTLINES),
+    BAT("axolotl", StatueVoxelShapes.BEE_OUTLINES),
+    CAT("cat", StatueVoxelShapes.CAT_OUTLINES),
     CHICKEN("chicken", NewAtbywID("gameplay/chicken_statue"), StatueVoxelShapes.CHICKEN_OUTLINES),
+    FOX("fox", StatueVoxelShapes.FOX_OUTLINES),
     RABBIT("rabbit", NewAtbywID("gameplay/rabbit_statue"), StatueVoxelShapes.RABBIT_OUTLINES, StatueVoxelShapes.RABBIT_COLLISIONS),
-    FOX("fox", NewAtbywID("gameplay/fox_statue"), StatueVoxelShapes.FOX_OUTLINES),
+    WOLF("wolf", StatueVoxelShapes.WOLF_OUTLINES),
 
     //Fishes
     COD("cod", NewAtbywID("gameplay/cod_statue"), StatueVoxelShapes.COD_OUTLINES),
-    SALMON("salmon", NewAtbywID("gameplay/salmon_statue"), StatueVoxelShapes.SALMON_OUTLINES),
     PUFFER_FISH("puffer_fish", NewAtbywID("gameplay/puffer_fish_statue"), StatueVoxelShapes.PUFFER_FISH_OUTLINES),
+    SALMON("salmon", NewAtbywID("gameplay/salmon_statue"), StatueVoxelShapes.SALMON_OUTLINES),
 
     //Slimes & others
-    SLIME("slime", NewAtbywID("gameplay/slime_statue"), StatueVoxelShapes.SLIME_SMALL_OUTLINES),
-    MAGMA_CUBE("magma_cube", NewAtbywID("gameplay/magma_cube_statue"), StatueVoxelShapes.SLIME_SMALL_OUTLINES);
+    MAGMA_CUBE("magma_cube", NewAtbywID("gameplay/magma_cube_statue"), StatueVoxelShapes.SLIME_SMALL_OUTLINES),
+    SLIME("slime", NewAtbywID("gameplay/slime_statue"), StatueVoxelShapes.SLIME_SMALL_OUTLINES);
 
     //Negative Z = NORTH
     //Positive Z = SOUTH
@@ -53,6 +54,20 @@ public enum StatueBlockMobTypes implements StatueBlockMobType {
     StatueBlockMobTypes(String name, Identifier lootTableID, VoxelShape[] outlineShapes) {
         this.name = makeName(name);
         this.lootTableID = lootTableID;
+        this.outlineShapes = outlineShapes;
+
+    }
+
+    StatueBlockMobTypes(String name, VoxelShape[] outlineShapes, VoxelShape[] collisionShapes) {
+        this.name = makeName(name);
+        this.lootTableID = null;
+        this.outlineShapes = outlineShapes;
+        this.collisionShapes = collisionShapes;
+    }
+
+    StatueBlockMobTypes(String name, VoxelShape[] outlineShapes) {
+        this.name = makeName(name);
+        this.lootTableID = null;
         this.outlineShapes = outlineShapes;
 
     }
