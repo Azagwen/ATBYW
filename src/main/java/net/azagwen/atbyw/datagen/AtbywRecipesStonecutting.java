@@ -30,7 +30,7 @@ public class AtbywRecipesStonecutting {
         json.addProperty("result", output.toString());
         json.addProperty("count", count);
 
-        AtbywAdvancements.recipeMap.put(recipeId, AtbywAdvancements.unlockSingleIngredientRecipe(json, recipeId));
+        AtbywAdvancements.RECIPE_MAP.put(recipeId, AtbywAdvancements.unlockSingleIngredientRecipe(json, recipeId));
         return new AtbywRecipe(json, recipeId);
     }
 
@@ -210,6 +210,16 @@ public class AtbywRecipesStonecutting {
     public static AtbywRecipe CAT_STATUE_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("cat_statue_stonecutting"), getBlockID(Blocks.STONE), getBlockID(StatueRegistry.CAT_STATUE), 1);
     public static AtbywRecipe FOX_STATUE_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("fox_statue_stonecutting"), getBlockID(Blocks.STONE), getBlockID(StatueRegistry.FOX_STATUE), 1);
 
+    public static AtbywRecipe ROOTED_DIRT_STAIRS_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("rooted_dirt_stairs_stonecutting"), getBlockID(Blocks.ROOTED_DIRT), getBlockID(AtbywBlocks.ROOTED_DIRT_STAIRS), 1);
+    public static AtbywRecipe ROOTED_DIRT_SLAB_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("rooted_dirt_slab_stonecutting"), getBlockID(Blocks.ROOTED_DIRT), getBlockID(AtbywBlocks.ROOTED_DIRT_SLAB), 2);
+
+    public static AtbywRecipe SAND_STAIRS_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("sand_stairs_stonecutting"), getBlockID(Blocks.SAND), getBlockID(AtbywBlocks.SAND_STAIRS), 1);
+    public static AtbywRecipe SAND_SLAB_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("sand_slab_stonecutting"), getBlockID(Blocks.SAND), getBlockID(AtbywBlocks.SAND_SLAB), 2);
+    public static AtbywRecipe RED_SAND_STAIRS_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("red_sand_stairs_stonecutting"), getBlockID(Blocks.RED_SAND), getBlockID(AtbywBlocks.RED_SAND_STAIRS), 1);
+    public static AtbywRecipe RED_SAND_SLAB_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("red_sand_slab_stonecutting"), getBlockID(Blocks.RED_SAND), getBlockID(AtbywBlocks.RED_SAND_SLAB), 2);
+    public static AtbywRecipe GRAVEL_STAIRS_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("gravel_stairs_stonecutting"), getBlockID(Blocks.GRAVEL), getBlockID(AtbywBlocks.GRAVEL_STAIRS), 1);
+    public static AtbywRecipe GRAVEL_SLAB_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("gravel_slab_stonecutting"), getBlockID(Blocks.GRAVEL), getBlockID(AtbywBlocks.GRAVEL_SLAB), 2);
+
     public static void inject(Map<Identifier, JsonElement> map) {
         for (int i = 0; i < COLOR_NAMES.length; i++) {
             putRecipe(TERRACOTTA_STAIRS_COLORS_STONECUTTING[i], map);
@@ -370,5 +380,15 @@ public class AtbywRecipesStonecutting {
         putRecipe(AXOLOTL_STATUE_FROM_STONECUTTING, map);
         putRecipe(CAT_STATUE_FROM_STONECUTTING, map);
         putRecipe(FOX_STATUE_FROM_STONECUTTING, map);
+
+        putRecipe(ROOTED_DIRT_STAIRS_FROM_STONECUTTING, map);
+        putRecipe(ROOTED_DIRT_SLAB_FROM_STONECUTTING, map);
+
+        putRecipe(SAND_STAIRS_FROM_STONECUTTING, map);
+        putRecipe(SAND_SLAB_FROM_STONECUTTING, map);
+        putRecipe(RED_SAND_STAIRS_FROM_STONECUTTING, map);
+        putRecipe(RED_SAND_SLAB_FROM_STONECUTTING, map);
+        putRecipe(GRAVEL_STAIRS_FROM_STONECUTTING, map);
+        putRecipe(GRAVEL_SLAB_FROM_STONECUTTING, map);
     }
 }

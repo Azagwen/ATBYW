@@ -37,7 +37,7 @@ public class AtbywRecipesSmelting {
         json.addProperty("experience", xp);
         json.addProperty("cookingtime", time);
 
-        AtbywAdvancements.recipeMap.put(recipeId, AtbywAdvancements.unlockSingleIngredientRecipe(json, recipeId));
+        AtbywAdvancements.RECIPE_MAP.put(recipeId, AtbywAdvancements.unlockSingleIngredientRecipe(json, recipeId));
         return new AtbywRecipe(json, recipeId);
     }
 

@@ -12,7 +12,7 @@ import java.util.Map;
 public class AtbywAdvancements {
     public static Gson builder = new GsonBuilder().setPrettyPrinting().create();
     public static Logger LOGGER = LogManager.getLogger("Atbyw Advancements");
-    public static Map<Identifier, JsonElement> recipeMap = Maps.newConcurrentMap();
+    public static Map<Identifier, JsonElement> RECIPE_MAP = Maps.newConcurrentMap();
 
     public static JsonObject hasTheRecipeCriteria(Identifier reward) {
         var recipeCondition = new JsonObject();
@@ -182,7 +182,7 @@ public class AtbywAdvancements {
 
     //Used in net.azagwen.atbyw.mixin.ServerAdvancementLoaderMixin
     public static void inject(Map<Identifier, JsonElement> map) {
-        recipeMap.forEach(map::put);
+        RECIPE_MAP.forEach(map::put);
         LOGGER.info("Atbyw Recipe Advancements built");
     }
 }

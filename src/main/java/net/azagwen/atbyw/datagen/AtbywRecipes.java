@@ -5,7 +5,6 @@ import com.google.gson.*;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
 import net.azagwen.atbyw.items.AtbywItems;
-import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.Quadruplet;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
@@ -52,7 +51,7 @@ public class AtbywRecipes {
         json.add("ingredients", ingredients);
         json.add("result", result);
 
-        AtbywAdvancements.recipeMap.put(recipeId, AtbywAdvancements.unlockShapelessRecipe(json, recipeId));
+        AtbywAdvancements.RECIPE_MAP.put(recipeId, AtbywAdvancements.unlockShapelessRecipe(json, recipeId));
         return new AtbywRecipe(json, recipeId);
     }
 
@@ -90,7 +89,7 @@ public class AtbywRecipes {
         json.add("key", keyList);
         json.add("result", result);
 
-        AtbywAdvancements.recipeMap.put(recipeId, AtbywAdvancements.unlockShapedRecipe(json, recipeId));
+        AtbywAdvancements.RECIPE_MAP.put(recipeId, AtbywAdvancements.unlockShapedRecipe(json, recipeId));
         return new AtbywRecipe(json, recipeId);
     }
 
@@ -219,14 +218,14 @@ public class AtbywRecipes {
     public static AtbywRecipe[] CINDER_BLOCKS_COLORS = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_cinder_blocks"), "cinder_blocks", AtbywRecipeConfigs.BRICKS_1, new Pair<>(AtbywNamespace, "cinder_bricks"), newKeyQuadruplet("item", mcNameSpace, "concrete", true));
     public static AtbywRecipe[] CINDER_BLOCKS_WALL_COLORS = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_cinder_blocks_wall"), "cinder_blocks_wall", AtbywRecipeConfigs.WALL_1, new Pair<>(AtbywNamespace, "cinder_blocks_wall"), newKeyQuadruplet("item", AtbywNamespace, "cinder_bricks", true));
 
-    public static AtbywRecipe SHULKER_ESSENCE = createRecipeFromConfig(NewAtbywID("shulker_essence"), "essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.SHULKER_ESSENCE), newKeyPair("item", getItemID(Items.SHULKER_SHELL)), newKeyPair("item", getItemID(Items.SHULKER_SHELL)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
-    public static AtbywRecipe CHICKEN_ESSENCE = createRecipeFromConfig(NewAtbywID("chicken_essence"), "essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.CHICKEN_ESSENCE), newKeyPair("item", getItemID(Items.CHICKEN)), newKeyPair("item", getItemID(Items.FEATHER)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
-    public static AtbywRecipe RABBIT_ESSENCE = createRecipeFromConfig(NewAtbywID("rabbit_essence"), "essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.RABBIT_ESSENCE), newKeyPair("item", getItemID(Items.RABBIT)), newKeyPair("item", getItemID(Items.RABBIT_HIDE)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
-    public static AtbywRecipe COD_ESSENCE = createRecipeFromConfig(NewAtbywID("cod_essence"), "essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.COD_ESSENCE), newKeyPair("item", getItemID(Items.COD)), newKeyPair("item", getItemID(Items.BONE_MEAL)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
-    public static AtbywRecipe SALMON_ESSENCE = createRecipeFromConfig(NewAtbywID("salmon_essence"), "essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.SALMON_ESSENCE), newKeyPair("item", getItemID(Items.SALMON)), newKeyPair("item", getItemID(Items.BONE_MEAL)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
-    public static AtbywRecipe PUFFER_FISH_ESSENCE = createRecipeFromConfig(NewAtbywID("puffer_fish_essence"), "essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.PUFFER_FISH_ESSENCE), newKeyPair("item", getItemID(Items.PUFFERFISH)), newKeyPair("item", getItemID(Items.BONE_MEAL)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
-    public static AtbywRecipe SLIME_ESSENCE = createRecipeFromConfig(NewAtbywID("slime_essence"), "essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.SLIME_ESSENCE), newKeyPair("item", getItemID(Items.SLIME_BALL)), newKeyPair("item", getItemID(Items.SLIME_BALL)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
-    public static AtbywRecipe MAGMA_CUBE_ESSENCE = createRecipeFromConfig(NewAtbywID("magma_cube_essence"), "essence", 1, AtbywRecipeConfigs.DYING_DASHED_3, getItemID(AtbywItems.MAGMA_CUBE_ESSENCE), newKeyPair("item", getItemID(Items.MAGMA_CREAM)), newKeyPair("item", getItemID(Items.MAGMA_CREAM)), newKeyPair("item", getItemID(Items.GLASS_BOTTLE)));
+    public static AtbywRecipe SHULKER_ESSENCE = createShapelessRecipe(NewAtbywID("shulker_essence"), "essence", 1, Lists.newArrayList(getItemID(Items.SHULKER_SHELL), getItemID(Items.SHULKER_SHELL), getItemID(Items.GLASS_BOTTLE)), getItemID(AtbywItems.SHULKER_ESSENCE));
+    public static AtbywRecipe CHICKEN_ESSENCE = createShapelessRecipe(NewAtbywID("chicken_essence"), "essence", 1, Lists.newArrayList(getItemID(Items.CHICKEN), getItemID(Items.FEATHER), getItemID(Items.GLASS_BOTTLE)), getItemID(AtbywItems.CHICKEN_ESSENCE));
+    public static AtbywRecipe RABBIT_ESSENCE = createShapelessRecipe(NewAtbywID("rabbit_essence"), "essence", 1, Lists.newArrayList(getItemID(Items.RABBIT), getItemID(Items.RABBIT_HIDE), getItemID(Items.GLASS_BOTTLE)), getItemID(AtbywItems.RABBIT_ESSENCE));
+    public static AtbywRecipe COD_ESSENCE = createShapelessRecipe(NewAtbywID("cod_essence"), "essence", 1, Lists.newArrayList(getItemID(Items.COD), getItemID(Items.BONE_MEAL), getItemID(Items.GLASS_BOTTLE)), getItemID(AtbywItems.COD_ESSENCE));
+    public static AtbywRecipe SALMON_ESSENCE = createShapelessRecipe(NewAtbywID("salmon_essence"), "essence", 1, Lists.newArrayList(getItemID(Items.SALMON), getItemID(Items.BONE_MEAL), getItemID(Items.GLASS_BOTTLE)), getItemID(AtbywItems.SALMON_ESSENCE));
+    public static AtbywRecipe PUFFER_FISH_ESSENCE = createShapelessRecipe(NewAtbywID("puffer_fish_essence"), "essence", 1, Lists.newArrayList(getItemID(Items.PUFFERFISH), getItemID(Items.BONE_MEAL), getItemID(Items.GLASS_BOTTLE)), getItemID(AtbywItems.PUFFER_FISH_ESSENCE));
+    public static AtbywRecipe SLIME_ESSENCE = createShapelessRecipe(NewAtbywID("slime_essence"), "essence", 1, Lists.newArrayList(getItemID(Items.SLIME_BALL), getItemID(Items.GLASS_BOTTLE)), getItemID(AtbywItems.SLIME_ESSENCE));
+    public static AtbywRecipe MAGMA_CUBE_ESSENCE = createShapelessRecipe(NewAtbywID("magma_cube_essence"), "essence", 1, Lists.newArrayList(getItemID(Items.MAGMA_CREAM), getItemID(Items.GLASS_BOTTLE)), getItemID(AtbywItems.MAGMA_CUBE_ESSENCE));
 
     public static AtbywRecipe SHULKER_STATUE = createShapelessRecipe(NewAtbywID("shulker_statue"), "statues", 1, Lists.newArrayList(getBlockID(Blocks.STONE), getItemID(AtbywItems.SHULKER_ESSENCE)), getBlockID(StatueRegistry.SHULKER_STATUE));
     public static AtbywRecipe CHICKEN_STATUE = createShapelessRecipe(NewAtbywID("chicken_statue"), "statues", 1, Lists.newArrayList(getBlockID(Blocks.STONE), getItemID(AtbywItems.CHICKEN_ESSENCE)), getBlockID(StatueRegistry.CHICKEN_STATUE));
@@ -308,6 +307,13 @@ public class AtbywRecipes {
 
     public static AtbywRecipe ROOTED_DIRT_STAIRS = createRecipeFromConfig(NewAtbywID("rooted_dirt_stairs"), "", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.ROOTED_DIRT_STAIRS), newKeyPair("item", getBlockID(Blocks.ROOTED_DIRT)));
     public static AtbywRecipe ROOTED_DIRT_SLAB = createRecipeFromConfig(NewAtbywID("rooted_dirt_slab"), "", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.ROOTED_DIRT_SLAB), newKeyPair("item", getBlockID(Blocks.ROOTED_DIRT)));
+
+    public static AtbywRecipe SAND_STAIRS = createRecipeFromConfig(NewAtbywID("sand_stairs"), "", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.SAND_STAIRS), newKeyPair("item", getBlockID(Blocks.SAND)));
+    public static AtbywRecipe SAND_SLAB = createRecipeFromConfig(NewAtbywID("sand_slab"), "", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.SAND_SLAB), newKeyPair("item", getBlockID(Blocks.SAND)));
+    public static AtbywRecipe RED_SAND_STAIRS = createRecipeFromConfig(NewAtbywID("red_sand_stairs"), "", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.RED_SAND_STAIRS), newKeyPair("item", getBlockID(Blocks.RED_SAND)));
+    public static AtbywRecipe RED_SAND_SLAB = createRecipeFromConfig(NewAtbywID("red_sand_slab"), "", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.RED_SAND_SLAB), newKeyPair("item", getBlockID(Blocks.RED_SAND)));
+    public static AtbywRecipe GRAVEL_STAIRS = createRecipeFromConfig(NewAtbywID("gravel_stairs"), "", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.GRAVEL_STAIRS), newKeyPair("item", getBlockID(Blocks.GRAVEL)));
+    public static AtbywRecipe GRAVEL_SLAB = createRecipeFromConfig(NewAtbywID("gravel_slab"), "", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.GRAVEL_SLAB), newKeyPair("item", getBlockID(Blocks.GRAVEL)));
 
     public static void init() {
         LOGGER.info("ATBYW Recipes Inintiliazed");
@@ -492,5 +498,12 @@ public class AtbywRecipes {
 
         putRecipe(ROOTED_DIRT_STAIRS, map);
         putRecipe(ROOTED_DIRT_SLAB, map);
+
+        putRecipe(SAND_STAIRS, map);
+        putRecipe(SAND_SLAB, map);
+        putRecipe(RED_SAND_STAIRS, map);
+        putRecipe(RED_SAND_SLAB, map);
+        putRecipe(GRAVEL_STAIRS, map);
+        putRecipe(GRAVEL_SLAB, map);
     }
 }
