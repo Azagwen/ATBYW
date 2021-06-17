@@ -206,9 +206,11 @@ public class AtbywRecipesStonecutting {
     public static AtbywRecipe SILVERFISH_STATUE_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("silverfish_statue_stonecutting"), getBlockID(Blocks.STONE), getBlockID(StatueRegistry.SILVERFISH_STATUE), 1);
     public static AtbywRecipe ENDERMITE_STATUE_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("endermite_statue_stonecutting"), getBlockID(Blocks.STONE), getBlockID(StatueRegistry.ENDERMITE_STATUE), 1);
     public static AtbywRecipe WOLF_STATUE_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("wolf_statue_stonecutting"), getBlockID(Blocks.STONE), getBlockID(StatueRegistry.WOLF_STATUE), 1);
-    public static AtbywRecipe AXOLOTL_STATUE_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("axolotl_statue_stonecutting"), getBlockID(Blocks.STONE), getBlockID(StatueRegistry.AXOLOTL_STATUE), 1);
     public static AtbywRecipe CAT_STATUE_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("cat_statue_stonecutting"), getBlockID(Blocks.STONE), getBlockID(StatueRegistry.CAT_STATUE), 1);
     public static AtbywRecipe FOX_STATUE_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("fox_statue_stonecutting"), getBlockID(Blocks.STONE), getBlockID(StatueRegistry.FOX_STATUE), 1);
+
+    public static AtbywRecipe AXOLOTL_STATUE_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("axolotl_statue_stonecutting"), getBlockID(Blocks.STONE), getBlockID(StatueRegistry.AXOLOTL_STATUE), 1);
+    public static AtbywRecipe BAT_STATUE_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("bat_statue_stonecutting"), getBlockID(Blocks.STONE), getBlockID(StatueRegistry.BAT_STATUE), 1);
 
     public static AtbywRecipe ROOTED_DIRT_STAIRS_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("rooted_dirt_stairs_stonecutting"), getBlockID(Blocks.ROOTED_DIRT), getBlockID(AtbywBlocks.ROOTED_DIRT_STAIRS), 1);
     public static AtbywRecipe ROOTED_DIRT_SLAB_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("rooted_dirt_slab_stonecutting"), getBlockID(Blocks.ROOTED_DIRT), getBlockID(AtbywBlocks.ROOTED_DIRT_SLAB), 2);
@@ -377,9 +379,11 @@ public class AtbywRecipesStonecutting {
         putRecipe(SILVERFISH_STATUE_FROM_STONECUTTING, map);
         putRecipe(ENDERMITE_STATUE_FROM_STONECUTTING, map);
         putRecipe(WOLF_STATUE_FROM_STONECUTTING, map);
-        putRecipe(AXOLOTL_STATUE_FROM_STONECUTTING, map);
         putRecipe(CAT_STATUE_FROM_STONECUTTING, map);
         putRecipe(FOX_STATUE_FROM_STONECUTTING, map);
+
+        putRecipe(AXOLOTL_STATUE_FROM_STONECUTTING, map);
+        putRecipe(BAT_STATUE_FROM_STONECUTTING, map);
 
         putRecipe(ROOTED_DIRT_STAIRS_FROM_STONECUTTING, map);
         putRecipe(ROOTED_DIRT_SLAB_FROM_STONECUTTING, map);

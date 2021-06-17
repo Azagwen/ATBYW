@@ -4,8 +4,9 @@
 - Changed ladder variants recipes to use planks instead of sticks
 - Changed statue and essence recipes to be less expensive
 - Statues have been rearranged in the creative inventory to be in alphabetical order
+- Statue waxing now works like copper waxing
 
-###Removed items
+###Removed
 - Removed all stick variants except for Bamboo
 - Removed Bee essence
 - Removed Silverfish essence
