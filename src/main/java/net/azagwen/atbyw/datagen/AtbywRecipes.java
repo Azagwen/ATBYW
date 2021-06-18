@@ -6,6 +6,9 @@ import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
 import net.azagwen.atbyw.items.AtbywItems;
 import net.azagwen.atbyw.util.Quadruplet;
+import net.azagwen.atbyw.util.naming.ColorNames;
+import net.azagwen.atbyw.util.naming.FlowerNames;
+import net.azagwen.atbyw.util.naming.WoodNames;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
@@ -14,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import static net.azagwen.atbyw.datagen.AtbywRecipeUtils.*;
@@ -145,6 +149,18 @@ public class AtbywRecipes {
     private static AtbywRecipe[] createMultiRecipesFromConfig(String[] nameArray, Identifier recipeId, String group, AtbywRecipeConfig config, Pair<String, String> result, Quadruplet<String, String, String, Boolean>... ingredient) {
         return createMultiRecipesFromConfig(nameArray, recipeId, group, config.getCount(), config, result, ingredient);
     }
+
+    @SafeVarargs
+    private static AtbywRecipe[] createMultiRecipesFromConfig(List<String> nameArray, Identifier recipeId, String group, AtbywRecipeConfig config, Pair<String, String> result, Quadruplet<String, String, String, Boolean>... ingredient) {
+        return createMultiRecipesFromConfig(nameArray.toArray(String[]::new), recipeId, group, config.getCount(), config, result, ingredient);
+    }
+
+    @SafeVarargs
+    private static AtbywRecipe[] createMultiRecipesFromConfig(List<String> nameArray, Identifier recipeId, String group, int count, AtbywRecipeConfig config, Pair<String, String> result, Quadruplet<String, String, String, Boolean>... ingredient) {
+        return createMultiRecipesFromConfig(nameArray.toArray(String[]::new), recipeId, group, count, config, result, ingredient);
+    }
+
+
     public static AtbywRecipe DIRT_STAIRS = createRecipeFromConfig(NewAtbywID("dirt_stairs"), "", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.DIRT_STAIRS), newKeyPair("item", getBlockID(Blocks.DIRT)));
     public static AtbywRecipe GRASS_BLOCK_STAIRS = createRecipeFromConfig(NewAtbywID("grass_block_stairs"), "", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.GRASS_BLOCK_STAIRS), newKeyPair("item", getBlockID(Blocks.GRASS_BLOCK)));
     public static AtbywRecipe MYCELIUM_STAIRS = createRecipeFromConfig(NewAtbywID("mycelium_stairs"), "", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.MYCELIUM_STAIRS), newKeyPair("item", getBlockID(Blocks.MYCELIUM)));
@@ -186,11 +202,11 @@ public class AtbywRecipes {
     public static AtbywRecipe DIORITE_BRICKS_SLAB = createRecipeFromConfig(NewAtbywID("diorite_bricks_slab"), "", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.DIORITE_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.DIORITE_BRICKS)));
     public static AtbywRecipe ANDESITE_BRICKS_SLAB = createRecipeFromConfig(NewAtbywID("andesite_bricks_slab"), "", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.ANDESITE_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.ANDESITE_BRICKS)));
 
-    public static AtbywRecipe[] BOOKSHELF_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES_NO_OAK, NewAtbywID("_bookshelf"), "bookshelf", AtbywRecipeConfigs.BOOKSHELF_2, new Pair<>(AtbywNamespace, "bookshelf"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false));
-    public static AtbywRecipe[] BOOKSHELF_TOGGLES_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, NewAtbywID("_bookshelf_toggle"), "bookshelf_toggle", AtbywRecipeConfigs.BOOKSHELF_TOGGLE_4, new Pair<>(AtbywNamespace, "bookshelf_toggle"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false), newKeyQuadruplet("item", mcNameSpace, "redstone", false), newKeyQuadruplet("tag", mcNameSpace, "stone_tool_materials", false));
-    public static AtbywRecipe[] LADDERS_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES_NO_OAK, NewAtbywID("_ladder"), "ladders", (AtbywRecipeConfigs.LADDER_1.getCount() * 2), AtbywRecipeConfigs.LADDER_1, new Pair<>(AtbywNamespace, "ladder"), newKeyQuadruplet("item", mcNameSpace, "planks", true));
-    public static AtbywRecipe[] FENCE_DOOR_VARIANTS = createMultiRecipesFromConfig(WOOD_NAMES, NewAtbywID("_fence_door"), "fence_door", AtbywRecipeConfigs.FENCE_DOOR_1, new Pair<>(AtbywNamespace, "fence_door"), newKeyQuadruplet("item", mcNameSpace, "planks", true));
-    public static AtbywRecipe[] FLOWER_SWITCHES = createMultiRecipesFromConfig(FLOWER_NAMES, NewAtbywID("_flower_pull_switch"), "flower_switches", AtbywRecipeConfigs.FLOWER_SWITCH_3, new Pair<>(AtbywNamespace, "pull_switch"), newKeyQuadruplet("item", mcNameSpace, "", true), newKeyQuadruplet("item", mcNameSpace, "stick", false), newKeyQuadruplet("item", mcNameSpace, "redstone", false));
+    public static AtbywRecipe[] BOOKSHELF_VARIANTS = createMultiRecipesFromConfig(WoodNames.getNamesInRange(1, 7), NewAtbywID("_bookshelf"), "bookshelf", AtbywRecipeConfigs.BOOKSHELF_2, new Pair<>(AtbywNamespace, "bookshelf"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false));
+    public static AtbywRecipe[] BOOKSHELF_TOGGLES_VARIANTS = createMultiRecipesFromConfig(WoodNames.getNames(), NewAtbywID("_bookshelf_toggle"), "bookshelf_toggle", AtbywRecipeConfigs.BOOKSHELF_TOGGLE_4, new Pair<>(AtbywNamespace, "bookshelf_toggle"), newKeyQuadruplet("item", mcNameSpace, "planks", true), newKeyQuadruplet("item", mcNameSpace, "book", false), newKeyQuadruplet("item", mcNameSpace, "redstone", false), newKeyQuadruplet("tag", mcNameSpace, "stone_tool_materials", false));
+    public static AtbywRecipe[] LADDERS_VARIANTS = createMultiRecipesFromConfig(WoodNames.getNamesInRange(1, 7), NewAtbywID("_ladder"), "ladders", (AtbywRecipeConfigs.LADDER_1.getCount() * 2), AtbywRecipeConfigs.LADDER_1, new Pair<>(AtbywNamespace, "ladder"), newKeyQuadruplet("item", mcNameSpace, "planks", true));
+    public static AtbywRecipe[] FENCE_DOOR_VARIANTS = createMultiRecipesFromConfig(WoodNames.getNames(), NewAtbywID("_fence_door"), "fence_door", AtbywRecipeConfigs.FENCE_DOOR_1, new Pair<>(AtbywNamespace, "fence_door"), newKeyQuadruplet("item", mcNameSpace, "planks", true));
+    public static AtbywRecipe[] FLOWER_SWITCHES = createMultiRecipesFromConfig(FlowerNames.getNames(), NewAtbywID("_flower_pull_switch"), "flower_switches", AtbywRecipeConfigs.FLOWER_SWITCH_3, new Pair<>(AtbywNamespace, "pull_switch"), newKeyQuadruplet("item", mcNameSpace, "", true), newKeyQuadruplet("item", mcNameSpace, "stick", false), newKeyQuadruplet("item", mcNameSpace, "redstone", false));
 
     public static AtbywRecipe TERRACOTTA_STAIRS = createRecipeFromConfig(NewAtbywID("terracotta_stairs_from_stick_tag"), "terracotta_stairs", AtbywRecipeConfigs.STAIRS_1, getBlockID(AtbywBlocks.TERRACOTTA_STAIRS), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
     public static AtbywRecipe TERRACOTTA_SLAB = createRecipeFromConfig(NewAtbywID("terracotta_slab_from_stick_tag"), "terracotta_slab", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.TERRACOTTA_SLAB), newKeyPair("item", getBlockID(Blocks.TERRACOTTA)));
@@ -199,24 +215,24 @@ public class AtbywRecipes {
     public static AtbywRecipe TERRACOTTA_BRICKS_SLAB = createRecipeFromConfig(NewAtbywID("terracotta_bricks_slab_from_stick_tag"), "terracotta_bricks_slab", AtbywRecipeConfigs.SLAB_1, getBlockID(AtbywBlocks.TERRACOTTA_BRICKS_SLAB), newKeyPair("item", getBlockID(AtbywBlocks.TERRACOTTA_BRICKS)));
     public static AtbywRecipe TERRACOTTA_BRICKS_WALL = createRecipeFromConfig(NewAtbywID("terracotta_bricks_wall_from_stick_tag"), "terracotta_bricks_wall", AtbywRecipeConfigs.WALL_1, getBlockID(AtbywBlocks.TERRACOTTA_BRICKS_WALL), newKeyPair("item", getBlockID(AtbywBlocks.TERRACOTTA_BRICKS)));
 
-    public static AtbywRecipe[] TERRACOTTA_STAIRS_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_stairs_from_dye"), "terracotta_stairs", AtbywRecipeConfigs.STAIRS_1, new Pair<>(AtbywNamespace, "terracotta_stairs"), newKeyQuadruplet("item", mcNameSpace, "terracotta", true));
-    public static AtbywRecipe[] TERRACOTTA_SLAB_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_slab_from_dye"), "terracotta_slab", AtbywRecipeConfigs.SLAB_1, new Pair<>(AtbywNamespace, "terracotta_slab"), newKeyQuadruplet("item", mcNameSpace, "terracotta", true));
-    public static AtbywRecipe[] TERRACOTTA_BRICKS_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_bricks_from_dye"), "terracotta_bricks", AtbywRecipeConfigs.BRICKS_1, new Pair<>(AtbywNamespace, "terracotta_bricks"), newKeyQuadruplet("item", mcNameSpace, "terracotta", true));
-    public static AtbywRecipe[] TERRACOTTA_BRICKS_STAIRS_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_bricks_stairs_from_dye"), "terracotta_bricks_stairs", AtbywRecipeConfigs.STAIRS_1, new Pair<>(AtbywNamespace, "terracotta_bricks_stairs"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks", true));
-    public static AtbywRecipe[] TERRACOTTA_BRICKS_SLAB_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_bricks_slab_from_dye"), "terracotta_bricks_slab", AtbywRecipeConfigs.SLAB_1, new Pair<>(AtbywNamespace, "terracotta_bricks_slab"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks", true));
-    public static AtbywRecipe[] TERRACOTTA_BRICKS_WALL_COLORS_SHAPED = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_bricks_wall_from_dye"), "terracotta_bricks_wall", AtbywRecipeConfigs.WALL_1, new Pair<>(AtbywNamespace, "terracotta_bricks_wall"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks", true));
+    public static AtbywRecipe[] TERRACOTTA_STAIRS_COLORS_SHAPED = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_stairs_from_dye"), "terracotta_stairs", AtbywRecipeConfigs.STAIRS_1, new Pair<>(AtbywNamespace, "terracotta_stairs"), newKeyQuadruplet("item", mcNameSpace, "terracotta", true));
+    public static AtbywRecipe[] TERRACOTTA_SLAB_COLORS_SHAPED = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_slab_from_dye"), "terracotta_slab", AtbywRecipeConfigs.SLAB_1, new Pair<>(AtbywNamespace, "terracotta_slab"), newKeyQuadruplet("item", mcNameSpace, "terracotta", true));
+    public static AtbywRecipe[] TERRACOTTA_BRICKS_COLORS_SHAPED = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_bricks_from_dye"), "terracotta_bricks", AtbywRecipeConfigs.BRICKS_1, new Pair<>(AtbywNamespace, "terracotta_bricks"), newKeyQuadruplet("item", mcNameSpace, "terracotta", true));
+    public static AtbywRecipe[] TERRACOTTA_BRICKS_STAIRS_COLORS_SHAPED = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_bricks_stairs_from_dye"), "terracotta_bricks_stairs", AtbywRecipeConfigs.STAIRS_1, new Pair<>(AtbywNamespace, "terracotta_bricks_stairs"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks", true));
+    public static AtbywRecipe[] TERRACOTTA_BRICKS_SLAB_COLORS_SHAPED = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_bricks_slab_from_dye"), "terracotta_bricks_slab", AtbywRecipeConfigs.SLAB_1, new Pair<>(AtbywNamespace, "terracotta_bricks_slab"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks", true));
+    public static AtbywRecipe[] TERRACOTTA_BRICKS_WALL_COLORS_SHAPED = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_bricks_wall_from_dye"), "terracotta_bricks_wall", AtbywRecipeConfigs.WALL_1, new Pair<>(AtbywNamespace, "terracotta_bricks_wall"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks", true));
 
-    public static AtbywRecipe[] TERRACOTTA_STAIRS_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_stairs"), "terracotta_stairs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_stairs"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_stairs", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
-    public static AtbywRecipe[] TERRACOTTA_SLAB_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_slab"), "terracotta_slabs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_slab"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_slab", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
-    public static AtbywRecipe[] TERRACOTTA_BRICKS_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_bricks"), "terracotta_bricks_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_bricks"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
-    public static AtbywRecipe[] TERRACOTTA_BRICKS_STAIRS_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_bricks_stairs"), "terracotta_bricks_stairs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_bricks_stairs"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks_stairs", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
-    public static AtbywRecipe[] TERRACOTTA_BRICKS_SLAB_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_bricks_slab"), "terracotta_bricks_slabs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_bricks_slab"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks_slab", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
-    public static AtbywRecipe[] TERRACOTTA_BRICKS_WALL_COLORS_DYING = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_terracotta_bricks_wall"), "terracotta_bricks_walls_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_bricks_wall"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks_wall", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+    public static AtbywRecipe[] TERRACOTTA_STAIRS_COLORS_DYING = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_stairs"), "terracotta_stairs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_stairs"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_stairs", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+    public static AtbywRecipe[] TERRACOTTA_SLAB_COLORS_DYING = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_slab"), "terracotta_slabs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_slab"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_slab", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+    public static AtbywRecipe[] TERRACOTTA_BRICKS_COLORS_DYING = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_bricks"), "terracotta_bricks_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_bricks"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+    public static AtbywRecipe[] TERRACOTTA_BRICKS_STAIRS_COLORS_DYING = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_bricks_stairs"), "terracotta_bricks_stairs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_bricks_stairs"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks_stairs", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+    public static AtbywRecipe[] TERRACOTTA_BRICKS_SLAB_COLORS_DYING = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_bricks_slab"), "terracotta_bricks_slabs_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_bricks_slab"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks_slab", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
+    public static AtbywRecipe[] TERRACOTTA_BRICKS_WALL_COLORS_DYING = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_terracotta_bricks_wall"), "terracotta_bricks_walls_dying", AtbywRecipeConfigs.DYING_2, new Pair<>(AtbywNamespace, "terracotta_bricks_wall"), newKeyQuadruplet("item", AtbywNamespace, "terracotta_bricks_wall", false), newKeyQuadruplet("item", mcNameSpace, "dye", true));
 
-    public static AtbywRecipe[] CONCRETE_STAIRS_COLORS = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_concrete_stairs"), "concrete_stairs", AtbywRecipeConfigs.STAIRS_1, new Pair<>(AtbywNamespace, "concrete_stairs"), newKeyQuadruplet("item", mcNameSpace, "concrete", true));
-    public static AtbywRecipe[] CONCRETE_SLAB_COLORS = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_concrete_slab"), "concrete_slab", AtbywRecipeConfigs.SLAB_1, new Pair<>(AtbywNamespace, "concrete_slab"), newKeyQuadruplet("item", mcNameSpace, "concrete", true));
-    public static AtbywRecipe[] CINDER_BLOCKS_COLORS = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_cinder_blocks"), "cinder_blocks", AtbywRecipeConfigs.BRICKS_1, new Pair<>(AtbywNamespace, "cinder_bricks"), newKeyQuadruplet("item", mcNameSpace, "concrete", true));
-    public static AtbywRecipe[] CINDER_BLOCKS_WALL_COLORS = createMultiRecipesFromConfig(COLOR_NAMES, NewAtbywID("_cinder_blocks_wall"), "cinder_blocks_wall", AtbywRecipeConfigs.WALL_1, new Pair<>(AtbywNamespace, "cinder_blocks_wall"), newKeyQuadruplet("item", AtbywNamespace, "cinder_bricks", true));
+    public static AtbywRecipe[] CONCRETE_STAIRS_COLORS = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_concrete_stairs"), "concrete_stairs", AtbywRecipeConfigs.STAIRS_1, new Pair<>(AtbywNamespace, "concrete_stairs"), newKeyQuadruplet("item", mcNameSpace, "concrete", true));
+    public static AtbywRecipe[] CONCRETE_SLAB_COLORS = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_concrete_slab"), "concrete_slab", AtbywRecipeConfigs.SLAB_1, new Pair<>(AtbywNamespace, "concrete_slab"), newKeyQuadruplet("item", mcNameSpace, "concrete", true));
+    public static AtbywRecipe[] CINDER_BLOCKS_COLORS = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_cinder_blocks"), "cinder_blocks", AtbywRecipeConfigs.BRICKS_1, new Pair<>(AtbywNamespace, "cinder_bricks"), newKeyQuadruplet("item", mcNameSpace, "concrete", true));
+    public static AtbywRecipe[] CINDER_BLOCKS_WALL_COLORS = createMultiRecipesFromConfig(ColorNames.getNames(), NewAtbywID("_cinder_blocks_wall"), "cinder_blocks_wall", AtbywRecipeConfigs.WALL_1, new Pair<>(AtbywNamespace, "cinder_blocks_wall"), newKeyQuadruplet("item", AtbywNamespace, "cinder_bricks", true));
 
     public static AtbywRecipe SHULKER_ESSENCE = createShapelessRecipe(NewAtbywID("shulker_essence"), "essence", 1, Lists.newArrayList(getItemID(Items.SHULKER_SHELL), getItemID(Items.SHULKER_SHELL), getItemID(Items.GLASS_BOTTLE)), getItemID(AtbywItems.SHULKER_ESSENCE));
     public static AtbywRecipe CHICKEN_ESSENCE = createShapelessRecipe(NewAtbywID("chicken_essence"), "essence", 1, Lists.newArrayList(getItemID(Items.CHICKEN), getItemID(Items.FEATHER), getItemID(Items.GLASS_BOTTLE)), getItemID(AtbywItems.CHICKEN_ESSENCE));
@@ -325,21 +341,21 @@ public class AtbywRecipes {
         AtbywRecipesStonecutting.inject(map);
 
         // Multi recipes
-        for (int i = 0; i < FLOWER_NAMES.length; i++) {
+        for (int i = 0; i < FlowerNames.values().length; i++) {
             putRecipe(FLOWER_SWITCHES[i], map);
         }
 
-        for (int i = 0; i < WOOD_NAMES_NO_OAK.length; i++) {
+        for (int i = 0; i < WoodNames.getNamesInRange(1, 7).size(); i++) {
             putRecipe(BOOKSHELF_VARIANTS[i], map);
             putRecipe(LADDERS_VARIANTS[i], map);
         }
 
-        for (int i = 0; i < WOOD_NAMES.length; i++) {
+        for (int i = 0; i < WoodNames.values().length; i++) {
             putRecipe(FENCE_DOOR_VARIANTS[i], map);
             putRecipe(BOOKSHELF_TOGGLES_VARIANTS[i], map);
         }
 
-        for (int i = 0; i < COLOR_NAMES.length; i++) {
+        for (int i = 0; i < ColorNames.values().length; i++) {
             putRecipe(TERRACOTTA_STAIRS_COLORS_SHAPED[i], map);
             putRecipe(TERRACOTTA_SLAB_COLORS_SHAPED[i], map);
             putRecipe(TERRACOTTA_BRICKS_COLORS_SHAPED[i], map);

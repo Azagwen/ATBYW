@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
+import net.azagwen.atbyw.util.naming.ColorNames;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
@@ -35,15 +36,15 @@ public class AtbywRecipesStonecutting {
     }
 
     private static AtbywRecipe[] createStonecutterColoredRecipes(Identifier recipeId, Pair<String, String> ingredient, Pair<String, String> result, int count) {
-        AtbywRecipe[] recipes = new AtbywRecipe[COLOR_NAMES.length];
+        AtbywRecipe[] recipes = new AtbywRecipe[ColorNames.values().length];
 
         int i = 0;
-        for (var COLOR : COLOR_NAMES) {
+        for (var COLOR : ColorNames.getNames()) {
             var newRecipeId = new Identifier(recipeId.getNamespace(), COLOR + recipeId.getPath());
             recipes[i] = createStonecutterRecipe(
                     newRecipeId,
-                    getItemPseudoID(COLOR_NAMES, i, ingredient.getLeft(), ingredient.getRight()),
-                    getItemPseudoID(COLOR_NAMES, i, result.getLeft(), result.getRight()),
+                    getItemPseudoID(ColorNames.getNames().toArray(String[]::new), i, ingredient.getLeft(), ingredient.getRight()),
+                    getItemPseudoID(ColorNames.getNames().toArray(String[]::new), i, result.getLeft(), result.getRight()),
                     count
             );
             i++;
@@ -223,7 +224,7 @@ public class AtbywRecipesStonecutting {
     public static AtbywRecipe GRAVEL_SLAB_FROM_STONECUTTING = createStonecutterRecipe(NewAtbywID("gravel_slab_stonecutting"), getBlockID(Blocks.GRAVEL), getBlockID(AtbywBlocks.GRAVEL_SLAB), 2);
 
     public static void inject(Map<Identifier, JsonElement> map) {
-        for (int i = 0; i < COLOR_NAMES.length; i++) {
+        for (int i = 0; i < ColorNames.values().length; i++) {
             putRecipe(TERRACOTTA_STAIRS_COLORS_STONECUTTING[i], map);
             putRecipe(TERRACOTTA_SLAB_COLORS_STONECUTTING[i], map);
             putRecipe(TERRACOTTA_BRICKS_COLORS_STONECUTTING[i], map);

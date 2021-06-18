@@ -17,25 +17,5 @@
   "block.atbyw_mi.dragon_tree_bookshelf_toggle": "Dragon Tree Bookshelf Toggle",
   "block.atbyw_mi.tenanea_bookshelf_toggle": "Tenanea Bookshelf Toggle",
   "block.atbyw_mi.helix_tree_bookshelf_toggle": "Helix Tree Bookshelf Toggle",
-  "block.atbyw_mi.umbrella_tree_bookshelf_toggle": "Umbrella Tree Bookshelf Toggle",
-
-  "_comment": "Items",
-  "item.atbyw_mi.stalagnate_stick": "Stalagnate Stick",
-  "item.atbyw_mi.reeds_stick": "Reeds Stick",
-  "item.atbyw_mi.willow_stick": "Willow Stick",
-  "item.atbyw_mi.wart_stick": "Wart Stick",
-  "item.atbyw_mi.rubeus_stick": "Rubeus Stick",
-  "item.atbyw_mi.mushroom_stick": "Mushroom Stick",
-  "item.atbyw_mi.mushroom_fir_stick": "Mushroom Fir Stick",
-  "item.atbyw_mi.anchor_tree_stick": "Anchor Tree Stick",
-  "item.atbyw_mi.nether_sakura_stick": "Nether Sakura Stick",
-
-  "item.atbyw_mi.mossy_glowshroom_stick": "Mossy Glowshroom Stick",
-  "item.atbyw_mi.pythadendron_stick": "Pythadendron Stick",
-  "item.atbyw_mi.end_lotus_stick": "End Lotus Stick",
-  "item.atbyw_mi.lacugrove_stick": "Lacugrove Stick",
-  "item.atbyw_mi.dragon_tree_stick": "Dragon Tree Stick",
-  "item.atbyw_mi.tenanea_stick": "Tenanea Stick",
-  "item.atbyw_mi.helix_tree_stick": "Helix Tree Stick",
-  "item.atbyw_mi.umbrella_tree_stick": "Umbrella Tree Stick"
+  "block.atbyw_mi.umbrella_tree_bookshelf_toggle": "Umbrella Tree Bookshelf Toggle"
 }

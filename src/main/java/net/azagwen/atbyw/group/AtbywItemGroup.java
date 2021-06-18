@@ -23,11 +23,13 @@ public class AtbywItemGroup extends TabbedItemGroup {
     public static Tag<Item> ATBYW_DECO_TAB = AtbywTags.registerItemTag("tab_deco");
     public static Tag<Item> ATBYW_REDSTONE_TAB = AtbywTags.registerItemTag("tab_redstone");
     public static Tag<Item> ATBYW_MISC_TAB = AtbywTags.registerItemTag("tab_misc");
+    public static Tag<Item> ATBYW_GEN_BLOCKS_TAB = AtbywTags.registerItemTag("tab_gen_blocks");
 
     public static ItemGroupTab ATBYW_BLOCKS = new ItemGroupTab(new ItemStack(AtbywBlocks.CYAN_CINDER_BLOCKS), "blocks", ATBYW_BLOCKS_TAB);
     public static ItemGroupTab ATBYW_DECO = new ItemGroupTab(new ItemStack(AtbywBlocks.CYAN_CINDER_BLOCKS_WALL), "decoration", ATBYW_DECO_TAB);
     public static ItemGroupTab ATBYW_REDSTONE = new ItemGroupTab(new ItemStack(AtbywBlocks.REDSTONE_LANTERN), "redstone", ATBYW_REDSTONE_TAB);
     public static ItemGroupTab ATBYW_MISC = new ItemGroupTab(new ItemStack(AtbywItems.BAMBOO_STICK), "misc", ATBYW_MISC_TAB);
+    public static ItemGroupTab ATBYW_GEN_BLOCKS = new ItemGroupTab(new ItemStack(AtbywItems.BAMBOO_STICK), "misc", ATBYW_GEN_BLOCKS_TAB);
 
     @Override
     public void initTabs(List<ItemGroupTab> tabs) {
@@ -35,6 +37,7 @@ public class AtbywItemGroup extends TabbedItemGroup {
         tabs.add(ATBYW_DECO);
         tabs.add(ATBYW_REDSTONE);
         tabs.add(ATBYW_MISC);
+        tabs.add(ATBYW_GEN_BLOCKS);
     }
 
     @Override

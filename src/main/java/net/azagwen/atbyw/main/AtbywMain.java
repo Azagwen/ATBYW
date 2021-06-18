@@ -42,10 +42,11 @@ public class AtbywMain implements ModInitializer {
 	}
 
 	public static ItemGroup ATBYW_GROUP;
-	public static ArrayList<Item> BLOCKS_TAB = Lists.newArrayList(); 	//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
-	public static ArrayList<Item> DECO_TAB = Lists.newArrayList(); 		//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
-	public static ArrayList<Item> REDSTONE_TAB = Lists.newArrayList(); 	//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
-	public static ArrayList<Item> MISC_TAB = Lists.newArrayList(); 		//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
+	public static ArrayList<Item> BLOCKS_TAB = Lists.newArrayList(); 		//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
+	public static ArrayList<Item> DECO_TAB = Lists.newArrayList(); 			//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
+	public static ArrayList<Item> REDSTONE_TAB = Lists.newArrayList(); 		//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
+	public static ArrayList<Item> MISC_TAB = Lists.newArrayList(); 			//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
+	public static ArrayList<Item> GEN_BLOCKS_TAB = Lists.newArrayList(); 	//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
 
 	public static ItemGroup ATBYW_BLOCKS; 		//Unused, kept for testing.
 	public static ItemGroup ATBYW_DECO; 		//Unused, kept for testing.
@@ -61,6 +62,7 @@ public class AtbywMain implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+
 		if (enable_mod_interactions()) {
 			FabricLoader.getInstance().getModContainer(AtbywNamespace).map(modContainer -> {
 				return ResourceManagerHelper.registerBuiltinResourcePack(NewAtbywModInteractionID("mod_interaction_resources"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED);

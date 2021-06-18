@@ -1,0 +1,13 @@
+{
+    "data_type": "atbyw:block_to_block",
+    "states": {
+        "atbyw:oak_log_slab": "atbyw:stripped_oak_log_slab",
+        "atbyw:spruce_log_slab": "atbyw:stripped_spruce_log_slab",
+        "atbyw:birch_log_slab": "atbyw:stripped_birch_log_slab",
+        "atbyw:jungle_log_slab": "atbyw:stripped_jungle_log_slab",
+        "atbyw:acacia_log_slab": "atbyw:stripped_acacia_log_slab",
+        "atbyw:dark_oak_log_slab": "atbyw:stripped_dark_oak_log_slab",
+        "atbyw:crimson_stem_slab": "atbyw:stripped_crimson_stem_slab",
+        "atbyw:warped_stem_slab": "atbyw:stripped_warped_stem_slab"
+    }
+}

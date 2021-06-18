@@ -11,7 +11,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
+import net.minecraft.item.
+        Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -21,34 +22,29 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public record AtbywUtils() {
-    public static final String[] WOOD_NAMES = {"oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "crimson", "warped"};
-    public static final String[] WOOD_NAMES_NO_OAK = {"spruce", "birch", "jungle", "acacia", "dark_oak", "crimson", "warped"};
-    public static final String[] STONE_NAMES = {"granite", "diorite", "andesite"};
-    public static final String[] FLOWER_NAMES = {"dandelion", "poppy", "blue_orchid", "allium", "azure_bluet", "red_tulip", "orange_tulip", "white_tulip", "pink_tulip", "oxeye_daisy", "cornflower", "lily_of_the_valley", "wither_rose"};
-    public static final String[] COLOR_NAMES = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
-    public static final String[] TOOL_MATERIALS = {"wooden", "stone", "iron", "golden", "diamond", "netherite"};
-    public static final Item[] DYES = {Items.WHITE_DYE, Items.ORANGE_DYE, Items.MAGENTA_DYE, Items.LIGHT_BLUE_DYE, Items.YELLOW_DYE, Items.LIME_DYE, Items.PINK_DYE, Items.GRAY_DYE, Items.LIGHT_GRAY_DYE, Items.CYAN_DYE, Items.PURPLE_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.GREEN_DYE, Items.RED_DYE, Items.BLACK_DYE};
-
-    public static int WHITE = 0;
-    public static int ORANGE = 1;
-    public static int MAGENTA = 2;
-    public static int LIGHT_BLUE = 3;
-    public static int YELLOW = 4;
-    public static int LIME = 5;
-    public static int PINK = 6;
-    public static int GRAY = 7;
-    public static int LIGHT_GRAY = 8;
-    public static int CYAN = 9;
-    public static int PURPLE = 10;
-    public static int BLUE = 11;
-    public static int BROWN = 12;
-    public static int GREEN = 13;
-    public static int RED = 14;
-    public static int BLACK = 15;
+    public static final Item[] DYES = {
+            Items.WHITE_DYE,
+            Items.ORANGE_DYE,
+            Items.MAGENTA_DYE,
+            Items.LIGHT_BLUE_DYE,
+            Items.YELLOW_DYE,
+            Items.LIME_DYE,
+            Items.PINK_DYE,
+            Items.GRAY_DYE,
+            Items.LIGHT_GRAY_DYE,
+            Items.CYAN_DYE,
+            Items.PURPLE_DYE,
+            Items.BLUE_DYE,
+            Items.BROWN_DYE,
+            Items.GREEN_DYE,
+            Items.RED_DYE,
+            Items.BLACK_DYE
+    };
 
     public static JsonArray jsonArray(Object... elements) {
         var array = new JsonArray();
@@ -222,10 +218,6 @@ public record AtbywUtils() {
             throw new IllegalArgumentException(String.join("could not register " + block_name + " : mismatched lengths !"));
     }
 
-    public static void registerBlocks(boolean fireproof, @Nullable String prefix, String block_name, String[] variant_type, Block... block) {
-        registerBlocks(fireproof, (ItemGroup) null, prefix, block_name, variant_type, block);
-    }
-
     /** Registers a given amount of blocks determined by "block" and "variant_type"'s length,
      *  those two arrays MUST match in order to register those blocks, if the lengths mismatch
      *  the game will crash on its own and notify you of that mistake.
@@ -251,5 +243,17 @@ public record AtbywUtils() {
             }
         else
             throw new IllegalArgumentException(String.join("could not register " + block_name + " : mismatched lengths !"));
+    }
+
+    public static void registerBlocks(boolean fireproof, ArrayList<Item> group, String block_name, List<String> variant_type, Block... block) {
+        registerBlocks(fireproof, group, null, block_name, variant_type.toArray(String[]::new), block);
+    }
+
+    public static void registerBlocks(boolean fireproof, ArrayList<Item> group, String prefix, String block_name, List<String> variant_type, Block... block) {
+        registerBlocks(fireproof, group, prefix, block_name, variant_type.toArray(String[]::new), block);
+    }
+
+    public static void registerBlocks(boolean fireproof, ArrayList<Item> group, String block_name, String[] variant_type, Block... block) {
+        registerBlocks(fireproof, group, null, block_name, variant_type, block);
     }
 }

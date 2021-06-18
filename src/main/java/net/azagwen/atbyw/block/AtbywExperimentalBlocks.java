@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.block;
 
 import net.azagwen.atbyw.block.piston.PistonDuck;
+import net.azagwen.atbyw.util.naming.WoodNames;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
@@ -79,40 +80,7 @@ public class AtbywExperimentalBlocks {
     public static BlockEntityType<PistonBlockEntity> WARPED_PISTON_ENTITY;
 
     public static void initPistons() {
-//        registerBlocksOnly("moving_piston", WOOD_NAMES_FROM_SPRUCE, new Block[] {
-//                SPRUCE_MOVING_PISTON,
-//                BIRCH_MOVING_PISTON,
-//                JUNGLE_MOVING_PISTON,
-//                ACACIA_MOVING_PISTON,
-//                DARK_OAK_MOVING_PISTON,
-//                CRIMSON_MOVING_PISTON,
-//                WARPED_MOVING_PISTON
-//        });
 
-        registerBlocks(false, (ItemGroup) null, null, "piston", WOOD_NAMES_NO_OAK,
-                SPRUCE_PISTON,
-                BIRCH_PISTON,
-                JUNGLE_PISTON,
-                ACACIA_PISTON,
-                DARK_OAK_PISTON,
-                CRIMSON_PISTON,
-                WARPED_PISTON);
-        registerBlocks(false, (ItemGroup) null, null, "sticky_piston", WOOD_NAMES_NO_OAK,
-                SPRUCE_STICKY_PISTON,
-                BIRCH_STICKY_PISTON,
-                JUNGLE_STICKY_PISTON,
-                ACACIA_STICKY_PISTON,
-                DARK_OAK_STICKY_PISTON,
-                CRIMSON_STICKY_PISTON,
-                WARPED_STICKY_PISTON);
-        registerBlocksOnly("piston_head", WOOD_NAMES_NO_OAK,
-                SPRUCE_PISTON_HEAD,
-                BIRCH_PISTON_HEAD,
-                JUNGLE_PISTON_HEAD,
-                ACACIA_PISTON_HEAD,
-                DARK_OAK_PISTON_HEAD,
-                CRIMSON_PISTON_HEAD,
-                WARPED_PISTON_HEAD);
     }
 
     public static void initPistonEntities() {

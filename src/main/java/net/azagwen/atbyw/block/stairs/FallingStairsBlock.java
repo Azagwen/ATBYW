@@ -2,7 +2,6 @@ package net.azagwen.atbyw.block.stairs;
 
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BlockHalf;
-import net.minecraft.block.enums.SlabType;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;

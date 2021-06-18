@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.util.naming.ColorNames;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
@@ -42,18 +43,18 @@ public class AtbywRecipesSmelting {
     }
 
     private static AtbywRecipe[] createMultiSmeltingRecipes(Identifier recipeId, String type, ArrayList<Pair<String, String>> ingredients, Pair<String, String> result, double xp, int time) {
-        AtbywRecipe[] obj = new AtbywRecipe[COLOR_NAMES.length];
+        AtbywRecipe[] obj = new AtbywRecipe[ColorNames.values().length];
         Identifier[] ing = new Identifier[ingredients.size()];
 
         int i = 0;
-        for (var COLOR : COLOR_NAMES) {
+        for (var COLOR : ColorNames.getNames()) {
             var newRecipeId = new Identifier(recipeId.getNamespace(), COLOR + recipeId.getPath());
             int j = 0;
             for (var ingredient : ingredients) {
-                ing[j] = getItemPseudoID(COLOR_NAMES, i, ingredient.getLeft(), ingredient.getRight());
+                ing[j] = getItemPseudoID(ColorNames.getNames().toArray(String[]::new), i, ingredient.getLeft(), ingredient.getRight());
                 j++;
             }
-            obj[i] = createSmeltingRecipe(newRecipeId, type, Lists.newArrayList(ing), getItemPseudoID(COLOR_NAMES, i, result.getLeft(), result.getRight()), xp, time);
+            obj[i] = createSmeltingRecipe(newRecipeId, type, Lists.newArrayList(ing), getItemPseudoID(ColorNames.getNames().toArray(String[]::new), i, result.getLeft(), result.getRight()), xp, time);
             i++;
         }
 

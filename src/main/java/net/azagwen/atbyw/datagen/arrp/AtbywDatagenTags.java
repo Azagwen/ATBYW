@@ -88,6 +88,7 @@ public class AtbywDatagenTags {
         createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_deco", DECO_TAB);
         createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_redstone", REDSTONE_TAB);
         createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_misc", MISC_TAB);
+        createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_gen_blocks", GEN_BLOCKS_TAB);
 
         createBlockTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "bookshelves", BOOKSHELVES);
         createBlockTag(ATBYW_RESOURCE_PACK, "c", "bookshelves", BOOKSHELVES);

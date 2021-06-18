@@ -1,9 +1,15 @@
 package net.azagwen.atbyw.block;
 
+import com.google.common.collect.Maps;
 import net.azagwen.atbyw.block.slabs.*;
 import net.azagwen.atbyw.block.stairs.*;
 import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.azagwen.atbyw.block.statues.*;
+import net.azagwen.atbyw.datagen.arrp.AtbywDatagenModels;
+import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
+import net.azagwen.atbyw.util.naming.ColorNames;
+import net.azagwen.atbyw.util.naming.FlowerNames;
+import net.azagwen.atbyw.util.naming.WoodNames;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
@@ -13,8 +19,10 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 
+import java.util.Map;
 import java.util.function.ToIntFunction;
 
 import static net.azagwen.atbyw.util.AtbywUtils.*;
@@ -45,20 +53,24 @@ public class AtbywBlocks {
     public static boolean always(BlockState state, BlockView world, BlockPos pos) { return true; }
     public static boolean never(BlockState state, BlockView world, BlockPos pos) { return false; }
 
-    private static ToIntFunction<BlockState> createLightLevelFromBlockState(int litLevel, BooleanProperty isLit) {
+    private static ToIntFunction<BlockState> lightLevelFromState(int litLevel, BooleanProperty isLit) {
         return (blockState) -> blockState.get(isLit) ? litLevel : 0;
     }
 
-    private static ToIntFunction<BlockState> createLightLevelFromBlockState(int divider, IntProperty litLevel, BooleanProperty isLit) {
+    private static ToIntFunction<BlockState> lightLevelFromState(int divider, IntProperty litLevel, BooleanProperty isLit) {
         return (blockState) -> blockState.get(isLit) ? ((int) Math.ceil((double) blockState.get(litLevel) / (double) divider)) : 0;
     }
 
-    private static FabricBlockSettings MakeBasalt() {
+    private static FabricBlockSettings createBasalt() {
         return FabricBlockSettings.of(Material.STONE, MapColor.BLACK).requiresTool().breakByTool(FabricToolTags.PICKAXES).strength(1.25F, 4.2F).sounds(BlockSoundGroup.BASALT);
     }
 
-    private static FabricBlockSettings MakeWoodenFenceDoor(Block copiedMatColor) {
+    private static FabricBlockSettings createWoodenFenceDoor(Block copiedMatColor) {
         return FabricBlockSettings.of(Material.WOOD, copiedMatColor.getDefaultMapColor()).breakByTool(FabricToolTags.AXES).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD);
+    }
+
+    public static FabricBlockSettings createLogSlab(MapColor color) {
+        return FabricBlockSettings.of(Material.WOOD, color).strength(2.0F).breakByTool(FabricToolTags.AXES);
     }
 
     //Dummy Blocks (used only in-code references and specific properties)
@@ -67,8 +79,8 @@ public class AtbywBlocks {
     public static final Block DUMMY_MYCELIUM = new MyceliumBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PURPLE).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
 
     //"Full" Blocks
-    public static final Block BASALT_BRICKS = new Block(MakeBasalt());
-    public static final Block BASALT_PILLAR = new PillarBlock(MakeBasalt());
+    public static final Block BASALT_BRICKS = new Block(createBasalt());
+    public static final Block BASALT_PILLAR = new PillarBlock(createBasalt());
 
     public static final Block SPRUCE_BOOKSHELF = new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
     public static final Block BIRCH_BOOKSHELF = new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
@@ -331,7 +343,7 @@ public class AtbywBlocks {
     public static final Block PACKED_ICE_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PACKED_ICE));
     public static final Block BLUE_ICE_BRICKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ICE));
 
-    public static final Block REDSTONE_JACK_O_LANTERN = new RedstoneJackOlantern(FabricBlockSettings.of(Material.GOURD, MapColor.ORANGE).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance(createLightLevelFromBlockState(7, RedstoneJackOlantern.LIT)).solidBlock(AtbywBlocks::never).allowsSpawning(AtbywBlocks::always));
+    public static final Block REDSTONE_JACK_O_LANTERN = new RedstoneJackOlantern(FabricBlockSettings.of(Material.GOURD, MapColor.ORANGE).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance(lightLevelFromState(7, RedstoneJackOlantern.LIT)).solidBlock(AtbywBlocks::never).allowsSpawning(AtbywBlocks::always));
     public static final Block SOUL_JACK_O_LANTERN = new CarvedPumpkinBlockSubClass(FabricBlockSettings.of(Material.GOURD, MapColor.ORANGE).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance((state) -> 10).allowsSpawning(AtbywBlocks::always));
 
     public static final Block SAND_SLAB = new FallingSlabBlock(14406560, FabricBlockSettings.copyOf(Blocks.SAND).breakByTool(FabricToolTags.SHOVELS));
@@ -345,14 +357,14 @@ public class AtbywBlocks {
     //Non-Full Blocks
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MapColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
-    public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.OAK_PLANKS));
-    public static final Block SPRUCE_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.SPRUCE_PLANKS));
-    public static final Block BIRCH_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.BIRCH_PLANKS));
-    public static final Block JUNGLE_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.JUNGLE_PLANKS));
-    public static final Block ACACIA_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.ACACIA_PLANKS));
-    public static final Block DARK_OAK_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.DARK_OAK_PLANKS));
-    public static final Block CRIMSON_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.CRIMSON_PLANKS));
-    public static final Block WARPED_FENCE_DOOR = new FenceDoorBlock(MakeWoodenFenceDoor(Blocks.WARPED_PLANKS));
+    public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.OAK_PLANKS));
+    public static final Block SPRUCE_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.SPRUCE_PLANKS));
+    public static final Block BIRCH_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.BIRCH_PLANKS));
+    public static final Block JUNGLE_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.JUNGLE_PLANKS));
+    public static final Block ACACIA_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.ACACIA_PLANKS));
+    public static final Block DARK_OAK_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.DARK_OAK_PLANKS));
+    public static final Block CRIMSON_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.CRIMSON_PLANKS));
+    public static final Block WARPED_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.WARPED_PLANKS));
     public static final Block IRON_FENCE_DOOR = new FenceDoorBlock(FabricBlockSettings.copyOf(Blocks.IRON_DOOR).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static final Block SPRUCE_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
@@ -364,21 +376,21 @@ public class AtbywBlocks {
     public static final Block WARPED_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
     public static final Block BAMBOO_LADDER = new BambooLadderBlock(FabricBlockSettings.copyOf(Blocks.BAMBOO));
 
-    public static final Block DANDELION_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.DANDELION).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block POPPY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.POPPY).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block BLUE_ORCHID_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ORCHID).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block ALLIUM_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.ALLIUM).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block AZURE_BLUET_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.AZURE_BLUET).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block RED_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.RED_TULIP).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block ORANGE_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.ORANGE_TULIP).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block WHITE_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WHITE_TULIP).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block PINK_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.PINK_TULIP).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block OXEYE_DAISY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.OXEYE_DAISY).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block CORNFLOWER_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block LILY_OF_THE_VALLEY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.LILY_OF_THE_VALLEY).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
-    public static final Block WITHER_ROSE_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WITHER_ROSE).luminance(createLightLevelFromBlockState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block DANDELION_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.DANDELION).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block POPPY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.POPPY).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block BLUE_ORCHID_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.BLUE_ORCHID).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block ALLIUM_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.ALLIUM).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block AZURE_BLUET_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.AZURE_BLUET).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block RED_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.RED_TULIP).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block ORANGE_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.ORANGE_TULIP).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block WHITE_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WHITE_TULIP).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block PINK_TULIP_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.PINK_TULIP).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block OXEYE_DAISY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.OXEYE_DAISY).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block CORNFLOWER_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block LILY_OF_THE_VALLEY_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.LILY_OF_THE_VALLEY).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
+    public static final Block WITHER_ROSE_PULL_SWITCH = new FlowerButtonBlock(FabricBlockSettings.copyOf(Blocks.WITHER_ROSE).luminance(lightLevelFromState(8, Properties.LIT)).sounds(BlockSoundGroup.WOOD));
 
-    public static final Block REDSTONE_LANTERN = new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).breakByTool(FabricToolTags.PICKAXES).luminance(createLightLevelFromBlockState(2, AtbywProperties.POWER_INTENSITY, Properties.LIT)));
+    public static final Block REDSTONE_LANTERN = new RedstoneLanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).breakByTool(FabricToolTags.PICKAXES).luminance(lightLevelFromState(2, AtbywProperties.POWER_INTENSITY, Properties.LIT)));
     public static final Block SHROOMSTICK = new ShroomStickBlock(FabricBlockSettings.of(AtbywMaterials.SHROOMSTICK).breakByHand(true).breakInstantly().noCollision().nonOpaque().luminance((state) -> 15));
 
     public static final Block GRANITE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.GRANITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
@@ -414,22 +426,39 @@ public class AtbywBlocks {
 
     public static final Block LARGE_CHAIN = new LargeChainBlock(FabricBlockSettings.copyOf(Blocks.CHAIN).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block OAK_LOG_SLAB = new PillarSlab(FabricBlockSettings.copyOf(Blocks.OAK_LOG).breakByTool(FabricToolTags.AXES));
+    public static final Block OAK_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.OAK_LOG.getDefaultMapColor()));
+    public static final Block SPRUCE_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.SPRUCE_LOG.getDefaultMapColor()));
+    public static final Block BIRCH_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.BIRCH_LOG.getDefaultMapColor()));
+    public static final Block JUNGLE_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.JUNGLE_LOG.getDefaultMapColor()));
+    public static final Block ACACIA_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.ACACIA_LOG.getDefaultMapColor()));
+    public static final Block DARK_OAK_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.DARK_OAK_LOG.getDefaultMapColor()));
+    public static final Block CRIMSON_STEM_SLAB = new PillarSlabBlock(createLogSlab(Blocks.CRIMSON_STEM.getDefaultMapColor()));
+    public static final Block WARPED_STEM_SLAB = new PillarSlabBlock(createLogSlab(Blocks.WARPED_STEM.getDefaultMapColor()));
+
+    public static final Block STRIPPED_OAK_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_OAK_LOG.getDefaultMapColor()));
+    public static final Block STRIPPED_SPRUCE_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_SPRUCE_LOG.getDefaultMapColor()));
+    public static final Block STRIPPED_BIRCH_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_BIRCH_LOG.getDefaultMapColor()));
+    public static final Block STRIPPED_JUNGLE_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_JUNGLE_LOG.getDefaultMapColor()));
+    public static final Block STRIPPED_ACACIA_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_ACACIA_LOG.getDefaultMapColor()));
+    public static final Block STRIPPED_DARK_OAK_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_DARK_OAK_LOG.getDefaultMapColor()));
+    public static final Block STRIPPED_CRIMSON_STEM_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_CRIMSON_STEM.getDefaultMapColor()));
+    public static final Block STRIPPED_WARPED_STEM_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_WARPED_STEM.getDefaultMapColor()));
 
     public static void init() {
+
         //ATBYW REDSTONE
         registerBlock(false, REDSTONE_TAB, "timer_repeater", TIMER_REPEATER);
         registerBlock(false, REDSTONE_TAB, "redstone_cross_path", REDSTONE_CROSS_PATH);
         registerBlock(false, REDSTONE_TAB, "redstone_lantern", REDSTONE_LANTERN);
         registerBlock(false, REDSTONE_TAB, "redstone_jack_o_lantern", REDSTONE_JACK_O_LANTERN);
-        registerBlocks(false, REDSTONE_TAB, null, "bookshelf_toggle", WOOD_NAMES, OAK_BOOKSHELF_TOGGLE, SPRUCE_BOOKSHELF_TOGGLE, BIRCH_BOOKSHELF_TOGGLE, JUNGLE_BOOKSHELF_TOGGLE, ACACIA_BOOKSHELF_TOGGLE, DARK_OAK_BOOKSHELF_TOGGLE, CRIMSON_BOOKSHELF_TOGGLE, WARPED_BOOKSHELF_TOGGLE);
+        registerBlocks(false, REDSTONE_TAB, "bookshelf_toggle", WoodNames.getNames(), OAK_BOOKSHELF_TOGGLE, SPRUCE_BOOKSHELF_TOGGLE, BIRCH_BOOKSHELF_TOGGLE, JUNGLE_BOOKSHELF_TOGGLE, ACACIA_BOOKSHELF_TOGGLE, DARK_OAK_BOOKSHELF_TOGGLE, CRIMSON_BOOKSHELF_TOGGLE, WARPED_BOOKSHELF_TOGGLE);
         AtbywModInteractionBlocks.initBookshelfToggles();
-        registerBlocks(false, REDSTONE_TAB, null, "pull_switch", FLOWER_NAMES, DANDELION_PULL_SWITCH, POPPY_PULL_SWITCH, BLUE_ORCHID_PULL_SWITCH, ALLIUM_PULL_SWITCH, AZURE_BLUET_PULL_SWITCH, RED_TULIP_PULL_SWITCH, ORANGE_TULIP_PULL_SWITCH, WHITE_TULIP_PULL_SWITCH, PINK_TULIP_PULL_SWITCH, OXEYE_DAISY_PULL_SWITCH, CORNFLOWER_PULL_SWITCH, LILY_OF_THE_VALLEY_PULL_SWITCH, WITHER_ROSE_PULL_SWITCH);
+        registerBlocks(false, REDSTONE_TAB, "pull_switch", FlowerNames.getNames(), DANDELION_PULL_SWITCH, POPPY_PULL_SWITCH, BLUE_ORCHID_PULL_SWITCH, ALLIUM_PULL_SWITCH, AZURE_BLUET_PULL_SWITCH, RED_TULIP_PULL_SWITCH, ORANGE_TULIP_PULL_SWITCH, WHITE_TULIP_PULL_SWITCH, PINK_TULIP_PULL_SWITCH, OXEYE_DAISY_PULL_SWITCH, CORNFLOWER_PULL_SWITCH, LILY_OF_THE_VALLEY_PULL_SWITCH, WITHER_ROSE_PULL_SWITCH);
         registerBlock(false, REDSTONE_TAB, "iron_spike_trap", IRON_SPIKE_TRAP);
         registerBlock(false, REDSTONE_TAB, "gold_spike_trap", GOLD_SPIKE_TRAP);
         registerBlock(false, REDSTONE_TAB, "diamond_spike_trap", DIAMOND_SPIKE_TRAP);
         registerBlock(false, REDSTONE_TAB, "netherite_spike_trap", NETHERITE_SPIKE_TRAP);
-        registerBlocks(false, REDSTONE_TAB, null, "fence_door", WOOD_NAMES, OAK_FENCE_DOOR, SPRUCE_FENCE_DOOR, BIRCH_FENCE_DOOR, JUNGLE_FENCE_DOOR, ACACIA_FENCE_DOOR, DARK_OAK_FENCE_DOOR, CRIMSON_FENCE_DOOR, WARPED_FENCE_DOOR);
+        registerBlocks(false, REDSTONE_TAB, "fence_door", WoodNames.getNames(), OAK_FENCE_DOOR, SPRUCE_FENCE_DOOR, BIRCH_FENCE_DOOR, JUNGLE_FENCE_DOOR, ACACIA_FENCE_DOOR, DARK_OAK_FENCE_DOOR, CRIMSON_FENCE_DOOR, WARPED_FENCE_DOOR);
         registerBlock(false, REDSTONE_TAB, "iron_fence_door", IRON_FENCE_DOOR);
 
         //ATBYW BLOCKS
@@ -444,8 +473,6 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "granite_tiles_slab", GRANITE_TILES_SLAB);
         registerBlock(false, BLOCKS_TAB, "diorite_bricks_slab", DIORITE_BRICKS_SLAB);
         registerBlock(false, BLOCKS_TAB, "andesite_bricks_slab", ANDESITE_BRICKS_SLAB);
-
-        registerBlock(false, BLOCKS_TAB, "oak_log_slab", OAK_LOG_SLAB);
 
         registerBlock(false, BLOCKS_TAB, "grass_block_stairs", GRASS_BLOCK_STAIRS);
         registerBlock(false, BLOCKS_TAB, "dirt_stairs", DIRT_STAIRS);
@@ -475,9 +502,15 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "red_sand_slab", RED_SAND_SLAB);
         registerBlock(false, BLOCKS_TAB, "gravel_slab", GRAVEL_SLAB);
 
+        registerBlocks(false, BLOCKS_TAB, "log_slab", WoodNames.getNamesInRange(0, 5), OAK_LOG_SLAB, SPRUCE_LOG_SLAB, BIRCH_LOG_SLAB, JUNGLE_LOG_SLAB, ACACIA_LOG_SLAB, DARK_OAK_LOG_SLAB);
+        registerBlocks(false, BLOCKS_TAB, "stem_slab", WoodNames.getNamesInRange(6, 7), CRIMSON_STEM_SLAB, WARPED_STEM_SLAB);
+
+        registerBlocks(false, BLOCKS_TAB, "stripped", "log_slab", WoodNames.getNamesInRange(0, 5), STRIPPED_OAK_LOG_SLAB, STRIPPED_SPRUCE_LOG_SLAB, STRIPPED_BIRCH_LOG_SLAB, STRIPPED_JUNGLE_LOG_SLAB, STRIPPED_ACACIA_LOG_SLAB, STRIPPED_DARK_OAK_LOG_SLAB);
+        registerBlocks(false, BLOCKS_TAB, "stripped", "stem_slab", WoodNames.getNamesInRange(6, 7), STRIPPED_CRIMSON_STEM_SLAB, STRIPPED_WARPED_STEM_SLAB);
+
         registerBlock(false, BLOCKS_TAB, "soul_jack_o_lantern", SOUL_JACK_O_LANTERN);
 
-        registerBlocks(false, BLOCKS_TAB, null, "bookshelf", WOOD_NAMES_NO_OAK, SPRUCE_BOOKSHELF, BIRCH_BOOKSHELF, JUNGLE_BOOKSHELF, ACACIA_BOOKSHELF, DARK_OAK_BOOKSHELF, CRIMSON_BOOKSHELF, WARPED_BOOKSHELF);
+        registerBlocks(false, BLOCKS_TAB, "bookshelf", WoodNames.getNamesInRange(1, 7), SPRUCE_BOOKSHELF, BIRCH_BOOKSHELF, JUNGLE_BOOKSHELF, ACACIA_BOOKSHELF, DARK_OAK_BOOKSHELF, CRIMSON_BOOKSHELF, WARPED_BOOKSHELF);
 
         registerBlock(false, BLOCKS_TAB, "purpur_tiles", PURPUR_TILES);
         registerBlock(false, BLOCKS_TAB, "chiseled_purpur_block", CHISELED_PURPUR_BLOCK);
@@ -518,22 +551,22 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "basalt_pillar", BASALT_PILLAR);
 
         registerBlock( false, BLOCKS_TAB, "terracotta_stairs", TERRACOTTA_STAIRS);
-        registerBlocks(false, BLOCKS_TAB, null, "terracotta_stairs", COLOR_NAMES, WHITE_TERRACOTTA_STAIRS, ORANGE_TERRACOTTA_STAIRS, MAGENTA_TERRACOTTA_STAIRS, LIGHT_BLUE_TERRACOTTA_STAIRS, YELLOW_TERRACOTTA_STAIRS, LIME_TERRACOTTA_STAIRS, PINK_TERRACOTTA_STAIRS, GRAY_TERRACOTTA_STAIRS, LIGHT_GRAY_TERRACOTTA_STAIRS, CYAN_TERRACOTTA_STAIRS, PURPLE_TERRACOTTA_STAIRS, BLUE_TERRACOTTA_STAIRS, BROWN_TERRACOTTA_STAIRS, GREEN_TERRACOTTA_STAIRS, RED_TERRACOTTA_STAIRS, BLACK_TERRACOTTA_STAIRS);
+        registerBlocks(false, BLOCKS_TAB, "terracotta_stairs", ColorNames.getNames(), WHITE_TERRACOTTA_STAIRS, ORANGE_TERRACOTTA_STAIRS, MAGENTA_TERRACOTTA_STAIRS, LIGHT_BLUE_TERRACOTTA_STAIRS, YELLOW_TERRACOTTA_STAIRS, LIME_TERRACOTTA_STAIRS, PINK_TERRACOTTA_STAIRS, GRAY_TERRACOTTA_STAIRS, LIGHT_GRAY_TERRACOTTA_STAIRS, CYAN_TERRACOTTA_STAIRS, PURPLE_TERRACOTTA_STAIRS, BLUE_TERRACOTTA_STAIRS, BROWN_TERRACOTTA_STAIRS, GREEN_TERRACOTTA_STAIRS, RED_TERRACOTTA_STAIRS, BLACK_TERRACOTTA_STAIRS);
         registerBlock( false, BLOCKS_TAB, "terracotta_slab", TERRACOTTA_SLAB);
-        registerBlocks(false, BLOCKS_TAB, null, "terracotta_slab", COLOR_NAMES, WHITE_TERRACOTTA_SLAB, ORANGE_TERRACOTTA_SLAB, MAGENTA_TERRACOTTA_SLAB, LIGHT_BLUE_TERRACOTTA_SLAB, YELLOW_TERRACOTTA_SLAB, LIME_TERRACOTTA_SLAB, PINK_TERRACOTTA_SLAB, GRAY_TERRACOTTA_SLAB, LIGHT_GRAY_TERRACOTTA_SLAB, CYAN_TERRACOTTA_SLAB, PURPLE_TERRACOTTA_SLAB, BLUE_TERRACOTTA_SLAB, BROWN_TERRACOTTA_SLAB, GREEN_TERRACOTTA_SLAB, RED_TERRACOTTA_SLAB, BLACK_TERRACOTTA_SLAB);
+        registerBlocks(false, BLOCKS_TAB, "terracotta_slab", ColorNames.getNames(), WHITE_TERRACOTTA_SLAB, ORANGE_TERRACOTTA_SLAB, MAGENTA_TERRACOTTA_SLAB, LIGHT_BLUE_TERRACOTTA_SLAB, YELLOW_TERRACOTTA_SLAB, LIME_TERRACOTTA_SLAB, PINK_TERRACOTTA_SLAB, GRAY_TERRACOTTA_SLAB, LIGHT_GRAY_TERRACOTTA_SLAB, CYAN_TERRACOTTA_SLAB, PURPLE_TERRACOTTA_SLAB, BLUE_TERRACOTTA_SLAB, BROWN_TERRACOTTA_SLAB, GREEN_TERRACOTTA_SLAB, RED_TERRACOTTA_SLAB, BLACK_TERRACOTTA_SLAB);
         registerBlock( false, BLOCKS_TAB, "terracotta_bricks", TERRACOTTA_BRICKS);
-        registerBlocks(false, BLOCKS_TAB, null, "terracotta_bricks", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS, ORANGE_TERRACOTTA_BRICKS, MAGENTA_TERRACOTTA_BRICKS, LIGHT_BLUE_TERRACOTTA_BRICKS, YELLOW_TERRACOTTA_BRICKS, LIME_TERRACOTTA_BRICKS, PINK_TERRACOTTA_BRICKS, GRAY_TERRACOTTA_BRICKS, LIGHT_GRAY_TERRACOTTA_BRICKS, CYAN_TERRACOTTA_BRICKS, PURPLE_TERRACOTTA_BRICKS, BLUE_TERRACOTTA_BRICKS, BROWN_TERRACOTTA_BRICKS, GREEN_TERRACOTTA_BRICKS, RED_TERRACOTTA_BRICKS, BLACK_TERRACOTTA_BRICKS);
+        registerBlocks(false, BLOCKS_TAB, "terracotta_bricks", ColorNames.getNames(), WHITE_TERRACOTTA_BRICKS, ORANGE_TERRACOTTA_BRICKS, MAGENTA_TERRACOTTA_BRICKS, LIGHT_BLUE_TERRACOTTA_BRICKS, YELLOW_TERRACOTTA_BRICKS, LIME_TERRACOTTA_BRICKS, PINK_TERRACOTTA_BRICKS, GRAY_TERRACOTTA_BRICKS, LIGHT_GRAY_TERRACOTTA_BRICKS, CYAN_TERRACOTTA_BRICKS, PURPLE_TERRACOTTA_BRICKS, BLUE_TERRACOTTA_BRICKS, BROWN_TERRACOTTA_BRICKS, GREEN_TERRACOTTA_BRICKS, RED_TERRACOTTA_BRICKS, BLACK_TERRACOTTA_BRICKS);
         registerBlock( false, BLOCKS_TAB, "terracotta_bricks_stairs", TERRACOTTA_BRICKS_STAIRS);
-        registerBlocks(false, BLOCKS_TAB, null, "terracotta_bricks_stairs", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS_STAIRS, ORANGE_TERRACOTTA_BRICKS_STAIRS, MAGENTA_TERRACOTTA_BRICKS_STAIRS, LIGHT_BLUE_TERRACOTTA_BRICKS_STAIRS, YELLOW_TERRACOTTA_BRICKS_STAIRS, LIME_TERRACOTTA_BRICKS_STAIRS, PINK_TERRACOTTA_BRICKS_STAIRS, GRAY_TERRACOTTA_BRICKS_STAIRS, LIGHT_GRAY_TERRACOTTA_BRICKS_STAIRS, CYAN_TERRACOTTA_BRICKS_STAIRS, PURPLE_TERRACOTTA_BRICKS_STAIRS, BLUE_TERRACOTTA_BRICKS_STAIRS, BROWN_TERRACOTTA_BRICKS_STAIRS, GREEN_TERRACOTTA_BRICKS_STAIRS, RED_TERRACOTTA_BRICKS_STAIRS, BLACK_TERRACOTTA_BRICKS_STAIRS);
+        registerBlocks(false, BLOCKS_TAB, "terracotta_bricks_stairs", ColorNames.getNames(), WHITE_TERRACOTTA_BRICKS_STAIRS, ORANGE_TERRACOTTA_BRICKS_STAIRS, MAGENTA_TERRACOTTA_BRICKS_STAIRS, LIGHT_BLUE_TERRACOTTA_BRICKS_STAIRS, YELLOW_TERRACOTTA_BRICKS_STAIRS, LIME_TERRACOTTA_BRICKS_STAIRS, PINK_TERRACOTTA_BRICKS_STAIRS, GRAY_TERRACOTTA_BRICKS_STAIRS, LIGHT_GRAY_TERRACOTTA_BRICKS_STAIRS, CYAN_TERRACOTTA_BRICKS_STAIRS, PURPLE_TERRACOTTA_BRICKS_STAIRS, BLUE_TERRACOTTA_BRICKS_STAIRS, BROWN_TERRACOTTA_BRICKS_STAIRS, GREEN_TERRACOTTA_BRICKS_STAIRS, RED_TERRACOTTA_BRICKS_STAIRS, BLACK_TERRACOTTA_BRICKS_STAIRS);
         registerBlock( false, BLOCKS_TAB, "terracotta_bricks_slab", TERRACOTTA_BRICKS_SLAB);
-        registerBlocks(false, BLOCKS_TAB, null, "terracotta_bricks_slab", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS_SLAB, ORANGE_TERRACOTTA_BRICKS_SLAB, MAGENTA_TERRACOTTA_BRICKS_SLAB, LIGHT_BLUE_TERRACOTTA_BRICKS_SLAB, YELLOW_TERRACOTTA_BRICKS_SLAB, LIME_TERRACOTTA_BRICKS_SLAB, PINK_TERRACOTTA_BRICKS_SLAB, GRAY_TERRACOTTA_BRICKS_SLAB, LIGHT_GRAY_TERRACOTTA_BRICKS_SLAB, CYAN_TERRACOTTA_BRICKS_SLAB, PURPLE_TERRACOTTA_BRICKS_SLAB, BLUE_TERRACOTTA_BRICKS_SLAB, BROWN_TERRACOTTA_BRICKS_SLAB, GREEN_TERRACOTTA_BRICKS_SLAB, RED_TERRACOTTA_BRICKS_SLAB, BLACK_TERRACOTTA_BRICKS_SLAB);
+        registerBlocks(false, BLOCKS_TAB, "terracotta_bricks_slab", ColorNames.getNames(), WHITE_TERRACOTTA_BRICKS_SLAB, ORANGE_TERRACOTTA_BRICKS_SLAB, MAGENTA_TERRACOTTA_BRICKS_SLAB, LIGHT_BLUE_TERRACOTTA_BRICKS_SLAB, YELLOW_TERRACOTTA_BRICKS_SLAB, LIME_TERRACOTTA_BRICKS_SLAB, PINK_TERRACOTTA_BRICKS_SLAB, GRAY_TERRACOTTA_BRICKS_SLAB, LIGHT_GRAY_TERRACOTTA_BRICKS_SLAB, CYAN_TERRACOTTA_BRICKS_SLAB, PURPLE_TERRACOTTA_BRICKS_SLAB, BLUE_TERRACOTTA_BRICKS_SLAB, BROWN_TERRACOTTA_BRICKS_SLAB, GREEN_TERRACOTTA_BRICKS_SLAB, RED_TERRACOTTA_BRICKS_SLAB, BLACK_TERRACOTTA_BRICKS_SLAB);
 
-        registerBlocks(false, BLOCKS_TAB, null, "concrete_stairs", COLOR_NAMES, WHITE_CONCRETE_STAIRS, ORANGE_CONCRETE_STAIRS, MAGENTA_CONCRETE_STAIRS, LIGHT_BLUE_CONCRETE_STAIRS, YELLOW_CONCRETE_STAIRS, LIME_CONCRETE_STAIRS, PINK_CONCRETE_STAIRS, GRAY_CONCRETE_STAIRS, LIGHT_GRAY_CONCRETE_STAIRS, CYAN_CONCRETE_STAIRS, PURPLE_CONCRETE_STAIRS, BLUE_CONCRETE_STAIRS, BROWN_CONCRETE_STAIRS, GREEN_CONCRETE_STAIRS, RED_CONCRETE_STAIRS, BLACK_CONCRETE_STAIRS);
-        registerBlocks(false, BLOCKS_TAB, null, "concrete_slab", COLOR_NAMES, WHITE_CONCRETE_SLAB, ORANGE_CONCRETE_SLAB, MAGENTA_CONCRETE_SLAB, LIGHT_BLUE_CONCRETE_SLAB, YELLOW_CONCRETE_SLAB, LIME_CONCRETE_SLAB, PINK_CONCRETE_SLAB, GRAY_CONCRETE_SLAB, LIGHT_GRAY_CONCRETE_SLAB, CYAN_CONCRETE_SLAB, PURPLE_CONCRETE_SLAB, BLUE_CONCRETE_SLAB, BROWN_CONCRETE_SLAB, GREEN_CONCRETE_SLAB, RED_CONCRETE_SLAB, BLACK_CONCRETE_SLAB);
-        registerBlocks(false, BLOCKS_TAB, null, "cinder_bricks", COLOR_NAMES, WHITE_CINDER_BLOCKS, ORANGE_CINDER_BLOCKS, MAGENTA_CINDER_BLOCKS, LIGHT_BLUE_CINDER_BLOCKS, YELLOW_CINDER_BLOCKS, LIME_CINDER_BLOCKS, PINK_CINDER_BLOCKS, GRAY_CINDER_BLOCKS, LIGHT_GRAY_CINDER_BLOCKS, CYAN_CINDER_BLOCKS, PURPLE_CINDER_BLOCKS, BLUE_CINDER_BLOCKS, BROWN_CINDER_BLOCKS, GREEN_CINDER_BLOCKS, RED_CINDER_BLOCKS, BLACK_CINDER_BLOCKS);
+        registerBlocks(false, BLOCKS_TAB, "concrete_stairs", ColorNames.getNames(), WHITE_CONCRETE_STAIRS, ORANGE_CONCRETE_STAIRS, MAGENTA_CONCRETE_STAIRS, LIGHT_BLUE_CONCRETE_STAIRS, YELLOW_CONCRETE_STAIRS, LIME_CONCRETE_STAIRS, PINK_CONCRETE_STAIRS, GRAY_CONCRETE_STAIRS, LIGHT_GRAY_CONCRETE_STAIRS, CYAN_CONCRETE_STAIRS, PURPLE_CONCRETE_STAIRS, BLUE_CONCRETE_STAIRS, BROWN_CONCRETE_STAIRS, GREEN_CONCRETE_STAIRS, RED_CONCRETE_STAIRS, BLACK_CONCRETE_STAIRS);
+        registerBlocks(false, BLOCKS_TAB, "concrete_slab", ColorNames.getNames(), WHITE_CONCRETE_SLAB, ORANGE_CONCRETE_SLAB, MAGENTA_CONCRETE_SLAB, LIGHT_BLUE_CONCRETE_SLAB, YELLOW_CONCRETE_SLAB, LIME_CONCRETE_SLAB, PINK_CONCRETE_SLAB, GRAY_CONCRETE_SLAB, LIGHT_GRAY_CONCRETE_SLAB, CYAN_CONCRETE_SLAB, PURPLE_CONCRETE_SLAB, BLUE_CONCRETE_SLAB, BROWN_CONCRETE_SLAB, GREEN_CONCRETE_SLAB, RED_CONCRETE_SLAB, BLACK_CONCRETE_SLAB);
+        registerBlocks(false, BLOCKS_TAB, "cinder_bricks", ColorNames.getNames(), WHITE_CINDER_BLOCKS, ORANGE_CINDER_BLOCKS, MAGENTA_CINDER_BLOCKS, LIGHT_BLUE_CINDER_BLOCKS, YELLOW_CINDER_BLOCKS, LIME_CINDER_BLOCKS, PINK_CINDER_BLOCKS, GRAY_CINDER_BLOCKS, LIGHT_GRAY_CINDER_BLOCKS, CYAN_CINDER_BLOCKS, PURPLE_CINDER_BLOCKS, BLUE_CINDER_BLOCKS, BROWN_CINDER_BLOCKS, GREEN_CINDER_BLOCKS, RED_CINDER_BLOCKS, BLACK_CINDER_BLOCKS);
 
         //ATBYW DECO
-        registerBlocks(false, DECO_TAB, null, "ladder", WOOD_NAMES_NO_OAK, SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);
+        registerBlocks(false, DECO_TAB, "ladder", WoodNames.getNamesInRange(1, 7), SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);
         registerBlock(false, DECO_TAB, "bamboo_ladder", BAMBOO_LADDER);
 
         registerBlock(false, DECO_TAB, "compacted_snow", COMPACTED_SNOW);
@@ -559,8 +592,8 @@ public class AtbywBlocks {
         registerBlock(false, "acacia_railing", ACACIA_RAILING);
 
         registerBlock(false, DECO_TAB, "terracotta_bricks_wall", TERRACOTTA_BRICKS_WALL);
-        registerBlocks(false, DECO_TAB, null, "terracotta_bricks_wall", COLOR_NAMES, WHITE_TERRACOTTA_BRICKS_WALL, ORANGE_TERRACOTTA_BRICKS_WALL, MAGENTA_TERRACOTTA_BRICKS_WALL, LIGHT_BLUE_TERRACOTTA_BRICKS_WALL, YELLOW_TERRACOTTA_BRICKS_WALL, LIME_TERRACOTTA_BRICKS_WALL, PINK_TERRACOTTA_BRICKS_WALL, GRAY_TERRACOTTA_BRICKS_WALL, LIGHT_GRAY_TERRACOTTA_BRICKS_WALL, CYAN_TERRACOTTA_BRICKS_WALL, PURPLE_TERRACOTTA_BRICKS_WALL, BLUE_TERRACOTTA_BRICKS_WALL, BROWN_TERRACOTTA_BRICKS_WALL, GREEN_TERRACOTTA_BRICKS_WALL, RED_TERRACOTTA_BRICKS_WALL, BLACK_TERRACOTTA_BRICKS_WALL);
-        registerBlocks(false, DECO_TAB, null, "cinder_blocks_wall", COLOR_NAMES, WHITE_CINDER_BLOCKS_WALL, ORANGE_CINDER_BLOCKS_WALL, MAGENTA_CINDER_BLOCKS_WALL, LIGHT_BLUE_CINDER_BLOCKS_WALL, YELLOW_CINDER_BLOCKS_WALL, LIME_CINDER_BLOCKS_WALL, PINK_CINDER_BLOCKS_WALL, GRAY_CINDER_BLOCKS_WALL, LIGHT_GRAY_CINDER_BLOCKS_WALL, CYAN_CINDER_BLOCKS_WALL, PURPLE_CINDER_BLOCKS_WALL, BLUE_CINDER_BLOCKS_WALL, BROWN_CINDER_BLOCKS_WALL, GREEN_CINDER_BLOCKS_WALL, RED_CINDER_BLOCKS_WALL, BLACK_CINDER_BLOCKS_WALL);
+        registerBlocks(false, DECO_TAB, "terracotta_bricks_wall", ColorNames.getNames(), WHITE_TERRACOTTA_BRICKS_WALL, ORANGE_TERRACOTTA_BRICKS_WALL, MAGENTA_TERRACOTTA_BRICKS_WALL, LIGHT_BLUE_TERRACOTTA_BRICKS_WALL, YELLOW_TERRACOTTA_BRICKS_WALL, LIME_TERRACOTTA_BRICKS_WALL, PINK_TERRACOTTA_BRICKS_WALL, GRAY_TERRACOTTA_BRICKS_WALL, LIGHT_GRAY_TERRACOTTA_BRICKS_WALL, CYAN_TERRACOTTA_BRICKS_WALL, PURPLE_TERRACOTTA_BRICKS_WALL, BLUE_TERRACOTTA_BRICKS_WALL, BROWN_TERRACOTTA_BRICKS_WALL, GREEN_TERRACOTTA_BRICKS_WALL, RED_TERRACOTTA_BRICKS_WALL, BLACK_TERRACOTTA_BRICKS_WALL);
+        registerBlocks(false, DECO_TAB, "cinder_blocks_wall", ColorNames.getNames(), WHITE_CINDER_BLOCKS_WALL, ORANGE_CINDER_BLOCKS_WALL, MAGENTA_CINDER_BLOCKS_WALL, LIGHT_BLUE_CINDER_BLOCKS_WALL, YELLOW_CINDER_BLOCKS_WALL, LIME_CINDER_BLOCKS_WALL, PINK_CINDER_BLOCKS_WALL, GRAY_CINDER_BLOCKS_WALL, LIGHT_GRAY_CINDER_BLOCKS_WALL, CYAN_CINDER_BLOCKS_WALL, PURPLE_CINDER_BLOCKS_WALL, BLUE_CINDER_BLOCKS_WALL, BROWN_CINDER_BLOCKS_WALL, GREEN_CINDER_BLOCKS_WALL, RED_CINDER_BLOCKS_WALL, BLACK_CINDER_BLOCKS_WALL);
 
         StatueRegistry.initStatues();
 

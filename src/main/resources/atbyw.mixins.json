@@ -4,6 +4,7 @@
     "package": "net.azagwen.atbyw.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
+        "AxeItemMixin",
         "FenceBlockMixin",
         "ItemModelLoaderMixin",
         "PaneBlockMixin",
