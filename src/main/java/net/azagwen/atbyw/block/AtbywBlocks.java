@@ -414,6 +414,8 @@ public class AtbywBlocks {
 
     public static final Block LARGE_CHAIN = new LargeChainBlock(FabricBlockSettings.copyOf(Blocks.CHAIN).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
+    public static final Block OAK_LOG_SLAB = new PillarSlab(FabricBlockSettings.copyOf(Blocks.OAK_LOG).breakByTool(FabricToolTags.AXES));
+
     public static void init() {
         //ATBYW REDSTONE
         registerBlock(false, REDSTONE_TAB, "timer_repeater", TIMER_REPEATER);
@@ -442,6 +444,8 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "granite_tiles_slab", GRANITE_TILES_SLAB);
         registerBlock(false, BLOCKS_TAB, "diorite_bricks_slab", DIORITE_BRICKS_SLAB);
         registerBlock(false, BLOCKS_TAB, "andesite_bricks_slab", ANDESITE_BRICKS_SLAB);
+
+        registerBlock(false, BLOCKS_TAB, "oak_log_slab", OAK_LOG_SLAB);
 
         registerBlock(false, BLOCKS_TAB, "grass_block_stairs", GRASS_BLOCK_STAIRS);
         registerBlock(false, BLOCKS_TAB, "dirt_stairs", DIRT_STAIRS);

@@ -2,7 +2,7 @@ package net.azagwen.atbyw.block.state;
 
 import net.minecraft.util.StringIdentifiable;
 
-public enum PillarEnd implements StringIdentifiable {
+public enum ColumnEnd implements StringIdentifiable {
     TOP("top"),
     MIDDLE("middle"),
     BOTTOM("bottom"),
@@ -10,7 +10,7 @@ public enum PillarEnd implements StringIdentifiable {
 
     private final String name;
 
-    private PillarEnd(String name) {
+    private ColumnEnd(String name) {
         this.name = name;
     }
 

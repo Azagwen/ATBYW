@@ -11,7 +11,7 @@ public class AtbywProperties extends Properties {
     public static final IntProperty TIMER;
     public static final IntProperty POWER_INTENSITY;
     public static final IntProperty MOSS_LEVEL;
-    public static final EnumProperty<PillarEnd> END;
+    public static final EnumProperty<ColumnEnd> END;
     public static final BooleanProperty TOP;
     public static final BooleanProperty MIDDLE;
     public static final BooleanProperty BOTTOM;
@@ -25,6 +25,8 @@ public class AtbywProperties extends Properties {
     public static final EnumProperty<LargeChainEnd> CONNECT_BOTTOM;
     public static final EnumProperty<LargeChainEnd> CONNECT_TOP;
     public static final BooleanProperty POST_SLAB;
+    public static final EnumProperty<PillarSlabType> BOTTOM_TYPE;
+    public static final EnumProperty<PillarSlabType> TOP_TYPE;
 
     static {
         SHEARED = BooleanProperty.of("sheared");
@@ -34,7 +36,7 @@ public class AtbywProperties extends Properties {
         TIMER = IntProperty.of("timer", 0, 6);
         POWER_INTENSITY = IntProperty.of("power_intensity", 1, 15);
         MOSS_LEVEL = IntProperty.of("moss_accumulation", 0, 4);
-        END = EnumProperty.of("end", PillarEnd.class);
+        END = EnumProperty.of("end", ColumnEnd.class);
         TOP = BooleanProperty.of("top");
         MIDDLE = BooleanProperty.of("middle");
         BOTTOM = BooleanProperty.of("bottom");
@@ -48,5 +50,7 @@ public class AtbywProperties extends Properties {
         CONNECT_BOTTOM = EnumProperty.of("connect_bottom", LargeChainEnd.class);
         CONNECT_TOP = EnumProperty.of("connect_top", LargeChainEnd.class);
         POST_SLAB = BooleanProperty.of("post_slab");
+        BOTTOM_TYPE = EnumProperty.of("bottom_type", PillarSlabType.class);
+        TOP_TYPE = EnumProperty.of("top_type", PillarSlabType.class);
     }
 }
