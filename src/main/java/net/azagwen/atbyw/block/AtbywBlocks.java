@@ -1,12 +1,9 @@
 package net.azagwen.atbyw.block;
 
-import com.google.common.collect.Maps;
 import net.azagwen.atbyw.block.slabs.*;
 import net.azagwen.atbyw.block.stairs.*;
 import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.azagwen.atbyw.block.statues.*;
-import net.azagwen.atbyw.datagen.arrp.AtbywDatagenModels;
-import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.util.naming.ColorNames;
 import net.azagwen.atbyw.util.naming.FlowerNames;
 import net.azagwen.atbyw.util.naming.WoodNames;
@@ -19,10 +16,8 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 
-import java.util.Map;
 import java.util.function.ToIntFunction;
 
 import static net.azagwen.atbyw.util.AtbywUtils.*;
@@ -61,16 +56,16 @@ public class AtbywBlocks {
         return (blockState) -> blockState.get(isLit) ? ((int) Math.ceil((double) blockState.get(litLevel) / (double) divider)) : 0;
     }
 
-    private static FabricBlockSettings createBasalt() {
+    private static FabricBlockSettings basaltSettings() {
         return FabricBlockSettings.of(Material.STONE, MapColor.BLACK).requiresTool().breakByTool(FabricToolTags.PICKAXES).strength(1.25F, 4.2F).sounds(BlockSoundGroup.BASALT);
     }
 
-    private static FabricBlockSettings createWoodenFenceDoor(Block copiedMatColor) {
+    private static FabricBlockSettings woodenFenceDoorSettings(Block copiedMatColor) {
         return FabricBlockSettings.of(Material.WOOD, copiedMatColor.getDefaultMapColor()).breakByTool(FabricToolTags.AXES).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD);
     }
 
-    public static FabricBlockSettings createLogSlab(MapColor color) {
-        return FabricBlockSettings.of(Material.WOOD, color).strength(2.0F).breakByTool(FabricToolTags.AXES);
+    public static FabricBlockSettings logSettings(Block copiedBlock) {
+        return FabricBlockSettings.of(Material.WOOD, copiedBlock.getDefaultMapColor()).strength(2.0F).breakByTool(FabricToolTags.AXES).sounds(copiedBlock.getSoundGroup(copiedBlock.getDefaultState()));
     }
 
     //Dummy Blocks (used only in-code references and specific properties)
@@ -79,8 +74,8 @@ public class AtbywBlocks {
     public static final Block DUMMY_MYCELIUM = new MyceliumBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PURPLE).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
 
     //"Full" Blocks
-    public static final Block BASALT_BRICKS = new Block(createBasalt());
-    public static final Block BASALT_PILLAR = new PillarBlock(createBasalt());
+    public static final Block BASALT_BRICKS = new Block(basaltSettings());
+    public static final Block BASALT_PILLAR = new PillarBlock(basaltSettings());
 
     public static final Block SPRUCE_BOOKSHELF = new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
     public static final Block BIRCH_BOOKSHELF = new Block(FabricBlockSettings.copyOf(Blocks.BOOKSHELF));
@@ -357,14 +352,14 @@ public class AtbywBlocks {
     //Non-Full Blocks
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MapColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
-    public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.OAK_PLANKS));
-    public static final Block SPRUCE_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.SPRUCE_PLANKS));
-    public static final Block BIRCH_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.BIRCH_PLANKS));
-    public static final Block JUNGLE_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.JUNGLE_PLANKS));
-    public static final Block ACACIA_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.ACACIA_PLANKS));
-    public static final Block DARK_OAK_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.DARK_OAK_PLANKS));
-    public static final Block CRIMSON_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.CRIMSON_PLANKS));
-    public static final Block WARPED_FENCE_DOOR = new FenceDoorBlock(createWoodenFenceDoor(Blocks.WARPED_PLANKS));
+    public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(woodenFenceDoorSettings(Blocks.OAK_PLANKS));
+    public static final Block SPRUCE_FENCE_DOOR = new FenceDoorBlock(woodenFenceDoorSettings(Blocks.SPRUCE_PLANKS));
+    public static final Block BIRCH_FENCE_DOOR = new FenceDoorBlock(woodenFenceDoorSettings(Blocks.BIRCH_PLANKS));
+    public static final Block JUNGLE_FENCE_DOOR = new FenceDoorBlock(woodenFenceDoorSettings(Blocks.JUNGLE_PLANKS));
+    public static final Block ACACIA_FENCE_DOOR = new FenceDoorBlock(woodenFenceDoorSettings(Blocks.ACACIA_PLANKS));
+    public static final Block DARK_OAK_FENCE_DOOR = new FenceDoorBlock(woodenFenceDoorSettings(Blocks.DARK_OAK_PLANKS));
+    public static final Block CRIMSON_FENCE_DOOR = new FenceDoorBlock(woodenFenceDoorSettings(Blocks.CRIMSON_PLANKS));
+    public static final Block WARPED_FENCE_DOOR = new FenceDoorBlock(woodenFenceDoorSettings(Blocks.WARPED_PLANKS));
     public static final Block IRON_FENCE_DOOR = new FenceDoorBlock(FabricBlockSettings.copyOf(Blocks.IRON_DOOR).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
     public static final Block SPRUCE_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER));
@@ -426,23 +421,41 @@ public class AtbywBlocks {
 
     public static final Block LARGE_CHAIN = new LargeChainBlock(FabricBlockSettings.copyOf(Blocks.CHAIN).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block OAK_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.OAK_LOG.getDefaultMapColor()));
-    public static final Block SPRUCE_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.SPRUCE_LOG.getDefaultMapColor()));
-    public static final Block BIRCH_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.BIRCH_LOG.getDefaultMapColor()));
-    public static final Block JUNGLE_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.JUNGLE_LOG.getDefaultMapColor()));
-    public static final Block ACACIA_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.ACACIA_LOG.getDefaultMapColor()));
-    public static final Block DARK_OAK_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.DARK_OAK_LOG.getDefaultMapColor()));
-    public static final Block CRIMSON_STEM_SLAB = new PillarSlabBlock(createLogSlab(Blocks.CRIMSON_STEM.getDefaultMapColor()));
-    public static final Block WARPED_STEM_SLAB = new PillarSlabBlock(createLogSlab(Blocks.WARPED_STEM.getDefaultMapColor()));
+    public static final Block OAK_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.OAK_LOG));
+    public static final Block SPRUCE_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.SPRUCE_LOG));
+    public static final Block BIRCH_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.BIRCH_LOG));
+    public static final Block JUNGLE_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.JUNGLE_LOG));
+    public static final Block ACACIA_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.ACACIA_LOG));
+    public static final Block DARK_OAK_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.DARK_OAK_LOG));
+    public static final Block CRIMSON_STEM_STAIRS = new PillarSlabBlock(logSettings(Blocks.CRIMSON_STEM));
+    public static final Block WARPED_STEM_STAIRS = new PillarSlabBlock(logSettings(Blocks.WARPED_STEM));
 
-    public static final Block STRIPPED_OAK_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_OAK_LOG.getDefaultMapColor()));
-    public static final Block STRIPPED_SPRUCE_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_SPRUCE_LOG.getDefaultMapColor()));
-    public static final Block STRIPPED_BIRCH_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_BIRCH_LOG.getDefaultMapColor()));
-    public static final Block STRIPPED_JUNGLE_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_JUNGLE_LOG.getDefaultMapColor()));
-    public static final Block STRIPPED_ACACIA_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_ACACIA_LOG.getDefaultMapColor()));
-    public static final Block STRIPPED_DARK_OAK_LOG_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_DARK_OAK_LOG.getDefaultMapColor()));
-    public static final Block STRIPPED_CRIMSON_STEM_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_CRIMSON_STEM.getDefaultMapColor()));
-    public static final Block STRIPPED_WARPED_STEM_SLAB = new PillarSlabBlock(createLogSlab(Blocks.STRIPPED_WARPED_STEM.getDefaultMapColor()));
+    public static final Block STRIPPED_OAK_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_OAK_LOG));
+    public static final Block STRIPPED_SPRUCE_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_SPRUCE_LOG));
+    public static final Block STRIPPED_BIRCH_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_BIRCH_LOG));
+    public static final Block STRIPPED_JUNGLE_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_JUNGLE_LOG));
+    public static final Block STRIPPED_ACACIA_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_ACACIA_LOG));
+    public static final Block STRIPPED_DARK_OAK_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_DARK_OAK_LOG));
+    public static final Block STRIPPED_CRIMSON_STEM_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_CRIMSON_STEM));
+    public static final Block STRIPPED_WARPED_STEM_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_WARPED_STEM));
+
+    public static final Block OAK_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.OAK_LOG));
+    public static final Block SPRUCE_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.SPRUCE_LOG));
+    public static final Block BIRCH_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.BIRCH_LOG));
+    public static final Block JUNGLE_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.JUNGLE_LOG));
+    public static final Block ACACIA_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.ACACIA_LOG));
+    public static final Block DARK_OAK_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.DARK_OAK_LOG));
+    public static final Block CRIMSON_STEM_SLAB = new PillarSlabBlock(logSettings(Blocks.CRIMSON_STEM));
+    public static final Block WARPED_STEM_SLAB = new PillarSlabBlock(logSettings(Blocks.WARPED_STEM));
+
+    public static final Block STRIPPED_OAK_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_OAK_LOG));
+    public static final Block STRIPPED_SPRUCE_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_SPRUCE_LOG));
+    public static final Block STRIPPED_BIRCH_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_BIRCH_LOG));
+    public static final Block STRIPPED_JUNGLE_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_JUNGLE_LOG));
+    public static final Block STRIPPED_ACACIA_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_ACACIA_LOG));
+    public static final Block STRIPPED_DARK_OAK_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_DARK_OAK_LOG));
+    public static final Block STRIPPED_CRIMSON_STEM_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_CRIMSON_STEM));
+    public static final Block STRIPPED_WARPED_STEM_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_WARPED_STEM));
 
     public static void init() {
 

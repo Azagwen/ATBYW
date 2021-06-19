@@ -1,0 +1,7 @@
+{
+    "parent": "atbyw:block/slab/template_column_slab_horizontal_top",
+    "textures": {
+        "end": "minecraft:block/acacia_log_top",
+        "side": "minecraft:block/acacia_log"
+    }
+}
