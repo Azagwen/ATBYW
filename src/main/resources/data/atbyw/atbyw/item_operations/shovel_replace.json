@@ -1,6 +1,10 @@
 {
     "data_type": "atbyw:block_to_block",
     "replace": false,
+    "item_used": {
+        "tag": "fabric:shovels",
+        "damage": 1
+    },
     "states": {
         "atbyw:grass_block_stairs": "atbyw:grass_path_stairs",
         "atbyw:mycelium_stairs": "atbyw:grass_path_stairs",

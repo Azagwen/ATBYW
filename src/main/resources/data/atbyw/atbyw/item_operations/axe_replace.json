@@ -1,6 +1,10 @@
 {
     "data_type": "atbyw:block_to_block",
     "replace": false,
+    "item_used": {
+        "tag": "fabric:axes",
+        "damage": 1
+    },
     "states": {
         "atbyw:oak_log_slab": "atbyw:stripped_oak_log_slab",
         "atbyw:spruce_log_slab": "atbyw:stripped_spruce_log_slab",

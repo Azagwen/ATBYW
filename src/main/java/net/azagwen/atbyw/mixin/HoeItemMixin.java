@@ -1,7 +1,7 @@
 package net.azagwen.atbyw.mixin;
 
 import net.azagwen.atbyw.main.DataResourceListener;
-import net.azagwen.atbyw.main.ToolOperations;
+import net.azagwen.atbyw.main.ItemOperations;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.sound.SoundEvents;
@@ -23,22 +23,17 @@ public class HoeItemMixin {
         var heldItem = context.getStack();
 
         var replaceMap = DataResourceListener.HOE_REPLACE;
-        var replaceLootMap = DataResourceListener.HOE_REPLACE_WITH_LOOT;
 
         if (replaceMap.containsKey(world.getBlockState(pos).getBlock())) {
-            ToolOperations.replaceBlock(world, player, pos, SoundEvents.ITEM_HOE_TILL, replaceMap);
-            cir.setReturnValue(ActionResult.success(world.isClient));
-        }
+            ItemOperations.replaceBlock(world, player, pos, direction, SoundEvents.ITEM_HOE_TILL, replaceMap);
 
-        if (replaceLootMap.containsKey(world.getBlockState(pos).getBlock())) {
-            ToolOperations.replaceBlockThenLoot(world, player, pos, direction, SoundEvents.ITEM_HOE_TILL, replaceLootMap);
-            cir.setReturnValue(ActionResult.success(world.isClient));
-        }
+            if (player != null) {
+                heldItem.damage(1, player, ((entity) -> {
+                    entity.sendToolBreakStatus(context.getHand());
+                }));
+            }
 
-        if (player != null) {
-            heldItem.damage(1, player, ((entity) -> {
-                entity.sendToolBreakStatus(context.getHand());
-            }));
+            cir.setReturnValue(ActionResult.success(world.isClient));
         }
     }
 }

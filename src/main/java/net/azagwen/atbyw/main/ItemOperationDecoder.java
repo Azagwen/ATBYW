@@ -2,81 +2,88 @@ package net.azagwen.atbyw.main;
 
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
-import net.azagwen.atbyw.util.AtbywUtils;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
-import net.minecraft.util.Pair;
+import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
-import java.util.Map;
+import java.util.List;
 
 public class ItemOperationDecoder {
     public static final Logger LOGGER  = LogManager.getLogger("Atbyw Item Operation Decoder");
+    private static final boolean enableDebug = true;
 
     public ItemOperationDecoder() {
     }
 
-    public static void readBlockToBlockOp(InputStream location, Map<Block, Block> map) {
+    public static void readBlockToBlock(InputStream location, List<BlockToBlockOperation> operations) {
         var reader = new JsonReader(new InputStreamReader(location));
         var parser = new JsonParser();
         var json = parser.parse(reader).getAsJsonObject();
         var expectedID = new Identifier("atbyw", "block_to_block");
+        var returnValue = new BlockToBlockOperation();
 
         if (JsonHelper.getBoolean(json, "replace", false)) {
-            map.clear();
+//            map.clear();
         }
 
         if (JsonHelper.getString(json, "data_type").equals(expectedID.toString())) {
             var states = JsonHelper.getObject(json, "states").entrySet();
-            states.forEach((entry) -> {
-                var originalStringId = entry.getKey().split(":");
-                var resultStringId = entry.getValue().getAsString().split(":");
-                var originalId = new Identifier(originalStringId[0], originalStringId[1]);
-                var resultId = new Identifier(resultStringId[0], resultStringId[1]);
+            var itemUsed = JsonHelper.getObject(json, "item_used");
 
-                map.put(AtbywUtils.getBlockFromID(originalId), AtbywUtils.getBlockFromID(resultId));
-//                LOGGER.info("[ " + originalId + ", " + resultId + " ]");
+            for (var stateEntry : states) {
+                var originalID = new Identifier(stateEntry.getKey());
+                var resultID = new Identifier(stateEntry.getValue().getAsString());
 
-            });
-        }
-    }
+                returnValue.setOriginal(Registry.BLOCK.get(originalID));
+                returnValue.setResult(Registry.BLOCK.get(resultID));
 
-    public static void readBlockToBlockWithLootOp(InputStream location, Map<Block, Pair<Block, Item>> map) {
-        var reader = new JsonReader(new InputStreamReader(location));
-        var parser = new JsonParser();
-        var json = parser.parse(reader).getAsJsonObject();
-        var expectedID = new Identifier("atbyw", "block_to_block");
+                if (itemUsed.has("tag")) {
+                    var tag = JsonHelper.getString(itemUsed, "tag");
 
-        if (JsonHelper.getBoolean(json, "replace", false)) {
-            map.clear();
-        }
+                    returnValue.setUsedItem(new Identifier(tag));
+                } else if (itemUsed.has("item")) {
+                    var item = JsonHelper.getString(itemUsed, "item");
 
-        if (JsonHelper.getString(json, "data_type").equals(expectedID.toString())) {
-            var states = JsonHelper.getObject(json, "states").entrySet();
-            var loot = JsonHelper.getObject(json, "loot").entrySet();
+                    returnValue.setUsedItem(Registry.ITEM.get(new Identifier(item)));
+                }
 
-            states.forEach((stateEntry) -> {
-                var original = stateEntry.getKey().split(":");
-                var result = stateEntry.getValue().getAsString().split(":");
-                var originalID = new Identifier(original[0], original[1]);
-                var resultID = new Identifier(result[0], result[1]);
+                returnValue.setUsedItemDamage(itemUsed.has("damage") ? JsonHelper.getInt(itemUsed, "damage") : 0);
+                returnValue.setUsedItemDecrement(itemUsed.has("decrement") ? JsonHelper.getInt(itemUsed, "decrement") : 0);
 
-                loot.forEach((lootEntry) -> {
-                    var lootOwner = lootEntry.getKey().split(":");
-                    var lootStr = lootEntry.getValue().getAsString().split(":");
-                    var lootOwnerID = new Identifier(lootOwner[0], lootOwner[1]);
-                    var lootID = new Identifier(lootStr[0], lootStr[1]);
+                if (json.has("loot")) {
+                    var loot = JsonHelper.getObject(json, "loot").entrySet();
 
-                    if (lootOwnerID.equals(originalID)) {
-                        map.put(AtbywUtils.getBlockFromID(originalID), new Pair<>(AtbywUtils.getBlockFromID(resultID), AtbywUtils.getItemFromID(lootID)));
-//                        LOGGER.info("[ " + originalID + ", " + resultID + ", " + lootID + " ]");
+                    for (var lootEntry : loot) {
+                        var lootOwnerID = new Identifier(lootEntry.getKey());
+                        var lootID = new Identifier(lootEntry.getValue().getAsString());
+
+                        if (lootOwnerID.equals(originalID)) {
+                            returnValue.setLoot(Registry.ITEM.get(lootID));
+                        }
                     }
-                });
-            });
+                }
+
+                if (json.has("sounds")) {
+                    var sounds = JsonHelper.getObject(json, "sounds").entrySet();
+                    for (var soundEntry : sounds) {
+                        var soundOwnerID = new Identifier(soundEntry.getKey());
+                        var soundID = new Identifier(soundEntry.getValue().getAsString());
+
+                        if (soundOwnerID.equals(originalID)) {
+                            returnValue.setOperationSound(Registry.SOUND_EVENT.get(soundID));
+                        }
+                    }
+                }
+
+                if (enableDebug) {
+                    LOGGER.info(returnValue.toString());
+                }
+                operations.add(returnValue);
+            }
         }
     }
 }

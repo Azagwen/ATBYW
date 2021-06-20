@@ -1,0 +1,11 @@
+{
+    "data_type": "atbyw:block_to_block",
+    "replace": false,
+    "item_used": {
+        "item": "minecraft:diamond",
+        "decrement": 1
+    },
+    "states": {
+        "minecraft:stone": "minecraft:diamond_ore"
+    }
+}

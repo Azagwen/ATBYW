@@ -22,7 +22,7 @@ import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import static net.azagwen.atbyw.items.AtbywItems.*;
+import static net.azagwen.atbyw.item.AtbywItems.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 @SuppressWarnings("deprecation")

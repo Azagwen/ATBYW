@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.items;
+package net.azagwen.atbyw.item;
 
 import com.google.common.collect.Lists;
 import net.minecraft.item.Item;

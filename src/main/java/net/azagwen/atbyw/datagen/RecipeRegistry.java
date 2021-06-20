@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.gson.*;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
-import net.azagwen.atbyw.items.AtbywItems;
+import net.azagwen.atbyw.item.AtbywItems;
 import net.azagwen.atbyw.util.Quadruplet;
 import net.azagwen.atbyw.util.naming.ColorNames;
 import net.azagwen.atbyw.util.naming.FlowerNames;

@@ -1,10 +1,8 @@
-package net.azagwen.atbyw.items;
+package net.azagwen.atbyw.item;
 
 import net.minecraft.item.Item;
 
 import java.util.List;
-
-import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class EssenceItem extends Item {
     private final int color;

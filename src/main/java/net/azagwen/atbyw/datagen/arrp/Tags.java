@@ -3,17 +3,11 @@ package net.azagwen.atbyw.datagen.arrp;
 import com.google.common.collect.Lists;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.group.AtbywItemGroup;
-import net.azagwen.atbyw.items.AtbywItems;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.json.tags.JTag;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.tag.BlockTags;
-import net.minecraft.tag.ItemTags;
-import net.minecraft.tag.RequiredTagList;
-import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;

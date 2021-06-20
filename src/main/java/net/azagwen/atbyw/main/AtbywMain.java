@@ -6,7 +6,7 @@ import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.datagen.RecipeRegistry;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.group.AtbywItemGroup;
-import net.azagwen.atbyw.items.AtbywItems;
+import net.azagwen.atbyw.item.AtbywItems;
 import net.azagwen.atbyw.world.AtbywWorldGen;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;

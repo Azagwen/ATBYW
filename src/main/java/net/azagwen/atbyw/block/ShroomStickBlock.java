@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.block;
 
-import net.azagwen.atbyw.items.AtbywItems;
+import net.azagwen.atbyw.item.AtbywItems;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;

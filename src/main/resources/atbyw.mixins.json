@@ -4,15 +4,13 @@
     "package": "net.azagwen.atbyw.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-        "AxeItemMixin",
         "FenceBlockMixin",
-        "HoeItemMixin",
         "ItemModelLoaderMixin",
         "PaneBlockMixin",
         "RecipeManagerMixin",
         "RedstoneWireBlockMixin",
         "ServerAdvancementLoaderMixin",
-        "ShoveltemMixin",
+        "ServerPlayerInteractionManagerMixin",
         "SnowBlockMixin",
         "TexturedRenderLayersMixin",
         "WallBlockMixin"

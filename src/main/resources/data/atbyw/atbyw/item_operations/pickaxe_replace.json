@@ -1,0 +1,19 @@
+{
+    "data_type": "atbyw:block_to_block",
+    "replace": false,
+    "item_used": {
+        "tag": "fabric:pickaxes",
+        "damage": 1
+    },
+    "states": {
+        "minecraft:stone_bricks": "minecraft:chiseled_stone_bricks",
+        "minecraft:cut_sandstone": "minecraft:chiseled_sandstone"
+    },
+    "loot": {
+        "minecraft:stone_bricks": "minecraft:flint"
+    },
+    "sounds": {
+        "minecraft:stone_bricks": "minecraft:block.amethyst_block.break",
+        "minecraft:cut_sandstone": "minecraft:item.axe.strip"
+    }
+}

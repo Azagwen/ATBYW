@@ -1,11 +1,13 @@
 package net.azagwen.atbyw.main;
 
+import com.google.common.collect.Sets;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
@@ -20,11 +22,20 @@ public class AtbywTags {
     public static final Tag<Block> LARGE_CHAIN_TRANSITION_TOP = registerBlockTag("large_chain_transition_top");
 
     // Item Tags
-    public static final Tag<Item> ITEM_BOOKSHELVES = Tag.of(new HashSet<>(BOOKSHELVES.values().hashCode()));
-    public static final Tag<Item> ITEM_PISTONS = registerItemTag("pistons");
-    public static final Tag<Item> STICKS = registerItemTag("sticks.json");
+    public static final Tag<Item> ITEM_BOOKSHELVES = blockItemTag(BOOKSHELVES);
+    public static final Tag<Item> ITEM_PISTONS = blockItemTag(PISTONS);
 
     private AtbywTags() {
+    }
+
+    public static Tag<Item> blockItemTag(Tag<Block> blockTag) {
+        var set = new HashSet<Item>();
+
+        blockTag.values().forEach((block) -> {
+            set.add(block.asItem());
+        });
+
+        return Tag.of(set);
     }
 
     public static Tag<Block> registerBlockTag(String id) {

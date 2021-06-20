@@ -1,33 +1,31 @@
 package net.azagwen.atbyw.mixin;
 
+import net.azagwen.atbyw.item.PickaxeItemDuck;
 import net.azagwen.atbyw.main.DataResourceListener;
 import net.azagwen.atbyw.main.ItemOperations;
-import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.PickaxeItem;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(AxeItem.class)
-public class AxeItemMixin {
+@Mixin(PickaxeItem.class)
+public class PickaxeItemMixin implements PickaxeItemDuck {
 
     //TODO: read https://fabricmc.net/wiki/tutorial:custom_resources
 
-    @Inject(at = @At("HEAD"), method = "useOnBlock", cancellable = true)
-    public void useOnBlock(ItemUsageContext context, CallbackInfoReturnable<ActionResult> cir) {
+    @Override
+    public ActionResult useOnBlock(ItemUsageContext context) {
         var world = context.getWorld();
         var player = context.getPlayer();
         var pos = context.getBlockPos();
         var direction = context.getSide();
         var heldItem = context.getStack();
 
-        var replaceMap = DataResourceListener.AXE_REPLACE;
+        var replaceMap = DataResourceListener.PICKAXE_REPLACE;
 
         if (replaceMap.containsKey(world.getBlockState(pos).getBlock())) {
-            ItemOperations.replaceBlock(world, player, pos, direction, SoundEvents.ITEM_AXE_STRIP, replaceMap);
+            ItemOperations.replaceBlock(world, player, pos, direction, SoundEvents.BLOCK_NETHER_BRICKS_BREAK, replaceMap);
 
             if (player != null) {
                 heldItem.damage(1, player, ((entity) -> {
@@ -35,7 +33,8 @@ public class AxeItemMixin {
                 }));
             }
 
-            cir.setReturnValue(ActionResult.success(world.isClient));
+            return ActionResult.success(world.isClient);
         }
+        return ActionResult.PASS;
     }
 }

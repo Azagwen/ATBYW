@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.items;
+package net.azagwen.atbyw.item;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.ShroomStickBlock;

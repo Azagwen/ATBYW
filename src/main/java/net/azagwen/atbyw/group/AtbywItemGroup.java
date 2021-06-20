@@ -2,7 +2,7 @@ package net.azagwen.atbyw.group;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.datagen.arrp.Tags;
-import net.azagwen.atbyw.items.AtbywItems;
+import net.azagwen.atbyw.item.AtbywItems;
 import net.azagwen.atbyw.main.AtbywTags;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
