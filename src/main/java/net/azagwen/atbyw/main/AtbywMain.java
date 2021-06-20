@@ -1,36 +1,25 @@
 package net.azagwen.atbyw.main;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityType;
 import net.azagwen.atbyw.block.AtbywBlocks;
-import net.azagwen.atbyw.client.ItemOperationDecoder;
-import net.azagwen.atbyw.datagen.AtbywRecipes;
+import net.azagwen.atbyw.datagen.RecipeRegistry;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.group.AtbywItemGroup;
 import net.azagwen.atbyw.items.AtbywItems;
 import net.azagwen.atbyw.world.AtbywWorldGen;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
-import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.resource.ResourceManager;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class AtbywMain implements ModInitializer {
 	public static final String mcNameSpace = "minecraft";
@@ -80,12 +69,12 @@ public class AtbywMain implements ModInitializer {
 			AtbywRRP.init_mi();
 		}
 
-		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new AtbywDataResourceListener());
+		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new DataResourceListener());
 
 		AtbywItems.init();
 		AtbywBlocks.init();
 		AtbywBlockEntityType.init();
-		AtbywRecipes.init();
+		RecipeRegistry.init();
 		AtbywWorldGen.init();
 		AtbywRRP.init();
 

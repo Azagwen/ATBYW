@@ -1,0 +1,43 @@
+{
+    "multipart": [
+        {
+            "when": { "bottom_type": "x" },
+            "apply": {
+                "model": "atbyw:block/slab/stripped_acacia_log_slab_horizontal",
+                "y": 90
+            }
+        },
+        {
+            "when": { "bottom_type": "y" },
+            "apply": {
+                "model": "atbyw:block/slab/stripped_acacia_log_slab"
+            }
+        },
+        {
+            "when": { "bottom_type": "z" },
+            "apply": {
+                "model": "atbyw:block/slab/stripped_acacia_log_slab_horizontal"
+            }
+        },
+
+        {
+            "when": { "top_type": "x" },
+            "apply": {
+                "model": "atbyw:block/slab/stripped_acacia_log_slab_horizontal_top",
+                "y": 90
+            }
+        },
+        {
+            "when": { "top_type": "y" },
+            "apply": {
+                "model": "atbyw:block/slab/stripped_acacia_log_slab_top"
+            }
+        },
+        {
+            "when": { "top_type": "z" },
+            "apply": {
+                "model": "atbyw:block/slab/stripped_acacia_log_slab_horizontal_top"
+            }
+        }
+    ]
+}

@@ -27,7 +27,7 @@ public class NyliumStairsBlock extends StairsBlockSubClass {
         if (!stayAlive(state, world, pos)) {
             BlockState newState = world.getBlockState(pos);
 
-            world.setBlockState(pos, copyStates(AtbywBlocks.NETHERRACK_STAIRS.getDefaultState(), newState));
+            world.setBlockState(pos, AtbywBlocks.NETHERRACK_STAIRS.getStateWithProperties(newState));
         }
     }
 }

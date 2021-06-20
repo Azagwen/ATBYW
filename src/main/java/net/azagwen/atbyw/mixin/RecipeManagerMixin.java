@@ -1,7 +1,7 @@
 package net.azagwen.atbyw.mixin;
 
 import com.google.gson.JsonElement;
-import net.azagwen.atbyw.datagen.AtbywRecipes;
+import net.azagwen.atbyw.datagen.RecipeRegistry;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
@@ -18,7 +18,7 @@ public class RecipeManagerMixin {
 
     @Inject(method = "apply", at = @At("HEAD"))
     public void interceptApply(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler, CallbackInfo info) {
-        AtbywRecipes.inject(map);
+        RecipeRegistry.inject(map);
     }
 
 }

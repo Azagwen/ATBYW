@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.group;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.datagen.arrp.Tags;
 import net.azagwen.atbyw.items.AtbywItems;
 import net.azagwen.atbyw.main.AtbywTags;
 import net.minecraft.item.Item;
@@ -9,6 +10,9 @@ import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
+
+import static net.azagwen.atbyw.datagen.arrp.AtbywRRP.ATBYW_RESOURCE_PACK;
+import static net.azagwen.atbyw.main.AtbywMain.*;
 
 // This code was originally taken from https://github.com/Lemonszz/gubbins/blob/master/src/main/java/party/lemons/gubbins/mixin/client/CreativeInventoryScreenMixin.java,
 // which is licensed under MIT.
@@ -23,13 +27,18 @@ public class AtbywItemGroup extends TabbedItemGroup {
     public static Tag<Item> ATBYW_DECO_TAB = AtbywTags.registerItemTag("tab_deco");
     public static Tag<Item> ATBYW_REDSTONE_TAB = AtbywTags.registerItemTag("tab_redstone");
     public static Tag<Item> ATBYW_MISC_TAB = AtbywTags.registerItemTag("tab_misc");
-    public static Tag<Item> ATBYW_GEN_BLOCKS_TAB = AtbywTags.registerItemTag("tab_gen_blocks");
 
     public static ItemGroupTab ATBYW_BLOCKS = new ItemGroupTab(new ItemStack(AtbywBlocks.CYAN_CINDER_BLOCKS), "blocks", ATBYW_BLOCKS_TAB);
     public static ItemGroupTab ATBYW_DECO = new ItemGroupTab(new ItemStack(AtbywBlocks.CYAN_CINDER_BLOCKS_WALL), "decoration", ATBYW_DECO_TAB);
     public static ItemGroupTab ATBYW_REDSTONE = new ItemGroupTab(new ItemStack(AtbywBlocks.REDSTONE_LANTERN), "redstone", ATBYW_REDSTONE_TAB);
     public static ItemGroupTab ATBYW_MISC = new ItemGroupTab(new ItemStack(AtbywItems.BAMBOO_STICK), "misc", ATBYW_MISC_TAB);
-    public static ItemGroupTab ATBYW_GEN_BLOCKS = new ItemGroupTab(new ItemStack(AtbywItems.BAMBOO_STICK), "misc", ATBYW_GEN_BLOCKS_TAB);
+
+    public static void registerTags() {
+        Tags.createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_blocks", BLOCKS_TAB);
+        Tags.createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_deco", DECO_TAB);
+        Tags.createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_redstone", REDSTONE_TAB);
+        Tags.createItemTag(ATBYW_RESOURCE_PACK, AtbywNamespace, "tab_misc", MISC_TAB);
+    }
 
     @Override
     public void initTabs(List<ItemGroupTab> tabs) {
@@ -37,7 +46,6 @@ public class AtbywItemGroup extends TabbedItemGroup {
         tabs.add(ATBYW_DECO);
         tabs.add(ATBYW_REDSTONE);
         tabs.add(ATBYW_MISC);
-        tabs.add(ATBYW_GEN_BLOCKS);
     }
 
     @Override

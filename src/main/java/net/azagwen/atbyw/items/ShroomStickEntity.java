@@ -3,7 +3,7 @@ package net.azagwen.atbyw.items;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.ShroomStickBlock;
 import net.azagwen.atbyw.client.AtbywClient;
-import net.azagwen.atbyw.main.AtbywEntityType;
+import net.azagwen.atbyw.main.AtbywEntityTypes;
 import net.azagwen.atbyw.main.EntitySpawnPacket;
 import net.azagwen.atbyw.main.AtbywTags;
 import net.fabricmc.api.EnvType;
@@ -41,11 +41,11 @@ public class ShroomStickEntity extends ThrownItemEntity {
     }
 
     public ShroomStickEntity(World world, LivingEntity owner) {
-        super(AtbywEntityType.SHROOMSTICK, owner, world);
+        super(AtbywEntityTypes.SHROOMSTICK, owner, world);
     }
 
     public ShroomStickEntity(World world, double x, double y, double z) {
-        super(AtbywEntityType.SHROOMSTICK, x, y, z, world);
+        super(AtbywEntityTypes.SHROOMSTICK, x, y, z, world);
     }
 
     @Override

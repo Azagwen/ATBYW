@@ -1,10 +1,12 @@
 package net.azagwen.atbyw.block.stairs;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -20,10 +22,10 @@ import net.minecraft.world.WorldView;
 
 import java.util.Random;
 
-public class TickingDirtStairsBlock extends DirtStairsBlock {
+public class TickingDirtStairsBlock extends StairsBlockSubClass {
 
-    public TickingDirtStairsBlock(boolean pathConvertible, Block copiedBlock, Settings settings) {
-        super(pathConvertible, copiedBlock, settings);
+    public TickingDirtStairsBlock(Block copiedBlock, FabricBlockSettings settings) {
+        super(copiedBlock, settings);
     }
 
     private static boolean canSurvive(BlockState state, WorldView worldView, BlockPos pos) {
@@ -47,10 +49,10 @@ public class TickingDirtStairsBlock extends DirtStairsBlock {
                 BlockState newState = world.getBlockState(pos);
 
                 if (world.getBlockState(blockPos).isOf(Blocks.GRASS_BLOCK) && canSpread(state, world, pos)) {
-                    world.setBlockState(pos, copyStates(AtbywBlocks.GRASS_BLOCK_STAIRS.getDefaultState(), newState));
+                    world.setBlockState(pos, AtbywBlocks.GRASS_BLOCK_STAIRS.getStateWithProperties(newState));
                 }
                 else if (world.getBlockState(blockPos).isOf(Blocks.MYCELIUM) && canSpread(state, world, pos)) {
-                    world.setBlockState(pos, copyStates(AtbywBlocks.MYCELIUM_STAIRS.getDefaultState(), newState));
+                    world.setBlockState(pos, AtbywBlocks.MYCELIUM_STAIRS.getStateWithProperties(newState));
                 }
             }
         }

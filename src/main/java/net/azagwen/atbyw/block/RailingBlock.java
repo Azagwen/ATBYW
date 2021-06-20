@@ -1,30 +1,24 @@
 package net.azagwen.atbyw.block;
 
-import net.azagwen.atbyw.util.AtbywBlockUtils;
+import net.azagwen.atbyw.util.BlockUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import static net.azagwen.atbyw.util.AtbywBlockUtils.makeDirectionalShapes;
+import static net.azagwen.atbyw.util.BlockUtils.makeDirectionalShapes;
 import static net.azagwen.atbyw.util.AtbywUtils.getItemFromID;
 
 public class RailingBlock extends Block implements Waterloggable {
@@ -72,10 +66,10 @@ public class RailingBlock extends Block implements Waterloggable {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        VoxelShape SHAPE_NORTH = state.get(NORTH) ? SHAPES[AtbywBlockUtils.NORTH] : VoxelShapes.empty();
-        VoxelShape SHAPE_EAST = state.get(EAST) ? SHAPES[AtbywBlockUtils.EAST] : VoxelShapes.empty();
-        VoxelShape SHAPE_SOUTH = state.get(SOUTH) ? SHAPES[AtbywBlockUtils.SOUTH] : VoxelShapes.empty();
-        VoxelShape SHAPE_WEST = state.get(WEST) ? SHAPES[AtbywBlockUtils.WEST] : VoxelShapes.empty();
+        VoxelShape SHAPE_NORTH = state.get(NORTH) ? SHAPES[BlockUtils.NORTH] : VoxelShapes.empty();
+        VoxelShape SHAPE_EAST = state.get(EAST) ? SHAPES[BlockUtils.EAST] : VoxelShapes.empty();
+        VoxelShape SHAPE_SOUTH = state.get(SOUTH) ? SHAPES[BlockUtils.SOUTH] : VoxelShapes.empty();
+        VoxelShape SHAPE_WEST = state.get(WEST) ? SHAPES[BlockUtils.WEST] : VoxelShapes.empty();
 
         return VoxelShapes.union(SHAPE_NORTH, SHAPE_EAST, SHAPE_SOUTH, SHAPE_WEST);
     }

@@ -6,11 +6,13 @@
     "mixins": [
         "AxeItemMixin",
         "FenceBlockMixin",
+        "HoeItemMixin",
         "ItemModelLoaderMixin",
         "PaneBlockMixin",
         "RecipeManagerMixin",
         "RedstoneWireBlockMixin",
         "ServerAdvancementLoaderMixin",
+        "ShoveltemMixin",
         "SnowBlockMixin",
         "TexturedRenderLayersMixin",
         "WallBlockMixin"

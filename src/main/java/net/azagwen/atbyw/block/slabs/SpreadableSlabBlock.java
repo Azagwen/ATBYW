@@ -23,26 +23,10 @@ import java.util.Random;
 
 public class SpreadableSlabBlock extends SlabBlockSubClass {
     private final Block fullBlockEquivalent;
-    private final boolean pathConvertible;
 
-    public SpreadableSlabBlock(boolean pathConvertible, Block copiedBlock, Settings settings) {
+    public SpreadableSlabBlock(Block copiedBlock, Settings settings) {
         super(settings);
         this.fullBlockEquivalent = copiedBlock;
-        this.pathConvertible = pathConvertible;
-    }
-
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (pathConvertible) {
-            if (player.getMainHandStack().isIn(FabricToolTags.SHOVELS)) {
-                BlockState oldState = world.getBlockState(pos);
-
-                world.setBlockState(pos, copyStates(AtbywBlocks.GRASS_PATH_SLAB.getDefaultState(), oldState));
-                world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                return ActionResult.SUCCESS;
-            }
-        }
-        return ActionResult.PASS;
     }
 
     private static boolean canSurvive(BlockState state, WorldView worldView, BlockPos pos) {

@@ -12,6 +12,6 @@ public class AtbywDynamicLights implements DynamicLightsInitializer {
 
     @Override
     public void onInitializeDynamicLights() {
-        registerDynamicLightHandler(AtbywEntityType.SHROOMSTICK, entity -> 15);
+        registerDynamicLightHandler(AtbywEntityTypes.SHROOMSTICK, entity -> 15);
     }
 }

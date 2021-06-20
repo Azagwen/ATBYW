@@ -1,8 +1,10 @@
 package net.azagwen.atbyw.block.slabs;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
@@ -12,10 +14,10 @@ import net.minecraft.world.chunk.light.ChunkLightProvider;
 
 import java.util.Random;
 
-public class TickingDirtSlabBlock extends DirtSlabBlock {
+public class TickingDirtSlabBlock extends SlabBlock {
 
-    public TickingDirtSlabBlock(boolean pathConvertible, Settings settings) {
-        super(pathConvertible, settings);
+    public TickingDirtSlabBlock(FabricBlockSettings settings) {
+        super(settings);
     }
 
     private static boolean canSurvive(BlockState state, WorldView worldView, BlockPos pos) {
@@ -44,10 +46,10 @@ public class TickingDirtSlabBlock extends DirtSlabBlock {
                 BlockState newState = world.getBlockState(pos);
 
                 if (world.getBlockState(blockPos).isOf(Blocks.GRASS_BLOCK) && canSpread(state, world, pos)) {
-                        world.setBlockState(pos, copyStates(AtbywBlocks.GRASS_BLOCK_SLAB.getDefaultState(), newState));
+                        world.setBlockState(pos, AtbywBlocks.GRASS_BLOCK_SLAB.getStateWithProperties(newState));
                 }
                 else if (world.getBlockState(blockPos).isOf(Blocks.MYCELIUM) && canSpread(state, world, pos)) {
-                        world.setBlockState(pos, copyStates(AtbywBlocks.MYCELIUM_SLAB.getDefaultState(), newState));
+                        world.setBlockState(pos, AtbywBlocks.MYCELIUM_SLAB.getStateWithProperties(newState));
                 }
 
             }

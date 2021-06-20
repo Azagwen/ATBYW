@@ -270,27 +270,27 @@ public class AtbywBlocks {
     public static final Block RED_CINDER_BLOCKS_WALL = new CinderBlocksWallBlock(FabricBlockSettings.copyOf(Blocks.RED_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block BLACK_CINDER_BLOCKS_WALL = new CinderBlocksWallBlock(FabricBlockSettings.copyOf(Blocks.BLACK_CONCRETE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block DIRT_STAIRS = new TickingDirtStairsBlock(true, TICKING_DIRT, FabricBlockSettings.copyOf(TICKING_DIRT));
-    public static final Block GRASS_BLOCK_STAIRS = new SpreadableStairsBlock(true, DUMMY_GRASS_BLOCK, Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
-    public static final Block MYCELIUM_STAIRS = new SpreadableStairsBlock(true, DUMMY_MYCELIUM, Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
-    public static final Block COARSE_DIRT_STAIRS = new DirtStairsBlock(true, Blocks.COARSE_DIRT, FabricBlockSettings.of(Material.SOIL, MapColor.DIRT_BROWN).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
-    public static final Block PODZOL_STAIRS = new DirtStairsBlock(true, Blocks.PODZOL, FabricBlockSettings.of(Material.SOIL, MapColor.SPRUCE_BROWN).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
+    public static final Block DIRT_STAIRS = new TickingDirtStairsBlock(TICKING_DIRT, FabricBlockSettings.copyOf(TICKING_DIRT));
+    public static final Block GRASS_BLOCK_STAIRS = new SpreadableStairsBlock(DUMMY_GRASS_BLOCK, Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
+    public static final Block MYCELIUM_STAIRS = new SpreadableStairsBlock(DUMMY_MYCELIUM, Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
+    public static final Block COARSE_DIRT_STAIRS = new StairsBlockSubClass(Blocks.COARSE_DIRT, FabricBlockSettings.of(Material.SOIL, MapColor.DIRT_BROWN).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL).ticksRandomly());
+    public static final Block PODZOL_STAIRS = new StairsBlockSubClass(Blocks.PODZOL, FabricBlockSettings.of(Material.SOIL, MapColor.SPRUCE_BROWN).breakByTool(FabricToolTags.SHOVELS).strength(0.5F).sounds(BlockSoundGroup.GRAVEL));
     public static final Block GRASS_PATH_STAIRS = new GrassPathStairsBlock(Blocks.DIRT_PATH, FabricBlockSettings.copyOf(Blocks.DIRT_PATH).breakByTool(FabricToolTags.SHOVELS));
     public static final Block NETHERRACK_STAIRS = new NetherrackStairsBlock(Blocks.NETHERRACK, FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block CRIMSON_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.CRIMSON_NYLIUM, FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block WARPED_NYLIUM_STAIRS = new NyliumStairsBlock(Blocks.WARPED_NYLIUM, FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block ROOTED_DIRT_STAIRS = new RootedDirtStairsBlock(Blocks.ROOTED_DIRT, FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block ROOTED_DIRT_STAIRS = new StairsBlockSubClass(Blocks.ROOTED_DIRT, FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT).breakByTool(FabricToolTags.SHOVELS));
 
-    public static final Block DIRT_SLAB = new TickingDirtSlabBlock(true, FabricBlockSettings.copyOf(TICKING_DIRT));
-    public static final Block GRASS_BLOCK_SLAB = new SpreadableSlabBlock(true, Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
-    public static final Block MYCELIUM_SLAB = new SpreadableSlabBlock(true, Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
-    public static final Block COARSE_DIRT_SLAB = new DirtSlabBlock(true, FabricBlockSettings.copyOf(Blocks.COARSE_DIRT).breakByTool(FabricToolTags.SHOVELS));
-    public static final Block PODZOL_SLAB = new DirtSlabBlock(true, FabricBlockSettings.copyOf(Blocks.PODZOL).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block DIRT_SLAB = new TickingDirtSlabBlock(FabricBlockSettings.copyOf(TICKING_DIRT));
+    public static final Block GRASS_BLOCK_SLAB = new SpreadableSlabBlock(Blocks.GRASS_BLOCK, FabricBlockSettings.copyOf(DUMMY_GRASS_BLOCK));
+    public static final Block MYCELIUM_SLAB = new SpreadableSlabBlock(Blocks.MYCELIUM, FabricBlockSettings.copyOf(DUMMY_MYCELIUM));
+    public static final Block COARSE_DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.COARSE_DIRT).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block PODZOL_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.PODZOL).breakByTool(FabricToolTags.SHOVELS));
     public static final Block GRASS_PATH_SLAB = new GrassPathSlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT_PATH).breakByTool(FabricToolTags.SHOVELS));
     public static final Block NETHERRACK_SLAB = new NetherrackSlabBlock(FabricBlockSettings.copyOf(Blocks.NETHERRACK).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block CRIMSON_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.CRIMSON_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block WARPED_NYLIUM_SLAB = new NyliumSlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_NYLIUM).requiresTool().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block ROOTED_DIRT_SLAB = new RootedDirtSlabBlock(FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT).breakByTool(FabricToolTags.SHOVELS));
+    public static final Block ROOTED_DIRT_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.ROOTED_DIRT).breakByTool(FabricToolTags.SHOVELS));
 
     public static final Block GRANITE_TILES = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_GRANITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block DIORITE_BRICKS = new Block(FabricBlockSettings.copyOf(Blocks.POLISHED_DIORITE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
@@ -515,15 +515,15 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "red_sand_slab", RED_SAND_SLAB);
         registerBlock(false, BLOCKS_TAB, "gravel_slab", GRAVEL_SLAB);
 
-        registerBlocks(false, BLOCKS_TAB, "log_slab", WoodNames.getNamesInRange(0, 5), OAK_LOG_SLAB, SPRUCE_LOG_SLAB, BIRCH_LOG_SLAB, JUNGLE_LOG_SLAB, ACACIA_LOG_SLAB, DARK_OAK_LOG_SLAB);
-        registerBlocks(false, BLOCKS_TAB, "stem_slab", WoodNames.getNamesInRange(6, 7), CRIMSON_STEM_SLAB, WARPED_STEM_SLAB);
+        registerBlocks(false, BLOCKS_TAB, "log_slab", WoodNames.getNamesOverworld(), OAK_LOG_SLAB, SPRUCE_LOG_SLAB, BIRCH_LOG_SLAB, JUNGLE_LOG_SLAB, ACACIA_LOG_SLAB, DARK_OAK_LOG_SLAB);
+        registerBlocks(false, BLOCKS_TAB, "stem_slab", WoodNames.getNamesNether(), CRIMSON_STEM_SLAB, WARPED_STEM_SLAB);
 
-        registerBlocks(false, BLOCKS_TAB, "stripped", "log_slab", WoodNames.getNamesInRange(0, 5), STRIPPED_OAK_LOG_SLAB, STRIPPED_SPRUCE_LOG_SLAB, STRIPPED_BIRCH_LOG_SLAB, STRIPPED_JUNGLE_LOG_SLAB, STRIPPED_ACACIA_LOG_SLAB, STRIPPED_DARK_OAK_LOG_SLAB);
-        registerBlocks(false, BLOCKS_TAB, "stripped", "stem_slab", WoodNames.getNamesInRange(6, 7), STRIPPED_CRIMSON_STEM_SLAB, STRIPPED_WARPED_STEM_SLAB);
+        registerBlocks(false, BLOCKS_TAB, "stripped", "log_slab", WoodNames.getNamesOverworld(), STRIPPED_OAK_LOG_SLAB, STRIPPED_SPRUCE_LOG_SLAB, STRIPPED_BIRCH_LOG_SLAB, STRIPPED_JUNGLE_LOG_SLAB, STRIPPED_ACACIA_LOG_SLAB, STRIPPED_DARK_OAK_LOG_SLAB);
+        registerBlocks(false, BLOCKS_TAB, "stripped", "stem_slab", WoodNames.getNamesNether(), STRIPPED_CRIMSON_STEM_SLAB, STRIPPED_WARPED_STEM_SLAB);
 
         registerBlock(false, BLOCKS_TAB, "soul_jack_o_lantern", SOUL_JACK_O_LANTERN);
 
-        registerBlocks(false, BLOCKS_TAB, "bookshelf", WoodNames.getNamesInRange(1, 7), SPRUCE_BOOKSHELF, BIRCH_BOOKSHELF, JUNGLE_BOOKSHELF, ACACIA_BOOKSHELF, DARK_OAK_BOOKSHELF, CRIMSON_BOOKSHELF, WARPED_BOOKSHELF);
+        registerBlocks(false, BLOCKS_TAB, "bookshelf", WoodNames.getNamesNoOak(), SPRUCE_BOOKSHELF, BIRCH_BOOKSHELF, JUNGLE_BOOKSHELF, ACACIA_BOOKSHELF, DARK_OAK_BOOKSHELF, CRIMSON_BOOKSHELF, WARPED_BOOKSHELF);
 
         registerBlock(false, BLOCKS_TAB, "purpur_tiles", PURPUR_TILES);
         registerBlock(false, BLOCKS_TAB, "chiseled_purpur_block", CHISELED_PURPUR_BLOCK);
@@ -579,7 +579,7 @@ public class AtbywBlocks {
         registerBlocks(false, BLOCKS_TAB, "cinder_bricks", ColorNames.getNames(), WHITE_CINDER_BLOCKS, ORANGE_CINDER_BLOCKS, MAGENTA_CINDER_BLOCKS, LIGHT_BLUE_CINDER_BLOCKS, YELLOW_CINDER_BLOCKS, LIME_CINDER_BLOCKS, PINK_CINDER_BLOCKS, GRAY_CINDER_BLOCKS, LIGHT_GRAY_CINDER_BLOCKS, CYAN_CINDER_BLOCKS, PURPLE_CINDER_BLOCKS, BLUE_CINDER_BLOCKS, BROWN_CINDER_BLOCKS, GREEN_CINDER_BLOCKS, RED_CINDER_BLOCKS, BLACK_CINDER_BLOCKS);
 
         //ATBYW DECO
-        registerBlocks(false, DECO_TAB, "ladder", WoodNames.getNamesInRange(1, 7), SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);
+        registerBlocks(false, DECO_TAB, "ladder", WoodNames.getNamesNoOak(), SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);
         registerBlock(false, DECO_TAB, "bamboo_ladder", BAMBOO_LADDER);
 
         registerBlock(false, DECO_TAB, "compacted_snow", COMPACTED_SNOW);

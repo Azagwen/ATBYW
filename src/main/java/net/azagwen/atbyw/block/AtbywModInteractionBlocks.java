@@ -2,7 +2,7 @@ package net.azagwen.atbyw.block;
 
 import net.minecraft.block.Block;
 
-import static net.azagwen.atbyw.block.AtbywModInteractionBlockUtils.*;
+import static net.azagwen.atbyw.util.ModInteractionBlockUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywModInteractionBlocks {

@@ -1,17 +1,11 @@
 package net.azagwen.atbyw.mixin;
 
-import net.azagwen.atbyw.main.AtbywDataResourceListener;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.PlayerEntity;
+import net.azagwen.atbyw.main.DataResourceListener;
+import net.azagwen.atbyw.main.ToolOperations;
 import net.minecraft.item.AxeItem;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -27,47 +21,26 @@ public class AxeItemMixin {
         var world = context.getWorld();
         var player = context.getPlayer();
         var pos = context.getBlockPos();
+        var direction = context.getSide();
+        var heldItem = context.getStack();
 
-    }
+        var replaceMap = DataResourceListener.AXE_REPLACE;
+        var replaceLootMap = DataResourceListener.AXE_REPLACE_WITH_LOOT;
 
-    private void strip(World world, PlayerEntity player, BlockPos pos) {
-        var hitBlock = world.getBlockState(pos).getBlock();
-        var strippingMap = AtbywDataResourceListener.AXE_STRIPPING;
-
-        //Block Stripping
-        if (strippingMap.containsKey(hitBlock)) {
-            for (var log : strippingMap.entrySet()) {
-                var original = log.getKey();
-                var stripped = log.getValue();
-
-                if (original == hitBlock) {
-                    var originalState = world.getBlockState(pos);
-
-                    world.setBlockState(pos, stripped.getStateWithProperties(originalState));
-                    world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                }
-            }
+        if (replaceMap.containsKey(world.getBlockState(pos).getBlock())) {
+            ToolOperations.replaceBlock(world, player, pos, SoundEvents.ITEM_AXE_STRIP, replaceMap);
+            cir.setReturnValue(ActionResult.success(world.isClient));
         }
-    }
 
-    private void stripWithLoot(World world, PlayerEntity player, BlockPos pos) {
-        var hitBlock = world.getBlockState(pos).getBlock();
-        var strippingMap = AtbywDataResourceListener.AXE_STRIPPING_WITH_LOOT;
+        if (replaceLootMap.containsKey(world.getBlockState(pos).getBlock())) {
+            ToolOperations.replaceBlockThenLoot(world, player, pos, direction, SoundEvents.ITEM_AXE_STRIP, replaceLootMap);
+            cir.setReturnValue(ActionResult.success(world.isClient));
+        }
 
-        //Block Stripping
-        strippingMap.forEach((pair, loot) -> {
-            if (pair.getLeft() == hitBlock) {
-                var original = pair.getLeft();
-                var stripped = pair.getRight();
-
-                if (original == hitBlock) {
-                    var originalState = world.getBlockState(pos);
-
-                    world.setBlockState(pos, stripped.getStateWithProperties(originalState));
-                    world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    Block.dropStack(world, pos, new ItemStack(loot));
-                }
-            }
-        });
+        if (player != null) {
+            heldItem.damage(1, player, ((entity) -> {
+                entity.sendToolBreakStatus(context.getHand());
+            }));
+        }
     }
 }

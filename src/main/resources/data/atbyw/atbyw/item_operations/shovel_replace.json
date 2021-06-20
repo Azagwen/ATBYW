@@ -1,0 +1,19 @@
+{
+    "data_type": "atbyw:block_to_block",
+    "replace": false,
+    "states": {
+        "atbyw:grass_block_stairs": "atbyw:grass_path_stairs",
+        "atbyw:mycelium_stairs": "atbyw:grass_path_stairs",
+        "atbyw:dirt_stairs": "atbyw:grass_path_stairs",
+        "atbyw:coarse_dirt_stairs": "atbyw:grass_path_stairs",
+        "atbyw:rooted_dirt_stairs": "atbyw:grass_path_stairs",
+        "atbyw:podzol_stairs": "atbyw:grass_path_stairs",
+
+        "atbyw:grass_block_slab": "atbyw:grass_path_slab",
+        "atbyw:mycelium_slab": "atbyw:grass_path_slab",
+        "atbyw:dirt_slab": "atbyw:grass_path_slab",
+        "atbyw:coarse_dirt_slab": "atbyw:grass_path_slab",
+        "atbyw:rooted_dirt_slab": "atbyw:grass_path_slab",
+        "atbyw:podzol_slab": "atbyw:grass_path_slab"
+    }
+}

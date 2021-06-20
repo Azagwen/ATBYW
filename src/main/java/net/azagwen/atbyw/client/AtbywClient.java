@@ -2,37 +2,25 @@ package net.azagwen.atbyw.client;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityType;
-import net.azagwen.atbyw.block.statues.StatueRegistry;
 import net.azagwen.atbyw.client.render.AtbywBlockRenderLayers;
 import net.azagwen.atbyw.client.render.AtbywEntityModelLayers;
 import net.azagwen.atbyw.client.render.TimerRepeaterBlockEntityRenderer;
-import net.azagwen.atbyw.items.EssenceItem;
-import net.azagwen.atbyw.main.AtbywEntityType;
+import net.azagwen.atbyw.main.AtbywEntityTypes;
 import net.azagwen.atbyw.main.EntitySpawnPacket;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.impl.networking.ClientSidePacketRegistryImpl;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.GrassColors;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
-
-import java.util.UUID;
 
 import static net.azagwen.atbyw.items.AtbywItems.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
@@ -75,7 +63,7 @@ public class AtbywClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(AtbywEntityModelLayers.TIMER_REPEATER, TimerRepeaterBlockEntityRenderer::getTexturedModelData);
         BlockEntityRendererRegistry.INSTANCE.register(AtbywBlockEntityType.TIMER_REPEATER_ENTITY, TimerRepeaterBlockEntityRenderer::new);
 
-        EntityRendererRegistry.INSTANCE.register(AtbywEntityType.SHROOMSTICK, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.INSTANCE.register(AtbywEntityTypes.SHROOMSTICK, FlyingItemEntityRenderer::new);
         receiveEntityPacket();
 
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {

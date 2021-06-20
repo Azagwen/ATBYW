@@ -1,0 +1,14 @@
+{
+    "data_type": "atbyw:block_to_block",
+    "replace": false,
+    "states": {
+        "atbyw:rooted_dirt_stairs": "atbyw:dirt_stairs",
+        "atbyw:rooted_dirt_slab": "atbyw:dirt_slab",
+        "minecraft:polished_granite": "minecraft:granite"
+    },
+    "loot": {
+        "atbyw:rooted_dirt_stairs": "minecraft:hanging_roots",
+        "atbyw:rooted_dirt_slab": "minecraft:hanging_roots",
+        "minecraft:polished_granite": "minecraft:flint"
+    }
+}

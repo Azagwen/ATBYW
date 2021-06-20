@@ -56,4 +56,16 @@ public enum WoodNames  {
 
         return names;
     }
+
+    public static List<String> getNamesNoOak() {
+        return getNamesInRange(1, 7);
+    }
+
+    public static List<String> getNamesOverworld() {
+        return getNamesInRange(0, 5);
+    }
+
+    public static List<String> getNamesNether() {
+        return getNamesInRange(6, 7);
+    }
 }

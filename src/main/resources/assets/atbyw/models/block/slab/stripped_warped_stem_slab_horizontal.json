@@ -1,0 +1,7 @@
+{
+    "parent": "atbyw:block/slab/template_column_slab_horizontal_stitched_side",
+    "textures": {
+        "end": "minecraft:block/stripped_warped_stem_top",
+        "side": "minecraft:block/stripped_warped_stem"
+    }
+}

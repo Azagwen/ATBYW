@@ -23,26 +23,10 @@ import java.util.Random;
 
 public class SpreadableStairsBlock extends StairsBlockSubClass {
     private final Block fullBlockEquivalent;
-    private final boolean pathConvertible;
 
-    public SpreadableStairsBlock(boolean pathConvertible, Block copiedBlock, Block fullBlockEquivalent, Settings settings) {
+    public SpreadableStairsBlock(Block copiedBlock, Block fullBlockEquivalent, Settings settings) {
         super(copiedBlock, settings);
         this.fullBlockEquivalent = fullBlockEquivalent;
-        this.pathConvertible = pathConvertible;
-    }
-
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (pathConvertible) {
-            if (player.getMainHandStack().isIn(FabricToolTags.SHOVELS)) {
-                BlockState oldState = world.getBlockState(pos);
-
-                world.setBlockState(pos, copyStates(AtbywBlocks.GRASS_PATH_STAIRS.getDefaultState(), oldState));
-                world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                return ActionResult.SUCCESS;
-            }
-        }
-        return ActionResult.PASS;
     }
 
     private static boolean canSurvive(BlockState state, WorldView worldView, BlockPos pos) {
@@ -63,10 +47,10 @@ public class SpreadableStairsBlock extends StairsBlockSubClass {
         if (!canSurvive(state, world, pos)) {
             BlockState oldState = world.getBlockState(pos);
 
-            world.setBlockState(pos, copyStates(AtbywBlocks.DIRT_STAIRS.getDefaultState(), oldState));
+            world.setBlockState(pos, AtbywBlocks.DIRT_STAIRS.getStateWithProperties(oldState));
         }
         else {
-            BlockState blockState = this.getDefaultState();
+            var blockState = this.getDefaultState();
 
             if (world.getLightLevel(pos.up()) >= 9) {
                 for(int i = 0; i < 4; ++i) {
@@ -78,7 +62,7 @@ public class SpreadableStairsBlock extends StairsBlockSubClass {
                     if (!blockPos.equals(downPos)) {
                         if (!blockPos.equals(upPos)) {
                             if (world.getBlockState(blockPos).isOf(AtbywBlocks.DIRT_STAIRS) && canSpread(blockState, world, blockPos)) {
-                                world.setBlockState(blockPos, copyStates(blockState, newState));
+                                world.setBlockState(blockPos, this.getStateWithProperties(newState));
                             } else if (world.getBlockState(blockPos).isOf(AtbywBlocks.DIRT_SLAB) && canSpread(blockState, world, blockPos)) {
                                 Block self = world.getBlockState(pos).getBlock();
 

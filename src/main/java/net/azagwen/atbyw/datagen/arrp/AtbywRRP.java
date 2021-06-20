@@ -10,13 +10,13 @@ public class AtbywRRP {
     public static final RuntimeResourcePack ATBYW_MI_RESOURCE_PACK = RuntimeResourcePack.create(NewAtbywModInteractionID("atbyw_rrp").toString());
 
     public static void init() {
-        AtbywLootTables.init();
-        AtbywDatagenTags.init();
-        AtbywDatagenModels.init();
+        LootTables.init();
+        Tags.init();
 
-        RRPCallback.EVENT.register(a -> a.add(ATBYW_RESOURCE_PACK));
+        RRPCallback.EVENT.register(packs -> packs.add(ATBYW_RESOURCE_PACK));
         LOGGER.info("ATBYW RRP Inintiliazed");
     }
+
     public static void init_mi() {
         RRPCallback.EVENT.register(a -> a.add(ATBYW_MI_RESOURCE_PACK));
         LOGGER.info("ATBYW Mod Interaction RRP Inintiliazed");

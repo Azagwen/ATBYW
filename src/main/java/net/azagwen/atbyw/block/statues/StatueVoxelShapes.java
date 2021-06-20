@@ -2,14 +2,12 @@ package net.azagwen.atbyw.block.statues;
 
 import net.minecraft.block.Block;
 import net.minecraft.util.function.BooleanBiFunction;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.azagwen.atbyw.util.AtbywBlockUtils.*;
 
 import java.util.*;
 
-import static net.azagwen.atbyw.util.AtbywBlockUtils.makeDirectionalShapes;
+import static net.azagwen.atbyw.util.BlockUtils.makeDirectionalShapes;
 
 public class StatueVoxelShapes {
     public static final VoxelShape DEFAULT_OUTLINE = VoxelShapes.fullCube();
