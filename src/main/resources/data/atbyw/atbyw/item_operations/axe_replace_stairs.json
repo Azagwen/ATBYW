@@ -1,0 +1,42 @@
+{
+    "data_type": "atbyw:block_to_block",
+    "replace": false,
+    "tag_used": {
+        "tag": "fabric:axes",
+        "damage": 1
+    },
+    "targets": {
+        "atbyw:oak_log_stairs": {
+            "result": "atbyw:stripped_oak_log_stairs",
+            "sound": "minecraft:item.axe.strip"
+        },
+        "atbyw:spruce_log_stairs": {
+            "result": "atbyw:stripped_spruce_log_stairs",
+            "sound": "minecraft:item.axe.strip"
+        },
+        "atbyw:birch_log_stairs": {
+            "result": "atbyw:stripped_birch_log_stairs",
+            "sound": "minecraft:item.axe.strip"
+        },
+        "atbyw:jungle_log_stairs": {
+            "result": "atbyw:stripped_jungle_log_stairs",
+            "sound": "minecraft:item.axe.strip"
+        },
+        "atbyw:acacia_log_stairs": {
+            "result": "atbyw:stripped_acacia_log_stairs",
+            "sound": "minecraft:item.axe.strip"
+        },
+        "atbyw:dark_oak_log_stairs": {
+            "result": "atbyw:stripped_dark_oak_log_stairs",
+            "sound": "minecraft:item.axe.strip"
+        },
+        "atbyw:crimson_stem_stairs": {
+            "result": "atbyw:stripped_crimson_stem_stairs",
+            "sound": "minecraft:item.axe.strip"
+        },
+        "atbyw:warped_stem_stairs": {
+            "result": "atbyw:stripped_warped_stem_stairs",
+            "sound": "minecraft:item.axe.strip"
+        }
+    }
+}

@@ -5,7 +5,9 @@
         "item": "minecraft:diamond",
         "decrement": 1
     },
-    "states": {
-        "minecraft:stone": "minecraft:diamond_ore"
+    "targets": {
+        "minecraft:stone": {
+            "result": "minecraft:diamond_ore"
+        }
     }
 }

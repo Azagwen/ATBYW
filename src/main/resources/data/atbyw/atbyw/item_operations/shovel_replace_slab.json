@@ -1,0 +1,28 @@
+{
+    "data_type": "atbyw:block_to_block",
+    "replace": false,
+    "tag_used": {
+        "tag": "fabric:shovels",
+        "damage": 1
+    },
+    "targets": {
+        "atbyw:grass_block_stairs": {
+            "result": "atbyw:grass_path_stairs"
+        },
+        "atbyw:mycelium_stairs": {
+            "result": "atbyw:grass_path_stairs"
+        },
+        "atbyw:dirt_stairs": {
+            "result": "atbyw:grass_path_stairs"
+        },
+        "atbyw:coarse_dirt_stairs": {
+            "result": "atbyw:grass_path_stairs"
+        },
+        "atbyw:rooted_dirt_stairs": {
+            "result": "atbyw:grass_path_stairs"
+        },
+        "atbyw:podzol_stairs": {
+            "result": "atbyw:grass_path_stairs"
+        }
+    }
+}

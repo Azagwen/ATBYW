@@ -1,7 +1,9 @@
 package net.azagwen.atbyw.main;
 
+import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Tables;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -20,11 +22,8 @@ import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 
 public class DataResourceListener implements SimpleSynchronousResourceReloadListener {
     public static final Logger LOGGER  = LogManager.getLogger("Atbyw Main");
-    public static Map<Block, Pair<Block, Item>> AXE_REPLACE = Maps.newHashMap();
-    public static Map<Block, Pair<Block, Item>> PICKAXE_REPLACE = Maps.newHashMap();
-    public static Map<Block, Pair<Block, Item>> SHOVEL_REPLACE = Maps.newHashMap();
-    public static Map<Block, Pair<Block, Item>> HOE_REPLACE = Maps.newHashMap();
     public static List<BlockToBlockOperation> BLOCK_TO_BLOCK_OPERATIONS = Lists.newArrayList();
+    public static HashBasedTable<Item, Block, ItemOperationResult> BTB_OPS = HashBasedTable.create();
 
     @Override
     public void reload(ResourceManager manager) {
@@ -32,10 +31,13 @@ public class DataResourceListener implements SimpleSynchronousResourceReloadList
         for(Identifier id : manager.findResources("atbyw/item_operations/", path -> path.endsWith(".json"))) {
             try {
                 InputStream stream = manager.getResource(id).getInputStream();
-                ItemOperationDecoder.readBlockToBlock(stream, BLOCK_TO_BLOCK_OPERATIONS);
+                ItemOperationDecoder.readBlockToBlock(stream, BTB_OPS);
             } catch (IOException e) {
                 LOGGER.error("Error occurred while loading resource json " + id.toString(), e);
             }
+        }
+        for (var cell: BTB_OPS.cellSet()){
+            LOGGER.info(cell.getRowKey() + " " + cell.getColumnKey() + " " + cell.getValue());
         }
     }
 
