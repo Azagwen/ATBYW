@@ -6,13 +6,17 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
 public class ItemOperations {
 
-    public static void replaceBlock(World world, PlayerEntity player, BlockPos pos, Direction side, Table.Cell<Item, Block, ItemOperationResult> operation) {
+    public static ActionResult replaceBlock(World world, PlayerEntity player, BlockPos pos, Direction side, Table.Cell<Item, Block, ItemOperationResult> operation, Supplier<ActionResult> command) {
         var hitBlock = world.getBlockState(pos).getBlock();
         var oldBlock = operation.getColumnKey();
         var newBlock = operation.getValue().result();
@@ -29,6 +33,9 @@ public class ItemOperations {
             if (lootItem != null) {
                 Block.dropStack(world, pos, side, new ItemStack(lootItem));
             }
+            return command.get();
+        } else {
+            return ActionResult.PASS;
         }
     }
 }

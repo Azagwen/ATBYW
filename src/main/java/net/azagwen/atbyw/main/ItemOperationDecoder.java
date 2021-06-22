@@ -1,8 +1,6 @@
 package net.azagwen.atbyw.main;
 
 import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Table;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
@@ -14,13 +12,12 @@ import net.minecraft.tag.ServerTagManagerHolder;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
+import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
-import java.util.List;
-import java.util.Map;
 
 public class ItemOperationDecoder {
     public static final Logger LOGGER  = LogManager.getLogger("Atbyw Item Operation Decoder");
@@ -59,24 +56,16 @@ public class ItemOperationDecoder {
                     var itemObject = JsonHelper.getObject(json, "item_used");
                     var itemIdentifier = new Identifier(itemObject.get("item").getAsString());
 
-                    if (itemObject.has("damage")) {
-                        damage = JsonHelper.getInt(itemObject, "damage");
-                    }
-                    if (itemObject.has("decrement")) {
-                        decrement = JsonHelper.getInt(itemObject, "decrement");
-                    }
+                    damage = checkDamageAndDecrement(itemObject).getLeft();
+                    decrement = checkDamageAndDecrement(itemObject).getRight();
 
                     item = Registry.ITEM.get(itemIdentifier);
                 } else if (json.has("tag_used")) {
                     var tagObject = JsonHelper.getObject(json, "tag_used");
                     var tagIdentifier = new Identifier(tagObject.get("tag").getAsString());
 
-                    if (tagObject.has("damage")) {
-                        damage = JsonHelper.getInt(tagObject, "damage");
-                    }
-                    if (tagObject.has("decrement")) {
-                        decrement = JsonHelper.getInt(tagObject, "decrement");
-                    }
+                    damage = checkDamageAndDecrement(tagObject).getLeft();
+                    decrement = checkDamageAndDecrement(tagObject).getRight();
 
                     tag = ServerTagManagerHolder.getTagManager().getTag(Registry.ITEM_KEY, tagIdentifier, (identifier) -> {
                         return new JsonSyntaxException("Unknown item tag '" + identifier + "'");
@@ -85,22 +74,22 @@ public class ItemOperationDecoder {
             }
 
             //For each entry in the "targets" object, add a row to the Table based on the previously defined fields.
-            for (var entry : targets) {
-                var entryContent = entry.getValue().getAsJsonObject();
-                var resultIdentifier = new Identifier(JsonHelper.getString(entryContent, "result"));
-                var original = Registry.BLOCK.get(new Identifier(entry.getKey()));
+            for (var target : targets) {
+                var targetContent = target.getValue().getAsJsonObject();
+                var resultIdentifier = new Identifier(JsonHelper.getString(targetContent, "result"));
+                var original = Registry.BLOCK.get(new Identifier(target.getKey()));
                 var result = Registry.BLOCK.get(resultIdentifier);
                 var sound = (SoundEvent) null;
                 var loot = (Item) null;
 
                 //check if "sound" is there
-                if (entryContent.has("sound")) {
-                    var soundIdentifier = new Identifier(JsonHelper.getString(entryContent, "sound"));
+                if (targetContent.has("sound")) {
+                    var soundIdentifier = new Identifier(JsonHelper.getString(targetContent, "sound"));
                     sound = Registry.SOUND_EVENT.get(soundIdentifier);
                 }
                 //check if "loot" is there
-                if (entryContent.has("loot")) {
-                    var lootIdentifier = new Identifier(JsonHelper.getString(entryContent, "loot"));
+                if (targetContent.has("loot")) {
+                    var lootIdentifier = new Identifier(JsonHelper.getString(targetContent, "loot"));
                     loot = Registry.ITEM.get(lootIdentifier);
                 }
 
@@ -119,5 +108,19 @@ public class ItemOperationDecoder {
                 operation.put(value, original, operationResult);
             }
         }
+    }
+
+    private static Pair<Integer, Integer> checkDamageAndDecrement(JsonObject object) {
+        var damage = 0;
+        var decrement = 0;
+
+        if (object.has("damage")) {
+            damage = JsonHelper.getInt(object, "damage");
+        }
+        if (object.has("decrement")) {
+            decrement = JsonHelper.getInt(object, "decrement");
+        }
+
+        return new Pair<>(damage, decrement);
     }
 }

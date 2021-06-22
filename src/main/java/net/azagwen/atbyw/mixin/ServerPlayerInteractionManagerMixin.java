@@ -6,7 +6,9 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsageContext;
 import net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket;
+import net.minecraft.network.packet.s2c.play.PlayerActionResponseS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.network.ServerPlayerInteractionManager;
 import net.minecraft.util.ActionResult;
@@ -28,21 +30,20 @@ public class ServerPlayerInteractionManagerMixin {
         var heldItem = player.getMainHandStack();
         var direction = hitResult.getSide();
         var pos = hitResult.getBlockPos();
+        var client = MinecraftClient.getInstance();
 
         for (var operation : operations.cellSet()) {
             var itemUsed = operation.getRowKey();
 
             if (heldItem.getItem().equals(itemUsed)) {
-                var itemDecrement = operation.getValue().decrement();
-                var itemDamage = operation.getValue().damage();
-
-                ItemOperations.replaceBlock(world, player, pos, direction, operation);
-                cir.setReturnValue(ActionResult.success(world.isClient));
+                var actionResult = ItemOperations.replaceBlock(world, player, pos, direction, operation, () -> ActionResult.SUCCESS);
 
                 if (!player.isCreative()) {
-                    heldItem.damage(itemDamage, player, ((entity) -> entity.sendToolBreakStatus(hand)));
-                    heldItem.decrement(itemDecrement);
+                    heldItem.damage(operation.getValue().damage(), player, ((entity) -> entity.sendToolBreakStatus(hand)));
+                    heldItem.decrement(operation.getValue().decrement());
                 }
+
+                cir.setReturnValue(actionResult);
             }
         }
     }
