@@ -1,0 +1,15 @@
+{
+    "data_type": "atbyw:block_to_block",
+    "replace": false,
+    "item_used": {
+        "item": "minecraft:bucket",
+        "decrement": 1
+    },
+    "targets": {
+        "minecraft:magma_block": {
+            "result": "minecraft:netherrack",
+            "loot": "minecraft:lava_bucket",
+            "sound": "betternether:betternether.mob.naga_attack"
+        }
+    }
+}

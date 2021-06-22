@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.main;
+package net.azagwen.atbyw.item;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.gson.JsonObject;
@@ -7,7 +7,6 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.tag.ServerTagManagerHolder;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
@@ -21,14 +20,10 @@ import java.io.*;
 
 public class ItemOperationDecoder {
     public static final Logger LOGGER  = LogManager.getLogger("Atbyw Item Operation Decoder");
-    private static final boolean enableDebug = true;
 
     public ItemOperationDecoder() {
     }
 
-    //TODO: rewrite using maps and following axe_replace_slab.json
-
-    //New decoder method
     public static void readBlockToBlock(InputStream location, HashBasedTable<Item, Block, ItemOperationResult> operation) {
         var reader = new JsonReader(new InputStreamReader(location));
         var parser = new JsonParser();
@@ -79,13 +74,12 @@ public class ItemOperationDecoder {
                 var resultIdentifier = new Identifier(JsonHelper.getString(targetContent, "result"));
                 var original = Registry.BLOCK.get(new Identifier(target.getKey()));
                 var result = Registry.BLOCK.get(resultIdentifier);
-                var sound = (SoundEvent) null;
+                var sound = (Identifier) null;
                 var loot = (Item) null;
 
                 //check if "sound" is there
                 if (targetContent.has("sound")) {
-                    var soundIdentifier = new Identifier(JsonHelper.getString(targetContent, "sound"));
-                    sound = Registry.SOUND_EVENT.get(soundIdentifier);
+                    sound = new Identifier(JsonHelper.getString(targetContent, "sound"));
                 }
                 //check if "loot" is there
                 if (targetContent.has("loot")) {
@@ -98,7 +92,7 @@ public class ItemOperationDecoder {
         }
     }
 
-    private static void populateTable(HashBasedTable<Item, Block, ItemOperationResult> operation, Item item, Tag<Item> tag, Block original, Block result, Item loot, int damage, int decrement, SoundEvent sound) {
+    private static void populateTable(HashBasedTable<Item, Block, ItemOperationResult> operation, Item item, Tag<Item> tag, Block original, Block result, Item loot, int damage, int decrement, Identifier sound) {
         var operationResult = new ItemOperationResult(result, loot, damage, decrement, sound);
 
         if (item != null) {

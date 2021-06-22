@@ -1,10 +1,10 @@
-package net.azagwen.atbyw.main;
+package net.azagwen.atbyw.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.Identifier;
 
-public record ItemOperationResult(Block result, Item loot, int damage, int decrement, SoundEvent sound) {
+public record ItemOperationResult(Block result, Item loot, int damage, int decrement, Identifier sound) {
 
     @Override
     public Block result() {
@@ -27,7 +27,7 @@ public record ItemOperationResult(Block result, Item loot, int damage, int decre
     }
 
     @Override
-    public SoundEvent sound() {
+    public Identifier sound() {
         return sound;
     }
 }

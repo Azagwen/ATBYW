@@ -1,22 +1,17 @@
-package net.azagwen.atbyw.main;
+package net.azagwen.atbyw.item;
 
 import com.google.common.collect.Table;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.PlaySoundIdS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class ItemOperations {
 
@@ -30,7 +25,7 @@ public class ItemOperations {
         if (sound != null) {
             if (!world.isClient) {
                 var vec3D = new Vec3d(pos.getX(), pos.getY(), pos.getZ());
-                player.networkHandler.sendPacket(new PlaySoundIdS2CPacket(sound.getId(), SoundCategory.BLOCKS, vec3D, 1.0F, 1.0F));
+                player.networkHandler.sendPacket(new PlaySoundIdS2CPacket(sound, SoundCategory.BLOCKS, vec3D, 1.0F, 1.0F));
             }
         }
         if (lootItem != null) {
