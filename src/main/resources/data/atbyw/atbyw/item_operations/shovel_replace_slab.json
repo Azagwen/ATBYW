@@ -7,22 +7,28 @@
     },
     "targets": {
         "atbyw:grass_block_stairs": {
-            "result": "atbyw:grass_path_stairs"
+            "result": "atbyw:grass_path_stairs",
+            "sound": "minecraft:item.shovel.flatten"
         },
         "atbyw:mycelium_stairs": {
-            "result": "atbyw:grass_path_stairs"
+            "result": "atbyw:grass_path_stairs",
+            "sound": "minecraft:item.shovel.flatten"
         },
         "atbyw:dirt_stairs": {
-            "result": "atbyw:grass_path_stairs"
+            "result": "atbyw:grass_path_stairs",
+            "sound": "minecraft:item.shovel.flatten"
         },
         "atbyw:coarse_dirt_stairs": {
-            "result": "atbyw:grass_path_stairs"
+            "result": "atbyw:grass_path_stairs",
+            "sound": "minecraft:item.shovel.flatten"
         },
         "atbyw:rooted_dirt_stairs": {
-            "result": "atbyw:grass_path_stairs"
+            "result": "atbyw:grass_path_stairs",
+            "sound": "minecraft:item.shovel.flatten"
         },
         "atbyw:podzol_stairs": {
-            "result": "atbyw:grass_path_stairs"
+            "result": "atbyw:grass_path_stairs",
+            "sound": "minecraft:item.shovel.flatten"
         }
     }
 }

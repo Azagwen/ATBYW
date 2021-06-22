@@ -8,11 +8,13 @@
     "targets": {
         "atbyw:rooted_dirt_stairs": {
             "result": "atbyw:dirt_stairs",
-            "loot": "minecraft:hanging_roots"
+            "loot": "minecraft:hanging_roots",
+            "sound": "minecraft:item.hoe.till"
         },
         "atbyw:rooted_dirt_slab": {
             "result": "atbyw:dirt_slab",
-            "loot": "minecraft:hanging_roots"
+            "loot": "minecraft:hanging_roots",
+            "sound": "minecraft:item.hoe.till"
         }
     }
 }

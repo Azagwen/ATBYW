@@ -28,23 +28,29 @@ public class ServerPlayerInteractionManagerMixin {
     public void useOnBlock(ServerPlayerEntity player, World world, ItemStack stack, Hand hand, BlockHitResult hitResult, CallbackInfoReturnable<ActionResult> cir) {
         var operations = DataResourceListener.BTB_OPS;
         var heldItem = player.getMainHandStack();
-        var direction = hitResult.getSide();
-        var pos = hitResult.getBlockPos();
-        var client = MinecraftClient.getInstance();
+        var hitPos = hitResult.getBlockPos();
+        var hitSide = hitResult.getSide();
+        var hitState = world.getBlockState(hitPos);
+        var actionResult = ActionResult.PASS;
 
         for (var operation : operations.cellSet()) {
             var itemUsed = operation.getRowKey();
+            var targetBlock = operation.getColumnKey();
 
             if (heldItem.getItem().equals(itemUsed)) {
-                var actionResult = ItemOperations.replaceBlock(world, player, pos, direction, operation, () -> ActionResult.SUCCESS);
+                if (hitState.getBlock().equals(targetBlock)) {
+                    ItemOperations.replaceBlock(world, player, hitPos, hitSide, hitState, operation);
 
-                if (!player.isCreative()) {
-                    heldItem.damage(operation.getValue().damage(), player, ((entity) -> entity.sendToolBreakStatus(hand)));
-                    heldItem.decrement(operation.getValue().decrement());
+                    if (!player.isCreative()) {
+                        heldItem.damage(operation.getValue().damage(), player, ((entity) -> entity.sendToolBreakStatus(hand)));
+                        heldItem.decrement(operation.getValue().decrement());
+                    }
+
+                    actionResult = ActionResult.SUCCESS;
+                    break;
                 }
-
-                cir.setReturnValue(actionResult);
             }
         }
+        cir.setReturnValue(actionResult);
     }
 }

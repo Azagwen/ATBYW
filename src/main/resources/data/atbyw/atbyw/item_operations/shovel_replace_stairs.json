@@ -7,22 +7,28 @@
     },
     "targets": {
         "atbyw:grass_block_slab": {
-            "result": "atbyw:grass_path_slab"
+            "result": "atbyw:grass_path_slab",
+            "sound": "minecraft:item.shovel.flatten"
         },
         "atbyw:mycelium_slab": {
-            "result": "atbyw:grass_path_slab"
+            "result": "atbyw:grass_path_slab",
+            "sound": "minecraft:item.shovel.flatten"
         },
         "atbyw:dirt_slab": {
-            "result": "atbyw:grass_path_slab"
+            "result": "atbyw:grass_path_slab",
+            "sound": "minecraft:item.shovel.flatten"
         },
         "atbyw:coarse_dirt_slab": {
-            "result": "atbyw:grass_path_slab"
+            "result": "atbyw:grass_path_slab",
+            "sound": "minecraft:item.shovel.flatten"
         },
         "atbyw:rooted_dirt_slab": {
-            "result": "atbyw:grass_path_slab"
+            "result": "atbyw:grass_path_slab",
+            "sound": "minecraft:item.shovel.flatten"
         },
         "atbyw:podzol_slab": {
-            "result": "atbyw:grass_path_slab"
+            "result": "atbyw:grass_path_slab",
+            "sound": "minecraft:item.shovel.flatten"
         }
     }
 }
