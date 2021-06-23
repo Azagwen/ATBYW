@@ -26,7 +26,10 @@ public class DataResourceListener implements SimpleSynchronousResourceReloadList
     @Override
     public void reload(ResourceManager manager) {
         //Item operation data
-        for(Identifier id : manager.findResources("atbyw/item_operations/", path -> path.endsWith(".json"))) {
+        //Clear the Table before re-filling it.
+        BTB_OPS.clear();
+        for(Identifier id : manager.findResources("atbyw/item_operations", path -> path.endsWith(".json"))) {
+            //Try to fill the table for each id in "*/data/atbyw/item_operations/..."
             try {
                 InputStream stream = manager.getResource(id).getInputStream();
                 ItemOperationDecoder.readBlockToBlock(stream, BTB_OPS);

@@ -3,8 +3,11 @@ package net.azagwen.atbyw.item;
 import com.google.common.collect.Table;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.PlaySoundIdS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
@@ -19,8 +22,22 @@ public class ItemOperations {
         var newBlock = operation.getValue().result();
         var lootItem = operation.getValue().loot();
         var sound = operation.getValue().sound();
+        var newState = newBlock.getStateWithProperties(oldState);
+        var oldBlockEntity = (BlockEntity) null;
 
-        world.setBlockState(pos, newBlock.getStateWithProperties(oldState));
+        if (oldState.hasBlockEntity()) {
+            if (newState.hasBlockEntity()) {
+                oldBlockEntity = world.getBlockEntity(pos);
+            }
+        }
+        world.setBlockState(pos, newState);
+        if (oldBlockEntity != null) {
+            var newBlockEntity = world.getBlockEntity(pos);
+            if(oldBlockEntity.getType().equals(newBlockEntity.getType())) {
+                var oldEntityNbt = oldBlockEntity.writeNbt(new NbtCompound());
+                world.getBlockEntity(pos).readNbt(oldEntityNbt);
+            }
+        }
 
         if (sound != null) {
             if (!world.isClient) {
