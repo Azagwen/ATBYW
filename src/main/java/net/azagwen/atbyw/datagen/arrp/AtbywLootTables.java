@@ -218,6 +218,20 @@ public class AtbywLootTables {
         );
     }
 
+    private static void blockDoorDropSelf(RuntimeResourcePack pack, Identifier blockID) {
+        pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
+                .pool(pool()
+                        .rolls(1)
+                        .entry(entry()
+                                .type("minecraft:item")
+                                .condition(condition("minecraft:block_state_property")
+                                        .parameter("block", blockID.toString())
+                                        .parameter("properties", blockStringProperty("half", "lower")))
+                                .name(blockID.toString()))
+                        .condition(condition("minecraft:survives_explosion")))
+        );
+    }
+
     private static void blocksDropSelf(RuntimeResourcePack pack, ArrayList<Block> blocks) {
         for (Block block : blocks) {
             blockDropSelf(pack, getBlockID(block));
@@ -227,6 +241,12 @@ public class AtbywLootTables {
     private static void blockSlabDropSelf(RuntimeResourcePack pack, ArrayList<Block> blocks) {
         for (Block block : blocks) {
             blockSlabDropSelf(pack, getBlockID(block));
+        }
+    }
+
+    private static void blocksDoorDropSelf(RuntimeResourcePack pack, ArrayList<Block> blocks) {
+        for (Block block : blocks) {
+            blockDoorDropSelf(pack, getBlockID(block));
         }
     }
 
@@ -266,6 +286,18 @@ public class AtbywLootTables {
         blockSlabSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_SLAB));
 
         blockCompactedSnow(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.COMPACTED_SNOW));
+
+        blocksDoorDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
+                AtbywBlocks.IRON_FENCE_DOOR,
+                AtbywBlocks.OAK_FENCE_DOOR,
+                AtbywBlocks.SPRUCE_FENCE_DOOR,
+                AtbywBlocks.BIRCH_FENCE_DOOR,
+                AtbywBlocks.JUNGLE_FENCE_DOOR,
+                AtbywBlocks.ACACIA_FENCE_DOOR,
+                AtbywBlocks.DARK_OAK_FENCE_DOOR,
+                AtbywBlocks.CRIMSON_FENCE_DOOR,
+                AtbywBlocks.WARPED_FENCE_DOOR
+        ));
 
         blockSlabDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
                 AtbywBlocks.DIRT_SLAB,
@@ -332,15 +364,6 @@ public class AtbywLootTables {
         ));
 
         blocksDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
-                AtbywBlocks.IRON_FENCE_DOOR,
-                AtbywBlocks.OAK_FENCE_DOOR,
-                AtbywBlocks.SPRUCE_FENCE_DOOR,
-                AtbywBlocks.BIRCH_FENCE_DOOR,
-                AtbywBlocks.JUNGLE_FENCE_DOOR,
-                AtbywBlocks.ACACIA_FENCE_DOOR,
-                AtbywBlocks.DARK_OAK_FENCE_DOOR,
-                AtbywBlocks.CRIMSON_FENCE_DOOR,
-                AtbywBlocks.WARPED_FENCE_DOOR,
                 AtbywBlocks.OAK_BOOKSHELF_TOGGLE,
                 AtbywBlocks.SPRUCE_BOOKSHELF_TOGGLE,
                 AtbywBlocks.BIRCH_BOOKSHELF_TOGGLE,
