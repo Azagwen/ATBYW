@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.5-SNAPSHOT'
+	id 'fabric-loom' version '0.7-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -28,10 +28,8 @@ dependencies {
 	include group: "net.devtech", name: "arrp", version: "${project.arrp_version}"						//API
 
 	//LamdDynamicLights
-	modImplementation "com.github.LambdAurora:LambDynamicLights:${project.Lambdynamiclights_version}"	//API
-	include  "com.github.LambdAurora:LambDynamicLights:${project.Lambdynamiclights_version}"			//API
+	modApi "com.github.LambdAurora:LambDynamicLights:${project.Lambdynamiclights_version}"	//API
 
-//	modRuntime "com.telepathicgrunt:blame:1.16.5-3.0.0-fabric-sources-dev"
 }
 repositories {
 
@@ -43,12 +41,6 @@ repositories {
 		name = "AperLambda"
 		url = 'https://aperlambda.github.io/maven'
 	}
-
-//	maven {
-//		url = "com.telepathicgrunt:blame:1.16.5-3.0.0-fabric-sources-dev"
-//	}
-//	flatDir { dirs 'deps' }
-
 	maven {
 		url = "https://jitpack.io"
 	}

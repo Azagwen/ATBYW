@@ -1,5 +1,7 @@
 package net.azagwen.atbyw.util;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -49,6 +51,26 @@ public class AtbywUtils {
     public static int GREEN = 13;
     public static int RED = 14;
     public static int BLACK = 15;
+
+
+
+    public static JsonArray jsonArray(Object... elements) {
+        JsonArray array = new JsonArray();
+        for (Object element : elements) {
+            if (element instanceof Number)
+                array.add((Number) element);
+            else if (element instanceof Boolean)
+                array.add((Boolean) element);
+            else if (element instanceof Character)
+                array.add((Character) element);
+            else if (element instanceof JsonElement)
+                array.add((JsonElement) element);
+            else
+                array.add(String.valueOf(element));
+
+        }
+        return array;
+    }
 
 
     public static Identifier getItemID(Item item) {

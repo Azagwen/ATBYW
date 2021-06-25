@@ -3,7 +3,7 @@ package net.azagwen.atbyw.main;
 import com.google.common.collect.Lists;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityType;
 import net.azagwen.atbyw.block.AtbywBlocks;
-import net.azagwen.atbyw.datagen.AtbywRecipes;
+import net.azagwen.atbyw.datagen.RecipeRegistry;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.group.AtbywItemGroup;
 import net.azagwen.atbyw.items.AtbywItems;
@@ -70,7 +70,7 @@ public class AtbywMain implements ModInitializer {
 		AtbywItems.init();
 		AtbywBlocks.init();
 		AtbywBlockEntityType.init();
-		AtbywRecipes.init();
+		RecipeRegistry.init();
 		AtbywWorldGen.init();
 		AtbywRRP.init();
 
