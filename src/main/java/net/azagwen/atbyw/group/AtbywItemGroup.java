@@ -27,7 +27,7 @@ public class AtbywItemGroup extends TabbedItemGroup {
     public static ItemGroupTab ATBYW_BLOCKS = new ItemGroupTab(new ItemStack(AtbywBlocks.CYAN_CINDER_BLOCKS), "blocks", ATBYW_BLOCKS_TAB);
     public static ItemGroupTab ATBYW_DECO = new ItemGroupTab(new ItemStack(AtbywBlocks.CYAN_CINDER_BLOCKS_WALL), "decoration", ATBYW_DECO_TAB);
     public static ItemGroupTab ATBYW_REDSTONE = new ItemGroupTab(new ItemStack(AtbywBlocks.REDSTONE_LANTERN), "redstone", ATBYW_REDSTONE_TAB);
-    public static ItemGroupTab ATBYW_MISC = new ItemGroupTab(new ItemStack(AtbywItems.ACACIA_STICK), "misc", ATBYW_MISC_TAB);
+    public static ItemGroupTab ATBYW_MISC = new ItemGroupTab(new ItemStack(AtbywItems.BAMBOO_STICK), "misc", ATBYW_MISC_TAB);
 
     @Override
     public void initTabs(List<ItemGroupTab> tabs) {

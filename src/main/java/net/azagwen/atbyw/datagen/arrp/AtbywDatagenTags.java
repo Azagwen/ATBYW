@@ -59,18 +59,6 @@ public class AtbywDatagenTags {
             AtbywBlocks.WARPED_BOOKSHELF_TOGGLE
     );
 
-    public static final ArrayList<Item> STICKS = Lists.newArrayList(
-            Items.STICK,
-            AtbywItems.OAK_STICK,
-            AtbywItems.SPRUCE_STICK,
-            AtbywItems.BIRCH_STICK,
-            AtbywItems.JUNGLE_STICK,
-            AtbywItems.ACACIA_STICK,
-            AtbywItems.DARK_OAK_STICK,
-            AtbywItems.CRIMSON_STICK,
-            AtbywItems.WARPED_STICK
-    );
-
     public static final ArrayList<Block> LARGE_CHAIN_TRANSITION_BOTTOM = Lists.newArrayList(
             Blocks.CHAIN,
             Blocks.LANTERN,
@@ -98,8 +86,6 @@ public class AtbywDatagenTags {
         createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "tab_deco", DECO_TAB);
         createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "tab_redstone", REDSTONE_TAB);
         createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "tab_misc", MISC_TAB);
-
-        createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "sticks", STICKS);
 
         createBlockTag(ATBYW_RESOURCE_PACK, nameSpace, "bookshelf", BOOKSHELVES);
         createItemTag(ATBYW_RESOURCE_PACK, nameSpace, "bookshelf", getBlockItems(BOOKSHELVES));

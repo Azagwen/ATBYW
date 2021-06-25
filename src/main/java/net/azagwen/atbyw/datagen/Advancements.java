@@ -8,6 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentMap;
 
 public class Advancements {
     public static Gson builder = new GsonBuilder().setPrettyPrinting().create();
@@ -15,8 +17,8 @@ public class Advancements {
     public static Map<Identifier, JsonElement> RECIPE_MAP = Maps.newConcurrentMap();
 
     public static JsonObject hasTheRecipeCriteria(Identifier reward) {
-        var recipeCondition = new JsonObject();
-        var hasTheRecipe = new JsonObject();
+        JsonObject recipeCondition = new JsonObject();
+        JsonObject hasTheRecipe = new JsonObject();
 
         recipeCondition.addProperty("recipe", reward.toString());
         hasTheRecipe.addProperty("trigger", "minecraft:recipe_unlocked");
@@ -26,9 +28,9 @@ public class Advancements {
     }
 
     public static JsonObject inventoryChangedCriteria(String identifier, String keyType) {
-        var obj = new JsonObject();
-        var itemChild = new JsonObject();
-        var conditions = new JsonObject();
+        JsonObject obj = new JsonObject();
+        JsonObject itemChild = new JsonObject();
+        JsonObject conditions = new JsonObject();
 
         obj.addProperty("trigger", "minecraft:inventory_changed");
         if (keyType.equals("item")) {
@@ -43,22 +45,22 @@ public class Advancements {
     }
 
     public static JsonObject unlockShapedRecipe(JsonObject recipe, Identifier reward) {
-        var criteria = new JsonObject();
+        JsonObject criteria = new JsonObject();
         criteria.add("has_the_recipe", hasTheRecipeCriteria(reward));
 
         //Rewards
-        var rewardsObject = new JsonObject();
+        JsonObject rewardsObject = new JsonObject();
         rewardsObject.add("recipes", AtbywUtils.jsonArray(reward.toString()));
 
         //Deserialize and add ingredients to inventoryChangedCriteria and requirements
-        var requirements = new JsonArray();
+        JsonArray requirements = new JsonArray();
         if (recipe.has("key")) {
-            var keys = recipe.get("key").getAsJsonObject().entrySet();
-            for (var key : keys) {
-                var keyContent = key.getValue().getAsJsonObject().entrySet();
-                for (var content : keyContent) {
-                    var item = content.getValue().getAsString();
-                    var type = content.getKey();
+            Set<Map.Entry<String, JsonElement>> keys = recipe.get("key").getAsJsonObject().entrySet();
+            for (Map.Entry<String, JsonElement> key : keys) {
+                Set<Map.Entry<String, JsonElement>> keyContent = key.getValue().getAsJsonObject().entrySet();
+                for (Map.Entry<String, JsonElement> content : keyContent) {
+                    String item = content.getValue().getAsString();
+                    String type = content.getKey();
                     criteria.add("has_" + item.split(":")[1], inventoryChangedCriteria(item, type));
                     requirements.add("has_" + item.split(":")[1]);
                 }
@@ -66,9 +68,9 @@ public class Advancements {
         }
         requirements.add("has_the_recipe");
 
-        var requirementArray = AtbywUtils.jsonArray(requirements);
+        JsonArray requirementArray = AtbywUtils.jsonArray(requirements);
 
-        var advancement = new JsonObject();
+        JsonObject advancement = new JsonObject();
         advancement.addProperty("parent", "recipes/root");
         advancement.add("rewards", rewardsObject);
         advancement.add("criteria", criteria);
@@ -78,22 +80,22 @@ public class Advancements {
     }
 
     public static JsonObject unlockShapelessRecipe(JsonObject recipe, Identifier reward) {
-        var criteria = new JsonObject();
+        JsonObject criteria = new JsonObject();
         criteria.add("has_the_recipe", hasTheRecipeCriteria(reward));
 
         //Rewards
-        var rewardsObject = new JsonObject();
+        JsonObject rewardsObject = new JsonObject();
         rewardsObject.add("recipes", AtbywUtils.jsonArray(reward.toString()));
 
         //Deserialize and add ingredients to inventoryChangedCriteria and requirements
-        var requirements = new JsonArray();
+        JsonArray requirements = new JsonArray();
         if (recipe.has("ingredients")) {
-            var ingredients = recipe.get("ingredients").getAsJsonArray();
-            for (var ingredient : ingredients) {
-                var items = ingredient.getAsJsonObject().entrySet();
-                for (var itemValue : items) {
-                    var item = itemValue.getValue().getAsString();
-                    var type = itemValue.getKey();
+            JsonArray ingredients = recipe.get("ingredients").getAsJsonArray();
+            for (JsonElement ingredient : ingredients) {
+                Set<Map.Entry<String, JsonElement>> items = ingredient.getAsJsonObject().entrySet();
+                for (Map.Entry<String, JsonElement> itemValue : items) {
+                    String item = itemValue.getValue().getAsString();
+                    String type = itemValue.getKey();
                     criteria.add("has_" + item.split(":")[1], inventoryChangedCriteria(item, type));
                     requirements.add("has_" + item.split(":")[1]);
                 }
@@ -101,9 +103,9 @@ public class Advancements {
         }
         requirements.add("has_the_recipe");
 
-        var requirementArray = AtbywUtils.jsonArray(requirements);
+        JsonArray requirementArray = AtbywUtils.jsonArray(requirements);
 
-        var advancement = new JsonObject();
+        JsonObject advancement = new JsonObject();
         advancement.addProperty("parent", "recipes/root");
         advancement.add("rewards", rewardsObject);
         advancement.add("criteria", criteria);
@@ -113,29 +115,29 @@ public class Advancements {
     }
 
     public static JsonObject unlockSingleIngredientRecipe(JsonObject recipe, Identifier reward) {
-        var criteria = new JsonObject();
+        JsonObject criteria = new JsonObject();
         criteria.add("has_the_recipe", hasTheRecipeCriteria(reward));
 
         //Rewards
-        var rewardsObject = new JsonObject();
+        JsonObject rewardsObject = new JsonObject();
         rewardsObject.add("recipes", AtbywUtils.jsonArray(reward.toString()));
 
         //Deserialize and add ingredients to inventoryChangedCriteria and requirements
-        var requirements = new JsonArray();
+        JsonArray requirements = new JsonArray();
         if (recipe.has("ingredient")) {
-            var ingredients = recipe.get("ingredient").getAsJsonObject().entrySet();
-            for (var ingredient : ingredients) {
-                var item = ingredient.getValue().getAsString();
-                var type = ingredient.getKey();
+            Set<Map.Entry<String, JsonElement>> ingredients = recipe.get("ingredient").getAsJsonObject().entrySet();
+            for (Map.Entry<String, JsonElement> ingredient : ingredients) {
+                String item = ingredient.getValue().getAsString();
+                String type = ingredient.getKey();
                 criteria.add("has_" + item.split(":")[1], inventoryChangedCriteria(item, type));
                 requirements.add("has_" + item.split(":")[1]);
             }
         }
         requirements.add("has_the_recipe");
 
-        var requirementArray = AtbywUtils.jsonArray(requirements);
+        JsonArray requirementArray = AtbywUtils.jsonArray(requirements);
 
-        var advancement = new JsonObject();
+        JsonObject advancement = new JsonObject();
         advancement.addProperty("parent", "recipes/root");
         advancement.add("rewards", rewardsObject);
         advancement.add("criteria", criteria);
@@ -153,14 +155,14 @@ public class Advancements {
      *
      **/
     public static void translateRecipes(Map<Identifier, JsonElement> map, Identifier id, JsonElement element) {
-        var object = element.getAsJsonObject();
+        JsonObject object = element.getAsJsonObject();
         if (object.has("type")) {
-            var type = object.get("type").getAsString();
-            var isFurnace = type.contains("minecraft:smelting");
-            var isSmoker = type.contains("minecraft:smoking");
-            var isBlastFurnace = type.contains("minecraft:blasting");
-            var isCampFire = type.contains("minecraft:campfire_cooking");
-            var isStoneCutter = type.contains("minecraft:stonecutting");
+            String type = object.get("type").getAsString();
+            boolean isFurnace = type.contains("minecraft:smelting");
+            boolean isSmoker = type.contains("minecraft:smoking");
+            boolean isBlastFurnace = type.contains("minecraft:blasting");
+            boolean isCampFire = type.contains("minecraft:campfire_cooking");
+            boolean isStoneCutter = type.contains("minecraft:stonecutting");
 
             if (type.contains("minecraft:crafting_shaped")) {
                 map.put(id, unlockShapedRecipe(element.getAsJsonObject(), id));
@@ -175,7 +177,7 @@ public class Advancements {
     }
 
     public static void unlockAllRecipes(Map<Identifier, JsonElement> map) {
-        var recipeMap = Maps.<Identifier, JsonElement>newConcurrentMap();
+        ConcurrentMap<Identifier, JsonElement> recipeMap = Maps.<Identifier, JsonElement>newConcurrentMap();
         RecipeRegistry.inject(recipeMap);
         recipeMap.forEach((id, element) -> translateRecipes(map, id, element));
     }
