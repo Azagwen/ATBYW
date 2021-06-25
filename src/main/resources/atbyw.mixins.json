@@ -5,19 +5,19 @@
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "FenceBlockMixin",
-        "ItemModelLoaderMixin",
         "PaneBlockMixin",
         "RecipeManagerMixin",
         "RedstoneWireBlockMixin",
         "ServerAdvancementLoaderMixin",
         "SnowBlockMixin",
-        "TexturedRenderLayersMixin",
         "WallBlockMixin"
     ],
     "client": [
         "CreativeInventoryScreenMixin",
         "EnchantingTableBlockMixin",
-        "EnchantmentScreenHandlerMixin"
+        "EnchantmentScreenHandlerMixin",
+        "TexturedRenderLayersMixin",
+        "ItemModelLoaderMixin"
     ],
     "injectors": {
         "defaultRequire": 1
