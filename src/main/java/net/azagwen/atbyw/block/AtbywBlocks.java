@@ -515,9 +515,13 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "red_sand_slab", RED_SAND_SLAB);
         registerBlock(false, BLOCKS_TAB, "gravel_slab", GRAVEL_SLAB);
 
+        registerBlocks(false, BLOCKS_TAB, "log_stairs", WoodNames.getNamesOverworld(), OAK_LOG_STAIRS, SPRUCE_LOG_STAIRS, BIRCH_LOG_STAIRS, JUNGLE_LOG_STAIRS, ACACIA_LOG_STAIRS, DARK_OAK_LOG_STAIRS);
+        registerBlocks(false, BLOCKS_TAB, "stem_stairs", WoodNames.getNamesNether(), CRIMSON_STEM_STAIRS, WARPED_STEM_STAIRS);
+        registerBlocks(false, BLOCKS_TAB, "stripped", "log_stairs", WoodNames.getNamesOverworld(), STRIPPED_OAK_LOG_STAIRS, STRIPPED_SPRUCE_LOG_STAIRS, STRIPPED_BIRCH_LOG_STAIRS, STRIPPED_JUNGLE_LOG_STAIRS, STRIPPED_ACACIA_LOG_STAIRS, STRIPPED_DARK_OAK_LOG_STAIRS);
+        registerBlocks(false, BLOCKS_TAB, "stripped", "stem_stairs", WoodNames.getNamesNether(), STRIPPED_CRIMSON_STEM_STAIRS, STRIPPED_WARPED_STEM_STAIRS);
+
         registerBlocks(false, BLOCKS_TAB, "log_slab", WoodNames.getNamesOverworld(), OAK_LOG_SLAB, SPRUCE_LOG_SLAB, BIRCH_LOG_SLAB, JUNGLE_LOG_SLAB, ACACIA_LOG_SLAB, DARK_OAK_LOG_SLAB);
         registerBlocks(false, BLOCKS_TAB, "stem_slab", WoodNames.getNamesNether(), CRIMSON_STEM_SLAB, WARPED_STEM_SLAB);
-
         registerBlocks(false, BLOCKS_TAB, "stripped", "log_slab", WoodNames.getNamesOverworld(), STRIPPED_OAK_LOG_SLAB, STRIPPED_SPRUCE_LOG_SLAB, STRIPPED_BIRCH_LOG_SLAB, STRIPPED_JUNGLE_LOG_SLAB, STRIPPED_ACACIA_LOG_SLAB, STRIPPED_DARK_OAK_LOG_SLAB);
         registerBlocks(false, BLOCKS_TAB, "stripped", "stem_slab", WoodNames.getNamesNether(), STRIPPED_CRIMSON_STEM_SLAB, STRIPPED_WARPED_STEM_SLAB);
 

@@ -1,6 +1,5 @@
 {
-    "data_type": "atbyw:block_to_block",
-    "replace": false,
+    "data_type": "dp_item_ops:block_to_block",
     "tag_used": {
         "tag": "fabric:shovels",
         "damage": 1

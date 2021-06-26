@@ -22,38 +22,34 @@ import static net.devtech.arrp.json.loot.JLootTable.condition;
 public class LootTables {
 
     private static JsonObject silkTouchPredicate() {
-        JsonObject level = new JsonObject();
+        var level = new JsonObject();
         level.addProperty("min", 1);
 
-        JsonObject silkTouch = new JsonObject();
+        var silkTouch = new JsonObject();
         silkTouch.addProperty("enchantment", "minecraft:silk_touch");
         silkTouch.add("levels", level);
 
         JsonArray enchantments = new JsonArray();
         enchantments.add(silkTouch);
 
-        JsonObject predicate = new JsonObject();
+        var predicate = new JsonObject();
         predicate.add("enchantments", enchantments);
 
         return predicate;
     }
 
     private static JsonObject blockStringProperty(String name, String value) {
-        JsonObject property = new JsonObject();
+        var property = new JsonObject();
         property.addProperty(name, value);
 
         return property;
     }
 
     private static JsonObject blockIntProperty(String name, int value) {
-        JsonObject property = new JsonObject();
+        var property = new JsonObject();
         property.addProperty(name, value);
 
         return property;
-    }
-
-    private static void makeLootTable(RuntimeResourcePack pack, Identifier lootTableID, JLootTable lootTable) {
-        pack.addLootTable(lootTableID, lootTable);
     }
 
     private static void blockCompactedSnow(RuntimeResourcePack pack, Identifier blockID) {
@@ -216,15 +212,35 @@ public class LootTables {
         );
     }
 
+    private static void blockDoorDropSelf(RuntimeResourcePack pack, Identifier blockID) {
+        pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
+                .pool(pool()
+                        .rolls(1)
+                        .entry(entry()
+                                .type("minecraft:item")
+                                .condition(condition("minecraft:block_state_property")
+                                        .parameter("block", blockID.toString())
+                                        .parameter("properties", blockStringProperty("half", "lower")))
+                                .name(blockID.toString()))
+                        .condition(condition("minecraft:survives_explosion")))
+        );
+    }
+
     private static void blocksDropSelf(RuntimeResourcePack pack, ArrayList<Block> blocks) {
-        for (Block block : blocks) {
+        for (var block : blocks) {
             blockDropSelf(pack, getBlockID(block));
         }
     }
 
     private static void blockSlabDropSelf(RuntimeResourcePack pack, ArrayList<Block> blocks) {
-        for (Block block : blocks) {
+        for (var block : blocks) {
             blockSlabDropSelf(pack, getBlockID(block));
+        }
+    }
+
+    private static void blocksDoorDropSelf(RuntimeResourcePack pack, ArrayList<Block> blocks) {
+        for (var block : blocks) {
+            blockDoorDropSelf(pack, getBlockID(block));
         }
     }
 
@@ -264,6 +280,18 @@ public class LootTables {
         blockSlabSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_SLAB));
 
         blockCompactedSnow(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.COMPACTED_SNOW));
+
+        blocksDoorDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
+                AtbywBlocks.IRON_FENCE_DOOR,
+                AtbywBlocks.OAK_FENCE_DOOR,
+                AtbywBlocks.SPRUCE_FENCE_DOOR,
+                AtbywBlocks.BIRCH_FENCE_DOOR,
+                AtbywBlocks.JUNGLE_FENCE_DOOR,
+                AtbywBlocks.ACACIA_FENCE_DOOR,
+                AtbywBlocks.DARK_OAK_FENCE_DOOR,
+                AtbywBlocks.CRIMSON_FENCE_DOOR,
+                AtbywBlocks.WARPED_FENCE_DOOR
+        ));
 
         blockSlabDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
                 AtbywBlocks.DIRT_SLAB,
@@ -350,15 +378,6 @@ public class LootTables {
         ));
 
         blocksDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
-                AtbywBlocks.IRON_FENCE_DOOR,
-                AtbywBlocks.OAK_FENCE_DOOR,
-                AtbywBlocks.SPRUCE_FENCE_DOOR,
-                AtbywBlocks.BIRCH_FENCE_DOOR,
-                AtbywBlocks.JUNGLE_FENCE_DOOR,
-                AtbywBlocks.ACACIA_FENCE_DOOR,
-                AtbywBlocks.DARK_OAK_FENCE_DOOR,
-                AtbywBlocks.CRIMSON_FENCE_DOOR,
-                AtbywBlocks.WARPED_FENCE_DOOR,
                 AtbywBlocks.OAK_BOOKSHELF_TOGGLE,
                 AtbywBlocks.SPRUCE_BOOKSHELF_TOGGLE,
                 AtbywBlocks.BIRCH_BOOKSHELF_TOGGLE,

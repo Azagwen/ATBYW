@@ -38,7 +38,7 @@ repositories {
 
 	maven {
 		name "Modrinth"
-		url "https://api.modrinth.com"
+		url "https://api.modrinth.com/maven"
 	}
 }
 
@@ -62,8 +62,9 @@ dependencies {
 	//LamdDynamicLights
 	modApi "dev.lambdaurora:lambdynamiclights:${project.Lambdynamiclights_version}"				//API
 
-	modImplementation "maven.modrinth:dp_item_ops:1.0.0"
-	include "maven.modrinth:dp_item_ops:1.0.0"
+	//Datapack Item operations
+	modImplementation "maven.modrinth:dp_item_ops:${project.datapack_item_ops_version}"			//API + Lib
+	include "maven.modrinth:dp_item_ops:${project.datapack_item_ops_version}"					//API + Lib
 }
 
 minecraft {

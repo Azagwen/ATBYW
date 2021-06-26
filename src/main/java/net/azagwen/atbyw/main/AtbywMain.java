@@ -69,8 +69,6 @@ public class AtbywMain implements ModInitializer {
 			AtbywRRP.init_mi();
 		}
 
-		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new DataResourceListener());
-
 		AtbywItems.init();
 		AtbywBlocks.init();
 		AtbywBlockEntityType.init();

@@ -9,7 +9,6 @@
         "RecipeManagerMixin",
         "RedstoneWireBlockMixin",
         "ServerAdvancementLoaderMixin",
-        "ServerPlayerInteractionManagerMixin",
         "SnowBlockMixin",
         "WallBlockMixin"
     ],
