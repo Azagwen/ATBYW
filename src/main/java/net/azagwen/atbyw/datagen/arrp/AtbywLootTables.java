@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
+import net.azagwen.atbyw.util.AtbywUtils;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.json.loot.JLootTable;
 import net.devtech.arrp.json.tags.JTag;
@@ -31,8 +32,7 @@ public class AtbywLootTables {
         silkTouch.addProperty("enchantment", "minecraft:silk_touch");
         silkTouch.add("levels", level);
 
-        JsonArray enchantments = new JsonArray();
-        enchantments.add(silkTouch);
+        JsonArray enchantments = AtbywUtils.jsonArray(silkTouch);
 
         JsonObject predicate = new JsonObject();
         predicate.add("enchantments", enchantments);
