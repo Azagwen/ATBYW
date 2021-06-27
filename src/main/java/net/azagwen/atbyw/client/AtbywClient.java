@@ -6,6 +6,7 @@ import net.azagwen.atbyw.client.render.AtbywBlockRenderLayers;
 import net.azagwen.atbyw.client.render.AtbywEntityModelLayers;
 import net.azagwen.atbyw.client.render.TimerRepeaterBlockEntityRenderer;
 import net.azagwen.atbyw.main.AtbywEntityTypes;
+import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.main.EntitySpawnPacket;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -23,12 +24,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import static net.azagwen.atbyw.item.AtbywItems.*;
-import static net.azagwen.atbyw.main.AtbywMain.*;
 
 @SuppressWarnings("deprecation")
 public class AtbywClient implements ClientModInitializer {
 
-    public static final Identifier PacketID = NewAtbywID("spawn_packet");
+    public static final Identifier PacketID = new AtbywIdentifier("spawn_packet");
 
     @Environment(EnvType.CLIENT)
     public void receiveEntityPacket() {

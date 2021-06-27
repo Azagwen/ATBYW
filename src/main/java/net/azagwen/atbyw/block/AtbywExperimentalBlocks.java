@@ -1,16 +1,12 @@
 package net.azagwen.atbyw.block;
 
 import net.azagwen.atbyw.block.piston.PistonDuck;
-import net.azagwen.atbyw.util.naming.WoodNames;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.PistonBlockEntity;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.util.registry.Registry;
 
-import static net.azagwen.atbyw.util.AtbywUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywExperimentalBlocks {
@@ -84,12 +80,6 @@ public class AtbywExperimentalBlocks {
     }
 
     public static void initPistonEntities() {
-//        SPRUCE_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("spruce_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, SPRUCE_MOVING_PISTON).build(null));
-//        BIRCH_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("birch_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, BIRCH_MOVING_PISTON).build(null));
-//        JUNGLE_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("jungle_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, JUNGLE_MOVING_PISTON).build(null));
-//        ACACIA_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("acacia_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, ACACIA_MOVING_PISTON).build(null));
-//        DARK_OAK_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("dark_oak_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, DARK_OAK_MOVING_PISTON).build(null));
-//        CRIMSON_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("crimson_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, CRIMSON_MOVING_PISTON).build(null));
-//        WARPED_PISTON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, AtbywID("warped_piston"), BlockEntityType.Builder.create(PistonBlockEntity::new, WARPED_MOVING_PISTON).build(null));
+
     }
 }

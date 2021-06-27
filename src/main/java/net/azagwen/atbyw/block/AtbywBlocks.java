@@ -4,6 +4,7 @@ import net.azagwen.atbyw.block.slabs.*;
 import net.azagwen.atbyw.block.stairs.*;
 import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.azagwen.atbyw.block.statues.*;
+import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.util.naming.ColorNames;
 import net.azagwen.atbyw.util.naming.FlowerNames;
 import net.azagwen.atbyw.util.naming.WoodNames;
@@ -404,10 +405,10 @@ public class AtbywBlocks {
     public static final Block PRISMARINE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block BLACKSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block IRON_SPIKE_TRAP_SPIKES = new SpikeBlock(NewAtbywID("iron_spike_trap"), 2.0F, 1, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
-    public static final Block GOLD_SPIKE_TRAP_SPIKES = new SpikeBlock(NewAtbywID("gold_spike_trap"), 0.5F, 0, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
-    public static final Block DIAMOND_SPIKE_TRAP_SPIKES = new SpikeBlock(NewAtbywID("diamond_spike_trap"), 3.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
-    public static final Block NETHERITE_SPIKE_TRAP_SPIKES = new SpikeBlock(NewAtbywID("netherite_spike_trap"), 4.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block IRON_SPIKE_TRAP_SPIKES = new SpikeBlock(new AtbywIdentifier("iron_spike_trap"), 2.0F, 1, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block GOLD_SPIKE_TRAP_SPIKES = new SpikeBlock(new AtbywIdentifier("gold_spike_trap"), 0.5F, 0, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block DIAMOND_SPIKE_TRAP_SPIKES = new SpikeBlock(new AtbywIdentifier("diamond_spike_trap"), 3.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block NETHERITE_SPIKE_TRAP_SPIKES = new SpikeBlock(new AtbywIdentifier("netherite_spike_trap"), 4.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
 
     public static final Block IRON_SPIKE_TRAP = new SpikeTrapBlock(IRON_SPIKE_TRAP_SPIKES, 1.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
     public static final Block GOLD_SPIKE_TRAP = new SpikeTrapBlock(GOLD_SPIKE_TRAP_SPIKES, 0.5F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
@@ -417,27 +418,27 @@ public class AtbywBlocks {
     public static final Block TIMER_REPEATER = new TimerRepeaterBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
     public static final Block REDSTONE_CROSS_PATH = new RedstoneCrossPathBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
 
-    public static final Block ACACIA_RAILING = new RailingBlock(NewAtbywID("acacia_railing"), FabricBlockSettings.copyOf(Blocks.ACACIA_FENCE));
+    public static final Block ACACIA_RAILING = new RailingBlock(new AtbywIdentifier("acacia_railing"), FabricBlockSettings.copyOf(Blocks.ACACIA_FENCE));
 
     public static final Block LARGE_CHAIN = new LargeChainBlock(FabricBlockSettings.copyOf(Blocks.CHAIN).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block OAK_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.OAK_LOG));
-    public static final Block SPRUCE_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.SPRUCE_LOG));
-    public static final Block BIRCH_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.BIRCH_LOG));
-    public static final Block JUNGLE_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.JUNGLE_LOG));
-    public static final Block ACACIA_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.ACACIA_LOG));
-    public static final Block DARK_OAK_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.DARK_OAK_LOG));
-    public static final Block CRIMSON_STEM_STAIRS = new PillarSlabBlock(logSettings(Blocks.CRIMSON_STEM));
-    public static final Block WARPED_STEM_STAIRS = new PillarSlabBlock(logSettings(Blocks.WARPED_STEM));
+    public static final Block OAK_LOG_STAIRS = new PillarStairsBlock(Blocks.OAK_LOG, logSettings(Blocks.OAK_LOG));
+    public static final Block SPRUCE_LOG_STAIRS = new PillarStairsBlock(Blocks.SPRUCE_LOG, logSettings(Blocks.SPRUCE_LOG));
+    public static final Block BIRCH_LOG_STAIRS = new PillarStairsBlock(Blocks.BIRCH_LOG, logSettings(Blocks.BIRCH_LOG));
+    public static final Block JUNGLE_LOG_STAIRS = new PillarStairsBlock(Blocks.JUNGLE_LOG, logSettings(Blocks.JUNGLE_LOG));
+    public static final Block ACACIA_LOG_STAIRS = new PillarStairsBlock(Blocks.ACACIA_LOG, logSettings(Blocks.ACACIA_LOG));
+    public static final Block DARK_OAK_LOG_STAIRS = new PillarStairsBlock(Blocks.DARK_OAK_LOG, logSettings(Blocks.DARK_OAK_LOG));
+    public static final Block CRIMSON_STEM_STAIRS = new PillarStairsBlock(Blocks.CRIMSON_STEM, logSettings(Blocks.CRIMSON_STEM));
+    public static final Block WARPED_STEM_STAIRS = new PillarStairsBlock(Blocks.WARPED_STEM, logSettings(Blocks.WARPED_STEM));
 
-    public static final Block STRIPPED_OAK_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_OAK_LOG));
-    public static final Block STRIPPED_SPRUCE_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_SPRUCE_LOG));
-    public static final Block STRIPPED_BIRCH_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_BIRCH_LOG));
-    public static final Block STRIPPED_JUNGLE_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_JUNGLE_LOG));
-    public static final Block STRIPPED_ACACIA_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_ACACIA_LOG));
-    public static final Block STRIPPED_DARK_OAK_LOG_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_DARK_OAK_LOG));
-    public static final Block STRIPPED_CRIMSON_STEM_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_CRIMSON_STEM));
-    public static final Block STRIPPED_WARPED_STEM_STAIRS = new PillarSlabBlock(logSettings(Blocks.STRIPPED_WARPED_STEM));
+    public static final Block STRIPPED_OAK_LOG_STAIRS = new PillarStairsBlock(Blocks.STRIPPED_OAK_LOG, logSettings(Blocks.STRIPPED_OAK_LOG));
+    public static final Block STRIPPED_SPRUCE_LOG_STAIRS = new PillarStairsBlock(Blocks.STRIPPED_SPRUCE_LOG, logSettings(Blocks.STRIPPED_SPRUCE_LOG));
+    public static final Block STRIPPED_BIRCH_LOG_STAIRS = new PillarStairsBlock(Blocks.STRIPPED_BIRCH_LOG, logSettings(Blocks.STRIPPED_BIRCH_LOG));
+    public static final Block STRIPPED_JUNGLE_LOG_STAIRS = new PillarStairsBlock(Blocks.STRIPPED_JUNGLE_LOG, logSettings(Blocks.STRIPPED_JUNGLE_LOG));
+    public static final Block STRIPPED_ACACIA_LOG_STAIRS = new PillarStairsBlock(Blocks.STRIPPED_ACACIA_LOG, logSettings(Blocks.STRIPPED_ACACIA_LOG));
+    public static final Block STRIPPED_DARK_OAK_LOG_STAIRS = new PillarStairsBlock(Blocks.STRIPPED_DARK_OAK_LOG, logSettings(Blocks.STRIPPED_DARK_OAK_LOG));
+    public static final Block STRIPPED_CRIMSON_STEM_STAIRS = new PillarStairsBlock(Blocks.STRIPPED_CRIMSON_STEM, logSettings(Blocks.STRIPPED_CRIMSON_STEM));
+    public static final Block STRIPPED_WARPED_STEM_STAIRS = new PillarStairsBlock(Blocks.STRIPPED_WARPED_STEM, logSettings(Blocks.STRIPPED_WARPED_STEM));
 
     public static final Block OAK_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.OAK_LOG));
     public static final Block SPRUCE_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.SPRUCE_LOG));

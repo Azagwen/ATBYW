@@ -4,6 +4,7 @@ import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.ShroomStickBlock;
 import net.azagwen.atbyw.client.AtbywClient;
 import net.azagwen.atbyw.main.AtbywEntityTypes;
+import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.main.EntitySpawnPacket;
 import net.azagwen.atbyw.main.AtbywTags;
 import net.fabricmc.api.EnvType;
@@ -34,7 +35,6 @@ public class ShroomStickEntity extends ThrownItemEntity {
     private int bounceCount = 0;
     private final int maxBouncesBeforeLand = 3;
     private final int maxBouncesBeforeLoot = 5;
-    private final boolean showDebugInfo = false;
 
     public ShroomStickEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
@@ -152,18 +152,18 @@ public class ShroomStickEntity extends ThrownItemEntity {
 
     @Override
     public boolean hasCustomName() {
-        return this.showDebugInfo;
+        return AtbywMain.isDebugEnabled();
     }
 
     @Override
     public boolean isCustomNameVisible() {
-        return this.showDebugInfo;
+        return AtbywMain.isDebugEnabled();
     }
 
     @Override
     public void tick() {
         super.tick();
-        if (this.showDebugInfo) {
+        if (AtbywMain.isDebugEnabled()) {
             String simplifiedVelocity = (
                     "X: " + (this.getVelocity().x) + ", " +
                     "Y: " + (this.getVelocity().y) + ", " +

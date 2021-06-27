@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.block;
 
 import net.azagwen.atbyw.block.state.AtbywProperties;
+import net.azagwen.atbyw.main.AtbywMain;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -30,7 +31,6 @@ public class RedstoneCrossPathBlock extends Block {
     private boolean isSouthInput;
     private boolean isEastInput;
     private boolean isWestInput;
-    private boolean enableDebug = false;
 
     public RedstoneCrossPathBlock(Settings settings) {
         super(settings);
@@ -123,7 +123,7 @@ public class RedstoneCrossPathBlock extends Block {
             }
         }
 
-        if (enableDebug) {
+        if (AtbywMain.isDebugEnabled()) {
             PlayerEntity player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
             if (player != null) {
                 player.sendMessage(new LiteralText("[ " + "§cN: " + isNorthInput + "§f, " + "§cS: " + isSouthInput + "§f, " + "§9E: " + isEastInput + "§f, " + "§9W: " + isWestInput + "§f ]"), true);

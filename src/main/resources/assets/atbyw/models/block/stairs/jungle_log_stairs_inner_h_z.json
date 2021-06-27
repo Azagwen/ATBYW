@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/stairs/template_column_stairs_inner_h_z",
+  "textures": {
+    "top": "minecraft:block/jungle_log_top",
+    "side": "minecraft:block/jungle_log",
+    "cut": "atbyw:block/jungle_log_cut"
+  }
+}

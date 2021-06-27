@@ -2,6 +2,7 @@ package net.azagwen.atbyw.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.*;
@@ -11,8 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.
-        Items;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -134,7 +134,7 @@ public record AtbywUtils() {
      *  @param block    The Block field
      */
     public static void registerBlockOnly(String name, Block block) {
-        Registry.register(Registry.BLOCK, NewAtbywID(name), block);
+        Registry.register(Registry.BLOCK, new AtbywIdentifier(name), block);
     }
 
     /** Registers a block and its block item.
@@ -148,8 +148,8 @@ public record AtbywUtils() {
         Item.Settings normalSettings = group != null ? new Item.Settings().group(group) : new Item.Settings();
         Item.Settings fireproofSettings = group != null ? new Item.Settings().group(group).fireproof() : new Item.Settings().fireproof();
 
-        Registry.register(Registry.BLOCK, NewAtbywID(name), block);
-        Registry.register(Registry.ITEM, NewAtbywID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+        Registry.register(Registry.BLOCK, new AtbywIdentifier(name), block);
+        Registry.register(Registry.ITEM, new AtbywIdentifier(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
     }
 
     public static void registerBlock(boolean fireproof, String name, Block block) {
@@ -167,8 +167,8 @@ public record AtbywUtils() {
         Item.Settings normalSettings = new Item.Settings();
         Item.Settings fireproofSettings = new Item.Settings().fireproof();
 
-        Registry.register(Registry.BLOCK, NewAtbywID(name), block);
-        Registry.register(Registry.ITEM, NewAtbywID(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
+        Registry.register(Registry.BLOCK, new AtbywIdentifier(name), block);
+        Registry.register(Registry.ITEM, new AtbywIdentifier(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
 
         itemTab.add(block.asItem());
     }

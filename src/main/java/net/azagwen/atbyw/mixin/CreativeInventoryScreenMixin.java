@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import net.azagwen.atbyw.group.AtbywItemGroup;
 import net.azagwen.atbyw.group.ItemGroupTabWidget;
 import net.azagwen.atbyw.group.TabbedItemGroup;
+import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ConfirmChatLinkScreen;
@@ -24,11 +25,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
-import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
-
 @Mixin(CreativeInventoryScreen.class)
 public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScreen<CreativeInventoryScreen.CreativeScreenHandler> {
-    private static final Identifier MEDIA_ICON_TEXTURE = NewAtbywID("textures/gui/info_button.png");
+    private static final Identifier MEDIA_ICON_TEXTURE = new AtbywIdentifier("textures/gui/info_button.png");
     private final String curseforgeLink = "https://www.curseforge.com/minecraft/mc-mods/atbyw";
     private final String githubLink = "https://github.com/Azagwen/ATBYW";
     private final List<TexturedButtonWidget> mediaButtons = Lists.newArrayList();

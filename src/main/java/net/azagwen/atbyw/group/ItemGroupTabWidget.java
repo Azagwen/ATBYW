@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.group;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.render.GameRenderer;
@@ -9,13 +10,11 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 
-import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
-
 // This code was originally taken from https://github.com/Lemonszz/gubbins/blob/master/src/main/java/party/lemons/gubbins/gui/ItemGroupTabWidget.java,
 // which is licensed under MIT.
 // and edited to match my needs & updated to 1.17.
 public class ItemGroupTabWidget extends ButtonWidget {
-    public static final Identifier TEXTURE = NewAtbywID("textures/gui/side_tabs.png");
+    public static final Identifier TEXTURE = new AtbywIdentifier("textures/gui/side_tabs.png");
     public boolean isSelected = false;
     public final boolean flipped;
     private final ItemGroupTab tab;

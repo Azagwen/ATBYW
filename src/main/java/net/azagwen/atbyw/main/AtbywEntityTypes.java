@@ -13,7 +13,7 @@ public class AtbywEntityTypes {
 
     public static final EntityType<ShroomStickEntity> SHROOMSTICK = Registry.register(
             Registry.ENTITY_TYPE,
-            NewAtbywID("shroomstick"),
+            new AtbywIdentifier("shroomstick"),
             FabricEntityTypeBuilder.<ShroomStickEntity>create(SpawnGroup.MISC, ShroomStickEntity::new)
                     .dimensions(EntityDimensions.fixed(0.75f, 0.75f))
                     .trackRangeBlocks(4).trackedUpdateRate(10)

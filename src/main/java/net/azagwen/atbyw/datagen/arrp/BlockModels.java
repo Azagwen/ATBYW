@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.datagen.arrp;
 
+import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.json.blockstate.JState;
 import net.devtech.arrp.json.models.JModel;
@@ -7,7 +8,6 @@ import net.devtech.arrp.json.models.JTextures;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.registry.Registry;
 
-import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 import static net.devtech.arrp.json.blockstate.JState.*;
 
 public class BlockModels {
@@ -29,13 +29,13 @@ public class BlockModels {
         var horizontalPillarSlabTextures = getPillarSlabTexture(pack, namespace, path, true);
 
         //Block Model
-        pack.addModel(JModel.model().parent("minecraft:block/slab").textures(slabTextures), NewAtbywID("block/" + path + "_slab"));
-        pack.addModel(JModel.model().parent("minecraft:block/slab_top").textures(slabTextures), NewAtbywID("block/" + path + "_slab_top"));
-        pack.addModel(JModel.model().parent("atbyw:block/slab/template_column_slab_horizontal").textures(horizontalPillarSlabTextures), NewAtbywID("block/" + path + "_slab_horizontal"));
-        pack.addModel(JModel.model().parent("atbyw:block/slab/template_column_slab_horizontal_top").textures(horizontalPillarSlabTextures), NewAtbywID("block/" + path + "_slab_horizontal_top"));
+        pack.addModel(JModel.model().parent("minecraft:block/slab").textures(slabTextures), new AtbywIdentifier("block/" + path + "_slab"));
+        pack.addModel(JModel.model().parent("minecraft:block/slab_top").textures(slabTextures), new AtbywIdentifier("block/" + path + "_slab_top"));
+        pack.addModel(JModel.model().parent("atbyw:block/slab/template_column_slab_horizontal").textures(horizontalPillarSlabTextures), new AtbywIdentifier("block/" + path + "_slab_horizontal"));
+        pack.addModel(JModel.model().parent("atbyw:block/slab/template_column_slab_horizontal_top").textures(horizontalPillarSlabTextures), new AtbywIdentifier("block/" + path + "_slab_horizontal_top"));
 
         //Item model
-        pack.addModel(JModel.model().parent("atbyw:block/" + path + "_slab"), NewAtbywID("item/" + path + "_slab"));
+        pack.addModel(JModel.model().parent("atbyw:block/" + path + "_slab"), new AtbywIdentifier("item/" + path + "_slab"));
 
         createPillarSlabState(pack, namespace, path);
     }
@@ -45,13 +45,13 @@ public class BlockModels {
         var horizontalPillarSlabTextures = getPillarSlabTexture(pack, namespace, path, true);
 
         //Block Model
-        pack.addModel(JModel.model().parent("minecraft:block/slab").textures(slabTextures), NewAtbywID("block/" + path + "_slab"));
-        pack.addModel(JModel.model().parent("minecraft:block/slab_top").textures(slabTextures), NewAtbywID("block/" + path + "_slab_top"));
-        pack.addModel(JModel.model().parent("atbyw:block/slab/template_stripped_log_slab_horizontal").textures(horizontalPillarSlabTextures), NewAtbywID("block/" + path + "_slab_horizontal"));
-        pack.addModel(JModel.model().parent("atbyw:block/slab/template_stripped_log_slab_horizontal_top").textures(horizontalPillarSlabTextures), NewAtbywID("block/" + path + "_slab_horizontal_top"));
+        pack.addModel(JModel.model().parent("minecraft:block/slab").textures(slabTextures), new AtbywIdentifier("block/" + path + "_slab"));
+        pack.addModel(JModel.model().parent("minecraft:block/slab_top").textures(slabTextures), new AtbywIdentifier("block/" + path + "_slab_top"));
+        pack.addModel(JModel.model().parent("atbyw:block/slab/template_stripped_log_slab_horizontal").textures(horizontalPillarSlabTextures), new AtbywIdentifier("block/" + path + "_slab_horizontal"));
+        pack.addModel(JModel.model().parent("atbyw:block/slab/template_stripped_log_slab_horizontal_top").textures(horizontalPillarSlabTextures), new AtbywIdentifier("block/" + path + "_slab_horizontal_top"));
 
         //Item model
-        pack.addModel(JModel.model().parent("atbyw:block/" + path + "_slab"), NewAtbywID("item/" + path + "_slab"));
+        pack.addModel(JModel.model().parent("atbyw:block/" + path + "_slab"), new AtbywIdentifier("item/" + path + "_slab"));
 
         createPillarSlabState(pack, namespace, path);
     }
@@ -64,7 +64,7 @@ public class BlockModels {
                 JState.multipart(JState.model("atbyw:block/" + path + "_slab_horizontal_top").y(90)).when(when().add("top_type", "x")),
                 JState.multipart(JState.model("atbyw:block/" + path + "_slab_top")).when(when().add("top_type", "y")),
                 JState.multipart(JState.model("atbyw:block/" + path + "_slab_horizontal_top")).when(when().add("top_type", "z"))
-        ), NewAtbywID(path + "_slab"));
+        ), new AtbywIdentifier(path + "_slab"));
     }
 
     //unused, not a fan of datagen models

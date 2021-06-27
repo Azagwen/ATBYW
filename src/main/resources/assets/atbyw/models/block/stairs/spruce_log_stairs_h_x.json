@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/stairs/template_column_stairs_h_x",
+  "textures": {
+    "top": "minecraft:block/spruce_log_top",
+    "side": "minecraft:block/spruce_log",
+    "cut": "atbyw:block/spruce_log_cut"
+  }
+}

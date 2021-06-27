@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.world;
 
 import com.google.common.collect.ImmutableList;
+import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.world.feature.*;
 import net.azagwen.atbyw.world.structure.*;
 import net.fabricmc.fabric.api.biome.v1.*;
@@ -21,8 +22,6 @@ import net.minecraft.world.gen.feature.StructureFeature;
 import net.minecraft.world.gen.feature.StructurePoolFeatureConfig;
 
 import java.util.function.Predicate;
-
-import static net.azagwen.atbyw.main.AtbywMain.NewAtbywID;
 
 @SuppressWarnings("deprecation")
 public class AtbywWorldGen {
@@ -76,16 +75,16 @@ public class AtbywWorldGen {
     }
 
     public static void init() {
-        registerSurfaceStructure(NewAtbywID("big_igloo"), 32, 8, 56987, BIG_IGLOO_PIECE, BIG_IGLOO_FEATURE).register();
-        registerSurfaceStructure(NewAtbywID("desert_crypt"), 32, 8, 12345, DESERT_CRYPT_PIECE, DESERT_CRYPT_FEATURE).register();
-        registerSurfaceStructure(NewAtbywID("ice_spike_base"), 24, 8, 696969, ICE_SPIKE_BASE_PIECE, ICE_SPIKE_BASE_FEATURE).register();
-        registerJigsawStructure(NewAtbywID("savana_mineshaft"), 16, 8, 464643, SAVANA_MINESHAFT_FEATURE).register();
-        registerJigsawStructure(NewAtbywID("mesa_tomb"), 16, 8, 727272, MESA_TOMB_FEATURE).register();
+        registerSurfaceStructure(new AtbywIdentifier("big_igloo"), 32, 8, 56987, BIG_IGLOO_PIECE, BIG_IGLOO_FEATURE).register();
+        registerSurfaceStructure(new AtbywIdentifier("desert_crypt"), 32, 8, 12345, DESERT_CRYPT_PIECE, DESERT_CRYPT_FEATURE).register();
+        registerSurfaceStructure(new AtbywIdentifier("ice_spike_base"), 24, 8, 696969, ICE_SPIKE_BASE_PIECE, ICE_SPIKE_BASE_FEATURE).register();
+        registerJigsawStructure(new AtbywIdentifier("savana_mineshaft"), 16, 8, 464643, SAVANA_MINESHAFT_FEATURE).register();
+        registerJigsawStructure(new AtbywIdentifier("mesa_tomb"), 16, 8, 727272, MESA_TOMB_FEATURE).register();
 
-        addStructureToBiome(NewAtbywID("big_igloo"), BIG_IGLOO_CONFIG, BiomeSelectors.categories(Biome.Category.ICY).and(BiomeSelectors.excludeByKey(BiomeKeys.ICE_SPIKES)));
-        addStructureToBiome(NewAtbywID("desert_crypt"), DESERT_CRYPT_CONFIG, BiomeSelectors.categories(Biome.Category.DESERT));
-        addStructureToBiome(NewAtbywID("ice_spike_base"), ICE_SPIKE_BASE_CONFIG, BiomeSelectors.includeByKey(BiomeKeys.ICE_SPIKES));
-        addStructureToBiome(NewAtbywID("savana_mineshaft"), SAVANA_MINESHAFT_CONFIG, BiomeSelectors.categories(Biome.Category.SAVANNA).and(BiomeSelectors.excludeByKey(BiomeKeys.SHATTERED_SAVANNA, BiomeKeys.SHATTERED_SAVANNA_PLATEAU)));
-        addStructureToBiome(NewAtbywID("mesa_tomb"), MESA_TOMB_CONFIG, BiomeSelectors.includeByKey(BiomeKeys.BADLANDS));
+        addStructureToBiome(new AtbywIdentifier("big_igloo"), BIG_IGLOO_CONFIG, BiomeSelectors.categories(Biome.Category.ICY).and(BiomeSelectors.excludeByKey(BiomeKeys.ICE_SPIKES)));
+        addStructureToBiome(new AtbywIdentifier("desert_crypt"), DESERT_CRYPT_CONFIG, BiomeSelectors.categories(Biome.Category.DESERT));
+        addStructureToBiome(new AtbywIdentifier("ice_spike_base"), ICE_SPIKE_BASE_CONFIG, BiomeSelectors.includeByKey(BiomeKeys.ICE_SPIKES));
+        addStructureToBiome(new AtbywIdentifier("savana_mineshaft"), SAVANA_MINESHAFT_CONFIG, BiomeSelectors.categories(Biome.Category.SAVANNA).and(BiomeSelectors.excludeByKey(BiomeKeys.SHATTERED_SAVANNA, BiomeKeys.SHATTERED_SAVANNA_PLATEAU)));
+        addStructureToBiome(new AtbywIdentifier("mesa_tomb"), MESA_TOMB_CONFIG, BiomeSelectors.includeByKey(BiomeKeys.BADLANDS));
     }
 }

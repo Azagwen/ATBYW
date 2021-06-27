@@ -61,7 +61,7 @@ public class RailingBlock extends Block implements Waterloggable {
     @Override
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
 //        context.getWorld().getBlockState(context.getBlockPos()).isOf(this)
-        return context.getStack().getItem() == getItemFromID(this.handStack);
+        return context.getStack().getItem() == this.asItem();
     }
 
     @Override

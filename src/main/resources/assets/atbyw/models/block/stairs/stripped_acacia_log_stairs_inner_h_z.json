@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/stairs/template_column_stairs_inner_h_z",
+  "textures": {
+    "top": "minecraft:block/stripped_acacia_log_top",
+    "side": "minecraft:block/stripped_acacia_log",
+    "cut": "atbyw:block/stripped_acacia_log_cut"
+  }
+}

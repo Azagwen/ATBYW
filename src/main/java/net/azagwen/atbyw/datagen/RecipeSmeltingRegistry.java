@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.util.naming.ColorNames;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
@@ -13,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import static net.azagwen.atbyw.datagen.RecipeUtils.*;
-import static net.azagwen.atbyw.main.AtbywMain.*;
 import static net.azagwen.atbyw.util.AtbywUtils.*;
 
 public class RecipeSmeltingRegistry {
@@ -61,7 +61,7 @@ public class RecipeSmeltingRegistry {
         return obj;
     }
 
-    public static AtbywRecipe SMOOTH_PURPUR_BLOCK_SMELTING = createSmeltingRecipe(NewAtbywID("smooth_purpur_block_smelting"), SMELTING, Lists.newArrayList(getBlockID(Blocks.PURPUR_BLOCK)), getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), 0.1D, 200);
+    public static AtbywRecipe SMOOTH_PURPUR_BLOCK_SMELTING = createSmeltingRecipe(new AtbywIdentifier("smooth_purpur_block_smelting"), SMELTING, Lists.newArrayList(getBlockID(Blocks.PURPUR_BLOCK)), getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), 0.1D, 200);
 
     //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
     public static void inject(Map<Identifier, JsonElement> map) {

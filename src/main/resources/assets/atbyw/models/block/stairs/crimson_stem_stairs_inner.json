@@ -1,0 +1,8 @@
+{
+  "parent": "atbyw:block/stairs/template_column_stairs_inner",
+  "textures": {
+    "top": "minecraft:block/crimson_stem_top",
+    "side": "minecraft:block/crimson_stem",
+    "cut": "atbyw:block/crimson_stem_cut"
+  }
+}

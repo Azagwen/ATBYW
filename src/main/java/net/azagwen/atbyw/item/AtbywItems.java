@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.item;
 
 import com.google.common.collect.Lists;
+import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
@@ -18,7 +19,7 @@ public class AtbywItems {
     }
 
     protected static void registerItem(ArrayList<Item> itemTab, String name, Item item) {
-        Registry.register(Registry.ITEM, NewAtbywID(name), item);
+        Registry.register(Registry.ITEM, new AtbywIdentifier(name), item);
         itemTab.add(item);
     }
     public static final Item BAMBOO_STICK = new Item(createSimpleItem(null));

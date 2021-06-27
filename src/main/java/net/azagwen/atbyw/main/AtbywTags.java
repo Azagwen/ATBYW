@@ -1,15 +1,11 @@
 package net.azagwen.atbyw.main;
 
-import com.google.common.collect.Sets;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
 
 import java.util.HashSet;
-import java.util.Set;
-
-import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywTags {
 
@@ -39,10 +35,10 @@ public class AtbywTags {
     }
 
     public static Tag<Block> registerBlockTag(String id) {
-        return TagRegistry.block(NewAtbywID(id));
+        return TagRegistry.block(new AtbywIdentifier(id));
     }
 
     public static Tag<Item> registerItemTag(String id) {
-        return TagRegistry.item(NewAtbywID(id));
+        return TagRegistry.item(new AtbywIdentifier(id));
     }
 }

@@ -36,3 +36,4 @@ minecraft
 **/.old/
 **/.temp/
 /curseforge_resources/
+/src/main/java/net/azagwen/atbyw/dev_tools/
