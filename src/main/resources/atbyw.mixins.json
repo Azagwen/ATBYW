@@ -11,6 +11,7 @@
         "RedstoneWireBlockMixin",
         "ServerAdvancementLoaderMixin",
         "SnowBlockMixin",
+        "TransparentBlockMixin",
         "WallBlockMixin"
     ],
     "client": [

@@ -12,14 +12,22 @@ import java.util.List;
 
 public class AtbywBlockRenderLayers {
 
-    public static void setCutout() {
-        for (Block block : cutoutLayerBlocks()) {
-            BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), block);
+    public static void init() {
+        var cutoutBlocks = Lists.<Block>newArrayList();
+        var translucentBlocks = Lists.<Block>newArrayList();
+
+        cutoutLayerBlocks(cutoutBlocks);
+        translucentLayerBlocks(translucentBlocks);
+
+        for (Block block : cutoutBlocks) {
+            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
+        }
+        for (Block block : translucentBlocks) {
+            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
         }
     }
 
-    private static List<Block> cutoutLayerBlocks() {
-        List<Block> blocks = Lists.newArrayList();
+    private static void cutoutLayerBlocks(List<Block> blocks) {
         blocks.add(AtbywBlocks.GRASS_BLOCK_STAIRS);
         blocks.add(AtbywBlocks.GRASS_BLOCK_SLAB);
         blocks.add(AtbywBlocks.IRON_SPIKE_TRAP_SPIKES);
@@ -119,6 +127,25 @@ public class AtbywBlockRenderLayers {
         blocks.add(StatueRegistry.WAXED_VERY_MOSSY_BAT_STATUE);
         blocks.add(AtbywBlocks.TIMER_REPEATER);
         blocks.add(AtbywBlocks.LARGE_CHAIN);
-        return blocks;
+        blocks.add(AtbywBlocks.SHATTERED_GLASS);
+    }
+
+    private static void translucentLayerBlocks(List<Block> blocks) {
+        blocks.add(AtbywBlocks.WHITE_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.ORANGE_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.MAGENTA_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.LIGHT_BLUE_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.YELLOW_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.LIME_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.PINK_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.GRAY_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.LIGHT_GRAY_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.CYAN_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.PURPLE_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.BLUE_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.BROWN_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.GREEN_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.RED_STAINED_SHATTERED_GLASS);
+        blocks.add(AtbywBlocks.BLACK_STAINED_SHATTERED_GLASS);
     }
 }

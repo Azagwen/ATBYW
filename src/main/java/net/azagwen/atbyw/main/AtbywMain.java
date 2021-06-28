@@ -56,7 +56,6 @@ public class AtbywMain implements ModInitializer {
 	public static ArrayList<Item> DECO_TAB = Lists.newArrayList(); 			//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
 	public static ArrayList<Item> REDSTONE_TAB = Lists.newArrayList(); 		//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
 	public static ArrayList<Item> MISC_TAB = Lists.newArrayList(); 			//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
-	public static ArrayList<Item> GEN_BLOCKS_TAB = Lists.newArrayList(); 	//used in (net.azagwen.atbyw.datagen.arrp.AtbywDatagenTags)
 
 	public static ItemGroup ATBYW_BLOCKS; 		//Unused, kept for testing.
 	public static ItemGroup ATBYW_DECO; 		//Unused, kept for testing.
@@ -102,12 +101,6 @@ public class AtbywMain implements ModInitializer {
 			AtbywRRP.init_mi();
 		}
 
-		if (isDebugEnabled()) {
-			new AutoModelWriter().writeAll();
-		} else {
-			MYS_LOGGER.info("As expected :)");
-		}
-
 		AtbywItems.init();
 		AtbywBlocks.init();
 		AtbywBlockEntityType.init();
@@ -115,12 +108,18 @@ public class AtbywMain implements ModInitializer {
 		AtbywWorldGen.init();
 		AtbywRRP.init();
 
-		BLOCK_STATES = StreamSupport.stream(Registry.BLOCK.spliterator(), false).flatMap((block) -> {
-			return block.getStateManager().getStates().stream();
-		}).collect(Collectors.toList());
+		if (isDebugEnabled()) {
+			new AutoModelWriter().writeAll();
 
-		X_SIDE_LENGTH = MathHelper.ceil(MathHelper.sqrt((float)BLOCK_STATES.size()));
-		Z_SIDE_LENGTH = MathHelper.ceil((float)BLOCK_STATES.size() / (float)X_SIDE_LENGTH);
+			BLOCK_STATES = StreamSupport.stream(Registry.BLOCK.spliterator(), false).flatMap((block) -> {
+				return block.getStateManager().getStates().stream();
+			}).collect(Collectors.toList());
+
+			X_SIDE_LENGTH = MathHelper.ceil(MathHelper.sqrt((float)BLOCK_STATES.size()));
+			Z_SIDE_LENGTH = MathHelper.ceil((float)BLOCK_STATES.size() / (float)X_SIDE_LENGTH);
+		} else {
+			MYS_LOGGER.info("As expected :)");
+		}
 
 		ATBYW_GROUP = new AtbywItemGroup(new AtbywIdentifier("atbyw"));
 

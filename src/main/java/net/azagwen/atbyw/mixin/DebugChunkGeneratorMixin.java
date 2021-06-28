@@ -17,15 +17,20 @@ public class DebugChunkGeneratorMixin {
     @Overwrite
     public static BlockState getBlockState(int x, int z) {
         BlockState blockState = Blocks.AIR.getDefaultState();
-        if (x > 0 && z > 0 && x % 2 != 0 && z % 2 != 0) {
-            x /= 2;
-            z /= 2;
-            if (x <= AtbywMain.X_SIDE_LENGTH && z <= AtbywMain.Z_SIDE_LENGTH) {
-                int i = MathHelper.abs(x * AtbywMain.X_SIDE_LENGTH + z);
-                if (i < AtbywMain.BLOCK_STATES.size()) {
-                    blockState = AtbywMain.BLOCK_STATES.get(i);
+
+        if (AtbywMain.isDebugEnabled()) {
+            if (x > 0 && z > 0 && x % 2 != 0 && z % 2 != 0) {
+                x /= 2;
+                z /= 2;
+                if (x <= AtbywMain.X_SIDE_LENGTH && z <= AtbywMain.Z_SIDE_LENGTH) {
+                    int i = MathHelper.abs(x * AtbywMain.X_SIDE_LENGTH + z);
+                    if (i < AtbywMain.BLOCK_STATES.size()) {
+                        blockState = AtbywMain.BLOCK_STATES.get(i);
+                    }
                 }
             }
+        } else {
+            return DebugChunkGenerator.getBlockState(x, z);
         }
 
         return blockState;

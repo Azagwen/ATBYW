@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "atbyw:block/shattered_glass_0"
+      },
+      {
+        "model": "atbyw:block/shattered_glass_1"
+      },
+      {
+        "model": "atbyw:block/shattered_glass_2"
+      }
+    ]
+  }
+}

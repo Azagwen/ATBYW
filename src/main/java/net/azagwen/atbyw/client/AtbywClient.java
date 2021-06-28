@@ -80,6 +80,6 @@ public class AtbywClient implements ClientModInitializer {
             }, item);
         }
 
-        AtbywBlockRenderLayers.setCutout();
+        AtbywBlockRenderLayers.init();
     }
 }

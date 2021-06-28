@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "atbyw:block/black_stained_shattered_glass_2"
+  }
+}

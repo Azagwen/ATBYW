@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.block;
 
+import com.google.common.collect.Maps;
 import net.azagwen.atbyw.block.slabs.*;
 import net.azagwen.atbyw.block.stairs.*;
 import net.azagwen.atbyw.block.state.AtbywProperties;
@@ -19,6 +20,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
+import java.util.Map;
 import java.util.function.ToIntFunction;
 
 import static net.azagwen.atbyw.util.AtbywUtils.*;
@@ -350,6 +352,24 @@ public class AtbywBlocks {
     public static final Block RED_SAND_STAIRS = new FallingStairsBlock(11098145, Blocks.RED_SAND, RED_SAND_SLAB, FabricBlockSettings.copyOf(Blocks.RED_SAND).breakByTool(FabricToolTags.SHOVELS));
     public static final Block GRAVEL_STAIRS = new FallingStairsBlock(-8356741, Blocks.GRAVEL, GRAVEL_SLAB, FabricBlockSettings.copyOf(Blocks.GRAVEL).breakByTool(FabricToolTags.SHOVELS));
 
+    public static final Block SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.GLASS);
+    public static final Block WHITE_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.WHITE_STAINED_GLASS);
+    public static final Block ORANGE_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.ORANGE_STAINED_GLASS);
+    public static final Block MAGENTA_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.MAGENTA_STAINED_GLASS);
+    public static final Block LIGHT_BLUE_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.LIGHT_BLUE_STAINED_GLASS);
+    public static final Block YELLOW_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.YELLOW_STAINED_GLASS);
+    public static final Block LIME_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.LIME_STAINED_GLASS);
+    public static final Block PINK_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.PINK_STAINED_GLASS);
+    public static final Block GRAY_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.GRAY_STAINED_GLASS);
+    public static final Block LIGHT_GRAY_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.LIGHT_GRAY_STAINED_GLASS);
+    public static final Block CYAN_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.CYAN_STAINED_GLASS);
+    public static final Block PURPLE_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.PURPLE_STAINED_GLASS);
+    public static final Block BLUE_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.BLUE_STAINED_GLASS);
+    public static final Block BROWN_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.BROWN_STAINED_GLASS);
+    public static final Block GREEN_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.GREEN_STAINED_GLASS);
+    public static final Block RED_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.RED_STAINED_GLASS);
+    public static final Block BLACK_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.BLACK_STAINED_GLASS);
+
     //Non-Full Blocks
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MapColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
@@ -458,6 +478,8 @@ public class AtbywBlocks {
     public static final Block STRIPPED_CRIMSON_STEM_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_CRIMSON_STEM));
     public static final Block STRIPPED_WARPED_STEM_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_WARPED_STEM));
 
+    public static final Map<Block, Block> GLASS_MAP = Maps.newHashMap();
+
     public static void init() {
 
         //ATBYW REDSTONE
@@ -516,6 +538,7 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "red_sand_slab", RED_SAND_SLAB);
         registerBlock(false, BLOCKS_TAB, "gravel_slab", GRAVEL_SLAB);
 
+
         registerBlocks(false, BLOCKS_TAB, "log_stairs", WoodNames.getNamesOverworld(), OAK_LOG_STAIRS, SPRUCE_LOG_STAIRS, BIRCH_LOG_STAIRS, JUNGLE_LOG_STAIRS, ACACIA_LOG_STAIRS, DARK_OAK_LOG_STAIRS);
         registerBlocks(false, BLOCKS_TAB, "stem_stairs", WoodNames.getNamesNether(), CRIMSON_STEM_STAIRS, WARPED_STEM_STAIRS);
         registerBlocks(false, BLOCKS_TAB, "stripped", "log_stairs", WoodNames.getNamesOverworld(), STRIPPED_OAK_LOG_STAIRS, STRIPPED_SPRUCE_LOG_STAIRS, STRIPPED_BIRCH_LOG_STAIRS, STRIPPED_JUNGLE_LOG_STAIRS, STRIPPED_ACACIA_LOG_STAIRS, STRIPPED_DARK_OAK_LOG_STAIRS);
@@ -525,6 +548,8 @@ public class AtbywBlocks {
         registerBlocks(false, BLOCKS_TAB, "stem_slab", WoodNames.getNamesNether(), CRIMSON_STEM_SLAB, WARPED_STEM_SLAB);
         registerBlocks(false, BLOCKS_TAB, "stripped", "log_slab", WoodNames.getNamesOverworld(), STRIPPED_OAK_LOG_SLAB, STRIPPED_SPRUCE_LOG_SLAB, STRIPPED_BIRCH_LOG_SLAB, STRIPPED_JUNGLE_LOG_SLAB, STRIPPED_ACACIA_LOG_SLAB, STRIPPED_DARK_OAK_LOG_SLAB);
         registerBlocks(false, BLOCKS_TAB, "stripped", "stem_slab", WoodNames.getNamesNether(), STRIPPED_CRIMSON_STEM_SLAB, STRIPPED_WARPED_STEM_SLAB);
+
+        registerBlock(false, BLOCKS_TAB, "shattered_glass", SHATTERED_GLASS);
 
         registerBlock(false, BLOCKS_TAB, "soul_jack_o_lantern", SOUL_JACK_O_LANTERN);
 
@@ -564,6 +589,8 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "blue_ice_slab", BLUE_ICE_SLAB);
         registerBlock(false, BLOCKS_TAB, "packed_ice_bricks_slab", PACKED_ICE_BRICKS_SLAB);
         registerBlock(false, BLOCKS_TAB, "blue_ice_bricks_slab", BLUE_ICE_BRICKS_SLAB);
+
+        registerBlocks(false, BLOCKS_TAB, "stained_shattered_glass", ColorNames.getNames(), WHITE_STAINED_SHATTERED_GLASS, ORANGE_STAINED_SHATTERED_GLASS, MAGENTA_STAINED_SHATTERED_GLASS, LIGHT_BLUE_STAINED_SHATTERED_GLASS, YELLOW_STAINED_SHATTERED_GLASS, LIME_STAINED_SHATTERED_GLASS, PINK_STAINED_SHATTERED_GLASS, GRAY_STAINED_SHATTERED_GLASS, LIGHT_GRAY_STAINED_SHATTERED_GLASS, CYAN_STAINED_SHATTERED_GLASS, PURPLE_STAINED_SHATTERED_GLASS, BLUE_STAINED_SHATTERED_GLASS, BROWN_STAINED_SHATTERED_GLASS, GREEN_STAINED_SHATTERED_GLASS, RED_STAINED_SHATTERED_GLASS, BLACK_STAINED_SHATTERED_GLASS);
 
         registerBlock(false, BLOCKS_TAB, "basalt_bricks", BASALT_BRICKS);
         registerBlock(false, BLOCKS_TAB, "basalt_pillar", BASALT_PILLAR);
@@ -624,6 +651,24 @@ public class AtbywBlocks {
         registerBlockOnly("gold_spike_trap_spikes", GOLD_SPIKE_TRAP_SPIKES);
         registerBlockOnly("diamond_spike_trap_spikes", DIAMOND_SPIKE_TRAP_SPIKES);
         registerBlockOnly("netherite_spike_trap_spikes", NETHERITE_SPIKE_TRAP_SPIKES);
+
+        GLASS_MAP.put(Blocks.GLASS, AtbywBlocks.SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.WHITE_STAINED_GLASS, AtbywBlocks.WHITE_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.ORANGE_STAINED_GLASS, AtbywBlocks.ORANGE_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.MAGENTA_STAINED_GLASS, AtbywBlocks.MAGENTA_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.LIGHT_BLUE_STAINED_GLASS, AtbywBlocks.LIGHT_BLUE_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.YELLOW_STAINED_GLASS, AtbywBlocks.YELLOW_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.LIME_STAINED_GLASS, AtbywBlocks.LIME_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.PINK_STAINED_GLASS, AtbywBlocks.PINK_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.GRAY_STAINED_GLASS, AtbywBlocks.GRAY_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.LIGHT_GRAY_STAINED_GLASS, AtbywBlocks.LIGHT_GRAY_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.CYAN_STAINED_GLASS, AtbywBlocks.CYAN_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.PURPLE_STAINED_GLASS, AtbywBlocks.PURPLE_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.BLUE_STAINED_GLASS, AtbywBlocks.BLUE_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.BROWN_STAINED_GLASS, AtbywBlocks.BROWN_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.GREEN_STAINED_GLASS, AtbywBlocks.GREEN_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.RED_STAINED_GLASS, AtbywBlocks.RED_STAINED_SHATTERED_GLASS);
+        GLASS_MAP.put(Blocks.BLACK_STAINED_GLASS, AtbywBlocks.BLACK_STAINED_SHATTERED_GLASS);
 
         LOGGER.info("ATBYW Blocks Inintiliazed");
     }
