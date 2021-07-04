@@ -1,15 +1,21 @@
 package net.azagwen.atbyw.datagen;
 
 import com.google.gson.JsonElement;
+import net.azagwen.atbyw.util.Pair;
 import net.azagwen.atbyw.util.Quadruplet;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
 
 import java.util.Map;
 
 public class RecipeUtils {
 
-    protected static Pair<String, Identifier> newKeyPair(String T, Identifier I) {
+    public static Pair<String, ItemConvertible> newKeyPair(String T, ItemConvertible I) {
+        return new Pair<>(T, I);
+    }
+
+    public static Pair<String, Identifier> newKeyPair(String T, Identifier I) {
         return new Pair<>(T, I);
     }
 

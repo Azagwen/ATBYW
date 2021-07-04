@@ -5,6 +5,6 @@ import net.minecraft.util.Identifier;
 public class AtbywIdentifier extends Identifier {
 
     public AtbywIdentifier(String path) {
-        super(AtbywMain.AtbywNamespace, path);
+        super(AtbywMain.atbywNamespace, path);
     }
 }

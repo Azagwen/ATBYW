@@ -157,8 +157,8 @@ public class ModelWave000 {
         );
     }
 
-    private void writeLogStairs() {
-        var writer = new AutoModelWriter();
+    private void write() {
+        var writer = new AutoJsonWriter();
 
         WoodNames.getNamesOverworld().forEach((name) -> {
             writer.write("models/block/" + name + "_log_stairs.json", ModelMethods.modelFromParent("atbyw:block/stairs/template_column_stairs", logStairsTextures(name + "_log")));

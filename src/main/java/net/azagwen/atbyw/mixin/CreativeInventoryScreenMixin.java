@@ -83,7 +83,7 @@ public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScre
 
                     this.client.openScreen(this);
                 }, curseforgeLink, true));
-            }, new TranslatableText("itemGroup." + AtbywMain.AtbywNamespace + ".curseforgeLink"));
+            }, new TranslatableText("itemGroup." + AtbywMain.atbywNamespace + ".curseforgeLink"));
             var githubButton = new TexturedButtonWidget(this.x + 161, this.y + 4, 12, 12, 12, 0, 12, MEDIA_ICON_TEXTURE, 64, 64, (button) -> {
                 this.client.openScreen(new ConfirmChatLinkScreen((opened) -> {
                     if (opened) {
@@ -92,7 +92,7 @@ public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScre
 
                     this.client.openScreen(this);
                 }, githubLink, true));
-            }, new TranslatableText("itemGroup." + AtbywMain.AtbywNamespace + ".githubLink"));
+            }, new TranslatableText("itemGroup." + AtbywMain.atbywNamespace + ".githubLink"));
             mediaButtons.add(curseforgeButton);
             mediaButtons.add(githubButton);
             this.addDrawableChild(curseforgeButton);

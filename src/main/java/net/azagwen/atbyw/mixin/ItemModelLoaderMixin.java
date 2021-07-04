@@ -31,7 +31,7 @@ public class ItemModelLoaderMixin {
 
     @Inject(method = "loadModelFromJson", at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/ResourceManager;getResource(Lnet/minecraft/util/Identifier;)Lnet/minecraft/resource/Resource;"), cancellable = true)
     public void loadModelFromJson(Identifier id, CallbackInfoReturnable<JsonUnbakedModel> cir) {
-        if (AtbywMain.AtbywNamespace.equals(id.getNamespace())) {
+        if (AtbywMain.atbywNamespace.equals(id.getNamespace())) {
             Gson gson = new GsonBuilder().create();
             makeModel(id, "_essence", gson.toJson(createEssenceItemModelJson("generated")), cir);
         }

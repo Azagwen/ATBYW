@@ -7,9 +7,9 @@ import net.minecraft.client.MinecraftClient;
 
 import java.io.*;
 
-public class AutoModelWriter {
+public class AutoJsonWriter {
 
-    public AutoModelWriter() {
+    public AutoJsonWriter() {
     }
 
     public void write(String fileName, JsonObject jsonObject) {
@@ -43,7 +43,7 @@ public class AutoModelWriter {
     }
 
     public void writeAll() {
-//        ModelWave001.writeShatteredGlass();
-        AtbywMain.MYS_LOGGER.info("3D Modeling :)");
+        LootTableWave000.write();
+        AtbywMain.MYS_LOGGER.info("JSON :)");
     }
 }

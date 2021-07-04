@@ -3,13 +3,23 @@ package net.azagwen.atbyw.datagen;
 import com.google.common.collect.Maps;
 import com.google.gson.*;
 import net.azagwen.atbyw.util.AtbywUtils;
+import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.AdvancementRewards;
+import net.minecraft.advancement.CriterionMerger;
+import net.minecraft.advancement.criterion.InventoryChangedCriterion;
+import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
+import net.minecraft.predicate.NumberRange;
+import net.minecraft.predicate.entity.EntityPredicate;
+import net.minecraft.predicate.item.ItemPredicate;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.Recipe;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
-public class Advancements {
+public class JsonAdvancements {
     public static Gson builder = new GsonBuilder().setPrettyPrinting().create();
     public static Logger LOGGER = LogManager.getLogger("Atbyw Advancements");
     public static Map<Identifier, JsonElement> RECIPE_MAP = Maps.newConcurrentMap();

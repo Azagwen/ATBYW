@@ -11,6 +11,7 @@ import java.util.List;
 
 import static net.azagwen.atbyw.util.AtbywUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
+import static net.azagwen.atbyw.util.BlockUtils.registerBlock;
 
 public class StatueRegistry {
     private static final FabricBlockSettings statueSettings = FabricBlockSettings.copyOf(Blocks.STONE).breakByTool(FabricToolTags.PICKAXES).ticksRandomly();

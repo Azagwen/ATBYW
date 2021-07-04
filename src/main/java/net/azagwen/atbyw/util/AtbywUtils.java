@@ -2,6 +2,7 @@ package net.azagwen.atbyw.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -64,6 +65,24 @@ public record AtbywUtils() {
         return array;
     }
 
+    @SafeVarargs
+    public static JsonObject jsonObject(Pair<String, Object>... elements) {
+        var object = new JsonObject();
+        for (var element : elements) {
+            if (element.getSecond() instanceof Number)
+                object.addProperty(element.getFirst(), (Number) element.getSecond());
+            else if (element.getSecond() instanceof Boolean)
+                object.addProperty(element.getFirst(), (Boolean) element.getSecond());
+            else if (element.getSecond() instanceof Character)
+                object.addProperty(element.getFirst(), (Character) element.getSecond());
+            else if (element.getSecond() instanceof JsonElement)
+                object.add(element.getFirst(), (JsonElement) element.getSecond());
+            else
+                object.addProperty(element.getFirst(), String.valueOf(element.getSecond()));
+        }
+        return object;
+    }
+
     public static Identifier getItemID(Item item) {
         return Registry.ITEM.getId(item);
     }
@@ -122,138 +141,5 @@ public record AtbywUtils() {
     @Environment(EnvType.CLIENT)
     public static void drawBox(MatrixStack matrices, VertexConsumer vertexConsumer, Box box, ColorRGB color, float alpha) {
         WorldRenderer.drawBox(matrices, vertexConsumer, box.minX, box.minY, box.minZ, box.maxX, box.maxY, box.maxZ, color.redNormalized, color.greenNormalized, color.blueNormalized, alpha, color.redNormalized, color.greenNormalized, color.blueNormalized);
-    }
-
-    //////////////////////////////////////////////////
-    //              REGISTRATION UTILS              //
-    //////////////////////////////////////////////////
-
-    /** Registers a block without a block item.
-     *
-     *  @param name     Name of the block (path)
-     *  @param block    The Block field
-     */
-    public static void registerBlockOnly(String name, Block block) {
-        Registry.register(Registry.BLOCK, new AtbywIdentifier(name), block);
-    }
-
-    /** Registers a block and its block item.
-     *
-     *  @param fireproof    if the Block item should resist to fire & Lava.
-     *  @param group        the ItemGroup this block should be in.
-     *  @param name         Name of the block (Identifier path).
-     *  @param block        The declared Block that will be registered.
-     */
-    public static void registerBlock(boolean fireproof, @Nullable ItemGroup group, String name, Block block) {
-        Item.Settings normalSettings = group != null ? new Item.Settings().group(group) : new Item.Settings();
-        Item.Settings fireproofSettings = group != null ? new Item.Settings().group(group).fireproof() : new Item.Settings().fireproof();
-
-        Registry.register(Registry.BLOCK, new AtbywIdentifier(name), block);
-        Registry.register(Registry.ITEM, new AtbywIdentifier(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
-    }
-
-    public static void registerBlock(boolean fireproof, String name, Block block) {
-        registerBlock(fireproof, (ItemGroup) null, name, block);
-    }
-
-    /** Registers a block and its block item.
-     *
-     *  @param fireproof    if the Block item should resist to fire & Lava.
-     *  @param itemTab      the ItemTab list this block should be in.
-     *  @param name         Name of the block (Identifier path).
-     *  @param block        The declared Block that will be registered.
-     */
-    public static void registerBlock(boolean fireproof, ArrayList<Item> itemTab, String name, Block block) {
-        Item.Settings normalSettings = new Item.Settings();
-        Item.Settings fireproofSettings = new Item.Settings().fireproof();
-
-        Registry.register(Registry.BLOCK, new AtbywIdentifier(name), block);
-        Registry.register(Registry.ITEM, new AtbywIdentifier(name), new BlockItem(block, (fireproof ? fireproofSettings : normalSettings)));
-
-        itemTab.add(block.asItem());
-    }
-
-    /** Will only register blocks, without block items associated to them.
-     *  Registers a given amount of blocks determined by "block" and "variant_type"'s length,
-     *  those two arrays MUST match in order to register those blocks, if the lengths mismatch
-     *  the game will crash on its own and notify you of that mistake.
-     *
-     *  @param block_name       The name of the block.
-     *  @param variant_type     An array of Strings of which every index will be put between "prefix" and "block_name".
-     *  @param block            An Array of Blocks that must match the length of "variant_type".
-     */
-    public static void registerBlocksOnly(String block_name, String[] variant_type, Block... block) {
-        if (block.length == variant_type.length)
-            for (int i = 0; i < block.length; i++) {
-                registerBlockOnly(String.join("_", variant_type[i], block_name), block[i]);
-            }
-        else
-            throw new IllegalArgumentException("could not register " + block_name + " : mismatched lengths !");
-    }
-
-    /** Registers a given amount of blocks determined by "block" and "variant_type"'s length,
-     *  those two arrays MUST match in order to register those blocks, if the lengths mismatch
-     *  the game will crash on its own and notify you of that mistake.
-     *
-     *  @param fireproof        Passed to the item registry to determine if the block item should burn in fire and lava or not.
-     *  @param group            The Creative tab the block should appear in.
-     *  @param prefix           Optional, a prefix that will be added in front of the "block_name".
-     *  @param block_name       The name of the block.
-     *  @param variant_type     An array of Strings of which every index will be put between "prefix" and "block_name".
-     *  @param block            An Array of Blocks that must match the length of "variant_type".
-     */
-    public static void registerBlocks(boolean fireproof, @Nullable ItemGroup group, @Nullable String prefix, String block_name, String[] variant_type, Block... block) {
-        if (block.length == variant_type.length)
-            for (int i = 0; i < block.length; i++) {
-                String name;
-                if (prefix == null || prefix.isEmpty()) {
-                    name = String.join("_", variant_type[i], block_name);
-                } else {
-                    name = String.join("_", prefix, variant_type[i], block_name);
-                }
-
-                registerBlock(fireproof, group, name, block[i]);
-            }
-        else
-            throw new IllegalArgumentException(String.join("could not register " + block_name + " : mismatched lengths !"));
-    }
-
-    /** Registers a given amount of blocks determined by "block" and "variant_type"'s length,
-     *  those two arrays MUST match in order to register those blocks, if the lengths mismatch
-     *  the game will crash on its own and notify you of that mistake.
-     *
-     *  @param fireproof    if the Block item should resist to fire & Lava.
-     *  @param itemTab      the ItemTab list this block should be in.
-     *  @param prefix           Optional, a prefix that will be added in front of the "block_name".
-     *  @param block_name       The name of the block.
-     *  @param variant_type     An array of Strings of which every index will be put between "prefix" and "block_name".
-     *  @param block            An Array of Blocks that must match the length of "variant_type".
-     */
-    public static void registerBlocks(boolean fireproof, ArrayList<Item> itemTab, @Nullable String prefix, String block_name, String[] variant_type, Block... block) {
-        if (block.length == variant_type.length)
-            for (int i = 0; i < block.length; i++) {
-                String name;
-                if (prefix == null || prefix.isEmpty()) {
-                    name = String.join("_", variant_type[i], block_name);
-                } else {
-                    name = String.join("_", prefix, variant_type[i], block_name);
-                }
-
-                registerBlock(fireproof, itemTab, name, block[i]);
-            }
-        else
-            throw new IllegalArgumentException(String.join("could not register " + block_name + " : mismatched lengths !"));
-    }
-
-    public static void registerBlocks(boolean fireproof, ArrayList<Item> group, String block_name, List<String> variant_type, Block... block) {
-        registerBlocks(fireproof, group, null, block_name, variant_type.toArray(String[]::new), block);
-    }
-
-    public static void registerBlocks(boolean fireproof, ArrayList<Item> group, String prefix, String block_name, List<String> variant_type, Block... block) {
-        registerBlocks(fireproof, group, prefix, block_name, variant_type.toArray(String[]::new), block);
-    }
-
-    public static void registerBlocks(boolean fireproof, ArrayList<Item> group, String block_name, String[] variant_type, Block... block) {
-        registerBlocks(fireproof, group, null, block_name, variant_type, block);
     }
 }

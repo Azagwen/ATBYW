@@ -33,8 +33,8 @@ public class ModelWave001 {
         );
     }
 
-    protected static void writeShatteredGlass() {
-        var writer = new AutoModelWriter();
+    protected static void write() {
+        var writer = new AutoJsonWriter();
 
         ColorNames.getNames().forEach((color) -> {
             writer.write("blockstates/" + color + "_stained_shattered_glass.json", writeColumnStairsBlockState(color));

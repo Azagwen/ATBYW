@@ -6,9 +6,10 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityType;
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.datagen.Datagen;
 import net.azagwen.atbyw.datagen.RecipeRegistry;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
-import net.azagwen.atbyw.dev_tools.AutoModelWriter;
+import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
 import net.azagwen.atbyw.group.AtbywItemGroup;
 import net.azagwen.atbyw.item.AtbywItems;
 import net.azagwen.atbyw.world.AtbywWorldGen;
@@ -20,7 +21,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.math.MathHelper;
@@ -38,7 +38,7 @@ import java.util.stream.StreamSupport;
 
 public class AtbywMain implements ModInitializer {
 	public static final String mcNameSpace = "minecraft";
-	public static final String AtbywNamespace = "atbyw";
+	public static final String atbywNamespace = "atbyw";
 	public static final String modInteractionNameSpace = "atbyw_mi";
 	public static final Logger LOGGER  = LogManager.getLogger("Atbyw Main");
 	public static final Logger MYS_LOGGER  = LogManager.getLogger("?");
@@ -62,7 +62,7 @@ public class AtbywMain implements ModInitializer {
 	public static ItemGroup ATBYW_REDSTONE; 	//Unused, kept for testing.
 	public static ItemGroup ATBYW_MISC; 		//Unused, kept for testing.
 
-	public static boolean enable_mod_interactions() {
+	public static boolean enableModInteractions() {
 		boolean a = isModLoaded("betternether");
 		boolean b = isModLoaded("betterend");
 
@@ -93,8 +93,8 @@ public class AtbywMain implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-		if (enable_mod_interactions()) {
-			FabricLoader.getInstance().getModContainer(AtbywNamespace).map(modContainer -> {
+		if (enableModInteractions()) {
+			FabricLoader.getInstance().getModContainer(atbywNamespace).map(modContainer -> {
 				return ResourceManagerHelper.registerBuiltinResourcePack(NewAtbywModInteractionID("mod_interaction_resources"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED);
 			}).filter(success -> !success).ifPresent(success -> LOGGER.error("Unable to Load \"atbyw_mi/mod_interaction_resources\"."));
 
@@ -108,8 +108,10 @@ public class AtbywMain implements ModInitializer {
 		AtbywWorldGen.init();
 		AtbywRRP.init();
 
+		Datagen.test();
+
 		if (isDebugEnabled()) {
-			new AutoModelWriter().writeAll();
+			new AutoJsonWriter().writeAll();
 
 			BLOCK_STATES = StreamSupport.stream(Registry.BLOCK.spliterator(), false).flatMap((block) -> {
 				return block.getStateManager().getStates().stream();

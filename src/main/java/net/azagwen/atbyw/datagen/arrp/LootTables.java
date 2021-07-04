@@ -5,9 +5,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
+import net.azagwen.atbyw.item.AtbywItems;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.json.loot.JLootTable;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
@@ -20,6 +22,10 @@ import static net.devtech.arrp.json.loot.JLootTable.condition;
 
 @SuppressWarnings("deprecation")
 public class LootTables {
+
+    private static Identifier blockTableID(Identifier blockID) {
+        return new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath());
+    }
 
     private static JsonObject silkTouchPredicate() {
         var level = new JsonObject();
@@ -55,7 +61,7 @@ public class LootTables {
     private static void blockCompactedSnow(RuntimeResourcePack pack, Identifier blockID) {
         String propertyName = "layers";
 
-        pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
+        pack.addLootTable(blockTableID(blockID), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
                         .entry(entry()
@@ -102,7 +108,7 @@ public class LootTables {
     }
 
     private static void blockDropSelf(RuntimeResourcePack pack, Identifier blockID) {
-        pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
+        pack.addLootTable(blockTableID(blockID), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
                         .entry(entry()
@@ -113,7 +119,7 @@ public class LootTables {
     }
 
     private static void blockSilkTouchOnly(RuntimeResourcePack pack, Identifier blockID) {
-        pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
+        pack.addLootTable(blockTableID(blockID), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
                         .entry(entry()
@@ -125,7 +131,7 @@ public class LootTables {
     }
 
     private static void blockSilkTouch(RuntimeResourcePack pack, Identifier silkTouchID, Identifier normalID, int normalCount) {
-        pack.addLootTable(new Identifier(silkTouchID.getNamespace(), "blocks/" + silkTouchID.getPath()), JLootTable.loot("minecraft:block")
+        pack.addLootTable(blockTableID(silkTouchID), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
                         .entry(entry()
@@ -147,8 +153,36 @@ public class LootTables {
         );
     }
 
+    private static void blockSilkTouch(RuntimeResourcePack pack, Identifier silkTouchID, Identifier normalID, int minCount, int maxCount) {
+        var count = new JsonObject();
+        count.addProperty("type", "minecraft:uniform");
+        count.addProperty("min", minCount);
+        count.addProperty("max", maxCount);
+
+        pack.addLootTable(blockTableID(silkTouchID), JLootTable.loot("minecraft:block")
+                .pool(pool()
+                        .rolls(1)
+                        .entry(entry()
+                                .type("minecraft:alternatives")
+                                .child(entry()
+                                        .type("minecraft:item")
+                                        .condition(condition("minecraft:match_tool")
+                                                .parameter("predicate", silkTouchPredicate()))
+                                        .name(silkTouchID.toString()))
+                                .child(entry()
+                                        .type("minecraft:item")
+                                        .function(function("minecraft:set_count")
+                                                .parameter("count", count))
+                                        .function(function("minecraft:explosion_decay"))
+                                        .name(normalID.toString())
+                                )
+                        )
+                        .condition(condition("minecraft:survives_explosion")))
+        );
+    }
+
     private static void blockSlabDropSelf(RuntimeResourcePack pack, Identifier blockID) {
-        pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
+        pack.addLootTable(blockTableID(blockID), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
                         .entry(entry()
@@ -165,7 +199,7 @@ public class LootTables {
     }
 
     private static void blockSlabSilkTouchOnly(RuntimeResourcePack pack, Identifier blockID) {
-        pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
+        pack.addLootTable(blockTableID(blockID), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
                         .entry(entry()
@@ -183,7 +217,7 @@ public class LootTables {
     }
 
     private static void blockSlabSilkTouch(RuntimeResourcePack pack, Identifier silkTouchID, Identifier normalID) {
-        pack.addLootTable(new Identifier(silkTouchID.getNamespace(), "blocks/" + silkTouchID.getPath()), JLootTable.loot("minecraft:block")
+        pack.addLootTable(blockTableID(silkTouchID), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
                         .entry(entry()
@@ -213,7 +247,7 @@ public class LootTables {
     }
 
     private static void blockDoorDropSelf(RuntimeResourcePack pack, Identifier blockID) {
-        pack.addLootTable(new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath()), JLootTable.loot("minecraft:block")
+        pack.addLootTable(blockTableID(blockID), JLootTable.loot("minecraft:block")
                 .pool(pool()
                         .rolls(1)
                         .entry(entry()
@@ -280,6 +314,24 @@ public class LootTables {
         blockSlabSilkTouchOnly(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLUE_ICE_BRICKS_SLAB));
 
         blockCompactedSnow(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.COMPACTED_SNOW));
+
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.SHATTERED_GLASS), getItemID(AtbywItems.GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.WHITE_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.WHITE_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.ORANGE_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.ORANGE_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.MAGENTA_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.MAGENTA_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.LIGHT_BLUE_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.LIGHT_BLUE_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.YELLOW_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.YELLOW_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.LIME_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.LIME_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.PINK_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.PINK_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.GRAY_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.GRAY_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.LIGHT_GRAY_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.LIGHT_GRAY_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.CYAN_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.CYAN_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.PURPLE_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.PURPLE_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLUE_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.BLUE_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BROWN_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.BROWN_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.GREEN_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.GREEN_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.RED_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.RED_STAINED_GLASS_SHARD), 4);
+        blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLACK_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.BLACK_STAINED_GLASS_SHARD), 4);
 
         blocksDoorDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
                 AtbywBlocks.IRON_FENCE_DOOR,

@@ -25,6 +25,7 @@ import java.util.function.ToIntFunction;
 
 import static net.azagwen.atbyw.util.AtbywUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
+import static net.azagwen.atbyw.util.BlockUtils.*;
 
 public class AtbywBlocks {
 

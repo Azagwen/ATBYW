@@ -3,6 +3,7 @@ package net.azagwen.atbyw.datagen.arrp;
 import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.devtech.arrp.api.RRPCallback;
 import net.devtech.arrp.api.RuntimeResourcePack;
+import net.minecraft.util.Identifier;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
 

@@ -1,0 +1,187 @@
+package net.azagwen.atbyw.datagen;
+
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import net.azagwen.atbyw.main.AtbywIdentifier;
+import net.azagwen.atbyw.main.AtbywMain;
+import net.azagwen.atbyw.util.AtbywUtils;
+import net.azagwen.atbyw.util.Pair;
+import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.AdvancementRewards;
+import net.minecraft.advancement.CriterionMerger;
+import net.minecraft.advancement.criterion.InventoryChangedCriterion;
+import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.predicate.NumberRange;
+import net.minecraft.predicate.entity.EntityPredicate;
+import net.minecraft.predicate.item.ItemPredicate;
+import net.minecraft.recipe.*;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.JsonHelper;
+import net.minecraft.util.collection.DefaultedList;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class Datagen {
+    private static final Map<RecipeType<?>, List<Recipe<?>>> RECIPES = new Object2ObjectOpenHashMap<>();
+    private static final Map<Recipe<?>, String> RECIPES_CATEGORIES = new Object2ObjectOpenHashMap<>();
+    private static final Map<Identifier, Advancement.Task> ADVANCEMENTS = new Object2ObjectOpenHashMap<>();
+
+    public static void applyAdvancements(Map<Identifier, Advancement.Task> builder) {
+        ADVANCEMENTS.forEach((identifier, task) -> {
+            task.parent((Advancement) null);
+
+            builder.put(identifier, task);
+        });
+    }
+
+    public static void applyRecipes(Map<Identifier, JsonElement> map, Map<RecipeType<?>, ImmutableMap.Builder<Identifier, Recipe<?>>> builderMap) {
+        var recipeCount = new int[]{0};
+        RECIPES.forEach((key, recipes) -> {
+            var recipeBuilder = builderMap.computeIfAbsent(key, o -> ImmutableMap.builder());
+
+            recipes.forEach(recipe -> {
+                if (!map.containsKey(recipe.getId())) {
+                    recipeBuilder.put(recipe.getId(), recipe);
+                    recipeCount[0]++;
+                }
+            });
+        });
+
+        AtbywMain.LOGGER.info("Loaded {} additional recipe" + (recipeCount[0] > 1 ? "s" : ""), recipeCount[0]);
+    }
+
+    public static void registerRecipe(Recipe<?> recipe, String category) {
+        var recipes = RECIPES.computeIfAbsent(recipe.getType(), recipeType -> new ArrayList<>());
+
+        for (var currentRecipe : recipes) {
+            if (currentRecipe.getId().equals(recipe.getId()))
+                return;
+        }
+
+        recipes.add(recipe);
+        RECIPES_CATEGORIES.put(recipe, category);
+
+        var advancementIdPath = "recipes/" + category + "/" + recipe.getId().getPath();
+        var advancementId = new Identifier(recipe.getId().getNamespace(), advancementIdPath);
+        ADVANCEMENTS.put(advancementId, simpleRecipeUnlock(recipe));
+    }
+
+    public static void registerRecipes(List<Recipe<?>> recipes, String category) {
+        for (var recipe : recipes) {
+            registerRecipe(recipe, category);
+        }
+    }
+
+    public static Advancement.Task simpleRecipeUnlock(Recipe<?> recipe) {
+        var ingredients = Lists.<Identifier>newArrayList();
+        var advancement = Advancement.Task.create();
+        advancement.parent(new Identifier("recipes/root"));
+        advancement.rewards(AdvancementRewards.Builder.recipe(recipe.getId()));
+        advancement.criteriaMerger(CriterionMerger.OR);
+        advancement.criterion("has_self", InventoryChangedCriterion.Conditions.items(recipe.getOutput().getItem()));
+        advancement.criterion("has_the_recipe", new RecipeUnlockedCriterion.Conditions(EntityPredicate.Extended.EMPTY, recipe.getId()));
+
+        for (var ingredient : recipe.getIngredients()) {
+            if (!ingredient.isEmpty()) {
+                var ingredientId = AtbywUtils.getItemID(ingredient.getMatchingStacksClient()[0].getItem());
+                if (!ingredients.contains(ingredientId)) {
+                    advancement.criterion("has_" + ingredientId.getPath(), inventoryChangedCriteria(ingredient));
+                    ingredients.add(ingredientId);
+                }
+            }
+        }
+
+        return advancement;
+    }
+
+    public static InventoryChangedCriterion.Conditions inventoryChangedCriteria(Ingredient item) {
+        var ingredients = new JsonArray();
+        var ingredient = item.toJson();
+
+        if (ingredient instanceof JsonObject json) {
+            if (json.has("item")) {
+                var child = new JsonObject();
+                child.add("items", AtbywUtils.jsonArray(JsonHelper.getString(json, "item")));
+                ingredients.add(child);
+            } else {
+                ingredients.add(ingredient);
+            }
+        }
+
+        return new InventoryChangedCriterion.Conditions(EntityPredicate.Extended.EMPTY,
+                NumberRange.IntRange.ANY, NumberRange.IntRange.ANY, NumberRange.IntRange.ANY,
+                ItemPredicate.deserializeAll(ingredients));
+    }
+
+    /**
+     * @param recipeId  Identifier of the recipe being created.
+     * @param group     Group the recipe belongs in (for recipe grouping in the recipe book).
+     * @param pattern   The recipe Pattern (must not contain any empty space).
+     * @param keys      The keys of the ingredient items (must correspond to the pattern characters).
+     * @param output    The Resulting item from the recipe.
+     *
+     * @return          A new ShapedRecipe() created from the input parameters.
+     */
+    public static Recipe<?> shapedRecipe(Identifier recipeId, String group, String[] pattern, List<Pair<Character, ItemConvertible>> keys, ItemConvertible output, int count) {
+        var keyMap = Maps.<String, Ingredient>newHashMap();
+        var outStack = ItemStack.EMPTY;
+
+        for (var pair : keys) {
+            keyMap.put(pair.getFirst().toString(), Ingredient.ofItems(pair.getSecond()));
+        }
+
+        int x = pattern[0].length();
+        int y = pattern.length;
+        var ingredients = ShapedRecipe.createPatternMatrix(pattern, keyMap, x, y);
+
+        outStack = new ItemStack(output);
+        outStack.setCount(count);
+        return new ShapedRecipe(recipeId, group, x, y, ingredients, outStack);
+    }
+
+    /**
+     * @param recipeId  Identifier of the recipe being created.
+     * @param group     Group the recipe belongs in (for recipe grouping in the recipe book).
+     * @param input     Items the recipe will take as Ingredients.
+     * @param output    The Resulting item from the recipe.
+     *
+     * @return          A new ShapelessRecipe() created from the input parameters.
+     */
+    public static Recipe<?> shapelessRecipe(Identifier recipeId, String group, List<ItemConvertible> input, ItemConvertible output, int count) {
+        var ingredients = DefaultedList.<Ingredient>of();
+        var outStack = ItemStack.EMPTY;
+
+        for (var item : input) {
+            ingredients.add(Ingredient.ofItems(item));
+        }
+
+        outStack = new ItemStack(output);
+        outStack.setCount(count);
+        return new ShapelessRecipe(recipeId, group, new ItemStack(output), ingredients);
+    }
+
+    public static void test() {
+        var test = shapedRecipe(new AtbywIdentifier("testo"), "", new String[] {
+                "XX",
+                "E",
+                "E"
+        }, Lists.newArrayList(
+                new Pair<>('X', Items.ACACIA_LOG),
+                new Pair<>('E', Items.BREAD)
+        ), Items.AMETHYST_BLOCK, 1);
+
+        registerRecipe(test, "aaa");
+    }
+}
