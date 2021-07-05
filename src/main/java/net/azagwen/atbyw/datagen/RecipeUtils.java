@@ -3,6 +3,7 @@ package net.azagwen.atbyw.datagen;
 import com.google.gson.JsonElement;
 import net.azagwen.atbyw.util.Pair;
 import net.azagwen.atbyw.util.Quadruplet;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
@@ -12,6 +13,10 @@ import java.util.Map;
 public class RecipeUtils {
 
     public static Pair<String, ItemConvertible> newKeyPair(String T, ItemConvertible I) {
+        return new Pair<>(T, I);
+    }
+
+    public static Pair<String, Tag<Item>> newKeyPair(String T, Tag<Item> I) {
         return new Pair<>(T, I);
     }
 

@@ -104,11 +104,9 @@ public class AtbywMain implements ModInitializer {
 		AtbywItems.init();
 		AtbywBlocks.init();
 		AtbywBlockEntityType.init();
-		RecipeRegistry.init();
 		AtbywWorldGen.init();
 		AtbywRRP.init();
-
-		Datagen.test();
+		RecipeRegistry.init();
 
 		if (isDebugEnabled()) {
 			new AutoJsonWriter().writeAll();

@@ -16,8 +16,6 @@ import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.CriterionMerger;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -30,6 +28,7 @@ import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -85,7 +84,6 @@ public class Datagen {
     }
 
     public static Advancement.Task simpleRecipeUnlock(Recipe<?> recipe) {
-        var ingredients = Lists.<Identifier>newArrayList();
         var advancement = Advancement.Task.create();
         advancement.parent(new Identifier("recipes/root"));
         advancement.rewards(AdvancementRewards.Builder.recipe(recipe.getId()));
@@ -93,12 +91,16 @@ public class Datagen {
         advancement.criterion("has_self", InventoryChangedCriterion.Conditions.items(recipe.getOutput().getItem()));
         advancement.criterion("has_the_recipe", new RecipeUnlockedCriterion.Conditions(EntityPredicate.Extended.EMPTY, recipe.getId()));
 
+        var ingredients = Lists.<Identifier>newArrayList();
         for (var ingredient : recipe.getIngredients()) {
             if (!ingredient.isEmpty()) {
-                var ingredientId = AtbywUtils.getItemID(ingredient.getMatchingStacksClient()[0].getItem());
-                if (!ingredients.contains(ingredientId)) {
-                    advancement.criterion("has_" + ingredientId.getPath(), inventoryChangedCriteria(ingredient));
-                    ingredients.add(ingredientId);
+                var items = ingredient.toJson().getAsJsonObject().entrySet();
+                for (var item : items) {
+                    var ingredientId = new Identifier(item.getValue().getAsString());
+                    if (!ingredients.contains(ingredientId)) {
+                        advancement.criterion("has_" + ingredientId.getPath(), inventoryChangedCriteria(ingredient));
+                        ingredients.add(ingredientId);
+                    }
                 }
             }
         }
@@ -120,9 +122,10 @@ public class Datagen {
             }
         }
 
-        return new InventoryChangedCriterion.Conditions(EntityPredicate.Extended.EMPTY,
-                NumberRange.IntRange.ANY, NumberRange.IntRange.ANY, NumberRange.IntRange.ANY,
-                ItemPredicate.deserializeAll(ingredients));
+        var entityPredicate = EntityPredicate.Extended.EMPTY;
+        var intRange = NumberRange.IntRange.ANY;
+        var items = ItemPredicate.deserializeAll(ingredients);
+        return new InventoryChangedCriterion.Conditions(entityPredicate, intRange, intRange, intRange, items);
     }
 
     /**
@@ -134,12 +137,12 @@ public class Datagen {
      *
      * @return          A new ShapedRecipe() created from the input parameters.
      */
-    public static Recipe<?> shapedRecipe(Identifier recipeId, String group, String[] pattern, List<Pair<Character, ItemConvertible>> keys, ItemConvertible output, int count) {
+    public static Recipe<?> shapedRecipe(Identifier recipeId, String group, String[] pattern, Map<Character, Ingredient> keys, ItemConvertible output, int count) {
         var keyMap = Maps.<String, Ingredient>newHashMap();
         var outStack = ItemStack.EMPTY;
 
-        for (var pair : keys) {
-            keyMap.put(pair.getFirst().toString(), Ingredient.ofItems(pair.getSecond()));
+        for (var pair : keys.entrySet()) {
+            keyMap.put(pair.getKey().toString(), pair.getValue());
         }
 
         int x = pattern[0].length();
@@ -173,14 +176,12 @@ public class Datagen {
     }
 
     public static void test() {
-        var test = shapedRecipe(new AtbywIdentifier("testo"), "", new String[] {
-                "XX",
-                "E",
-                "E"
-        }, Lists.newArrayList(
-                new Pair<>('X', Items.ACACIA_LOG),
-                new Pair<>('E', Items.BREAD)
-        ), Items.AMETHYST_BLOCK, 1);
+        var recipeId = new AtbywIdentifier("testo");
+        var keys = new HashMap<Character, Ingredient>();
+        keys.put('X', Ingredient.ofItems(Items.ACACIA_LOG));
+        keys.put('E', Ingredient.ofItems(Items.BREAD));
+
+        var test = shapedRecipe(recipeId, "", new String[] {"XX", "E", "E"}, keys, Items.AMETHYST_BLOCK, 1);
 
         registerRecipe(test, "aaa");
     }
