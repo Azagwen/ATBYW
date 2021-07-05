@@ -1,8 +1,7 @@
 package net.azagwen.atbyw.datagen;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.collect.*;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -37,6 +36,7 @@ public class Datagen {
     private static final Map<Recipe<?>, String> RECIPES_CATEGORIES = new Object2ObjectOpenHashMap<>();
     private static final Map<Identifier, Advancement.Task> ADVANCEMENTS = new Object2ObjectOpenHashMap<>();
 
+    //Used in net.azagwen.atbyw.mixin.ServerAdvancementLoaderMixin
     public static void applyAdvancements(Map<Identifier, Advancement.Task> builder) {
         ADVANCEMENTS.forEach((identifier, task) -> {
             task.parent((Advancement) null);
@@ -45,6 +45,7 @@ public class Datagen {
         });
     }
 
+    //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
     public static void applyRecipes(Map<Identifier, JsonElement> map, Map<RecipeType<?>, ImmutableMap.Builder<Identifier, Recipe<?>>> builderMap) {
         var recipeCount = new int[]{0};
         RECIPES.forEach((key, recipes) -> {
@@ -105,6 +106,10 @@ public class Datagen {
             }
         }
 
+        if (true == false){
+            var gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+            AtbywMain.LOGGER.info(gson.toJson(advancement.toJson()));
+        }
         return advancement;
     }
 
@@ -137,11 +142,11 @@ public class Datagen {
      *
      * @return          A new ShapedRecipe() created from the input parameters.
      */
-    public static Recipe<?> shapedRecipe(Identifier recipeId, String group, String[] pattern, Map<Character, Ingredient> keys, ItemConvertible output, int count) {
+    public static Recipe<?> shapedRecipe(Identifier recipeId, String group, String[] pattern, Multimap<Character, Ingredient> keys, ItemConvertible output, int count) {
         var keyMap = Maps.<String, Ingredient>newHashMap();
         var outStack = ItemStack.EMPTY;
 
-        for (var pair : keys.entrySet()) {
+        for (var pair : keys.entries()) {
             keyMap.put(pair.getKey().toString(), pair.getValue());
         }
 
@@ -177,7 +182,7 @@ public class Datagen {
 
     public static void test() {
         var recipeId = new AtbywIdentifier("testo");
-        var keys = new HashMap<Character, Ingredient>();
+        var keys = HashMultimap.<Character, Ingredient>create();
         keys.put('X', Ingredient.ofItems(Items.ACACIA_LOG));
         keys.put('E', Ingredient.ofItems(Items.BREAD));
 

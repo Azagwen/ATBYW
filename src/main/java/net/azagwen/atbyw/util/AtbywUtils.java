@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.util;
 
+import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -28,7 +29,7 @@ import java.util.List;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public record AtbywUtils() {
-    public static final Item[] DYES = {
+    public static final List<Item> DYES = Lists.newArrayList(
             Items.WHITE_DYE,
             Items.ORANGE_DYE,
             Items.MAGENTA_DYE,
@@ -45,7 +46,7 @@ public record AtbywUtils() {
             Items.GREEN_DYE,
             Items.RED_DYE,
             Items.BLACK_DYE
-    };
+    );
 
     public static JsonArray jsonArray(Object... elements) {
         var array = new JsonArray();

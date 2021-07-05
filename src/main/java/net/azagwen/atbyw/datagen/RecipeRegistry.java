@@ -1,7 +1,9 @@
 package net.azagwen.atbyw.datagen;
 
 import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
 import com.google.gson.*;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
@@ -10,8 +12,10 @@ import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.util.AtbywUtils;
 import net.azagwen.atbyw.util.Pair;
 import net.azagwen.atbyw.util.Triplet;
+import net.azagwen.atbyw.util.naming.ColorNames;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
@@ -19,14 +23,14 @@ import net.minecraft.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import net.azagwen.atbyw.datagen.RecipePatterns.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.azagwen.atbyw.datagen.RecipePatterns.*;
-
 public class RecipeRegistry {
-    public static Logger LOGGER = LogManager.getLogger("Atbyw Recipes");
+    public static final Logger LOGGER = LogManager.getLogger("Atbyw Recipes");
+    public static final RecipePatterns patterns = new RecipePatterns();
 
     public static Recipe<?> SHULKER_ESSENCE = Datagen.shapelessRecipe(new AtbywIdentifier("shulker_essence"), "essence", Lists.newArrayList(Items.SHULKER_SHELL, Items.SHULKER_SHELL, Items.GLASS_BOTTLE), AtbywItems.SHULKER_ESSENCE, 1);
     public static Recipe<?> CHICKEN_ESSENCE = Datagen.shapelessRecipe(new AtbywIdentifier("chicken_essence"), "essence", Lists.newArrayList(Items.CHICKEN, Items.FEATHER, Items.GLASS_BOTTLE), AtbywItems.CHICKEN_ESSENCE, 1);
@@ -46,7 +50,7 @@ public class RecipeRegistry {
     public static Recipe<?> SLIME_STATUE = Datagen.shapelessRecipe(new AtbywIdentifier("slime_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.SLIME_ESSENCE), StatueRegistry.SLIME_STATUE, 1);
     public static Recipe<?> MAGMA_CUBE_STATUE = Datagen.shapelessRecipe(new AtbywIdentifier("magma_cube_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.MAGMA_CUBE_ESSENCE), StatueRegistry.MAGMA_CUBE_STATUE, 1);
 
-    public static void registerShapedRecipe(String suffix, String category, String group, String[] pattern, Map<Character, Ingredient> keys, ItemConvertible result, int count) {
+    public static void registerShapedRecipe(String suffix, String category, String group, String[] pattern, Multimap<Character, Ingredient> keys, ItemConvertible result, int count) {
         var recipe = (Recipe<?>) null;
 
         for (var line : pattern) {
@@ -56,12 +60,12 @@ public class RecipeRegistry {
         }
 
         var resultId = AtbywUtils.getItemID(result.asItem());
-        var recipeId = new AtbywIdentifier(resultId.getPath() + "_" + suffix);
+        var recipeId = new AtbywIdentifier(resultId.getPath() + (suffix.equals("") ? "" : ("_" + suffix)));
         recipe = Datagen.shapedRecipe(recipeId, group, pattern, keys, result.asItem(), count);
         Datagen.registerRecipe(recipe, category);
     }
 
-    public static void registerShapedRecipe(String suffix, String category, String[] pattern, Map<Character, Ingredient> keys, ItemConvertible result, int count) {
+    public static void registerShapedRecipe(String suffix, String category, String[] pattern, Multimap<Character, Ingredient> keys, ItemConvertible result, int count) {
         registerShapedRecipe(suffix, category, "", pattern, keys, result, count);
     }
 
@@ -202,7 +206,7 @@ public class RecipeRegistry {
         map.put("stripped_log_stairs", Blocks.STRIPPED_WARPED_STEM, AtbywBlocks.STRIPPED_WARPED_STEM_STAIRS);
 
         for (var entry : map.cellSet()) {
-            var pattern = stairsPattern(entry.getColumnKey());
+            var pattern = patterns.stairsPattern(entry.getColumnKey());
             registerShapedRecipe("", "stairs", entry.getRowKey(), pattern.getFirst(), pattern.getSecond(), entry.getValue(), 4);
         }
     }
@@ -303,7 +307,7 @@ public class RecipeRegistry {
         table.put(new Pair<>("", ""), AtbywBlocks.COMPACTED_SNOW_BLOCK, new Pair<>(AtbywBlocks.COMPACTED_SNOW, 6));
 
         for (var entry : table.cellSet()) {
-            var pattern = slabPattern(entry.getColumnKey());
+            var pattern = patterns.slabPattern(entry.getColumnKey());
             registerShapedRecipe("", entry.getRowKey().getFirst(), entry.getRowKey().getSecond(), pattern.getFirst(), pattern.getSecond(), entry.getValue().getFirst(), entry.getValue().getSecond());
         }
     }
@@ -375,7 +379,7 @@ public class RecipeRegistry {
         table.put(new Triplet<>("", "shattered_glass", "shattered_glass"), AtbywItems.BLACK_STAINED_GLASS_SHARD, new Pair<>(AtbywBlocks.BLACK_STAINED_SHATTERED_GLASS, 1));
 
         for (var entry : table.cellSet()) {
-            var pattern = bricksPattern(entry.getColumnKey());
+            var pattern = patterns.bricksPattern(entry.getColumnKey());
             var suffix = entry.getRowKey().getFirst();
             var category = entry.getRowKey().getSecond();
             var group = entry.getRowKey().getThird();
@@ -423,7 +427,7 @@ public class RecipeRegistry {
         map.put("cinder_blocks_wall", AtbywBlocks.BLACK_CINDER_BLOCKS, AtbywBlocks.BLACK_CINDER_BLOCKS_WALL);
 
         for (var entry : map.cellSet()) {
-            var pattern = wallPattern(entry.getColumnKey());
+            var pattern = patterns.wallPattern(entry.getColumnKey());
             registerShapedRecipe("", "wall", entry.getRowKey(), pattern.getFirst(), pattern.getSecond(), entry.getValue(), 6);
         }
     }
@@ -532,14 +536,14 @@ public class RecipeRegistry {
         var ringMap = new HashMap<Pair<ItemConvertible, ItemConvertible>, ItemConvertible>();
         ringMap.put(new Pair<>(Items.IRON_NUGGET, Items.REDSTONE_TORCH), AtbywBlocks.REDSTONE_LANTERN);
 
-        for (var dye : AtbywUtils.DYES) {
-            for (var entry : dyeMap.cellSet()) {
-                var pattern = dyingRingPattern(entry.getValue(), dye);
+        for (var entry : dyeMap.cellSet()) {
+            for (var dye : AtbywUtils.DYES) {
+                var pattern = patterns.dyingRingPattern(entry.getValue(), dye);
                 registerShapedRecipe("from_dying", "dying", entry.getRowKey(), pattern.getFirst(), pattern.getSecond(), entry.getColumnKey(), 8);
             }
         }
         for (var entry : ringMap.entrySet()) {
-            var pattern = dyingRingPattern(entry.getKey().getFirst(), entry.getKey().getSecond());
+            var pattern = patterns.dyingRingPattern(entry.getKey().getFirst(), entry.getKey().getSecond());
             registerShapedRecipe("", "", pattern.getFirst(), pattern.getSecond(), entry.getValue(), 1);
         }
     }
@@ -571,7 +575,7 @@ public class RecipeRegistry {
 
         for (var entry : table.cellSet()) {
             var group = entry.getRowKey().equals("column") ? "columns" : "";
-            var pattern = columnPattern(entry.getColumnKey());
+            var pattern = patterns.columnPattern(entry.getColumnKey());
             registerShapedRecipe("", entry.getRowKey(), group, pattern.getFirst(), pattern.getSecond(), entry.getValue().getFirst(), entry.getValue().getSecond());
         }
     }
@@ -594,7 +598,7 @@ public class RecipeRegistry {
         map.put(Items.WITHER_ROSE, AtbywBlocks.WITHER_ROSE_PULL_SWITCH);
 
         for (var entry : map.entrySet()) {
-            var keys = new HashMap<Character, Ingredient>();
+            var keys = HashMultimap.<Character, Ingredient>create();
             keys.put('F', Ingredient.ofItems(entry.getKey().asItem()));
             keys.put('S', Ingredient.ofItems(Items.STICK));
             keys.put('R', Ingredient.ofItems(Items.REDSTONE));
@@ -614,7 +618,7 @@ public class RecipeRegistry {
 
         for (var entry : table.cellSet()) {
             var group = !entry.getRowKey().equals("") ? "basalt_pillar" : "";
-            var pattern = stickPattern(entry.getColumnKey());
+            var pattern = patterns.stickPattern(entry.getColumnKey());
             registerShapedRecipe(entry.getRowKey(), "", group, pattern.getFirst(), pattern.getSecond(), entry.getValue().getFirst(), entry.getValue().getSecond());
         }
     }
@@ -628,7 +632,7 @@ public class RecipeRegistry {
         map.put(Items.NETHERITE_INGOT, AtbywBlocks.NETHERITE_SPIKE_TRAP);
 
         for (var entry : map.entrySet()) {
-            var keys = new HashMap<Character, Ingredient>();
+            var keys = HashMultimap.<Character, Ingredient>create();
             keys.put('#', Ingredient.ofItems(entry.getKey().asItem()));
             keys.put('R', Ingredient.ofItems(Items.REDSTONE));
             keys.put('I', Ingredient.ofItems(Items.IRON_INGOT));
@@ -652,7 +656,7 @@ public class RecipeRegistry {
 
         for (var entry : table.cellSet()) {
             var group = entry.getRowKey().equals("") ? "fence_doors" : "";
-            var pattern = fenceDoorPattern(entry.getColumnKey());
+            var pattern = patterns.fenceDoorPattern(entry.getColumnKey());
             registerShapedRecipe("", entry.getRowKey(), group, pattern.getFirst(), pattern.getSecond(), entry.getValue(), 3);
         }
     }
@@ -670,7 +674,7 @@ public class RecipeRegistry {
         map.put(Items.WARPED_PLANKS, AtbywBlocks.WARPED_BOOKSHELF_TOGGLE);
 
         for (var entry : map.entrySet()) {
-            var keys = new HashMap<Character, Ingredient>();
+            var keys = HashMultimap.<Character, Ingredient>create();
             keys.put('P', Ingredient.ofItems(entry.getKey().asItem()));
             keys.put('R', Ingredient.ofItems(Items.REDSTONE));
             keys.put('B', Ingredient.ofItems(Items.BOOK));
@@ -691,7 +695,7 @@ public class RecipeRegistry {
         map.put(Items.WARPED_PLANKS, AtbywBlocks.WARPED_BOOKSHELF);
 
         for (var entry : map.entrySet()) {
-            var pattern = bookshelfPattern(entry.getKey(), Items.BOOK);
+            var pattern = patterns.bookshelfPattern(entry.getKey(), Items.BOOK);
             registerShapedRecipe("", "", "bookshelves", pattern.getFirst(), pattern.getSecond(), entry.getValue(), 1);
         }
     }
@@ -708,11 +712,11 @@ public class RecipeRegistry {
         map.put(Items.WARPED_PLANKS, AtbywBlocks.WARPED_LADDER);
 
         for (var entry : map.entrySet()) {
-            var pattern = ladderPattern(entry.getKey());
+            var pattern = patterns.ladderPattern(entry.getKey());
             registerShapedRecipe("", "ladders", "ladders", pattern.getFirst(), pattern.getSecond(), entry.getValue(), 6);
         }
         //Bamboo Ladder
-        var keys = new HashMap<Character, Ingredient>();
+        var keys = HashMultimap.<Character, Ingredient>create();
         keys.put('B', Ingredient.ofItems(Items.BAMBOO));
         keys.put('S', Ingredient.ofItems(AtbywItems.BAMBOO_STICK));
         registerShapedRecipe("", "ladders", new String[] {"B B", "BSB", "B B"}, keys, AtbywBlocks.BAMBOO_LADDER, 3);
@@ -725,13 +729,13 @@ public class RecipeRegistry {
         map.put(new Pair<>(Items.CARVED_PUMPKIN, Items.REDSTONE_TORCH), AtbywBlocks.REDSTONE_JACK_O_LANTERN);
 
         for (var entry : map.entrySet()) {
-            var pattern = torchPattern(entry.getKey().getFirst(), entry.getKey().getSecond());
+            var pattern = patterns.torchPattern(entry.getKey().getFirst(), entry.getKey().getSecond());
             registerShapedRecipe("", "", pattern.getFirst(), pattern.getSecond(), entry.getValue(), 1);
         }
     }
 
     public static void registerMisc() {
-        var keys = new HashMap<Character, Ingredient>();
+        var keys = HashMultimap.<Character, Ingredient>create();
 
         //Timer Repeater using Clock
         keys.put('C', Ingredient.ofItems(Items.CLOCK));
@@ -753,7 +757,7 @@ public class RecipeRegistry {
         registerShapedRecipe("", "redstone", new String[] {"RRR", "SSS"}, keys, AtbywBlocks.REDSTONE_CROSS_PATH, 1);
 
         //Marge Chain Link
-        var pattern = hollowStarPattern(Items.IRON_INGOT);
+        var pattern = patterns.hollowStarPattern(Items.IRON_INGOT);
         registerShapedRecipe("", "", pattern.getFirst(), pattern.getSecond(), AtbywItems.LARGE_CHAIN_LINK, 2);
 
     }
