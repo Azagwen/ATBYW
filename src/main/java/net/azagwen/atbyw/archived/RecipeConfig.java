@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.datagen;
+package net.azagwen.atbyw.archived;
 
 import java.util.ArrayList;
 

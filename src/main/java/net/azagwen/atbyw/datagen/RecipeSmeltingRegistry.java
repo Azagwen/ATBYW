@@ -3,6 +3,7 @@ package net.azagwen.atbyw.datagen;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import net.azagwen.atbyw.archived.JsonAdvancements;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.util.naming.ColorNames;

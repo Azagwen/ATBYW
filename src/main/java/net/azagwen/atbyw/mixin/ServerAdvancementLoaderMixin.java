@@ -2,7 +2,6 @@ package net.azagwen.atbyw.mixin;
 
 import com.google.gson.JsonElement;
 import net.azagwen.atbyw.datagen.Datagen;
-import net.azagwen.atbyw.datagen.JsonAdvancements;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.server.ServerAdvancementLoader;
@@ -18,11 +17,6 @@ import java.util.Map;
 
 @Mixin(ServerAdvancementLoader.class)
 public class ServerAdvancementLoaderMixin {
-
-    @Inject(method = "apply", at = @At("HEAD"))
-    public void interceptApply(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler, CallbackInfo info) {
-        JsonAdvancements.inject(map);
-    }
 
     @Inject(
             method = "apply",

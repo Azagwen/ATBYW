@@ -14,10 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import static net.azagwen.atbyw.datagen.RecipeUtils.*;
-import static net.azagwen.atbyw.main.AtbywMain.atbywNamespace;
-import static net.azagwen.atbyw.main.AtbywMain.mcNameSpace;
-import static net.azagwen.atbyw.util.AtbywUtils.getBlockID;
-import static net.azagwen.atbyw.util.AtbywUtils.getItemID;
 
 public class RecipeRegistry {
     static Gson builder = new GsonBuilder().setPrettyPrinting().create();

@@ -1,7 +1,8 @@
-package net.azagwen.atbyw.datagen;
+package net.azagwen.atbyw.archived;
 
 import com.google.common.collect.Maps;
 import com.google.gson.*;
+import net.azagwen.atbyw.datagen.RecipeRegistry;
 import net.azagwen.atbyw.util.AtbywUtils;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementRewards;
