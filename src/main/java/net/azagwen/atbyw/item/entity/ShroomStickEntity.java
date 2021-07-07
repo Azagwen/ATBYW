@@ -1,12 +1,9 @@
-package net.azagwen.atbyw.item;
+package net.azagwen.atbyw.item.entity;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.ShroomStickBlock;
-import net.azagwen.atbyw.client.AtbywClient;
-import net.azagwen.atbyw.main.AtbywEntityTypes;
-import net.azagwen.atbyw.main.AtbywMain;
-import net.azagwen.atbyw.main.EntitySpawnPacket;
-import net.azagwen.atbyw.main.AtbywTags;
+import net.azagwen.atbyw.item.AtbywItems;
+import net.azagwen.atbyw.main.*;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.*;
@@ -17,7 +14,6 @@ import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -46,11 +42,6 @@ public class ShroomStickEntity extends ThrownItemEntity {
 
     public ShroomStickEntity(World world, double x, double y, double z) {
         super(AtbywEntityTypes.SHROOMSTICK, x, y, z, world);
-    }
-
-    @Override
-    public Packet createSpawnPacket() {
-        return EntitySpawnPacket.create(this, AtbywClient.PacketID);
     }
 
     protected Item getDefaultItem() {
@@ -117,18 +108,9 @@ public class ShroomStickEntity extends ThrownItemEntity {
         Vec3d vec3d = this.getVelocity();
         double multiplier = bounceCount > 0 ? 0.75D : 0.5D;
         switch (direction) {
-            case EAST:
-            case WEST:
-                this.setVelocity(vec3d.x * -multiplier, vec3d.y * multiplier, vec3d.z * multiplier);
-                break;
-            case DOWN:
-            case UP:
-                this.setVelocity(vec3d.x * multiplier, vec3d.y * -multiplier, vec3d.z * multiplier);
-                break;
-            case NORTH:
-            case SOUTH:
-                this.setVelocity(vec3d.x * multiplier, vec3d.y * multiplier, vec3d.z * -multiplier);
-                break;
+            case EAST, WEST -> this.setVelocity(vec3d.x * -multiplier, vec3d.y * multiplier, vec3d.z * multiplier);
+            case DOWN, UP -> this.setVelocity(vec3d.x * multiplier, vec3d.y * -multiplier, vec3d.z * multiplier);
+            case NORTH, SOUTH -> this.setVelocity(vec3d.x * multiplier, vec3d.y * multiplier, vec3d.z * -multiplier);
         }
     }
 

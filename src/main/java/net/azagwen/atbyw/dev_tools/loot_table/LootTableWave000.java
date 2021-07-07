@@ -1,10 +1,11 @@
-package net.azagwen.atbyw.dev_tools;
+package net.azagwen.atbyw.dev_tools.loot_table;
 
+import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
 import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.util.naming.ColorNames;
 import net.minecraft.util.Identifier;
 
-import static net.azagwen.atbyw.dev_tools.LootTableMethods.*;
+import static net.azagwen.atbyw.dev_tools.loot_table.LootTableMethods.*;
 
 public class LootTableWave000 {
 

@@ -23,7 +23,6 @@ import net.minecraft.world.BlockView;
 import java.util.Map;
 import java.util.function.ToIntFunction;
 
-import static net.azagwen.atbyw.util.AtbywUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 import static net.azagwen.atbyw.util.BlockUtils.*;
 
@@ -77,7 +76,7 @@ public class AtbywBlocks {
     public static final Block DUMMY_GRASS_BLOCK = new GrassBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
     public static final Block DUMMY_MYCELIUM = new MyceliumBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PURPLE).ticksRandomly().breakByTool(FabricToolTags.SHOVELS).strength(0.6F).sounds(BlockSoundGroup.GRASS));
 
-    //"Full" Blocks
+    //Blocks
     public static final Block BASALT_BRICKS = new Block(basaltSettings());
     public static final Block BASALT_PILLAR = new PillarBlock(basaltSettings());
 
@@ -371,7 +370,6 @@ public class AtbywBlocks {
     public static final Block RED_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.RED_STAINED_GLASS);
     public static final Block BLACK_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.BLACK_STAINED_GLASS);
 
-    //Non-Full Blocks
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MapColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
     public static final Block OAK_FENCE_DOOR = new FenceDoorBlock(woodenFenceDoorSettings(Blocks.OAK_PLANKS));
@@ -478,6 +476,8 @@ public class AtbywBlocks {
     public static final Block STRIPPED_DARK_OAK_LOG_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_DARK_OAK_LOG));
     public static final Block STRIPPED_CRIMSON_STEM_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_CRIMSON_STEM));
     public static final Block STRIPPED_WARPED_STEM_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_WARPED_STEM));
+
+    public static final Block COLOR_PICKER_BLOCK = new ColorPickerBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL));
 
     public static final Map<Block, Block> GLASS_MAP = Maps.newHashMap();
 
@@ -652,6 +652,7 @@ public class AtbywBlocks {
         registerBlockOnly("gold_spike_trap_spikes", GOLD_SPIKE_TRAP_SPIKES);
         registerBlockOnly("diamond_spike_trap_spikes", DIAMOND_SPIKE_TRAP_SPIKES);
         registerBlockOnly("netherite_spike_trap_spikes", NETHERITE_SPIKE_TRAP_SPIKES);
+        registerBlockOnly("color_block", COLOR_PICKER_BLOCK);
 
         GLASS_MAP.put(Blocks.GLASS, AtbywBlocks.SHATTERED_GLASS);
         GLASS_MAP.put(Blocks.WHITE_STAINED_GLASS, AtbywBlocks.WHITE_STAINED_SHATTERED_GLASS);

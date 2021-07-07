@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.item;
 
 import com.google.common.collect.Lists;
+import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.util.naming.ColorNames;
 import net.minecraft.block.Block;
@@ -83,6 +84,8 @@ public class AtbywItems {
     public static final Item RED_STAINED_GLASS_SHARD = new Item(createSimpleItem());
     public static final Item BLACK_STAINED_GLASS_SHARD = new Item(createSimpleItem());
 
+    public static final Item COLOR_PICKER_BLOCK = new ColorPickerBlockItem(AtbywBlocks.COLOR_PICKER_BLOCK, createSimpleItem());
+
     public static void init() {
         registerItem(MISC_TAB, "bamboo_stick", BAMBOO_STICK);
 
@@ -97,6 +100,7 @@ public class AtbywItems {
         registerItem(MISC_TAB, "large_chain_link", LARGE_CHAIN_LINK);
         registerItem(MISC_TAB, "glass_shard", GLASS_SHARD);
         registerItems(MISC_TAB, "stained_glass_shard", ColorNames.getNames(), WHITE_STAINED_GLASS_SHARD, ORANGE_STAINED_GLASS_SHARD, MAGENTA_STAINED_GLASS_SHARD, LIGHT_BLUE_STAINED_GLASS_SHARD, YELLOW_STAINED_GLASS_SHARD, LIME_STAINED_GLASS_SHARD, PINK_STAINED_GLASS_SHARD, GRAY_STAINED_GLASS_SHARD, LIGHT_GRAY_STAINED_GLASS_SHARD, CYAN_STAINED_GLASS_SHARD, PURPLE_STAINED_GLASS_SHARD, BLUE_STAINED_GLASS_SHARD, BROWN_STAINED_GLASS_SHARD, GREEN_STAINED_GLASS_SHARD, RED_STAINED_GLASS_SHARD, BLACK_STAINED_GLASS_SHARD);
+        registerItem(MISC_TAB, "color_block", COLOR_PICKER_BLOCK);
 
         registerItem(DECO_TAB, "shroomstick", SHROOMSTICK);
 

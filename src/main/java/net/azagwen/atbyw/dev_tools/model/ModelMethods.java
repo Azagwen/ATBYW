@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.dev_tools;
+package net.azagwen.atbyw.dev_tools.model;
 
 import com.google.gson.JsonObject;
 

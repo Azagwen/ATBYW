@@ -43,7 +43,6 @@ public class AutoJsonWriter {
     }
 
     public void writeAll() {
-        LootTableWave000.write();
         AtbywMain.MYS_LOGGER.info("JSON :)");
     }
 }

@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.dev_tools;
+package net.azagwen.atbyw.dev_tools.loot_table;
 
 import com.google.gson.JsonObject;
 import net.azagwen.atbyw.util.AtbywUtils;

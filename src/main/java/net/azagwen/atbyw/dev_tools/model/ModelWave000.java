@@ -1,6 +1,7 @@
-package net.azagwen.atbyw.dev_tools;
+package net.azagwen.atbyw.dev_tools.model;
 
 import com.google.gson.JsonObject;
+import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
 import net.azagwen.atbyw.util.naming.WoodNames;
 
 import java.util.Map;

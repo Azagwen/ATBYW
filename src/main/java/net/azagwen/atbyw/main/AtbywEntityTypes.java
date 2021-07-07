@@ -1,13 +1,11 @@
 package net.azagwen.atbyw.main;
 
-import net.azagwen.atbyw.item.ShroomStickEntity;
+import net.azagwen.atbyw.item.entity.ShroomStickEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.registry.Registry;
-
-import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywEntityTypes {
 

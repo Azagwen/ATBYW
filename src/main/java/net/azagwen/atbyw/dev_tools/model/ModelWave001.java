@@ -1,8 +1,9 @@
-package net.azagwen.atbyw.dev_tools;
+package net.azagwen.atbyw.dev_tools.model;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
 import net.azagwen.atbyw.util.Pair;
 import net.azagwen.atbyw.util.naming.ColorNames;
 

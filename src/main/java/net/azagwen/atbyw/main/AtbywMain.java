@@ -4,9 +4,8 @@ import com.google.common.collect.Lists;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
-import net.azagwen.atbyw.block.entity.AtbywBlockEntityType;
+import net.azagwen.atbyw.block.entity.AtbywBlockEntityTypes;
 import net.azagwen.atbyw.block.AtbywBlocks;
-import net.azagwen.atbyw.datagen.Datagen;
 import net.azagwen.atbyw.datagen.RecipeRegistry;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
@@ -74,25 +73,28 @@ public class AtbywMain implements ModInitializer {
 	public static int Z_SIDE_LENGTH;
 
 	public static boolean isDebugEnabled() {
-		var client = MinecraftClient.getInstance();
-		var file = new File(client.runDirectory, "config/atbyw.json");
 		try {
-			JsonReader reader = new JsonReader(new FileReader(file));
-			JsonParser parser = new JsonParser();
-			JsonObject json = parser.parse(reader).getAsJsonObject();
+			var client = MinecraftClient.getInstance();
+			var file = new File(client.runDirectory, "config/atbyw.json");
+			try {
+				JsonReader reader = new JsonReader(new FileReader(file));
+				JsonParser parser = new JsonParser();
+				JsonObject json = parser.parse(reader).getAsJsonObject();
 
-			if (json.has("enable_debug")) {
-				return JsonHelper.getBoolean(json, "enable_debug");
+				if (json.has("enable_debug")) {
+					return JsonHelper.getBoolean(json, "enable_debug");
+				}
+			} catch (FileNotFoundException ignored) {
 			}
-		} catch (FileNotFoundException ignored) {
+		} catch (RuntimeException ignored) {
 		}
 
 		return false;
 	}
 
+
 	@Override
 	public void onInitialize() {
-
 		if (enableModInteractions()) {
 			FabricLoader.getInstance().getModContainer(atbywNamespace).map(modContainer -> {
 				return ResourceManagerHelper.registerBuiltinResourcePack(NewAtbywModInteractionID("mod_interaction_resources"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED);
@@ -103,11 +105,12 @@ public class AtbywMain implements ModInitializer {
 
 		AtbywItems.init();
 		AtbywBlocks.init();
-		AtbywBlockEntityType.init();
+		AtbywBlockEntityTypes.init();
 		AtbywWorldGen.init();
 		AtbywRRP.init();
 		RecipeRegistry.init();
 
+		//Populate debug world with this mod's block (dev only)
 		if (isDebugEnabled()) {
 			new AutoJsonWriter().writeAll();
 
