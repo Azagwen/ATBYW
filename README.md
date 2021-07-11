@@ -7,7 +7,7 @@ Adds a lot of blocks you might want, at least I wanted them, so I added them. En
 To use this mode you need to download it from curseforge at this adress :
 https://www.curseforge.com/minecraft/mc-mods/atbyw
 
-or you can build it yourself on your end unsing the source code.
+or you can build it yourself on your end using the source code.
 
 # Issue reporting
 
