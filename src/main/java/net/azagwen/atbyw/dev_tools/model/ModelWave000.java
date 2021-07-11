@@ -9,7 +9,7 @@ import java.util.Map;
 public class ModelWave000 {
 
     public JsonObject writeColumnStairsBlockState(String blockName) {
-        return BlockStatesMethods.blockState(Map.<String, JsonObject>ofEntries(
+        return BlockStatesMethods.blockState(Map.ofEntries(
                 //Straight X
                 Map.entry(String.join(",", "facing=north", "half=bottom", "shape=straight", "axis=x"), BlockStatesMethods.blockStateVariant("atbyw:block/stairs/" + blockName + "_h_z", 270, 0)),
                 Map.entry(String.join(",", "facing=east",  "half=bottom", "shape=straight", "axis=x"), BlockStatesMethods.blockStateVariant("atbyw:block/stairs/" + blockName + "_h_x", 0, 0)),
@@ -151,7 +151,7 @@ public class ModelWave000 {
     }
 
     protected Map<String, String> logStairsTextures(String blockName) {
-        return Map.<String, String>ofEntries(
+        return Map.ofEntries(
                 Map.entry("top", "minecraft:block/" + blockName + "_top"),
                 Map.entry("side", "minecraft:block/" + blockName),
                 Map.entry("cut", "atbyw:block/" + blockName + "_cut")

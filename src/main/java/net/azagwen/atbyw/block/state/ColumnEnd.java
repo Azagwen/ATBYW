@@ -10,7 +10,7 @@ public enum ColumnEnd implements StringIdentifiable {
 
     private final String name;
 
-    private ColumnEnd(String name) {
+    ColumnEnd(String name) {
         this.name = name;
     }
 

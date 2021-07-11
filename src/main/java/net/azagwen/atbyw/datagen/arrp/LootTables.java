@@ -6,10 +6,11 @@ import com.google.gson.JsonObject;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
 import net.azagwen.atbyw.item.AtbywItems;
+import net.azagwen.atbyw.util.AtbywUtils;
 import net.devtech.arrp.api.RuntimeResourcePack;
+import net.devtech.arrp.json.loot.JFunction;
 import net.devtech.arrp.json.loot.JLootTable;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
@@ -25,6 +26,20 @@ public class LootTables {
 
     private static Identifier blockTableID(Identifier blockID) {
         return new Identifier(blockID.getNamespace(), "blocks/" + blockID.getPath());
+    }
+
+    private static JsonObject op(String source, String target, String op) {
+        var json = new JsonObject();
+        json.addProperty("source", source);
+        json.addProperty("target", target);
+        json.addProperty("op", op);
+        return json;
+    }
+
+    private static JFunction copyNbtFunction(JsonArray ops) {
+        return new JFunction("minecraft:copy_nbt")
+                .parameter("source", "block_entity")
+                .parameter("ops", ops);
     }
 
     private static JsonObject silkTouchPredicate() {
@@ -56,6 +71,21 @@ public class LootTables {
         property.addProperty(name, value);
 
         return property;
+    }
+
+    private static void blockColorNbt(RuntimeResourcePack pack, Identifier blockID) {
+        pack.addLootTable(blockTableID(blockID), JLootTable.loot("minecraft:block")
+                .pool(pool()
+                        .rolls(1)
+                        .entry(entry()
+                                .type("minecraft:item")
+                                .name(blockID.toString())
+                                .function(copyNbtFunction(AtbywUtils.jsonArray(
+                                        op("color", "display.color", "replace")
+                                )))
+                        )
+                )
+        );
     }
 
     private static void blockCompactedSnow(RuntimeResourcePack pack, Identifier blockID) {
@@ -332,6 +362,9 @@ public class LootTables {
         blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.GREEN_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.GREEN_STAINED_GLASS_SHARD), 4);
         blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.RED_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.RED_STAINED_GLASS_SHARD), 4);
         blockSilkTouch(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.BLACK_STAINED_SHATTERED_GLASS), getItemID(AtbywItems.BLACK_STAINED_GLASS_SHARD), 4);
+
+        blockColorNbt(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.CANVAS_BLOCK));
+        blockColorNbt(ATBYW_RESOURCE_PACK, getBlockID(AtbywBlocks.GLOWING_CANVAS_BLOCK));
 
         blocksDoorDropSelf(ATBYW_RESOURCE_PACK, Lists.newArrayList(
                 AtbywBlocks.IRON_FENCE_DOOR,

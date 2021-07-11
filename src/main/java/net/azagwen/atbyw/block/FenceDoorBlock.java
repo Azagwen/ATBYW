@@ -79,13 +79,13 @@ public class FenceDoorBlock extends HorizontalFacingBlock {
     }
 
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
-        world.setBlockState(pos.up(), (BlockState)state.with(HALF, DoubleBlockHalf.UPPER), 3);
+        world.setBlockState(pos.up(), state.with(HALF, DoubleBlockHalf.UPPER), 3);
     }
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!world.isClient && player.isCreative()) {
-            DoubleBlockHalf doubleBlockHalf = (DoubleBlockHalf) state.get(HALF);
+            DoubleBlockHalf doubleBlockHalf = state.get(HALF);
             if (doubleBlockHalf == DoubleBlockHalf.UPPER) {
                 BlockPos blockPos2 = pos.down();
                 BlockState blockState2 = world.getBlockState(blockPos2);
@@ -104,20 +104,20 @@ public class FenceDoorBlock extends HorizontalFacingBlock {
             return ActionResult.PASS;
         } else {
             if (state.get(OPEN)) {
-                state = (BlockState) state.with(OPEN, false);
+                state = state.with(OPEN, false);
                 world.setBlockState(pos, state, 10);
             } else {
                 Direction direction = player.getHorizontalFacing();
                 if (state.get(FACING) == direction.getOpposite()) {
-                    state = (BlockState) state.with(FACING, direction);
+                    state = state.with(FACING, direction);
                 }
 
-                state = (BlockState) state.with(OPEN, true);
+                state = state.with(OPEN, true);
                 world.setBlockState(pos, state, 10);
             }
         }
 
-        world.syncWorldEvent(player, (Boolean)state.get(OPEN) ? this.getCloseSoundEventId() : this.getOpenSoundEventId(), pos, 0);
+        world.syncWorldEvent(player, state.get(OPEN) ? this.getCloseSoundEventId() : this.getOpenSoundEventId(), pos, 0);
         return ActionResult.success(world.isClient);
     }
 
@@ -130,7 +130,7 @@ public class FenceDoorBlock extends HorizontalFacingBlock {
     }
 
     private void playOpenCloseSound(World world, BlockPos pos, boolean open) {
-        world.syncWorldEvent((PlayerEntity)null, open ? this.getCloseSoundEventId() : this.getOpenSoundEventId(), pos, 0);
+        world.syncWorldEvent(null, open ? this.getCloseSoundEventId() : this.getOpenSoundEventId(), pos, 0);
     }
 
     @Override

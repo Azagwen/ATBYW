@@ -1,11 +1,11 @@
 package net.azagwen.atbyw.block;
 
-import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import net.azagwen.atbyw.block.slabs.*;
 import net.azagwen.atbyw.block.stairs.*;
 import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.azagwen.atbyw.block.statues.*;
-import net.azagwen.atbyw.main.AtbywIdentifier;
+import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.naming.ColorNames;
 import net.azagwen.atbyw.util.naming.FlowerNames;
 import net.azagwen.atbyw.util.naming.WoodNames;
@@ -20,7 +20,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
-import java.util.Map;
+import java.util.Set;
 import java.util.function.ToIntFunction;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
@@ -43,8 +43,8 @@ public class AtbywBlocks {
     //TODO: Idea > "dried" coral blocks that keep their colors
     //TODO: Add chairs ?
     //TODO: Add step detectors.
-    //TODO: Add Broken glass and glass shards (cook to turn back into regular glass).
     //TODO: Add a chain hook that you can hook items and blocks to.
+    //TODO: add a paint mixer workstation (precise color item manipulation).
 
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
     public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
@@ -67,8 +67,25 @@ public class AtbywBlocks {
         return FabricBlockSettings.of(Material.WOOD, copiedMatColor.getDefaultMapColor()).breakByTool(FabricToolTags.AXES).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD);
     }
 
-    public static FabricBlockSettings logSettings(Block copiedBlock) {
+    private static FabricBlockSettings logSettings(Block copiedBlock) {
         return FabricBlockSettings.of(Material.WOOD, copiedBlock.getDefaultMapColor()).strength(2.0F).breakByTool(FabricToolTags.AXES).sounds(copiedBlock.getSoundGroup(copiedBlock.getDefaultState()));
+    }
+
+    private static ShatteredGlassBlock shatteredGlass(Block copiedBlock) {
+        var settings = FabricBlockSettings.of(Material.GLASS).strength(0.3F).sounds(BlockSoundGroup.GLASS).nonOpaque().allowsSpawning(AtbywBlocks::never).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never);
+
+        if (copiedBlock instanceof StainedGlassBlock stainedGlass) {
+            return new ShatteredGlassBlock(SHATTERED_GLASS_SET, stainedGlass.getColor(), stainedGlass, settings);
+        } else {
+            return new ShatteredGlassBlock(SHATTERED_GLASS_SET, copiedBlock, settings);
+        }
+    }
+
+    private static CanvasBlock canvasBlock(boolean glowing) {
+        var settings = FabricBlockSettings.of(Material.WOOL).strength(0.5F).sounds(BlockSoundGroup.WOOL);
+        var finalSettings = settings.luminance((blockStatex) -> glowing ? 1 : 0).emissiveLighting((state, world, pos) -> glowing);
+
+        return new CanvasBlock(glowing, finalSettings);
     }
 
     //Dummy Blocks (used only in-code references and specific properties)
@@ -352,23 +369,24 @@ public class AtbywBlocks {
     public static final Block RED_SAND_STAIRS = new FallingStairsBlock(11098145, Blocks.RED_SAND, RED_SAND_SLAB, FabricBlockSettings.copyOf(Blocks.RED_SAND).breakByTool(FabricToolTags.SHOVELS));
     public static final Block GRAVEL_STAIRS = new FallingStairsBlock(-8356741, Blocks.GRAVEL, GRAVEL_SLAB, FabricBlockSettings.copyOf(Blocks.GRAVEL).breakByTool(FabricToolTags.SHOVELS));
 
-    public static final Block SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.GLASS);
-    public static final Block WHITE_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.WHITE_STAINED_GLASS);
-    public static final Block ORANGE_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.ORANGE_STAINED_GLASS);
-    public static final Block MAGENTA_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.MAGENTA_STAINED_GLASS);
-    public static final Block LIGHT_BLUE_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.LIGHT_BLUE_STAINED_GLASS);
-    public static final Block YELLOW_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.YELLOW_STAINED_GLASS);
-    public static final Block LIME_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.LIME_STAINED_GLASS);
-    public static final Block PINK_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.PINK_STAINED_GLASS);
-    public static final Block GRAY_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.GRAY_STAINED_GLASS);
-    public static final Block LIGHT_GRAY_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.LIGHT_GRAY_STAINED_GLASS);
-    public static final Block CYAN_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.CYAN_STAINED_GLASS);
-    public static final Block PURPLE_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.PURPLE_STAINED_GLASS);
-    public static final Block BLUE_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.BLUE_STAINED_GLASS);
-    public static final Block BROWN_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.BROWN_STAINED_GLASS);
-    public static final Block GREEN_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.GREEN_STAINED_GLASS);
-    public static final Block RED_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.RED_STAINED_GLASS);
-    public static final Block BLACK_STAINED_SHATTERED_GLASS = new ShatteredGlassBlock(Blocks.BLACK_STAINED_GLASS);
+    public static final Set<Block> SHATTERED_GLASS_SET = Sets.newHashSet();
+    public static final Block SHATTERED_GLASS = shatteredGlass(Blocks.GLASS);
+    public static final Block WHITE_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.WHITE_STAINED_GLASS);
+    public static final Block ORANGE_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.ORANGE_STAINED_GLASS);
+    public static final Block MAGENTA_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.MAGENTA_STAINED_GLASS);
+    public static final Block LIGHT_BLUE_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.LIGHT_BLUE_STAINED_GLASS);
+    public static final Block YELLOW_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.YELLOW_STAINED_GLASS);
+    public static final Block LIME_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.LIME_STAINED_GLASS);
+    public static final Block PINK_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.PINK_STAINED_GLASS);
+    public static final Block GRAY_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.GRAY_STAINED_GLASS);
+    public static final Block LIGHT_GRAY_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.LIGHT_GRAY_STAINED_GLASS);
+    public static final Block CYAN_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.CYAN_STAINED_GLASS);
+    public static final Block PURPLE_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.PURPLE_STAINED_GLASS);
+    public static final Block BLUE_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.BLUE_STAINED_GLASS);
+    public static final Block BROWN_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.BROWN_STAINED_GLASS);
+    public static final Block GREEN_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.GREEN_STAINED_GLASS);
+    public static final Block RED_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.RED_STAINED_GLASS);
+    public static final Block BLACK_STAINED_SHATTERED_GLASS = shatteredGlass(Blocks.BLACK_STAINED_GLASS);
 
     public static final Block DEVELOPER_BLOCK = new DevBlock(FabricBlockSettings.of(Material.WOOL, MapColor.ORANGE).nonOpaque().breakByHand(true).strength(0.1F).sounds(BlockSoundGroup.BONE));
 
@@ -424,10 +442,10 @@ public class AtbywBlocks {
     public static final Block PRISMARINE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.PRISMARINE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
     public static final Block BLACKSTONE_COLUMN = new ColumnBlock(FabricBlockSettings.copyOf(Blocks.BLACKSTONE).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
-    public static final Block IRON_SPIKE_TRAP_SPIKES = new SpikeBlock(new AtbywIdentifier("iron_spike_trap"), 2.0F, 1, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
-    public static final Block GOLD_SPIKE_TRAP_SPIKES = new SpikeBlock(new AtbywIdentifier("gold_spike_trap"), 0.5F, 0, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
-    public static final Block DIAMOND_SPIKE_TRAP_SPIKES = new SpikeBlock(new AtbywIdentifier("diamond_spike_trap"), 3.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
-    public static final Block NETHERITE_SPIKE_TRAP_SPIKES = new SpikeBlock(new AtbywIdentifier("netherite_spike_trap"), 4.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block IRON_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywMain.Id("iron_spike_trap"), 2.0F, 1, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block GOLD_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywMain.Id("gold_spike_trap"), 0.5F, 0, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block DIAMOND_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywMain.Id("diamond_spike_trap"), 3.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
+    public static final Block NETHERITE_SPIKE_TRAP_SPIKES = new SpikeBlock(AtbywMain.Id("netherite_spike_trap"), 4.0F, 2, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never).suffocates(AtbywBlocks::never).blockVision(AtbywBlocks::never).dropsNothing().nonOpaque().noCollision());
 
     public static final Block IRON_SPIKE_TRAP = new SpikeTrapBlock(IRON_SPIKE_TRAP_SPIKES, 1.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
     public static final Block GOLD_SPIKE_TRAP = new SpikeTrapBlock(GOLD_SPIKE_TRAP_SPIKES, 0.5F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
@@ -437,7 +455,7 @@ public class AtbywBlocks {
     public static final Block TIMER_REPEATER = new TimerRepeaterBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
     public static final Block REDSTONE_CROSS_PATH = new RedstoneCrossPathBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
 
-    public static final Block ACACIA_RAILING = new RailingBlock(new AtbywIdentifier("acacia_railing"), FabricBlockSettings.copyOf(Blocks.ACACIA_FENCE));
+    public static final Block ACACIA_RAILING = new RailingBlock(AtbywMain.Id("acacia_railing"), FabricBlockSettings.copyOf(Blocks.ACACIA_FENCE));
 
     public static final Block LARGE_CHAIN = new LargeChainBlock(FabricBlockSettings.copyOf(Blocks.CHAIN).requiresTool().breakByTool(FabricToolTags.PICKAXES));
 
@@ -477,9 +495,8 @@ public class AtbywBlocks {
     public static final Block STRIPPED_CRIMSON_STEM_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_CRIMSON_STEM));
     public static final Block STRIPPED_WARPED_STEM_SLAB = new PillarSlabBlock(logSettings(Blocks.STRIPPED_WARPED_STEM));
 
-    public static final Block COLOR_PICKER_BLOCK = new ColorPickerBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL));
-
-    public static final Map<Block, Block> GLASS_MAP = Maps.newHashMap();
+    public static final Block CANVAS_BLOCK = canvasBlock(false);
+    public static final Block GLOWING_CANVAS_BLOCK = canvasBlock(true);
 
     public static void init() {
 
@@ -652,25 +669,8 @@ public class AtbywBlocks {
         registerBlockOnly("gold_spike_trap_spikes", GOLD_SPIKE_TRAP_SPIKES);
         registerBlockOnly("diamond_spike_trap_spikes", DIAMOND_SPIKE_TRAP_SPIKES);
         registerBlockOnly("netherite_spike_trap_spikes", NETHERITE_SPIKE_TRAP_SPIKES);
-        registerBlockOnly("color_block", COLOR_PICKER_BLOCK);
-
-        GLASS_MAP.put(Blocks.GLASS, AtbywBlocks.SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.WHITE_STAINED_GLASS, AtbywBlocks.WHITE_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.ORANGE_STAINED_GLASS, AtbywBlocks.ORANGE_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.MAGENTA_STAINED_GLASS, AtbywBlocks.MAGENTA_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.LIGHT_BLUE_STAINED_GLASS, AtbywBlocks.LIGHT_BLUE_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.YELLOW_STAINED_GLASS, AtbywBlocks.YELLOW_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.LIME_STAINED_GLASS, AtbywBlocks.LIME_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.PINK_STAINED_GLASS, AtbywBlocks.PINK_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.GRAY_STAINED_GLASS, AtbywBlocks.GRAY_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.LIGHT_GRAY_STAINED_GLASS, AtbywBlocks.LIGHT_GRAY_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.CYAN_STAINED_GLASS, AtbywBlocks.CYAN_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.PURPLE_STAINED_GLASS, AtbywBlocks.PURPLE_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.BLUE_STAINED_GLASS, AtbywBlocks.BLUE_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.BROWN_STAINED_GLASS, AtbywBlocks.BROWN_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.GREEN_STAINED_GLASS, AtbywBlocks.GREEN_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.RED_STAINED_GLASS, AtbywBlocks.RED_STAINED_SHATTERED_GLASS);
-        GLASS_MAP.put(Blocks.BLACK_STAINED_GLASS, AtbywBlocks.BLACK_STAINED_SHATTERED_GLASS);
+        registerBlockOnly("canvas_block", CANVAS_BLOCK);
+        registerBlockOnly("glowing_canvas_block", GLOWING_CANVAS_BLOCK);
 
         LOGGER.info("ATBYW Blocks Inintiliazed");
     }

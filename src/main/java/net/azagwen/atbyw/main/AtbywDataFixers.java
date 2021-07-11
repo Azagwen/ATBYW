@@ -21,7 +21,7 @@ public class AtbywDataFixers {
     private static final BiFunction<Integer, Schema, Schema> EMPTY_IDENTIFIER_NORMALIZE = IdentifierNormalizingSchema::new;
 
 
-    public static DataFixer create() {
+    private static DataFixer create() {
         DataFixerBuilder builder = new DataFixerBuilder(1);
 
         Schema dirtPathSchema = builder.addSchema(0, EMPTY_IDENTIFIER_NORMALIZE);

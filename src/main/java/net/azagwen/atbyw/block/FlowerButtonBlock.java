@@ -32,7 +32,7 @@ public class FlowerButtonBlock extends PlantBlock {
     public static final BooleanProperty POWERED;
     public static final BooleanProperty LIT;
     public static final IntProperty TIMER;
-    private static int delay = 15;
+    private static final int delay = 15;
 
     protected FlowerButtonBlock(Settings settings) {
         super(settings);

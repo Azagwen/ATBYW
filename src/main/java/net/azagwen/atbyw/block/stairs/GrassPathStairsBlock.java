@@ -34,7 +34,7 @@ public class GrassPathStairsBlock extends StairsBlockSubClass {
     }
 
     private int getShapeIndexIndex(BlockState state) {
-        return ((StairShape)state.get(SHAPE)).ordinal() * 4 + (state.get(FACING)).getHorizontal();
+        return state.get(SHAPE).ordinal() * 4 + (state.get(FACING)).getHorizontal();
     }
 
     private static VoxelShape[] composeShapes(VoxelShape base, VoxelShape northWest, VoxelShape northEast, VoxelShape southWest, VoxelShape southEast) {

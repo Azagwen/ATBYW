@@ -16,12 +16,12 @@ public enum PistonWoodTypes implements PistonWoodType {
     CRIMSON("crimson", AtbywExperimentalBlocks.CRIMSON_PISTON, AtbywExperimentalBlocks.CRIMSON_STICKY_PISTON, AtbywExperimentalBlocks.CRIMSON_PISTON_HEAD, AtbywExperimentalBlocks.CRIMSON_MOVING_PISTON, AtbywExperimentalBlocks.CRIMSON_PISTON_ENTITY),
     WARPED("warped", AtbywExperimentalBlocks.WARPED_PISTON, AtbywExperimentalBlocks.WARPED_STICKY_PISTON, AtbywExperimentalBlocks.WARPED_PISTON_HEAD, AtbywExperimentalBlocks.WARPED_MOVING_PISTON, AtbywExperimentalBlocks.WARPED_PISTON_ENTITY);
 
-    private Block piston;
-    private Block sticky_piston;
-    private Block piston_head;
-    private Block moving_piston;
-    private BlockEntityType<PistonBlockEntity> piston_entity;
-    private String name;
+    private final Block piston;
+    private final Block sticky_piston;
+    private final Block piston_head;
+    private final Block moving_piston;
+    private final BlockEntityType<PistonBlockEntity> piston_entity;
+    private final String name;
 
     PistonWoodTypes(String name, Block piston, Block sticky_piston, Block piston_head, Block moving_piston, BlockEntityType<PistonBlockEntity> piston_entity) {
         this.piston = piston;

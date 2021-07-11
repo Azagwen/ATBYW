@@ -8,8 +8,8 @@ public class AtbywRecipe {
     private final Identifier recipeIdentifier;
 
     public AtbywRecipe(JsonObject recipeJson, Identifier recipeIdentifier) {
-        this.recipeJson = recipeJson;;
-        this.recipeIdentifier = recipeIdentifier;;
+        this.recipeJson = recipeJson;
+        this.recipeIdentifier = recipeIdentifier;
     }
 
     public JsonObject getJson() {

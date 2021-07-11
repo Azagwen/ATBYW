@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityTypes;
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.client.render.AtbywRenderLayer;
 import net.azagwen.atbyw.datagen.RecipeRegistry;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
@@ -36,14 +37,18 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class AtbywMain implements ModInitializer {
-	public static final String mcNameSpace = "minecraft";
-	public static final String atbywNamespace = "atbyw";
-	public static final String modInteractionNameSpace = "atbyw_mi";
+	public static final String MINECRAFT = "minecraft";
+	public static final String ATBYW = "atbyw";
+	public static final String ATBYW_MI = "atbyw_mi";
 	public static final Logger LOGGER  = LogManager.getLogger("Atbyw Main");
 	public static final Logger MYS_LOGGER  = LogManager.getLogger("?");
 
+	public static Identifier Id(String path) {
+		return new Identifier(ATBYW, path);
+	}
+
 	public static Identifier NewAtbywModInteractionID(String path) {
-		return new Identifier(modInteractionNameSpace, path);
+		return new Identifier(ATBYW_MI, path);
 	}
 
 	public static boolean isModLoaded(String ModID) {
@@ -96,7 +101,7 @@ public class AtbywMain implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		if (enableModInteractions()) {
-			FabricLoader.getInstance().getModContainer(atbywNamespace).map(modContainer -> {
+			FabricLoader.getInstance().getModContainer(ATBYW).map(modContainer -> {
 				return ResourceManagerHelper.registerBuiltinResourcePack(NewAtbywModInteractionID("mod_interaction_resources"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED);
 			}).filter(success -> !success).ifPresent(success -> LOGGER.error("Unable to Load \"atbyw_mi/mod_interaction_resources\"."));
 
@@ -124,7 +129,7 @@ public class AtbywMain implements ModInitializer {
 			MYS_LOGGER.info("As expected :)");
 		}
 
-		ATBYW_GROUP = new AtbywItemGroup(new AtbywIdentifier("atbyw"));
+		ATBYW_GROUP = new AtbywItemGroup(AtbywMain.Id("atbyw"));
 
 		LOGGER.info("ATBYW Inintiliazed");
 	}

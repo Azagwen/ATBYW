@@ -29,6 +29,7 @@ bin/
 minecraft
 !src/main/resources/data/minecraft
 /run/
+/server_run/
 **/bbmodels/
 **/ref/
 **/.ref/

@@ -34,10 +34,10 @@ public class AtbywItemGroup extends TabbedItemGroup {
     public static ItemGroupTab ATBYW_MISC = new ItemGroupTab(new ItemStack(AtbywItems.BAMBOO_STICK), "misc", ATBYW_MISC_TAB);
 
     public static void registerTags() {
-        Tags.createItemTag(ATBYW_RESOURCE_PACK, atbywNamespace, "tab_blocks", BLOCKS_TAB);
-        Tags.createItemTag(ATBYW_RESOURCE_PACK, atbywNamespace, "tab_deco", DECO_TAB);
-        Tags.createItemTag(ATBYW_RESOURCE_PACK, atbywNamespace, "tab_redstone", REDSTONE_TAB);
-        Tags.createItemTag(ATBYW_RESOURCE_PACK, atbywNamespace, "tab_misc", MISC_TAB);
+        Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_blocks", BLOCKS_TAB);
+        Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_deco", DECO_TAB);
+        Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_redstone", REDSTONE_TAB);
+        Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_misc", MISC_TAB);
     }
 
     @Override

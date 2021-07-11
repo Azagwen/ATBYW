@@ -47,7 +47,7 @@ public class BookshelfToggleBlock extends HorizontalFacingBlock {
             return ActionResult.SUCCESS;
         } else {
             float f = blockState.get(POWERED) ? 0.6F : 0.5F;
-            world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, f);
+            world.playSound(null, pos, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, f);
             return ActionResult.CONSUME;
         }
     }

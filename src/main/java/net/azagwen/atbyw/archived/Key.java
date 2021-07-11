@@ -3,9 +3,9 @@ package net.azagwen.atbyw.archived;
 import net.minecraft.util.Identifier;
 
 public class Key {
-    private Character CHAR;
-    private String TYPE;
-    private Identifier INGREDIENT;
+    private final Character CHAR;
+    private final String TYPE;
+    private final Identifier INGREDIENT;
 
     public Key(Character C, String T, Identifier I) {
         this.CHAR = C;

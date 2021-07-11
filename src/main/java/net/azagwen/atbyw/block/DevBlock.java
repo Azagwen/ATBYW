@@ -39,7 +39,7 @@ public class DevBlock extends FacingBlock {
 
     public DevBlock(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState) ((BlockState) this.stateManager.getDefaultState()).with(HORIZONTAL_FACING, Direction.NORTH).with(VERTICAL_FACING, Direction.UP));
+        this.setDefaultState(this.stateManager.getDefaultState().with(HORIZONTAL_FACING, Direction.NORTH).with(VERTICAL_FACING, Direction.UP));
 
     }
 

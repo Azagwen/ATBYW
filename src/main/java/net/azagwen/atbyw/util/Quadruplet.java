@@ -1,10 +1,10 @@
 package net.azagwen.atbyw.util;
 
 public class Quadruplet<A, B, C, D> {
-    private A first;
-    private B second;
-    private C third;
-    private D fourth;
+    private final A first;
+    private final B second;
+    private final C third;
+    private final D fourth;
 
     public Quadruplet(A first, B second, C third, D fourth) {
         this.first = first;

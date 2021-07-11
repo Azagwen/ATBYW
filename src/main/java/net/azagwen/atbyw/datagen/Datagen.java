@@ -6,7 +6,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.AtbywUtils;
 import net.azagwen.atbyw.util.Pair;
@@ -181,7 +180,7 @@ public class Datagen {
     }
 
     public static void test() {
-        var recipeId = new AtbywIdentifier("testo");
+        var recipeId = AtbywMain.Id("testo");
         var keys = HashMultimap.<Character, Ingredient>create();
         keys.put('X', Ingredient.ofItems(Items.ACACIA_LOG));
         keys.put('E', Ingredient.ofItems(Items.BREAD));

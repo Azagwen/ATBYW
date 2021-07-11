@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.world.structure;
 
-import net.azagwen.atbyw.main.AtbywIdentifier;
+import net.azagwen.atbyw.main.AtbywMain;
 import net.minecraft.structure.StructureManager;
 import net.minecraft.structure.StructurePiece;
 import net.minecraft.util.BlockRotation;
@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Random;
 
 public class DesertCryptGenerator {
-    private static final Identifier CRYPT_BUILDING = new AtbywIdentifier("desert_crypt/building");
-    private static final Identifier CRYPT_TRAP_SPIKES = new AtbywIdentifier("desert_crypt/trap_spikes");
-    private static final Identifier CRYPT_TRAP_BOMB = new AtbywIdentifier("desert_crypt/trap_bomb");
-    private static final Identifier CRYPT_TRAP_LAVA = new AtbywIdentifier("desert_crypt/trap_lava");
+    private static final Identifier CRYPT_BUILDING = AtbywMain.Id("desert_crypt/building");
+    private static final Identifier CRYPT_TRAP_SPIKES = AtbywMain.Id("desert_crypt/trap_spikes");
+    private static final Identifier CRYPT_TRAP_BOMB = AtbywMain.Id("desert_crypt/trap_bomb");
+    private static final Identifier CRYPT_TRAP_LAVA = AtbywMain.Id("desert_crypt/trap_lava");
 
     public static void addPieces(StructureManager manager, BlockPos pos, List<StructurePiece> pieces, Random random) {
         pieces.add(new DesertCryptPiece(manager, CRYPT_BUILDING, pos, BlockRotation.NONE));

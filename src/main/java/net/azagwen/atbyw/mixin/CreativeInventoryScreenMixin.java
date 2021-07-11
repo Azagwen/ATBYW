@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import net.azagwen.atbyw.group.AtbywItemGroup;
 import net.azagwen.atbyw.group.ItemGroupTabWidget;
 import net.azagwen.atbyw.group.TabbedItemGroup;
-import net.azagwen.atbyw.main.AtbywIdentifier;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ConfirmChatLinkScreen;
@@ -27,7 +26,7 @@ import java.util.List;
 
 @Mixin(CreativeInventoryScreen.class)
 public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScreen<CreativeInventoryScreen.CreativeScreenHandler> {
-    private static final Identifier MEDIA_ICON_TEXTURE = new AtbywIdentifier("textures/gui/info_button.png");
+    private static final Identifier MEDIA_ICON_TEXTURE = AtbywMain.Id("textures/gui/info_button.png");
     private final String curseforgeLink = "https://www.curseforge.com/minecraft/mc-mods/atbyw";
     private final String githubLink = "https://github.com/Azagwen/ATBYW";
     private final List<TexturedButtonWidget> mediaButtons = Lists.newArrayList();
@@ -83,7 +82,7 @@ public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScre
 
                     this.client.openScreen(this);
                 }, curseforgeLink, true));
-            }, new TranslatableText("itemGroup." + AtbywMain.atbywNamespace + ".curseforgeLink"));
+            }, new TranslatableText("itemGroup." + AtbywMain.ATBYW + ".curseforgeLink"));
             var githubButton = new TexturedButtonWidget(this.x + 161, this.y + 4, 12, 12, 12, 0, 12, MEDIA_ICON_TEXTURE, 64, 64, (button) -> {
                 this.client.openScreen(new ConfirmChatLinkScreen((opened) -> {
                     if (opened) {
@@ -92,7 +91,7 @@ public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScre
 
                     this.client.openScreen(this);
                 }, githubLink, true));
-            }, new TranslatableText("itemGroup." + AtbywMain.atbywNamespace + ".githubLink"));
+            }, new TranslatableText("itemGroup." + AtbywMain.ATBYW + ".githubLink"));
             mediaButtons.add(curseforgeButton);
             mediaButtons.add(githubButton);
             this.addDrawableChild(curseforgeButton);

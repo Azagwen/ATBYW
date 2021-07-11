@@ -65,6 +65,7 @@ dependencies {
 	//Datapack Item operations
 	modImplementation "maven.modrinth:dp_item_ops:${project.datapack_item_ops_version}"			//API + Lib
 	include "maven.modrinth:dp_item_ops:${project.datapack_item_ops_version}"					//API + Lib
+
 }
 
 minecraft {

@@ -23,13 +23,13 @@ public class ModelWave001 {
             variantTable.put("atbyw:block/" + prefix + "shattered_glass_" + i, false, new Pair<>(0, 0));
         }
 
-        return BlockStatesMethods.randomisedBlockState(Map.<String, JsonArray>ofEntries(
+        return BlockStatesMethods.randomisedBlockState(Map.ofEntries(
                 Map.entry("", BlockStatesMethods.randomisedBlockStateVariant(variantTable))
         ));
     }
 
     protected static Map<String, String> glassTextures(String blockName) {
-        return Map.<String, String>ofEntries(
+        return Map.ofEntries(
                 Map.entry("all", "atbyw:block/" + blockName)
         );
     }

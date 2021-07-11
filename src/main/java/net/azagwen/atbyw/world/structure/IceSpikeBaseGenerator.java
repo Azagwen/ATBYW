@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.world.structure;
 
-import net.azagwen.atbyw.main.AtbywIdentifier;
+import net.azagwen.atbyw.main.AtbywMain;
 import net.minecraft.structure.StructureManager;
 import net.minecraft.structure.StructurePiece;
 import net.minecraft.util.BlockRotation;
@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Random;
 
 public class IceSpikeBaseGenerator {
-    private static final Identifier BASE_TOP = new AtbywIdentifier("ice_spike_base/top");
-    private static final Identifier BASE_MIDDLE = new AtbywIdentifier("ice_spike_base/middle");
-    private static final Identifier BASE_BOTTOM = new AtbywIdentifier("ice_spike_base/bottom");
+    private static final Identifier BASE_TOP = AtbywMain.Id("ice_spike_base/top");
+    private static final Identifier BASE_MIDDLE = AtbywMain.Id("ice_spike_base/middle");
+    private static final Identifier BASE_BOTTOM = AtbywMain.Id("ice_spike_base/bottom");
 
     public static void addPieces(StructureManager manager, BlockPos pos, List<StructurePiece> pieces, Random random, BlockRotation rotation) {
         if (random.nextDouble() < 0.5D) {

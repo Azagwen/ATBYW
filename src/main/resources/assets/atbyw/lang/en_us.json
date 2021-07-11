@@ -2,6 +2,9 @@
   "_comment": "Blocks",
   "block.atbyw.dev_block": "Aza Block",
 
+  "block.atbyw.canvas_block": "Canvas Block",
+  "block.atbyw.glowing_canvas_block": "Glowing Canvas Block",
+
   "block.atbyw.shattered_glass": "Shattered Glass",
   "block.atbyw.white_stained_shattered_glass": "White Stained Shattered Glass",
   "block.atbyw.orange_stained_shattered_glass": "Orange Stained Shattered Glass",
@@ -335,28 +338,6 @@
 
   "block.atbyw.large_chain": "Large Chain",
 
-  "_comment": "Items",
-  "item.atbyw.bamboo_stick": "Bamboo Stick",
-
-  "item.atbyw.bee_essence": "Bee Essence",
-  "item.atbyw.silverfish_essence": "Silverfish Essence",
-  "item.atbyw.endermite_essence": "Endermite Essence",
-  "item.atbyw.shulker_essence": "Shulker Essence",
-  "item.atbyw.wolf_essence": "Wolf Essence",
-  "item.atbyw.cat_essence": "Cat Essence",
-  "item.atbyw.chicken_essence": "Chicken Essence",
-  "item.atbyw.rabbit_essence": "Rabbit Essence",
-  "item.atbyw.fox_essence": "Fox Essence",
-  "item.atbyw.cod_essence": "Cod Essence",
-  "item.atbyw.salmon_essence": "Salmon Essence",
-  "item.atbyw.puffer_fish_essence": "Pufferfish Essence",
-  "item.atbyw.slime_essence": "Slime Essence",
-  "item.atbyw.magma_cube_essence": "Magma Cube Essence",
-
-  "item.atbyw.shroomstick": "Shroomstick",
-
-  "item.atbyw.large_chain_link": "Large Chain Link",
-
   "_comment": "Terracotta stairs",
   "block.atbyw.terracotta_stairs": "Terracotta Stairs",
   "block.atbyw.white_terracotta_stairs": "White Terracotta Stairs",
@@ -542,6 +523,42 @@
   "block.atbyw.green_cinder_blocks_wall": "Green Cinder Blocks Wall",
   "block.atbyw.red_cinder_blocks_wall": "Red Cinder Blocks Wall",
   "block.atbyw.black_cinder_blocks_wall": "Black Cinder Blocks Wall",
+
+  "_comment": "Items",
+  "item.atbyw.colorizer": "Colorizer",
+
+  "item.atbyw.glass_shard":  "Glass Shard",
+  "item.atbyw.white_stained_glass_shard": "White Stained Glass Shard",
+  "item.atbyw.orange_stained_glass_shard": "Orange Stained Glass Shard",
+  "item.atbyw.magenta_stained_glass_shard": "Magenta Stained Glass Shard",
+  "item.atbyw.light_blue_stained_glass_shard": "Light Blue Stained Glass Shard",
+  "item.atbyw.yellow_stained_glass_shard": "Yellow Stained Glass Shard",
+  "item.atbyw.lime_stained_glass_shard": "Lime Stained Glass Shard",
+  "item.atbyw.pink_stained_glass_shard": "Pink Stained Glass Shard",
+  "item.atbyw.gray_stained_glass_shard": "Gray Stained Glass Shard",
+  "item.atbyw.light_gray_stained_glass_shard": "Light Gray Stained Glass Shard",
+  "item.atbyw.cyan_stained_glass_shard": "Cyan Stained Glass Shard",
+  "item.atbyw.purple_stained_glass_shard": "Purple Stained Glass Shard",
+  "item.atbyw.blue_stained_glass_shard": "Blue Stained Glass Shard",
+  "item.atbyw.brown_stained_glass_shard": "Brown Stained Glass Shard",
+  "item.atbyw.green_stained_glass_shard": "Green Stained Glass Shard",
+  "item.atbyw.red_stained_glass_shard": "Red Stained Glass Shard",
+  "item.atbyw.black_stained_glass_shard": "Black Stained Glass Shard",
+
+  "item.atbyw.stick_shard": "Bamboo Stick",
+
+  "item.atbyw.shulker_essence": "Shulker Essence",
+  "item.atbyw.chicken_essence": "Chicken Essence",
+  "item.atbyw.rabbit_essence": "Rabbit Essence",
+  "item.atbyw.cod_essence": "Cod Essence",
+  "item.atbyw.salmon_essence": "Salmon Essence",
+  "item.atbyw.puffer_fish_essence": "Pufferfish Essence",
+  "item.atbyw.slime_essence": "Slime Essence",
+  "item.atbyw.magma_cube_essence": "Magma Cube Essence",
+
+  "item.atbyw.shroomstick": "Shroomstick",
+
+  "item.atbyw.large_chain_link": "Large Chain Link",
 
   "_comment": "Misc",
   "itemGroup.atbyw.atbyw": "§nA§rll §nT§rhe §nB§rlocks §nY§rou §nW§rant",

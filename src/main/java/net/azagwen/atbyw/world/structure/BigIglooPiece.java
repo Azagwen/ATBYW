@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.world.structure;
 
-import net.azagwen.atbyw.main.AtbywIdentifier;
+import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.world.AtbywWorldGen;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
@@ -50,7 +50,7 @@ public class BigIglooPiece extends SimpleStructurePiece {
             serverWorldAccess.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
             BlockEntity blockEntity = serverWorldAccess.getBlockEntity(pos.down());
             if (blockEntity instanceof ChestBlockEntity) {
-                ((ChestBlockEntity)blockEntity).setLootTable(new AtbywIdentifier("chests/big_igloo_chest"), random.nextLong());
+                ((ChestBlockEntity)blockEntity).setLootTable(AtbywMain.Id("chests/big_igloo_chest"), random.nextLong());
             }
         }
     }

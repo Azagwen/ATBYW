@@ -1,7 +1,7 @@
 package net.azagwen.atbyw.dev_tools.loot_table;
 
 import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
-import net.azagwen.atbyw.main.AtbywIdentifier;
+import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.naming.ColorNames;
 import net.minecraft.util.Identifier;
 
@@ -13,26 +13,26 @@ public class LootTableWave000 {
         var writer = new AutoJsonWriter();
 
         ColorNames.getNames().forEach((color) -> {
-            var shardEntry = Entries.itemEntry(new AtbywIdentifier(color + "_stained_glass_shard"), null, LootTableMethods.Entries.functions(LootTableMethods.Functions.setCount(1, 4)));
-            var blockEntry = Entries.itemEntry(new AtbywIdentifier(color + "_stained_shattered_glass"));
+            var shardEntry = Entries.itemEntry(AtbywMain.Id(color + "_stained_glass_shard"), null, LootTableMethods.Entries.functions(LootTableMethods.Functions.setCount(1, 4)));
+            var blockEntry = Entries.itemEntry(AtbywMain.Id(color + "_stained_shattered_glass"));
             var shardTable = blockTable(pool(1.0F, 0.0F, shardEntry, blockEntry));
             writer.write("loot_tables/blocks/" + color + "_stained_glass_shards.json", shardTable);
         });
 
         ColorNames.getNames().forEach((color) -> {
-            var silkTouchEntry = Entries.itemEntry(new AtbywIdentifier(color + "_stained_glass_shard"), Entries.conditions(Conditions.silkTouchEnchantment()), null);
+            var silkTouchEntry = Entries.itemEntry(AtbywMain.Id(color + "_stained_glass_shard"), Entries.conditions(Conditions.silkTouchEnchantment()), null);
             var shardEntry = Entries.lootTableEntry(new Identifier("blocks/" + color + "_stained_glass_shards"));
             var table = blockTable(pool(1.0F, 0.0F, silkTouchEntry, shardEntry));
             writer.write("loot_tables/blocks/" + color + "_stained_glass.json", table);
         });
 
-        var silkTouchEntry = Entries.itemEntry(new AtbywIdentifier("glass_shard"), Entries.conditions(Conditions.silkTouchEnchantment()), null);
+        var silkTouchEntry = Entries.itemEntry(AtbywMain.Id("glass_shard"), Entries.conditions(Conditions.silkTouchEnchantment()), null);
         var shardEntry = Entries.lootTableEntry(new Identifier("blocks/glass_shards"));
         var table = blockTable(pool(1.0F, 0.0F, silkTouchEntry, shardEntry));
         writer.write("loot_tables/blocks/glass.json", table);
 
-        shardEntry = Entries.itemEntry(new AtbywIdentifier("glass_shard"), null, LootTableMethods.Entries.functions(LootTableMethods.Functions.setCount(1, 4)));
-        var blockEntry = Entries.itemEntry(new AtbywIdentifier("shattered_glass"));
+        shardEntry = Entries.itemEntry(AtbywMain.Id("glass_shard"), null, LootTableMethods.Entries.functions(LootTableMethods.Functions.setCount(1, 4)));
+        var blockEntry = Entries.itemEntry(AtbywMain.Id("shattered_glass"));
         var shardTable = blockTable(pool(1.0F, 0.0F, shardEntry, blockEntry));
         writer.write("loot_tables/blocks/glass_shards.json", shardTable);
     }

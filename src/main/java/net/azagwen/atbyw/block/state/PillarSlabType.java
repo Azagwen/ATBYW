@@ -10,7 +10,7 @@ public enum PillarSlabType implements StringIdentifiable {
 
     private final String name;
 
-    private PillarSlabType(String name) {
+    PillarSlabType(String name) {
         this.name = name;
     }
 

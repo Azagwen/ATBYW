@@ -19,12 +19,8 @@ public class AtbywBlockRenderLayers {
         cutoutLayerBlocks(cutoutBlocks);
         translucentLayerBlocks(translucentBlocks);
 
-        for (Block block : cutoutBlocks) {
-            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
-        }
-        for (Block block : translucentBlocks) {
-            BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getTranslucent());
-        }
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), cutoutBlocks.toArray(Block[]::new));
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), translucentBlocks.toArray(Block[]::new));
     }
 
     private static void cutoutLayerBlocks(List<Block> blocks) {

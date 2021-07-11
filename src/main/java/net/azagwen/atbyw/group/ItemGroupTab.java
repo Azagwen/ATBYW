@@ -27,6 +27,6 @@ public record ItemGroupTab(ItemStack icon, String name, Tag<Item> itemTag) {
     }
 
     public String getTranslationKey() {
-        return "itemGroup.subTab." + AtbywMain.atbywNamespace + "." + name;
+        return "itemGroup.subTab." + AtbywMain.ATBYW + "." + name;
     }
 }

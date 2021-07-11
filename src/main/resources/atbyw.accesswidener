@@ -6,3 +6,4 @@ accessible method net/minecraft/util/shape/VoxelShape getPointPositions (Lnet/mi
 accessible method net/minecraft/block/StairsBlock getStairShape (Lnet/minecraft/block/BlockState;Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/enums/StairShape;
 accessible method net/minecraft/recipe/ShapedRecipe createPatternMatrix ([Ljava/lang/String;Ljava/util/Map;II)Lnet/minecraft/util/collection/DefaultedList;
 accessible method net/minecraft/recipe/ShapedRecipe removePadding ([Ljava/lang/String;)[Ljava/lang/String;
+accessible method net/minecraft/client/render/RenderLayer of (Ljava/lang/String;Lnet/minecraft/client/render/VertexFormat;Lnet/minecraft/client/render/VertexFormat$DrawMode;IZZLnet/minecraft/client/render/RenderLayer$MultiPhaseParameters;)Lnet/minecraft/client/render/RenderLayer$MultiPhase;

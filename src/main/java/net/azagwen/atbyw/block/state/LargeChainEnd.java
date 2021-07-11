@@ -9,7 +9,7 @@ public enum LargeChainEnd implements StringIdentifiable {
 
     private final String name;
 
-    private LargeChainEnd(String name) {
+    LargeChainEnd(String name) {
         this.name = name;
     }
 

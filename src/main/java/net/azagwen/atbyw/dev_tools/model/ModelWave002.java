@@ -8,7 +8,7 @@ import java.util.Map;
 public class ModelWave002 {
 
     protected static Map<String, String> textures(String itemName) {
-        return Map.<String, String>ofEntries(
+        return Map.ofEntries(
                 Map.entry("layer0", "atbyw:item/" + itemName)
         );
     }
