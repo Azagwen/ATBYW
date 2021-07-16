@@ -18,7 +18,7 @@ public class StructureProcessors {
     }
 
     public static final StructureProcessorList DEGRADE_DIRT = AtbywWorldGen.registerStructProcessor(
-            AtbywMain.Id("degrade_dirt"),
+            AtbywMain.id("degrade_dirt"),
             ImmutableList.of(
                     new RuleStructureProcessor(
                             ImmutableList.of(
@@ -42,7 +42,7 @@ public class StructureProcessors {
             )
     );
     public static final StructureProcessorList DEGRADE_DIRT_NO_SLABS = AtbywWorldGen.registerStructProcessor(
-            AtbywMain.Id("degrade_dirt_no_slabs"),
+            AtbywMain.id("degrade_dirt_no_slabs"),
             ImmutableList.of(
                     new RuleStructureProcessor(
                             ImmutableList.of(
@@ -61,7 +61,7 @@ public class StructureProcessors {
             )
     );
     public static final StructureProcessorList DEGRADE_DIRT_AND_STONE = AtbywWorldGen.registerStructProcessor(
-            AtbywMain.Id("degrade_dirt_and_stone"),
+            AtbywMain.id("degrade_dirt_and_stone"),
             ImmutableList.of(
                     new RuleStructureProcessor(
                             ImmutableList.of(
@@ -104,7 +104,7 @@ public class StructureProcessors {
             )
     );
     public static final StructureProcessorList SHUFFLE_CEILING_LANTERNS = AtbywWorldGen.registerStructProcessor(
-            AtbywMain.Id("shuffle_ceiling_lanterns"),
+            AtbywMain.id("shuffle_ceiling_lanterns"),
             ImmutableList.of(
                     new RuleStructureProcessor(
                             ImmutableList.of(
@@ -128,7 +128,7 @@ public class StructureProcessors {
             )
     );
     public static final StructureProcessorList SHUFFLE_FLOOR_LANTERNS = AtbywWorldGen.registerStructProcessor(
-            AtbywMain.Id("shuffle_floor_lanterns"),
+            AtbywMain.id("shuffle_floor_lanterns"),
             ImmutableList.of(
                     new RuleStructureProcessor(
                             ImmutableList.of(

@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.block.statues;
 
+import net.azagwen.atbyw.block.shape.StatueVoxelShapes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

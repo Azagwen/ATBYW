@@ -8,5 +8,5 @@ import net.minecraft.client.render.entity.model.EntityModelLayers;
 
 @Environment(EnvType.CLIENT)
 public class AtbywEntityModelLayers extends EntityModelLayers {
-    public static final EntityModelLayer TIMER_REPEATER = new EntityModelLayer(AtbywMain.Id("timer_repeater"), "main");
+    public static final EntityModelLayer TIMER_REPEATER = new EntityModelLayer(AtbywMain.id("timer_repeater"), "main");
 }

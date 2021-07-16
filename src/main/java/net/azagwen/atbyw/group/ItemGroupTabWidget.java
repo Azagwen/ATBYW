@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 // which is licensed under MIT.
 // and edited to match my needs & updated to 1.17.
 public class ItemGroupTabWidget extends ButtonWidget {
-    public static final Identifier TEXTURE = AtbywMain.Id("textures/gui/side_tabs.png");
+    public static final Identifier TEXTURE = AtbywMain.id("textures/gui/side_tabs.png");
     public boolean isSelected = false;
     public final boolean flipped;
     private final ItemGroupTab tab;

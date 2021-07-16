@@ -1,5 +1,6 @@
-package net.azagwen.atbyw.block.statues;
+package net.azagwen.atbyw.block.shape;
 
+import net.azagwen.atbyw.block.statues.StatueBlockMobType;
 import net.minecraft.block.Block;
 import net.minecraft.util.function.BooleanBiFunction;
 import net.minecraft.util.shape.VoxelShape;

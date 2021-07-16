@@ -27,7 +27,7 @@ public class AtbywItems {
     }
 
     protected static void registerItem(ArrayList<Item> itemTab, String name, Item item) {
-        Registry.register(Registry.ITEM, AtbywMain.Id(name), item);
+        Registry.register(Registry.ITEM, AtbywMain.id(name), item);
         itemTab.add(item);
     }
     protected static void registerItems(ArrayList<Item> itemTab, @Nullable String prefix, String name, List<String> variant_type, Item... items) {

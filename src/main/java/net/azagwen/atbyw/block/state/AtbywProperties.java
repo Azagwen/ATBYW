@@ -27,9 +27,7 @@ public class AtbywProperties extends Properties {
     public static final BooleanProperty POST_SLAB;
     public static final EnumProperty<PillarSlabType> BOTTOM_TYPE;
     public static final EnumProperty<PillarSlabType> TOP_TYPE;
-    public static final IntProperty COLOR_RED;
-    public static final IntProperty COLOR_GREEN;
-    public static final IntProperty COLOR_BLUE;
+    public static final BooleanProperty CENTER;
 
     static {
         SHEARED = BooleanProperty.of("sheared");
@@ -55,8 +53,6 @@ public class AtbywProperties extends Properties {
         POST_SLAB = BooleanProperty.of("post_slab");
         BOTTOM_TYPE = EnumProperty.of("bottom_type", PillarSlabType.class);
         TOP_TYPE = EnumProperty.of("top_type", PillarSlabType.class);
-        COLOR_RED = IntProperty.of("color_red", 0, 255);
-        COLOR_GREEN = IntProperty.of("color_green", 0, 255);
-        COLOR_BLUE = IntProperty.of("color_blue", 0, 255);
+        CENTER = BooleanProperty.of("center");
     }
 }

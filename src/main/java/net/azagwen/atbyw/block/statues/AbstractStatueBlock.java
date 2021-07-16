@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.block.statues;
 
+import net.azagwen.atbyw.block.shape.StatueVoxelShapes;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -11,8 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-
-import java.util.List;
 
 public abstract class AbstractStatueBlock extends HorizontalFacingBlock implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;

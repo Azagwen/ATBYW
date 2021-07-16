@@ -26,7 +26,7 @@ import java.util.List;
 
 @Mixin(CreativeInventoryScreen.class)
 public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScreen<CreativeInventoryScreen.CreativeScreenHandler> {
-    private static final Identifier MEDIA_ICON_TEXTURE = AtbywMain.Id("textures/gui/info_button.png");
+    private static final Identifier MEDIA_ICON_TEXTURE = AtbywMain.id("textures/gui/info_button.png");
     private final String curseforgeLink = "https://www.curseforge.com/minecraft/mc-mods/atbyw";
     private final String githubLink = "https://github.com/Azagwen/ATBYW";
     private final List<TexturedButtonWidget> mediaButtons = Lists.newArrayList();

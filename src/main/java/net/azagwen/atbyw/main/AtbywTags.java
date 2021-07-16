@@ -35,10 +35,10 @@ public class AtbywTags {
     }
 
     public static Tag<Block> registerBlockTag(String id) {
-        return TagRegistry.block(AtbywMain.Id(id));
+        return TagRegistry.block(AtbywMain.id(id));
     }
 
     public static Tag<Item> registerItemTag(String id) {
-        return TagRegistry.item(AtbywMain.Id(id));
+        return TagRegistry.item(AtbywMain.id(id));
     }
 }

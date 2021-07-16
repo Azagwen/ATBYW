@@ -50,7 +50,7 @@ public class BigIglooPiece extends SimpleStructurePiece {
             serverWorldAccess.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
             BlockEntity blockEntity = serverWorldAccess.getBlockEntity(pos.down());
             if (blockEntity instanceof ChestBlockEntity) {
-                ((ChestBlockEntity)blockEntity).setLootTable(AtbywMain.Id("chests/big_igloo_chest"), random.nextLong());
+                ((ChestBlockEntity)blockEntity).setLootTable(AtbywMain.id("chests/big_igloo_chest"), random.nextLong());
             }
         }
     }

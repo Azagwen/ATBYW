@@ -1,0 +1,32 @@
+{
+    "textures": {
+        "all": "atbyw:block/redstone_pipe",
+        "particle": "block/copper_block"
+    },
+    "elements": [
+        {
+            "name": "tint_e",
+            "from": [6, 6, 8],
+            "to": [10, 10, 16],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+            "faces": {
+                "north": {"uv": [4, 4, 8, 8], "texture": "#all"},
+                "south": {"uv": [4, 4, 8, 8], "texture": "#all", "tintindex": 0}
+            }
+        },
+        {
+            "name": "pipe_e",
+            "from": [6, 6, 8],
+            "to": [10, 10, 16],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+            "faces": {
+                "north": {"uv": [4, 0, 8, 4], "texture": "#all"},
+                "east": {"uv": [0, 0, 4, 8], "rotation": 270, "texture": "#all"},
+                "south": {"uv": [4, 0, 8, 4], "texture": "#all"},
+                "west": {"uv": [0, 0, 4, 8], "rotation": 90, "texture": "#all"},
+                "up": {"uv": [0, 0, 4, 8], "rotation": 180, "texture": "#all"},
+                "down": {"uv": [0, 0, 4, 8], "rotation": 180, "texture": "#all"}
+            }
+        }
+    ]
+}

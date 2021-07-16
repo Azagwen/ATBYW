@@ -8,7 +8,6 @@ import net.azagwen.atbyw.main.AtbywMain;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.*;
-import net.minecraft.client.option.GameOptions;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
@@ -24,7 +23,7 @@ import java.awt.*;
 
 @Mixin(InGameHud.class)
 public class InGameHudMixin extends DrawableHelper {
-    private static final Identifier ICONS_TEXTURE = AtbywMain.Id("textures/gui/icons.png");
+    private static final Identifier ICONS_TEXTURE = AtbywMain.id("textures/gui/icons.png");
     @Shadow private final MinecraftClient client;
     @Shadow private int scaledWidth;
     @Shadow private int scaledHeight;
@@ -51,7 +50,7 @@ public class InGameHudMixin extends DrawableHelper {
                         var entity = (CanvasBlockEntity) world.getBlockEntity(pos);
                         var color = new Color(colorizerItem.getColor(stack));
 
-                        if (entity.getColor() != color && colorizerItem.hasColor(stack)) {
+                        if (entity.getColor().getRGB() != color.getRGB() && colorizerItem.hasColor(stack)) {
                             RenderSystem.setShaderTexture(0, ICONS_TEXTURE);
                             RenderSystem.defaultBlendFunc();
                             this.setShaderColor(color);

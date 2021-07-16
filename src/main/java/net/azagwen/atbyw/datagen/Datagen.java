@@ -8,7 +8,6 @@ import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.AtbywUtils;
-import net.azagwen.atbyw.util.Pair;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.CriterionMerger;
@@ -26,7 +25,6 @@ import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -180,7 +178,7 @@ public class Datagen {
     }
 
     public static void test() {
-        var recipeId = AtbywMain.Id("testo");
+        var recipeId = AtbywMain.id("testo");
         var keys = HashMultimap.<Character, Ingredient>create();
         keys.put('X', Ingredient.ofItems(Items.ACACIA_LOG));
         keys.put('E', Ingredient.ofItems(Items.BREAD));

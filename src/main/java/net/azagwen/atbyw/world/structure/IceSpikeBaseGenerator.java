@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Random;
 
 public class IceSpikeBaseGenerator {
-    private static final Identifier BASE_TOP = AtbywMain.Id("ice_spike_base/top");
-    private static final Identifier BASE_MIDDLE = AtbywMain.Id("ice_spike_base/middle");
-    private static final Identifier BASE_BOTTOM = AtbywMain.Id("ice_spike_base/bottom");
+    private static final Identifier BASE_TOP = AtbywMain.id("ice_spike_base/top");
+    private static final Identifier BASE_MIDDLE = AtbywMain.id("ice_spike_base/middle");
+    private static final Identifier BASE_BOTTOM = AtbywMain.id("ice_spike_base/bottom");
 
     public static void addPieces(StructureManager manager, BlockPos pos, List<StructurePiece> pieces, Random random, BlockRotation rotation) {
         if (random.nextDouble() < 0.5D) {

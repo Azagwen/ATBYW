@@ -6,7 +6,6 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityTypes;
 import net.azagwen.atbyw.block.AtbywBlocks;
-import net.azagwen.atbyw.client.render.AtbywRenderLayer;
 import net.azagwen.atbyw.datagen.RecipeRegistry;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
@@ -43,11 +42,25 @@ public class AtbywMain implements ModInitializer {
 	public static final Logger LOGGER  = LogManager.getLogger("Atbyw Main");
 	public static final Logger MYS_LOGGER  = LogManager.getLogger("?");
 
-	public static Identifier Id(String path) {
+	//TODO: Fix and Investigate structure issues (very high priority)
+	//TODO: Finish moving recipe datagen away from JSON (high priority)
+	//TODO: Fix colored recipes not reading properly (high priority)
+	//TODO: Finish canvas block implementations (high priority)
+	//TODO: Add a color mixing table (high priority)
+	//TODO: Add smooth variants of Deepslathe, Gqranite, Diorite, Andesite, Tuff...
+	//TODO: Add Amethyst bricks
+	//TODO: Add Amethyst Walls/Fences
+	//TODO: Add Copper Lanterns
+	//TODO: Add Cactus Planks & assorted stuff
+	//TODO: Add Redstone pipes & components assorted to it
+	//TODO: Add Stone melter furnace
+	//TODO: Move LootTables away from ARRP JSON (low priority)
+
+	public static Identifier id(String path) {
 		return new Identifier(ATBYW, path);
 	}
 
-	public static Identifier NewAtbywModInteractionID(String path) {
+	public static Identifier modInteractionId(String path) {
 		return new Identifier(ATBYW_MI, path);
 	}
 
@@ -102,7 +115,7 @@ public class AtbywMain implements ModInitializer {
 	public void onInitialize() {
 		if (enableModInteractions()) {
 			FabricLoader.getInstance().getModContainer(ATBYW).map(modContainer -> {
-				return ResourceManagerHelper.registerBuiltinResourcePack(NewAtbywModInteractionID("mod_interaction_resources"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED);
+				return ResourceManagerHelper.registerBuiltinResourcePack(modInteractionId("mod_interaction_resources"), modContainer, ResourcePackActivationType.ALWAYS_ENABLED);
 			}).filter(success -> !success).ifPresent(success -> LOGGER.error("Unable to Load \"atbyw_mi/mod_interaction_resources\"."));
 
 			AtbywRRP.init_mi();
@@ -129,7 +142,7 @@ public class AtbywMain implements ModInitializer {
 			MYS_LOGGER.info("As expected :)");
 		}
 
-		ATBYW_GROUP = new AtbywItemGroup(AtbywMain.Id("atbyw"));
+		ATBYW_GROUP = new AtbywItemGroup(AtbywMain.id("atbyw"));
 
 		LOGGER.info("ATBYW Inintiliazed");
 	}

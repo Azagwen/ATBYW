@@ -64,9 +64,9 @@ public class RecipeSmeltingRegistry {
         return recipes.toArray(AtbywRecipe[]::new);
     }
 
-    public static AtbywRecipe SMOOTH_PURPUR_BLOCK_SMELTING = createSmeltingRecipe(AtbywMain.Id("smooth_purpur_block_smelting"), SMELTING, Lists.newArrayList(getBlockID(Blocks.PURPUR_BLOCK)), getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), 0.1D, 200);
-    public static AtbywRecipe GLASS_SMELTING_FROM_SHATTERED_GLASS = createSmeltingRecipe(AtbywMain.Id("glass_smelting"), SMELTING, Lists.newArrayList(getBlockID(AtbywBlocks.SHATTERED_GLASS)), getBlockID(Blocks.GLASS), 0.0D, 100);
-    public static AtbywRecipe[] STAINED_GLASS_SMELTING_FROM_STAINED_SHATTERED_GLASS = createMultiSmeltingRecipes(ColorNames.getNames(), AtbywMain.Id("stained_glass_smelting"), SMELTING, Lists.newArrayList(new Pair<>(ATBYW, "stained_shattered_glass")), new Pair<>(MINECRAFT, "stained_glass"), 0.0D, 100);
+    public static AtbywRecipe SMOOTH_PURPUR_BLOCK_SMELTING = createSmeltingRecipe(AtbywMain.id("smooth_purpur_block_smelting"), SMELTING, Lists.newArrayList(getBlockID(Blocks.PURPUR_BLOCK)), getBlockID(AtbywBlocks.SMOOTH_PURPUR_BLOCK), 0.1D, 200);
+    public static AtbywRecipe GLASS_SMELTING_FROM_SHATTERED_GLASS = createSmeltingRecipe(AtbywMain.id("glass_smelting"), SMELTING, Lists.newArrayList(getBlockID(AtbywBlocks.SHATTERED_GLASS)), getBlockID(Blocks.GLASS), 0.0D, 100);
+    public static AtbywRecipe[] STAINED_GLASS_SMELTING_FROM_STAINED_SHATTERED_GLASS = createMultiSmeltingRecipes(ColorNames.getNames(), AtbywMain.id("stained_glass_smelting"), SMELTING, Lists.newArrayList(new Pair<>(ATBYW, "stained_shattered_glass")), new Pair<>(MINECRAFT, "stained_glass"), 0.0D, 100);
 
     //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
     public static void inject(Map<Identifier, JsonElement> map) {

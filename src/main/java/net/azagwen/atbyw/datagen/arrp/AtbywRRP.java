@@ -7,8 +7,8 @@ import net.devtech.arrp.api.RuntimeResourcePack;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class AtbywRRP {
-    public static final RuntimeResourcePack ATBYW_RESOURCE_PACK = RuntimeResourcePack.create(AtbywMain.Id("atbyw_rrp").toString());
-    public static final RuntimeResourcePack ATBYW_MI_RESOURCE_PACK = RuntimeResourcePack.create(NewAtbywModInteractionID("atbyw_rrp").toString());
+    public static final RuntimeResourcePack ATBYW_RESOURCE_PACK = RuntimeResourcePack.create(AtbywMain.id("atbyw_rrp").toString());
+    public static final RuntimeResourcePack ATBYW_MI_RESOURCE_PACK = RuntimeResourcePack.create(modInteractionId("atbyw_rrp").toString());
 
     public static void init() {
         LootTables.init();

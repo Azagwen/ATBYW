@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.block.statues;
 
+import net.azagwen.atbyw.block.shape.StatueVoxelShapes;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.shape.VoxelShape;
@@ -8,26 +9,26 @@ public enum StatueBlockMobTypes implements StatueBlockMobType {
     //Bugs & Shell creatures
     BEE("bee", StatueVoxelShapes.BEE_OUTLINES, StatueVoxelShapes.BEE_COLLISIONS),
     ENDERMITE("endermite", StatueVoxelShapes.ENDERMITE_OUTLINES),
-    SHULKER("shulker", AtbywMain.Id("gameplay/shulker_statue"), StatueVoxelShapes.SHULKER_OUTLINES, StatueVoxelShapes.SHULKER_COLLISIONS),
+    SHULKER("shulker", AtbywMain.id("gameplay/shulker_statue"), StatueVoxelShapes.SHULKER_OUTLINES, StatueVoxelShapes.SHULKER_COLLISIONS),
     SILVERFISH("silverfish", StatueVoxelShapes.SILVERFISH_OUTLINES),
 
     //Mamals
     AXOLOTL("axolotl", StatueVoxelShapes.AXOLOTL_OUTLINES),
     BAT("axolotl", StatueVoxelShapes.BAT_OUTLINES, StatueVoxelShapes.BAT_COLLISIONS),
     CAT("cat", StatueVoxelShapes.CAT_OUTLINES),
-    CHICKEN("chicken", AtbywMain.Id("gameplay/chicken_statue"), StatueVoxelShapes.CHICKEN_OUTLINES),
+    CHICKEN("chicken", AtbywMain.id("gameplay/chicken_statue"), StatueVoxelShapes.CHICKEN_OUTLINES),
     FOX("fox", StatueVoxelShapes.FOX_OUTLINES),
-    RABBIT("rabbit", AtbywMain.Id("gameplay/rabbit_statue"), StatueVoxelShapes.RABBIT_OUTLINES, StatueVoxelShapes.RABBIT_COLLISIONS),
+    RABBIT("rabbit", AtbywMain.id("gameplay/rabbit_statue"), StatueVoxelShapes.RABBIT_OUTLINES, StatueVoxelShapes.RABBIT_COLLISIONS),
     WOLF("wolf", StatueVoxelShapes.WOLF_OUTLINES),
 
     //Fishes
-    COD("cod", AtbywMain.Id("gameplay/cod_statue"), StatueVoxelShapes.COD_OUTLINES),
-    PUFFER_FISH("puffer_fish", AtbywMain.Id("gameplay/puffer_fish_statue"), StatueVoxelShapes.PUFFER_FISH_OUTLINES),
-    SALMON("salmon", AtbywMain.Id("gameplay/salmon_statue"), StatueVoxelShapes.SALMON_OUTLINES),
+    COD("cod", AtbywMain.id("gameplay/cod_statue"), StatueVoxelShapes.COD_OUTLINES),
+    PUFFER_FISH("puffer_fish", AtbywMain.id("gameplay/puffer_fish_statue"), StatueVoxelShapes.PUFFER_FISH_OUTLINES),
+    SALMON("salmon", AtbywMain.id("gameplay/salmon_statue"), StatueVoxelShapes.SALMON_OUTLINES),
 
     //Slimes & others
-    MAGMA_CUBE("magma_cube", AtbywMain.Id("gameplay/magma_cube_statue"), StatueVoxelShapes.SLIME_SMALL_OUTLINES),
-    SLIME("slime", AtbywMain.Id("gameplay/slime_statue"), StatueVoxelShapes.SLIME_SMALL_OUTLINES);
+    MAGMA_CUBE("magma_cube", AtbywMain.id("gameplay/magma_cube_statue"), StatueVoxelShapes.SLIME_SMALL_OUTLINES),
+    SLIME("slime", AtbywMain.id("gameplay/slime_statue"), StatueVoxelShapes.SLIME_SMALL_OUTLINES);
 
     //Negative Z = NORTH
     //Positive Z = SOUTH
