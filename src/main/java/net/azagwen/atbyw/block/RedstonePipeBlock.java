@@ -1,22 +1,30 @@
 package net.azagwen.atbyw.block;
 
+import com.google.common.collect.Sets;
 import net.azagwen.atbyw.block.shape.AxisShape;
 import net.azagwen.atbyw.block.shape.HorizontalShape;
+import net.azagwen.atbyw.block.state.Connector;
+import net.azagwen.atbyw.util.BlockUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.enums.WireConnection;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.*;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
+import java.util.Iterator;
 import java.util.Map;
 
 public class RedstonePipeBlock extends Block {
@@ -26,9 +34,12 @@ public class RedstonePipeBlock extends Block {
     public static final BooleanProperty EAST;
     public static final BooleanProperty SOUTH;
     public static final BooleanProperty WEST;
+    public static final IntProperty POWER;
     public static final VoxelShape JOINT_SHAPE;
     public static final Map<Direction, VoxelShape> SHAPES;
     public static final Map<Direction, BooleanProperty> STATES;
+    private static final Color[] COLORS;
+    private boolean pipesGivePower = true;
 
     public RedstonePipeBlock(Settings settings) {
         super(settings);
@@ -55,45 +66,37 @@ public class RedstonePipeBlock extends Block {
         return !state.get(NORTH) && !state.get(SOUTH) && !state.get(EAST) && !state.get(WEST);
     }
 
-    public BlockState tryConnect(WorldAccess world, BlockPos pos) {
+    public BlockState tryConnect(BlockView world, BlockPos pos) {
         var state = this.getDefaultState();
+        var connector = new Connector();
 
         for (var direction : Direction.values()) {
+            var checkSelf = this.checkSelf(direction, world, pos);
+            var checkEmitsPower = BlockUtils.checkEmitsPower(direction, world, pos);
+            var checkFullSquare = BlockUtils.checkFullSquare(direction, world, pos);
+            var checkAll = (checkSelf || (checkEmitsPower && checkFullSquare));
             for (var blockState : STATES.entrySet()) {
                 if (blockState.getKey() == direction) {
-                    var isSelf = this.checkSelf(direction, world, pos);
-                    var canEmitsPower = this.checkEmitsPower(direction, world, pos);
-                    var isFullSquare = this.checkFullSquare(direction, world, pos);
-
-                    state = state.with(blockState.getValue(), (isSelf || (canEmitsPower && isFullSquare)));
+                    state = state.with(blockState.getValue(), checkAll);
                 }
             }
+            connector.setFromDirection(direction, checkAll);
         }
-        return connectToSelf(world, pos, state);
-    }
+        var notNorthSouth = !connector.north() && !connector.south();
+        var notEastWest = !connector.east() && !connector.west();
+        var notUpDown = !connector.up() && !connector.down();
 
-    public BlockState connectToSelf(WorldAccess world, BlockPos pos, BlockState state) {
-        var up = this.checkSelf(Direction.UP, world, pos) || this.checkFullSquareAndPower(Direction.UP, world, pos);
-        var down = this.checkSelf(Direction.DOWN, world, pos) || this.checkFullSquareAndPower(Direction.DOWN, world, pos);
-        var north = this.checkSelf(Direction.NORTH, world, pos) || this.checkFullSquareAndPower(Direction.NORTH, world, pos);
-        var east = this.checkSelf(Direction.EAST, world, pos) || this.checkFullSquareAndPower(Direction.EAST, world, pos);
-        var south = this.checkSelf(Direction.SOUTH, world, pos) || this.checkFullSquareAndPower(Direction.SOUTH, world, pos);
-        var west = this.checkSelf(Direction.WEST, world, pos) || this.checkFullSquareAndPower(Direction.WEST, world, pos);
-        var notNorthSouth = !north && !south;
-        var notEastWest = !east && !west;
-        var notUpDown = !up && !down;
-
-        if (!up && notEastWest && notNorthSouth)
+        if (!connector.up() && notEastWest && notNorthSouth)
             state = state.with(UP, true);
-        if (!down && notEastWest && notNorthSouth)
+        if (!connector.down() && notEastWest && notNorthSouth)
             state = state.with(DOWN, true);
-        if (!west && notNorthSouth && notUpDown)
+        if (!connector.west() && notNorthSouth && notUpDown)
             state = state.with(WEST, true);
-        if (!east && notNorthSouth && notUpDown)
+        if (!connector.east() && notNorthSouth && notUpDown)
             state = state.with(EAST, true);
-        if (!north && notEastWest && notUpDown)
+        if (!connector.north() && notEastWest && notUpDown)
             state = state.with(NORTH, true);
-        if (!south && notEastWest && notUpDown)
+        if (!connector.south() && notEastWest && notUpDown)
             state = state.with(SOUTH, true);
 
         return state;
@@ -118,28 +121,141 @@ public class RedstonePipeBlock extends Block {
         return jointShape;
     }
 
-    public boolean checkSelf(Direction direction, WorldAccess world, BlockPos pos) {
+    public boolean checkSelf(Direction direction, BlockView world, BlockPos pos) {
         var offset = pos.offset(direction);
         return world.getBlockState(offset).getBlock() instanceof RedstonePipeBlock;
     }
 
-    public boolean checkEmitsPower(Direction direction, WorldAccess world, BlockPos pos) {
-        var offset = pos.offset(direction);
-        return world.getBlockState(offset).emitsRedstonePower();
+    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        if (!oldState.isOf(state.getBlock()) && !world.isClient) {
+            this.update(world, pos, state);
+            Iterator var6 = Direction.Type.VERTICAL.iterator();
+
+            while(var6.hasNext()) {
+                Direction direction = (Direction)var6.next();
+                world.updateNeighborsAlways(pos.offset(direction), this);
+            }
+
+            this.updateOffsetNeighbors(world, pos);
+        }
     }
 
-    public boolean checkFullSquare(Direction direction, WorldAccess world, BlockPos pos) {
-        var offset = pos.offset(direction);
-        return world.getBlockState(offset).isSideSolidFullSquare(world, offset, direction.getOpposite());
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (!moved && !state.isOf(newState.getBlock())) {
+            super.onStateReplaced(state, world, pos, newState, moved);
+            if (!world.isClient) {
+                for (Direction direction : Direction.values()) {
+                    world.updateNeighborsAlways(pos.offset(direction), this);
+                }
+
+                this.update(world, pos, state);
+                this.updateOffsetNeighbors(world, pos);
+            }
+        }
     }
 
-    public boolean checkFullSquareAndPower(Direction direction, WorldAccess world, BlockPos pos) {
-        return this.checkFullSquare(direction, world, pos) && this.checkEmitsPower(direction, world, pos);
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
+        if (!world.isClient) {
+            this.update(world, pos, state);
+        }
+    }
+
+    private void updateNeighbors(World world, BlockPos pos) {
+        if (world.getBlockState(pos).isOf(this)) {
+            world.updateNeighborsAlways(pos, this);
+
+            for (Direction direction : Direction.values()) {
+                world.updateNeighborsAlways(pos.offset(direction), this);
+            }
+
+        }
+    }
+
+    private void updateOffsetNeighbors(World world, BlockPos pos) {
+        for (var dir : Direction.values()) {
+            this.updateNeighbors(world, pos.offset(dir));
+
+            var blockPos = pos.offset(dir);
+            if (world.getBlockState(blockPos).isSolidBlock(world, blockPos)) {
+                this.updateNeighbors(world, blockPos.up());
+            } else {
+                this.updateNeighbors(world, blockPos.down());
+            }
+        }
+    }
+
+    private void update(World world, BlockPos pos, BlockState state) {
+        int i = this.getReceivedRedstonePower(world, pos);
+        if (state.get(POWER) != i) {
+            if (world.getBlockState(pos) == state) {
+                world.setBlockState(pos, state.with(POWER, i), 2);
+            }
+
+            var set = Sets.<BlockPos>newHashSet();
+            set.add(pos);
+            for (Direction direction : Direction.values()) {
+                set.add(pos.offset(direction));
+            }
+
+            for (BlockPos blockPos : set) {
+                world.updateNeighborsAlways(blockPos, this);
+            }
+        }
+    }
+
+    private int getReceivedRedstonePower(World world, BlockPos pos) {
+        this.pipesGivePower = false;
+        int i = world.getReceivedRedstonePower(pos);
+        this.pipesGivePower = true;
+        int j = 0;
+        if (i < 15) {
+            while(true) {
+                for (var direction : Direction.values()) {
+                    var blockPos = pos.offset(direction);
+                    var blockState = world.getBlockState(blockPos);
+                    j = Math.max(j, this.increasePower(blockState));
+                    var up = pos.up();
+                    if (blockState.isSolidBlock(world, blockPos) && !world.getBlockState(up).isSolidBlock(world, up)) {
+                        j = Math.max(j, this.increasePower(world.getBlockState(blockPos.up())));
+                    } else if (!blockState.isSolidBlock(world, blockPos)) {
+                        j = Math.max(j, this.increasePower(world.getBlockState(blockPos.down())));
+                    }
+                }
+                return Math.max(i, j - 1);
+            }
+        } else {
+            return Math.max(i, j - 1);
+        }
+    }
+
+    private int increasePower(BlockState state) {
+        return state.isOf(this) ? state.get(POWER) : 0;
+    }
+
+    public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        return !this.pipesGivePower ? 0 : state.getWeakRedstonePower(world, pos, direction);
+    }
+
+    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        if (this.pipesGivePower && direction != Direction.DOWN) {
+            int i = state.get(POWER);
+            if (i == 0) {
+                return 0;
+            } else {
+                return direction != Direction.UP && !(this.tryConnect(world, pos).get(STATES.get(direction.getOpposite()))) ? 0 : i;
+            }
+        } else {
+            return 0;
+        }
+    }
+
+    public static int getRedstoneColor(int powerLevel) {
+        return COLORS[powerLevel].getRGB();
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST);
+        builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST, POWER);
     }
 
     static {
@@ -149,6 +265,7 @@ public class RedstonePipeBlock extends Block {
         EAST = Properties.EAST;
         SOUTH = Properties.SOUTH;
         WEST = Properties.WEST;
+        POWER = Properties.POWER;
 
         var hs = new HorizontalShape(5.0D, 5.0D, 0.0D, 11.0D, 11.0D, 8.0D);
         var vs = new AxisShape(5.0D, 0.0D, 11.0D, 8.0D);
@@ -169,5 +286,14 @@ public class RedstonePipeBlock extends Block {
                 Map.entry(Direction.WEST, WEST)
         );
         JOINT_SHAPE = Block.createCuboidShape(5.0D, 5.0D, 5.0D, 11.0D, 11.0D, 11.0D);
+        COLORS = Util.make(new Color[16], (Colors) -> {
+            for(int i = 0; i <= 15; ++i) {
+                var factor = (int)((i / 15.0F) * 255);
+                var r = factor;
+                var g = factor / 4;
+                var b = factor / 4;
+                Colors[i] = new Color(r, g, b);
+            }
+        });
     }
 }

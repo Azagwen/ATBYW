@@ -9,6 +9,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,6 +21,16 @@ public record BlockUtils() {
     public static int SOUTH = 1;
     public static int EAST = 2;
     public static int WEST = 3;
+
+    public static boolean checkEmitsPower(Direction direction, BlockView world, BlockPos pos) {
+        var offset = pos.offset(direction);
+        return world.getBlockState(offset).emitsRedstonePower();
+    }
+
+    public static boolean checkFullSquare(Direction direction, BlockView world, BlockPos pos) {
+        var offset = pos.offset(direction);
+        return world.getBlockState(offset).isSideSolidFullSquare(world, offset, direction.getOpposite());
+    }
 
     /** Inverts the input value for use in VoxelShapes.
      *

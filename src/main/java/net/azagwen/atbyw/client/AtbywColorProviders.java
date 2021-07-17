@@ -5,6 +5,8 @@ import net.azagwen.atbyw.block.entity.CanvasBlockEntity;
 import net.azagwen.atbyw.item.AtbywItems;
 import net.azagwen.atbyw.item.SimpleColoredItem;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.RedstoneWireBlock;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.item.DyeableItem;
@@ -55,5 +57,9 @@ public class AtbywColorProviders {
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5D, 1.0D);
         }, AtbywBlocks.GRASS_BLOCK_STAIRS, AtbywBlocks.GRASS_BLOCK_SLAB);
+
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+            return RedstoneWireBlock.getWireColor(state.get(RedstoneWireBlock.POWER));
+        }, AtbywBlocks.REDSTONE_PIPE);
     }
 }
