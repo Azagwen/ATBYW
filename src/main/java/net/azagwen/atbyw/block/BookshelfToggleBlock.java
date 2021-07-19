@@ -83,18 +83,15 @@ public class BookshelfToggleBlock extends HorizontalFacingBlock {
     }
 
     private static void spawnParticles(World world, BlockPos pos) {
-        double d = 0.5625D;
-        Random random = world.random;
-        Direction[] directions = Direction.values();
-        int var6 = directions.length;
-
-        for (Direction direction : directions) {
-            BlockPos blockPos = pos.offset(direction);
+        var d = 0.5625D;
+        var random = world.random;
+        for (Direction direction : Direction.values()) {
+            var blockPos = pos.offset(direction);
             if (!world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos)) {
-                Direction.Axis axis = direction.getAxis();
-                double e = axis == Direction.Axis.X ? 0.5D + d * (double) direction.getOffsetX() : (double) random.nextFloat();
-                double f = axis == Direction.Axis.Y ? 0.5D + d * (double) direction.getOffsetY() : (double) random.nextFloat();
-                double g = axis == Direction.Axis.Z ? 0.5D + d * (double) direction.getOffsetZ() : (double) random.nextFloat();
+                var axis = direction.getAxis();
+                var e = axis == Direction.Axis.X ? 0.5D + d * (double) direction.getOffsetX() : (double) random.nextFloat();
+                var f = axis == Direction.Axis.Y ? 0.5D + d * (double) direction.getOffsetY() : (double) random.nextFloat();
+                var g = axis == Direction.Axis.Z ? 0.5D + d * (double) direction.getOffsetZ() : (double) random.nextFloat();
                 world.addParticle(DustParticleEffect.DEFAULT, (double) pos.getX() + e, (double) pos.getY() + f, (double) pos.getZ() + g, 0.0D, 0.0D, 0.0D);
             }
         }

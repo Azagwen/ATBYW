@@ -16,6 +16,7 @@ public class AtbywTags {
     public static final Tag<Block> SHROOMSTICK_REPLACEABLE_WATER = registerBlockTag("shroomstick_replaceable_water");
     public static final Tag<Block> LARGE_CHAIN_TRANSITION_BOTTOM = registerBlockTag("large_chain_transition_bottom");
     public static final Tag<Block> LARGE_CHAIN_TRANSITION_TOP = registerBlockTag("large_chain_transition_top");
+    public static final Tag<Block> CONNECTS_TO_PIPES = registerBlockTag("connects_to_pipes");
 
     // Item Tags
     public static final Tag<Item> ITEM_BOOKSHELVES = blockItemTag(BOOKSHELVES);

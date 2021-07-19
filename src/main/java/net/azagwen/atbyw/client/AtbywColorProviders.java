@@ -1,11 +1,11 @@
 package net.azagwen.atbyw.client;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.RedstonePipeBlock;
 import net.azagwen.atbyw.block.entity.CanvasBlockEntity;
 import net.azagwen.atbyw.item.AtbywItems;
 import net.azagwen.atbyw.item.SimpleColoredItem;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.RedstoneWireBlock;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.GrassColors;
@@ -37,6 +37,11 @@ public class AtbywColorProviders {
                 return tintIndex > 0 ? -1 : item.getColor();
             }, item);
         }
+
+        //Redstone Pipe redstone Color
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+            return RedstonePipeBlock.getRedstoneColor(15);
+        }, AtbywBlocks.REDSTONE_PIPE);
     }
 
     public static void initBlocks() {
@@ -58,8 +63,9 @@ public class AtbywColorProviders {
             return world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5D, 1.0D);
         }, AtbywBlocks.GRASS_BLOCK_STAIRS, AtbywBlocks.GRASS_BLOCK_SLAB);
 
+        //Redstone Pipe redstone Color
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
-            return RedstoneWireBlock.getWireColor(state.get(RedstoneWireBlock.POWER));
+            return RedstonePipeBlock.getRedstoneColor(state.get(RedstoneWireBlock.POWER));
         }, AtbywBlocks.REDSTONE_PIPE);
     }
 }

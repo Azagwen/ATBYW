@@ -71,6 +71,17 @@ public class Connector {
         }
     }
 
+    public boolean getFromDirection(Direction direction) {
+        return switch (direction) {
+            case UP -> this.up;
+            case DOWN -> this.down;
+            case NORTH -> this.north;
+            case EAST -> this.east;
+            case SOUTH -> this.south;
+            case WEST -> this.west;
+        };
+    }
+
     public void setUp(boolean up) {
         this.up = up;
     }
