@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.mixin;
+package net.azagwen.atbyw.mixin.unused;
 
 import com.google.common.collect.ImmutableMap;
 import net.azagwen.atbyw.client.render.AtbywEntityModelLayers;
