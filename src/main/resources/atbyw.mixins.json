@@ -5,22 +5,23 @@
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "DebugChunkGeneratorMixin",
-        "FenceBlockMixin",
-        "InGameHudMixin",
-        "PaneBlockMixin",
-        "RecipeManagerMixin",
-        "RedstoneWireBlockMixin",
-        "ServerAdvancementLoaderMixin",
-        "SnowBlockMixin",
-        "TransparentBlockMixin",
-        "WallBlockMixin"
+        "block_behavior.FenceBlockMixin",
+        "block_behavior.PaneBlockMixin",
+        "block_behavior.RedstoneWireBlockMixin",
+        "block_behavior.SnowBlockMixin",
+        "block_behavior.SpreadableBlockMixin",
+        "block_behavior.TransparentBlockMixin",
+        "block_behavior.WallBlockMixin",
+        "bookshelf_behavior.EnchantingTableBlockMixin",
+        "bookshelf_behavior.EnchantmentScreenHandlerMixin",
+        "datagen.RecipeManagerMixin",
+        "datagen.ServerAdvancementLoaderMixin"
     ],
     "client": [
+        "datagen.ItemModelLoaderMixin",
         "CreativeInventoryScreenMixin",
-        "EnchantingTableBlockMixin",
-        "EnchantmentScreenHandlerMixin",
-        "ItemModelLoaderMixin",
-        "TexturedRenderLayersMixin"
+        "TexturedRenderLayersMixin",
+        "InGameHudMixin"
     ],
     "injectors": {
         "defaultRequire": 1

@@ -81,13 +81,10 @@ public class Tags {
     public static void init() {
         AtbywItemGroup.registerTags();
 
-        createBlockTag(ATBYW_RESOURCE_PACK, ATBYW, "bookshelves", BOOKSHELVES);
-        createBlockTag(ATBYW_RESOURCE_PACK, "c", "bookshelves", BOOKSHELVES);
         createBlockTag(ATBYW_RESOURCE_PACK, ATBYW, "large_chain_transition_bottom", LARGE_CHAIN_TRANSITION_BOTTOM);
         createBlockTag(ATBYW_RESOURCE_PACK, ATBYW, "large_chain_transition_top", LARGE_CHAIN_TRANSITION_TOP);
 
         createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "bookshelves", getBlockItems(BOOKSHELVES));
-        createItemTag(ATBYW_RESOURCE_PACK, "c", "bookshelves", getBlockItems(BOOKSHELVES));
         createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "large_chain_transition_bottom", getBlockItems(LARGE_CHAIN_TRANSITION_BOTTOM));
         createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "large_chain_transition_top", getBlockItems(LARGE_CHAIN_TRANSITION_TOP));
     }

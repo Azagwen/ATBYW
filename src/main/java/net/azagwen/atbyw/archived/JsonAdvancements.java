@@ -191,7 +191,7 @@ public class JsonAdvancements {
         recipeMap.forEach((id, element) -> translateRecipes(map, id, element));
     }
 
-    //Used in net.azagwen.atbyw.mixin.ServerAdvancementLoaderMixin
+    //Used in net.azagwen.atbyw.mixin.datagen.ServerAdvancementLoaderMixin
     public static void inject(Map<Identifier, JsonElement> map) {
         RECIPE_MAP.forEach(map::put);
         LOGGER.info("Atbyw Recipe Advancements built");

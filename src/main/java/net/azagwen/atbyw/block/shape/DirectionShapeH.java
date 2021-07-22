@@ -3,7 +3,7 @@ package net.azagwen.atbyw.block.shape;
 import net.minecraft.block.Block;
 import net.minecraft.util.shape.VoxelShape;
 
-public record HorizontalShape(double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
+public record DirectionShapeH(double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
 
     public VoxelShape northShape() {
         return Block.createCuboidShape(minX, minY, minZ, maxX, maxY, maxZ);

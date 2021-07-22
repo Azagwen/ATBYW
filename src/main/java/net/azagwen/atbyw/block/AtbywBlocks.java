@@ -499,11 +499,13 @@ public class AtbywBlocks {
     public static final Block GLOWING_CANVAS_BLOCK = canvasBlock(true);
 
     public static final Block REDSTONE_PIPE = new RedstonePipeBlock(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.COPPER));
+    public static final Block REDSTONE_PIPE_REPEATER = new RedstonePipeRepeaterBlock(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.COPPER));
 
     public static void init() {
 
         //ATBYW REDSTONE
         registerBlock(false, REDSTONE_TAB, "redstone_pipe", REDSTONE_PIPE);
+        registerBlock(false, REDSTONE_TAB, "redstone_pipe_repeater", REDSTONE_PIPE_REPEATER);
         registerBlock(false, REDSTONE_TAB, "timer_repeater", TIMER_REPEATER);
         registerBlock(false, REDSTONE_TAB, "redstone_cross_path", REDSTONE_CROSS_PATH);
         registerBlock(false, REDSTONE_TAB, "redstone_lantern", REDSTONE_LANTERN);

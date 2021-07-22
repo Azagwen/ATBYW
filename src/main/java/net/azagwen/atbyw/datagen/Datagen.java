@@ -33,7 +33,7 @@ public class Datagen {
     private static final Map<Recipe<?>, String> RECIPES_CATEGORIES = new Object2ObjectOpenHashMap<>();
     private static final Map<Identifier, Advancement.Task> ADVANCEMENTS = new Object2ObjectOpenHashMap<>();
 
-    //Used in net.azagwen.atbyw.mixin.ServerAdvancementLoaderMixin
+    //Used in net.azagwen.atbyw.mixin.datagen.ServerAdvancementLoaderMixin
     public static void applyAdvancements(Map<Identifier, Advancement.Task> builder) {
         ADVANCEMENTS.forEach((identifier, task) -> {
             task.parent((Advancement) null);
@@ -42,7 +42,7 @@ public class Datagen {
         });
     }
 
-    //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
+    //Used in net.azagwen.atbyw.mixin.datagen.RecipeManagerMixin
     public static void applyRecipes(Map<Identifier, JsonElement> map, Map<RecipeType<?>, ImmutableMap.Builder<Identifier, Recipe<?>>> builderMap) {
         var recipeCount = new int[]{0};
         RECIPES.forEach((key, recipes) -> {

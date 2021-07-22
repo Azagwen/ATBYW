@@ -1,7 +1,6 @@
 {
     "replace": false,
     "values": [
-        "minecraft:redstone_lamp",
         "minecraft:dispenser",
         "minecraft:dropper",
         "minecraft:trapped_chest",

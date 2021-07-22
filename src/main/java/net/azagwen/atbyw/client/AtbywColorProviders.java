@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.client;
 
+import net.azagwen.atbyw.block.AbstractRedstonePipeGate;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.RedstonePipeBlock;
 import net.azagwen.atbyw.block.entity.CanvasBlockEntity;
@@ -40,8 +41,13 @@ public class AtbywColorProviders {
 
         //Redstone Pipe redstone Color
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
-            return RedstonePipeBlock.getRedstoneColor(15);
+            return RedstonePipeBlock.getRedstoneColor(0);
         }, AtbywBlocks.REDSTONE_PIPE);
+
+        //Redstone Pipe Logic Gates redstone Color
+        ColorProviderRegistry.BLOCK.ITEM.register((stack, tintIndex) -> {
+            return RedstonePipeBlock.getRedstoneColor(2);
+        }, AtbywBlocks.REDSTONE_PIPE_REPEATER);
     }
 
     public static void initBlocks() {
@@ -67,5 +73,13 @@ public class AtbywColorProviders {
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return RedstonePipeBlock.getRedstoneColor(state.get(RedstoneWireBlock.POWER));
         }, AtbywBlocks.REDSTONE_PIPE);
+
+        //Redstone Pipe Logic Gates redstone Color
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+            if (state.get(AbstractRedstonePipeGate.POWERED)) {
+                return RedstonePipeBlock.getRedstoneColor(15);
+            }
+            return RedstonePipeBlock.getRedstoneColor(2);
+        }, AtbywBlocks.REDSTONE_PIPE_REPEATER);
     }
 }

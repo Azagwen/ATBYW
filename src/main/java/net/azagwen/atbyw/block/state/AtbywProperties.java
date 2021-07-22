@@ -27,6 +27,7 @@ public class AtbywProperties extends Properties {
     public static final EnumProperty<PillarSlabType> TOP_TYPE;
     public static final BooleanProperty CENTER;
     public static final IntProperty ROLL;
+    public static final DirectionProperty PANEL_FACING;
 
     static {
         SHEARED = BooleanProperty.of("sheared");
@@ -52,5 +53,6 @@ public class AtbywProperties extends Properties {
         TOP_TYPE = EnumProperty.of("top_type", PillarSlabType.class);
         CENTER = BooleanProperty.of("center");
         ROLL = IntProperty.of("roll", 0, 3);
+        PANEL_FACING = DirectionProperty.of("panel_facing", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN);
     }
 }

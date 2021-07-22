@@ -68,7 +68,7 @@ public class RecipeSmeltingRegistry {
     public static AtbywRecipe GLASS_SMELTING_FROM_SHATTERED_GLASS = createSmeltingRecipe(AtbywMain.id("glass_smelting"), SMELTING, Lists.newArrayList(getBlockID(AtbywBlocks.SHATTERED_GLASS)), getBlockID(Blocks.GLASS), 0.0D, 100);
     public static AtbywRecipe[] STAINED_GLASS_SMELTING_FROM_STAINED_SHATTERED_GLASS = createMultiSmeltingRecipes(ColorNames.getNames(), AtbywMain.id("stained_glass_smelting"), SMELTING, Lists.newArrayList(new Pair<>(ATBYW, "stained_shattered_glass")), new Pair<>(MINECRAFT, "stained_glass"), 0.0D, 100);
 
-    //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
+    //Used in net.azagwen.atbyw.mixin.datagen.RecipeManagerMixin
     public static void inject(Map<Identifier, JsonElement> map) {
         var i = 0;
         for (var color : ColorNames.getNames()) {

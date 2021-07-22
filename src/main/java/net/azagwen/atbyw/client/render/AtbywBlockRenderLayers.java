@@ -125,6 +125,7 @@ public class AtbywBlockRenderLayers {
         blocks.add(AtbywBlocks.LARGE_CHAIN);
         blocks.add(AtbywBlocks.SHATTERED_GLASS);
         blocks.add(AtbywBlocks.REDSTONE_PIPE);
+        blocks.add(AtbywBlocks.REDSTONE_PIPE_REPEATER);
     }
 
     private static void translucentLayerBlocks(List<Block> blocks) {

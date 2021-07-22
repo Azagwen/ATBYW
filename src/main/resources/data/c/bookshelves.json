@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:bookshelf",
+        "atbyw:spruce_bookshelf",
+        "atbyw:birch_bookshelf",
+        "atbyw:jungle_bookshelf",
+        "atbyw:acacia_bookshelf",
+        "atbyw:dark_oak_bookshelf",
+        "atbyw:crimson_bookshelf",
+        "atbyw:warped_bookshelf"
+    ]
+}

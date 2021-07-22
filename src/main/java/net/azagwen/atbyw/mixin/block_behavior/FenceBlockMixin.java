@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.mixin;
+package net.azagwen.atbyw.mixin.block_behavior;
 
 import net.azagwen.atbyw.block.FenceDoorBlock;
 import net.minecraft.block.*;

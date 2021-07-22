@@ -155,7 +155,7 @@ public class RecipeRegistry {
         LOGGER.info("ATBYW Recipes Inintiliazed");
     }
 
-    //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
+    //Used in net.azagwen.atbyw.mixin.datagen.RecipeManagerMixin
     public static void inject(Map<Identifier, JsonElement> map) {
 
     }

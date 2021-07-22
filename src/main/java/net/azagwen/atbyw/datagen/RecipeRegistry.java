@@ -767,7 +767,7 @@ public class RecipeRegistry {
 
     }
 
-    //Used in net.azagwen.atbyw.mixin.RecipeManagerMixin
+    //Used in net.azagwen.atbyw.mixin.datagen.RecipeManagerMixin
     public static void inject(Map<Identifier, JsonElement> map) {
         RecipeSmeltingRegistry.inject(map);
         RecipeStonecuttingRegistry.inject(map);

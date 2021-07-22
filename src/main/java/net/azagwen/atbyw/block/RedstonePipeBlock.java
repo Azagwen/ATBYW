@@ -3,7 +3,7 @@ package net.azagwen.atbyw.block;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import net.azagwen.atbyw.block.shape.AxisShape;
-import net.azagwen.atbyw.block.shape.HorizontalShape;
+import net.azagwen.atbyw.block.shape.DirectionShapeH;
 import net.azagwen.atbyw.block.state.Connector;
 import net.azagwen.atbyw.main.AtbywTags;
 import net.azagwen.atbyw.util.BlockUtils;
@@ -43,7 +43,7 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
     public static final VoxelShape JOINT_SHAPE;
     public static final Map<Direction, VoxelShape> SHAPES;
     public static final Map<Direction, BooleanProperty> STATES;
-    private static final Map<Integer, Integer> COLORS;
+    public static final Map<Integer, Integer> COLORS;
     private boolean pipesGivePower = true;
 
     public RedstonePipeBlock(Settings settings) {
@@ -118,7 +118,7 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
                     return direction == gateFacing || direction == gateFacing.getOpposite();
                 }
             }
-        } else if (state.isIn(AtbywTags.CONNECTS_TO_PIPES)) {
+        } else if (state.isIn(AtbywTags.CONNECTS_TO_PIPES) || state.isIn(AtbywTags.CONNECTS_TO_PIPES_AND_UPDATES)) {
             return true;
         } else if (state.isOf(Blocks.OBSERVER)) {
             return direction == state.get(ObserverBlock.FACING);
@@ -128,11 +128,13 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
         return checkEmitsPower && checkFullSquare && direction != null;
     }
 
+
+
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        var northSouth = (state.get(NORTH) || state.get(SOUTH)) && !(state.get(NORTH) && state.get(SOUTH));
-        var eastWest = (state.get(EAST) || state.get(WEST)) && !(state.get(EAST) && state.get(WEST));
-        var upDown = (state.get(UP) || state.get(DOWN)) && !(state.get(UP) && state.get(DOWN));
+        var northSouth = ((state.get(NORTH) || state.get(SOUTH)) && !(state.get(NORTH) && state.get(SOUTH)));
+        var eastWest = ((state.get(EAST) || state.get(WEST)) && !(state.get(EAST) && state.get(WEST)));
+        var upDown = ((state.get(UP) || state.get(DOWN)) && !(state.get(UP) && state.get(DOWN)));
         var hasJoint = (northSouth && eastWest) || (eastWest && upDown) || (northSouth && upDown);
 
         var jointShape = (hasJoint ? JOINT_SHAPE : VoxelShapes.empty());
@@ -178,6 +180,9 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
         if (!world.isClient) {
             this.ensureUpdate(world, pos, state);
         }
+        if (world.getBlockState(fromPos).isIn(AtbywTags.CONNECTS_TO_PIPES_AND_UPDATES)) {
+            world.updateNeighbor(fromPos, this, pos);
+        }
     }
 
     private void updateNeighbors(World world, BlockPos pos) {
@@ -191,10 +196,11 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
     }
 
     private void updateOffsetNeighbors(World world, BlockPos pos) {
-        for (var dir : Direction.values()) {
-            this.updateNeighbors(world, pos.offset(dir));
+        for (var direction : Direction.values()) {
+            var blockPos = pos.offset(direction);
 
-            var blockPos = pos.offset(dir);
+            this.updateNeighbors(world, blockPos);
+
             if (world.getBlockState(blockPos).isSolidBlock(world, blockPos)) {
                 this.updateNeighbors(world, blockPos.up());
             } else {
@@ -204,10 +210,10 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
     }
 
     private void update(World world, BlockPos pos, BlockState state) {
-        int i = this.getReceivedRedstonePower(world, pos, state);
-        if (state.get(POWER) != i) {
+        var receivedPower = this.getReceivedRedstonePower(world, pos, state);
+        if (state.get(POWER) != receivedPower) {
             if (world.getBlockState(pos) == state) {
-                world.setBlockState(pos, state.with(POWER, i), 2);
+                world.setBlockState(pos, state.with(POWER, receivedPower), 2);
             } else {
                 return;
             }
@@ -248,12 +254,13 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
     public int getValidReceivedPower(World world, BlockState state, BlockPos pos) {
         int i = 0;
         for (var direction : Direction.values()) {
-            var connectsToPipes = world.getBlockState(pos.offset(direction)).isIn(AtbywTags.CONNECTS_TO_PIPES);
+            var currentState = world.getBlockState(pos.offset(direction));
+            var currentBlock = currentState.getBlock();
+            var connectsToPipes = currentState.isIn(AtbywTags.CONNECTS_TO_PIPES);
+            var connectsToPipesAndUpdates = currentState.isIn(AtbywTags.CONNECTS_TO_PIPES_AND_UPDATES);
             var isFullSquare = BlockUtils.checkFullSquare(direction, world, pos);
-            var currentPos = pos.offset(direction);
-            var currentBlock = world.getBlockState(currentPos).getBlock();
 
-            if (connectsToPipes || isFullSquare || currentBlock instanceof RedstonePipeComponent) {
+            if (connectsToPipes || connectsToPipesAndUpdates || isFullSquare || currentBlock instanceof RedstonePipeComponent) {
                 if (state.get(STATES.get(direction))) {
                     int j = world.getEmittedRedstonePower(pos.offset(direction), direction);
                     if (j >= 15) {
@@ -398,16 +405,8 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
         POWER = Properties.POWER;
         WATERLOGGED = Properties.WATERLOGGED;
 
-        var hs = new HorizontalShape(5.0D, 5.0D, 0.0D, 11.0D, 11.0D, 8.0D);
-        var vs = new AxisShape(5.0D, 0.0D, 11.0D, 8.0D);
-        SHAPES = Map.ofEntries(
-                Map.entry(Direction.UP, vs.yShape(false)),
-                Map.entry(Direction.DOWN, vs.yShape(true)),
-                Map.entry(Direction.NORTH, hs.northShape()),
-                Map.entry(Direction.SOUTH, hs.southShape()),
-                Map.entry(Direction.EAST, hs.eastShape()),
-                Map.entry(Direction.WEST, hs.westShape())
-        );
+        var shapes = new AxisShape(5.0D, 0.0D, 11.0D, 8.0D);
+        SHAPES = shapes.getAsDirectionShapeMap();
         STATES = Map.ofEntries(
                 Map.entry(Direction.UP, UP),
                 Map.entry(Direction.DOWN, DOWN),

@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.mixin;
+package net.azagwen.atbyw.mixin.datagen;
 
 import com.google.gson.JsonElement;
 import net.azagwen.atbyw.datagen.Datagen;
