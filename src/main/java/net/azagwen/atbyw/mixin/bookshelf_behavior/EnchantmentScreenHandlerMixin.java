@@ -45,28 +45,28 @@ public abstract  class EnchantmentScreenHandlerMixin extends ScreenHandler {
 					for(j = -1; j <= 1; ++j) {
 						for(int k = -1; k <= 1; ++k) {
 							if ((j != 0 || k != 0) && world.isAir(pos.add(k, 0, j)) && world.isAir(pos.add(k, 1, j))) {
-								if (world.getBlockState(pos.add(k * 2, 0, j * 2)).isIn(AtbywTags.BOOKSHELVES) || world.getBlockState(pos.add(k * 2, 0, j * 2)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
+								if (world.getBlockState(pos.add(k * 2, 0, j * 2)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
 									++i;
 								}
 
-								if (world.getBlockState(pos.add(k * 2, 1, j * 2)).isIn(AtbywTags.BOOKSHELVES) || world.getBlockState(pos.add(k * 2, 1, j * 2)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
+								if (world.getBlockState(pos.add(k * 2, 1, j * 2)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
 									++i;
 								}
 
 								if (k != 0 && j != 0) {
-									if (world.getBlockState(pos.add(k * 2, 0, j)).isIn(AtbywTags.BOOKSHELVES) || world.getBlockState(pos.add(k * 2, 0, j)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
+									if (world.getBlockState(pos.add(k * 2, 0, j)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
 										++i;
 									}
 
-									if (world.getBlockState(pos.add(k * 2, 1, j)).isIn(AtbywTags.BOOKSHELVES) || world.getBlockState(pos.add(k * 2, 1, j)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
+									if (world.getBlockState(pos.add(k * 2, 1, j)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
 										++i;
 									}
 
-									if (world.getBlockState(pos.add(k, 0, j * 2)).isIn(AtbywTags.BOOKSHELVES) || world.getBlockState(pos.add(k, 0, j * 2)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
+									if (world.getBlockState(pos.add(k, 0, j * 2)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
 										++i;
 									}
 
-									if (world.getBlockState(pos.add(k, 1, j * 2)).isIn(AtbywTags.BOOKSHELVES) || world.getBlockState(pos.add(k, 1, j * 2)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
+									if (world.getBlockState(pos.add(k, 1, j * 2)).isIn(AtbywTags.BOOKSHELVES_COMMON)) {
 										++i;
 									}
 								}

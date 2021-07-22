@@ -1,0 +1,163 @@
+{
+    "textures": {
+        "texture": "atbyw:block/redstone_pipe_inverter",
+        "particle": "minecraft:block/copper_block"
+    },
+    "elements": [
+        {
+            "name": "gate",
+            "from": [5, 5, 0],
+            "to": [11, 11, 16],
+            "faces": {
+                "north": {"uv": [6, 0, 12, 6], "texture": "#texture"},
+                "east": {"uv": [0, 0, 6, 16], "rotation": 90, "texture": "#texture"},
+                "south": {"uv": [6, 0, 12, 6], "texture": "#texture"},
+                "west": {"uv": [0, 0, 6, 16], "rotation": 270, "texture": "#texture"},
+                "up": {"uv": [0, 0, 6, 16], "texture": "#texture"},
+                "down": {"uv": [0, 0, 6, 16], "rotation": 180, "texture": "#texture"}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [7, 7, 0],
+            "to": [9, 9, 16],
+            "faces": {
+                "north": {"uv": [13, 1, 15, 3], "texture": "#texture", "tintindex": 0},
+                "south": {"uv": [13, 1, 15, 3], "texture": "#texture", "tintindex": 0}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [5, 7, 2],
+            "to": [11, 9, 6],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+            "faces": {
+                "east": {"uv": [7, 7, 11, 9], "texture": "#texture", "tintindex": 0},
+                "west": {"uv": [7, 7, 11, 9], "texture": "#texture", "tintindex": 0}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [5.1, 6, 2],
+            "to": [10.9, 10, 6],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+            "faces": {
+                "east": {"uv": [7, 7, 11, 9], "texture": "#texture", "tintindex": 0},
+                "west": {"uv": [7, 7, 11, 9], "texture": "#texture", "tintindex": 0}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [5.1, 6, 5],
+            "to": [10.9, 10, 7],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+            "faces": {
+                "east": {"uv": [7, 7, 8, 9], "texture": "#texture", "tintindex": 0},
+                "west": {"uv": [10, 7, 11, 9], "texture": "#texture", "tintindex": 0}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [5.1, 6, 1],
+            "to": [10.9, 10, 3],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 8]},
+            "faces": {
+                "east": {"uv": [10, 7, 11, 9], "texture": "#texture", "tintindex": 0},
+                "west": {"uv": [7, 7, 8, 9], "texture": "#texture", "tintindex": 0}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [7, 5, 2],
+            "to": [9, 11, 6],
+            "rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 8]},
+            "faces": {
+                "up": {"uv": [7, 7, 11, 9], "rotation": 270, "texture": "#texture", "tintindex": 0},
+                "down": {"uv": [7, 7, 11, 9], "rotation": 270, "texture": "#texture", "tintindex": 0}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [6, 5.1, 2],
+            "to": [10, 10.9, 6],
+            "rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 8]},
+            "faces": {
+                "up": {"uv": [7, 7, 11, 9], "rotation": 270, "texture": "#texture", "tintindex": 0},
+                "down": {"uv": [7, 7, 11, 9], "rotation": 270, "texture": "#texture", "tintindex": 0}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [6, 5.1, 5],
+            "to": [10, 10.9, 7],
+            "rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 8]},
+            "faces": {
+                "up": {"uv": [7, 7, 8, 9], "rotation": 270, "texture": "#texture", "tintindex": 0},
+                "down": {"uv": [10, 7, 11, 9], "rotation": 270, "texture": "#texture", "tintindex": 0}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [6, 5.1, 1],
+            "to": [10, 10.9, 3],
+            "rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 8]},
+            "faces": {
+                "up": {"uv": [10, 7, 11, 9], "rotation": 270, "texture": "#texture", "tintindex": 0},
+                "down": {"uv": [7, 7, 8, 9], "rotation": 270, "texture": "#texture", "tintindex": 0}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [6, 6, 0.1],
+            "to": [10, 10, 15.9],
+            "faces": {
+                "north": {"uv": [13, 1, 15, 3], "texture": "#texture", "tintindex": 0},
+                "south": {"uv": [13, 1, 15, 3], "texture": "#texture", "tintindex": 0}
+            }
+        }
+    ],
+    "display": {
+        "thirdperson_righthand": {
+            "rotation": [120, 0, 0],
+            "translation": [0, 1.25, 1],
+            "scale": [0.4, 0.4, 0.4]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [120, 0, 0],
+            "translation": [0, 1.25, 1],
+            "scale": [0.4, 0.4, 0.4]
+        },
+        "firstperson_righthand": {
+            "rotation": [100, -180, 0],
+            "translation": [0.75, 1.5, 0],
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "firstperson_lefthand": {
+            "rotation": [100, -180, 0],
+            "translation": [0.75, 1.5, 0],
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "ground": {
+            "translation": [0, 3, 0],
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "gui": {
+            "rotation": [30, 135, 0],
+            "scale": [0.8, 0.8, 0.8]
+        },
+        "head": {
+            "translation": [0, 9.5, 0]
+        },
+        "fixed": {
+            "scale": [0.5, 0.5, 0.5]
+        }
+    },
+    "groups": [0,
+        {
+            "name": "tint",
+            "origin": [8, 8, 8],
+            "color": 0,
+            "children": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+    ]
+}

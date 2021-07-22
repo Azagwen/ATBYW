@@ -195,7 +195,7 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
         }
     }
 
-    private void updateOffsetNeighbors(World world, BlockPos pos) {
+    public void updateOffsetNeighbors(World world, BlockPos pos) {
         for (var direction : Direction.values()) {
             var blockPos = pos.offset(direction);
 
@@ -330,7 +330,7 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
         return COLORS.get(powerLevel);
     }
 
-    private void addPoweredParticles(World world, Random random, BlockPos pos, int color, Direction direction, Direction direction2, float f, float g) {
+    public static void addPoweredParticles(World world, Random random, BlockPos pos, int color, Direction direction, Direction direction2, float f, float g) {
         float h = g - f;
         if (!(random.nextFloat() >= 0.2F * h)) {
             var multiplier = 0.4375F;
@@ -352,12 +352,12 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
         for (var direction : Direction.values()) {
             if (state.get(STATES.get(direction)) && !BlockUtils.checkFullSquare(direction, world, pos) && !this.canConnect(direction, world, pos)) {
                 switch (direction) {
-                    case UP -> vec3d = new Vec3d(x + 0.5D, y + 1.0D, z + 0.5D);
-                    case DOWN -> vec3d = new Vec3d(x + 0.5D, y + 0.0D, z + 0.5D);
-                    case NORTH -> vec3d = new Vec3d(x + 0.5D, y + 0.5D, z + 0.0D);
-                    case SOUTH -> vec3d = new Vec3d(x + 0.5D, y + 0.5D, z + 1.0D);
-                    case EAST -> vec3d = new Vec3d(x + 1.0D, y + 0.5D, z + 0.5D);
-                    case WEST -> vec3d = new Vec3d(x + 0.0D, y + 0.5D, z + 0.5D);
+                    case UP -> vec3d = new Vec3d(x + 0.5D, y + 1.1D, z + 0.5D);
+                    case DOWN -> vec3d = new Vec3d(x + 0.5D, y + (-0.1D), z + 0.5D);
+                    case NORTH -> vec3d = new Vec3d(x + 0.5D, y + 0.5D, z + (-0.1D));
+                    case SOUTH -> vec3d = new Vec3d(x + 0.5D, y + 0.5D, z + 1.1D);
+                    case EAST -> vec3d = new Vec3d(x + 1.1D, y + 0.5D, z + 0.5D);
+                    case WEST -> vec3d = new Vec3d(x + (-0.1D), y + 0.5D, z + 0.5D);
                 }
 
                 if (state.get(WATERLOGGED)) {
