@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.mixin;
+package net.azagwen.atbyw.mixin.client;
 
 import com.google.common.collect.Lists;
 import net.azagwen.atbyw.group.AtbywItemGroup;

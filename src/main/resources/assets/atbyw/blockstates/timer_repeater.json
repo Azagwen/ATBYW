@@ -1,7 +1,35 @@
 {
     "variants": {
-        "": {
-            "model": "atbyw:block/timer_repeater_digits"
+        "facing=south,powered=false": {
+            "model": "atbyw:block/timer_repeater"
+        },
+        "facing=west,powered=false": {
+            "model": "atbyw:block/timer_repeater",
+            "y": 90
+        },
+        "facing=north,powered=false": {
+            "model": "atbyw:block/timer_repeater",
+            "y": 180
+        },
+        "facing=east,powered=false": {
+            "model": "atbyw:block/timer_repeater",
+            "y": 270
+        },
+
+        "facing=south,powered=true": {
+            "model": "atbyw:block/timer_repeater_on"
+        },
+        "facing=west,powered=true": {
+            "model": "atbyw:block/timer_repeater_on",
+            "y": 90
+        },
+        "facing=north,powered=true": {
+            "model": "atbyw:block/timer_repeater_on",
+            "y": 180
+        },
+        "facing=east,powered=true": {
+            "model": "atbyw:block/timer_repeater_on",
+            "y": 270
         }
     }
 }

@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.mixin;
+package net.azagwen.atbyw.mixin.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.azagwen.atbyw.block.CanvasBlock;

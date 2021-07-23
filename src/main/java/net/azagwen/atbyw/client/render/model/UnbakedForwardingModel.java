@@ -17,6 +17,7 @@ import java.util.Set;
 import java.util.function.Function;
 
 /**
+ * Taken from Aurora's Decorations.
  * Represents an unbaked model that forwards another unbaked model.
  *
  * @author LambdAurora
@@ -24,7 +25,7 @@ import java.util.function.Function;
  * @since 1.0.0
  */
 @Environment(EnvType.CLIENT)
-public record UnbakedForwardingModel(UnbakedModel baseModel, Function<BakedModel, BakedModel> factory) implements UnbakedModel {
+public record UnbakedForwardingModel(UnbakedModel baseModel, Function<BakedModel, BakedModel> factory) implements AtbywUnbakedModel {
 
     @Override
     public Collection<Identifier> getModelDependencies() {

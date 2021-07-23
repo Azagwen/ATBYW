@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.mixin;
+package net.azagwen.atbyw.mixin.client;
 
 import net.azagwen.atbyw.client.render.AtbywTextureRenderLayers;
 import net.fabricmc.api.EnvType;
