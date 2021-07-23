@@ -360,7 +360,7 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
                     case WEST -> vec3d = new Vec3d(x + (-0.1D), y + 0.5D, z + 0.5D);
                 }
 
-                if (state.get(WATERLOGGED)) {
+                if (state.get(WATERLOGGED) || world.getFluidState(pos.offset(direction)).getFluid() == Fluids.WATER) {
                     world.addParticle(ParticleTypes.BUBBLE, vec3d.getX(), vec3d.getY(), vec3d.getZ(), 0.0D, (direction.equals(Direction.DOWN) ? 0.0D : 0.5D), 0.0D);
                 } else {
                     world.addParticle(new BlockStateParticleEffect(ParticleTypes.FALLING_DUST, state), vec3d.getX(), vec3d.getY(), vec3d.getZ(), 0.0D, 0.0D, 0.0D);

@@ -129,7 +129,8 @@ public class TimerRepeaterDigitBakedModel extends ForwardingBakedModel {
      */
     private int offSetDigitU(int digitValue) {
         var width = 3;
-        return ((digitValue <= 4 ? ((width + 1) * digitValue) : ((width + 1) * (digitValue - 5))) - 1) + 4;
+        var adjustedWidth = (width + 1);
+        return ((digitValue <= 4 ? (adjustedWidth * digitValue) : (adjustedWidth * (digitValue - 5))) - 1) + 4;
     }
 
     /** Offset the V channel of a digit model UV based on the digit's value (0 to 9)
