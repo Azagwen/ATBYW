@@ -1,24 +1,16 @@
 package net.azagwen.atbyw.client;
 
-import net.azagwen.atbyw.block.entity.AtbywBlockEntityTypes;
 import net.azagwen.atbyw.client.render.AtbywBlockRenderLayers;
-import net.azagwen.atbyw.client.render.AtbywEntityModelLayers;
-import net.azagwen.atbyw.client.render.TimerRepeaterBlockEntityRenderer;
-import net.azagwen.atbyw.client.render.model.TimerRepeaterDigitBakedModel;
 import net.azagwen.atbyw.main.AtbywEntityTypes;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.texture.SpriteAtlasTexture;
-import net.minecraft.util.Identifier;
 
 public class AtbywClient implements ClientModInitializer {
     public final MinecraftClient client = MinecraftClient.getInstance();

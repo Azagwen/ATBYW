@@ -2,7 +2,7 @@ package net.azagwen.atbyw.mixin.unused;
 
 import com.google.common.collect.ImmutableMap;
 import net.azagwen.atbyw.client.render.AtbywEntityModelLayers;
-import net.azagwen.atbyw.client.render.TimerRepeaterBlockEntityRenderer;
+import net.azagwen.atbyw.archived.TimerRepeaterBlockEntityRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.TexturedModelData;

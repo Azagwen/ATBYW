@@ -1,10 +1,8 @@
 package net.azagwen.atbyw.block;
 
-import net.azagwen.atbyw.block.entity.TimerRepeaterBlockEntity;
 import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.minecraft.block.AbstractRedstoneGateBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,9 +14,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
-public class TimerRepeaterBlock extends AbstractRedstoneGateBlock implements BlockEntityProvider {
+public class TimerRepeaterBlock extends AbstractRedstoneGateBlock {
     public static final IntProperty TIMER_DELAY;
 
     protected TimerRepeaterBlock(Settings settings) {
@@ -47,11 +44,6 @@ public class TimerRepeaterBlock extends AbstractRedstoneGateBlock implements Blo
         super.onSyncedBlockEvent(state, world, pos, type, data);
         BlockEntity blockEntity = world.getBlockEntity(pos);
         return blockEntity != null && blockEntity.onSyncedBlockEvent(type, data);
-    }
-
-    @Override
-    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new TimerRepeaterBlockEntity(pos, state);
     }
 
     @Override

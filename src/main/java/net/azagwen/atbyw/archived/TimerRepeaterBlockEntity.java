@@ -1,9 +1,11 @@
-package net.azagwen.atbyw.block.entity;
+package net.azagwen.atbyw.archived;
 
+import net.azagwen.atbyw.block.entity.AtbywBlockEntityTypes;
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable;
 import net.fabricmc.fabric.api.rendering.data.v1.RenderAttachmentBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.util.Nameable;
@@ -13,7 +15,8 @@ import org.jetbrains.annotations.Nullable;
 public class TimerRepeaterBlockEntity extends BlockEntity implements RenderAttachmentBlockEntity {
 
     public TimerRepeaterBlockEntity(BlockPos pos, BlockState state) {
-        super(AtbywBlockEntityTypes.TIMER_REPEATER_ENTITY, pos, state);
+        //Incorrect be-type for archive
+        super(BlockEntityType.BED, pos, state);
     }
 
     @Override

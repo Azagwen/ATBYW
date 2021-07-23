@@ -34,8 +34,11 @@ public class TimerRepeaterDigitBakedModel extends ForwardingBakedModel {
         super.emitBlockQuads(blockView, state, pos, randomSupplier, context);
         var emitter = context.getEmitter();
         if (state.getBlock() instanceof TimerRepeaterBlock) {
+            var facing = state.get(TimerRepeaterBlock.FACING);
+            context.pushTransform(ModelUtil.getFacingRotation(facing));
             this.emitDigitModel(emitter, state, false);
             this.emitDigitModel(emitter, state, true);
+            context.popTransform();
         }
     }
 
@@ -137,5 +140,4 @@ public class TimerRepeaterDigitBakedModel extends ForwardingBakedModel {
     private int offSetDigitV(int digitValue) {
         return digitValue > 4 ? 6 : 0;
     }
-
 }

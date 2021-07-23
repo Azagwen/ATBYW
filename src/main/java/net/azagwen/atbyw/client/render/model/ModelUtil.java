@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.client.render.model;
 
 import net.fabricmc.fabric.api.renderer.v1.mesh.QuadEmitter;
+import net.fabricmc.fabric.api.renderer.v1.render.RenderContext;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3f;
 
@@ -35,5 +36,42 @@ public class ModelUtil {
 
     public static float normalizeVoxelChannel(float channel) {
         return channel / 16.0F;
+    }
+
+    public static RenderContext.QuadTransform getFacingRotation(Direction facing) {
+        var rotate = (facing.getAxis().isHorizontal() ? Vec3f.POSITIVE_Y : Vec3f.POSITIVE_X).getDegreesQuaternion(angle(facing));
+        return transform -> {
+            Vec3f vector = new Vec3f();
+
+            for (int i = 0; i < 4; i++) {
+                // Transform the position (center of rotation is 0.5, 0.5, 0.5)
+                transform.copyPos(i, vector);
+                vector.add(-0.5f, -0.5f, -0.5f);
+                vector.rotate(rotate);
+                vector.add(0.5f, 0.5f, 0.5f);
+                transform.pos(i, vector);
+
+                // Transform the normal
+                if (transform.hasNormal(i)) {
+                    transform.copyNormal(i, vector);
+                    vector.rotate(rotate);
+                    transform.normal(i, vector);
+                }
+            }
+
+            transform.nominalFace(facing);
+            return true;
+        };
+    }
+
+    public static float angle(Direction direction) {
+        return switch (direction.getOpposite()) {
+            case DOWN -> 270;
+            case UP -> 90;
+            case NORTH -> 0;
+            case EAST -> 270;
+            case SOUTH -> 180;
+            case WEST -> 90;
+        };
     }
 }

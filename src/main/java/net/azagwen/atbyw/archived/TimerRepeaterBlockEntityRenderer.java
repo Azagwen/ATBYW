@@ -1,8 +1,9 @@
-package net.azagwen.atbyw.client.render;
+package net.azagwen.atbyw.archived;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.TimerRepeaterBlock;
-import net.azagwen.atbyw.block.entity.TimerRepeaterBlockEntity;
+import net.azagwen.atbyw.client.render.AtbywEntityModelLayers;
+import net.azagwen.atbyw.client.render.AtbywTextureRenderLayers;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;

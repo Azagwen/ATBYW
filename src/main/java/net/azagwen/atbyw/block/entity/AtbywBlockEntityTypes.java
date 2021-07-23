@@ -24,11 +24,9 @@ public class AtbywBlockEntityTypes<T extends BlockEntity>{
         return Registry.register(Registry.BLOCK_ENTITY_TYPE, getBlockID(blocks[0]).getPath(), FabricBlockEntityTypeBuilder.create(factory, blocks).build(null));
     }
 
-    public static BlockEntityType<TimerRepeaterBlockEntity> TIMER_REPEATER_ENTITY;
     public static BlockEntityType<CanvasBlockEntity> CANVAS_BLOCK_ENTITY;
 
     public static void init() {
-        TIMER_REPEATER_ENTITY = create(TimerRepeaterBlockEntity::new, AtbywBlocks.TIMER_REPEATER);
         CANVAS_BLOCK_ENTITY = create(CanvasBlockEntity::new, AtbywBlocks.CANVAS_BLOCK, AtbywBlocks.GLOWING_CANVAS_BLOCK);
 
         LOGGER.info("ATBYW Block Entities Inintiliazed");
