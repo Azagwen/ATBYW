@@ -23,6 +23,10 @@ public class AtbywBlockRenderLayers {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), translucentBlocks.toArray(Block[]::new));
     }
 
+    public static void addEmissiveBlock(Block block) {
+        BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
+    }
+
     private static void cutoutLayerBlocks(List<Block> blocks) {
         blocks.add(AtbywBlocks.GRASS_BLOCK_STAIRS);
         blocks.add(AtbywBlocks.GRASS_BLOCK_SLAB);

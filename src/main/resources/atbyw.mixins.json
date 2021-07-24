@@ -14,15 +14,14 @@
         "block_behavior.WallBlockMixin",
         "bookshelf_behavior.EnchantingTableBlockMixin",
         "bookshelf_behavior.EnchantmentScreenHandlerMixin",
-        "client.ModelLoaderMixin",
         "datagen.RecipeManagerMixin",
         "datagen.ServerAdvancementLoaderMixin"
     ],
     "client": [
         "client.CreativeInventoryScreenMixin",
         "client.InGameHudMixin",
-        "client.TexturedRenderLayersMixin",
-        "datagen.ItemModelLoaderMixin"
+        "client.ItemModelLoaderMixin",
+        "client.ModelLoaderMixin"
     ],
     "injectors": {
         "defaultRequire": 1

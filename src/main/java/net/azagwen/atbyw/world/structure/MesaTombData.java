@@ -19,10 +19,10 @@ public class MesaTombData {
 
     static {
         BASE_POOL = StructurePools.register(new StructurePool(
-                AtbywMain.id(rootFile + "/entrance/top"),
+                AtbywMain.id(rootFile + "/entrance/v1"),
                 new Identifier("empty"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywMain.id(rootFile + "/entrance/top")), 1)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywMain.id(rootFile + "/entrance/v1")), 1)
                 ),
                 StructurePool.Projection.RIGID
         ));
@@ -35,10 +35,10 @@ public class MesaTombData {
                 StructurePool.Projection.RIGID
         ));
         StructurePools.register(new StructurePool(
-                AtbywMain.id(rootFile + "/entrance/bottom"),
+                AtbywMain.id(rootFile + "/entrance/v2"),
                 new Identifier("empty"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywMain.id(rootFile + "/entrance/bottom"), SHUFFLE_FLOOR_LANTERNS), 1)
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywMain.id(rootFile + "/entrance/v2"), SHUFFLE_FLOOR_LANTERNS), 1)
                 ),
                 StructurePool.Projection.RIGID
         ));

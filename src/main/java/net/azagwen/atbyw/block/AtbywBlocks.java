@@ -82,10 +82,7 @@ public class AtbywBlocks {
     }
 
     private static CanvasBlock canvasBlock(boolean glowing) {
-        var settings = FabricBlockSettings.of(Material.WOOL).strength(0.5F).sounds(BlockSoundGroup.WOOL);
-        var finalSettings = settings.luminance((blockStatex) -> glowing ? 1 : 0).emissiveLighting((state, world, pos) -> glowing);
-
-        return new CanvasBlock(glowing, finalSettings);
+        return new CanvasBlock(glowing, FabricBlockSettings.of(Material.WOOL).strength(0.5F).sounds(BlockSoundGroup.WOOL));
     }
 
     //Dummy Blocks (used only in-code references and specific properties)

@@ -183,7 +183,7 @@ public class StatueVoxelShapes {
 
         //Rabbit Shapes
         final VoxelShape[][] RABBIT_OUTLINE_SHAPES = {
-                makeDirectionalShapes( 5.5D, 12.25D,  4.35D,  7.5D, 17.25D,  5.35),    //Ear left      0
+                makeDirectionalShapes( 5.5D, 12.25D,  4.35D,  7.5D, 17.25D,  5.35),    //Ear u1      0
                 makeDirectionalShapes( 8.5D, 12.25D,  4.35D, 10.5D, 17.25D,  5.35),    //Ear Right     1
                 makeDirectionalShapes( 5.5D,  8.25D,  0.35D, 10.5D, 12.25D,  5.35),    //Head          2
                 makeDirectionalShapes( 7.5D,  9.75D, -0.15D,  8.5D, 10.75D,  0.85),    //Nose          3

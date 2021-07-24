@@ -22,7 +22,7 @@ public class SavanaMineshaftData {
                 AtbywMain.id(rootFile + "/shaft_entrance"),
                 new Identifier("empty"),
                 ImmutableList.of(
-                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywMain.id(rootFile + "/entrance/top")), 1),
+                        Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywMain.id(rootFile + "/entrance/v1")), 1),
                         Pair.of(StructurePoolHelper.addSinglePoolElement(AtbywMain.id(rootFile + "/entrance/top_alt")), 1)
                 ),
                 StructurePool.Projection.RIGID

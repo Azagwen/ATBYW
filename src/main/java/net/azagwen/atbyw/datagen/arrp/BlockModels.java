@@ -14,8 +14,8 @@ public class BlockModels {
 
     public static JTextures getPillarSlabTexture(RuntimeResourcePack pack, String namespace, String path, boolean horizontal) {
         var slabTextures = JModel.textures()
-                .var("bottom", namespace + ":block/" + path + "_top")
-                .var("top", namespace + ":block/" + path + "_top")
+                .var("v2", namespace + ":block/" + path + "_top")
+                .var("v1", namespace + ":block/" + path + "_top")
                 .var("side", namespace + ":block/" + path);
         var horizontalPillarSlabTextures = JModel.textures()
                 .var("end", namespace + ":block/" + path + "_top")

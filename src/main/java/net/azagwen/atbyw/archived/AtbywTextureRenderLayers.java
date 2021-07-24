@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.client.render;
+package net.azagwen.atbyw.archived;
 
 import com.google.common.collect.Lists;
 import net.azagwen.atbyw.main.AtbywMain;

@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.client;
 
 import net.azagwen.atbyw.client.render.AtbywBlockRenderLayers;
+import net.azagwen.atbyw.client.render.model.SpriteRegistry;
 import net.azagwen.atbyw.main.AtbywEntityTypes;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.fabricmc.api.ClientModInitializer;
@@ -20,11 +21,7 @@ public class AtbywClient implements ClientModInitializer {
 
         EntityRendererRegistry.INSTANCE.register(AtbywEntityTypes.SHROOMSTICK, FlyingItemEntityRenderer::new);
 
-        //noinspection deprecation
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlas, registry) -> {
-            registry.register(AtbywMain.id("block/timer_repeater_digits"));
-        });
-
+        SpriteRegistry.init();
         AtbywColorProviders.initItems();
         AtbywColorProviders.initBlocks();
         AtbywBlockRenderLayers.init();

@@ -3,9 +3,9 @@ package net.azagwen.atbyw.block.state;
 import net.minecraft.util.StringIdentifiable;
 
 public enum ColumnEnd implements StringIdentifiable {
-    TOP("top"),
+    TOP("v1"),
     MIDDLE("middle"),
-    BOTTOM("bottom"),
+    BOTTOM("v2"),
     SINGLE("single");
 
     private final String name;

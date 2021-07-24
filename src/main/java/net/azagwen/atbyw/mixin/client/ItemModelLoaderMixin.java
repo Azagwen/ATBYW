@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.mixin.datagen;
+package net.azagwen.atbyw.mixin.client;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
