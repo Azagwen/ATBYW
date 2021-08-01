@@ -25,10 +25,10 @@ public class AtbywBlockEntityTypes<T extends BlockEntity>{
     }
 
     public static BlockEntityType<CanvasBlockEntity> CANVAS_BLOCK_ENTITY;
+    public static BlockEntityType<TintingTableBlockEntity> TINTING_TABLE_BLOCK_ENTITY;
 
     public static void init() {
         CANVAS_BLOCK_ENTITY = create(CanvasBlockEntity::new, AtbywBlocks.CANVAS_BLOCK, AtbywBlocks.GLOWING_CANVAS_BLOCK);
-
-        LOGGER.info("ATBYW Block Entities Inintiliazed");
+        TINTING_TABLE_BLOCK_ENTITY = create(TintingTableBlockEntity::new, AtbywBlocks.TINTING_TABLE);
     }
 }

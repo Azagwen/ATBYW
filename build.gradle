@@ -40,6 +40,11 @@ repositories {
 		name "Modrinth"
 		url "https://api.modrinth.com/maven"
 	}
+
+	maven {
+		name "dblsaiko"
+		url "https://maven.dblsaiko.net/"
+	}
 }
 
 dependencies {
@@ -66,6 +71,12 @@ dependencies {
 	modImplementation "maven.modrinth:dp_item_ops:${project.datapack_item_ops_version}"			//API + Lib
 	include "maven.modrinth:dp_item_ops:${project.datapack_item_ops_version}"					//API + Lib
 
+	//JMX and FREX
+	modApi ("grondag:frex-${project.mc_tag}:${project.frex_version}.+") { transitive = false}
+	include "grondag:frex-${project.mc_tag}:${project.frex_version}.+"
+
+	modImplementation ("grondag:jmx-${project.mc_tag}:${project.jmx_version}.+") { transitive = false}
+	include "grondag:jmx-${project.mc_tag}:${project.jmx_version}.+"
 }
 
 minecraft {

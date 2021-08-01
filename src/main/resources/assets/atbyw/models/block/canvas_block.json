@@ -1,6 +1,11 @@
 {
-    "parent": "atbyw:block/cube_all_tinted",
+    "parent": "atbyw:block/jmx/cube_all_tinted",
     "textures": {
         "all": "atbyw:block/canvas_block"
+    },
+    "jmx": {
+        "textures": {
+            "jmx_all": "atbyw:block/canvas_block"
+        }
     }
 }

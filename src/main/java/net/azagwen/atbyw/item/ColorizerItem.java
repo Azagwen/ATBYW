@@ -2,6 +2,7 @@ package net.azagwen.atbyw.item;
 
 import net.azagwen.atbyw.block.CanvasBlock;
 import net.azagwen.atbyw.block.entity.CanvasBlockEntity;
+import net.azagwen.atbyw.main.AtbywStats;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
@@ -52,6 +53,7 @@ public class ColorizerItem extends Item implements SimpleColoredItem {
             var entity = (CanvasBlockEntity) world.getBlockEntity(pos);
             try {
                 this.applyPaint(stack, player, entity, state, pos, world);
+                player.increaseStat(AtbywStats.COLOR_CANVAS_BLOCK, 1);
                 return ActionResult.success(world.isClient);
             } catch (NumberFormatException e) {
                 return ActionResult.PASS;

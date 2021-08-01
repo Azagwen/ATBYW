@@ -14,7 +14,7 @@ import net.minecraft.item.DyeableItem;
 
 import java.awt.*;
 
-public class AtbywColorProviders {
+public class ColorProviders {
 
     public static void initItems() {
         //Canvas blocks color

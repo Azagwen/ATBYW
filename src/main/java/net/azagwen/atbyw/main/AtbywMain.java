@@ -20,6 +20,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.math.MathHelper;
@@ -50,7 +51,6 @@ public class AtbywMain implements ModInitializer {
 	//TODO: Add smooth variants of Deepslathe, Gqranite, Diorite, Andesite, Tuff...
 	//TODO: Add Amethyst bricks
 	//TODO: Add Amethyst Walls/Fences
-	//TODO: Add Copper Lanterns
 	//TODO: Add Cactus Planks & assorted stuff
 	//TODO: Add Redstone pipes & components assorted to it
 	//TODO: Add Stone melter furnace
@@ -127,8 +127,9 @@ public class AtbywMain implements ModInitializer {
 		AtbywWorldGen.init();
 		AtbywRRP.init();
 		RecipeRegistry.init();
+		AtbywStats.init();
 
-		//Populate debug world with this mod's block (dev only)
+		//Populate debug world with this mod's blocks (dev only)
 		if (isDebugEnabled()) {
 			new AutoJsonWriter().writeAll();
 

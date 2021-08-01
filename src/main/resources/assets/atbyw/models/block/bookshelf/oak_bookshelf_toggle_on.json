@@ -1,8 +1,16 @@
 {
-  "parent": "atbyw:block/bookshelf/template_bookshelf_toggle_on",
+  "parent": "atbyw:block/jmx/template_bookshelf_toggle_on",
   "textures": {
     "particle": "minecraft:block/bookshelf",
     "top": "minecraft:block/oak_planks",
     "sides": "atbyw:block/oak_bookshelf_toggle"
+  },
+  "jmx": {
+    "textures": {
+      "jmx_tex_particle": "minecraft:block/bookshelf",
+      "layered_textures": [
+        { "jmx_sides": "atbyw:block/oak_bookshelf_toggle" }
+      ]
+    }
   }
 }

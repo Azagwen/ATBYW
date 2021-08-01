@@ -1,0 +1,204 @@
+package net.azagwen.atbyw.block.entity;
+
+import net.azagwen.atbyw.item.SimpleColoredItem;
+import net.azagwen.atbyw.screen.TintingTableScreenHandler;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.LockableContainerBlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.DyeableItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.PropertyDelegate;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+public class TintingTableBlockEntity extends LockableContainerBlockEntity implements SidedInventory {
+    private static final int[] DYE_SLOTS = new int[]{2, 3, 4};
+    protected final PropertyDelegate propertyDelegate;
+    private DefaultedList<ItemStack> inventory;
+    private int redAmount;
+    private int greenAmount;
+    private int blueAmount;
+    private int mode;
+
+    public TintingTableBlockEntity(BlockPos pos, BlockState state) {
+        super(AtbywBlockEntityTypes.TINTING_TABLE_BLOCK_ENTITY, pos, state);
+        this.inventory = DefaultedList.ofSize(5, ItemStack.EMPTY);
+        this.propertyDelegate = new PropertyDelegate() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> TintingTableBlockEntity.this.redAmount;
+                    case 1 -> TintingTableBlockEntity.this.greenAmount;
+                    case 2 -> TintingTableBlockEntity.this.blueAmount;
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> TintingTableBlockEntity.this.redAmount = value;
+                    case 1 -> TintingTableBlockEntity.this.greenAmount = value;
+                    case 2 -> TintingTableBlockEntity.this.blueAmount = value;
+                    case 3 -> TintingTableBlockEntity.this.mode = value;
+                }
+            }
+
+            @Override
+            public int size() {
+                return 5;
+            }
+        };
+    }
+
+    public static void tick(World world, BlockPos pos, BlockState state, TintingTableBlockEntity blockEntity) {
+        blockEntity.redAmount = blockEntity.tryRecharge(world, pos, state, blockEntity.redAmount, blockEntity.inventory.get(2), TintingTableFuels.RED);
+        blockEntity.greenAmount = blockEntity.tryRecharge(world, pos, state, blockEntity.greenAmount, blockEntity.inventory.get(3), TintingTableFuels.GREEN);
+        blockEntity.blueAmount = blockEntity.tryRecharge(world, pos, state, blockEntity.blueAmount, blockEntity.inventory.get(4), TintingTableFuels.BLUE);
+    }
+
+    private int tryRecharge(World world, BlockPos pos, BlockState state, int amount, ItemStack stack, TintingTableFuels fuel) {
+        if (amount <= 75 && stack.isOf(fuel.getItem())) {
+            stack.decrement(1);
+            markDirty(world, pos, state);
+            return amount + 25;
+        }
+        return amount;
+    }
+
+    @Override
+    protected Text getContainerName() {
+        return new TranslatableText("container.tinting");
+    }
+
+    @Override
+    public int size() {
+        return this.inventory.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        var inventoryIterator = this.inventory.iterator();
+        var itemStack = ItemStack.EMPTY;
+        do {
+            if (!inventoryIterator.hasNext()) {
+                return true;
+            }
+            itemStack = inventoryIterator.next();
+        } while(itemStack.isEmpty());
+        return false;
+    }
+
+    @Override
+    public ItemStack getStack(int slot) {
+        return slot >= 0 && slot < this.inventory.size() ? this.inventory.get(slot) : ItemStack.EMPTY;
+    }
+
+    @Override
+    public ItemStack removeStack(int slot, int amount) {
+        return Inventories.splitStack(this.inventory, slot, amount);
+    }
+
+    @Override
+    public ItemStack removeStack(int slot) {
+        return Inventories.removeStack(this.inventory, slot);
+    }
+
+    @Override
+    public void setStack(int slot, ItemStack stack) {
+        if (slot >= 0 && slot < this.inventory.size()) {
+            this.inventory.set(slot, stack);
+        }
+
+    }
+
+    @Override
+    public boolean canPlayerUse(PlayerEntity player) {
+        if (this.world.getBlockEntity(this.pos) != this) {
+            return false;
+        } else {
+            return !(player.squaredDistanceTo((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) > 64.0D);
+        }
+    }
+
+    @Override
+    public boolean isValid(int slot, ItemStack stack) {
+        if (slot == 0) {
+            return TintingTableScreenHandler.isValidIngredient(stack);
+        } else if (slot > 1) {
+            for (var dye : TintingTableFuels.values()) {
+                return stack.isOf(dye.getItem());
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int[] getAvailableSlots(Direction side) {
+        return DYE_SLOTS;
+    }
+
+    @Override
+    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
+        return this.isValid(slot, stack);
+    }
+
+    @Override
+    public boolean canExtract(int slot, ItemStack stack, Direction dir) {
+        return true;
+    }
+
+    @Override
+    public void clear() {
+        this.inventory.clear();
+    }
+
+    @Override
+    public void markDirty() {
+        super.markDirty();
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
+        Inventories.readNbt(nbt, this.inventory);
+        this.redAmount = nbt.getByte("RedAmount");
+        this.greenAmount = nbt.getByte("GreenAmount");
+        this.blueAmount = nbt.getByte("BlueAmount");
+        this.mode = nbt.getByte("Mode");
+    }
+
+    @Override
+    public NbtCompound writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        Inventories.writeNbt(nbt, this.inventory);
+        nbt.putByte("RedAmount", (byte) this.redAmount);
+        nbt.putByte("GreenAmount", (byte) this.greenAmount);
+        nbt.putByte("BlueAmount", (byte) this.blueAmount);
+        nbt.putInt("Mode", this.mode);
+        return nbt;
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        return this.writeNbt(new NbtCompound());
+    }
+
+
+    @Override
+    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
+        return new TintingTableScreenHandler(syncId, playerInventory, this, this.propertyDelegate, ScreenHandlerContext.create(world, pos));
+    }
+}

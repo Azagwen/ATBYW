@@ -1,121 +1,47 @@
 {
   "multipart": [
     {
-      "when": {
-        "OR": [
-          {
-            "up": "false",
-            "down": "false",
-            "north": "false",
-            "south": "false",
-            "east": "false",
-            "west": "false"
-          },
-          {
-            "east": "true",
-            "north": "true"
-          },
-          {
-            "east": "true",
-            "south": "true"
-          },
-          {
-            "north": "true",
-            "west": "true"
-          },
-          {
-            "south": "true",
-            "west": "true"
-          },
-          {
-            "north": "true",
-            "up": "true"
-          },
-          {
-            "south": "true",
-            "up": "true"
-          },
-          {
-            "east": "true",
-            "up": "true"
-          },
-          {
-            "west": "true",
-            "up": "true"
-          },
-          {
-            "north": "true",
-            "down": "true"
-          },
-          {
-            "south": "true",
-            "down": "true"
-          },
-          {
-            "east": "true",
-            "down": "true"
-          },
-          {
-            "west": "true",
-            "down": "true"
-          }
+      "when": { "OR": [
+          { "up": "false", "down": "false", "north": "false", "south": "false", "east": "false", "west": "false" },
+          { "east": "true", "north": "true" },
+          { "east": "true", "south": "true" },
+          { "north": "true", "west": "true" },
+          { "south": "true", "west": "true" },
+          { "north": "true", "up": "true" },
+          { "south": "true", "up": "true" },
+          { "east": "true", "up": "true" },
+          { "west": "true", "up": "true" },
+          { "north": "true", "down": "true" },
+          { "south": "true", "down": "true" },
+          { "east": "true", "down": "true" },
+          { "west": "true", "down": "true" }
         ]
       },
-      "apply": {
-        "model": "atbyw:block/redstone_pipe_joint"
-      }
+      "apply": { "model": "atbyw:block/redstone_pipe_joint" }
     },
     {
-      "when": {
-        "north": "true"
-      },
-      "apply": {
-        "model": "atbyw:block/redstone_pipe_n"
-      }
+      "when": { "north": "true" },
+      "apply": { "model": "atbyw:block/redstone_pipe_n" }
     },
     {
-      "when": {
-        "south": "true"
-      },
-      "apply": {
-        "model": "atbyw:block/redstone_pipe_s"
-      }
+      "when": { "south": "true" },
+      "apply": { "model": "atbyw:block/redstone_pipe_s" }
     },
     {
-      "when": {
-        "east": "true"
-      },
-      "apply": {
-        "model": "atbyw:block/redstone_pipe_n",
-        "y": 90
-      }
+      "when": { "east": "true" },
+      "apply": { "model": "atbyw:block/redstone_pipe_n", "y": 90 }
     },
     {
-      "when": {
-        "west": "true"
-      },
-      "apply": {
-        "model": "atbyw:block/redstone_pipe_s",
-        "y": 90
-      }
+      "when": { "west": "true" },
+      "apply": { "model": "atbyw:block/redstone_pipe_s", "y": 90 }
     },
     {
-      "when": {
-        "up": "true"
-      },
-      "apply": {
-        "model": "atbyw:block/redstone_pipe_n",
-        "x": 270
-      }
+      "when": { "up": "true" },
+      "apply": { "model": "atbyw:block/redstone_pipe_n", "x": 270 }
     },
     {
-      "when": {
-        "down": "true"
-      },
-      "apply": {
-        "model": "atbyw:block/redstone_pipe_s",
-        "x": 270
-      }
+      "when": { "down": "true" },
+      "apply": { "model": "atbyw:block/redstone_pipe_s", "x": 270 }
     }
   ]
 }

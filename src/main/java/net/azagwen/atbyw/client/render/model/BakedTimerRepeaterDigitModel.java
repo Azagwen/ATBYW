@@ -1,30 +1,21 @@
 package net.azagwen.atbyw.client.render.model;
 
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.types.templates.List;
 import net.azagwen.atbyw.block.TimerRepeaterBlock;
-import net.azagwen.atbyw.util.Pair;
 import net.fabricmc.fabric.api.renderer.v1.mesh.MutableQuadView;
 import net.fabricmc.fabric.api.renderer.v1.mesh.QuadEmitter;
 import net.fabricmc.fabric.api.renderer.v1.model.ForwardingBakedModel;
 import net.fabricmc.fabric.api.renderer.v1.render.RenderContext;
-import net.fabricmc.loader.util.sat4j.core.Vec;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.model.BakedModel;
-import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.util.math.*;
 import net.minecraft.world.BlockRenderView;
 
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 import java.util.function.Supplier;
 
 public class BakedTimerRepeaterDigitModel extends ForwardingBakedModel {
     private static final SpriteIdentifier DIGITS_TEXTURE = SpriteRegistry.TIMER_REPEATER_DIGITS_TEXTURE;
-    private static final SpriteIdentifier EMISSIVE_TEXTURE = SpriteRegistry.TIMER_REPEATER_EMISSIVE_TEXTURE;
 
     public BakedTimerRepeaterDigitModel(BakedModel baseModel) {
         this.wrapped = baseModel;
@@ -36,10 +27,9 @@ public class BakedTimerRepeaterDigitModel extends ForwardingBakedModel {
         var emitter = context.getEmitter();
         if (state.getBlock() instanceof TimerRepeaterBlock) {
             var facing = state.get(TimerRepeaterBlock.FACING);
-            context.pushTransform(ModelUtil.getFacingRotation(facing, ModelUtil::angle));
+            context.pushTransform(ModelUtil.setRotation(facing, ModelUtil::facingAngle));
             this.emitDigitModel(emitter, state, false);
             this.emitDigitModel(emitter, state, true);
-            this.emitPoweredModel(emitter, state);
             context.popTransform();
         }
     }
@@ -62,23 +52,9 @@ public class BakedTimerRepeaterDigitModel extends ForwardingBakedModel {
 
         var widthFactor = this.offSetDigitU(digit);
         var heightAddition = this.offSetDigitV(digit) + (powered ? 12 : 0);
-        ModelUtil.setUvOnSprite(emitter, sprite, (widthFactor - 3), heightAddition, widthFactor, (5 + heightAddition), 2, 1);
+        ModelUtil.setUvOnSprite(emitter, sprite, (widthFactor - 3), heightAddition, widthFactor, (5 + heightAddition));
 
         ModelUtil.emitTexturedData(emitter, powered);
-    }
-
-    public void emitPoweredModel(QuadEmitter emitter, BlockState state) {
-        if (state.get(TimerRepeaterBlock.POWERED)){
-            var sprite = EMISSIVE_TEXTURE.getSprite();
-
-            ModelUtil.emitBox(emitter, new Vec3f(0.0F, 0.0F, -0.01F), new Vec3f(16.0F, 2.01F, 16.01F),
-                    Map.ofEntries(
-                            Map.entry(Direction.UP, new Face(0, 0, 16, 16, sprite, true, 8, 4)),
-                            Map.entry(Direction.NORTH, new Face(16, 0, 0, 2, sprite, true, 8, 4)),
-                            Map.entry(Direction.SOUTH, new Face(0, 16, 16, 14, sprite, true, 8, 4))
-                    )
-            );
-        }
     }
 
     /**

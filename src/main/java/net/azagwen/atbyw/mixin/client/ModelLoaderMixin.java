@@ -1,9 +1,7 @@
 package net.azagwen.atbyw.mixin.client;
 
-import net.azagwen.atbyw.client.render.AtbywBlockRenderLayers;
 import net.azagwen.atbyw.client.render.model.*;
 import net.azagwen.atbyw.main.AtbywMain;
-import net.azagwen.atbyw.util.AtbywUtils;
 import net.minecraft.client.render.model.ModelLoader;
 import net.minecraft.client.render.model.UnbakedModel;
 import net.minecraft.client.util.ModelIdentifier;
@@ -26,15 +24,6 @@ public abstract class ModelLoaderMixin {
         if (id instanceof ModelIdentifier modelId && !(unbakedModel instanceof AtbywUnbakedModel)) {
             if (!modelId.getVariant().equals("inventory")) {
                 if (modelId.getNamespace().equals(AtbywMain.ATBYW)) {
-                    for (var dep : unbakedModel.getModelDependencies()) {
-                        if (dep.getPath().endsWith("_emissive")) {
-                            var correctedId = new Identifier(id.getNamespace(), id.getPath().replace("#", ""));
-                            System.out.println(correctedId);
-                            AtbywBlockRenderLayers.addEmissiveBlock(AtbywUtils.getBlockFromID(correctedId));
-                            this.putModel(id, new UnbakedEmissiveModel(unbakedModel));
-                            ci.cancel();
-                        }
-                    }
                     if (modelId.getPath().contains("timer")) {
                         this.putModel(id, new UnbakedForwardingModel(unbakedModel, BakedTimerRepeaterDigitModel::new));
                         ci.cancel();

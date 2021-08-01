@@ -1,0 +1,13 @@
+{
+    "vertexSource": "atbyw:block/jmx/material/shader_emissive.vert",
+    "fragmentSource": "atbyw:block/jmx/material/shader_emissive.frag",
+    "layers": [
+        {
+            "disableAo": false,
+            "disableColorIndex": false,
+            "disableDiffuse": false,
+            "blendMode": "solid",
+            "emissive": false
+        }
+    ]
+}

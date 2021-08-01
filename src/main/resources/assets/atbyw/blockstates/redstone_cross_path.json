@@ -1,16 +1,40 @@
 {
-  "variants": {
-    "powered_x=false,powered_z=false": {
-      "model": "atbyw:block/redstone_cross_path"
+  "multipart": [
+    {
+      "when": {
+        "power_x": 0,
+        "power_z": 0
+      },
+      "apply": {
+        "model": "atbyw:block/redstone_cross_path"
+      }
     },
-    "powered_x=true,powered_z=false": {
-      "model": "atbyw:block/redstone_cross_path_on_x"
+    {
+      "when": {
+        "power_x": 0,
+        "power_z": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15"
+      },
+      "apply": {
+        "model": "atbyw:block/redstone_cross_path_on_z"
+      }
     },
-    "powered_x=false,powered_z=true": {
-      "model": "atbyw:block/redstone_cross_path_on_z"
+    {
+      "when": {
+        "power_x": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15",
+        "power_z": 0
+      },
+      "apply": {
+        "model": "atbyw:block/redstone_cross_path_on_x"
+      }
     },
-    "powered_x=true,powered_z=true": {
-      "model": "atbyw:block/redstone_cross_path_on"
+    {
+      "when": {
+        "power_x": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15",
+        "power_z": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15"
+      },
+      "apply": {
+        "model": "atbyw:block/redstone_cross_path_on"
+      }
     }
-  }
+  ]
 }

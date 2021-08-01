@@ -8,7 +8,6 @@ import net.minecraft.util.Identifier;
 
 public class SpriteRegistry {
     public static SpriteIdentifier TIMER_REPEATER_DIGITS_TEXTURE;
-    public static SpriteIdentifier TIMER_REPEATER_EMISSIVE_TEXTURE;
 
     public static SpriteIdentifier RegisterBlockSprite(Identifier identifier) {
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlas, registry) -> {
@@ -19,6 +18,5 @@ public class SpriteRegistry {
 
     public static void init() {
         TIMER_REPEATER_DIGITS_TEXTURE = RegisterBlockSprite(AtbywMain.id("baked_models/timer_repeater_digits"));
-        TIMER_REPEATER_EMISSIVE_TEXTURE = RegisterBlockSprite(AtbywMain.id("baked_models/timer_repeater_on_emissive"));
     }
 }

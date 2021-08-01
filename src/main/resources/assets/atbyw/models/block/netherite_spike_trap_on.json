@@ -1,6 +1,14 @@
 {
-  "parent": "atbyw:block/template_spike_trap_on",
+  "parent": "atbyw:block/jmx/template_spike_trap_on",
   "textures": {
     "texture": "atbyw:block/netherite_spike_trap"
+  },
+  "jmx": {
+    "textures": {
+      "jmx_tex_particle": "atbyw:block/spike_trap_top",
+      "layered_textures": [
+        { "jmx_tex": "atbyw:block/netherite_spike_trap" }
+      ]
+    }
   }
 }

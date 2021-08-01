@@ -1,0 +1,22 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:bookshelf",
+        "atbyw:spruce_bookshelf",
+        "atbyw:birch_bookshelf",
+        "atbyw:jungle_bookshelf",
+        "atbyw:acacia_bookshelf",
+        "atbyw:dark_oak_bookshelf",
+        "atbyw:crimson_bookshelf",
+        "atbyw:warped_bookshelf",
+
+        "atbyw:oak_bookshelf_toggle",
+        "atbyw:spruce_bookshelf_toggle",
+        "atbyw:birch_bookshelf_toggle",
+        "atbyw:jungle_bookshelf_toggle",
+        "atbyw:acacia_bookshelf_toggle",
+        "atbyw:dark_oak_bookshelf_toggle",
+        "atbyw:crimson_bookshelf_toggle",
+        "atbyw:warped_bookshelf_toggle"
+    ]
+}

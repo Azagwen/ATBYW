@@ -5,7 +5,7 @@ import com.google.common.collect.Sets;
 import net.azagwen.atbyw.block.shape.AxisShape;
 import net.azagwen.atbyw.block.shape.DirectionShapeH;
 import net.azagwen.atbyw.block.state.Connector;
-import net.azagwen.atbyw.main.AtbywTags;
+import net.azagwen.atbyw.main.AtbywTags.BlockTags;
 import net.azagwen.atbyw.util.BlockUtils;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
@@ -118,7 +118,7 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
                     return direction == gateFacing || direction == gateFacing.getOpposite();
                 }
             }
-        } else if (state.isIn(AtbywTags.CONNECTS_TO_PIPES) || state.isIn(AtbywTags.CONNECTS_TO_PIPES_AND_UPDATES)) {
+        } else if (state.isIn(BlockTags.CONNECTS_TO_PIPES) || state.isIn(BlockTags.CONNECTS_TO_PIPES_AND_UPDATES)) {
             return true;
         } else if (state.isOf(Blocks.OBSERVER)) {
             return direction == state.get(ObserverBlock.FACING);
@@ -180,7 +180,7 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
         if (!world.isClient) {
             this.ensureUpdate(world, pos, state);
         }
-        if (world.getBlockState(fromPos).isIn(AtbywTags.CONNECTS_TO_PIPES_AND_UPDATES)) {
+        if (world.getBlockState(fromPos).isIn(BlockTags.CONNECTS_TO_PIPES_AND_UPDATES)) {
             world.updateNeighbor(fromPos, this, pos);
         }
     }
@@ -256,8 +256,8 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
         for (var direction : Direction.values()) {
             var currentState = world.getBlockState(pos.offset(direction));
             var currentBlock = currentState.getBlock();
-            var connectsToPipes = currentState.isIn(AtbywTags.CONNECTS_TO_PIPES);
-            var connectsToPipesAndUpdates = currentState.isIn(AtbywTags.CONNECTS_TO_PIPES_AND_UPDATES);
+            var connectsToPipes = currentState.isIn(BlockTags.CONNECTS_TO_PIPES);
+            var connectsToPipesAndUpdates = currentState.isIn(BlockTags.CONNECTS_TO_PIPES_AND_UPDATES);
             var isFullSquare = BlockUtils.checkFullSquare(direction, world, pos);
 
             if (connectsToPipes || connectsToPipesAndUpdates || isFullSquare || currentBlock instanceof RedstonePipeComponent) {
@@ -374,7 +374,7 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
         int i = state.get(POWER);
         if (i != 0) {
             for (Direction direction : Direction.values()) {
-                this.addPoweredParticles(world, random, pos, COLORS.get(i), direction, direction.getOpposite(), 0.0F, 0.5F);
+                addPoweredParticles(world, random, pos, COLORS.get(i), direction, direction.getOpposite(), 0.0F, 0.5F);
                 this.addExposedEndParticles(world, pos, state);
             }
         }

@@ -2,6 +2,11 @@
   "_comment": "Blocks",
   "block.atbyw.dev_block": "Aza Block",
 
+  "block.atbyw.tinting_table": "Tinting Table",
+
+  "block.atbyw.redstone_pipe": "Redstone Pipe",
+  "block.atbyw.redstone_pipe_repeater": "Redstone Pipe Repeater",
+
   "block.atbyw.canvas_block": "Canvas Block",
   "block.atbyw.glowing_canvas_block": "Glowing Canvas Block",
 
@@ -36,15 +41,15 @@
 
   "block.atbyw.granite_tiles": "Granite Tiles",
   "block.atbyw.diorite_bricks": "Diorite Bricks",
-  "block.atbyw.andesite_bricks": "Andesite Bircks",
+  "block.atbyw.andesite_bricks": "Andesite Bricks",
 
   "block.atbyw.granite_tiles_stairs": "Granite Tiles Stairs",
   "block.atbyw.diorite_bricks_stairs": "Diorite Bricks Stairs",
-  "block.atbyw.andesite_bricks_stairs": "Andesite Bircks Stairs",
+  "block.atbyw.andesite_bricks_stairs": "Andesite Bricks Stairs",
 
   "block.atbyw.granite_tiles_slab": "Granite Tiles Slab",
   "block.atbyw.diorite_bricks_slab": "Diorite Bricks Slab",
-  "block.atbyw.andesite_bricks_slab": "Andesite Bircks Slab",
+  "block.atbyw.andesite_bricks_slab": "Andesite Bricks Slab",
 
   "block.atbyw.oak_log_slab": "Oak Log Slab",
   "block.atbyw.spruce_log_slab": "Spruce Log Slab",
@@ -562,8 +567,8 @@
 
   "_comment": "Misc",
   "itemGroup.atbyw.atbyw": "§nA§rll §nT§rhe §nB§rlocks §nY§rou §nW§rant",
-  "itemGroup.subTab.atbyw.blocks": "Blocks",
-  "itemGroup.subTab.atbyw.decoration": "Decoration",
+  "itemGroup.subTab.atbyw.blocks": "Building Blocks",
+  "itemGroup.subTab.atbyw.decoration": "Decoration Blocks",
   "itemGroup.subTab.atbyw.redstone": "Redstone",
   "itemGroup.subTab.atbyw.misc": "Miscellaneous",
   "itemGroup.atbyw.curseforgeLink": "Curseforge Page",
@@ -642,6 +647,10 @@
   "block.atbyw.bat_statue.ready": "Bat statue was %d%% mossy.",
   "block.atbyw.bat_statue.waxed": "Bat statue is now frozen in time!",
   "block.atbyw.bat_statue.cannot_be_waxed": "Bat statue requires at least %d Honeycombs to be waxed.",
+
+  "container.tinting": "Tinting Table",
+  "container.tinting_table_mode.hex": "Switch modes",
+  "container.tinting_table_mode.rgb": "Switch modes",
 
   "_comment": "Unused / Old / Kept as Examples",
   "block.atbyw. statue.not_ready": "%1$s is not ready yet. (%2$s%% moss coverage)"

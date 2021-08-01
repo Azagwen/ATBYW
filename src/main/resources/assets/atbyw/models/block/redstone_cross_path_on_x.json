@@ -5,5 +5,21 @@
         "top_z": "atbyw:block/redstone_cross_path_top",
         "side_x": "atbyw:block/redstone_cross_path_side_on",
         "side_z": "atbyw:block/redstone_cross_path_side"
+    },
+    "jmx": {
+        "textures": {
+            "layered_textures": [
+                {
+                    "jmx_top_x": "atbyw:block/redstone_cross_path_top_on",
+                    "jmx_top_z": "atbyw:block/redstone_cross_path_top",
+                    "jmx_side_x": "atbyw:block/redstone_cross_path_side_on",
+                    "jmx_side_z": "atbyw:block/redstone_cross_path_side"
+                },
+                {
+                    "jmx_top_x": "atbyw:block/redstone_cross_path_top_on_e",
+                    "jmx_side_x": "atbyw:block/redstone_cross_path_side_on_e"
+                }
+            ]
+        }
     }
 }

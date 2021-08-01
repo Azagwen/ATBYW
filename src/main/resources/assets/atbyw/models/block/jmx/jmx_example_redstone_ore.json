@@ -1,0 +1,29 @@
+{
+    "parent": "atbyw:block/jmx/template_bookshelf_toggle_on",
+    "textures": {
+        "particle": "atbyw:block/warped_bookshelf",
+        "top": "minecraft:block/warped_planks",
+        "sides": "atbyw:block/warped_bookshelf_toggle"
+    },
+    "jmx": {
+        "textures": {
+            "jmx_tex_particle": "minecraft:block/redstone_ore",
+            "layered_textures": [
+                {
+                    "jmx_sides": "atbyw:block/warped_bookshelf_toggle"
+                },
+                {
+                    "jmx_sides": "atbyw:block/bookshelf_toggle_on_e"
+                }
+            ]
+        },
+        "materials": {
+            "jmx_mat": {
+                "layers": [
+                    { "layer": "cutout_mipped" },
+                    { "layer": "cutout_mipped", "emissive": true, "ambient_occlusion": false, "diffuse": false }
+                ]
+            }
+        }
+    }
+}

@@ -2,10 +2,7 @@
   "variants": {
     "": [
       {
-        "model": "atbyw:block/canvas_block"
-      },
-      {
-        "model": "atbyw:block/glowing_canvas_block_emissive"
+        "model": "atbyw:block/jmx/glowing_canvas_block"
       }
     ]
   }

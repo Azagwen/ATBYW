@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.renderer.v1.mesh.QuadEmitter;
 import net.fabricmc.fabric.api.renderer.v1.render.RenderContext;
 import net.minecraft.client.texture.Sprite;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
 
 import java.util.Map;
@@ -24,31 +23,14 @@ public class ModelUtil {
     }
 
     /**
-     * Sets the current quad's UVs to the indicated coordinates on the atlas.
-     *
-     * @param emitter       The Emitter being used.
-     * @param spriteIndex   The Sprite index (most likely 0).
-     * @param u1            The first U (width) coordinate.
-     * @param v1            The first V (height) coordinate.
-     * @param u2            The last U (width) coordinate.
-     * @param v2            The last V (height) coordinate.
-     */
-    public static void setUv(QuadEmitter emitter, int spriteIndex, float u1, float v1, float u2, float v2) {
-        emitter.sprite(0, spriteIndex, u1, v1);
-        emitter.sprite(1, spriteIndex, u1, v2);
-        emitter.sprite(2, spriteIndex, u2, v2);
-        emitter.sprite(3, spriteIndex, u2, v1);
-    }
-
-    /**
      * Moves the current Quad
      *
-     * @param emitter   The Emitter being used.
+     * @param emitter   The Quad Emitter being used.
      * @param xOffset   Offset applied ot the X coordinates.
      * @param yOffset   Offset applied ot the Y coordinates.
      * @param zOffset   Offset applied ot the Z coordinates.
      */
-    public static void setPos(QuadEmitter emitter, float xOffset, float yOffset, float zOffset) {
+    public static void moveQuad(QuadEmitter emitter, float xOffset, float yOffset, float zOffset) {
         for (var i = 0; i < 4; i++) {
             var vector = new Vec3f();
             var xOffsetNormal = normalizeVoxelChannel(xOffset);
@@ -63,7 +45,7 @@ public class ModelUtil {
         return channel / 16.0F;
     }
 
-    public static RenderContext.QuadTransform getFacingRotation(Direction facing, Function<Direction, Float> angle) {
+    public static RenderContext.QuadTransform setRotation(Direction facing, Function<Direction, Float> angle) {
         var rotate = (facing.getAxis().isHorizontal() ? Vec3f.POSITIVE_Y : Vec3f.POSITIVE_X).getDegreesQuaternion(angle.apply(facing));
         return transform -> {
             Vec3f vector = new Vec3f();
@@ -89,7 +71,7 @@ public class ModelUtil {
         };
     }
 
-    public static float angle(Direction direction) {
+    public static float facingAngle(Direction direction) {
         return switch (direction.getOpposite()) {
             case DOWN -> 270;
             case UP -> 90;
@@ -101,54 +83,63 @@ public class ModelUtil {
     }
 
     /**
-     * Lerps between the min U and max U coordinates of a Sprite.
-     */
-    public static float lerpU(Sprite sprite, float delta) {
-        return MathHelper.lerp(delta, sprite.getMinU(), sprite.getMaxU());
-    }
-
-    /**
-     * Lerps between the min V and max V coordinates of a Sprite.
-     */
-    public static float lerpV(Sprite sprite, float delta) {
-        return MathHelper.lerp(delta, sprite.getMinV(), sprite.getMaxV());
-    }
-
-    /**
-     * Finds a 0-1 normalised value from a Sprite's coordinates and width.
+     * Same as {@code Sprite.getFrameU()}, adapted to allow for any sprite size.
      *
-     * @param sprite        Input sprite.
-     * @param width         Width used to determine the "height" factor.
-     * @param multiplier    Multiplier (used for simple scale corrections.
-     * @return              a 0-1 factor usable in a Lerp operation.
+     * @param sprite    The sprite used.
+     * @param frame     The coordinate of the point you want to get on U.
+     * @return          A coordinate usable on the Atlas.
      */
-
-    public static float findWidth(Sprite sprite, int width, int multiplier) {
-        var floatWidth = (sprite.getMinU() - sprite.getMaxU());
-        return Math.abs((floatWidth * width) * multiplier);
+    public static float getPointOnU(Sprite sprite, double frame) {
+        float widthOnAtlas = sprite.getMaxU() - sprite.getMinU();
+        return sprite.getMinU() + widthOnAtlas * (float)frame / sprite.getWidth();
     }
 
     /**
-     * Finds a 0-1 normalised value from a Sprite's coordinates and height.
+     * Same as {@code Sprite.getFrameV()}, adapted to allow for any sprite size.
      *
-     * @param sprite        Input sprite.
-     * @param height        Height used to determine the "height" factor.
-     * @param multiplier    Multiplier (used for simple scale corrections.
-     * @return              a 0-1 factor usable in a Lerp operation.
+     * @param sprite    The sprite used.
+     * @param frame     The coordinate of the point you want to get on V.
+     * @return          A coordinate usable on the Atlas.
      */
-    public static float findHeight(Sprite sprite, int height, int multiplier) {
-        var floatHeight = (sprite.getMinV() - sprite.getMaxV());
-        return Math.abs((floatHeight * height) * multiplier);
+    public static float getPointOnV(Sprite sprite, double frame) {
+        float heightOnAtlas = sprite.getMaxV() - sprite.getMinV();
+        return sprite.getMinV() + heightOnAtlas * (float)frame / sprite.getHeight();
     }
 
-    public static void setUvOnSprite(QuadEmitter emitter, Sprite sprite, int left, int top, int right, int bottom, int xMultiplier, int yMultiplier) {
-        var lerpMinU = ModelUtil.lerpU(sprite, ModelUtil.findWidth(sprite, left, xMultiplier));
-        var lerpMaxU = ModelUtil.lerpU(sprite, ModelUtil.findWidth(sprite, right, xMultiplier));
+    /**
+     * Sets the UV coordinates of the current quad on the specified sprite.
+     *
+     * @param emitter   The Quad Emitter being used.
+     * @param sprite    The Sprite to set UVs on.
+     * @param left      The left coordinate of the UV frame (u1).
+     * @param top       The top coordinate of the UV frame (v1).
+     * @param right     The right coordinate of the UV frame (u2).
+     * @param bottom    The bottom coordinate of the UV frame (v2).
+     */
+    public static void setUvOnSprite(QuadEmitter emitter, Sprite sprite, int left, int top, int right, int bottom) {
+        ModelUtil.setUv(emitter, 0,
+                getPointOnU(sprite, left),
+                getPointOnV(sprite, top),
+                getPointOnU(sprite, right),
+                getPointOnV(sprite, bottom)
+        );
+    }
 
-        var lerpMinV = ModelUtil.lerpV(sprite, ModelUtil.findHeight(sprite, top, yMultiplier));
-        var lerpMaxV = ModelUtil.lerpV(sprite, ModelUtil.findHeight(sprite, bottom, yMultiplier));
-
-        ModelUtil.setUv(emitter, 0, lerpMinU, lerpMinV, lerpMaxU, lerpMaxV);
+    /**
+     * Sets the current quad's UVs to the indicated coordinates on the atlas.
+     *
+     * @param emitter       The Quad Emitter being used.
+     * @param spriteIndex   The Sprite index (most likely 0).
+     * @param u1            The first U (width) coordinate.
+     * @param v1            The first V (height) coordinate.
+     * @param u2            The last U (width) coordinate.
+     * @param v2            The last V (height) coordinate.
+     */
+    public static void setUv(QuadEmitter emitter, int spriteIndex, float u1, float v1, float u2, float v2) {
+        emitter.sprite(0, spriteIndex, u1, v1);
+        emitter.sprite(1, spriteIndex, u1, v2);
+        emitter.sprite(2, spriteIndex, u2, v2);
+        emitter.sprite(3, spriteIndex, u2, v1);
     }
 
     public static void emitTexturedData(QuadEmitter emitter, boolean emissive) {
@@ -163,7 +154,7 @@ public class ModelUtil {
      * Creates a box using the same input that a JSON model would use.
      * @see Face
      *
-     * @param emitter   The Emitter used.
+     * @param emitter   The Quad Emitter being used.
      * @param from      3D Vector of the origin point.
      * @param to        3D Vector of the end point.
      * @param faceData  Map of a direction and a Face instance which stores the face data.
@@ -184,8 +175,6 @@ public class ModelUtil {
                 var v1 = faceData.get(direction).v1();
                 var u2 = faceData.get(direction).u2();
                 var v2 = faceData.get(direction).v2();
-                var uMultiplier = faceData.get(direction).uMultiplier();
-                var vMultiplier = faceData.get(direction).vMultiplier();
 
                 var depth = 0.0F;
                 switch (direction) {
@@ -197,15 +186,15 @@ public class ModelUtil {
                     case WEST -> depth = xFrom;
                 }
                 switch (direction) {
-                    case NORTH -> ModelUtil.emitQuad(emitter, direction, Math.abs(xTo - 16), yFrom, Math.abs(xFrom - 16), yTo, depth);
-                    case SOUTH -> ModelUtil.emitQuad(emitter, direction, xFrom, yFrom, xTo, yTo, depth);
-                    case EAST -> ModelUtil.emitQuad(emitter, direction, Math.abs(zTo - 16), yFrom, Math.abs(zFrom - 16), yTo, depth);
-                    case WEST -> ModelUtil.emitQuad(emitter, direction, zFrom, yFrom, zTo, yTo, depth);
-                    case UP, DOWN -> ModelUtil.emitQuad(emitter, direction, xFrom, Math.abs(zTo - 16), xTo, Math.abs(zFrom - 16), depth);
+                    case NORTH -> emitQuad(emitter, direction, Math.abs(xTo - 16), yFrom, Math.abs(xFrom - 16), yTo, depth);
+                    case SOUTH -> emitQuad(emitter, direction, xFrom, yFrom, xTo, yTo, depth);
+                    case EAST -> emitQuad(emitter, direction, Math.abs(zTo - 16), yFrom, Math.abs(zFrom - 16), yTo, depth);
+                    case WEST -> emitQuad(emitter, direction, zFrom, yFrom, zTo, yTo, depth);
+                    case UP, DOWN -> emitQuad(emitter, direction, xFrom, Math.abs(zTo - 16), xTo, Math.abs(zFrom - 16), depth);
                 }
                 emitter.spriteBake(0, sprite, MutableQuadView.BAKE_ROTATE_NONE);
-                ModelUtil.setUvOnSprite(emitter, sprite, u1, v1, u2, v2, uMultiplier, vMultiplier);
-                ModelUtil.emitTexturedData(emitter, isFaceEmissive);
+                setUvOnSprite(emitter, sprite, u1, v1, u2, v2);
+                emitTexturedData(emitter, isFaceEmissive);
             }
         }
     }

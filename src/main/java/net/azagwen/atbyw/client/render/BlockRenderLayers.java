@@ -10,7 +10,7 @@ import net.minecraft.client.render.RenderLayer;
 
 import java.util.List;
 
-public class AtbywBlockRenderLayers {
+public class BlockRenderLayers {
 
     public static void init() {
         var cutoutBlocks = Lists.<Block>newArrayList();
@@ -130,6 +130,7 @@ public class AtbywBlockRenderLayers {
         blocks.add(AtbywBlocks.SHATTERED_GLASS);
         blocks.add(AtbywBlocks.REDSTONE_PIPE);
         blocks.add(AtbywBlocks.REDSTONE_PIPE_REPEATER);
+        blocks.add(AtbywBlocks.TINTING_TABLE);
     }
 
     private static void translucentLayerBlocks(List<Block> blocks) {

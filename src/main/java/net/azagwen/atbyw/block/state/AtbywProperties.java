@@ -28,6 +28,8 @@ public class AtbywProperties extends Properties {
     public static final BooleanProperty CENTER;
     public static final IntProperty ROLL;
     public static final DirectionProperty PANEL_FACING;
+    public static final IntProperty POWER_X;
+    public static final IntProperty POWER_Z;
 
     static {
         SHEARED = BooleanProperty.of("sheared");
@@ -54,5 +56,7 @@ public class AtbywProperties extends Properties {
         CENTER = BooleanProperty.of("center");
         ROLL = IntProperty.of("roll", 0, 3);
         PANEL_FACING = DirectionProperty.of("panel_facing", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN);
+        POWER_X = IntProperty.of("power_x", 0, 15);
+        POWER_Z = IntProperty.of("power_z", 0, 15);
     }
 }

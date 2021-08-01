@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=east": {
+            "model": "atbyw:block/tinting_table",
+            "y": 90
+        },
+        "facing=north": {
+            "model": "atbyw:block/tinting_table"
+        },
+        "facing=south": {
+            "model": "atbyw:block/tinting_table",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "atbyw:block/tinting_table",
+            "y": 270
+        }
+    }
+}

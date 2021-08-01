@@ -78,7 +78,7 @@ public class LargeChainBlock extends ChainBlock {
     private LargeChainEnd getEndState(BlockState state, World world, BlockPos connectedPos, boolean isTop) {
         BlockState connectedState = world.getBlockState(connectedPos);
         Direction.AxisDirection axisDirection = isTop ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE;
-        boolean isConnectStateTransitionBlock = isTop ? connectedState.isIn(AtbywTags.LARGE_CHAIN_TRANSITION_TOP) : connectedState.isIn(AtbywTags.LARGE_CHAIN_TRANSITION_BOTTOM);
+        boolean isConnectStateTransitionBlock = isTop ? connectedState.isIn(AtbywTags.BlockTags.LARGE_CHAIN_TRANSITION_TOP) : connectedState.isIn(AtbywTags.BlockTags.LARGE_CHAIN_TRANSITION_BOTTOM);
         boolean isConnectedStateInstance = (connectedState.getBlock() instanceof LargeChainBlock) && connectedState.get(LargeChainBlock.AXIS).equals(state.get(AXIS));
         boolean isConnectedStateValid = sideCoversSmallSquare(world, connectedPos, Direction.from(state.get(AXIS), axisDirection));
 

@@ -2,5 +2,13 @@
 	"parent": "atbyw:block/timer_repeater",
 	"textures": {
 		"top": "atbyw:block/timer_repeater_on"
+	},
+	"jmx": {
+		"textures": {
+			"layered_textures": [
+				{ "jmx_tex": "atbyw:block/timer_repeater_on" },
+				{ "jmx_tex": "atbyw:block/timer_repeater_on_e" }
+			]
+		}
 	}
 }
