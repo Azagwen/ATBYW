@@ -97,16 +97,29 @@ public class TintingTableScreenHandler extends ScreenHandler {
             var serverPlayerEntity = (ServerPlayerEntity) player;
             var outputStack = ItemStack.EMPTY;
             if (!inputStack.isEmpty()) {
-                outputStack = inputStack.copy();
+                outputStack = setStackColor(handler, inputStack);
             }
-
-            //the Color setter is located in the screen class of this block
-            //(because I couldn't get it to set without doing this, thank you Mojank)
 
             resultInventory.setStack(0, outputStack);
             handler.setPreviousTrackedSlot(1, outputStack);
             serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 1, outputStack));
         }
+    }
+
+    private static ItemStack setStackColor(TintingTableScreenHandler handler, ItemStack stack) {
+        var itemStack = ItemStack.EMPTY;
+        var item = stack.getItem();
+
+        if (item instanceof DyeableItem dyeableItem) {
+            itemStack = stack.copy();
+            dyeableItem.setColor(itemStack, handler.color);
+        }
+        if (item instanceof SimpleColoredItem coloredItem) {
+            itemStack = stack.copy();
+            coloredItem.setColor(itemStack, handler.color);
+        }
+
+        return itemStack;
     }
 
     @Override
@@ -202,6 +215,11 @@ public class TintingTableScreenHandler extends ScreenHandler {
 
     public TintingTableMode getMode() {
         return TintingTableMode.values()[this.mode];
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+        this.propertyDelegate.set(4, this.color);
     }
 
     public Color getColor() {

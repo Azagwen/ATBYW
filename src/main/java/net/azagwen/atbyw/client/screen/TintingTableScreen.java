@@ -2,7 +2,6 @@ package net.azagwen.atbyw.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.azagwen.atbyw.block.entity.TintingTableMode;
-import net.azagwen.atbyw.item.SimpleColoredItem;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.screen.TintingTableScreenHandler;
 import net.minecraft.client.MinecraftClient;
@@ -11,7 +10,6 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.DyeableItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerListener;
@@ -28,7 +26,6 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
     private float tickDelta;
     private boolean reverseTickDelta;
     private boolean isHexCodeValid = false;
-    private int color;
 
     public TintingTableScreen(TintingTableScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -70,16 +67,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
 
         if (this.hexField.isVisible()) {
             try {
-                var color = Color.decode(this.hexField.getText()).getRGB();
-                var stack = this.handler.getSlot(1).getStack();
-                var item = stack.getItem();
-                if (item instanceof DyeableItem dyeableItem) {
-                    dyeableItem.setColor(stack, color);
-                }
-                if (item instanceof SimpleColoredItem coloredItem) {
-                    coloredItem.setColor(stack, color);
-                }
-                this.handler.getSlot(1).setStack(stack);
+                this.handler.setColor(Color.decode(this.hexField.getText()).getRGB());
                 this.isHexCodeValid = true;
             } catch (NumberFormatException ignored) {
                 this.isHexCodeValid = false;
@@ -185,7 +173,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
         }
 
         //Render the color widgets in the area mentioned above
-        var color = new Color(this.color);
+        var color = this.handler.getColor();
         RenderSystem.setShaderColor((color.getRed() / 255.0F), (color.getGreen() / 255.0F), (color.getBlue() / 255.0F), 1.0F);
         switch (this.handler.getMode()) {
             case HEX -> this.drawTexture(matrices, xPos + 33, yPos + 30, 230, 28, 14, 14);

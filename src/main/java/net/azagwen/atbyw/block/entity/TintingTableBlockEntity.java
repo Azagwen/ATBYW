@@ -30,6 +30,7 @@ public class TintingTableBlockEntity extends LockableContainerBlockEntity implem
     private int greenAmount;
     private int blueAmount;
     private int mode;
+    private int color;
 
     public TintingTableBlockEntity(BlockPos pos, BlockState state) {
         super(AtbywBlockEntityTypes.TINTING_TABLE_BLOCK_ENTITY, pos, state);
@@ -52,6 +53,7 @@ public class TintingTableBlockEntity extends LockableContainerBlockEntity implem
                     case 1 -> TintingTableBlockEntity.this.greenAmount = value;
                     case 2 -> TintingTableBlockEntity.this.blueAmount = value;
                     case 3 -> TintingTableBlockEntity.this.mode = value;
+                    case 4 -> TintingTableBlockEntity.this.color = value;
                 }
             }
 
@@ -177,6 +179,7 @@ public class TintingTableBlockEntity extends LockableContainerBlockEntity implem
         this.redAmount = nbt.getByte("RedAmount");
         this.greenAmount = nbt.getByte("GreenAmount");
         this.blueAmount = nbt.getByte("BlueAmount");
+        this.color = nbt.getInt("Color");
         this.mode = nbt.getByte("Mode");
     }
 
@@ -187,6 +190,7 @@ public class TintingTableBlockEntity extends LockableContainerBlockEntity implem
         nbt.putByte("RedAmount", (byte) this.redAmount);
         nbt.putByte("GreenAmount", (byte) this.greenAmount);
         nbt.putByte("BlueAmount", (byte) this.blueAmount);
+        nbt.putInt("Color", this.color);
         nbt.putInt("Mode", this.mode);
         return nbt;
     }
