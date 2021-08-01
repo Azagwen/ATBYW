@@ -3,7 +3,7 @@ package net.azagwen.atbyw.client;
 import net.azagwen.atbyw.client.render.BlockRenderLayers;
 import net.azagwen.atbyw.client.render.model.SpriteRegistry;
 import net.azagwen.atbyw.client.screen.AtbywScreenRegistry;
-import net.azagwen.atbyw.main.AtbywEntityTypes;
+import net.azagwen.atbyw.main.EntityTypes;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -17,7 +17,7 @@ public class AtbywClient implements ClientModInitializer {
     @Environment(EnvType.CLIENT)
     public void onInitializeClient() {
 
-        EntityRendererRegistry.INSTANCE.register(AtbywEntityTypes.SHROOMSTICK, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.INSTANCE.register(EntityTypes.SHROOMSTICK, FlyingItemEntityRenderer::new);
 
 //        ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new ClientResourceListener());
 

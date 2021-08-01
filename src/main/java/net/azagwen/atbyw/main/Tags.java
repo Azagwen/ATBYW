@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.HashSet;
 
-public class AtbywTags<T> {
+public class Tags {
 
     public static class BlockTags {
         public static final Tag<Block> BOOKSHELVES_COMMON = registerBlockTag(new Identifier("c", "bookshelves"));
@@ -30,7 +30,7 @@ public class AtbywTags<T> {
         public static final Tag<Item> CONNECTS_TO_PIPES_AND_UPDATES = blockItemTag(BlockTags.CONNECTS_TO_PIPES_AND_UPDATES);
     }
 
-    private AtbywTags() {
+    private Tags() {
     }
 
     public static Tag<Item> blockItemTag(Tag<Block> blockTag) {

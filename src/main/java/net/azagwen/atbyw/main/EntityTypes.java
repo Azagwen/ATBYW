@@ -7,7 +7,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.registry.Registry;
 
-public class AtbywEntityTypes {
+public class EntityTypes {
 
     public static final EntityType<ShroomStickEntity> SHROOMSTICK = Registry.register(
             Registry.ENTITY_TYPE,

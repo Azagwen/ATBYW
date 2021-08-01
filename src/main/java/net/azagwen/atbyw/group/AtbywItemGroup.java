@@ -1,9 +1,8 @@
 package net.azagwen.atbyw.group;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
-import net.azagwen.atbyw.datagen.arrp.Tags;
 import net.azagwen.atbyw.item.AtbywItems;
-import net.azagwen.atbyw.main.AtbywTags;
+import net.azagwen.atbyw.main.Tags;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tag.Tag;
@@ -23,10 +22,10 @@ public class AtbywItemGroup extends TabbedItemGroup {
         super(id);
     }
 
-    public static Tag<Item> ATBYW_BLOCKS_TAB = AtbywTags.registerItemTag("tab_blocks");
-    public static Tag<Item> ATBYW_DECO_TAB = AtbywTags.registerItemTag("tab_deco");
-    public static Tag<Item> ATBYW_REDSTONE_TAB = AtbywTags.registerItemTag("tab_redstone");
-    public static Tag<Item> ATBYW_MISC_TAB = AtbywTags.registerItemTag("tab_misc");
+    public static Tag<Item> ATBYW_BLOCKS_TAB = Tags.registerItemTag("tab_blocks");
+    public static Tag<Item> ATBYW_DECO_TAB = Tags.registerItemTag("tab_deco");
+    public static Tag<Item> ATBYW_REDSTONE_TAB = Tags.registerItemTag("tab_redstone");
+    public static Tag<Item> ATBYW_MISC_TAB = Tags.registerItemTag("tab_misc");
 
     public static ItemGroupTab ATBYW_BLOCKS = new ItemGroupTab(new ItemStack(AtbywBlocks.CYAN_CINDER_BLOCKS), "blocks", ATBYW_BLOCKS_TAB);
     public static ItemGroupTab ATBYW_DECO = new ItemGroupTab(new ItemStack(AtbywBlocks.CYAN_CINDER_BLOCKS_WALL), "decoration", ATBYW_DECO_TAB);
@@ -34,10 +33,10 @@ public class AtbywItemGroup extends TabbedItemGroup {
     public static ItemGroupTab ATBYW_MISC = new ItemGroupTab(new ItemStack(AtbywItems.BAMBOO_STICK), "misc", ATBYW_MISC_TAB);
 
     public static void registerTags() {
-        Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_blocks", BLOCKS_TAB);
-        Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_deco", DECO_TAB);
-        Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_redstone", REDSTONE_TAB);
-        Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_misc", MISC_TAB);
+        net.azagwen.atbyw.datagen.arrp.Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_blocks", BLOCKS_TAB);
+        net.azagwen.atbyw.datagen.arrp.Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_deco", DECO_TAB);
+        net.azagwen.atbyw.datagen.arrp.Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_redstone", REDSTONE_TAB);
+        net.azagwen.atbyw.datagen.arrp.Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_misc", MISC_TAB);
     }
 
     @Override

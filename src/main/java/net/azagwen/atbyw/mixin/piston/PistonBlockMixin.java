@@ -1,31 +1,14 @@
 package net.azagwen.atbyw.mixin.piston;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import net.azagwen.atbyw.block.piston.PistonWoodTypes;
 import net.azagwen.atbyw.block.piston.PistonDuck;
-import net.azagwen.atbyw.main.AtbywTags;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.enums.PistonType;
-import net.minecraft.block.piston.PistonHandler;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import static net.minecraft.block.Block.dropStacks;
-import static net.minecraft.state.property.Properties.FACING;
 
 @Mixin(PistonBlock.class)
 public class PistonBlockMixin implements PistonDuck {

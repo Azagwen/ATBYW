@@ -3,7 +3,7 @@ package net.azagwen.atbyw.item;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.ShroomStickBlock;
 import net.azagwen.atbyw.item.entity.ShroomStickEntity;
-import net.azagwen.atbyw.main.AtbywTags;
+import net.azagwen.atbyw.main.Tags;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
@@ -61,7 +61,7 @@ public class ShroomStickItem extends Item{
         boolean waterLogged = world.getBlockState(hitPosUp).getFluidState().getFluid() == Fluids.WATER;
 
         if (context.getSide() == Direction.UP && world.getBlockState(hitPos).isSideSolidFullSquare(world, hitPos, Direction.UP)) {
-            if (state.isAir() || state.isIn(AtbywTags.BlockTags.SHROOMSTICK_REPLACEABLE_GROUND) || state.isOf(Blocks.WATER) || state.isIn(AtbywTags.BlockTags.SHROOMSTICK_REPLACEABLE_WATER)) {
+            if (state.isAir() || state.isIn(Tags.BlockTags.SHROOMSTICK_REPLACEABLE_GROUND) || state.isOf(Blocks.WATER) || state.isIn(Tags.BlockTags.SHROOMSTICK_REPLACEABLE_WATER)) {
                 placeBlock(world, player, hitPosUp, waterLogged, hand);
 
                 return ActionResult.success(world.isClient());

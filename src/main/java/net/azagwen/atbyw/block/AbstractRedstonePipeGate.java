@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.block;
 
-import net.azagwen.atbyw.main.AtbywTags;
+import net.azagwen.atbyw.main.Tags;
 import net.azagwen.atbyw.util.BlockUtils;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
@@ -147,8 +147,8 @@ public abstract class AbstractRedstonePipeGate extends FacingBlock implements Wa
         var i = 0;
         var currentState = world.getBlockState(pos.offset(direction));
         var currentBlock = currentState.getBlock();
-        var connectsToPipes = currentState.isIn(AtbywTags.BlockTags.CONNECTS_TO_PIPES);
-        var connectsToPipesAndUpdates = currentState.isIn(AtbywTags.BlockTags.CONNECTS_TO_PIPES_AND_UPDATES);
+        var connectsToPipes = currentState.isIn(Tags.BlockTags.CONNECTS_TO_PIPES);
+        var connectsToPipesAndUpdates = currentState.isIn(Tags.BlockTags.CONNECTS_TO_PIPES_AND_UPDATES);
         var isFullSquare = BlockUtils.checkFullSquare(direction, world, pos);
 
         if (connectsToPipes || connectsToPipesAndUpdates || isFullSquare || currentBlock instanceof RedstonePipeComponent) {

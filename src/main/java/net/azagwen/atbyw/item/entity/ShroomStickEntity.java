@@ -37,11 +37,11 @@ public class ShroomStickEntity extends ThrownItemEntity {
     }
 
     public ShroomStickEntity(World world, LivingEntity owner) {
-        super(AtbywEntityTypes.SHROOMSTICK, owner, world);
+        super(EntityTypes.SHROOMSTICK, owner, world);
     }
 
     public ShroomStickEntity(World world, double x, double y, double z) {
-        super(AtbywEntityTypes.SHROOMSTICK, x, y, z, world);
+        super(EntityTypes.SHROOMSTICK, x, y, z, world);
     }
 
     protected Item getDefaultItem() {
@@ -118,7 +118,7 @@ public class ShroomStickEntity extends ThrownItemEntity {
         boolean waterLogged = world.getBlockState(hitPos).getFluidState().getFluid() == Fluids.WATER;
         BlockState state = world.getBlockState(hitPos);
 
-        if (state.isAir() || state.isIn(AtbywTags.BlockTags.SHROOMSTICK_REPLACEABLE_GROUND) || state.isOf(Blocks.WATER) || state.isIn(AtbywTags.BlockTags.SHROOMSTICK_REPLACEABLE_WATER)) {
+        if (state.isAir() || state.isIn(Tags.BlockTags.SHROOMSTICK_REPLACEABLE_GROUND) || state.isOf(Blocks.WATER) || state.isIn(Tags.BlockTags.SHROOMSTICK_REPLACEABLE_WATER)) {
             placeBlock(world, hitPos, waterLogged);
         }  else {
             spawnItem(world, hitPos);

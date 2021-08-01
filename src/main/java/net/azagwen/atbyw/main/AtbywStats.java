@@ -5,7 +5,7 @@ import net.minecraft.stat.Stats;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class AtbywStats extends Stats {
+public class AtbywStats extends net.minecraft.stat.Stats {
     public static final Identifier COLOR_CANVAS_BLOCK = AtbywMain.id("color_canvas_block");
     public static final Identifier INTERACT_WITH_TINTING_TABLE = AtbywMain.id("interact_with_tinting_table");
 

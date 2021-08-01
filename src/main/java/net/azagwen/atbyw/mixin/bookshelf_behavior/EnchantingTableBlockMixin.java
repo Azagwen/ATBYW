@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.mixin.bookshelf_behavior;
 
-import net.azagwen.atbyw.main.AtbywTags;
+import net.azagwen.atbyw.main.Tags;
 import net.minecraft.block.*;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
@@ -28,7 +28,7 @@ public class EnchantingTableBlockMixin extends Block {
                 if (random.nextInt(16) == 0) {
                     for(int k = 0; k <= 1; ++k) {
                         var blockState = world.getBlockState(pos.add(i, k, j));
-                        if (blockState.isIn(AtbywTags.BlockTags.BOOKSHELVES_COMMON)) {
+                        if (blockState.isIn(Tags.BlockTags.BOOKSHELVES_COMMON)) {
                             if (!world.isAir(pos.add(i / 2, 0, j / 2))) {
                                 break;
                             }

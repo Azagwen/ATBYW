@@ -1,12 +1,8 @@
 package net.azagwen.atbyw.mixin.bookshelf_behavior;
 
-import net.azagwen.atbyw.main.AtbywTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.azagwen.atbyw.main.Tags;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.*;
@@ -45,28 +41,28 @@ public abstract  class EnchantmentScreenHandlerMixin extends ScreenHandler {
 					for(j = -1; j <= 1; ++j) {
 						for(int k = -1; k <= 1; ++k) {
 							if ((j != 0 || k != 0) && world.isAir(pos.add(k, 0, j)) && world.isAir(pos.add(k, 1, j))) {
-								if (world.getBlockState(pos.add(k * 2, 0, j * 2)).isIn(AtbywTags.BlockTags.BOOKSHELVES_COMMON)) {
+								if (world.getBlockState(pos.add(k * 2, 0, j * 2)).isIn(Tags.BlockTags.BOOKSHELVES_COMMON)) {
 									++i;
 								}
 
-								if (world.getBlockState(pos.add(k * 2, 1, j * 2)).isIn(AtbywTags.BlockTags.BOOKSHELVES_COMMON)) {
+								if (world.getBlockState(pos.add(k * 2, 1, j * 2)).isIn(Tags.BlockTags.BOOKSHELVES_COMMON)) {
 									++i;
 								}
 
 								if (k != 0 && j != 0) {
-									if (world.getBlockState(pos.add(k * 2, 0, j)).isIn(AtbywTags.BlockTags.BOOKSHELVES_COMMON)) {
+									if (world.getBlockState(pos.add(k * 2, 0, j)).isIn(Tags.BlockTags.BOOKSHELVES_COMMON)) {
 										++i;
 									}
 
-									if (world.getBlockState(pos.add(k * 2, 1, j)).isIn(AtbywTags.BlockTags.BOOKSHELVES_COMMON)) {
+									if (world.getBlockState(pos.add(k * 2, 1, j)).isIn(Tags.BlockTags.BOOKSHELVES_COMMON)) {
 										++i;
 									}
 
-									if (world.getBlockState(pos.add(k, 0, j * 2)).isIn(AtbywTags.BlockTags.BOOKSHELVES_COMMON)) {
+									if (world.getBlockState(pos.add(k, 0, j * 2)).isIn(Tags.BlockTags.BOOKSHELVES_COMMON)) {
 										++i;
 									}
 
-									if (world.getBlockState(pos.add(k, 1, j * 2)).isIn(AtbywTags.BlockTags.BOOKSHELVES_COMMON)) {
+									if (world.getBlockState(pos.add(k, 1, j * 2)).isIn(Tags.BlockTags.BOOKSHELVES_COMMON)) {
 										++i;
 									}
 								}

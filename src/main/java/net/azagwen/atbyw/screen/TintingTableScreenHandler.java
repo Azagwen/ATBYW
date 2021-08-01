@@ -1,30 +1,23 @@
 package net.azagwen.atbyw.screen;
 
+import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.entity.TintingTableFuels;
-import net.azagwen.atbyw.block.entity.TintingTableMode;
 import net.azagwen.atbyw.item.CanvasBlockItem;
 import net.azagwen.atbyw.item.SimpleColoredItem;
 import net.azagwen.atbyw.main.AtbywScreenHandlerType;
 import net.azagwen.atbyw.main.AtbywStats;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.DyeItem;
 import net.minecraft.item.DyeableItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
-
-import java.awt.*;
-import java.util.Iterator;
-import java.util.List;
 
 public class TintingTableScreenHandler extends ScreenHandler {
     private final Inventory dyeInventory;
@@ -38,8 +31,6 @@ public class TintingTableScreenHandler extends ScreenHandler {
     private final Slot redSlot;
     private final Slot greenSlot;
     private final Slot blueSlot;
-    private int color;
-    private int mode;
 
     public TintingTableScreenHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, new SimpleInventory(5), new ArrayPropertyDelegate(5), ScreenHandlerContext.EMPTY);
@@ -81,7 +72,7 @@ public class TintingTableScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return this.dyeInventory.canPlayerUse(player);
+        return canUse(this.context, player, AtbywBlocks.TINTING_TABLE);
     }
 
     protected void onTakeOutput(PlayerEntity player, ItemStack stack) {
@@ -113,11 +104,11 @@ public class TintingTableScreenHandler extends ScreenHandler {
 
         if (item instanceof DyeableItem dyeableItem) {
             itemStack = stack.copy();
-            dyeableItem.setColor(itemStack, handler.color);
+            dyeableItem.setColor(itemStack, handler.getColor());
         }
         if (item instanceof SimpleColoredItem coloredItem) {
             itemStack = stack.copy();
-            coloredItem.setColor(itemStack, handler.color);
+            coloredItem.setColor(itemStack, handler.getColor());
         }
 
         return itemStack;
@@ -136,6 +127,12 @@ public class TintingTableScreenHandler extends ScreenHandler {
         this.context.run((world, blockPos) -> {
             this.dropInventory(player, this.input);
         });
+    }
+
+    @Override
+    public void setProperty(int id, int value) {
+        super.setProperty(id, value);
+        this.sendContentUpdates();
     }
 
     @Override
@@ -209,22 +206,20 @@ public class TintingTableScreenHandler extends ScreenHandler {
         return this.propertyDelegate.get(2);
     }
 
-    public void setMode(TintingTableMode mode) {
-        this.mode = mode.getId();
-        this.propertyDelegate.set(3, this.mode);
+    public void setMode(int mode) {
+        this.propertyDelegate.set(3, mode);
     }
 
-    public TintingTableMode getMode() {
-        return TintingTableMode.values()[this.mode];
+    public int getMode() {
+        return this.propertyDelegate.get(3);
     }
 
     public void setColor(int color) {
-        this.color = color;
-        this.propertyDelegate.set(4, this.color);
+        this.propertyDelegate.set(4, color);
     }
 
-    public Color getColor() {
-        return new Color(this.color);
+    public int getColor() {
+        return this.propertyDelegate.get(4);
     }
 
     public static boolean isValidIngredient(ItemStack stack) {

@@ -3,7 +3,10 @@ package net.azagwen.atbyw.client.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.azagwen.atbyw.block.entity.TintingTableMode;
 import net.azagwen.atbyw.main.AtbywMain;
+import net.azagwen.atbyw.main.AtbywNetworking;
 import net.azagwen.atbyw.screen.TintingTableScreenHandler;
+import net.azagwen.atbyw.util.AtbywUtils;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -23,8 +26,6 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
     private static final Identifier TEXTURE = AtbywMain.id("textures/gui/tinting_table.png");
     private DynamicTexturedButtonWidget switchModeButton;
     private TextFieldWidget hexField;
-    private float tickDelta;
-    private boolean reverseTickDelta;
     private boolean isHexCodeValid = false;
 
     public TintingTableScreen(TintingTableScreenHandler handler, PlayerInventory inventory, Text title) {
@@ -37,17 +38,6 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
 
     @Override
     protected void handledScreenTick() {
-        super.handledScreenTick();
-        if (this.tickDelta >= 1.0F) {
-            this.reverseTickDelta = true;
-        } else if (this.tickDelta <= 0.0F){
-            this.reverseTickDelta = false;
-        }
-        if (!reverseTickDelta) {
-            this.tickDelta = tickDelta + 0.01F;
-        } else {
-            this.tickDelta = tickDelta - 0.01F;
-        }
         this.update();
         this.hexField.tick();
     }
@@ -55,23 +45,38 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
     //Updates drawables that needs updating (called at init and in tick)
     private void update() {
         switch (this.handler.getMode()) {
-            case HEX -> {
+            case TintingTableMode.HEX -> {
                 this.switchModeButton.setU(242);
                 this.switchModeButton.setMessage(new TranslatableText("container.tinting_table_mode.hex"));
             }
-            case RGB -> {
+            case TintingTableMode.RGB -> {
                 this.switchModeButton.setU(228);
                 this.switchModeButton.setMessage(new TranslatableText("container.tinting_table_mode.rgb"));
             }
         }
 
         if (this.hexField.isVisible()) {
-            try {
-                this.handler.setColor(Color.decode(this.hexField.getText()).getRGB());
-                this.isHexCodeValid = true;
-            } catch (NumberFormatException ignored) {
-                this.isHexCodeValid = false;
-            }
+            this.setColor();
+        }
+    }
+
+    private void onHexChanged(String name) {
+        if (!name.isEmpty()) {
+            this.setColor();
+        }
+    }
+
+    private void setColor() {
+        try {
+            int color = Integer.decode(this.hexField.getText());
+            AtbywNetworking.sendClientPacket(AtbywNetworking.TINTING_COLOR_PACKET, () -> {
+                var buf = PacketByteBufs.create();
+                buf.writeVarInt(color);
+                return buf;
+            });
+            this.isHexCodeValid = true;
+        } catch (NumberFormatException ignored) {
+            this.isHexCodeValid = false;
         }
     }
 
@@ -80,17 +85,22 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
         super.init();
         this.client.keyboard.setRepeatEvents(true);
         this.switchModeButton = this.addDrawableChild(new DynamicTexturedButtonWidget(this.x + 13, this.y + 30, 14, 14, 228, 0, 14, TEXTURE, 256, 256, (button) -> {
-            if (this.handler.getMode() == TintingTableMode.HEX) {
-                this.handler.setMode(TintingTableMode.RGB);
-            } else {
-                this.handler.setMode(TintingTableMode.HEX);
-            }
+            AtbywNetworking.sendClientPacket(AtbywNetworking.TINTING_MODE_PACKET, () -> {
+                var buf = PacketByteBufs.create();
+                switch (this.handler.getMode()) {
+                    case TintingTableMode.HEX -> buf.writeVarInt(TintingTableMode.RGB);
+                    case TintingTableMode.RGB -> buf.writeVarInt(TintingTableMode.HEX);
+                }
+                return buf;
+            });
         }));
         this.hexField = new TextFieldWidget(this.textRenderer, this.x + 68, this.y + 34, 46 , 12, new TranslatableText("container.tinting.hex"));
         this.hexField.setFocusUnlocked(false);
-        this.hexField.setEditableColor(Color.decode("#CFBB93").getRGB());
+        this.hexField.setEditableColor(Integer.decode("#CFBB93"));
         this.hexField.setDrawsBackground(false);
         this.hexField.setMaxLength(7);
+        this.hexField.setChangedListener(this::onHexChanged);
+//        this.hexField.setText(AtbywUtils.getHexFromColor(this.handler.getColor()));
         this.hexField.setText("#FFFFFF");
         this.addSelectableChild(this.hexField);
         this.setInitialFocus(this.hexField);
@@ -155,7 +165,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
 
         //Render the top left are background (settings area)
         switch (this.handler.getMode()) {
-            case HEX -> {
+            case TintingTableMode.HEX -> {
                 this.drawTexture(matrices, xPos, yPos, 124, 166, 124, 64);
                 if (this.isHexCodeValid) {
                     this.drawTexture(matrices, xPos + 56, yPos + 32, 208, 10, 10, 10);
@@ -165,7 +175,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
                 this.hexField.visible = true;
                 this.hexField.active = true;
             }
-            case RGB -> {
+            case TintingTableMode.RGB -> {
                 this.drawTexture(matrices, xPos, yPos, 0, 166, 124, 64);
                 this.hexField.visible = false;
                 this.hexField.active = false;
@@ -173,11 +183,11 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
         }
 
         //Render the color widgets in the area mentioned above
-        var color = this.handler.getColor();
+        var color = new Color(this.handler.getColor());
         RenderSystem.setShaderColor((color.getRed() / 255.0F), (color.getGreen() / 255.0F), (color.getBlue() / 255.0F), 1.0F);
         switch (this.handler.getMode()) {
-            case HEX -> this.drawTexture(matrices, xPos + 33, yPos + 30, 230, 28, 14, 14);
-            case RGB -> this.drawTexture(matrices, xPos + 33, yPos + 20, 230, 42, 14, 34);
+            case TintingTableMode.HEX -> this.drawTexture(matrices, xPos + 33, yPos + 30, 230, 28, 14, 14);
+            case TintingTableMode.RGB -> this.drawTexture(matrices, xPos + 33, yPos + 20, 230, 42, 14, 34);
         }
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
     }

@@ -19,6 +19,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
+import java.awt.*;
 import java.util.List;
 
 import static net.azagwen.atbyw.main.AtbywMain.*;
@@ -42,6 +43,17 @@ public record AtbywUtils() {
             Items.RED_DYE,
             Items.BLACK_DYE
     );
+
+    public static String getHexFromColor(Color color) {
+        return "#"+Integer.toHexString(color.getRGB()).substring(2);
+
+    }
+
+
+    public static String getHexFromColor(int color) {
+        return "#"+Integer.toHexString(color).substring(2);
+
+    }
 
     public static JsonArray jsonArray(Object... elements) {
         var array = new JsonArray();

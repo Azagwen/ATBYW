@@ -20,7 +20,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.math.MathHelper;
@@ -40,8 +39,8 @@ public class AtbywMain implements ModInitializer {
 	public static final String MINECRAFT = "minecraft";
 	public static final String ATBYW = "atbyw";
 	public static final String ATBYW_MI = "atbyw_mi";
-	public static final Logger LOGGER  = LogManager.getLogger("Atbyw Main");
-	public static final Logger MYS_LOGGER  = LogManager.getLogger("?");
+	public static final Logger LOGGER = LogManager.getLogger("Atbyw Main");
+	public static final Logger MYS_LOGGER = LogManager.getLogger("?");
 
 	//TODO: Fix and Investigate structure issues (very high priority)
 	//TODO: Finish moving recipe datagen away from JSON (high priority)
@@ -110,7 +109,6 @@ public class AtbywMain implements ModInitializer {
 		return false;
 	}
 
-
 	@Override
 	public void onInitialize() {
 		if (enableModInteractions()) {
@@ -123,11 +121,12 @@ public class AtbywMain implements ModInitializer {
 
 		AtbywItems.init();
 		AtbywBlocks.init();
-		AtbywBlockEntityTypes.init();
 		AtbywWorldGen.init();
 		AtbywRRP.init();
-		RecipeRegistry.init();
 		AtbywStats.init();
+		AtbywBlockEntityTypes.init();
+		AtbywNetworking.init();
+		RecipeRegistry.init();
 
 		//Populate debug world with this mod's blocks (dev only)
 		if (isDebugEnabled()) {

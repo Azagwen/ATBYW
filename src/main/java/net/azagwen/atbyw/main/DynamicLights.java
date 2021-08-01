@@ -8,10 +8,10 @@ import static dev.lambdaurora.lambdynlights.api.DynamicLightHandlers.registerDyn
  *  This class is using the LambDynamicLights API
  *  https://github.com/LambdAurora/LambDynamicLights
  */
-public class AtbywDynamicLights implements DynamicLightsInitializer {
+public class DynamicLights implements DynamicLightsInitializer {
 
     @Override
     public void onInitializeDynamicLights() {
-        registerDynamicLightHandler(AtbywEntityTypes.SHROOMSTICK, entity -> 15);
+        registerDynamicLightHandler(EntityTypes.SHROOMSTICK, entity -> 15);
     }
 }

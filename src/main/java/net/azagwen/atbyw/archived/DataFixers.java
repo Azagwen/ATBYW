@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.main;
+package net.azagwen.atbyw.archived;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DataFixer;
@@ -17,7 +17,7 @@ import java.util.function.BiFunction;
 import java.util.function.UnaryOperator;
 
 @Mixin(Schemas.class)
-public class AtbywDataFixers {
+public class DataFixers {
     private static final BiFunction<Integer, Schema, Schema> EMPTY_IDENTIFIER_NORMALIZE = IdentifierNormalizingSchema::new;
 
 
