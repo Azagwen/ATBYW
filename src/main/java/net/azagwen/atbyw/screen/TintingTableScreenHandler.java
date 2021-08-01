@@ -101,6 +101,7 @@ public class TintingTableScreenHandler extends ScreenHandler {
             }
 
             resultInventory.setStack(0, outputStack);
+            resultInventory.markDirty();
             handler.setPreviousTrackedSlot(1, outputStack);
             serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 1, outputStack));
         }
