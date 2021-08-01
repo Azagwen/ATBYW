@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class TintingTableBlockEntity extends LockableContainerBlockEntity implements SidedInventory {
     private static final int[] DYE_SLOTS = new int[]{2, 3, 4};
+    private static final int[] INPUT_SLOT = new int[]{1};
     protected final PropertyDelegate propertyDelegate;
     private DefaultedList<ItemStack> inventory;
     private int redAmount;
@@ -191,7 +192,7 @@ public class TintingTableBlockEntity extends LockableContainerBlockEntity implem
         nbt.putByte("GreenAmount", (byte) this.greenAmount);
         nbt.putByte("BlueAmount", (byte) this.blueAmount);
         nbt.putInt("Color", this.color);
-        nbt.putInt("Mode", this.mode);
+        nbt.putByte("Mode", (byte) this.mode);
         return nbt;
     }
 
