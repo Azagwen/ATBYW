@@ -69,6 +69,7 @@ public class TintingTableBlockEntity extends LockableContainerBlockEntity implem
         blockEntity.redAmount = blockEntity.tryRecharge(world, pos, state, blockEntity.redAmount, blockEntity.inventory.get(2), TintingTableFuels.RED);
         blockEntity.greenAmount = blockEntity.tryRecharge(world, pos, state, blockEntity.greenAmount, blockEntity.inventory.get(3), TintingTableFuels.GREEN);
         blockEntity.blueAmount = blockEntity.tryRecharge(world, pos, state, blockEntity.blueAmount, blockEntity.inventory.get(4), TintingTableFuels.BLUE);
+
     }
 
     private int tryRecharge(World world, BlockPos pos, BlockState state, int amount, ItemStack stack, TintingTableFuels fuel) {
