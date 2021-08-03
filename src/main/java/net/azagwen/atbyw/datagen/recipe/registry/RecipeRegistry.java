@@ -1,20 +1,24 @@
-package net.azagwen.atbyw.datagen.recipe;
+package net.azagwen.atbyw.datagen.recipe.registry;
 
 import com.google.common.collect.*;
 import com.google.gson.*;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
 import net.azagwen.atbyw.datagen.Datagen;
+import net.azagwen.atbyw.datagen.recipe.util.RecipeData;
+import net.azagwen.atbyw.datagen.recipe.util.RecipePatterns;
 import net.azagwen.atbyw.item.AtbywItems;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.AtbywUtils;
 import net.azagwen.atbyw.util.Pair;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.DyeItem;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.tag.ItemTags;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -107,12 +111,13 @@ public class RecipeRegistry {
         Datagen.registerRecipe(MAGMA_CUBE_STATUE, "statues");
 
         //Other Types
-        StonecuttingRecipeRegistry.registerStonecuttingRecipes();
+        StonecuttingRecipeRegistry.init();
+        FurnaceRecipeRegistry.init();
 
         LOGGER.info("ATBYW Recipes Inintiliazed");
     }
 
-    public static void registerStairPatterns() {
+    private static void registerStairPatterns() {
         //Map<RecipeData, Input
         var count = 4;
         var map = Maps.<RecipeData, ItemConvertible>newHashMap();
@@ -214,7 +219,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerSlabPatterns() {
+    private static void registerSlabPatterns() {
         //Map<RecipeData, Input>
         var map = Maps.<RecipeData, ItemConvertible>newHashMap();
         map.put(new RecipeData("slab", "", AtbywBlocks.DIRT_SLAB, 6), Blocks.DIRT);
@@ -316,7 +321,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerBricksPatterns() {
+    private static void registerBricksPatterns() {
         //Map<RecipeData, Input>
         var brickCount = 4;
         var glassCount = 1;
@@ -391,7 +396,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerWallPatterns() {
+    private static void registerWallPatterns() {
         //Map<RecipeData, Input>
         var count = 6;
         var map = Maps.<RecipeData, ItemConvertible>newHashMap();
@@ -436,127 +441,133 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerDyingPatterns() {
+    private static RecipeData dyeingRecipeData(String group, ItemConvertible result, int count) {
+        return new RecipeData("dyeing", "dyeing", group, result, count);
+    }
+
+    private static void registerDyingPatterns() {
         //Map<RecipeData, Input>
         var count = 8;
-        var dyeMap = Maps.<RecipeData, ItemConvertible>newHashMap();
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.WHITE_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.ORANGE_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.MAGENTA_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.YELLOW_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.LIME_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.PINK_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.GRAY_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.CYAN_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.PURPLE_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.BLUE_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.BROWN_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.GREEN_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.RED_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_stairs_dying", AtbywBlocks.BLACK_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.WHITE_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.ORANGE_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.MAGENTA_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.YELLOW_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.LIME_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.PINK_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.GRAY_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.CYAN_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.PURPLE_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.BLUE_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.BROWN_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.GREEN_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.RED_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_slab_dying", AtbywBlocks.BLACK_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.WHITE_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.MAGENTA_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.YELLOW_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.LIME_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.PINK_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.GRAY_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.CYAN_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.PURPLE_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.BLUE_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.BROWN_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.GREEN_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.RED_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_dying", AtbywBlocks.BLACK_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.WHITE_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.MAGENTA_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.YELLOW_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.LIME_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.PINK_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.GRAY_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.CYAN_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.PURPLE_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.BLUE_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.BROWN_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.GREEN_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.RED_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_stairs_dying", AtbywBlocks.BLACK_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.WHITE_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.MAGENTA_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.YELLOW_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.LIME_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.PINK_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.GRAY_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.CYAN_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.PURPLE_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.BLUE_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.BROWN_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.GREEN_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.RED_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_slab_dying", AtbywBlocks.BLACK_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.WHITE_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.MAGENTA_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.YELLOW_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.LIME_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.PINK_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.GRAY_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.CYAN_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.PURPLE_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.BLUE_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.BROWN_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.GREEN_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.RED_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
-        dyeMap.put(new RecipeData("terracotta_bricks_wall_dying", AtbywBlocks.BLACK_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        var dyeingMap = Maps.<RecipeData, ItemConvertible>newHashMap();
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.WHITE_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.ORANGE_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.MAGENTA_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.YELLOW_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.LIME_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.PINK_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.GRAY_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.CYAN_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.PURPLE_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.BLUE_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.BROWN_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.GREEN_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.RED_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_stairs_dyeing", AtbywBlocks.BLACK_TERRACOTTA_STAIRS, count), AtbywBlocks.TERRACOTTA_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.WHITE_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.ORANGE_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.MAGENTA_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.YELLOW_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.LIME_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.PINK_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.GRAY_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.CYAN_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.PURPLE_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.BLUE_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.BROWN_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.GREEN_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.RED_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_slab_dyeing", AtbywBlocks.BLACK_TERRACOTTA_SLAB, count), AtbywBlocks.TERRACOTTA_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.WHITE_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.MAGENTA_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.YELLOW_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.LIME_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.PINK_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.GRAY_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.CYAN_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.PURPLE_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.BLUE_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.BROWN_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.GREEN_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.RED_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_dyeing", AtbywBlocks.BLACK_TERRACOTTA_BRICKS, count), AtbywBlocks.TERRACOTTA_BRICKS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.WHITE_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.MAGENTA_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.YELLOW_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.LIME_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.PINK_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.GRAY_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.CYAN_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.PURPLE_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.BLUE_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.BROWN_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.GREEN_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.RED_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_stairs_dyeing", AtbywBlocks.BLACK_TERRACOTTA_BRICKS_STAIRS, count), AtbywBlocks.TERRACOTTA_BRICKS_STAIRS);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.WHITE_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.MAGENTA_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.YELLOW_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.LIME_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.PINK_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.GRAY_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.CYAN_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.PURPLE_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.BLUE_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.BROWN_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.GREEN_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.RED_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_slab_dyeing", AtbywBlocks.BLACK_TERRACOTTA_BRICKS_SLAB, count), AtbywBlocks.TERRACOTTA_BRICKS_SLAB);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.WHITE_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.MAGENTA_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.YELLOW_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.LIME_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.PINK_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.GRAY_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.CYAN_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.PURPLE_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.BLUE_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.BROWN_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.GREEN_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.RED_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
+        dyeingMap.put(dyeingRecipeData("terracotta_bricks_wall_dyeing", AtbywBlocks.BLACK_TERRACOTTA_BRICKS_WALL, count), AtbywBlocks.TERRACOTTA_BRICKS_WALL);
 
         //Map<Pair<Input outer ring, Input middle>, Output>
-        var ringMap = Maps.<RecipeData, Pair<ItemConvertible, ItemConvertible>>newHashMap();
-        ringMap.put(new RecipeData(AtbywBlocks.REDSTONE_LANTERN, 1), new Pair<>(Items.IRON_NUGGET, Items.REDSTONE_TORCH));
+        var map = Maps.<RecipeData, Pair<ItemConvertible, ItemConvertible>>newHashMap();
+        map.put(new RecipeData(AtbywBlocks.REDSTONE_LANTERN, 1), new Pair<>(Items.IRON_NUGGET, Items.REDSTONE_TORCH));
 
-        for (var entry : dyeMap.entrySet()) {
-            for (var dye : AtbywUtils.DYES) {
-                var pattern = patterns.dyingRingPattern(entry.getValue(), dye);
+        for (var color : DyeColor.values()) {
+            for (var entry : dyeingMap.entrySet()) {
                 var recipeData = entry.getKey();
-                var recipe = registerShapedRecipe(recipeData, pattern.getFirst(), pattern.getSecond());
-                dyingRecipes.add(recipe);
+                if (AtbywUtils.getItemID(recipeData.result().asItem()).getPath().contains(color.asString())) {
+                    var pattern = patterns.dyingRingPattern(entry.getValue(), DyeItem.byColor(color));
+                    registerShapedRecipe(recipeData, pattern.getFirst(), pattern.getSecond());
+                }
             }
         }
-        for (var entry : ringMap.entrySet()) {
+
+        for (var entry : map.entrySet()) {
             var pattern = patterns.dyingRingPattern(entry.getValue().getFirst(), entry.getValue().getSecond());
             var recipeData = entry.getKey();
             registerShapedRecipe(recipeData, pattern.getFirst(), pattern.getSecond());
         }
     }
 
-    public static void registerColumnPatterns() {
+    private static void registerColumnPatterns() {
         //Map<RecipeData, Input>
         var columnCount = 3;
         var map = Maps.<RecipeData, ItemConvertible>newHashMap();
@@ -589,7 +600,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerFlowerSwitches() {
+    private static void registerFlowerSwitches() {
         //Map<Input, Output>
         var map = new HashMap<ItemConvertible, ItemConvertible>();
         map.put(Items.DANDELION, AtbywBlocks.DANDELION_PULL_SWITCH);
@@ -616,7 +627,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerStickPatterns() {
+    private static void registerStickPatterns() {
         //Map<RecipeData, Input>
         var map = Maps.<RecipeData, ItemConvertible>newHashMap();
         map.put(new RecipeData("from_basalt", "", "", AtbywBlocks.BASALT_PILLAR, 2), Blocks.BASALT);
@@ -633,7 +644,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerSpikeTraps() {
+    private static void registerSpikeTraps() {
         //Map<Input, Output>
         var map = Maps.<ItemConvertible, ItemConvertible>newHashMap();
         map.put(Items.IRON_INGOT, AtbywBlocks.IRON_SPIKE_TRAP);
@@ -652,7 +663,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerFenceDoorPatterns() {
+    private static void registerFenceDoorPatterns() {
         //Table<Category, Input, Output>
         var count = 3;
         var map = Maps.<RecipeData, ItemConvertible>newHashMap();
@@ -673,7 +684,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerBookshelfToggles() {
+    private static void registerBookshelfToggles() {
         //Map<Input, Output>
         var map = new HashMap<ItemConvertible, ItemConvertible>();
         map.put(Items.OAK_PLANKS, AtbywBlocks.OAK_BOOKSHELF_TOGGLE);
@@ -696,7 +707,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerBookshelfPatterns() {
+    private static void registerBookshelfPatterns() {
         //Map<Input, Output>
         var map = new HashMap<ItemConvertible, ItemConvertible>();
         map.put(Items.SPRUCE_PLANKS, AtbywBlocks.SPRUCE_BOOKSHELF);
@@ -714,7 +725,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerLadderPatterns() {
+    private static void registerLadderPatterns() {
         //Map<Input, Output>
         var map = new HashMap<ItemConvertible, ItemConvertible>();
         map.put(Items.SPRUCE_PLANKS, AtbywBlocks.SPRUCE_LADDER);
@@ -738,7 +749,7 @@ public class RecipeRegistry {
         registerShapedRecipe(recipeData, new String[] {"B B", "BSB", "B B"}, keys);
     }
 
-    public static void registerTorchPatterns() {
+    private static void registerTorchPatterns() {
         //Map<Pair<Input "coal", Input "stick">, Output>
         var map = Maps.<RecipeData, Pair<ItemConvertible, ItemConvertible>>newHashMap();
         map.put(new RecipeData(AtbywBlocks.SOUL_JACK_O_LANTERN, 1), new Pair<>(Items.CARVED_PUMPKIN, Items.SOUL_TORCH));
@@ -751,7 +762,7 @@ public class RecipeRegistry {
         }
     }
 
-    public static void registerMisc() {
+    private static void registerMisc() {
         var keys = HashMultimap.<Character, Ingredient>create();
         var recipeData = (RecipeData) null;
 
@@ -774,21 +785,21 @@ public class RecipeRegistry {
         keys.clear();
         keys.put('R', Ingredient.ofItems(Items.REDSTONE));
         keys.put('S', Ingredient.ofItems(Blocks.STONE));
-        recipeData = new RecipeData("redstone", AtbywBlocks.REDSTONE_CROSS_PATH, 1);
+        recipeData = new RecipeData("", "redstone", AtbywBlocks.REDSTONE_CROSS_PATH, 1);
         registerShapedRecipe(recipeData, new String[] {"RRR", "SSS"}, keys);
 
         //Redstone Pipe
         keys.clear();
         keys.put('C', Ingredient.ofItems(Items.COPPER_INGOT));
         keys.put('R', Ingredient.ofItems(Items.REDSTONE));
-        recipeData = new RecipeData("redstone", AtbywBlocks.REDSTONE_PIPE, 3);
+        recipeData = new RecipeData("", "redstone", AtbywBlocks.REDSTONE_PIPE, 3);
         registerShapedRecipe(recipeData, new String[] {"CRC", "CRC", "CRC"}, keys);
 
         //Redstone Pipe Repeater
         keys.clear();
         keys.put('C', Ingredient.ofItems(Items.COPPER_INGOT));
         keys.put('R', Ingredient.ofItems(Items.REPEATER));
-        recipeData = new RecipeData("redstone", AtbywBlocks.REDSTONE_PIPE_REPEATER, 1);
+        recipeData = new RecipeData("", "redstone", AtbywBlocks.REDSTONE_PIPE_REPEATER, 1);
         registerShapedRecipe(recipeData, new String[] {"CRC"}, keys);
 
         //Canvas Block
@@ -810,10 +821,5 @@ public class RecipeRegistry {
         recipeData = new RecipeData(AtbywBlocks.REDSTONE_CROSS_PATH, 2);
         registerShapedRecipe(recipeData, pattern.getFirst(), pattern.getSecond());
 
-    }
-
-    //Used in net.azagwen.atbyw.mixin.datagen.RecipeManagerMixin
-    public static void inject(Map<Identifier, JsonElement> map) {
-        RecipeSmeltingRegistry.inject(map);
     }
 }

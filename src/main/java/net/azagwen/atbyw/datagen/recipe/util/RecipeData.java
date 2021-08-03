@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.datagen.recipe;
+package net.azagwen.atbyw.datagen.recipe.util;
 
 import net.minecraft.item.ItemConvertible;
 

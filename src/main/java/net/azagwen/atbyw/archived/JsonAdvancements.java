@@ -2,7 +2,6 @@ package net.azagwen.atbyw.archived;
 
 import com.google.common.collect.Maps;
 import com.google.gson.*;
-import net.azagwen.atbyw.datagen.recipe.RecipeRegistry;
 import net.azagwen.atbyw.util.AtbywUtils;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
@@ -177,7 +176,6 @@ public class JsonAdvancements {
 
     public static void unlockAllRecipes(Map<Identifier, JsonElement> map) {
         var recipeMap = Maps.<Identifier, JsonElement>newConcurrentMap();
-        RecipeRegistry.inject(recipeMap);
         recipeMap.forEach((id, element) -> translateRecipes(map, id, element));
     }
 

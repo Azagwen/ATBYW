@@ -3,7 +3,6 @@ package net.azagwen.atbyw.mixin.datagen;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonElement;
 import net.azagwen.atbyw.datagen.Datagen;
-import net.azagwen.atbyw.datagen.recipe.RecipeRegistry;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.recipe.RecipeType;
@@ -21,16 +20,7 @@ import java.util.Map;
 @Mixin(RecipeManager.class)
 public class RecipeManagerMixin {
 
-    @Inject(method = "apply", at = @At("HEAD"))
-    public void interceptApply(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler, CallbackInfo info) {
-        RecipeRegistry.inject(map);
-    }
-
-    @Inject(
-            method = "apply",
-            at = @At(value = "INVOKE", target = "Ljava/util/Map;entrySet()Ljava/util/Set;", ordinal = 1),
-            locals = LocalCapture.CAPTURE_FAILHARD
-    )
+    @Inject(method = "apply", at = @At(value = "INVOKE", target = "Ljava/util/Map;entrySet()Ljava/util/Set;", ordinal = 1), locals = LocalCapture.CAPTURE_FAILHARD)
     private void onReload(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler, CallbackInfo ci, Map<RecipeType<?>, ImmutableMap.Builder<Identifier, Recipe<?>>> builderMap) {
         Datagen.applyRecipes(map, builderMap);
     }

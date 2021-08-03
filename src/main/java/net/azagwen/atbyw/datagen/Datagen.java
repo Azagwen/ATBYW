@@ -202,4 +202,16 @@ public class Datagen {
         outStack.setCount(count);
         return new StonecuttingRecipe(recipeId, group, input, outStack);
     }
+
+    /**
+     * @param recipeId  Identifier of the recipe being created.
+     * @param group     Group the recipe belongs in (for recipe grouping in the recipe book).
+     * @param input     The input ingredient block.
+     * @param output    The Resulting item from the recipe.
+     *
+     * @return          A new StonecuttingRecipe() created from the input parameters.
+     */
+    public static Recipe<?> smeltingRecipe(Identifier recipeId, String group, Ingredient input, ItemConvertible output, float exp, int cookTime) {
+        return new SmeltingRecipe(recipeId, group, input, new ItemStack(output), exp, cookTime);
+    }
 }

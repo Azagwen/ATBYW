@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.datagen.recipe;
+package net.azagwen.atbyw.datagen.recipe.util;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;

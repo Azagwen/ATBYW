@@ -12,6 +12,7 @@ import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -25,30 +26,27 @@ import java.util.List;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public record AtbywUtils() {
-    public static final List<Item> DYES = Lists.newArrayList(
-            Items.WHITE_DYE,
-            Items.ORANGE_DYE,
-            Items.MAGENTA_DYE,
-            Items.LIGHT_BLUE_DYE,
-            Items.YELLOW_DYE,
-            Items.LIME_DYE,
-            Items.PINK_DYE,
-            Items.GRAY_DYE,
-            Items.LIGHT_GRAY_DYE,
-            Items.CYAN_DYE,
-            Items.PURPLE_DYE,
-            Items.BLUE_DYE,
-            Items.BROWN_DYE,
-            Items.GREEN_DYE,
-            Items.RED_DYE,
-            Items.BLACK_DYE
-    );
+
+    public static List<String> dyeColorNames() {
+        var list = Lists.<String>newArrayList();
+        for (var color : DyeColor.values()) {
+            list.add(color.getName());
+        }
+        return list;
+    }
+
+    public static List<Integer> dyeColorIds() {
+        var list = Lists.<Integer>newArrayList();
+        for (var color : DyeColor.values()) {
+            list.add(color.getId());
+        }
+        return list;
+    }
 
     public static String getHexFromColor(Color color) {
         return "#"+Integer.toHexString(color.getRGB()).substring(2);
 
     }
-
 
     public static String getHexFromColor(int color) {
         return "#"+Integer.toHexString(color).substring(2);
@@ -105,23 +103,6 @@ public record AtbywUtils() {
 
     public static Block getBlockFromID(Identifier identifier) {
         return Registry.BLOCK.get(identifier);
-    }
-
-    public boolean isReceivingModularRedstonePower(World world, BlockPos pos) {
-
-        if (world.getEmittedRedstonePower(pos.down(), Direction.DOWN) > 0) {
-            return true;
-        } else if (world.getEmittedRedstonePower(pos.up(), Direction.UP) > 0) {
-            return true;
-        } else if (world.getEmittedRedstonePower(pos.north(), Direction.NORTH) > 0) {
-            return true;
-        } else if (world.getEmittedRedstonePower(pos.south(), Direction.SOUTH) > 0) {
-            return true;
-        } else if (world.getEmittedRedstonePower(pos.west(), Direction.WEST) > 0) {
-            return true;
-        } else {
-            return (world.getEmittedRedstonePower(pos.east(), Direction.EAST) > 0);
-        }
     }
 
     public static Box makeCenteredInflatableBox(BlockPos blockPos, float boxSize, float inflateFac) {

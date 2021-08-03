@@ -1,34 +1,20 @@
-package net.azagwen.atbyw.datagen.recipe;
+package net.azagwen.atbyw.datagen.recipe.registry;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import net.azagwen.atbyw.archived.JsonAdvancements;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
 import net.azagwen.atbyw.datagen.Datagen;
+import net.azagwen.atbyw.datagen.recipe.util.RecipeData;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.AtbywUtils;
-import net.azagwen.atbyw.util.naming.ColorNames;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
-
-import java.util.List;
-import java.util.Map;
-
-import static net.azagwen.atbyw.datagen.recipe.RecipeUtils.*;
-import static net.azagwen.atbyw.util.AtbywUtils.*;
-import static net.azagwen.atbyw.main.AtbywMain.*;
 
 public class StonecuttingRecipeRegistry {
 
-    private static Recipe<?> registerStonecuttingRecipe(RecipeData recipeData, Ingredient input) {
+    public static Recipe<?> registerStonecuttingRecipe(RecipeData recipeData, Ingredient input) {
         var recipe = (Recipe<?>) null;
         var suffix = recipeData.suffix();
         var category = recipeData.category();
@@ -43,7 +29,7 @@ public class StonecuttingRecipeRegistry {
         return recipe;
     }
 
-    private static Recipe<?> registerStonecuttingRecipe(RecipeData recipeData, ItemConvertible input) {
+    public static Recipe<?> registerStonecuttingRecipe(RecipeData recipeData, ItemConvertible input) {
         return registerStonecuttingRecipe(recipeData, Ingredient.ofItems(input));
     }
 
@@ -51,7 +37,7 @@ public class StonecuttingRecipeRegistry {
         return new RecipeData(suffix, "", "", result, count);
     }
 
-    public static void registerStonecuttingRecipes() {
+    public static void init() {
         registerStairsRecipes();
         registerSlabRecipes();
         registerColumnRecipes();

@@ -3,7 +3,7 @@ package net.azagwen.atbyw.item;
 import com.google.common.collect.Lists;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.main.AtbywMain;
-import net.azagwen.atbyw.util.naming.ColorNames;
+import net.azagwen.atbyw.util.AtbywUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.registry.Registry;
@@ -99,7 +99,7 @@ public class AtbywItems {
         registerItem(MISC_TAB, "slime_essence", SLIME_ESSENCE);
         registerItem(MISC_TAB, "large_chain_link", LARGE_CHAIN_LINK);
         registerItem(MISC_TAB, "glass_shard", GLASS_SHARD);
-        registerItems(MISC_TAB, "stained_glass_shard", ColorNames.getNames(), WHITE_STAINED_GLASS_SHARD, ORANGE_STAINED_GLASS_SHARD, MAGENTA_STAINED_GLASS_SHARD, LIGHT_BLUE_STAINED_GLASS_SHARD, YELLOW_STAINED_GLASS_SHARD, LIME_STAINED_GLASS_SHARD, PINK_STAINED_GLASS_SHARD, GRAY_STAINED_GLASS_SHARD, LIGHT_GRAY_STAINED_GLASS_SHARD, CYAN_STAINED_GLASS_SHARD, PURPLE_STAINED_GLASS_SHARD, BLUE_STAINED_GLASS_SHARD, BROWN_STAINED_GLASS_SHARD, GREEN_STAINED_GLASS_SHARD, RED_STAINED_GLASS_SHARD, BLACK_STAINED_GLASS_SHARD);
+        registerItems(MISC_TAB, "stained_glass_shard", AtbywUtils.dyeColorNames(), WHITE_STAINED_GLASS_SHARD, ORANGE_STAINED_GLASS_SHARD, MAGENTA_STAINED_GLASS_SHARD, LIGHT_BLUE_STAINED_GLASS_SHARD, YELLOW_STAINED_GLASS_SHARD, LIME_STAINED_GLASS_SHARD, PINK_STAINED_GLASS_SHARD, GRAY_STAINED_GLASS_SHARD, LIGHT_GRAY_STAINED_GLASS_SHARD, CYAN_STAINED_GLASS_SHARD, PURPLE_STAINED_GLASS_SHARD, BLUE_STAINED_GLASS_SHARD, BROWN_STAINED_GLASS_SHARD, GREEN_STAINED_GLASS_SHARD, RED_STAINED_GLASS_SHARD, BLACK_STAINED_GLASS_SHARD);
         registerItem(MISC_TAB, "colorizer", COLORIZER);
         registerItem(MISC_TAB, "canvas_block", CANVAS_BLOCK);
         registerItem(MISC_TAB, "glowing_canvas_block", GLOWING_CANVAS_BLOCK);

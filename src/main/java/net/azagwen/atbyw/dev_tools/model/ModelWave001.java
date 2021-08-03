@@ -1,11 +1,10 @@
 package net.azagwen.atbyw.dev_tools.model;
 
 import com.google.common.collect.HashBasedTable;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
+import net.azagwen.atbyw.util.AtbywUtils;
 import net.azagwen.atbyw.util.Pair;
-import net.azagwen.atbyw.util.naming.ColorNames;
 
 import java.util.Map;
 
@@ -37,7 +36,7 @@ public class ModelWave001 {
     protected static void write() {
         var writer = new AutoJsonWriter();
 
-        ColorNames.getNames().forEach((color) -> {
+        AtbywUtils.dyeColorNames().forEach((color) -> {
             writer.write("blockstates/" + color + "_stained_shattered_glass.json", writeColumnStairsBlockState(color));
 
             writer.write("models/block/" + color + "_stained_shattered_glass_0.json", ModelMethods.modelFromParent("minecraft:block/cube_all", glassTextures(color + "_stained_shattered_glass_0")));
