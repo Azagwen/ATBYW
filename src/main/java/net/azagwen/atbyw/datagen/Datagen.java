@@ -187,4 +187,19 @@ public class Datagen {
 
         registerRecipe(test, "aaa");
     }
+
+    /**
+     * @param recipeId  Identifier of the recipe being created.
+     * @param group     Group the recipe belongs in (for recipe grouping in the recipe book).
+     * @param input     The input ingredient block.
+     * @param output    The Resulting item from the recipe.
+     *
+     * @return          A new StonecuttingRecipe() created from the input parameters.
+     */
+    public static Recipe<?> stonecuttingRecipe(Identifier recipeId, String group, Ingredient input, ItemConvertible output, int count) {
+        var outStack = ItemStack.EMPTY;
+        outStack = new ItemStack(output);
+        outStack.setCount(count);
+        return new StonecuttingRecipe(recipeId, group, input, outStack);
+    }
 }

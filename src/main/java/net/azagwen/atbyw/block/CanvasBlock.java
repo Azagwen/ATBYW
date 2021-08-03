@@ -43,9 +43,9 @@ public class CanvasBlock extends BlockWithEntity {
         var itemStack = super.getPickStack(world, pos, state);
         var entity = (CanvasBlockEntity) world.getBlockEntity(pos);
 
-        if (entity.getColor().getRGB() != ColorizerItem.DEFAULT_COLOR) {
+        if (entity.getColor() != ColorizerItem.DEFAULT_COLOR) {
             var nbt = new NbtCompound();
-            nbt.putInt("color", entity.getColor().getRGB());
+            nbt.putInt("color", entity.getColor());
             if (!nbt.isEmpty()) {
                 itemStack.putSubTag("display", nbt);
             }

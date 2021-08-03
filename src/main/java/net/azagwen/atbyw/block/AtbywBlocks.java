@@ -499,7 +499,7 @@ public class AtbywBlocks {
     public static final Block REDSTONE_PIPE = new RedstonePipeBlock(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.COPPER));
     public static final Block REDSTONE_PIPE_REPEATER = new RedstonePipeRepeaterBlock(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.COPPER));
 
-    public static final Block TINTING_TABLE = new TintingTableBlock(FabricBlockSettings.of(Material.NETHER_WOOD).sounds(BlockSoundGroup.WOOD));
+    public static final Block TINTING_TABLE = new TintingTableBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).requiresTool().breakByTool(FabricToolTags.PICKAXES).sounds(BlockSoundGroup.COPPER));
 
     public static void init() {
 

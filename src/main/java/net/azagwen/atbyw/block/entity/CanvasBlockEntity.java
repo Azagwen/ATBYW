@@ -26,8 +26,8 @@ public class CanvasBlockEntity extends BlockEntity {
         this.setColor(color);
     }
 
-    public Color getColor() {
-        return new Color(color);
+    public int getColor() {
+        return color;
     }
 
     public void setColor(int color) {

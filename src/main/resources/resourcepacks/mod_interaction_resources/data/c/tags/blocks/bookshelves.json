@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "atbyw:stalagnate_bookshelf_toggle",
+    "atbyw:reeds_bookshelf_toggle",
+    "atbyw:willow_bookshelf_toggle",
+    "atbyw:wart_bookshelf_toggle",
+    "atbyw:rubeus_bookshelf_toggle",
+    "atbyw:mushroom_bookshelf_toggle",
+    "atbyw:mushroom_fir_bookshelf_toggle",
+    "atbyw:anchor_tree_bookshelf_toggle",
+    "atbyw:nether_sakura_bookshelf_toggle",
+
+    "atbyw:mossy_glowshroom_bookshelf_toggle",
+    "atbyw:pythadendron_bookshelf_toggle",
+    "atbyw:end_lotus_bookshelf_toggle",
+    "atbyw:lacugrove_bookshelf_toggle",
+    "atbyw:dragon_tree_bookshelf_toggle",
+    "atbyw:tenanea_bookshelf_toggle",
+    "atbyw:helix_tree_bookshelf_toggle",
+    "atbyw:umbrella_tree_bookshelf_toggle"
+  ]
+}

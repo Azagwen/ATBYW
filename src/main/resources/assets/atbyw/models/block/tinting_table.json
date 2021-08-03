@@ -3,7 +3,7 @@
     "parent": "minecraft:block/block",
     "texture_size": [64, 64],
     "textures": {
-        "particle": "atbyw:block/tinting_table",
+        "particle": "atbyw:block/tinting_table_particles",
         "all": "atbyw:block/tinting_table"
     },
     "elements": [

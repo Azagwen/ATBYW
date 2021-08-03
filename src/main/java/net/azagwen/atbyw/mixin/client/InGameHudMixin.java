@@ -50,7 +50,7 @@ public class InGameHudMixin extends DrawableHelper {
                         var entity = (CanvasBlockEntity) world.getBlockEntity(pos);
                         var color = new Color(colorizerItem.getColor(stack));
 
-                        if (entity.getColor().getRGB() != color.getRGB() && colorizerItem.hasColor(stack)) {
+                        if (entity.getColor() != color.getRGB() && colorizerItem.hasColor(stack)) {
                             RenderSystem.setShaderTexture(0, ICONS_TEXTURE);
                             RenderSystem.defaultBlendFunc();
                             this.setShaderColor(color);

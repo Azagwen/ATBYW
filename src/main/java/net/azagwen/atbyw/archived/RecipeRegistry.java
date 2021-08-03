@@ -2,7 +2,7 @@ package net.azagwen.atbyw.archived;
 
 import com.google.common.collect.Lists;
 import com.google.gson.*;
-import net.azagwen.atbyw.datagen.*;
+import net.azagwen.atbyw.datagen.recipe.AtbywRecipe;
 import net.azagwen.atbyw.util.Pair;
 import net.azagwen.atbyw.util.Quadruplet;
 import net.minecraft.util.Identifier;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static net.azagwen.atbyw.datagen.RecipeUtils.*;
+import static net.azagwen.atbyw.datagen.recipe.RecipeUtils.*;
 
 public class RecipeRegistry {
     static Gson builder = new GsonBuilder().setPrettyPrinting().create();

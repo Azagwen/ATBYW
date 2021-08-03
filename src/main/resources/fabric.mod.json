@@ -25,7 +25,7 @@
         "net.azagwen.atbyw.client.AtbywClient"
     ],
     "dynamiclights": [
-      "net.azagwen.atbyw.main.AtbywDynamicLights"
+      "net.azagwen.atbyw.main.DynamicLights"
     ]
   },
   "mixins": [

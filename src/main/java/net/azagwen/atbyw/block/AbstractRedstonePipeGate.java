@@ -183,7 +183,7 @@ public abstract class AbstractRedstonePipeGate extends FacingBlock implements Wa
         var vec3d = new Vec3d(x, y, z);
         for (var direction : Direction.values()) {
             direction = (opposite ? direction.getOpposite() : direction);
-            if (state.get(FACING) == direction && !BlockUtils.checkFullSquare(direction, world, pos)) {
+            if (state.get(FACING) == direction && !BlockUtils.checkFullSquare(direction, world, pos) && !(world.getBlockState(pos.offset(direction)).getBlock() instanceof RedstonePipeComponent)) {
                 switch (direction) {
                     case UP -> vec3d = new Vec3d(x + 0.5D, y + 1.1D, z + 0.5D);
                     case DOWN -> vec3d = new Vec3d(x + 0.5D, y + (-0.1D), z + 0.5D);

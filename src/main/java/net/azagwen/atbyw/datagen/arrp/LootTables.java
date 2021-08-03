@@ -772,7 +772,10 @@ public class LootTables {
                 AtbywBlocks.STRIPPED_ACACIA_LOG_STAIRS,
                 AtbywBlocks.STRIPPED_DARK_OAK_LOG_STAIRS,
                 AtbywBlocks.STRIPPED_CRIMSON_STEM_STAIRS,
-                AtbywBlocks.STRIPPED_WARPED_STEM_STAIRS
+                AtbywBlocks.STRIPPED_WARPED_STEM_STAIRS,
+                AtbywBlocks.REDSTONE_PIPE,
+                AtbywBlocks.REDSTONE_PIPE_REPEATER,
+                AtbywBlocks.TINTING_TABLE
         ));
     }
 }

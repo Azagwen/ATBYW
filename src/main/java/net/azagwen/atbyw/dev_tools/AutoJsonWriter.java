@@ -2,14 +2,8 @@ package net.azagwen.atbyw.dev_tools;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import io.netty.buffer.ByteBuf;
-import net.azagwen.atbyw.datagen.RecipeRegistry;
 import net.azagwen.atbyw.main.AtbywMain;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.ShapedRecipe;
 
 import java.io.*;
 

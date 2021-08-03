@@ -649,8 +649,7 @@
   "block.atbyw.bat_statue.cannot_be_waxed": "Bat statue requires at least %d Honeycombs to be waxed.",
 
   "container.tinting": "Tinting Table",
-  "container.tinting_table_mode.hex": "Switch modes",
-  "container.tinting_table_mode.rgb": "Switch modes",
+  "container.tinting_table_mode": "Switch modes",
 
   "_comment": "Unused / Old / Kept as Examples",
   "block.atbyw. statue.not_ready": "%1$s is not ready yet. (%2$s%% moss coverage)"

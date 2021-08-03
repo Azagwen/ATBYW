@@ -45,14 +45,8 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
     //Updates drawables that needs updating (called at init and in tick)
     private void update() {
         switch (this.handler.getMode()) {
-            case TintingTableMode.HEX -> {
-                this.switchModeButton.setU(242);
-                this.switchModeButton.setMessage(new TranslatableText("container.tinting_table_mode.hex"));
-            }
-            case TintingTableMode.RGB -> {
-                this.switchModeButton.setU(228);
-                this.switchModeButton.setMessage(new TranslatableText("container.tinting_table_mode.rgb"));
-            }
+            case TintingTableMode.HEX -> this.switchModeButton.setU(242);
+            case TintingTableMode.RGB -> this.switchModeButton.setU(228);
         }
 
         if (this.hexField.isVisible()) {
@@ -84,7 +78,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
     protected void init() {
         super.init();
         this.client.keyboard.setRepeatEvents(true);
-        this.switchModeButton = this.addDrawableChild(new DynamicTexturedButtonWidget(this.x + 13, this.y + 30, 14, 14, 228, 0, 14, TEXTURE, 256, 256, (button) -> {
+        this.switchModeButton = this.addDrawableChild(new DynamicTexturedButtonWidget(this.x + 13, this.y + 30, 14, 14, (this.handler.getMode() == TintingTableMode.HEX ? 242 : 228), 0, 14, TEXTURE, 256, 256, (button) -> {
             AtbywNetworking.sendClientPacket(AtbywNetworking.TINTING_MODE_PACKET, () -> {
                 var buf = PacketByteBufs.create();
                 switch (this.handler.getMode()) {
@@ -94,6 +88,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
                 return buf;
             });
         }));
+        this.switchModeButton.setMessage(new TranslatableText("container.tinting_table_mode"));
         this.hexField = new TextFieldWidget(this.textRenderer, this.x + 68, this.y + 34, 46 , 12, new TranslatableText("container.tinting.hex"));
         this.hexField.setFocusUnlocked(false);
         this.hexField.setEditableColor(Integer.decode("#CFBB93"));
@@ -104,7 +99,6 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
         this.hexField.setText("#FFFFFF");
         this.addSelectableChild(this.hexField);
         this.setInitialFocus(this.hexField);
-        this.update();
     }
 
     @Override

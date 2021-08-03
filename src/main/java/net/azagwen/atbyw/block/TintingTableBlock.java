@@ -11,6 +11,7 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
@@ -18,6 +19,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -52,6 +54,19 @@ public class TintingTableBlock extends BlockWithEntity {
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new TintingTableBlockEntity(pos, state);
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (!state.isOf(newState.getBlock())) {
+            var entity = world.getBlockEntity(pos);
+            if (entity instanceof Inventory) {
+                ItemScatterer.spawn(world, pos, (Inventory) entity);
+                world.updateComparators(pos, this);
+            }
+
+            super.onStateReplaced(state, world, pos, newState, moved);
+        }
     }
 
     @Nullable

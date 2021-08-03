@@ -3,7 +3,7 @@ package net.azagwen.atbyw.mixin.datagen;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonElement;
 import net.azagwen.atbyw.datagen.Datagen;
-import net.azagwen.atbyw.datagen.RecipeRegistry;
+import net.azagwen.atbyw.datagen.recipe.RecipeRegistry;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.recipe.RecipeType;

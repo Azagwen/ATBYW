@@ -58,7 +58,7 @@ public class ColorProviders {
             if (world != null && pos != null) {
                 var entity = world.getBlockEntity(pos);
                 if (entity instanceof CanvasBlockEntity blockEntity) {
-                    color = blockEntity.getColor().getRGB();
+                    color = blockEntity.getColor();
                 }
             }
             return color;

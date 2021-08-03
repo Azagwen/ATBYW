@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.datagen;
+package net.azagwen.atbyw.datagen.recipe;
 
 import com.google.gson.JsonElement;
 import net.azagwen.atbyw.util.Pair;

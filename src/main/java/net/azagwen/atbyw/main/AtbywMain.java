@@ -6,7 +6,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityTypes;
 import net.azagwen.atbyw.block.AtbywBlocks;
-import net.azagwen.atbyw.datagen.RecipeRegistry;
+import net.azagwen.atbyw.datagen.recipe.RecipeRegistry;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
 import net.azagwen.atbyw.group.AtbywItemGroup;
@@ -44,8 +44,7 @@ public class AtbywMain implements ModInitializer {
 
 	//TODO: Fix and Investigate structure issues (very high priority)
 	//TODO: Finish moving recipe datagen away from JSON (high priority)
-	//TODO: Fix colored recipes not reading properly (high priority)
-	//TODO: Finish canvas block implementations (high priority)
+	//TODO: Fix dying recipes not reading properly (high priority)
 	//TODO: Add a color mixing table (high priority)
 	//TODO: Add smooth variants of Deepslathe, Gqranite, Diorite, Andesite, Tuff...
 	//TODO: Add Amethyst bricks
