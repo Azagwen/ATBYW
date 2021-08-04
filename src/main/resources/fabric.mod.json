@@ -9,7 +9,8 @@
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/atbyw",
-    "sources": "https://github.com/Azagwen/ATBYW"
+    "sources": "https://github.com/Azagwen/ATBYW",
+    "issues": "https://github.com/Azagwen/ATBYW/issues"
   },
 
   "license": "MIT",
@@ -37,7 +38,4 @@
     "fabric": "*",
     "minecraft": "~1.17"
   },
-  "suggests": {
-    "flamingo": "*"
-  }
 }
