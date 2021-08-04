@@ -1,10 +1,9 @@
 package net.azagwen.atbyw.datagen.recipe.registry;
 
 import com.google.common.collect.*;
-import com.google.gson.*;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
-import net.azagwen.atbyw.datagen.Datagen;
+import net.azagwen.atbyw.datagen.RecipeDatagen;
 import net.azagwen.atbyw.datagen.recipe.util.RecipeData;
 import net.azagwen.atbyw.datagen.recipe.util.RecipePatterns;
 import net.azagwen.atbyw.item.AtbywItems;
@@ -19,36 +18,34 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.tag.ItemTags;
 import net.minecraft.util.DyeColor;
-import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class RecipeRegistry {
     public static final Logger LOGGER = LogManager.getLogger("Atbyw Recipes");
     public static final RecipePatterns patterns = new RecipePatterns();
     public static final List<Recipe<?>> dyingRecipes = Lists.newArrayList();
 
-    public static Recipe<?> SHULKER_ESSENCE = Datagen.shapelessRecipe(AtbywMain.id("shulker_essence"), "essence", Lists.newArrayList(Items.SHULKER_SHELL, Items.SHULKER_SHELL, Items.GLASS_BOTTLE), AtbywItems.SHULKER_ESSENCE, 1);
-    public static Recipe<?> CHICKEN_ESSENCE = Datagen.shapelessRecipe(AtbywMain.id("chicken_essence"), "essence", Lists.newArrayList(Items.CHICKEN, Items.FEATHER, Items.GLASS_BOTTLE), AtbywItems.CHICKEN_ESSENCE, 1);
-    public static Recipe<?> RABBIT_ESSENCE = Datagen.shapelessRecipe(AtbywMain.id("rabbit_essence"), "essence", Lists.newArrayList(Items.RABBIT, Items.RABBIT_HIDE, Items.GLASS_BOTTLE), AtbywItems.RABBIT_ESSENCE, 1);
-    public static Recipe<?> COD_ESSENCE = Datagen.shapelessRecipe(AtbywMain.id("cod_essence"), "essence", Lists.newArrayList(Items.COD, Items.BONE_MEAL, Items.GLASS_BOTTLE), AtbywItems.COD_ESSENCE, 1);
-    public static Recipe<?> SALMON_ESSENCE = Datagen.shapelessRecipe(AtbywMain.id("salmon_essence"), "essence", Lists.newArrayList(Items.SALMON, Items.BONE_MEAL, Items.GLASS_BOTTLE), AtbywItems.SALMON_ESSENCE, 1);
-    public static Recipe<?> PUFFER_FISH_ESSENCE = Datagen.shapelessRecipe(AtbywMain.id("puffer_fish_essence"), "essence", Lists.newArrayList(Items.PUFFERFISH, Items.BONE_MEAL, Items.GLASS_BOTTLE), AtbywItems.PUFFER_FISH_ESSENCE, 1);
-    public static Recipe<?> SLIME_ESSENCE = Datagen.shapelessRecipe(AtbywMain.id("slime_essence"), "essence", Lists.newArrayList(Items.SLIME_BALL, Items.GLASS_BOTTLE), AtbywItems.SLIME_ESSENCE, 1);
-    public static Recipe<?> MAGMA_CUBE_ESSENCE = Datagen.shapelessRecipe(AtbywMain.id("magma_cube_essence"), "essence", Lists.newArrayList(Items.MAGMA_CREAM, Items.GLASS_BOTTLE), AtbywItems.MAGMA_CUBE_ESSENCE, 1);
+    public static Recipe<?> SHULKER_ESSENCE = RecipeDatagen.shapelessRecipe(AtbywMain.id("shulker_essence"), "essence", Lists.newArrayList(Items.SHULKER_SHELL, Items.SHULKER_SHELL, Items.GLASS_BOTTLE), AtbywItems.SHULKER_ESSENCE, 1);
+    public static Recipe<?> CHICKEN_ESSENCE = RecipeDatagen.shapelessRecipe(AtbywMain.id("chicken_essence"), "essence", Lists.newArrayList(Items.CHICKEN, Items.FEATHER, Items.GLASS_BOTTLE), AtbywItems.CHICKEN_ESSENCE, 1);
+    public static Recipe<?> RABBIT_ESSENCE = RecipeDatagen.shapelessRecipe(AtbywMain.id("rabbit_essence"), "essence", Lists.newArrayList(Items.RABBIT, Items.RABBIT_HIDE, Items.GLASS_BOTTLE), AtbywItems.RABBIT_ESSENCE, 1);
+    public static Recipe<?> COD_ESSENCE = RecipeDatagen.shapelessRecipe(AtbywMain.id("cod_essence"), "essence", Lists.newArrayList(Items.COD, Items.BONE_MEAL, Items.GLASS_BOTTLE), AtbywItems.COD_ESSENCE, 1);
+    public static Recipe<?> SALMON_ESSENCE = RecipeDatagen.shapelessRecipe(AtbywMain.id("salmon_essence"), "essence", Lists.newArrayList(Items.SALMON, Items.BONE_MEAL, Items.GLASS_BOTTLE), AtbywItems.SALMON_ESSENCE, 1);
+    public static Recipe<?> PUFFER_FISH_ESSENCE = RecipeDatagen.shapelessRecipe(AtbywMain.id("puffer_fish_essence"), "essence", Lists.newArrayList(Items.PUFFERFISH, Items.BONE_MEAL, Items.GLASS_BOTTLE), AtbywItems.PUFFER_FISH_ESSENCE, 1);
+    public static Recipe<?> SLIME_ESSENCE = RecipeDatagen.shapelessRecipe(AtbywMain.id("slime_essence"), "essence", Lists.newArrayList(Items.SLIME_BALL, Items.GLASS_BOTTLE), AtbywItems.SLIME_ESSENCE, 1);
+    public static Recipe<?> MAGMA_CUBE_ESSENCE = RecipeDatagen.shapelessRecipe(AtbywMain.id("magma_cube_essence"), "essence", Lists.newArrayList(Items.MAGMA_CREAM, Items.GLASS_BOTTLE), AtbywItems.MAGMA_CUBE_ESSENCE, 1);
 
-    public static Recipe<?> SHULKER_STATUE = Datagen.shapelessRecipe(AtbywMain.id("shulker_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.SHULKER_ESSENCE), StatueRegistry.SHULKER_STATUE, 1);
-    public static Recipe<?> CHICKEN_STATUE = Datagen.shapelessRecipe(AtbywMain.id("chicken_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.CHICKEN_ESSENCE), StatueRegistry.CHICKEN_STATUE, 1);
-    public static Recipe<?> RABBIT_STATUE = Datagen.shapelessRecipe(AtbywMain.id("rabbit_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.RABBIT_ESSENCE), StatueRegistry.RABBIT_STATUE, 1);
-    public static Recipe<?> COD_STATUE = Datagen.shapelessRecipe(AtbywMain.id("cod_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.COD_ESSENCE), StatueRegistry.COD_STATUE, 1);
-    public static Recipe<?> SALMON_STATUE = Datagen.shapelessRecipe(AtbywMain.id("salmon_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.SALMON_ESSENCE), StatueRegistry.SALMON_STATUE, 1);
-    public static Recipe<?> PUFFER_FISH_STATUE = Datagen.shapelessRecipe(AtbywMain.id("puffer_fish_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.PUFFER_FISH_ESSENCE), StatueRegistry.PUFFER_FISH_STATUE, 1);
-    public static Recipe<?> SLIME_STATUE = Datagen.shapelessRecipe(AtbywMain.id("slime_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.SLIME_ESSENCE), StatueRegistry.SLIME_STATUE, 1);
-    public static Recipe<?> MAGMA_CUBE_STATUE = Datagen.shapelessRecipe(AtbywMain.id("magma_cube_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.MAGMA_CUBE_ESSENCE), StatueRegistry.MAGMA_CUBE_STATUE, 1);
+    public static Recipe<?> SHULKER_STATUE = RecipeDatagen.shapelessRecipe(AtbywMain.id("shulker_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.SHULKER_ESSENCE), StatueRegistry.SHULKER_STATUE, 1);
+    public static Recipe<?> CHICKEN_STATUE = RecipeDatagen.shapelessRecipe(AtbywMain.id("chicken_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.CHICKEN_ESSENCE), StatueRegistry.CHICKEN_STATUE, 1);
+    public static Recipe<?> RABBIT_STATUE = RecipeDatagen.shapelessRecipe(AtbywMain.id("rabbit_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.RABBIT_ESSENCE), StatueRegistry.RABBIT_STATUE, 1);
+    public static Recipe<?> COD_STATUE = RecipeDatagen.shapelessRecipe(AtbywMain.id("cod_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.COD_ESSENCE), StatueRegistry.COD_STATUE, 1);
+    public static Recipe<?> SALMON_STATUE = RecipeDatagen.shapelessRecipe(AtbywMain.id("salmon_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.SALMON_ESSENCE), StatueRegistry.SALMON_STATUE, 1);
+    public static Recipe<?> PUFFER_FISH_STATUE = RecipeDatagen.shapelessRecipe(AtbywMain.id("puffer_fish_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.PUFFER_FISH_ESSENCE), StatueRegistry.PUFFER_FISH_STATUE, 1);
+    public static Recipe<?> SLIME_STATUE = RecipeDatagen.shapelessRecipe(AtbywMain.id("slime_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.SLIME_ESSENCE), StatueRegistry.SLIME_STATUE, 1);
+    public static Recipe<?> MAGMA_CUBE_STATUE = RecipeDatagen.shapelessRecipe(AtbywMain.id("magma_cube_statue"), "statues", Lists.newArrayList(Blocks.STONE, AtbywItems.MAGMA_CUBE_ESSENCE), StatueRegistry.MAGMA_CUBE_STATUE, 1);
 
     public static Recipe<?> registerShapedRecipe(RecipeData recipeData, String[] pattern, Multimap<Character, Ingredient> keys) {
         var recipe = (Recipe<?>) null;
@@ -66,8 +63,8 @@ public class RecipeRegistry {
 
         var resultId = AtbywUtils.getItemID(result.asItem());
         var recipeId = AtbywMain.id(resultId.getPath() + (suffix.equals("") ? "" : ("_" + suffix)));
-        recipe = Datagen.shapedRecipe(recipeId, group, pattern, keys, result.asItem(), count);
-        Datagen.registerRecipe(recipe, category);
+        recipe = RecipeDatagen.shapedRecipe(recipeId, group, pattern, keys, result.asItem(), count);
+        RecipeDatagen.registerRecipe(recipe, category);
         return recipe;
     }
 
@@ -92,23 +89,23 @@ public class RecipeRegistry {
         registerMisc();
 
         //Shapeless
-        Datagen.registerRecipe(SHULKER_ESSENCE, "");
-        Datagen.registerRecipe(CHICKEN_ESSENCE, "");
-        Datagen.registerRecipe(RABBIT_ESSENCE, "");
-        Datagen.registerRecipe(COD_ESSENCE, "");
-        Datagen.registerRecipe(SALMON_ESSENCE, "");
-        Datagen.registerRecipe(PUFFER_FISH_ESSENCE, "");
-        Datagen.registerRecipe(MAGMA_CUBE_ESSENCE, "");
-        Datagen.registerRecipe(SLIME_ESSENCE, "");
+        RecipeDatagen.registerRecipe(SHULKER_ESSENCE, "");
+        RecipeDatagen.registerRecipe(CHICKEN_ESSENCE, "");
+        RecipeDatagen.registerRecipe(RABBIT_ESSENCE, "");
+        RecipeDatagen.registerRecipe(COD_ESSENCE, "");
+        RecipeDatagen.registerRecipe(SALMON_ESSENCE, "");
+        RecipeDatagen.registerRecipe(PUFFER_FISH_ESSENCE, "");
+        RecipeDatagen.registerRecipe(MAGMA_CUBE_ESSENCE, "");
+        RecipeDatagen.registerRecipe(SLIME_ESSENCE, "");
 
-        Datagen.registerRecipe(SHULKER_STATUE, "statues");
-        Datagen.registerRecipe(CHICKEN_STATUE, "statues");
-        Datagen.registerRecipe(RABBIT_STATUE, "statues");
-        Datagen.registerRecipe(COD_STATUE, "statues");
-        Datagen.registerRecipe(SALMON_STATUE, "statues");
-        Datagen.registerRecipe(PUFFER_FISH_STATUE, "statues");
-        Datagen.registerRecipe(SLIME_STATUE, "statues");
-        Datagen.registerRecipe(MAGMA_CUBE_STATUE, "statues");
+        RecipeDatagen.registerRecipe(SHULKER_STATUE, "statues");
+        RecipeDatagen.registerRecipe(CHICKEN_STATUE, "statues");
+        RecipeDatagen.registerRecipe(RABBIT_STATUE, "statues");
+        RecipeDatagen.registerRecipe(COD_STATUE, "statues");
+        RecipeDatagen.registerRecipe(SALMON_STATUE, "statues");
+        RecipeDatagen.registerRecipe(PUFFER_FISH_STATUE, "statues");
+        RecipeDatagen.registerRecipe(SLIME_STATUE, "statues");
+        RecipeDatagen.registerRecipe(MAGMA_CUBE_STATUE, "statues");
 
         //Other Types
         StonecuttingRecipeRegistry.init();

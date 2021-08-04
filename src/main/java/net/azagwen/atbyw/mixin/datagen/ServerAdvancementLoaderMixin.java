@@ -1,7 +1,7 @@
 package net.azagwen.atbyw.mixin.datagen;
 
 import com.google.gson.JsonElement;
-import net.azagwen.atbyw.datagen.Datagen;
+import net.azagwen.atbyw.datagen.RecipeDatagen;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.server.ServerAdvancementLoader;
@@ -24,6 +24,6 @@ public class ServerAdvancementLoaderMixin {
             locals = LocalCapture.CAPTURE_FAILHARD
     )
     public void onApply(Map<Identifier, JsonElement> map, ResourceManager resourceManager, Profiler profiler, CallbackInfo info, Map<Identifier, Advancement.Task> builder) {
-        Datagen.applyAdvancements(builder);
+        RecipeDatagen.applyAdvancements(builder);
     }
 }

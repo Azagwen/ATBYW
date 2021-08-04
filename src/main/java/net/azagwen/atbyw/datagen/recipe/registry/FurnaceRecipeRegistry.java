@@ -2,7 +2,7 @@ package net.azagwen.atbyw.datagen.recipe.registry;
 
 import com.google.common.collect.Maps;
 import net.azagwen.atbyw.block.AtbywBlocks;
-import net.azagwen.atbyw.datagen.Datagen;
+import net.azagwen.atbyw.datagen.RecipeDatagen;
 import net.azagwen.atbyw.datagen.recipe.util.FurnaceRecipeData;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.AtbywUtils;
@@ -24,8 +24,8 @@ public class FurnaceRecipeRegistry {
 
         var resultId = AtbywUtils.getItemID(result.asItem());
         var recipeId = AtbywMain.id(resultId.getPath() + (suffix.equals("") ? "" : ("_" + suffix)));
-        recipe = Datagen.smeltingRecipe(recipeId, group, input, result, exp, cookTime);
-        Datagen.registerRecipe(recipe, category);
+        recipe = RecipeDatagen.smeltingRecipe(recipeId, group, input, result, exp, cookTime);
+        RecipeDatagen.registerRecipe(recipe, category);
         return recipe;
     }
 

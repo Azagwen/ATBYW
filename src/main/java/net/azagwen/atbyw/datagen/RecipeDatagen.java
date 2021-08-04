@@ -28,14 +28,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Datagen {
+public class RecipeDatagen {
     private static final Map<RecipeType<?>, List<Recipe<?>>> RECIPES = new Object2ObjectOpenHashMap<>();
     private static final Map<Recipe<?>, String> RECIPES_CATEGORIES = new Object2ObjectOpenHashMap<>();
-    private static final Map<Identifier, Advancement.Task> ADVANCEMENTS = new Object2ObjectOpenHashMap<>();
+    private static final Map<Identifier, Advancement.Task> RECIPE_ADVANCEMENTS = new Object2ObjectOpenHashMap<>();
 
     //Used in net.azagwen.atbyw.mixin.datagen.ServerAdvancementLoaderMixin
     public static void applyAdvancements(Map<Identifier, Advancement.Task> builder) {
-        ADVANCEMENTS.forEach((identifier, task) -> {
+        RECIPE_ADVANCEMENTS.forEach((identifier, task) -> {
             task.parent((Advancement) null);
 
             builder.put(identifier, task);
@@ -72,7 +72,7 @@ public class Datagen {
 
         var advancementIdPath = "recipes/" + category + "/" + recipe.getId().getPath();
         var advancementId = new Identifier(recipe.getId().getNamespace(), advancementIdPath);
-        ADVANCEMENTS.put(advancementId, simpleRecipeUnlock(recipe));
+        RECIPE_ADVANCEMENTS.put(advancementId, simpleRecipeUnlock(recipe));
     }
 
     public static void registerRecipes(List<Recipe<?>> recipes, String category) {

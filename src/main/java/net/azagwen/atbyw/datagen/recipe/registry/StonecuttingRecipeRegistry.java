@@ -3,7 +3,7 @@ package net.azagwen.atbyw.datagen.recipe.registry;
 import com.google.common.collect.Maps;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.statues.StatueRegistry;
-import net.azagwen.atbyw.datagen.Datagen;
+import net.azagwen.atbyw.datagen.RecipeDatagen;
 import net.azagwen.atbyw.datagen.recipe.util.RecipeData;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.AtbywUtils;
@@ -24,8 +24,8 @@ public class StonecuttingRecipeRegistry {
 
         var resultId = AtbywUtils.getItemID(result.asItem());
         var recipeId = AtbywMain.id(resultId.getPath() + (suffix.equals("") ? "" : ("_" + suffix)));
-        recipe = Datagen.stonecuttingRecipe(recipeId, group, input, result, count);
-        Datagen.registerRecipe(recipe, category);
+        recipe = RecipeDatagen.stonecuttingRecipe(recipeId, group, input, result, count);
+        RecipeDatagen.registerRecipe(recipe, category);
         return recipe;
     }
 
@@ -314,26 +314,9 @@ public class StonecuttingRecipeRegistry {
         }
     }
 
-    private static void registerMiscRecipes() {
+    private static void registerWallRecipes() {
         //Map<RecipeData, Input>
         var map = Maps.<RecipeData, ItemConvertible>newHashMap();
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.TERRACOTTA_BRICKS, 1), Blocks.TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.WHITE_TERRACOTTA_BRICKS, 1), Blocks.WHITE_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS, 1), Blocks.ORANGE_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.MAGENTA_TERRACOTTA_BRICKS, 1), Blocks.MAGENTA_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS, 1), Blocks.LIGHT_BLUE_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.YELLOW_TERRACOTTA_BRICKS, 1), Blocks.YELLOW_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIME_TERRACOTTA_BRICKS, 1), Blocks.LIME_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.PINK_TERRACOTTA_BRICKS, 1), Blocks.PINK_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.GRAY_TERRACOTTA_BRICKS, 1), Blocks.GRAY_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS, 1), Blocks.LIGHT_GRAY_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.CYAN_TERRACOTTA_BRICKS, 1), Blocks.CYAN_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.PURPLE_TERRACOTTA_BRICKS, 1), Blocks.PURPLE_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BLUE_TERRACOTTA_BRICKS, 1), Blocks.BLUE_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BROWN_TERRACOTTA_BRICKS, 1), Blocks.BROWN_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.GREEN_TERRACOTTA_BRICKS, 1), Blocks.GREEN_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.RED_TERRACOTTA_BRICKS, 1), Blocks.RED_TERRACOTTA);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BLACK_TERRACOTTA_BRICKS, 1), Blocks.BLACK_TERRACOTTA);
         map.put(suffixOnlyData("stonecutting_terracotta", AtbywBlocks.TERRACOTTA_BRICKS_WALL,1), Blocks.TERRACOTTA);
         map.put(suffixOnlyData("stonecutting_terracotta", AtbywBlocks.WHITE_TERRACOTTA_BRICKS_WALL,1), Blocks.WHITE_TERRACOTTA);
         map.put(suffixOnlyData("stonecutting_terracotta", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS_WALL,1), Blocks.ORANGE_TERRACOTTA);
@@ -368,22 +351,6 @@ public class StonecuttingRecipeRegistry {
         map.put(suffixOnlyData("stonecutting_terracotta_bricks", AtbywBlocks.GREEN_TERRACOTTA_BRICKS_WALL, 1), AtbywBlocks.GREEN_TERRACOTTA_BRICKS);
         map.put(suffixOnlyData("stonecutting_terracotta_bricks", AtbywBlocks.RED_TERRACOTTA_BRICKS_WALL, 1), AtbywBlocks.RED_TERRACOTTA_BRICKS);
         map.put(suffixOnlyData("stonecutting_terracotta_bricks", AtbywBlocks.BLACK_TERRACOTTA_BRICKS_WALL, 1), AtbywBlocks.BLACK_TERRACOTTA_BRICKS);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.WHITE_CINDER_BLOCKS, 1), Blocks.WHITE_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.ORANGE_CINDER_BLOCKS, 1), Blocks.ORANGE_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.MAGENTA_CINDER_BLOCKS, 1), Blocks.MAGENTA_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIGHT_BLUE_CINDER_BLOCKS, 1), Blocks.LIGHT_BLUE_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.YELLOW_CINDER_BLOCKS, 1), Blocks.YELLOW_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIME_CINDER_BLOCKS, 1), Blocks.LIME_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.PINK_CINDER_BLOCKS, 1), Blocks.PINK_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.GRAY_CINDER_BLOCKS, 1), Blocks.GRAY_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIGHT_GRAY_CINDER_BLOCKS, 1), Blocks.LIGHT_GRAY_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.CYAN_CINDER_BLOCKS, 1), Blocks.CYAN_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.PURPLE_CINDER_BLOCKS, 1), Blocks.PURPLE_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BLUE_CINDER_BLOCKS, 1), Blocks.BLUE_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BROWN_CINDER_BLOCKS, 1), Blocks.BROWN_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.GREEN_CINDER_BLOCKS, 1), Blocks.GREEN_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.RED_CINDER_BLOCKS, 1), Blocks.RED_CONCRETE);
-        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BLACK_CINDER_BLOCKS, 1), Blocks.BLACK_CONCRETE);
         map.put(suffixOnlyData("stonecutting_concrete", AtbywBlocks.WHITE_CINDER_BLOCKS_WALL, 1), Blocks.WHITE_CONCRETE);
         map.put(suffixOnlyData("stonecutting_concrete", AtbywBlocks.ORANGE_CINDER_BLOCKS_WALL, 1), Blocks.ORANGE_CONCRETE);
         map.put(suffixOnlyData("stonecutting_concrete", AtbywBlocks.MAGENTA_CINDER_BLOCKS_WALL, 1), Blocks.MAGENTA_CONCRETE);
@@ -416,6 +383,49 @@ public class StonecuttingRecipeRegistry {
         map.put(suffixOnlyData("stonecutting_cinder_blocks", AtbywBlocks.GREEN_CINDER_BLOCKS_WALL, 1), AtbywBlocks.GREEN_CINDER_BLOCKS);
         map.put(suffixOnlyData("stonecutting_cinder_blocks", AtbywBlocks.RED_CINDER_BLOCKS_WALL, 1), AtbywBlocks.RED_CINDER_BLOCKS);
         map.put(suffixOnlyData("stonecutting_cinder_blocks", AtbywBlocks.BLACK_CINDER_BLOCKS_WALL, 1), AtbywBlocks.BLACK_CINDER_BLOCKS);
+
+        for (var entry : map.entrySet()) {
+            var recipeData = entry.getKey();
+            registerStonecuttingRecipe(recipeData, entry.getValue());
+        }
+    }
+
+    private static void registerMiscRecipes() {
+        //Map<RecipeData, Input>
+        var map = Maps.<RecipeData, ItemConvertible>newHashMap();
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.TERRACOTTA_BRICKS, 1), Blocks.TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.WHITE_TERRACOTTA_BRICKS, 1), Blocks.WHITE_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.ORANGE_TERRACOTTA_BRICKS, 1), Blocks.ORANGE_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.MAGENTA_TERRACOTTA_BRICKS, 1), Blocks.MAGENTA_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIGHT_BLUE_TERRACOTTA_BRICKS, 1), Blocks.LIGHT_BLUE_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.YELLOW_TERRACOTTA_BRICKS, 1), Blocks.YELLOW_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIME_TERRACOTTA_BRICKS, 1), Blocks.LIME_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.PINK_TERRACOTTA_BRICKS, 1), Blocks.PINK_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.GRAY_TERRACOTTA_BRICKS, 1), Blocks.GRAY_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIGHT_GRAY_TERRACOTTA_BRICKS, 1), Blocks.LIGHT_GRAY_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.CYAN_TERRACOTTA_BRICKS, 1), Blocks.CYAN_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.PURPLE_TERRACOTTA_BRICKS, 1), Blocks.PURPLE_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BLUE_TERRACOTTA_BRICKS, 1), Blocks.BLUE_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BROWN_TERRACOTTA_BRICKS, 1), Blocks.BROWN_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.GREEN_TERRACOTTA_BRICKS, 1), Blocks.GREEN_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.RED_TERRACOTTA_BRICKS, 1), Blocks.RED_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BLACK_TERRACOTTA_BRICKS, 1), Blocks.BLACK_TERRACOTTA);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.WHITE_CINDER_BLOCKS, 1), Blocks.WHITE_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.ORANGE_CINDER_BLOCKS, 1), Blocks.ORANGE_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.MAGENTA_CINDER_BLOCKS, 1), Blocks.MAGENTA_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIGHT_BLUE_CINDER_BLOCKS, 1), Blocks.LIGHT_BLUE_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.YELLOW_CINDER_BLOCKS, 1), Blocks.YELLOW_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIME_CINDER_BLOCKS, 1), Blocks.LIME_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.PINK_CINDER_BLOCKS, 1), Blocks.PINK_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.GRAY_CINDER_BLOCKS, 1), Blocks.GRAY_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.LIGHT_GRAY_CINDER_BLOCKS, 1), Blocks.LIGHT_GRAY_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.CYAN_CINDER_BLOCKS, 1), Blocks.CYAN_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.PURPLE_CINDER_BLOCKS, 1), Blocks.PURPLE_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BLUE_CINDER_BLOCKS, 1), Blocks.BLUE_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BROWN_CINDER_BLOCKS, 1), Blocks.BROWN_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.GREEN_CINDER_BLOCKS, 1), Blocks.GREEN_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.RED_CINDER_BLOCKS, 1), Blocks.RED_CONCRETE);
+        map.put(suffixOnlyData("stonecutting", AtbywBlocks.BLACK_CINDER_BLOCKS, 1), Blocks.BLACK_CONCRETE);
         map.put(suffixOnlyData("stonecutting_basalt", AtbywBlocks.BASALT_BRICKS, 1), Blocks.BASALT);
         map.put(suffixOnlyData("stonecutting_basalt", AtbywBlocks.BASALT_PILLAR, 1), Blocks.BASALT);
         map.put(suffixOnlyData("stonecutting_polished_basalt", AtbywBlocks.BASALT_BRICKS, 1), Blocks.POLISHED_BASALT);

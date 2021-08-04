@@ -19,8 +19,7 @@ import net.minecraft.screen.ScreenHandlerListener;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
-
-import java.awt.*;
+import org.lwjgl.glfw.GLFW;
 
 public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler> implements ScreenHandlerListener {
     private static final Identifier TEXTURE = AtbywMain.id("textures/gui/tinting_table.png");
@@ -116,7 +115,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if (keyCode == 256) {
+        if (keyCode == GLFW.GLFW_KEY_ESCAPE) {
             this.client.player.closeHandledScreen();
         }
 
@@ -125,7 +124,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
 
     @Override
     protected void drawForeground(MatrixStack matrices, int mouseX, int mouseY) {
-        this.textRenderer.draw(matrices, this.title, this.titleX, this.titleY, Color.decode("#51493A").getRGB());
+        this.textRenderer.draw(matrices, this.title, this.titleX, this.titleY, Integer.decode("#51493A"));
         this.textRenderer.draw(matrices, this.playerInventoryTitle, this.playerInventoryTitleX, this.playerInventoryTitleY, 4210752);
     }
 
@@ -177,8 +176,8 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
         }
 
         //Render the color widgets in the area mentioned above
-        var color = new Color(this.handler.getColor());
-        RenderSystem.setShaderColor((color.getRed() / 255.0F), (color.getGreen() / 255.0F), (color.getBlue() / 255.0F), 1.0F);
+        var color = this.handler.getColor();
+        RenderSystem.setShaderColor((AtbywUtils.getRed(color) / 255.0F), (AtbywUtils.getGreen(color) / 255.0F), (AtbywUtils.getBlue(color) / 255.0F), 1.0F);
         switch (this.handler.getMode()) {
             case TintingTableMode.HEX -> this.drawTexture(matrices, xPos + 33, yPos + 30, 230, 28, 14, 14);
             case TintingTableMode.RGB -> this.drawTexture(matrices, xPos + 33, yPos + 20, 230, 42, 14, 34);
@@ -187,7 +186,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
     }
 
     private void renderDyeBar(MatrixStack matrices, int x, int y, int u, int amount) {
-        var height = Math.floor((amount * 1.02F) / 2.0F);
+        var height = Math.floor(amount / 5.0F);
         var yOffset = (51 - height) + 14;
         if (amount > 0) {
             this.drawTexture(matrices, x, y + (int) yOffset, u, 28, 4, (int) height);

@@ -25,25 +25,25 @@ public class AxisShape {
         this.maxDepthMirror = Math.abs(minDepth - 16);
     }
 
-    public VoxelShape xShape(boolean mirror) {
-        var baseShape = Block.createCuboidShape(minDepthMirror, minRadius, minRadius, maxDepthMirror, maxRadius, maxRadius);
-        var mirrorShape = Block.createCuboidShape(minDepth, minRadius, minRadius, maxDepth, maxRadius, maxRadius);
+    public VoxelShape xShape(boolean isWest) {
+        var eastShape = Block.createCuboidShape(minDepthMirror, minRadius, minRadius, maxDepthMirror, maxRadius, maxRadius);
+        var westShape = Block.createCuboidShape(minDepth, minRadius, minRadius, maxDepth, maxRadius, maxRadius);
 
-        return mirror ? mirrorShape : baseShape;
+        return isWest ? westShape : eastShape;
     }
 
-    public VoxelShape yShape(boolean mirror) {
-        var baseShape = Block.createCuboidShape(minRadius, minDepthMirror, minRadius, maxRadius, maxDepthMirror, maxRadius);
-        var mirrorShape = Block.createCuboidShape(minRadius, minDepth, minRadius, maxRadius, maxDepth, maxRadius);
+    public VoxelShape yShape(boolean isDown) {
+        var upShape = Block.createCuboidShape(minRadius, minDepthMirror, minRadius, maxRadius, maxDepthMirror, maxRadius);
+        var downShape = Block.createCuboidShape(minRadius, minDepth, minRadius, maxRadius, maxDepth, maxRadius);
 
-        return mirror ? mirrorShape : baseShape;
+        return isDown ? downShape : upShape;
     }
 
-    public VoxelShape zShape(boolean mirror) {
-        var baseShape = Block.createCuboidShape(minRadius, minRadius, minDepth, maxRadius, maxRadius, maxDepth);
-        var mirrorShape = Block.createCuboidShape(minRadius, minRadius, minDepthMirror, maxRadius, maxRadius, maxDepthMirror);
+    public VoxelShape zShape(boolean isSouth) {
+        var northShape = Block.createCuboidShape(minRadius, minRadius, minDepth, maxRadius, maxRadius, maxDepth);
+        var southShape = Block.createCuboidShape(minRadius, minRadius, minDepthMirror, maxRadius, maxRadius, maxDepthMirror);
 
-        return mirror ? mirrorShape : baseShape;
+        return isSouth ? southShape : northShape;
     }
 
     public VoxelShape getFromDirection(Direction direction) {

@@ -74,10 +74,10 @@ public class TintingTableBlockEntity extends LockableContainerBlockEntity implem
     }
 
     private int tryRecharge(World world, BlockPos pos, BlockState state, int amount, ItemStack stack, TintingTableFuels fuel) {
-        if (amount <= 75 && stack.isOf(fuel.getItem())) {
+        if (amount <= 192 && stack.isOf(fuel.getItem())) {
             stack.decrement(1);
             markDirty(world, pos, state);
-            return amount + 25;
+            return amount + 64;
         }
         return amount;
     }

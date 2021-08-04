@@ -15,6 +15,8 @@ public class AtbywNetworking {
     public static final Identifier TINTING_MODE_PACKET = AtbywMain.id("tinting_table_mode_packet");
 
     public static void init() {
+
+        //Tinting Table color change packet
         ServerPlayNetworking.registerGlobalReceiver(TINTING_COLOR_PACKET, (server, player, handler, buf, sender) -> {
             int color = buf.readVarInt();
             server.execute(() -> {
@@ -33,6 +35,8 @@ public class AtbywNetworking {
                 }
             });
         });
+
+        //Tinting Table mode change packet
         ServerPlayNetworking.registerGlobalReceiver(TINTING_MODE_PACKET, (server, player, handler, buf, sender) -> {
             int mode = buf.readVarInt();
             server.execute(() -> {

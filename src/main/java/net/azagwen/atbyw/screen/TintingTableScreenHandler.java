@@ -20,9 +20,7 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
 
-import java.awt.*;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class TintingTableScreenHandler extends ScreenHandler {
     private final CraftingResultInventory output;
@@ -82,17 +80,21 @@ public class TintingTableScreenHandler extends ScreenHandler {
         if (stack.getItem() instanceof CanvasBlockItem) {
             player.increaseStat(AtbywStats.COLOR_CANVAS_BLOCK, 1);
         }
-        var color = new Color(this.getColor());
-        this.consumeDye(color.getRed(), this.getRedAmount(), this::setRedAmount);
-        this.consumeDye(color.getGreen(), this.getGreenAmount(), this::setGreenAmount);
-        this.consumeDye(color.getBlue(), this.getBlueAmount(), this::setBlueAmount);
+        var color = this.getColor();
+        this.consumeDye(AtbywUtils.getRed(color), this.getRedAmount(), stack, this::setRedAmount);
+        this.consumeDye(AtbywUtils.getGreen(color), this.getGreenAmount(), stack, this::setGreenAmount);
+        this.consumeDye(AtbywUtils.getBlue(color), this.getBlueAmount(), stack, this::setBlueAmount);
     }
 
-    private void consumeDye(int channel, int dyeGauge, Consumer<Integer> dyeGaugeSetter) {
-        channel = (int) Math.floor((channel / 255.0F) * 4);
+    private void consumeDye(int channel, int dyeGauge, ItemStack stack, Consumer<Integer> dyeGaugeSetter) {
+        channel = (int) Math.floor((channel / 255.0F) * 4) * stack.getCount();
         dyeGaugeSetter.accept(dyeGauge - channel);
     }
 
+    /**
+     * The output's color is set in {@code net.azagwen.atbyw.main.AtbywNetworking}
+     * @see net.azagwen.atbyw.main.AtbywNetworking
+     */
     protected static void updateResult(TintingTableScreenHandler handler, World world, PlayerEntity player, Inventory inputInventory, CraftingResultInventory resultInventory) {
         if (!world.isClient){
             if (handler.getRedAmount() > 0 && handler.getGreenAmount() > 0 && handler.getBlueAmount() > 0){
@@ -100,7 +102,7 @@ public class TintingTableScreenHandler extends ScreenHandler {
                 var serverPlayerEntity = (ServerPlayerEntity) player;
                 var outputStack = ItemStack.EMPTY;
                 if (!inputStack.isEmpty()) {
-                    outputStack = setStackColor(handler, inputStack);
+                    outputStack = inputStack.copy();
                 }
 
                 resultInventory.setStack(0, outputStack);
@@ -109,22 +111,6 @@ public class TintingTableScreenHandler extends ScreenHandler {
                 serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 1, outputStack));
             }
         }
-    }
-
-    private static ItemStack setStackColor(TintingTableScreenHandler handler, ItemStack stack) {
-        var itemStack = ItemStack.EMPTY;
-        var item = stack.getItem();
-
-        if (item instanceof DyeableItem dyeableItem) {
-            itemStack = stack.copy();
-            dyeableItem.setColor(itemStack, handler.getColor());
-        }
-        if (item instanceof SimpleColoredItem coloredItem) {
-            itemStack = stack.copy();
-            coloredItem.setColor(itemStack, handler.getColor());
-        }
-
-        return itemStack;
     }
 
     @Override
