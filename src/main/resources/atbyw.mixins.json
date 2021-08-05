@@ -5,6 +5,7 @@
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "DebugChunkGeneratorMixin",
+        "SignTypeInvoker",
         "block_behavior.FenceBlockMixin",
         "block_behavior.PaneBlockMixin",
         "block_behavior.RedstoneWireBlockMixin",

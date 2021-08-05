@@ -1,8 +1,11 @@
 package net.azagwen.atbyw.block.entity;
 
+import net.azagwen.atbyw.main.AtbywNetworking;
 import net.azagwen.atbyw.screen.TintingTableScreenHandler;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.LockableContainerBlockEntity;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -12,6 +15,8 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
@@ -71,9 +76,26 @@ public class TintingTableBlockEntity extends LockableContainerBlockEntity implem
         blockEntity.redAmount = blockEntity.tryRecharge(world, pos, state, blockEntity.redAmount, blockEntity.inventory.get(2), TintingTableFuels.RED);
         blockEntity.greenAmount = blockEntity.tryRecharge(world, pos, state, blockEntity.greenAmount, blockEntity.inventory.get(3), TintingTableFuels.GREEN);
         blockEntity.blueAmount = blockEntity.tryRecharge(world, pos, state, blockEntity.blueAmount, blockEntity.inventory.get(4), TintingTableFuels.BLUE);
+        if (!blockEntity.getStack(0).isEmpty()) {
+            var posX = pos.getX();
+            var posY = pos.getY();
+            var posZ = pos.getZ();
+            var serverPlayer = (ServerPlayerEntity) world.getClosestPlayer(posX, posY, posZ, 1.0F, false);
+            AtbywNetworking.sendServerPacket(serverPlayer, AtbywNetworking.TINTING_UPDATE_PACKET, PacketByteBufs::create);
+        }
+    }
+
+    private int clampGauge(int gauge) {
+        if (gauge < 0) {
+            return 0;
+        } else if (gauge > 256) {
+            return 256;
+        }
+        return gauge;
     }
 
     private int tryRecharge(World world, BlockPos pos, BlockState state, int amount, ItemStack stack, TintingTableFuels fuel) {
+        amount = this.clampGauge(amount);
         if (amount <= 192 && stack.isOf(fuel.getItem())) {
             stack.decrement(1);
             markDirty(world, pos, state);
@@ -182,7 +204,6 @@ public class TintingTableBlockEntity extends LockableContainerBlockEntity implem
         this.greenAmount = nbt.getByte("GreenAmount");
         this.blueAmount = nbt.getByte("BlueAmount");
         this.mode = nbt.getByte("Mode");
-        this.color = nbt.getInt("Color");
     }
 
     @Override
@@ -193,7 +214,6 @@ public class TintingTableBlockEntity extends LockableContainerBlockEntity implem
         nbt.putByte("GreenAmount", (byte) this.greenAmount);
         nbt.putByte("BlueAmount", (byte) this.blueAmount);
         nbt.putByte("Mode", (byte) this.mode);
-        nbt.putInt("Color", this.color);
         return nbt;
     }
 
