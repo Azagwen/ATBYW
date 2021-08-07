@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/inner_stairs",
+    "textures": {
+        "bottom": "atbyw:block/straight_cactus_planks",
+        "top": "atbyw:block/straight_cactus_planks",
+        "side": "atbyw:block/straight_cactus_planks"
+    }
+}

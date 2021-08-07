@@ -20,7 +20,7 @@ public class ColorProviders {
         //Canvas blocks color
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
             return ((DyeableItem) stack.getItem()).getColor(stack);
-        }, AtbywItems.CANVAS_BLOCK, AtbywItems.GLOWING_CANVAS_BLOCK);
+        }, AtbywBlocks.CANVAS_BLOCK, AtbywBlocks.GLOWING_CANVAS_BLOCK);
 
         //Colorizer color
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {

@@ -5,7 +5,6 @@
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "DebugChunkGeneratorMixin",
-        "SignTypeInvoker",
         "block_behavior.FenceBlockMixin",
         "block_behavior.PaneBlockMixin",
         "block_behavior.RedstoneWireBlockMixin",
@@ -22,7 +21,8 @@
         "client.CreativeInventoryScreenMixin",
         "client.InGameHudMixin",
         "client.ItemModelLoaderMixin",
-        "client.ModelLoaderMixin"
+        "client.ModelLoaderMixin",
+        "sign.SignBlockEntityRendererMixin"
     ],
     "injectors": {
         "defaultRequire": 1

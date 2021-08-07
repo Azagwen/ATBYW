@@ -43,9 +43,6 @@ public class AtbywMain implements ModInitializer {
 	public static final Logger MYS_LOGGER = LogManager.getLogger("?");
 
 	//TODO: Fix and Investigate structure issues (very high priority)
-	//TODO: Finish moving recipe datagen away from JSON (high priority)
-	//TODO: Fix dying recipes not reading properly (high priority)
-	//TODO: Add a color mixing table (high priority)
 	//TODO: Add smooth variants of Deepslathe, Gqranite, Diorite, Andesite, Tuff...
 	//TODO: Add Amethyst bricks
 	//TODO: Add Amethyst Walls/Fences

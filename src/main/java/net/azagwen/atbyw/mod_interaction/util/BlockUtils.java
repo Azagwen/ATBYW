@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.util;
+package net.azagwen.atbyw.mod_interaction.util;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 import static net.azagwen.atbyw.main.AtbywMain.modInteractionId;
 
-public class ModInteractionBlockUtils {
+public class BlockUtils {
     public static String[] BETTER_NETHER_WOOD_NAMES = {
             "stalagnate",
             "reeds",

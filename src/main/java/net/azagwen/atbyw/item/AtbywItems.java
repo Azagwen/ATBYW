@@ -1,7 +1,6 @@
 package net.azagwen.atbyw.item;
 
 import com.google.common.collect.Lists;
-import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.util.AtbywUtils;
 import net.minecraft.item.Item;
@@ -49,10 +48,9 @@ public class AtbywItems {
     protected static void registerItems(ArrayList<Item> itemTab, String name, List<String> variant_type, Item... items) {
         registerItems(itemTab, null, name, variant_type, items);
     }
+    public static final List<EssenceItem> ESSENCE_BOTTLES = Lists.newArrayList();
 
     public static final Item BAMBOO_STICK = new Item(createSimpleItem());
-
-    public static final List<EssenceItem> ESSENCE_BOTTLES = Lists.newArrayList();
     public static final Item SHULKER_ESSENCE = new EssenceItem(0x976997, ESSENCE_BOTTLES);
     public static final Item CHICKEN_ESSENCE = new EssenceItem(0xEDDFDF, ESSENCE_BOTTLES);
     public static final Item RABBIT_ESSENCE = new EssenceItem(0x947D62, ESSENCE_BOTTLES);
@@ -61,10 +59,8 @@ public class AtbywItems {
     public static final Item PUFFER_FISH_ESSENCE = new EssenceItem(0xD2A44D, ESSENCE_BOTTLES);
     public static final Item MAGMA_CUBE_ESSENCE = new EssenceItem(0x630000, ESSENCE_BOTTLES);
     public static final Item SLIME_ESSENCE = new EssenceItem(0x8CD782, ESSENCE_BOTTLES);
-
     public static final Item SHROOMSTICK = new ShroomStickItem(createSimpleItem());
     public static final Item LARGE_CHAIN_LINK = new Item(createSimpleItem());
-
     public static final Item GLASS_SHARD = new Item(createSimpleItem());
     public static final Item WHITE_STAINED_GLASS_SHARD = new Item(createSimpleItem());
     public static final Item ORANGE_STAINED_GLASS_SHARD = new Item(createSimpleItem());
@@ -82,12 +78,10 @@ public class AtbywItems {
     public static final Item GREEN_STAINED_GLASS_SHARD = new Item(createSimpleItem());
     public static final Item RED_STAINED_GLASS_SHARD = new Item(createSimpleItem());
     public static final Item BLACK_STAINED_GLASS_SHARD = new Item(createSimpleItem());
-
-    public static final Item CANVAS_BLOCK = new CanvasBlockItem(AtbywBlocks.CANVAS_BLOCK, createSimpleItem());
-    public static final Item GLOWING_CANVAS_BLOCK = new CanvasBlockItem(AtbywBlocks.GLOWING_CANVAS_BLOCK, createSimpleItem());
     public static final Item COLORIZER = new ColorizerItem(createSimpleItem());
 
     public static void init() {
+        registerItem(DECO_TAB, "shroomstick", SHROOMSTICK);
         registerItem(MISC_TAB, "bamboo_stick", BAMBOO_STICK);
         registerItem(MISC_TAB, "shulker_essence", SHULKER_ESSENCE);
         registerItem(MISC_TAB, "chicken_essence", CHICKEN_ESSENCE);
@@ -101,10 +95,6 @@ public class AtbywItems {
         registerItem(MISC_TAB, "glass_shard", GLASS_SHARD);
         registerItems(MISC_TAB, "stained_glass_shard", AtbywUtils.dyeColorNames(), WHITE_STAINED_GLASS_SHARD, ORANGE_STAINED_GLASS_SHARD, MAGENTA_STAINED_GLASS_SHARD, LIGHT_BLUE_STAINED_GLASS_SHARD, YELLOW_STAINED_GLASS_SHARD, LIME_STAINED_GLASS_SHARD, PINK_STAINED_GLASS_SHARD, GRAY_STAINED_GLASS_SHARD, LIGHT_GRAY_STAINED_GLASS_SHARD, CYAN_STAINED_GLASS_SHARD, PURPLE_STAINED_GLASS_SHARD, BLUE_STAINED_GLASS_SHARD, BROWN_STAINED_GLASS_SHARD, GREEN_STAINED_GLASS_SHARD, RED_STAINED_GLASS_SHARD, BLACK_STAINED_GLASS_SHARD);
         registerItem(MISC_TAB, "colorizer", COLORIZER);
-        registerItem(MISC_TAB, "canvas_block", CANVAS_BLOCK);
-        registerItem(MISC_TAB, "glowing_canvas_block", GLOWING_CANVAS_BLOCK);
-
-        registerItem(DECO_TAB, "shroomstick", SHROOMSTICK);
 
         LOGGER.info("ATBYW Items Inintiliazed");
     }

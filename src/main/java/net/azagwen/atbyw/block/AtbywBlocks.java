@@ -1,13 +1,14 @@
 package net.azagwen.atbyw.block;
 
 import com.google.common.collect.Sets;
-import net.azagwen.atbyw.NewRedstoneCrossPathBlock;
 import net.azagwen.atbyw.block.slabs.*;
 import net.azagwen.atbyw.block.stairs.*;
 import net.azagwen.atbyw.block.state.AtbywProperties;
-import net.azagwen.atbyw.block.state.SignTypeSubClass;
+import net.azagwen.atbyw.block.state.AtbywSignType;
 import net.azagwen.atbyw.block.statues.*;
+import net.azagwen.atbyw.item.CanvasBlockItem;
 import net.azagwen.atbyw.main.AtbywMain;
+import net.azagwen.atbyw.mod_interaction.block.AtbywModInteractionBlocks;
 import net.azagwen.atbyw.util.AtbywUtils;
 import net.azagwen.atbyw.util.naming.FlowerNames;
 import net.azagwen.atbyw.util.naming.WoodNames;
@@ -15,13 +16,16 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.function.ToIntFunction;
 
@@ -40,7 +44,7 @@ public class AtbywBlocks {
     //TODO: STATUES Add signing fish function.
     //TODO: STATUES Make slime statues combine-able.
     //TODO: Add thin ice (world gen when ready)
-    //TODO: Add Railing Blocks (catwalk handles) update: WIP
+    //TODO: Add Railing Blocks (catwalk handles) || update: WIP
     //TODO: Add regular ice bricks that melt
     //TODO: Idea > "dried" coral blocks that keep their colors
     //TODO: Add chairs ?
@@ -52,6 +56,13 @@ public class AtbywBlocks {
     public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
     public static boolean always(BlockState state, BlockView world, BlockPos pos) { return true; }
     public static boolean never(BlockState state, BlockView world, BlockPos pos) { return false; }
+
+    public static void registerCanvasBlock(ArrayList<Item> itemTab, String name, Block block) {
+        Registry.register(Registry.BLOCK, AtbywMain.id(name), block);
+        Registry.register(Registry.ITEM, AtbywMain.id(name), new CanvasBlockItem(block, new Item.Settings()));
+
+        itemTab.add(block.asItem());
+    }
 
     private static ToIntFunction<BlockState> lightLevelFromState(int litLevel, BooleanProperty isLit) {
         return (blockState) -> blockState.get(isLit) ? litLevel : 0;
@@ -452,7 +463,7 @@ public class AtbywBlocks {
     public static final Block NETHERITE_SPIKE_TRAP = new SpikeTrapBlock(NETHERITE_SPIKE_TRAP_SPIKES, 6.0F, FabricBlockSettings.of(Material.PISTON).strength(1.5F).requiresTool().breakByTool(FabricToolTags.PICKAXES).solidBlock(AtbywBlocks::never));
 
     public static final Block TIMER_REPEATER = new TimerRepeaterBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
-    public static final Block REDSTONE_CROSS_PATH = new NewRedstoneCrossPathBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
+    public static final Block REDSTONE_CROSS_PATH = new RedstoneCrossPathBlock(FabricBlockSettings.copyOf(Blocks.REPEATER));
 
     public static final Block ACACIA_RAILING = new RailingBlock(AtbywMain.id("acacia_railing"), FabricBlockSettings.copyOf(Blocks.ACACIA_FENCE));
 
@@ -508,7 +519,8 @@ public class AtbywBlocks {
     public static final Block STRAIGHT_CACTUS_PLANKS_STAIRS = new StairsBlockSubClass(STRAIGHT_CACTUS_PLANKS, FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).breakByTool(FabricToolTags.AXES));
     public static final Block STRAIGHT_CACTUS_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER).breakByTool(FabricToolTags.AXES));
     public static final Block STRAIGHT_CACTUS_FENCE = new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).breakByTool(FabricToolTags.AXES));
-    public static final Block STRAIGHT_CACTUS_SIGN = new SignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN).breakByTool(FabricToolTags.AXES), SignTypeSubClass.CACTUS);
+    public static final Block STRAIGHT_CACTUS_SIGN = new AtbywSignBlock(new AtbywSignType("cactus"), FabricBlockSettings.copyOf(Blocks.OAK_SIGN).breakByTool(FabricToolTags.AXES));
+    public static final Block STRAIGHT_CACTUS_WALL_SIGN = new AtbywSignBlock(new AtbywSignType("cactus"), FabricBlockSettings.copyOf(Blocks.OAK_SIGN).breakByTool(FabricToolTags.AXES));
 
     public static void init() {
 
@@ -628,11 +640,13 @@ public class AtbywBlocks {
 
         //ATBYW DECO
         registerBlock(false, DECO_TAB, "tinting_table", TINTING_TABLE);
+        registerCanvasBlock(DECO_TAB, "canvas_block", CANVAS_BLOCK);
+        registerCanvasBlock(DECO_TAB, "glowing_canvas_block", GLOWING_CANVAS_BLOCK);
         registerBlocks(false, DECO_TAB, "ladder", WoodNames.getNamesNoOak(), SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);
         registerBlock(false, DECO_TAB, "bamboo_ladder", BAMBOO_LADDER);
         registerBlock(false, DECO_TAB, "cactus_ladder", STRAIGHT_CACTUS_LADDER);
         registerBlock(false, DECO_TAB, "cactus_fence", STRAIGHT_CACTUS_FENCE);
-        registerBlock(false, DECO_TAB, "cactus_sign", STRAIGHT_CACTUS_SIGN);
+        registerBlock(false, DECO_TAB, "cactus_sign", STRAIGHT_CACTUS_WALL_SIGN);
         registerBlock(false, DECO_TAB, "compacted_snow", COMPACTED_SNOW);
         registerBlock(false, DECO_TAB, "large_chain", LARGE_CHAIN);
         registerBlock(false, DECO_TAB, "granite_column", GRANITE_COLUMN);
@@ -666,8 +680,6 @@ public class AtbywBlocks {
         registerBlockOnly("gold_spike_trap_spikes", GOLD_SPIKE_TRAP_SPIKES);
         registerBlockOnly("diamond_spike_trap_spikes", DIAMOND_SPIKE_TRAP_SPIKES);
         registerBlockOnly("netherite_spike_trap_spikes", NETHERITE_SPIKE_TRAP_SPIKES);
-        registerBlockOnly("canvas_block", CANVAS_BLOCK);
-        registerBlockOnly("glowing_canvas_block", GLOWING_CANVAS_BLOCK);
 
         LOGGER.info("ATBYW Blocks Inintiliazed");
     }
