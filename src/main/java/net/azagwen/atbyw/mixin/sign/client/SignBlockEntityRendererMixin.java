@@ -1,10 +1,10 @@
-package net.azagwen.atbyw.mixin.sign;
+package net.azagwen.atbyw.mixin.sign.client;
 
-import net.azagwen.atbyw.block.AtbywSignBlock;
-import net.azagwen.atbyw.block.AtbywWallSignBlock;
+import net.azagwen.atbyw.block.AtbywSign;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.entity.SignBlockEntity;
+import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.block.entity.SignBlockEntityRenderer;
 import net.minecraft.client.util.SpriteIdentifier;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,10 +19,8 @@ public class SignBlockEntityRendererMixin {
             target = "Lnet/minecraft/client/render/TexturedRenderLayers;getSignTextureId(Lnet/minecraft/util/SignType;)Lnet/minecraft/client/util/SpriteIdentifier;"
     ))
     private SpriteIdentifier getSignTextureId(SpriteIdentifier spriteIdentifier, SignBlockEntity signBlockEntity) {
-        if (signBlockEntity.getCachedState().getBlock() instanceof AtbywSignBlock signBlock) {
-            return signBlock.getTexture();
-        } else if (signBlockEntity.getCachedState().getBlock() instanceof AtbywWallSignBlock signBlock) {
-            return signBlock.getTexture();
+        if (signBlockEntity.getCachedState().getBlock() instanceof AtbywSign signBlock) {
+            return new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, signBlock.getType().getTexture());
         }
         return spriteIdentifier;
     }

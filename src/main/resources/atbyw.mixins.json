@@ -15,14 +15,17 @@
         "bookshelf_behavior.EnchantingTableBlockMixin",
         "bookshelf_behavior.EnchantmentScreenHandlerMixin",
         "datagen.RecipeManagerMixin",
-        "datagen.ServerAdvancementLoaderMixin"
+        "datagen.ServerAdvancementLoaderMixin",
+        "sign.BlockEntityTypeMixin"
     ],
     "client": [
         "client.CreativeInventoryScreenMixin",
         "client.InGameHudMixin",
         "client.ItemModelLoaderMixin",
         "client.ModelLoaderMixin",
-        "sign.SignBlockEntityRendererMixin"
+        "client.TexturedRenderLayersMixin",
+        "sign.client.SignBlockEntityRendererMixin",
+        "sign.client.SignEditScreenMixin"
     ],
     "injectors": {
         "defaultRequire": 1

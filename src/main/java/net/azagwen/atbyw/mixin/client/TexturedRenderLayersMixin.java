@@ -1,6 +1,7 @@
-package net.azagwen.atbyw.mixin.unused;
+package net.azagwen.atbyw.mixin.client;
 
 import net.azagwen.atbyw.archived.AtbywTextureRenderLayers;
+import net.azagwen.atbyw.block.state.AtbywSignType;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.TexturedRenderLayers;
@@ -19,8 +20,8 @@ public class TexturedRenderLayersMixin {
     @Inject(method = "addDefaultTextures(Ljava/util/function/Consumer;)V", at =
     @At(value = "HEAD"), cancellable = true)
     private static void addDefaultTextures(Consumer<SpriteIdentifier> adder, CallbackInfo cbi) {
-        for (SpriteIdentifier identifier : AtbywTextureRenderLayers.addAtbywTextures) {
-            adder.accept(identifier);
+        for (var type : AtbywSignType.TYPES) {
+            adder.accept(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, type.getTexture()));
         }
     }
 }

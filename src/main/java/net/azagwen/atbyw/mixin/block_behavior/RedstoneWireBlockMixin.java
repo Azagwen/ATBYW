@@ -1,9 +1,6 @@
 package net.azagwen.atbyw.mixin.block_behavior;
 
-import net.azagwen.atbyw.block.BookshelfToggleBlock;
-import net.azagwen.atbyw.block.RedstoneJackOlantern;
-import net.azagwen.atbyw.block.SpikeTrapBlock;
-import net.azagwen.atbyw.block.TimerRepeaterBlock;
+import net.azagwen.atbyw.block.*;
 import net.minecraft.block.*;
 import net.minecraft.util.math.Direction;
 import org.spongepowered.asm.mixin.Mixin;
@@ -30,6 +27,9 @@ public class RedstoneWireBlockMixin {
         if (state.getBlock() instanceof TimerRepeaterBlock) {
             Direction direction = state.get(TimerRepeaterBlock.FACING);
             cbir.setReturnValue(direction == dir || direction.getOpposite() == dir);
+        }
+        if (state.getBlock() instanceof RedstonePipeComponent) {
+            cbir.setReturnValue(false);
         }
     }
 }

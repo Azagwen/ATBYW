@@ -54,15 +54,15 @@ public class TimerRepeaterBlockEntityRenderer implements BlockEntityRenderer<Tim
         //Apply texture based on power state & Model digits
         VertexConsumer vertexConsumer;
         if (isPowered) {
-            vertexConsumer = AtbywTextureRenderLayers.DIGIT_TEXTURE_ON.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
+//            vertexConsumer = AtbywTextureRenderLayers.DIGIT_TEXTURE_ON.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
         } else {
-            vertexConsumer = AtbywTextureRenderLayers.DIGIT_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
+//            vertexConsumer = AtbywTextureRenderLayers.DIGIT_TEXTURE.getVertexConsumer(vertexConsumers, RenderLayer::getEntityCutout);
         }
 
         var digitValueLeft = getDigits(timerDelay)[0];
         var digitValueRight = getDigits(timerDelay)[1];
-        this.digitLeft[digitValueLeft].render(matrices, vertexConsumer, light, overlay);
-        this.digitRight[digitValueRight].render(matrices, vertexConsumer, light, overlay);
+//        this.digitLeft[digitValueLeft].render(matrices, vertexConsumer, light, overlay);
+//        this.digitRight[digitValueRight].render(matrices, vertexConsumer, light, overlay);
 
         matrices.pop();
     }

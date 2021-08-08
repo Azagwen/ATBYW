@@ -17,6 +17,7 @@ import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
+import net.minecraft.item.SignItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
@@ -62,6 +63,15 @@ public class AtbywBlocks {
         Registry.register(Registry.ITEM, AtbywMain.id(name), new CanvasBlockItem(block, new Item.Settings()));
 
         itemTab.add(block.asItem());
+    }
+
+    public static void registerSign(ArrayList<Item> itemTab, Block standingSign, Block wallSign) {
+        var type = ((AtbywSignBlock) standingSign).getType().getName();
+        Registry.register(Registry.BLOCK, AtbywMain.id(type + "_sign"), standingSign);
+        Registry.register(Registry.BLOCK, AtbywMain.id(type + "_wall_sign"), wallSign);
+        Registry.register(Registry.ITEM, AtbywMain.id(type + "_sign"), new SignItem(new Item.Settings(), standingSign, wallSign));
+
+        itemTab.add(standingSign.asItem());
     }
 
     private static ToIntFunction<BlockState> lightLevelFromState(int litLevel, BooleanProperty isLit) {
@@ -513,14 +523,14 @@ public class AtbywBlocks {
 
     public static final Block TINTING_TABLE = new TintingTableBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).requiresTool().breakByTool(FabricToolTags.PICKAXES).sounds(BlockSoundGroup.COPPER));
 
+    public static final Block RAW_CACTUS_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).breakByTool(FabricToolTags.AXES));
     public static final Block CACTUS_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).breakByTool(FabricToolTags.AXES));
-    public static final Block STRAIGHT_CACTUS_PLANKS = new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).breakByTool(FabricToolTags.AXES));
-    public static final Block STRAIGHT_CACTUS_PLANKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).breakByTool(FabricToolTags.AXES));
-    public static final Block STRAIGHT_CACTUS_PLANKS_STAIRS = new StairsBlockSubClass(STRAIGHT_CACTUS_PLANKS, FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).breakByTool(FabricToolTags.AXES));
-    public static final Block STRAIGHT_CACTUS_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER).breakByTool(FabricToolTags.AXES));
-    public static final Block STRAIGHT_CACTUS_FENCE = new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).breakByTool(FabricToolTags.AXES));
-    public static final Block STRAIGHT_CACTUS_SIGN = new AtbywSignBlock(new AtbywSignType("cactus"), FabricBlockSettings.copyOf(Blocks.OAK_SIGN).breakByTool(FabricToolTags.AXES));
-    public static final Block STRAIGHT_CACTUS_WALL_SIGN = new AtbywSignBlock(new AtbywSignType("cactus"), FabricBlockSettings.copyOf(Blocks.OAK_SIGN).breakByTool(FabricToolTags.AXES));
+    public static final Block CACTUS_PLANKS_SLAB = new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).breakByTool(FabricToolTags.AXES));
+    public static final Block CACTUS_PLANKS_STAIRS = new StairsBlockSubClass(CACTUS_PLANKS, FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).breakByTool(FabricToolTags.AXES));
+    public static final Block CACTUS_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER).breakByTool(FabricToolTags.AXES));
+    public static final Block CACTUS_FENCE = new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).breakByTool(FabricToolTags.AXES));
+    public static final Block CACTUS_SIGN = new AtbywSignBlock(AtbywSignType.CACTUS, FabricBlockSettings.copyOf(Blocks.OAK_SIGN).breakByTool(FabricToolTags.AXES));
+    public static final Block CACTUS_WALL_SIGN = new AtbywWallSignBlock(AtbywSignType.CACTUS, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).breakByTool(FabricToolTags.AXES));
 
     public static void init() {
 
@@ -551,10 +561,10 @@ public class AtbywBlocks {
         registerBlock(false, BLOCKS_TAB, "granite_tiles_slab", GRANITE_TILES_SLAB);
         registerBlock(false, BLOCKS_TAB, "diorite_bricks_slab", DIORITE_BRICKS_SLAB);
         registerBlock(false, BLOCKS_TAB, "andesite_bricks_slab", ANDESITE_BRICKS_SLAB);
+        registerBlock(false, BLOCKS_TAB, "raw_cactus_planks", RAW_CACTUS_PLANKS);
         registerBlock(false, BLOCKS_TAB, "cactus_planks", CACTUS_PLANKS);
-        registerBlock(false, BLOCKS_TAB, "straight_cactus_planks", STRAIGHT_CACTUS_PLANKS);
-        registerBlock(false, BLOCKS_TAB, "cactus_slab", STRAIGHT_CACTUS_PLANKS_SLAB);
-        registerBlock(false, BLOCKS_TAB, "cactus_stairs", STRAIGHT_CACTUS_PLANKS_STAIRS);
+        registerBlock(false, BLOCKS_TAB, "cactus_slab", CACTUS_PLANKS_SLAB);
+        registerBlock(false, BLOCKS_TAB, "cactus_stairs", CACTUS_PLANKS_STAIRS);
         registerBlock(false, BLOCKS_TAB, "grass_block_stairs", GRASS_BLOCK_STAIRS);
         registerBlock(false, BLOCKS_TAB, "dirt_stairs", DIRT_STAIRS);
         registerBlock(false, BLOCKS_TAB, "coarse_dirt_stairs", COARSE_DIRT_STAIRS);
@@ -644,9 +654,9 @@ public class AtbywBlocks {
         registerCanvasBlock(DECO_TAB, "glowing_canvas_block", GLOWING_CANVAS_BLOCK);
         registerBlocks(false, DECO_TAB, "ladder", WoodNames.getNamesNoOak(), SPRUCE_LADDER, BIRCH_LADDER, JUNGLE_LADDER, ACACIA_LADDER, DARK_OAK_LADDER, CRIMSON_LADDER, WARPED_LADDER);
         registerBlock(false, DECO_TAB, "bamboo_ladder", BAMBOO_LADDER);
-        registerBlock(false, DECO_TAB, "cactus_ladder", STRAIGHT_CACTUS_LADDER);
-        registerBlock(false, DECO_TAB, "cactus_fence", STRAIGHT_CACTUS_FENCE);
-        registerBlock(false, DECO_TAB, "cactus_sign", STRAIGHT_CACTUS_WALL_SIGN);
+        registerBlock(false, DECO_TAB, "cactus_ladder", CACTUS_LADDER);
+        registerBlock(false, DECO_TAB, "cactus_fence", CACTUS_FENCE);
+        registerSign(DECO_TAB, CACTUS_SIGN, CACTUS_WALL_SIGN);
         registerBlock(false, DECO_TAB, "compacted_snow", COMPACTED_SNOW);
         registerBlock(false, DECO_TAB, "large_chain", LARGE_CHAIN);
         registerBlock(false, DECO_TAB, "granite_column", GRANITE_COLUMN);

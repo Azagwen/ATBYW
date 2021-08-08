@@ -2,6 +2,14 @@
   "_comment": "Blocks",
   "block.atbyw.dev_block": "Aza Block",
 
+  "block.atbyw.raw_cactus_planks": "Raw Cactus Planks",
+  "block.atbyw.cactus_planks": "Cactus Planks",
+  "block.atbyw.cactus_stairs": "Cactus Stairs",
+  "block.atbyw.cactus_slab": "Cactus Slab",
+  "block.atbyw.cactus_fence": "Cactus Fence",
+  "block.atbyw.cactus_ladder": "Cactus Ladder",
+  "block.atbyw.cactus_sign": "Cactus Sign",
+
   "block.atbyw.tinting_table": "Tinting Table",
 
   "block.atbyw.redstone_pipe": "Redstone Pipe",

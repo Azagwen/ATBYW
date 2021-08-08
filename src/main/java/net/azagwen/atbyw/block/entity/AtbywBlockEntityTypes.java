@@ -17,11 +17,11 @@ public class AtbywBlockEntityTypes<T extends BlockEntity>{
 
     public static <T extends BlockEntity> BlockEntityType<T> create(FabricBlockEntityTypeBuilder.Factory<T> factory, Block block) {
         Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, getBlockID(block).getPath());
-        return Registry.register(Registry.BLOCK_ENTITY_TYPE, getBlockID(block).getPath(), FabricBlockEntityTypeBuilder.create(factory, block).build(type));
+        return Registry.register(Registry.BLOCK_ENTITY_TYPE, getBlockID(block), FabricBlockEntityTypeBuilder.create(factory, block).build(type));
     }
 
     public static <T extends BlockEntity> BlockEntityType<T> create(FabricBlockEntityTypeBuilder.Factory<T> factory, Block... blocks) {
-        return Registry.register(Registry.BLOCK_ENTITY_TYPE, getBlockID(blocks[0]).getPath(), FabricBlockEntityTypeBuilder.create(factory, blocks).build(null));
+        return Registry.register(Registry.BLOCK_ENTITY_TYPE, getBlockID(blocks[0]), FabricBlockEntityTypeBuilder.create(factory, blocks).build(null));
     }
 
     public static BlockEntityType<CanvasBlockEntity> CANVAS_BLOCK_ENTITY;

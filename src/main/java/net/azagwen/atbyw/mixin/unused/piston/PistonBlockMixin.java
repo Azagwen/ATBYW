@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.mixin.piston;
+package net.azagwen.atbyw.mixin.unused.piston;
 
 import net.azagwen.atbyw.block.piston.PistonWoodTypes;
 import net.azagwen.atbyw.block.piston.PistonDuck;
