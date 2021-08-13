@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:block/cube_all",
     "textures": {
-        "all": "atbyw:block/straight_cactus_planks"
+        "all": "atbyw:block/raw_cactus_planks"
     }
 }

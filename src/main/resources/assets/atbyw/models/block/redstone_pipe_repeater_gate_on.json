@@ -1,0 +1,103 @@
+{
+    "textures": {
+        "texture": "atbyw:block/redstone_pipe_repeater_on",
+        "particle": "minecraft:block/copper_block"
+    },
+    "elements": [
+        {
+            "name": "gate",
+            "from": [4, 4, 0],
+            "to": [12, 12, 12],
+            "faces": {
+                "north": {"uv": [8, 0, 16,  8], "texture": "#texture"},
+                "east":  {"uv": [0, 0,  8, 12], "texture": "#texture", "rotation": 90},
+                "south": {"uv": [8, 0, 16,  8], "texture": "#texture"},
+                "west":  {"uv": [0, 0,  8, 12], "texture": "#texture", "rotation": 90},
+                "up":    {"uv": [0, 0,  8, 12], "texture": "#texture"},
+                "down":  {"uv": [0, 0,  8, 12], "texture": "#texture"}
+            }
+        },
+        {
+            "name": "gate",
+            "from": [5, 5, 12],
+            "to": [11, 11, 16],
+            "faces": {
+                "east":  {"uv": [ 4, 12, 10, 16], "texture": "#texture", "rotation": 90},
+                "south": {"uv": [10, 10, 16, 16], "texture": "#texture"},
+                "west":  {"uv": [ 4, 12, 10, 16], "texture": "#texture", "rotation": 90},
+                "up":    {"uv": [ 4, 12, 10, 16], "texture": "#texture"},
+                "down":  {"uv": [ 4, 12, 10, 16], "texture": "#texture"}
+            }
+        },
+        {
+            "from": [4, 9, 2],
+            "to": [5, 7, 10],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 6]},
+            "faces": {
+                "north": {"uv": [3, 10, 5, 11], "texture": "#texture", "rotation": 270},
+                "south": {"uv": [3,  1, 5,  2], "texture": "#texture", "rotation": 270},
+                "up":    {"uv": [5, 10, 6,  2], "texture": "#texture"},
+                "down":  {"uv": [2,  2, 3, 10], "texture": "#texture"}
+            }
+        },
+        {
+            "from": [11, 9, 2],
+            "to": [12, 7, 10],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 6]},
+            "faces": {
+                "north": {"uv": [3,  1, 5,  2], "rotation": 270, "texture": "#texture"},
+                "south": {"uv": [3, 10, 5, 11], "rotation": 270, "texture": "#texture"},
+                "up":    {"uv": [5, 10, 6,  2], "rotation": 180, "texture": "#texture"},
+                "down":  {"uv": [2,  2, 3, 10], "rotation": 180, "texture": "#texture"}
+            }
+        },
+        {
+            "from": [9, 11, 2],
+            "to": [7, 12, 10],
+            "rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 6]},
+            "faces": {
+                "north": {"uv": [3,  1, 5,  2], "texture": "#texture"},
+                "east":  {"uv": [2,  2, 3, 10], "texture": "#texture", "rotation": 90},
+                "south": {"uv": [3, 10, 5, 11], "texture": "#texture", "rotation": 180},
+                "west":  {"uv": [5, 10, 6,  2], "texture": "#texture", "rotation": 90}
+            }
+        },
+        {
+            "from": [9, 4, 2],
+            "to": [7, 5, 10],
+            "rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 6]},
+            "faces": {
+                "north": {"uv": [3, 10, 5, 11], "texture": "#texture"},
+                "east":  {"uv": [2,  2, 3, 10], "texture": "#texture", "rotation": 270},
+                "south": {"uv": [3,  1, 5,  2], "texture": "#texture", "rotation": 180},
+                "west":  {"uv": [5, 10, 6,  2], "texture": "#texture", "rotation": 270}
+            }
+        }
+    ],
+    "display": {
+        "thirdperson_righthand": {
+            "rotation": [120, 0, 0],
+            "translation": [0, 1.25, 1],
+            "scale": [0.4, 0.4, 0.4]
+        },
+        "firstperson_righthand": {
+            "rotation": [100, -180, 0],
+            "translation": [0.75, 1.5, 0],
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "ground": {
+            "translation": [0, 3, 0],
+            "scale": [0.6, 0.6, 0.6]
+        },
+        "gui": {
+            "rotation": [30, 135, 0],
+            "scale": [0.8, 0.8, 0.8]
+        },
+        "head": {
+            "translation": [0, 9.5, 0]
+        },
+        "fixed": {
+            "scale": [0.5, 0.5, 0.5]
+        }
+    }
+}

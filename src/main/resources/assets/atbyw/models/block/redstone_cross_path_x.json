@@ -1,0 +1,40 @@
+{
+    "textures": {
+        "particle": "atbyw:block/gated_smooth_stone",
+        "all": "atbyw:block/redstone_cross_path"
+    },
+    "elements": [
+        {
+            "name": "cube_x",
+            "from": [0, 0, 5],
+            "to": [16, 3, 11],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+            "faces": {
+                "north": {"uv": [3, 3, 11, 4.5], "texture": "#all", "jmx_tex0": "#jmx_all0", "jmx_tex1": "#jmx_all1", "jmx_material": "#jmx_mat" },
+                "east": {"uv": [3, 6, 6, 7.5], "texture": "#all", "jmx_tex0": "#jmx_all0", "jmx_tex1": "#jmx_all1", "jmx_material": "#jmx_mat" },
+                "south": {"uv": [3, 3, 11, 4.5], "texture": "#all", "jmx_tex0": "#jmx_all0", "jmx_tex1": "#jmx_all1", "jmx_material": "#jmx_mat" },
+                "west": {"uv": [3, 6, 6, 7.5], "texture": "#all", "jmx_tex0": "#jmx_all0", "jmx_tex1": "#jmx_all1", "jmx_material": "#jmx_mat" },
+                "up": {"uv": [3, 0, 11, 3], "texture": "#all", "jmx_tex0": "#jmx_all0", "jmx_tex1": "#jmx_all1", "jmx_material": "#jmx_mat" },
+                "down": {"uv": [3, 0, 11, 3], "rotation": 90, "texture": "#all", "jmx_tex0": "#jmx_all0", "jmx_tex1": "#jmx_all1", "jmx_material": "#jmx_mat" }
+            }
+        }
+    ],
+    "jmx": {
+        "textures": {
+            "jmx_tex_particle": "atbyw:block/gated_smooth_stone",
+            "layered_textures": [
+                {
+                    "jmx_all": "atbyw:block/redstone_cross_path"
+                }
+            ]
+        },
+        "materials": {
+            "jmx_mat": {
+                "layers": [
+                    { "layer": "cutout_mipped" },
+                    { "layer": "cutout_mipped", "emissive": true, "ambient_occlusion": false, "diffuse": false }
+                ]
+            }
+        }
+    }
+}

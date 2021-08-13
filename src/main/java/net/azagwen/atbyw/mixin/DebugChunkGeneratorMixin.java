@@ -18,7 +18,7 @@ public class DebugChunkGeneratorMixin {
     public static BlockState getBlockState(int x, int z) {
         BlockState blockState = Blocks.AIR.getDefaultState();
 
-        if (AtbywMain.isDebugEnabled()) {
+        if (AtbywMain.checkDebugEnabled("debug_world")) {
             if (x > 0 && z > 0 && x % 2 != 0 && z % 2 != 0) {
                 x /= 2;
                 z /= 2;

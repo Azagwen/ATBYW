@@ -1,0 +1,53 @@
+{
+  "multipart": [
+    {
+      "when": { "facing": "north", "powered": false },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter", "y": 180  }
+    },
+    {
+      "when": { "facing": "south", "powered": false },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter" }
+    },
+    {
+      "when": { "facing": "east", "powered": false },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter", "y": 270 }
+    },
+    {
+      "when": { "facing": "west", "powered": false },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter", "y": 90 }
+    },
+    {
+      "when": { "facing": "up", "powered": false },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter", "x": 90 }
+    },
+    {
+      "when": { "facing": "down", "powered": false },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter", "x": 270 }
+    },
+
+    {
+      "when": { "facing": "north", "powered": true },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter_on", "y": 180  }
+    },
+    {
+      "when": { "facing": "south", "powered": true },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter_on" }
+    },
+    {
+      "when": { "facing": "east", "powered": true },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter_on", "y": 270 }
+    },
+    {
+      "when": { "facing": "west", "powered": true },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter_on", "y": 90 }
+    },
+    {
+      "when": { "facing": "up", "powered": true },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter_on", "x": 90 }
+    },
+    {
+      "when": { "facing": "down", "powered": true },
+      "apply": { "model": "atbyw:block/redstone_pipe_inverter_on", "x": 270 }
+    }
+  ]
+}

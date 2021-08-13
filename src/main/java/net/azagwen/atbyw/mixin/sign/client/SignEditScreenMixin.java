@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.mixin.sign.client;
 
-import net.azagwen.atbyw.block.AtbywSign;
+import net.azagwen.atbyw.block.sign.AtbywSign;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.entity.SignBlockEntity;

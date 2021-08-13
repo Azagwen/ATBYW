@@ -28,9 +28,8 @@ import net.minecraft.world.World;
 
 @SuppressWarnings("EntityConstructor")
 public class ShroomStickEntity extends ThrownItemEntity {
+    private final boolean hasDebug = AtbywMain.checkDebugEnabled("shroomstick");
     private int bounceCount = 0;
-    private final int maxBouncesBeforeLand = 3;
-    private final int maxBouncesBeforeLoot = 5;
 
     public ShroomStickEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
@@ -50,14 +49,14 @@ public class ShroomStickEntity extends ThrownItemEntity {
 
     @Environment(EnvType.CLIENT)
     private ParticleEffect getParticleParameters() {
-        ItemStack itemStack = this.getItem();
+        var itemStack = this.getItem();
         return (itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
     }
 
     @Environment(EnvType.CLIENT)
     public void handleStatus(byte status) {
         if (status == 3) {
-            ParticleEffect particleEffect = this.getParticleParameters();
+            var particleEffect = this.getParticleParameters();
 
             for(int i = 0; i < 8; ++i) {
                 this.world.addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
@@ -71,8 +70,8 @@ public class ShroomStickEntity extends ThrownItemEntity {
         double y = (double) pos.getY() + (double) (world.random.nextFloat() * f) + 0.06000000238418579D + 0.6D;
         double z = (double) pos.getZ() + (double) (world.random.nextFloat() * f) + 0.15000000596046448D;
 
-        ItemStack stack = AtbywItems.SHROOMSTICK.getDefaultStack();
-        ItemEntity itemEntity = new ItemEntity(world, x, y, z, stack);
+        var stack = AtbywItems.SHROOMSTICK.getDefaultStack();
+        var itemEntity = new ItemEntity(world, x, y, z, stack);
         itemEntity.setToDefaultPickupDelay();
 
         world.spawnEntity(itemEntity);
@@ -81,23 +80,25 @@ public class ShroomStickEntity extends ThrownItemEntity {
 
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
-        World world = this.world;
-        BlockPos hitPos = blockHitResult.getBlockPos();
+        var world = this.world;
+        var hitPos = blockHitResult.getBlockPos();
+        var maxBouncesBeforeLand = 3;
+        var maxBouncesBeforeLoot = 5;
 
-        if (bounceCount <= maxBouncesBeforeLand) {
-            modularBounce(blockHitResult.getSide());
-        } else if (bounceCount <= maxBouncesBeforeLoot) {
+        if (this.bounceCount <= maxBouncesBeforeLand) {
+            this.modularBounce(blockHitResult.getSide());
+        } else if (this.bounceCount <= maxBouncesBeforeLoot) {
             if (Block.sideCoversSmallSquare(world, hitPos, Direction.UP)) {
-                land(world, hitPos.up());
+                this.land(world, hitPos.up());
             }
-            modularBounce(blockHitResult.getSide());
+            this.modularBounce(blockHitResult.getSide());
         } else {
-            spawnItem(world, hitPos);
+            this.spawnItem(world, hitPos);
         }
-        if (bounceCount >= maxBouncesBeforeLand -1 && blockHitResult.getSide() != Direction.UP) {
-            bounceCount--;
+        if (this.bounceCount >= maxBouncesBeforeLand -1 && blockHitResult.getSide() != Direction.UP) {
+            this.bounceCount--;
         } else {
-            bounceCount++;
+            this.bounceCount++;
         }
 
 
@@ -105,8 +106,8 @@ public class ShroomStickEntity extends ThrownItemEntity {
     }
 
     private void modularBounce(Direction direction) {
-        Vec3d vec3d = this.getVelocity();
-        double multiplier = bounceCount > 0 ? 0.75D : 0.5D;
+        var vec3d = this.getVelocity();
+        var multiplier = this.bounceCount > 0 ? 0.75D : 0.5D;
         switch (direction) {
             case EAST, WEST -> this.setVelocity(vec3d.x * -multiplier, vec3d.y * multiplier, vec3d.z * multiplier);
             case DOWN, UP -> this.setVelocity(vec3d.x * multiplier, vec3d.y * -multiplier, vec3d.z * multiplier);
@@ -115,13 +116,13 @@ public class ShroomStickEntity extends ThrownItemEntity {
     }
 
     private void land(World world, BlockPos hitPos) {
-        boolean waterLogged = world.getBlockState(hitPos).getFluidState().getFluid() == Fluids.WATER;
-        BlockState state = world.getBlockState(hitPos);
+        var waterLogged = world.getBlockState(hitPos).getFluidState().getFluid() == Fluids.WATER;
+        var state = world.getBlockState(hitPos);
 
         if (state.isAir() || state.isIn(Tags.BlockTags.SHROOMSTICK_REPLACEABLE_GROUND) || state.isOf(Blocks.WATER) || state.isIn(Tags.BlockTags.SHROOMSTICK_REPLACEABLE_WATER)) {
-            placeBlock(world, hitPos, waterLogged);
+            this.placeBlock(world, hitPos, waterLogged);
         }  else {
-            spawnItem(world, hitPos);
+            this.spawnItem(world, hitPos);
         }
     }
 
@@ -134,18 +135,18 @@ public class ShroomStickEntity extends ThrownItemEntity {
 
     @Override
     public boolean hasCustomName() {
-        return AtbywMain.isDebugEnabled();
+        return this.hasDebug;
     }
 
     @Override
     public boolean isCustomNameVisible() {
-        return AtbywMain.isDebugEnabled();
+        return this.hasDebug;
     }
 
     @Override
     public void tick() {
         super.tick();
-        if (AtbywMain.isDebugEnabled()) {
+        if (this.hasDebug) {
             String simplifiedVelocity = (
                     "X: " + (this.getVelocity().x) + ", " +
                     "Y: " + (this.getVelocity().y) + ", " +
@@ -153,7 +154,7 @@ public class ShroomStickEntity extends ThrownItemEntity {
             );
 
 
-            this.setCustomName(new TranslatableText(String.valueOf(bounceCount)));
+            this.setCustomName(new TranslatableText(String.valueOf(this.bounceCount)));
         }
     }
 }

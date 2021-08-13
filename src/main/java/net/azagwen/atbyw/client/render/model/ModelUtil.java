@@ -8,18 +8,26 @@ import net.minecraft.client.texture.Sprite;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3f;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.function.Function;
 
 public class ModelUtil {
 
-    public static void emitQuad(QuadEmitter emitter, Direction direction, float left, float bottom, float right, float top, float depth) {
+    public static void setQuad(QuadEmitter emitter, Direction direction, float left, float bottom, float right, float top, float depth, @Nullable Direction cullFace) {
         var normalizedLeft = normalizeVoxelChannel(left);
         var normalizedRight = normalizeVoxelChannel(right);
         var normalizedBottom = normalizeVoxelChannel(bottom);
         var normalizedTop = normalizeVoxelChannel(top);
         var normalizedDepth = normalizeVoxelChannel(depth);
         emitter.square(direction, normalizedLeft, normalizedBottom, normalizedRight, normalizedTop, normalizedDepth);
+        if (cullFace != null) {
+            emitter.cullFace(cullFace);
+        }
+    }
+
+    public static void setQuad(QuadEmitter emitter, Direction direction, float left, float bottom, float right, float top, float depth) {
+        setQuad(emitter, direction, left, bottom, right, top, depth, null);
     }
 
     /**
@@ -142,10 +150,10 @@ public class ModelUtil {
         emitter.sprite(3, spriteIndex, u2, v1);
     }
 
-    public static void emitTexturedData(QuadEmitter emitter, boolean emissive) {
+    public static void emitTexturedData(QuadEmitter emitter, boolean emissive, boolean shaded) {
         var renderer = RendererAccess.INSTANCE.getRenderer();
 
-        emitter.material(renderer.materialFinder().emissive(0, emissive).find());
+        emitter.material(renderer.materialFinder().emissive(0, emissive).disableDiffuse(0, !shaded).find());
         emitter.spriteColor(0, -1, -1, -1, -1);
         emitter.emit();
     }
@@ -159,7 +167,7 @@ public class ModelUtil {
      * @param to        3D Vector of the end point.
      * @param faceData  Map of a direction and a Face instance which stores the face data.
      */
-    public static void emitBox(QuadEmitter emitter, Vec3f from, Vec3f to, Map<Direction, Face> faceData) {
+    public static void emitBox(QuadEmitter emitter, Vec3f from, Vec3f to, Map<Direction, Face> faceData, boolean shaded, int tintIndex) {
         var xFrom = from.getX();
         var yFrom = from.getY();
         var zFrom = from.getZ();
@@ -186,16 +194,19 @@ public class ModelUtil {
                     case WEST -> depth = xFrom;
                 }
                 switch (direction) {
-                    case NORTH -> emitQuad(emitter, direction, Math.abs(xTo - 16), yFrom, Math.abs(xFrom - 16), yTo, depth);
-                    case SOUTH -> emitQuad(emitter, direction, xFrom, yFrom, xTo, yTo, depth);
-                    case EAST -> emitQuad(emitter, direction, Math.abs(zTo - 16), yFrom, Math.abs(zFrom - 16), yTo, depth);
-                    case WEST -> emitQuad(emitter, direction, zFrom, yFrom, zTo, yTo, depth);
-                    case UP, DOWN -> emitQuad(emitter, direction, xFrom, Math.abs(zTo - 16), xTo, Math.abs(zFrom - 16), depth);
+                    case NORTH -> setQuad(emitter, direction, Math.abs(xTo - 16), yFrom, Math.abs(xFrom - 16), yTo, depth, direction);
+                    case SOUTH -> setQuad(emitter, direction, xFrom, yFrom, xTo, yTo, depth, direction);
+                    case EAST -> setQuad(emitter, direction, Math.abs(zTo - 16), yFrom, Math.abs(zFrom - 16), yTo, depth, direction);
+                    case WEST -> setQuad(emitter, direction, zFrom, yFrom, zTo, yTo, depth, direction);
+                    case UP, DOWN -> setQuad(emitter, direction, xFrom, Math.abs(zTo - 16), xTo, Math.abs(zFrom - 16), depth, direction);
                 }
                 emitter.spriteBake(0, sprite, MutableQuadView.BAKE_ROTATE_NONE);
+                emitter.cullFace(faceData.get(direction).cullFace());
+                emitter.colorIndex(tintIndex);
                 setUvOnSprite(emitter, sprite, u1, v1, u2, v2);
-                emitTexturedData(emitter, isFaceEmissive);
+                emitTexturedData(emitter, isFaceEmissive, shaded);
             }
         }
+        faceData.clear();
     }
 }

@@ -1,0 +1,20 @@
+{
+    "textures": {
+        "particle": "atbyw:block/gated_smooth_stone",
+        "all": "atbyw:block/redstone_cross_path"
+    },
+    "elements": [
+        {
+            "from": [5, 0, 5],
+            "to": [11, 2, 11],
+            "faces": {
+                "north": {"uv": [11, 0, 14, 1], "texture": "#all"},
+                "east": {"uv": [11, 0, 14, 1], "texture": "#all"},
+                "south": {"uv": [11, 0, 14, 1], "texture": "#all"},
+                "west": {"uv": [11, 0, 14, 1], "texture": "#all"},
+                "up": {"uv": [11, 0, 14, 3], "texture": "#all"},
+                "down": {"uv": [11, 0, 14, 3], "texture": "#all"}
+            }
+        }
+    ]
+}

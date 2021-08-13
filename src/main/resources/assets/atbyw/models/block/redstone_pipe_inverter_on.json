@@ -1,0 +1,6 @@
+{
+    "parent": "atbyw:block/redstone_pipe_inverter",
+    "textures": {
+        "texture": "atbyw:block/redstone_pipe_inverter_on"
+    }
+}

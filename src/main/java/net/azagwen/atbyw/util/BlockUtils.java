@@ -22,6 +22,32 @@ public record BlockUtils() {
     public static int EAST = 2;
     public static int WEST = 3;
 
+    public static Direction getDirectionFromTwoPos(BlockPos start, BlockPos end) {
+        var startX = start.getX();
+        var startY = start.getY();
+        var startZ = start.getZ();
+        var endX = end.getX();
+        var endY = end.getY();
+        var endZ = end.getZ();
+        var direction = Direction.NORTH;
+
+        if (startX > endX) {
+            direction = Direction.from(Direction.Axis.X, Direction.AxisDirection.POSITIVE);
+        } else if (startX < endX) {
+            direction = Direction.from(Direction.Axis.X, Direction.AxisDirection.NEGATIVE);
+        } else if (startY > endY) {
+            direction = Direction.from(Direction.Axis.Y, Direction.AxisDirection.POSITIVE);
+        } else if (startY < endY) {
+            direction = Direction.from(Direction.Axis.Y, Direction.AxisDirection.NEGATIVE);
+        } else if (startZ > endZ) {
+            direction = Direction.from(Direction.Axis.Z, Direction.AxisDirection.POSITIVE);
+        } else if (startZ < endZ) {
+            direction = Direction.from(Direction.Axis.Z, Direction.AxisDirection.NEGATIVE);
+        }
+
+        return direction;
+    }
+
     public static boolean checkEmitsPower(Direction direction, BlockView world, BlockPos pos) {
         var offset = pos.offset(direction);
         return world.getBlockState(offset).emitsRedstonePower();

@@ -34,18 +34,13 @@ public class ShulkerStatueBlock extends StatueBlock {
     }
 
     private VoxelShape setClosedCollisionShape(Direction direction) {
-        switch (direction) {
-            case NORTH:
-                return StatueVoxelShapes.SHULKER_CLOSED_COLLISIONS[StatueBlockMobType.NORTH];
-            case SOUTH:
-                return StatueVoxelShapes.SHULKER_CLOSED_COLLISIONS[StatueBlockMobType.SOUTH];
-            case EAST:
-                return StatueVoxelShapes.SHULKER_CLOSED_COLLISIONS[StatueBlockMobType.EAST];
-            case WEST:
-                return StatueVoxelShapes.SHULKER_CLOSED_COLLISIONS[StatueBlockMobType.WEST];
-            default:
-                return null;
-        }
+        return switch (direction) {
+            case NORTH -> StatueVoxelShapes.SHULKER_CLOSED_COLLISIONS[StatueBlockMobType.NORTH];
+            case SOUTH -> StatueVoxelShapes.SHULKER_CLOSED_COLLISIONS[StatueBlockMobType.SOUTH];
+            case EAST -> StatueVoxelShapes.SHULKER_CLOSED_COLLISIONS[StatueBlockMobType.EAST];
+            case WEST -> StatueVoxelShapes.SHULKER_CLOSED_COLLISIONS[StatueBlockMobType.WEST];
+            default -> null;
+        };
     }
 
     @Override

@@ -1,4 +1,68 @@
-#1.5.2 Changelog
+#1.6.3 Changelog
+
+###Bug Fixes
+- Fixed bookshelves not working with enchanting tables.
+- Fixed some shroomstick issues.
+- Fixed Fence Doors duplicating when broken.
+
+###Changes
+- Timer repeaters now use baked models instead of a Block Entity renderer for their digits.
+- Ladder textures have been changed to be different depending on the wood type.
+
+###Removed
+- Structure generation has been disabled indefinitely, due to quite substantial issues, worlds that were "corrupted" should be able ot be re-opened with this change.
+
+###Additions
+- Added Raw Cactus planks
+- Added Cactus planks
+- Added Cactus stairs
+- Added Cactus slab
+- Added Cactus ladder
+- Added Cactus fence
+- Added Cactus sign
+- Added Redstone Pipe
+- Added Redstone Pipe Inverter
+- Added Redstone Pipe Repeater
+- Added Canvas Block
+- Added Glowing Canvas Block
+- Added Tinting Table
+- Added Shattered Glass
+- Added White Stained Shattered Glass
+- Added Orange Stained Shattered Glass
+- Added Magenta Stained Shattered Glass
+- Added Light Blue Stained Shattered Glass
+- Added Yellow Stained Shattered Glass
+- Added Lime Stained Shattered Glass
+- Added Pink Stained Shattered Glass
+- Added Gray Stained Shattered Glass
+- Added Light Gray Stained Shattered Glass
+- Added Cyan Stained Shattered Glass
+- Added Purple Stained Shattered Glass
+- Added Blue Stained Shattered Glass
+- Added Brown Stained Shattered Glass
+- Added Green Stained Shattered Glass
+- Added Red Stained Shattered Glass
+- Added Black Stained Shattered glass
+- Added Glass Shard
+- Added White Stained Glass Shard
+- Added Orange Stained Glass Shard
+- Added Magenta Stained Glass Shard
+- Added Light Blue Stained Glass Shard
+- Added Yellow Stained Glass Shard
+- Added Lime Stained Glass Shard
+- Added Pink Stained Glass Shard
+- Added Gray Stained Glass Shard
+- Added Light Gray Stained Glass Shard
+- Added Cyan Stained Glass Shard
+- Added Purple Stained Glass Shard
+- Added Blue Stained Glass Shard
+- Added Brown Stained Glass Shard
+- Added Green Stained Glass Shard
+- Added Red Stained Glass Shard
+- Added Black Stained Glass Shard
+
+------
+#1.5.3 Changelog
 
 ###Bug Fixes
 - Fixed Column blocks not having a top or bottom of the player was in the way when trying to place them.
@@ -207,3 +271,21 @@ They use blocks the mod adds in all their glory.
 - Added Desert Crypt
 - Added Savana Mineshaft
 - Added Mesa Tomb
+
+#Version Updating guidelines
+
+`R.V.P`
+```
+R = Release
+V = Version
+P = Patch
+```
+
+###Release
+Release will most likely never increase, it would only go up if a completely new release of the mod (re-imagined, or similar) came out.
+
+###Version
+Version goes up either when a new major update of the mod is released, or when the mod is updated to a new Minecraft version.
+
+###Patch
+Patch goes up when a small update is released, such a bug fix or an update that doesn't add much.

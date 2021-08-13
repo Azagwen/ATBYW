@@ -131,6 +131,8 @@ public class BlockRenderLayers {
         blocks.add(AtbywBlocks.REDSTONE_PIPE);
         blocks.add(AtbywBlocks.REDSTONE_PIPE_REPEATER);
         blocks.add(AtbywBlocks.TINTING_TABLE);
+        blocks.add(AtbywBlocks.CACTUS_LADDER);
+        blocks.add(AtbywBlocks.GLOWING_CANVAS_BLOCK);
     }
 
     private static void translucentLayerBlocks(List<Block> blocks) {

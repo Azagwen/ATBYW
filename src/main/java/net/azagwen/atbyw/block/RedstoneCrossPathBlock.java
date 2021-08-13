@@ -72,9 +72,7 @@ public class RedstoneCrossPathBlock extends Block {
 
     //unused, causes StackOverflowException
     private void updateNeighbors(World world, BlockPos pos) {
-        Direction[] directions = Direction.values();
-
-        for (Direction direction : directions) {
+        for (var direction : Direction.values()) {
             if (world.getBlockState(pos.offset(direction)).isOf(Blocks.REDSTONE_WIRE)) {
                 world.updateNeighbor(pos.offset(direction), this, pos);
             }
@@ -89,9 +87,7 @@ public class RedstoneCrossPathBlock extends Block {
     }
 
     private void updateInputs(BlockState state, World world, BlockPos pos) {
-        Direction[] directions = Direction.values();
-
-        for (Direction direction : directions) {
+        for (var direction : Direction.values()) {
             if (!world.getBlockState(pos.offset(direction)).isOf(AtbywBlocks.REDSTONE_CROSS_PATH)) {
                 this.assignInputs(state, world, pos);
             } else {
@@ -116,14 +112,13 @@ public class RedstoneCrossPathBlock extends Block {
             BlockEntity blockEntity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;
             dropStacks(state, world, pos, blockEntity);
             world.removeBlock(pos, false);
-            Direction[] directions = Direction.values();
 
-            for (Direction direction : directions) {
+            for (var direction : Direction.values()) {
                 world.updateNeighborsAlways(pos.offset(direction), this);
             }
         }
 
-        if (AtbywMain.isDebugEnabled()) {
+        if (AtbywMain.checkDebugEnabled("redstone_cross")) {
             PlayerEntity player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
             if (player != null) {
                 player.sendMessage(new LiteralText("[ " + "§cN: " + isNorthInput + "§f, " + "§cS: " + isSouthInput + "§f, " + "§9E: " + isEastInput + "§f, " + "§9W: " + isWestInput + "§f ]"), true);

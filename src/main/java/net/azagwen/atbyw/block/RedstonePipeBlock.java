@@ -390,6 +390,11 @@ public class RedstonePipeBlock extends Block implements Waterloggable, RedstoneP
     }
 
     @Override
+    public boolean isInverted() {
+        return false;
+    }
+
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST, POWER, WATERLOGGED);
     }

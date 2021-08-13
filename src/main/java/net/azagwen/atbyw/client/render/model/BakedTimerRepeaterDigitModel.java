@@ -47,14 +47,14 @@ public class BakedTimerRepeaterDigitModel extends ForwardingBakedModel {
         var sprite = DIGITS_TEXTURE.getSprite();
         var digit = digits[(right ? 1 : 0)];
 
-        ModelUtil.emitQuad(emitter, Direction.UP, (6.5F + (right ? 2.0F : -2.0F)), 5.5F, (9.5F + (right ? 2.0F : -2.0F)), 10.5F, 13.0F);
+        ModelUtil.setQuad(emitter, Direction.UP, (6.5F + (right ? 2.0F : -2.0F)), 5.5F, (9.5F + (right ? 2.0F : -2.0F)), 10.5F, 13.0F);
         emitter.spriteBake(0, sprite, MutableQuadView.BAKE_ROTATE_NONE);
 
         var widthFactor = this.offSetDigitU(digit);
         var heightAddition = this.offSetDigitV(digit) + (powered ? 12 : 0);
         ModelUtil.setUvOnSprite(emitter, sprite, (widthFactor - 3), heightAddition, widthFactor, (5 + heightAddition));
 
-        ModelUtil.emitTexturedData(emitter, powered);
+        ModelUtil.emitTexturedData(emitter, powered, false);
     }
 
     /**

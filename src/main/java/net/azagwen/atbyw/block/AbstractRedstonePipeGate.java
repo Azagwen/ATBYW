@@ -23,13 +23,27 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public abstract class AbstractRedstonePipeGate extends FacingBlock implements Waterloggable {
+public abstract class AbstractRedstonePipeGate extends FacingBlock implements RedstonePipeComponent, Waterloggable {
     public static final BooleanProperty POWERED;
     public static final BooleanProperty WATERLOGGED;
 
     protected AbstractRedstonePipeGate(Settings settings) {
         super(settings);
         this.setDefaultState(super.getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false).with(WATERLOGGED, false));
+    }
+
+    @Override
+    public ComponentType getType() {
+        return ComponentType.GATE;
+    }
+
+    @Override
+    public boolean isInverted() {
+        return false;
+    }
+
+    private boolean getPowered(BlockState state) {
+        return this.isInverted() == state.get(POWERED);
     }
 
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
@@ -120,7 +134,7 @@ public abstract class AbstractRedstonePipeGate extends FacingBlock implements Wa
     }
 
     public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        if (!state.get(POWERED)) {
+        if (this.getPowered(state)) {
             return 0;
         } else {
             return state.get(FACING) == direction.getOpposite() ? this.getOutputLevel(world, pos, state) : 0;
@@ -131,7 +145,7 @@ public abstract class AbstractRedstonePipeGate extends FacingBlock implements Wa
         for (var direction : Direction.values()) {
             return state.get(FACING) == direction;
         }
-        return state.get(POWERED);
+        return this.getPowered(state);
     }
 
 
@@ -204,7 +218,7 @@ public abstract class AbstractRedstonePipeGate extends FacingBlock implements Wa
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (state.get(POWERED)) {
+        if (!this.getPowered(state)) {
             for (Direction direction : Direction.values()) {
                 RedstonePipeBlock.addPoweredParticles(world, random, pos, RedstonePipeBlock.COLORS.get(15), direction, direction.getOpposite(), 0.0F, 0.5F);
                 this.addExposedEndParticles(world, pos, state, false);

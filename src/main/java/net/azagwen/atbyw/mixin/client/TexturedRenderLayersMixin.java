@@ -1,7 +1,6 @@
 package net.azagwen.atbyw.mixin.client;
 
-import net.azagwen.atbyw.archived.AtbywTextureRenderLayers;
-import net.azagwen.atbyw.block.state.AtbywSignType;
+import net.azagwen.atbyw.block.sign.AtbywSignType;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.TexturedRenderLayers;

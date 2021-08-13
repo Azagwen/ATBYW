@@ -1,10 +1,12 @@
 package net.azagwen.atbyw.block;
 
 import com.google.common.collect.Sets;
+import net.azagwen.atbyw.block.sign.SignBlockExt;
+import net.azagwen.atbyw.block.sign.WallSignBlockExt;
 import net.azagwen.atbyw.block.slabs.*;
 import net.azagwen.atbyw.block.stairs.*;
 import net.azagwen.atbyw.block.state.AtbywProperties;
-import net.azagwen.atbyw.block.state.AtbywSignType;
+import net.azagwen.atbyw.block.sign.AtbywSignType;
 import net.azagwen.atbyw.block.statues.*;
 import net.azagwen.atbyw.item.CanvasBlockItem;
 import net.azagwen.atbyw.main.AtbywMain;
@@ -51,7 +53,6 @@ public class AtbywBlocks {
     //TODO: Add chairs ?
     //TODO: Add step detectors.
     //TODO: Add a chain hook that you can hook items and blocks to.
-    //TODO: add a paint mixer workstation (precise color item manipulation).
 
     public static Boolean always(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return true; }
     public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) { return false; }
@@ -66,7 +67,7 @@ public class AtbywBlocks {
     }
 
     public static void registerSign(ArrayList<Item> itemTab, Block standingSign, Block wallSign) {
-        var type = ((AtbywSignBlock) standingSign).getType().getName();
+        var type = ((SignBlockExt) standingSign).getType().getName();
         Registry.register(Registry.BLOCK, AtbywMain.id(type + "_sign"), standingSign);
         Registry.register(Registry.BLOCK, AtbywMain.id(type + "_wall_sign"), wallSign);
         Registry.register(Registry.ITEM, AtbywMain.id(type + "_sign"), new SignItem(new Item.Settings(), standingSign, wallSign));
@@ -519,6 +520,7 @@ public class AtbywBlocks {
     public static final Block GLOWING_CANVAS_BLOCK = createCanvasBlock(true);
 
     public static final Block REDSTONE_PIPE = new RedstonePipeBlock(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.COPPER));
+    public static final Block REDSTONE_PIPE_INVERTER = new RedstonePipeInverterBlock(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.COPPER));
     public static final Block REDSTONE_PIPE_REPEATER = new RedstonePipeRepeaterBlock(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.COPPER));
 
     public static final Block TINTING_TABLE = new TintingTableBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).requiresTool().breakByTool(FabricToolTags.PICKAXES).sounds(BlockSoundGroup.COPPER));
@@ -529,13 +531,14 @@ public class AtbywBlocks {
     public static final Block CACTUS_PLANKS_STAIRS = new StairsBlockSubClass(CACTUS_PLANKS, FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).breakByTool(FabricToolTags.AXES));
     public static final Block CACTUS_LADDER = new LadderBlockSubClass(FabricBlockSettings.copyOf(Blocks.LADDER).breakByTool(FabricToolTags.AXES));
     public static final Block CACTUS_FENCE = new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).breakByTool(FabricToolTags.AXES));
-    public static final Block CACTUS_SIGN = new AtbywSignBlock(AtbywSignType.CACTUS, FabricBlockSettings.copyOf(Blocks.OAK_SIGN).breakByTool(FabricToolTags.AXES));
-    public static final Block CACTUS_WALL_SIGN = new AtbywWallSignBlock(AtbywSignType.CACTUS, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).breakByTool(FabricToolTags.AXES));
+    public static final Block CACTUS_SIGN = new SignBlockExt(AtbywSignType.CACTUS, FabricBlockSettings.copyOf(Blocks.OAK_SIGN).breakByTool(FabricToolTags.AXES));
+    public static final Block CACTUS_WALL_SIGN = new WallSignBlockExt(AtbywSignType.CACTUS, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).breakByTool(FabricToolTags.AXES));
 
     public static void init() {
 
         //ATBYW REDSTONE
         registerBlock(false, REDSTONE_TAB, "redstone_pipe", REDSTONE_PIPE);
+        registerBlock(false, REDSTONE_TAB, "redstone_pipe_inverter", REDSTONE_PIPE_INVERTER);
         registerBlock(false, REDSTONE_TAB, "redstone_pipe_repeater", REDSTONE_PIPE_REPEATER);
         registerBlock(false, REDSTONE_TAB, "timer_repeater", TIMER_REPEATER);
         registerBlock(false, REDSTONE_TAB, "redstone_cross_path", REDSTONE_CROSS_PATH);

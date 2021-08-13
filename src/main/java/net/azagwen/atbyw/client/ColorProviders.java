@@ -4,6 +4,8 @@ import net.azagwen.atbyw.block.AbstractRedstonePipeGate;
 import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.RedstonePipeBlock;
 import net.azagwen.atbyw.block.entity.CanvasBlockEntity;
+import net.azagwen.atbyw.block.slabs.FallingSlabBlock;
+import net.azagwen.atbyw.block.stairs.FallingStairsBlock;
 import net.azagwen.atbyw.item.AtbywItems;
 import net.azagwen.atbyw.item.SimpleColoredItem;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -81,5 +83,21 @@ public class ColorProviders {
             }
             return RedstonePipeBlock.getRedstoneColor(2);
         }, AtbywBlocks.REDSTONE_PIPE_REPEATER);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+            if (!state.get(AbstractRedstonePipeGate.POWERED)) {
+                return RedstonePipeBlock.getRedstoneColor(15);
+            }
+            return RedstonePipeBlock.getRedstoneColor(2);
+        }, AtbywBlocks.REDSTONE_PIPE_INVERTER);
+
+        //Falling Stairs
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+            return ((FallingStairsBlock) state.getBlock()).getColor(state, world, pos);
+        }, AtbywBlocks.SAND_STAIRS, AtbywBlocks.RED_SAND_STAIRS, AtbywBlocks.GRAVEL_STAIRS);
+
+        //Falling Slabs
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+            return ((FallingSlabBlock) state.getBlock()).getColor(state, world, pos);
+        }, AtbywBlocks.SAND_SLAB, AtbywBlocks.RED_SAND_SLAB, AtbywBlocks.GRAVEL_SLAB);
     }
 }

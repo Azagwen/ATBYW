@@ -21,4 +21,6 @@ public interface RedstonePipeComponent {
     }
 
     ComponentType getType();
+
+    boolean isInverted();
 }

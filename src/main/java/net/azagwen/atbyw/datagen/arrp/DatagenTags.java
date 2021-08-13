@@ -16,7 +16,7 @@ import static net.azagwen.atbyw.datagen.arrp.AtbywRRP.ATBYW_RESOURCE_PACK;
 import static net.azagwen.atbyw.util.AtbywUtils.*;
 import static net.azagwen.atbyw.main.AtbywMain.*;
 
-public class Tags {
+public class DatagenTags {
 
     private static void createBlockTag(RuntimeResourcePack pack, String nameSpace, String tagName, ArrayList<Block> blocks) {
         JTag tag = JTag.tag();

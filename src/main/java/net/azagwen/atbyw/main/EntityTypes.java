@@ -14,7 +14,8 @@ public class EntityTypes {
             AtbywMain.id("shroomstick"),
             FabricEntityTypeBuilder.<ShroomStickEntity>create(SpawnGroup.MISC, ShroomStickEntity::new)
                     .dimensions(EntityDimensions.fixed(0.75f, 0.75f))
-                    .trackRangeBlocks(4).trackedUpdateRate(10)
+                    .trackRangeBlocks(4)
+                    .trackedUpdateRate(10)
                     .build()
     );
 }

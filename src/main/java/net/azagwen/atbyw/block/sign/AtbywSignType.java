@@ -1,4 +1,4 @@
-package net.azagwen.atbyw.block.state;
+package net.azagwen.atbyw.block.sign;
 
 import com.google.common.collect.Sets;
 import net.azagwen.atbyw.main.AtbywMain;

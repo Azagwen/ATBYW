@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.group;
 
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.datagen.arrp.DatagenTags;
 import net.azagwen.atbyw.item.AtbywItems;
 import net.azagwen.atbyw.main.Tags;
 import net.minecraft.item.Item;
@@ -33,10 +34,10 @@ public class AtbywItemGroup extends TabbedItemGroup {
     public static ItemGroupTab ATBYW_MISC = new ItemGroupTab(new ItemStack(AtbywItems.BAMBOO_STICK), "misc", ATBYW_MISC_TAB);
 
     public static void registerTags() {
-        net.azagwen.atbyw.datagen.arrp.Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_blocks", BLOCKS_TAB);
-        net.azagwen.atbyw.datagen.arrp.Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_deco", DECO_TAB);
-        net.azagwen.atbyw.datagen.arrp.Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_redstone", REDSTONE_TAB);
-        net.azagwen.atbyw.datagen.arrp.Tags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_misc", MISC_TAB);
+        DatagenTags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_blocks", BLOCKS_TAB);
+        DatagenTags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_deco", DECO_TAB);
+        DatagenTags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_redstone", REDSTONE_TAB);
+        DatagenTags.createItemTag(ATBYW_RESOURCE_PACK, ATBYW, "tab_misc", MISC_TAB);
     }
 
     @Override

@@ -1,24 +1,14 @@
 {
-    "parent": "atbyw:block/redstone_cross_path",
+    "parent": "atbyw:block/redstone_cross_path_x",
     "textures": {
-        "top_x": "atbyw:block/redstone_cross_path_top_on",
-        "top_z": "atbyw:block/redstone_cross_path_top",
-        "side_x": "atbyw:block/redstone_cross_path_side_on",
-        "side_z": "atbyw:block/redstone_cross_path_side"
+        "particle": "atbyw:block/gated_smooth_stone",
+        "all": "atbyw:block/redstone_cross_path"
     },
     "jmx": {
         "textures": {
             "layered_textures": [
-                {
-                    "jmx_top_x": "atbyw:block/redstone_cross_path_top_on",
-                    "jmx_top_z": "atbyw:block/redstone_cross_path_top",
-                    "jmx_side_x": "atbyw:block/redstone_cross_path_side_on",
-                    "jmx_side_z": "atbyw:block/redstone_cross_path_side"
-                },
-                {
-                    "jmx_top_x": "atbyw:block/redstone_cross_path_top_on_e",
-                    "jmx_side_x": "atbyw:block/redstone_cross_path_side_on_e"
-                }
+                { "jmx_all": "atbyw:block/redstone_cross_path_on" },
+                { "jmx_all": "atbyw:block/redstone_cross_path_on_e" }
             ]
         }
     }

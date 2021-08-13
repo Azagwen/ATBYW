@@ -1,13 +1,12 @@
-package net.azagwen.atbyw.block;
+package net.azagwen.atbyw.block.sign;
 
-import net.azagwen.atbyw.block.state.AtbywSignType;
 import net.minecraft.block.SignBlock;
 import net.minecraft.util.SignType;
 
-public class AtbywSignBlock extends SignBlock implements AtbywSign {
+public class SignBlockExt extends SignBlock implements AtbywSign {
     private final AtbywSignType type;
 
-    public AtbywSignBlock(AtbywSignType signType, Settings settings) {
+    public SignBlockExt(AtbywSignType signType, Settings settings) {
         super(settings, SignType.OAK);
         this.type = signType;
     }
