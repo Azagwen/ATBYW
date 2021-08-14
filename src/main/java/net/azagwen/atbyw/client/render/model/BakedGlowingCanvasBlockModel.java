@@ -24,18 +24,34 @@ public class BakedGlowingCanvasBlockModel extends ForwardingBakedModel {
         this.wrapped = baseModel;
     }
 
+    //░░░░░░░░░░
+    //░░░░░░░░░░
+    //░░░░░░░░░░
+    //▓▓▓▓▓▓▓▓▓▓
     private Face createBottomEdgeFace(Sprite sprite, Direction cullFace) {
         return new Face(0, 0, 16, 16, sprite, true, cullFace);
     }
 
+    //▓▓▓▓▓▓▓▓▓▓
+    //░░░░░░░░░░
+    //░░░░░░░░░░
+    //░░░░░░░░░░
     private Face createTopEdgeFace(Sprite sprite, Direction cullFace) {
         return new Face(16, 16, 32, 32, sprite, true, cullFace);
     }
 
+    //▓▓░░░░░░░░
+    //▓▓░░░░░░░░
+    //▓▓░░░░░░░░
+    //▓▓░░░░░░░░
     private Face createLeftEdgeFace(Sprite sprite, Direction cullFace) {
         return new Face(16, 0, 32, 16, sprite, true, cullFace);
     }
 
+    //░░░░░░░░▓▓
+    //░░░░░░░░▓▓
+    //░░░░░░░░▓▓
+    //░░░░░░░░▓▓
     private Face createRightEdgeFace(Sprite sprite, Direction cullFace) {
         return new Face(0, 16, 16, 32, sprite, true, cullFace);
     }
@@ -90,6 +106,8 @@ public class BakedGlowingCanvasBlockModel extends ForwardingBakedModel {
         var from = new Vec3f(0.0F, 0.0F, 0.0F);
         var to = new Vec3f(16.0F, 16.0F, 16.0F);
         var faceDataMap = Maps.<Direction, Face>newHashMap();
+
+        blockView.getBlockState(pos.north());
 
         for (var direction : Direction.values()) {
             faceDataMap.put(direction, new Face(0, 0, 16, 16, faceSprite, true, direction));
