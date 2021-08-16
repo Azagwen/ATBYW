@@ -130,13 +130,16 @@ public class AtbywMain implements ModInitializer {
 			AtbywRRP.init_mi();
 		}
 
-		for (var face : ConnectionTypes.values()) {
-			System.out.println(face.toString());
+		for (byte i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i++){
+			for (var type : ConnectionTypes.values()) {
+				if (i == type.getByteIndex()) {
+					System.out.println(type);
+				}
+			}
 		}
 
 		AtbywItems.init();
 		AtbywBlocks.init();
-//		AtbywWorldGen.init();
 		AtbywRRP.init();
 		AtbywStats.init();
 		AtbywBlockEntityTypes.init();
