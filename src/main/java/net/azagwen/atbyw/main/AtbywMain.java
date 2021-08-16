@@ -7,6 +7,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityTypes;
 import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.client.render.model.ConnectionTypes;
 import net.azagwen.atbyw.datagen.recipe.registry.RecipeRegistry;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
@@ -127,6 +128,10 @@ public class AtbywMain implements ModInitializer {
 			}).filter(success -> !success).ifPresent(success -> LOGGER.error("Unable to Load \"atbyw_mi/mod_interaction_resources\"."));
 
 			AtbywRRP.init_mi();
+		}
+
+		for (var face : ConnectionTypes.values()) {
+			System.out.println(face.toString());
 		}
 
 		AtbywItems.init();

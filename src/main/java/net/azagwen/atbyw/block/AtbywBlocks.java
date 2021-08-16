@@ -534,6 +534,8 @@ public class AtbywBlocks {
     public static final Block CACTUS_SIGN = new SignBlockExt(AtbywSignType.CACTUS, FabricBlockSettings.copyOf(Blocks.OAK_SIGN).breakByTool(FabricToolTags.AXES));
     public static final Block CACTUS_WALL_SIGN = new WallSignBlockExt(AtbywSignType.CACTUS, FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).breakByTool(FabricToolTags.AXES));
 
+    public static final Block CTM_DEBUG_BLOCK = new Block(FabricBlockSettings.copyOf(Blocks.STONE));
+
     public static void init() {
 
         //ATBYW REDSTONE
@@ -686,6 +688,7 @@ public class AtbywBlocks {
 
         //ATBYW MISC
         registerBlock(false, MISC_TAB, "dev_block", DEVELOPER_BLOCK);
+        registerBlock(false, MISC_TAB, "ctm_debug_block", CTM_DEBUG_BLOCK);
 
         //Item-less blocks
         registerBlockOnly("shroomstick", SHROOMSTICK);

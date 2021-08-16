@@ -167,7 +167,7 @@ public class ModelUtil {
      * @param to        3D Vector of the end point.
      * @param faceData  Map of a direction and a Face instance which stores the face data.
      */
-    public static void emitBox(QuadEmitter emitter, Vec3f from, Vec3f to, Map<Direction, Face> faceData, boolean shaded, int tintIndex) {
+    public static void emitBox(QuadEmitter emitter, Vec3f from, Vec3f to, Map<Direction, Face> faceData, boolean shaded, boolean useTint, int tintIndex) {
         var xFrom = from.getX();
         var yFrom = from.getY();
         var zFrom = from.getZ();
@@ -202,7 +202,9 @@ public class ModelUtil {
                 }
                 emitter.spriteBake(0, sprite, MutableQuadView.BAKE_ROTATE_NONE);
                 emitter.cullFace(faceData.get(direction).cullFace());
-                emitter.colorIndex(tintIndex);
+                if (useTint) {
+                    emitter.colorIndex(tintIndex);
+                }
                 setUvOnSprite(emitter, sprite, u1, v1, u2, v2);
                 emitTexturedData(emitter, isFaceEmissive, shaded);
             }

@@ -40,9 +40,8 @@ public abstract class ModelLoaderMixin {
                         this.putModel(id, new UnbakedForwardingModel(unbakedModel, BakedGlowingCanvasBlockModel::new));
                         ci.cancel();
                     }
-                } else {
-                    if (this.isModelOf(modelId, AtbywItems.COLORIZER)) {
-                        this.putModel(id, new UnbakedForwardingModel(unbakedModel, BakedGlowingCanvasBlockModel::new));
+                    if (this.isModelOf(modelId, AtbywBlocks.CTM_DEBUG_BLOCK)) {
+                        this.putModel(id, new UnbakedForwardingModel(unbakedModel, (model) -> new BakedConnectedTextureModel(model, SpriteRegistry.CTM_TEMPLATE)));
                         ci.cancel();
                     }
                 }

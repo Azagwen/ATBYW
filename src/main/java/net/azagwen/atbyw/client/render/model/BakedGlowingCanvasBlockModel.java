@@ -107,12 +107,10 @@ public class BakedGlowingCanvasBlockModel extends ForwardingBakedModel {
         var to = new Vec3f(16.0F, 16.0F, 16.0F);
         var faceDataMap = Maps.<Direction, Face>newHashMap();
 
-        blockView.getBlockState(pos.north());
-
         for (var direction : Direction.values()) {
             faceDataMap.put(direction, new Face(0, 0, 16, 16, faceSprite, true, direction));
         }
-        ModelUtil.emitBox(emitter, from, to, faceDataMap, false, 0);
+        ModelUtil.emitBox(emitter, from, to, faceDataMap, false, true, 0);
 
         for (var direction : Direction.values()) {
             switch (direction) {
@@ -120,7 +118,7 @@ public class BakedGlowingCanvasBlockModel extends ForwardingBakedModel {
                 case NORTH, SOUTH -> this.putFaceDataOnZ(faceDataMap, edgeSprite, direction);
                 case EAST, WEST -> this.putFaceDataOnX(faceDataMap, edgeSprite, direction);
             }
-            ModelUtil.emitBox(emitter, from, to, faceDataMap, false, 0);
+            ModelUtil.emitBox(emitter, from, to, faceDataMap, false, true, 0);
         }
     }
 }
