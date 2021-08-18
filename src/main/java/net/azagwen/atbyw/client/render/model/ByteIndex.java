@@ -1,10 +1,28 @@
 package net.azagwen.atbyw.client.render.model;
 
+import com.google.common.collect.Sets;
+
+import java.util.Set;
+
+//Reference pattern
+//Also documented in debug CTM textures
+// 0  1  2
+// 7     3
+// 6  5  4
+
 public class ByteIndex {
     private final byte index;
 
     public ByteIndex(boolean b0, boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6, boolean b7) {
         this.index = this.getByteIndex(b0, b1, b2, b3, b4, b5, b6, b7);
+    }
+
+    public ByteIndex(int... connections) {
+        var set = Sets.<Byte>newHashSet();
+        for (var connection :connections) {
+            set.add((byte) connection);
+        }
+        this.index = this.byteIndexFromSet(set);
     }
 
     public byte getByte() {
@@ -25,6 +43,19 @@ public class ByteIndex {
         index = this.appendToByte(index, b6);
         index = this.appendToByte(index, b7);
         return index;
+    }
+
+    public byte byteIndexFromSet(Set<Byte> connections) {
+        return this.getByteIndex(
+                connections.contains((byte) 0),
+                connections.contains((byte) 1),
+                connections.contains((byte) 2),
+                connections.contains((byte) 3),
+                connections.contains((byte) 4),
+                connections.contains((byte) 5),
+                connections.contains((byte) 6),
+                connections.contains((byte) 7)
+        );
     }
 
     private byte appendToByte(byte initialValue, boolean appendedValue) {
