@@ -33,7 +33,9 @@ public class BakedConnectedTextureModel extends ForwardingBakedModel {
         for (var direction : Direction.values()) {
             var ownerBlock = blockView.getBlockState(pos).getBlock();
             var connections = ConnectedTextureHelper.getFaceConnections(blockView, pos, ownerBlock, direction);
-            faceDataMap.put(direction, ConnectedTextureHelper.chooseFace(connections, sprite, direction, direction, pos, false));
+            if (!blockView.getBlockState(pos.offset(direction)).isSideSolidFullSquare(blockView, pos.offset(direction), direction.getOpposite())) {
+                faceDataMap.put(direction, ConnectedTextureHelper.chooseFace(connections, sprite, direction, direction, pos, false));
+            }
         }
         ModelUtil.emitBox(emitter, from, to, faceDataMap, true, false, 0);
     }
