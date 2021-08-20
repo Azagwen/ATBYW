@@ -47,7 +47,17 @@ public class ConnectedTextureHelper {
         };
     }
 
-    public static Face chooseFace(ByteIndex byteIndex, Sprite sprite, Direction cullFace, Direction faceDir, BlockPos pos, boolean isEmissive) {
+    /**
+     * Resource-intensive, must be run as sparingly as possible in each Chunk.
+     *
+     * @param byteIndex     The "byte" index of the current face in-world, will be compared to every available indices from {@link ConnectionTypes}.
+     * @param sprite        The Sprite to use for the face being choosen. MUST match the Connected texture format of the mod.
+     * @param cullFace      The cullFace of this Face.
+     * @param isEmissive    Weither this face should have emissive shading or not.
+     *
+     * @return              A {@link Face} Object containing the required data to create a baked model Quad using this mod's utils.
+     */
+    public static Face chooseFace(ByteIndex byteIndex, Sprite sprite, Direction cullFace, boolean isEmissive) {
         var index = ConnectionTypes.ALL_SIDES.getFaceIndex();
 
         for (var type : ConnectionTypes.values()) {
@@ -59,8 +69,6 @@ public class ConnectedTextureHelper {
                 }
             }
         }
-
-//        System.out.println("Pos: "+pos.toString()+", Face: "+faceDir+", Connection Index: "+byteIndex.getByte()+", Binary Connections: "+byteIndex.getBinaryString());
 
         return makeConnectedTextureFace(index, sprite, cullFace, isEmissive);
     }

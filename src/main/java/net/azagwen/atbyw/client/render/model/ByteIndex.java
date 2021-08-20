@@ -46,16 +46,25 @@ public class ByteIndex {
     }
 
     public byte byteIndexFromSet(Set<Byte> connections) {
-        return this.getByteIndex(
-                connections.contains((byte) 0),
-                connections.contains((byte) 1),
-                connections.contains((byte) 2),
-                connections.contains((byte) 3),
-                connections.contains((byte) 4),
-                connections.contains((byte) 5),
-                connections.contains((byte) 6),
-                connections.contains((byte) 7)
-        );
+        var b0 = connections.contains((byte) 0);
+        var b1 = connections.contains((byte) 1);
+        var b2 = connections.contains((byte) 2);
+        var b3 = connections.contains((byte) 3);
+        var b4 = connections.contains((byte) 4);
+        var b5 = connections.contains((byte) 5);
+        var b6 = connections.contains((byte) 6);
+        var b7 = connections.contains((byte) 7);
+        return this.getByteIndex(b0, b1, b2, b3, b4, b5, b6, b7);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null) {
+            if (obj instanceof ByteIndex that) {
+                return this.index == that.index;
+            }
+        }
+        return false;
     }
 
     private byte appendToByte(byte initialValue, boolean appendedValue) {
@@ -64,5 +73,9 @@ public class ByteIndex {
 
     private byte booleanToByte(boolean b) {
         return (byte) (b ? 1 : 0);
+    }
+
+    public void printByte() {
+        System.out.println(this.index);
     }
 }

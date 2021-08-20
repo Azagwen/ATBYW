@@ -129,4 +129,14 @@ public enum ConnectionTypes {
             System.out.println("[ Name: "+this.name()+", FaceIndex: "+this.faceIndex+", ByteIndex: "+typeByteIndex +", Binary: "+ConnectionTypesHelper.getBinaryString(typeByteIndex)+" ]");
         }
     }
+
+    public void printAll() {
+        for (byte i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i++){
+            for (var type : values()) {
+                if (i == type.getRequiredByteIndex()) {
+                    type.printType();
+                }
+            }
+        }
+    }
 }

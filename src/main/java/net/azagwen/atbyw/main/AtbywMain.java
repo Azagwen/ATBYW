@@ -130,14 +130,6 @@ public class AtbywMain implements ModInitializer {
 			AtbywRRP.init_mi();
 		}
 
-		for (byte i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i++){
-			for (var type : ConnectionTypes.values()) {
-				if (i == type.getRequiredByteIndex()) {
-					type.printType();
-				}
-			}
-		}
-
 		AtbywItems.init();
 		AtbywBlocks.init();
 		AtbywRRP.init();

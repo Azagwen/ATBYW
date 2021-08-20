@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.client.render.model;
 
 import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.ints.AbstractInt2IntMap;
 import net.fabricmc.fabric.api.renderer.v1.model.ForwardingBakedModel;
 import net.fabricmc.fabric.api.renderer.v1.render.RenderContext;
 import net.minecraft.block.BlockState;
@@ -34,7 +35,7 @@ public class BakedConnectedTextureModel extends ForwardingBakedModel {
             var ownerBlock = blockView.getBlockState(pos).getBlock();
             var connections = ConnectedTextureHelper.getFaceConnections(blockView, pos, ownerBlock, direction);
             if (!blockView.getBlockState(pos.offset(direction)).isSideSolidFullSquare(blockView, pos.offset(direction), direction.getOpposite())) {
-                faceDataMap.put(direction, ConnectedTextureHelper.chooseFace(connections, sprite, direction, direction, pos, false));
+                faceDataMap.put(direction, ConnectedTextureHelper.chooseFace(connections, sprite, direction, false));
             }
         }
         ModelUtil.emitBox(emitter, from, to, faceDataMap, true, false, 0);
