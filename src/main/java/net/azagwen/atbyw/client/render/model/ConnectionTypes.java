@@ -126,7 +126,11 @@ public enum ConnectionTypes {
 
     public void printType() {
         for (var typeByteIndex : this.getByteIndexPowerSet()) {
-            System.out.println("[ Name: "+this.name()+", FaceIndex: "+this.faceIndex+", ByteIndex: "+typeByteIndex +", Binary: "+ConnectionTypesHelper.getBinaryString(typeByteIndex)+" ]");
+            for (byte i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i++) {
+                if (i == typeByteIndex) {
+                    System.out.println("[ Name: " + this.name() + ", FaceIndex: " + this.faceIndex + ", ByteIndex: " + typeByteIndex + ", Binary: " + ConnectionTypesHelper.getBinaryString(typeByteIndex) + " ]");
+                }
+            }
         }
     }
 
