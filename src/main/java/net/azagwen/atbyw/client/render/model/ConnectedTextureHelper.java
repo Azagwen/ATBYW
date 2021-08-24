@@ -18,7 +18,7 @@ public class ConnectedTextureHelper {
      *
      * @return              A {@link ByteIndex} Object containing face connection data for the given direction.
      */
-    public ByteIndex getFaceConnections(BlockRenderView blockView, BlockPos pos, Block expectedBlock, Direction faceDirection) {
+    public static ByteIndex getFaceConnections(BlockRenderView blockView, BlockPos pos, Block expectedBlock, Direction faceDirection) {
         var up = blockView.getBlockState(pos.up()).isOf(expectedBlock);                             //0
         var down = blockView.getBlockState(pos.down()).isOf(expectedBlock);                         //1
         var north = blockView.getBlockState(pos.north()).isOf(expectedBlock);                       //2
@@ -69,7 +69,7 @@ public class ConnectedTextureHelper {
     /**
      * Resource-intensive, must be run as sparingly as possible in each Chunk.
      *
-     * @param byteIndex     The "byte" index of the current face in-world, will be compared to every available indices from {@link ConnectionTypes}.
+     * @param byteIndex     The "byte" index of the current face in-world, will be compared to every available indices from {@link ConnectionType}.
      * @param sprite        The Sprite to use for the face being choosen. MUST match the Connected texture format of the mod.
      * @param cullFace      The cullFace of this Face.
      * @param isEmissive    Weither this face should have emissive shading or not.
@@ -77,18 +77,14 @@ public class ConnectedTextureHelper {
      * @return              A {@link Face} Object containing the required data to create a baked model Quad using this mod's utils.
      */
     public static Face chooseFace(ByteIndex byteIndex, Sprite sprite, Direction cullFace, boolean isEmissive) {
-        var index = ConnectionTypes.ALL_SIDES.getFaceIndex();
-
-        for (var type : ConnectionTypes.values()) {
-            for (var typeByteIndex : type.getByteIndexPowerSet()) {
-                var invertedOdds = ((~typeByteIndex & 0xAA) | (typeByteIndex & 0x55));  //Unused, kept as example.
-                if (byteIndex.getByte() == typeByteIndex) {
-                    index = type.getFaceIndex();
-                    break;
-                }
-            }
+        var index = ConnectionType.CONNECTIONS.get((byte) 0).getFaceIndex();
+        var pickedIndex = ConnectionType.CONNECTIONS.get(byteIndex.getByte());
+        if (pickedIndex != null) {
+            index = pickedIndex.getFaceIndex();
+        } else {
+            System.out.println("Null value found! Index: " + byteIndex.getByte());
         }
-
+//        var invertedOdds = ((~typeByteIndex & 0xAA) | (typeByteIndex & 0x55));  //Unused, kept as example.
         return makeConnectedTextureFace(index, sprite, cullFace, isEmissive);
     }
 
