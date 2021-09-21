@@ -1,10 +1,10 @@
 package net.azagwen.atbyw.archived;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.AtbywBlocks;
 import net.azagwen.atbyw.block.TimerRepeaterBlock;
+import net.azagwen.atbyw.block.registry.RedstoneBlockRegistry;
 import net.azagwen.atbyw.client.render.AtbywEntityModelLayers;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -39,7 +39,7 @@ public class TimerRepeaterBlockEntityRenderer implements BlockEntityRenderer<Tim
     public void render(TimerRepeaterBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         var world = entity.getWorld();
         var isWorldNotNull = world != null;
-        var blockState = isWorldNotNull ? entity.getCachedState() : AtbywBlocks.TIMER_REPEATER.getDefaultState().with(TimerRepeaterBlock.FACING, Direction.NORTH);
+        var blockState = isWorldNotNull ? entity.getCachedState() : RedstoneBlockRegistry.TIMER_REPEATER.getDefaultState().with(TimerRepeaterBlock.FACING, Direction.NORTH);
         var isPowered = blockState.get(TimerRepeaterBlock.POWERED);
         var timerDelay = blockState.get(TimerRepeaterBlock.TIMER_DELAY);
 

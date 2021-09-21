@@ -1,22 +1,14 @@
 package net.azagwen.atbyw.block.stairs;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
 import net.azagwen.atbyw.block.slabs.SpreadableSlabBlock;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.FluidTags;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
 import java.util.Random;
@@ -47,7 +39,7 @@ public class SpreadableStairsBlock extends StairsBlockSubClass {
         if (!canSurvive(state, world, pos)) {
             BlockState oldState = world.getBlockState(pos);
 
-            world.setBlockState(pos, AtbywBlocks.DIRT_STAIRS.getStateWithProperties(oldState));
+            world.setBlockState(pos, BuildingBlockRegistry.DIRT_STAIRS.getStateWithProperties(oldState));
         }
         else {
             var blockState = this.getDefaultState();
@@ -61,16 +53,16 @@ public class SpreadableStairsBlock extends StairsBlockSubClass {
 
                     if (!blockPos.equals(downPos)) {
                         if (!blockPos.equals(upPos)) {
-                            if (world.getBlockState(blockPos).isOf(AtbywBlocks.DIRT_STAIRS) && canSpread(blockState, world, blockPos)) {
+                            if (world.getBlockState(blockPos).isOf(BuildingBlockRegistry.DIRT_STAIRS) && canSpread(blockState, world, blockPos)) {
                                 world.setBlockState(blockPos, this.getStateWithProperties(newState));
-                            } else if (world.getBlockState(blockPos).isOf(AtbywBlocks.DIRT_SLAB) && canSpread(blockState, world, blockPos)) {
+                            } else if (world.getBlockState(blockPos).isOf(BuildingBlockRegistry.DIRT_SLAB) && canSpread(blockState, world, blockPos)) {
                                 Block self = world.getBlockState(pos).getBlock();
 
-                                if (self == AtbywBlocks.GRASS_BLOCK_STAIRS)
-                                    world.setBlockState(blockPos, AtbywBlocks.GRASS_BLOCK_SLAB.getDefaultState()
+                                if (self == BuildingBlockRegistry.GRASS_BLOCK_STAIRS)
+                                    world.setBlockState(blockPos, BuildingBlockRegistry.GRASS_BLOCK_SLAB.getDefaultState()
                                             .with(SpreadableSlabBlock.TYPE, newState.get(SpreadableSlabBlock.TYPE)));
-                                else if (self == AtbywBlocks.MYCELIUM_STAIRS)
-                                    world.setBlockState(blockPos, AtbywBlocks.MYCELIUM_SLAB.getDefaultState()
+                                else if (self == BuildingBlockRegistry.MYCELIUM_STAIRS)
+                                    world.setBlockState(blockPos, BuildingBlockRegistry.MYCELIUM_SLAB.getDefaultState()
                                             .with(SpreadableSlabBlock.TYPE, newState.get(SpreadableSlabBlock.TYPE)));
                             } else if (world.getBlockState(blockPos).isOf(Blocks.DIRT) && canSpread(blockState, world, blockPos)) {
                                 world.setBlockState(blockPos, this.fullBlockEquivalent.getDefaultState());

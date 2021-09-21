@@ -1,8 +1,9 @@
 package net.azagwen.atbyw.world.structure;
 
 import com.google.common.collect.ImmutableList;
-import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.RedstoneLanternBlock;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
+import net.azagwen.atbyw.block.registry.RedstoneBlockRegistry;
 import net.azagwen.atbyw.main.AtbywMain;
 import net.azagwen.atbyw.world.AtbywWorldGen;
 import net.minecraft.block.Blocks;
@@ -35,7 +36,7 @@ public class StructureProcessors {
                                     new StructureProcessorRule(
                                             new RandomBlockMatchRuleTest(Blocks.DIRT, 0.125F),
                                             AlwaysTrueRuleTest.INSTANCE,
-                                            AtbywBlocks.DIRT_SLAB.getDefaultState()
+                                            BuildingBlockRegistry.DIRT_SLAB.getDefaultState()
                                     )
                             )
                     )
@@ -78,7 +79,7 @@ public class StructureProcessors {
                                     new StructureProcessorRule(
                                             new RandomBlockMatchRuleTest(Blocks.DIRT, 0.125F),
                                             AlwaysTrueRuleTest.INSTANCE,
-                                            AtbywBlocks.DIRT_SLAB.getDefaultState()
+                                            BuildingBlockRegistry.DIRT_SLAB.getDefaultState()
                                     )
                             )
                     ),
@@ -109,17 +110,17 @@ public class StructureProcessors {
                     new RuleStructureProcessor(
                             ImmutableList.of(
                                     new StructureProcessorRule(
-                                            new RandomBlockMatchRuleTest(AtbywBlocks.REDSTONE_LANTERN, 0.5F),
+                                            new RandomBlockMatchRuleTest(RedstoneBlockRegistry.REDSTONE_LANTERN, 0.5F),
                                             AlwaysTrueRuleTest.INSTANCE,
-                                            AtbywBlocks.REDSTONE_LANTERN.getDefaultState().with(RedstoneLanternBlock.POWER_INTENSITY, 10).with(RedstoneLanternBlock.HANGING, true)
+                                            RedstoneBlockRegistry.REDSTONE_LANTERN.getDefaultState().with(RedstoneLanternBlock.POWER_INTENSITY, 10).with(RedstoneLanternBlock.HANGING, true)
                                     ),
                                     new StructureProcessorRule(
-                                            new RandomBlockMatchRuleTest(AtbywBlocks.REDSTONE_LANTERN, 0.5F),
+                                            new RandomBlockMatchRuleTest(RedstoneBlockRegistry.REDSTONE_LANTERN, 0.5F),
                                             AlwaysTrueRuleTest.INSTANCE,
-                                            AtbywBlocks.REDSTONE_LANTERN.getDefaultState().with(RedstoneLanternBlock.POWER_INTENSITY, 5).with(RedstoneLanternBlock.HANGING, true)
+                                            RedstoneBlockRegistry.REDSTONE_LANTERN.getDefaultState().with(RedstoneLanternBlock.POWER_INTENSITY, 5).with(RedstoneLanternBlock.HANGING, true)
                                     ),
                                     new StructureProcessorRule(
-                                            new RandomBlockMatchRuleTest(AtbywBlocks.REDSTONE_LANTERN, 0.125F),
+                                            new RandomBlockMatchRuleTest(RedstoneBlockRegistry.REDSTONE_LANTERN, 0.125F),
                                             AlwaysTrueRuleTest.INSTANCE,
                                             Blocks.LANTERN.getDefaultState().with(RedstoneLanternBlock.HANGING, true)
                                     )
@@ -133,17 +134,17 @@ public class StructureProcessors {
                     new RuleStructureProcessor(
                             ImmutableList.of(
                                     new StructureProcessorRule(
-                                            new RandomBlockMatchRuleTest(AtbywBlocks.REDSTONE_LANTERN, 0.5F),
+                                            new RandomBlockMatchRuleTest(RedstoneBlockRegistry.REDSTONE_LANTERN, 0.5F),
                                             AlwaysTrueRuleTest.INSTANCE,
-                                            AtbywBlocks.REDSTONE_LANTERN.getDefaultState().with(RedstoneLanternBlock.POWER_INTENSITY, 10)
+                                            RedstoneBlockRegistry.REDSTONE_LANTERN.getDefaultState().with(RedstoneLanternBlock.POWER_INTENSITY, 10)
                                     ),
                                     new StructureProcessorRule(
-                                            new RandomBlockMatchRuleTest(AtbywBlocks.REDSTONE_LANTERN, 0.5F),
+                                            new RandomBlockMatchRuleTest(RedstoneBlockRegistry.REDSTONE_LANTERN, 0.5F),
                                             AlwaysTrueRuleTest.INSTANCE,
-                                            AtbywBlocks.REDSTONE_LANTERN.getDefaultState().with(RedstoneLanternBlock.POWER_INTENSITY, 5)
+                                            RedstoneBlockRegistry.REDSTONE_LANTERN.getDefaultState().with(RedstoneLanternBlock.POWER_INTENSITY, 5)
                                     ),
                                     new StructureProcessorRule(
-                                            new RandomBlockMatchRuleTest(AtbywBlocks.REDSTONE_LANTERN, 0.125F),
+                                            new RandomBlockMatchRuleTest(RedstoneBlockRegistry.REDSTONE_LANTERN, 0.125F),
                                             AlwaysTrueRuleTest.INSTANCE,
                                             Blocks.LANTERN.getDefaultState()
                                     )

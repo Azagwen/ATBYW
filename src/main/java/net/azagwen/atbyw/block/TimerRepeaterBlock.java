@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 public class TimerRepeaterBlock extends AbstractRedstoneGateBlock {
     public static final IntProperty TIMER_DELAY;
 
-    protected TimerRepeaterBlock(Settings settings) {
+    public TimerRepeaterBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(TIMER_DELAY, 1).with(POWERED, false));
     }

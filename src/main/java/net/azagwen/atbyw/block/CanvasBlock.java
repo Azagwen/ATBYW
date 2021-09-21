@@ -1,6 +1,8 @@
 package net.azagwen.atbyw.block;
 
 import net.azagwen.atbyw.block.entity.CanvasBlockEntity;
+import net.azagwen.atbyw.block.registry.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.DecorationBlockRegistry;
 import net.azagwen.atbyw.item.ColorizerItem;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -61,7 +63,7 @@ public class CanvasBlock extends BlockWithEntity {
                 var hitPos = hit.getBlockPos();
                 var oldColorNbt = world.getBlockEntity(hitPos).writeNbt(new NbtCompound());
 
-                world.setBlockState(hitPos, AtbywBlocks.GLOWING_CANVAS_BLOCK.getDefaultState());
+                world.setBlockState(hitPos, DecorationBlockRegistry.GLOWING_CANVAS_BLOCK.getDefaultState());
                 world.getBlockEntity(hitPos).readNbt(oldColorNbt);
                 world.getBlockEntity(hitPos).toUpdatePacket();
                 world.playSound(player, hitPos, SoundEvents.ITEM_GLOW_INK_SAC_USE, SoundCategory.BLOCKS, 1.0F, 1.0F);

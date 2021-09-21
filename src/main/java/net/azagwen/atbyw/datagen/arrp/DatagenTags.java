@@ -1,7 +1,8 @@
 package net.azagwen.atbyw.datagen.arrp;
 
 import com.google.common.collect.Lists;
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.RedstoneBlockRegistry;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
 import net.azagwen.atbyw.group.AtbywItemGroup;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.devtech.arrp.json.tags.JTag;
@@ -39,28 +40,28 @@ public class DatagenTags {
     }
 
     public static final ArrayList<Block> BOOKSHELVES = Lists.newArrayList(
-            AtbywBlocks.SPRUCE_BOOKSHELF,
-            AtbywBlocks.BIRCH_BOOKSHELF,
-            AtbywBlocks.JUNGLE_BOOKSHELF,
-            AtbywBlocks.ACACIA_BOOKSHELF,
-            AtbywBlocks.DARK_OAK_BOOKSHELF,
-            AtbywBlocks.CRIMSON_BOOKSHELF,
-            AtbywBlocks.WARPED_BOOKSHELF,
-            AtbywBlocks.OAK_BOOKSHELF_TOGGLE,
-            AtbywBlocks.SPRUCE_BOOKSHELF_TOGGLE,
-            AtbywBlocks.BIRCH_BOOKSHELF_TOGGLE,
-            AtbywBlocks.JUNGLE_BOOKSHELF_TOGGLE,
-            AtbywBlocks.ACACIA_BOOKSHELF_TOGGLE,
-            AtbywBlocks.DARK_OAK_BOOKSHELF_TOGGLE,
-            AtbywBlocks.CRIMSON_BOOKSHELF_TOGGLE,
-            AtbywBlocks.WARPED_BOOKSHELF_TOGGLE
+            BuildingBlockRegistry.SPRUCE_BOOKSHELF,
+            BuildingBlockRegistry.BIRCH_BOOKSHELF,
+            BuildingBlockRegistry.JUNGLE_BOOKSHELF,
+            BuildingBlockRegistry.ACACIA_BOOKSHELF,
+            BuildingBlockRegistry.DARK_OAK_BOOKSHELF,
+            BuildingBlockRegistry.CRIMSON_BOOKSHELF,
+            BuildingBlockRegistry.WARPED_BOOKSHELF,
+            RedstoneBlockRegistry.OAK_BOOKSHELF_TOGGLE,
+            RedstoneBlockRegistry.SPRUCE_BOOKSHELF_TOGGLE,
+            RedstoneBlockRegistry.BIRCH_BOOKSHELF_TOGGLE,
+            RedstoneBlockRegistry.JUNGLE_BOOKSHELF_TOGGLE,
+            RedstoneBlockRegistry.ACACIA_BOOKSHELF_TOGGLE,
+            RedstoneBlockRegistry.DARK_OAK_BOOKSHELF_TOGGLE,
+            RedstoneBlockRegistry.CRIMSON_BOOKSHELF_TOGGLE,
+            RedstoneBlockRegistry.WARPED_BOOKSHELF_TOGGLE
     );
 
     public static final ArrayList<Block> LARGE_CHAIN_TRANSITION_BOTTOM = Lists.newArrayList(
             Blocks.CHAIN,
             Blocks.LANTERN,
             Blocks.SOUL_LANTERN,
-            AtbywBlocks.REDSTONE_LANTERN
+            RedstoneBlockRegistry.REDSTONE_LANTERN
     );
 
     public static final ArrayList<Block> LARGE_CHAIN_TRANSITION_TOP = Lists.newArrayList(

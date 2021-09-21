@@ -11,7 +11,7 @@ import net.minecraft.state.property.Properties;
 public class SurfaceFacingBlock extends FacingBlock {
     private static final DirectionProperty FACING;
 
-    protected SurfaceFacingBlock(Settings settings) {
+    public SurfaceFacingBlock(Settings settings) {
         super(settings);
     }
 

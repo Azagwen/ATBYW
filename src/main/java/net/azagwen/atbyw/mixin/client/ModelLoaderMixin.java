@@ -1,10 +1,10 @@
 package net.azagwen.atbyw.mixin.client;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.DecorationBlockRegistry;
+import net.azagwen.atbyw.block.registry.RedstoneBlockRegistry;
 import net.azagwen.atbyw.client.render.model.*;
-import net.azagwen.atbyw.item.AtbywItems;
 import net.azagwen.atbyw.main.AtbywMain;
-import net.azagwen.atbyw.util.AtbywUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.model.ModelLoader;
 import net.minecraft.client.render.model.UnbakedModel;
@@ -13,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -32,11 +31,11 @@ public abstract class ModelLoaderMixin {
         if (id instanceof ModelIdentifier modelId && !(unbakedModel instanceof AtbywUnbakedModel)) {
             if (modelId.getNamespace().equals(AtbywMain.ATBYW)) {
                 if (!modelId.getVariant().equals("inventory")) {
-                    if (this.isModelOf(modelId, AtbywBlocks.TIMER_REPEATER)) {
+                    if (this.isModelOf(modelId, RedstoneBlockRegistry.TIMER_REPEATER)) {
                         this.putModel(id, new UnbakedForwardingModel(unbakedModel, BakedTimerRepeaterDigitModel::new));
                         ci.cancel();
                     }
-                    if (this.isModelOf(modelId, AtbywBlocks.GLOWING_CANVAS_BLOCK)) {
+                    if (this.isModelOf(modelId, DecorationBlockRegistry.GLOWING_CANVAS_BLOCK)) {
                         this.putModel(id, new UnbakedForwardingModel(unbakedModel, BakedGlowingCanvasBlockModel::new));
                         ci.cancel();
                     }

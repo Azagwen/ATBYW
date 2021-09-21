@@ -1,12 +1,80 @@
 package net.azagwen.atbyw.client.render.model;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.texture.Sprite;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockRenderView;
+import org.jetbrains.annotations.Nullable;
 
 public class ConnectedTextureHelper {
+
+    /**
+     * Provides a blockstate for the given "direction" integer.
+     *
+     * @param pos           The Position of the model's "owner" block.
+     * @param direction     int value of the chosen direction (see comments in switch for correspondence).
+     *
+     * @return              A {@link BlockState} corresponding to the given direction.
+     */
+    private static BlockPos getPosInDir(BlockPos pos, int direction) {
+        return switch (direction) {
+            default -> (pos.up());                      //up                0 / any missing value
+            case 1 -> (pos.down());                     //down              1
+            case 2 -> (pos.north());                    //north             2
+            case 3 -> (pos.south());                    //south             3
+            case 4 -> (pos.east());                     //east              4
+            case 5 -> (pos.west());                     //west              5
+            case 6 -> (pos.north().east());             //north-east        6
+            case 7 -> (pos.north().west());             //north-west        7
+            case 8 -> (pos.south().east());             //south-east        8
+            case 9 -> (pos.south().west());             //south-west        9
+            case 10 -> (pos.up().north());              //up-north          10
+            case 11 -> (pos.up().south());              //up-south          11
+            case 12 -> (pos.up().east());               //up-east           12
+            case 13 -> (pos.up().west());               //up-west           13
+            case 14 -> (pos.down().north());            //down-north        14
+            case 15 -> (pos.down().south());            //down-south        15
+            case 16 -> (pos.down().east());             //down-east         16
+            case 17 -> (pos.down().west());             //down-west         17
+            case 18 -> (pos.north().east().up());       //north-east-up     18
+            case 19 -> (pos.north().west().up());       //north-west-up     19
+            case 20 -> (pos.south().east().up());       //south-east-up     20
+            case 21 -> (pos.south().west().up());       //south-west-up     21
+            case 22 -> (pos.north().east().down());     //north-east-down   22
+            case 23 -> (pos.north().west().down());     //north-west-down   23
+            case 24 -> (pos.south().east().down());     //south-east-down   24
+            case 25 -> (pos.south().west().down());     //south-west-down   25
+        };
+    }
+
+    private static BlockState getStateInDir(BlockRenderView blockView, BlockPos pos, int direction) {
+        return blockView.getBlockState(getPosInDir(pos, direction));
+    }
+
+    /**
+     * Provides every possible adjacent state presence in the shape of boolean array.
+     *
+     * @param blockView     An access to the world.
+     * @param pos           The Position of the model's "owner" block.
+     *
+     * @return              A boolean array of size 26 (0-25) containing data on weither a certain block is present in X direction.
+     */
+    private static boolean[] hasStateInDirArray(BlockRenderView blockView, BlockPos pos, @Nullable Block target) {
+        var result = new boolean[26];
+        for (var i = 0; i < result.length; i++) {
+            var state = getStateInDir(blockView, pos, i);
+            if (target != null) {
+                result[i] = state.isOf(target);
+            } else {
+                var isFullCube = state.isFullCube(blockView, getPosInDir(pos, i));
+                var isOpaque = state.isOpaque();
+                result[i] = isFullCube && isOpaque;
+            }
+        }
+        return result;
+    }
 
     /**
      * Generates a {@link ByteIndex} that contains face connection data based on the input parameters.
@@ -19,50 +87,23 @@ public class ConnectedTextureHelper {
      * @return              A {@link ByteIndex} Object containing face connection data for the given direction.
      */
     public static ByteIndex getFaceConnections(BlockRenderView blockView, BlockPos pos, Block expectedBlock, Direction faceDirection) {
-        var up = blockView.getBlockState(pos.up()).isOf(expectedBlock);                             //0
-        var down = blockView.getBlockState(pos.down()).isOf(expectedBlock);                         //1
-        var north = blockView.getBlockState(pos.north()).isOf(expectedBlock);                       //2
-        var south = blockView.getBlockState(pos.south()).isOf(expectedBlock);                       //3
-        var east = blockView.getBlockState(pos.east()).isOf(expectedBlock);                         //4
-        var west = blockView.getBlockState(pos.west()).isOf(expectedBlock);                         //5
+        var connectingStates = hasStateInDirArray(blockView, pos, expectedBlock);
+        var otherStates = hasStateInDirArray(blockView, pos, null);
 
-        var northEast = blockView.getBlockState(pos.north().east()).isOf(expectedBlock);            //6
-        var northWest = blockView.getBlockState(pos.north().west()).isOf(expectedBlock);            //7
-        var southEast = blockView.getBlockState(pos.south().east()).isOf(expectedBlock);            //8
-        var southWest = blockView.getBlockState(pos.south().west()).isOf(expectedBlock);            //9
-
-        var upNorth = blockView.getBlockState(pos.up().north()).isOf(expectedBlock);                //10
-        var upSouth = blockView.getBlockState(pos.up().south()).isOf(expectedBlock);                //11
-        var upEast = blockView.getBlockState(pos.up().east()).isOf(expectedBlock);                  //12
-        var upWest = blockView.getBlockState(pos.up().west()).isOf(expectedBlock);                  //13
-        var downNorth = blockView.getBlockState(pos.down().north()).isOf(expectedBlock);            //14
-        var downSouth = blockView.getBlockState(pos.down().south()).isOf(expectedBlock);            //15
-        var downEast = blockView.getBlockState(pos.down().east()).isOf(expectedBlock);              //16
-        var downWest = blockView.getBlockState(pos.down().west()).isOf(expectedBlock);              //17
-
-        var upNorthEast = blockView.getBlockState(pos.north().east().up()).isOf(expectedBlock);     //18
-        var upNorthWest = blockView.getBlockState(pos.north().west().up()).isOf(expectedBlock);     //19
-        var upSouthEast = blockView.getBlockState(pos.south().east().up()).isOf(expectedBlock);     //20
-        var upSouthWest = blockView.getBlockState(pos.south().west().up()).isOf(expectedBlock);     //21
-        var downNorthEast = blockView.getBlockState(pos.north().east().down()).isOf(expectedBlock); //22
-        var downNorthWest = blockView.getBlockState(pos.north().west().down()).isOf(expectedBlock); //23
-        var downSouthEast = blockView.getBlockState(pos.south().east().down()).isOf(expectedBlock); //24
-        var downSouthWest = blockView.getBlockState(pos.south().west().down()).isOf(expectedBlock); //25
-
-        var upIndex = new ByteIndex((northWest && !upNorthWest), (north && !upNorth), (northEast && !upNorthEast), (east && !upEast), (southEast && !upSouthEast), (south && !upSouth), (southWest && !upSouthWest), (west && !upWest));
-        var downIndex = new ByteIndex((southWest && !downSouthWest), (south && !downSouth), (southEast && !downSouthEast), (east && !downEast), (northEast && !downNorthEast), (north && !downNorth), (northWest && !downNorthWest), (west && !downWest));
-        var northIndex = new ByteIndex((upEast && !upNorthEast), (up && !upNorth), (upWest && !upNorthWest), (west && !northWest), (downWest && !downNorthWest), (down && !downNorth), (downEast && !downNorthEast), (east && !northEast));
-        var southIndex = new ByteIndex((upWest && !upSouthWest), (up && !upSouth), (upEast && !upSouthEast), (east && !southEast), (downEast && !downSouthEast), (down && !downSouth), (downWest && !downSouthWest), (west && !southWest));
-        var eastIndex = new ByteIndex((upSouth && !upSouthEast), (up && !upEast), (upNorth && !upNorthEast), (north && !northEast), (downNorth && !downNorthEast), (down && !downEast), (downSouth && !downSouthEast), (south && !southEast));
-        var westIndex = new ByteIndex((upNorth && !upNorthWest), (up && !upWest), (upSouth && !upSouthWest), (south && !southWest), (downSouth && !downSouthWest), (down && !downWest), (downNorth && !downNorthWest), (north && !northWest));
+        var up = new ByteIndex((connectingStates[7] && !otherStates[19]), (connectingStates[2] && !otherStates[10]), (connectingStates[6] && !otherStates[18]), (connectingStates[4] && !otherStates[12]), (connectingStates[8] && !otherStates[20]), (connectingStates[3] && !otherStates[11]), (connectingStates[9] && !otherStates[21]), (connectingStates[5] && !otherStates[13]));
+        var down = new ByteIndex((connectingStates[9] && !otherStates[25]), (connectingStates[3] && !otherStates[15]), (connectingStates[8] && !otherStates[24]), (connectingStates[4] && !otherStates[16]), (connectingStates[6] && !otherStates[22]), (connectingStates[2] && !otherStates[14]), (connectingStates[7] && !otherStates[23]), (connectingStates[5] && !otherStates[17]));
+        var north = new ByteIndex((connectingStates[12] && !otherStates[18]), (connectingStates[0] && !otherStates[10]), (connectingStates[13] && !otherStates[19]), (connectingStates[5] && !otherStates[7]), (connectingStates[17] && !otherStates[23]), (connectingStates[1] && !otherStates[14]), (connectingStates[16] && !otherStates[22]), (connectingStates[4] && !otherStates[6]));
+        var south = new ByteIndex((connectingStates[13] && !otherStates[21]), (connectingStates[0] && !otherStates[11]), (connectingStates[12] && !otherStates[20]), (connectingStates[4] && !otherStates[8]), (connectingStates[16] && !otherStates[24]), (connectingStates[1] && !otherStates[15]), (connectingStates[17] && !otherStates[25]), (connectingStates[5] && !otherStates[9]));
+        var east = new ByteIndex((connectingStates[11] && !otherStates[20]), (connectingStates[0] && !otherStates[12]), (connectingStates[10] && !otherStates[18]), (connectingStates[2] && !otherStates[6]), (connectingStates[14] && !otherStates[22]), (connectingStates[1] && !otherStates[16]), (connectingStates[15] && !otherStates[24]), (connectingStates[3] && !otherStates[8]));
+        var west = new ByteIndex((connectingStates[10] && !otherStates[19]), (connectingStates[0] && !otherStates[13]), (connectingStates[11] && !otherStates[21]), (connectingStates[3] && !otherStates[9]), (connectingStates[15] && !otherStates[25]), (connectingStates[1] && !otherStates[17]), (connectingStates[14] && !otherStates[23]), (connectingStates[2] && !otherStates[7]));
 
         return switch (faceDirection) {
-            case UP -> upIndex;
-            case DOWN -> downIndex;
-            case NORTH -> northIndex;
-            case SOUTH -> southIndex;
-            case EAST -> eastIndex;
-            case WEST -> westIndex;
+            case UP -> up;
+            case DOWN -> down;
+            case NORTH -> north;
+            case SOUTH -> south;
+            case EAST -> east;
+            case WEST -> west;
         };
     }
 
@@ -84,7 +125,6 @@ public class ConnectedTextureHelper {
         } else {
             System.out.println("Null value found! Index: " + byteIndex.getByte());
         }
-//        var invertedOdds = ((~typeByteIndex & 0xAA) | (typeByteIndex & 0x55));  //Unused, kept as example.
         return makeConnectedTextureFace(index, sprite, cullFace, isEmissive);
     }
 

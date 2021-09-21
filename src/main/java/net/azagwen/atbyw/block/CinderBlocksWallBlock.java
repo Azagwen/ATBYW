@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.WallShape;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
@@ -111,6 +112,14 @@ public class CinderBlocksWallBlock extends WallBlock {
         return builder.build();
     }
 
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        var superState = super.getPlacementState(ctx);
+        var world = ctx.getWorld();
+        var pos = ctx.getBlockPos();
+        return superState.with(POST_SLAB, world.getBlockState(pos.up()).canReplace(ctx));
+    }
+
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return outlineShapeMap.get(state);
     }
@@ -122,12 +131,7 @@ public class CinderBlocksWallBlock extends WallBlock {
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         var superState = super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-
-        if (world.isAir(pos.up()) || world.isWater(pos.up())) {
-            return superState.with(POST_SLAB, true);
-        } else {
-            return superState.with(POST_SLAB, false);
-        }
+        return superState.with(POST_SLAB, world.getBlockState(pos.up()).getMaterial().isReplaceable());
     }
 
     @Override

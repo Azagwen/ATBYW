@@ -1,5 +1,6 @@
 package net.azagwen.atbyw.block;
 
+import net.azagwen.atbyw.block.registry.AtbywBlocks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;

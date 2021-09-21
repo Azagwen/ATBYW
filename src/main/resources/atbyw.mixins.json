@@ -25,7 +25,7 @@
         "client.ModelLoaderMixin",
         "client.TexturedRenderLayersMixin",
         "sign.client.SignBlockEntityRendererMixin",
-        "sign.client.SignEditScreenMixin"
+        "sign.client.SignEditScreenMixin",
     ],
     "injectors": {
         "defaultRequire": 1

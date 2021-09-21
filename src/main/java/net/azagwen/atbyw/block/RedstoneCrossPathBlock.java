@@ -2,6 +2,7 @@ package net.azagwen.atbyw.block;
 
 import net.azagwen.atbyw.block.state.AtbywProperties;
 import net.azagwen.atbyw.main.AtbywMain;
+import net.azagwen.atbyw.block.registry.RedstoneBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -88,7 +89,7 @@ public class RedstoneCrossPathBlock extends Block {
 
     private void updateInputs(BlockState state, World world, BlockPos pos) {
         for (var direction : Direction.values()) {
-            if (!world.getBlockState(pos.offset(direction)).isOf(AtbywBlocks.REDSTONE_CROSS_PATH)) {
+            if (!world.getBlockState(pos.offset(direction)).isOf(RedstoneBlockRegistry.REDSTONE_CROSS_PATH)) {
                 this.assignInputs(state, world, pos);
             } else {
                 if (!world.isClient) {
@@ -101,7 +102,7 @@ public class RedstoneCrossPathBlock extends Block {
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
         if (state.canPlaceAt(world, pos)) {
-            if (!world.getBlockState(fromPos).isOf(AtbywBlocks.REDSTONE_CROSS_PATH)) {
+            if (!world.getBlockState(fromPos).isOf(RedstoneBlockRegistry.REDSTONE_CROSS_PATH)) {
                 this.assignInputs(state, world, pos);
             } else {
                 if (!world.isClient) {
@@ -149,7 +150,7 @@ public class RedstoneCrossPathBlock extends Block {
                     if (hasWiresOnZ) {
                         returnValueZ = world.getBlockState(pos.north()).get(RedstoneWireBlock.POWER) - 2;
                         break;
-                    } else if(!world.getBlockState(pos.north()).isOf(AtbywBlocks.REDSTONE_CROSS_PATH) && world.getBlockState(pos.north()).getWeakRedstonePower(world, pos, direction) > 1) {
+                    } else if(!world.getBlockState(pos.north()).isOf(RedstoneBlockRegistry.REDSTONE_CROSS_PATH) && world.getBlockState(pos.north()).getWeakRedstonePower(world, pos, direction) > 1) {
                         returnValueZ = world.getBlockState(pos.north()).getWeakRedstonePower(world, pos, direction) - 2;
                         break;
                     }
@@ -159,7 +160,7 @@ public class RedstoneCrossPathBlock extends Block {
                     if (hasWiresOnZ) {
                         returnValueZ = world.getBlockState(pos.south()).get(RedstoneWireBlock.POWER) - 2;
                         break;
-                    } else if(!world.getBlockState(pos.south()).isOf(AtbywBlocks.REDSTONE_CROSS_PATH) && world.getBlockState(pos.south()).getWeakRedstonePower(world, pos, direction) > 1) {
+                    } else if(!world.getBlockState(pos.south()).isOf(RedstoneBlockRegistry.REDSTONE_CROSS_PATH) && world.getBlockState(pos.south()).getWeakRedstonePower(world, pos, direction) > 1) {
                         returnValueZ = world.getBlockState(pos.south()).getWeakRedstonePower(world, pos, direction) - 2;
                         break;
                     }
@@ -169,7 +170,7 @@ public class RedstoneCrossPathBlock extends Block {
                     if (hasWiresOnX) {
                         returnValueX = world.getBlockState(pos.east()).get(RedstoneWireBlock.POWER) - 2;
                         break;
-                    } else if(!world.getBlockState(pos.east()).isOf(AtbywBlocks.REDSTONE_CROSS_PATH) && world.getBlockState(pos.east()).getWeakRedstonePower(world, pos, direction) > 1) {
+                    } else if(!world.getBlockState(pos.east()).isOf(RedstoneBlockRegistry.REDSTONE_CROSS_PATH) && world.getBlockState(pos.east()).getWeakRedstonePower(world, pos, direction) > 1) {
                         returnValueX = world.getBlockState(pos.east()).getWeakRedstonePower(world, pos, direction) - 2;
                         break;
                     }
@@ -179,7 +180,7 @@ public class RedstoneCrossPathBlock extends Block {
                     if (hasWiresOnX) {
                         returnValueX = world.getBlockState(pos.west()).get(RedstoneWireBlock.POWER) - 2;
                         break;
-                    } else if(!world.getBlockState(pos.west()).isOf(AtbywBlocks.REDSTONE_CROSS_PATH) && world.getBlockState(pos.west()).getWeakRedstonePower(world, pos, direction) > 1) {
+                    } else if(!world.getBlockState(pos.west()).isOf(RedstoneBlockRegistry.REDSTONE_CROSS_PATH) && world.getBlockState(pos.west()).getWeakRedstonePower(world, pos, direction) > 1) {
                         returnValueX = world.getBlockState(pos.west()).getWeakRedstonePower(world, pos, direction) - 2;
                         break;
                     }

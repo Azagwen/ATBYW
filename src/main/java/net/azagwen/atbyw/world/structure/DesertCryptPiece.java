@@ -1,7 +1,8 @@
 package net.azagwen.atbyw.world.structure;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.AtbywBlocks;
 import net.azagwen.atbyw.block.RedstoneLanternBlock;
+import net.azagwen.atbyw.block.registry.RedstoneBlockRegistry;
 import net.azagwen.atbyw.world.AtbywWorldGen;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SlabBlock;
@@ -68,7 +69,7 @@ public class DesertCryptPiece extends SimpleStructurePiece {
         }
         if ("lantern".equals(metadata)) {
             int rand = random.nextInt(8);
-            serverWorldAccess.setBlockState(pos, AtbywBlocks.REDSTONE_LANTERN.getDefaultState().with(RedstoneLanternBlock.POWER_INTENSITY, rand + 7).with(RedstoneLanternBlock.HANGING, true), 3);
+            serverWorldAccess.setBlockState(pos, RedstoneBlockRegistry.REDSTONE_LANTERN.getDefaultState().with(RedstoneLanternBlock.POWER_INTENSITY, rand + 7).with(RedstoneLanternBlock.HANGING, true), 3);
         }
     }
 

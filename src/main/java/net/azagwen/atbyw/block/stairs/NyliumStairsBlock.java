@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.block.stairs;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.server.world.ServerWorld;
@@ -27,7 +27,7 @@ public class NyliumStairsBlock extends StairsBlockSubClass {
         if (!stayAlive(state, world, pos)) {
             BlockState newState = world.getBlockState(pos);
 
-            world.setBlockState(pos, AtbywBlocks.NETHERRACK_STAIRS.getStateWithProperties(newState));
+            world.setBlockState(pos, BuildingBlockRegistry.NETHERRACK_STAIRS.getStateWithProperties(newState));
         }
     }
 }

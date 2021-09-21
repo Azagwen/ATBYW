@@ -4,7 +4,7 @@
             "model": "atbyw:block/slab/cactus_slab"
         },
         "type=double": {
-            "model": "atbyw:block/straight_cactus_planks"
+            "model": "atbyw:block/cactus_planks"
         },
         "type=top": {
             "model": "atbyw:block/slab/cactus_slab_top"

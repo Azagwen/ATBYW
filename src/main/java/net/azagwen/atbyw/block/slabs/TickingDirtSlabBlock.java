@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.block.slabs;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -46,10 +46,10 @@ public class TickingDirtSlabBlock extends SlabBlock {
                 BlockState newState = world.getBlockState(pos);
 
                 if (world.getBlockState(blockPos).isOf(Blocks.GRASS_BLOCK) && canSpread(state, world, pos)) {
-                        world.setBlockState(pos, AtbywBlocks.GRASS_BLOCK_SLAB.getStateWithProperties(newState));
+                        world.setBlockState(pos, BuildingBlockRegistry.GRASS_BLOCK_SLAB.getStateWithProperties(newState));
                 }
                 else if (world.getBlockState(blockPos).isOf(Blocks.MYCELIUM) && canSpread(state, world, pos)) {
-                        world.setBlockState(pos, AtbywBlocks.MYCELIUM_SLAB.getStateWithProperties(newState));
+                        world.setBlockState(pos, BuildingBlockRegistry.MYCELIUM_SLAB.getStateWithProperties(newState));
                 }
 
             }

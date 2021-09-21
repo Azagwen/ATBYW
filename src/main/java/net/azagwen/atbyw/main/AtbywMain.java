@@ -6,8 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import net.azagwen.atbyw.block.entity.AtbywBlockEntityTypes;
-import net.azagwen.atbyw.block.AtbywBlocks;
-import net.azagwen.atbyw.client.render.model.ConnectionType;
+import net.azagwen.atbyw.block.registry.AtbywBlocks;
 import net.azagwen.atbyw.datagen.recipe.registry.RecipeRegistry;
 import net.azagwen.atbyw.datagen.arrp.AtbywRRP;
 import net.azagwen.atbyw.dev_tools.AutoJsonWriter;
@@ -46,12 +45,6 @@ public class AtbywMain implements ModInitializer {
 	public static final Map<String, Boolean> DEBUGGER_FEATURES = Maps.newHashMap();
 
 	//TODO: Fix and Investigate structure issues (very high priority)
-	//TODO: Add smooth variants of Deepslathe, Granite, Diorite, Andesite, Tuff...
-	//TODO: Add Amethyst bricks
-	//TODO: Add Amethyst Walls/Fences
-	//TODO: Add Cactus Planks & assorted stuff
-	//TODO: Add Redstone pipes & components assorted to it
-	//TODO: Add Stone melter furnace
 	//TODO: Move LootTables away from ARRP JSON (low priority)
 
 	public static Identifier id(String path) {

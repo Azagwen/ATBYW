@@ -1,7 +1,6 @@
 package net.azagwen.atbyw.block.slabs;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
-import net.minecraft.block.Block;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Fertilizable;
@@ -11,7 +10,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-import java.util.Iterator;
 import java.util.Random;
 
 public class NetherrackSlabBlock extends SlabBlockSubClass implements Fertilizable {
@@ -25,7 +23,7 @@ public class NetherrackSlabBlock extends SlabBlockSubClass implements Fertilizab
         if (!world.getBlockState(pos.up()).isTranslucent(world, pos)) {
             return false;
         } else {
-            Iterator iterator = BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1)).iterator();
+            var iterator = BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1)).iterator();
 
             BlockPos blockPos;
             do {
@@ -47,15 +45,15 @@ public class NetherrackSlabBlock extends SlabBlockSubClass implements Fertilizab
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        BlockState oldState = world.getBlockState(pos);
-        boolean isCrimsonNylium = false;
-        boolean isWarpedNylium = false;
-        Block crimsonSlab = AtbywBlocks.CRIMSON_NYLIUM_SLAB;
-        Block warpedSlab= AtbywBlocks.WARPED_NYLIUM_SLAB;
-        Block crimsonStairs = AtbywBlocks.CRIMSON_NYLIUM_STAIRS;
-        Block warpedStairs = AtbywBlocks.WARPED_NYLIUM_STAIRS;
+        var oldState = world.getBlockState(pos);
+        var isCrimsonNylium = false;
+        var isWarpedNylium = false;
+        var crimsonSlab = BuildingBlockRegistry.CRIMSON_NYLIUM_SLAB;
+        var warpedSlab= BuildingBlockRegistry.WARPED_NYLIUM_SLAB;
+        var crimsonStairs = BuildingBlockRegistry.CRIMSON_NYLIUM_STAIRS;
+        var warpedStairs = BuildingBlockRegistry.WARPED_NYLIUM_STAIRS;
 
-        Iterator iterator = BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1)).iterator();
+        var iterator = BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1)).iterator();
 
         while(iterator.hasNext()) {
             BlockPos blockPos = (BlockPos)iterator.next();

@@ -2,6 +2,7 @@ package net.azagwen.atbyw.client.render.model;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import net.azagwen.atbyw.client.AtbywClient;
 
 import java.util.Map;
 import java.util.Set;
@@ -98,7 +99,7 @@ public enum ConnectionType {
     private final byte requiredByteIndex;
     private final Set<Byte> byteIndexPowerSet;
     private final String binaryString;
-    public static final Map<Byte, ConnectionType> CONNECTIONS = connectionTypeMap();
+    public static final Map<Byte, ConnectionType> CONNECTIONS = Maps.newHashMap();
     ConnectionType(int faceIndex, ByteIndex byteIndex, Set<Byte> optionalCorners) {
         this.faceIndex = faceIndex;
         this.requiredByteIndex = byteIndex.getByte();
@@ -110,14 +111,14 @@ public enum ConnectionType {
         this(faceIndex, byteIndex, Sets.newHashSet());
     }
 
-    private static Map<Byte, ConnectionType> connectionTypeMap() {
-        var map = Maps.<Byte, ConnectionType>newHashMap();
+    public static void init() {
         for (var type : ConnectionType.values()) {
-            for (var b : type.byteIndexPowerSet) {
-                map.put(b, type);
+            for (var index : type.byteIndexPowerSet) {
+                CONNECTIONS.put(index, type);
             }
         }
-        return map;
+
+        AtbywClient.LOGGER.info("ATBYW Connected Texture Types added.");
     }
 
     public int getFaceIndex() {

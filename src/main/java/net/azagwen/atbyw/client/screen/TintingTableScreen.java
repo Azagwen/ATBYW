@@ -90,7 +90,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
     protected void init() {
         super.init();
         this.client.keyboard.setRepeatEvents(true);
-        this.switchModeButton = this.addDrawableChild(new DynamicTexturedButtonWidget(this.x + 13, this.y + 30, 14, 14, (this.handler.getMode() == TintingTableMode.HEX ? 242 : 228), 0, 14, TEXTURE, 256, 256, (button) -> {
+        this.switchModeButton = new DynamicTexturedButtonWidget(this.x + 13, this.y + 30, 14, 14, (this.handler.getMode() == TintingTableMode.HEX ? 242 : 228), 0, 14, TEXTURE, 256, 256, (button) -> {
             AtbywNetworking.sendClientPacket(AtbywNetworking.TINTING_MODE_PACKET, () -> {
                 var buf = PacketByteBufs.create();
                 switch (this.handler.getMode()) {
@@ -99,7 +99,7 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
                 }
                 return buf;
             });
-        }));
+        });
         this.switchModeButton.setMessage(new TranslatableText("container.tinting_table_mode"));
         this.hexField = new TextFieldWidget(this.textRenderer, this.x + 68, this.y + 34, 46 , 12, new TranslatableText("container.tinting.hex"));
         this.hexField.setFocusUnlocked(false);
@@ -107,7 +107,6 @@ public class TintingTableScreen extends HandledScreen<TintingTableScreenHandler>
         this.hexField.setDrawsBackground(false);
         this.hexField.setMaxLength(7);
         this.hexField.setChangedListener(this::onHexChanged);
-//        this.hexField.setText(AtbywUtils.getHexFromColor(this.handler.getColor()));
         this.hexField.setText("#FFFFFF");
         this.addSelectableChild(this.hexField);
         this.setInitialFocus(this.hexField);

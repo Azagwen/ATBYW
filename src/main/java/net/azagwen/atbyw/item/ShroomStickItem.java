@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.item;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.AtbywBlocks;
 import net.azagwen.atbyw.block.ShroomStickBlock;
 import net.azagwen.atbyw.item.entity.ShroomStickEntity;
 import net.azagwen.atbyw.main.Tags;

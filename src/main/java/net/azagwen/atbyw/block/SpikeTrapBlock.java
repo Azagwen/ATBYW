@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.block;
 
 import net.azagwen.atbyw.block.state.AtbywProperties;
+import net.azagwen.atbyw.block.state.SpikeTrapMaterial;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.fluid.Fluid;
@@ -20,16 +21,14 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 public class SpikeTrapBlock extends Block {
-    private final SpikeBlock spikeBlock;
-    private final float strength;
+    private final SpikeTrapMaterial material;
     private boolean hasBeenBlockedOnce;
     public static final BooleanProperty ACTIVE;
     public static final BooleanProperty CAN_BREAK;
 
-    public SpikeTrapBlock(Block spikeBlock, float strength, Settings settings) {
+    public SpikeTrapBlock(SpikeTrapMaterial material, Settings settings) {
         super(settings);
-        this.spikeBlock = (SpikeBlock) spikeBlock;
-        this.strength = strength;
+        this.material = material;
         this.setDefaultState(this.getDefaultState().with(ACTIVE, false).with(CAN_BREAK, false));
     }
 
@@ -37,7 +36,7 @@ public class SpikeTrapBlock extends Block {
         BlockState upState = world.getBlockState(pos.up());
 
         boolean negativeHardness = upState.getHardness(world, pos.up()) < 0.0F;
-        boolean aboveOneHardness = upState.getHardness(world, pos.up()) < strength;
+        boolean aboveOneHardness = upState.getHardness(world, pos.up()) < this.material.getPushingStrength();
         boolean isSpikeBlock = upState.getBlock() instanceof SpikeBlock;
 
         return aboveOneHardness && !negativeHardness && !isSpikeBlock;
@@ -75,7 +74,7 @@ public class SpikeTrapBlock extends Block {
     private void placeSpikes(BlockState state, World world, BlockPos pos) {
         if (state.get(ACTIVE)) {
             var canWaterLog = world.getFluidState(pos.up()).getFluid() == Fluids.WATER;
-            world.setBlockState(pos.up(), spikeBlock.getDefaultState().with(SpikeBlock.WATERLOGGED, canWaterLog));
+            world.setBlockState(pos.up(), this.material.getSpikeBlock().getDefaultState().with(SpikeBlock.WATERLOGGED, canWaterLog));
             world.playSound(null, pos, SoundEvents.BLOCK_CHAIN_PLACE, SoundCategory.BLOCKS, 0.5F, 1);
         }
     }
@@ -93,11 +92,11 @@ public class SpikeTrapBlock extends Block {
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.isAir(pos.up()) || world.isWater(pos.up())) {
-            placeSpikes(state, world, pos);
+            this.placeSpikes(state, world, pos);
             hasBeenBlockedOnce = false;
         } else if (state.get(CAN_BREAK)) {
             world.breakBlock(pos.up(), true);
-            placeSpikes(state, world, pos);
+            this.placeSpikes(state, world, pos);
             hasBeenBlockedOnce = false;
         } else {
             if (state.get(ACTIVE) && !(world.getBlockState(pos.up()).getBlock() instanceof SpikeBlock) && !hasBeenBlockedOnce) {

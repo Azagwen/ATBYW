@@ -1,7 +1,9 @@
 package net.azagwen.atbyw.client;
 
 import net.azagwen.atbyw.block.AbstractRedstonePipeGate;
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.DecorationBlockRegistry;
+import net.azagwen.atbyw.block.registry.RedstoneBlockRegistry;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
 import net.azagwen.atbyw.block.RedstonePipeBlock;
 import net.azagwen.atbyw.block.entity.CanvasBlockEntity;
 import net.azagwen.atbyw.block.slabs.FallingSlabBlock;
@@ -22,7 +24,7 @@ public class ColorProviders {
         //Canvas blocks color
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
             return ((DyeableItem) stack.getItem()).getColor(stack);
-        }, AtbywBlocks.CANVAS_BLOCK, AtbywBlocks.GLOWING_CANVAS_BLOCK);
+        }, DecorationBlockRegistry.CANVAS_BLOCK, DecorationBlockRegistry.GLOWING_CANVAS_BLOCK);
 
         //Colorizer color
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
@@ -32,7 +34,7 @@ public class ColorProviders {
         //Grass stairs & slab color
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
             return GrassColors.getColor(0.5D, 1.0D);
-        }, AtbywBlocks.GRASS_BLOCK_STAIRS, AtbywBlocks.GRASS_BLOCK_SLAB);
+        }, BuildingBlockRegistry.GRASS_BLOCK_STAIRS, BuildingBlockRegistry.GRASS_BLOCK_SLAB);
 
         //Essence bottle colors
         for (var item : AtbywItems.ESSENCE_BOTTLES) {
@@ -44,12 +46,12 @@ public class ColorProviders {
         //Redstone Pipe redstone Color
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
             return RedstonePipeBlock.getRedstoneColor(0);
-        }, AtbywBlocks.REDSTONE_PIPE);
+        }, RedstoneBlockRegistry.REDSTONE_PIPE);
 
         //Redstone Pipe Logic Gates redstone Color
         ColorProviderRegistry.BLOCK.ITEM.register((stack, tintIndex) -> {
             return RedstonePipeBlock.getRedstoneColor(2);
-        }, AtbywBlocks.REDSTONE_PIPE_REPEATER);
+        }, RedstoneBlockRegistry.REDSTONE_PIPE_REPEATER);
     }
 
     public static void initBlocks() {
@@ -64,17 +66,17 @@ public class ColorProviders {
                 }
             }
             return color;
-        }, AtbywBlocks.CANVAS_BLOCK, AtbywBlocks.GLOWING_CANVAS_BLOCK);
+        }, DecorationBlockRegistry.CANVAS_BLOCK, DecorationBlockRegistry.GLOWING_CANVAS_BLOCK);
 
         //Grass stairs & slab color
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5D, 1.0D);
-        }, AtbywBlocks.GRASS_BLOCK_STAIRS, AtbywBlocks.GRASS_BLOCK_SLAB);
+        }, BuildingBlockRegistry.GRASS_BLOCK_STAIRS, BuildingBlockRegistry.GRASS_BLOCK_SLAB);
 
         //Redstone Pipe redstone Color
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return RedstonePipeBlock.getRedstoneColor(state.get(RedstoneWireBlock.POWER));
-        }, AtbywBlocks.REDSTONE_PIPE);
+        }, RedstoneBlockRegistry.REDSTONE_PIPE);
 
         //Redstone Pipe Logic Gates redstone Color
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
@@ -82,22 +84,22 @@ public class ColorProviders {
                 return RedstonePipeBlock.getRedstoneColor(15);
             }
             return RedstonePipeBlock.getRedstoneColor(2);
-        }, AtbywBlocks.REDSTONE_PIPE_REPEATER);
+        }, RedstoneBlockRegistry.REDSTONE_PIPE_REPEATER);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             if (!state.get(AbstractRedstonePipeGate.POWERED)) {
                 return RedstonePipeBlock.getRedstoneColor(15);
             }
             return RedstonePipeBlock.getRedstoneColor(2);
-        }, AtbywBlocks.REDSTONE_PIPE_INVERTER);
+        }, RedstoneBlockRegistry.REDSTONE_PIPE_INVERTER);
 
         //Falling Stairs
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return ((FallingStairsBlock) state.getBlock()).getColor(state, world, pos);
-        }, AtbywBlocks.SAND_STAIRS, AtbywBlocks.RED_SAND_STAIRS, AtbywBlocks.GRAVEL_STAIRS);
+        }, BuildingBlockRegistry.SAND_STAIRS, BuildingBlockRegistry.RED_SAND_STAIRS, BuildingBlockRegistry.GRAVEL_STAIRS);
 
         //Falling Slabs
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return ((FallingSlabBlock) state.getBlock()).getColor(state, world, pos);
-        }, AtbywBlocks.SAND_SLAB, AtbywBlocks.RED_SAND_SLAB, AtbywBlocks.GRAVEL_SLAB);
+        }, BuildingBlockRegistry.SAND_SLAB, BuildingBlockRegistry.RED_SAND_SLAB, BuildingBlockRegistry.GRAVEL_SLAB);
     }
 }

@@ -1,6 +1,7 @@
 package net.azagwen.atbyw.block;
 
 import com.google.common.collect.Lists;
+import net.azagwen.atbyw.block.state.SpikeTrapMaterial;
 import net.azagwen.atbyw.main.AtbywDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -32,16 +33,12 @@ import static net.azagwen.atbyw.util.AtbywUtils.getBlockFromID;
 
 public class SpikeBlock extends Block implements Waterloggable {
     private static final VoxelShape SHAPE;
-    private final Identifier spikeTrapBlock;
-    private final float damageValue;
-    private final int effectAmplifier;
+    private final SpikeTrapMaterial material;
     public static final BooleanProperty WATERLOGGED;
 
-    public SpikeBlock(Identifier spikeTrapBlock, float damageValue, int effectAmplifier, Settings settings) {
+    public SpikeBlock(SpikeTrapMaterial material, Settings settings) {
         super(settings);
-        this.damageValue = damageValue;
-        this.effectAmplifier = effectAmplifier;
-        this.spikeTrapBlock = spikeTrapBlock;
+        this.material = material;
         this.setDefaultState(this.getStateManager().getDefaultState().with(WATERLOGGED, false));
     }
 
@@ -87,9 +84,9 @@ public class SpikeBlock extends Block implements Waterloggable {
         boolean isEntityPlayerAndCreative = entity instanceof PlayerEntity && ((PlayerEntity) entity).isCreative();
 
         if (entity instanceof LivingEntity && !isEntityImmune(entity) && !isEntityPlayerAndCreative) {
-            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 40, effectAmplifier));
+            ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 40, this.material.getEffectAmplifier()));
             entity.slowMovement(state, new Vec3d(0.75D, 1.0D, 0.75D));
-            entity.damage(AtbywDamageSource.SPIKE_TRAP, damageValue);
+            entity.damage(AtbywDamageSource.SPIKE_TRAP, this.material.getDamageValue());
         }
 
         super.onEntityCollision(state, world, pos, entity);
@@ -102,7 +99,7 @@ public class SpikeBlock extends Block implements Waterloggable {
 
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return getBlockFromID(spikeTrapBlock).asItem().getDefaultStack();
+        return this.material.getTrapBlock().asItem().getDefaultStack();
     }
 
     @Override

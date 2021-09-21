@@ -1,5 +1,7 @@
 package net.azagwen.atbyw.block;
 
+import net.azagwen.atbyw.block.registry.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.RedstoneBlockRegistry;
 import net.azagwen.atbyw.main.Tags;
 import net.azagwen.atbyw.util.BlockUtils;
 import net.minecraft.block.*;
@@ -178,7 +180,7 @@ public abstract class AbstractRedstonePipeGate extends FacingBlock implements Re
             return i;
         } else {
             var blockState = world.getBlockState(pos.offset(direction));
-            return Math.max(i, blockState.isOf(AtbywBlocks.REDSTONE_PIPE) ? blockState.get(RedstonePipeBlock.POWER) : 0);
+            return Math.max(i, blockState.isOf(RedstoneBlockRegistry.REDSTONE_PIPE) ? blockState.get(RedstonePipeBlock.POWER) : 0);
         }
     }
 

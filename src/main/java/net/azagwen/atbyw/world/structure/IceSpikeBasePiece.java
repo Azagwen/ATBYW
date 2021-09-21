@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.world.structure;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
 import net.azagwen.atbyw.world.AtbywWorldGen;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -11,7 +11,6 @@ import net.minecraft.loot.LootTables;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.structure.SimpleStructurePiece;
-import net.minecraft.structure.Structure;
 import net.minecraft.structure.StructureManager;
 import net.minecraft.structure.StructurePlacementData;
 import net.minecraft.structure.processor.BlockIgnoreStructureProcessor;
@@ -71,7 +70,7 @@ public class IceSpikeBasePiece extends SimpleStructurePiece {
             if (state.getBlock() instanceof LadderBlock) {
                 serverWorldAccess.setBlockState(pos, state.with(LadderBlock.FACING, state.get(LadderBlock.FACING)), 3);
             } else {
-                serverWorldAccess.setBlockState(pos, AtbywBlocks.PACKED_ICE_BRICKS.getDefaultState(), 3);
+                serverWorldAccess.setBlockState(pos, BuildingBlockRegistry.PACKED_ICE_BRICKS.getDefaultState(), 3);
             }
         }
     }

@@ -1,7 +1,7 @@
 package net.azagwen.atbyw.mixin.block_behavior;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.ShatteredGlassBlock;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.GlassBlock;
 import net.minecraft.block.StainedGlassBlock;
@@ -17,7 +17,7 @@ public class TransparentBlockMixin {
 
     @Inject(at = @At("HEAD"), method = "isSideInvisible", cancellable = true)
     public void isSideInvisible(BlockState state, BlockState stateFrom, Direction direction, CallbackInfoReturnable<Boolean> cir) {
-        AtbywBlocks.SHATTERED_GLASS_SET.forEach((block) -> {
+        BuildingBlockRegistry.SHATTERED_GLASS_SET.forEach((block) -> {
             var shatteredGlass = (ShatteredGlassBlock) block;
 
             if (state.getBlock() instanceof GlassBlock glassBlock && shatteredGlass.getColor() == null) {

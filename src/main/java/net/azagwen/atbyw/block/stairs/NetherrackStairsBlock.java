@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.block.stairs;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -50,10 +50,10 @@ public class NetherrackStairsBlock extends StairsBlockSubClass implements Fertil
         var oldState = world.getBlockState(pos);
         var isCrimsonNylium = false;
         var isWarpedNylium = false;
-        var crimsonStairs = AtbywBlocks.CRIMSON_NYLIUM_STAIRS;
-        var warpedStairs = AtbywBlocks.WARPED_NYLIUM_STAIRS;
-        var crimsonSlab = AtbywBlocks.CRIMSON_NYLIUM_SLAB;
-        var warpedSlab= AtbywBlocks.WARPED_NYLIUM_SLAB;
+        var crimsonStairs = BuildingBlockRegistry.CRIMSON_NYLIUM_STAIRS;
+        var warpedStairs = BuildingBlockRegistry.WARPED_NYLIUM_STAIRS;
+        var crimsonSlab = BuildingBlockRegistry.CRIMSON_NYLIUM_SLAB;
+        var warpedSlab= BuildingBlockRegistry.WARPED_NYLIUM_SLAB;
 
         var iterator = BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1)).iterator();
 

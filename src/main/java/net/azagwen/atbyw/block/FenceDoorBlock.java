@@ -38,13 +38,10 @@ public class FenceDoorBlock extends HorizontalFacingBlock {
 
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
-        switch(type) {
-            case LAND:
-            case AIR:
-                return state.get(OPEN);
-            default:
-                return false;
-        }
+        return switch (type) {
+            case LAND, AIR -> state.get(OPEN);
+            default -> false;
+        };
     }
 
     @Override
@@ -105,7 +102,6 @@ public class FenceDoorBlock extends HorizontalFacingBlock {
         } else {
             if (state.get(OPEN)) {
                 state = state.with(OPEN, false);
-                world.setBlockState(pos, state, 10);
             } else {
                 Direction direction = player.getHorizontalFacing();
                 if (state.get(FACING) == direction.getOpposite()) {
@@ -113,8 +109,8 @@ public class FenceDoorBlock extends HorizontalFacingBlock {
                 }
 
                 state = state.with(OPEN, true);
-                world.setBlockState(pos, state, 10);
             }
+            world.setBlockState(pos, state, 10);
         }
 
         world.syncWorldEvent(player, state.get(OPEN) ? this.getCloseSoundEventId() : this.getOpenSoundEventId(), pos, 0);

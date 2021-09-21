@@ -1,7 +1,7 @@
 package net.azagwen.atbyw.screen;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
 import net.azagwen.atbyw.block.entity.TintingTableFuels;
+import net.azagwen.atbyw.block.registry.DecorationBlockRegistry;
 import net.azagwen.atbyw.item.CanvasBlockItem;
 import net.azagwen.atbyw.item.SimpleColoredItem;
 import net.azagwen.atbyw.main.AtbywScreenHandlerType;
@@ -74,7 +74,7 @@ public class TintingTableScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return canUse(this.context, player, AtbywBlocks.TINTING_TABLE);
+        return canUse(this.context, player, DecorationBlockRegistry.TINTING_TABLE);
     }
 
     protected void onTakeOutput(PlayerEntity player, ItemStack outputStack) {

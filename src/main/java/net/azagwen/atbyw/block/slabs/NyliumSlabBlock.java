@@ -1,6 +1,6 @@
 package net.azagwen.atbyw.block.slabs;
 
-import net.azagwen.atbyw.block.AtbywBlocks;
+import net.azagwen.atbyw.block.registry.BuildingBlockRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -26,7 +26,7 @@ public class NyliumSlabBlock extends SlabBlockSubClass {
         if (!stayAlive(state, world, pos)) {
             BlockState newState = world.getBlockState(pos);
 
-            world.setBlockState(pos, copyStates(AtbywBlocks.NETHERRACK_SLAB.getDefaultState(), newState));
+            world.setBlockState(pos, copyStates(BuildingBlockRegistry.NETHERRACK_SLAB.getDefaultState(), newState));
         }
     }
 }

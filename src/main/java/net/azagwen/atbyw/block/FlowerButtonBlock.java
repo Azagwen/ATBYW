@@ -34,7 +34,7 @@ public class FlowerButtonBlock extends PlantBlock {
     public static final IntProperty TIMER;
     private static final int delay = 15;
 
-    protected FlowerButtonBlock(Settings settings) {
+    public FlowerButtonBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(POWERED, false).with(LIT, false).with(TIMER, 0));
     }
